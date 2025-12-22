@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>12.0</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="TrainingFiles\Summary_and_Conclusion\Advanced_Problems_In_Computational_Chemistry\" />
+    <Folder Include="TrainingFiles\Summary_and_Conclusion\Advanced_Problems_In_Computational_Physics\" />
+    <Folder Include="TrainingFiles\Summary_and_Conclusion\Advanced_Problems_In_Computational_Biology\" />
+    <Folder Include="TrainingFiles\Summary_and_Conclusion\Advanced_Problems_In_Computational_Material_Science\" />
+    <Folder Include="TrainingFiles\Summary_and_Conclusion\Advanced_Problems_In_Computational_GeoScience\" />
+    <Folder Include="TrainingFiles\Summary_and_Conclusion\Advanced_Problems_In_Civil_Engineering\" />
+    <Folder Include="TrainingFiles\Summary_and_Conclusion\Advanced_Problems_In_Mechanical_Engineering\" />
+    <Folder Include="TrainingFiles\Summary_and_Conclusion\Advanced_Problems_In_Petroleum_Engineering\" />
+    <Folder Include="TrainingFiles\Summary_and_Conclusion\Advanced_Problems_In_Electrical_Engineering\" />
+    <Folder Include="TrainingFiles\Summary_and_Conclusion\Advanced_Problems_In_Aerospace_Engineering\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SepalSolver" Version="0.0.39" />
+    <PackageReference Include="SepalSolver.PlotLib" Version="0.0.39" />
+  </ItemGroup>
+
+</Project>

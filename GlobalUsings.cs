@@ -1,0 +1,11 @@
+﻿global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Threading.Tasks;
+global using System.Diagnostics;
+global using SepalSolver;
+global using SepalSolver.PlotLib;
+global using static SepalSolver.Math;
+global using static SepalSolver.PlotLib.Chart;
+global using static SepalSolver.PlotLib.Chart.Interpreter;
+global using static SepalSolver.PlotLib.Chart.Location;
