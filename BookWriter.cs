@@ -42,6 +42,8 @@ namespace ConsoleApp1
 
                 
 
+
+
                 Contents
                 ----------
 
@@ -85,7 +87,8 @@ namespace ConsoleApp1
                 string[] ChapterSections = Directory.GetFiles(BookChapter, "*.cs");
                 foreach (string ChapterSection in ChapterSections)
                 {
-                    relativePath = string.Join(' ', [.. ChapterSection.Split(['_']).Skip(2)]);
+                    relativePath = Path.GetRelativePath(BookChapter, ChapterSection);
+                    relativePath = string.Join(' ', [.. relativePath.Split(['_']).Skip(2)]);
                     using (StreamWriter writer = new(chapterfile, append: true))
                     {
                         writer.WriteLine("   " + relativePath);
