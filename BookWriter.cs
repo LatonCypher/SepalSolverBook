@@ -72,14 +72,13 @@ namespace ConsoleApp1
                 string[] ChapterSections = Directory.GetFiles(BookChapter, "*.cs");
                 foreach (string ChapterSection in ChapterSections)
                 {
-                    relativePath = Path.GetRelativePath(BookChapter, ChapterSection);
                     Run(ChapterSection, bookfolder);
                 }
             }
         }
         public static void Run(string Classname, string DocFolder)
         {
-            string[] namesplit = Classname.Split(['.', '\\']);
+            string name = string.Join(' ', Classname.Split(['.', '\\'])[^2].Split('_').Skip(2));
             string[] lines = [..File.ReadAllLines(Classname)
                                 .SkipWhile(line => !line.Contains("<BookContent>"))   // skip until opening tag
                                 .Skip(1)                                              // skip the opening tag itself
@@ -94,7 +93,7 @@ namespace ConsoleApp1
             }
 
 
-            using (StreamWriter writer = new(DocFolder + Classname + ".rst"))
+            using (StreamWriter writer = new(DocFolder + name + ".rst"))
             {
                 foreach (string line in Document)
                     writer.WriteLine(line);

@@ -18,6 +18,7 @@ using ConsoleApp1.TrainingFiles.Summary_and_Conclusion.Advanced_Problems_In_Proc
 
     var ProjectFolder = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\TrainingFiles\";
     var BookFolder = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\docs\source\";
+    var ImageFolder = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\docs\source\images\";
     var BookContent = new BookWriter(ProjectFolder, BookFolder);
     BookContent.WriteBook();
     {
