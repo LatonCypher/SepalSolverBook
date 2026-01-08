@@ -1,13 +1,12 @@
-﻿using SepalSolver;
-using static SepalSolver.Math;
-using static SepalSolver.PlotLib.Chart;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_1_Polynomials
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_1_Polynomials
 {
     public class Section_1_Polynomial_Evaluation
     {
         public static void Run()
         {
+            /// <BookContent>
+            /// 
+            /// </BookContent>
 
             {
                 // Example of polynomial evaluation

@@ -1,11 +1,12 @@
-﻿using static SepalSolver.Math;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_1_Polynomials
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_1_Polynomials
 {
     public class Section_3_Polynomial_Arithmetics
     {
         public static void Run()
         {
+            /// <BookContent>
+            /// 
+            /// </BookContent>
 
             {
                 // Example of Polynomial Addition

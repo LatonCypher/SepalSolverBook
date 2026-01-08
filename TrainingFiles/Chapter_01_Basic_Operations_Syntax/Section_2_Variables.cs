@@ -1,20 +1,12 @@
-﻿using SepalSolver;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
 {
     public class Section_2_Variables
     {
         public static void Run()
         {
-            
+            /// <BookContent>
+            /// 
+            /// </BookContent>
 
             // Variables in C# are used to store data that can be manipulated during the execution of a program. 
             {

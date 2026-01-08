@@ -1,26 +1,10 @@
-﻿using SepalSolver;
-using static SepalSolver.Math;
-using static SepalSolver.PlotLib.Chart;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algerba
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algerba
 {
     internal class Section_1_Vectors_Matrices
     {
         public static void Run()
         {
-            /*
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             */
+            
 
             {
                 // Vector declaration

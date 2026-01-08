@@ -1,14 +1,12 @@
-﻿using System;
-using SepalSolver;
-using static SepalSolver.Math;
-using static SepalSolver.PlotLib.Chart;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
 {
     public class Section_5_Algorithm_Flow_Control
     {
         public static void Run()
         {
+            /// <BookContent>
+            /// 
+            /// </BookContent>
             //Sequence
             {
                 int a = 10;

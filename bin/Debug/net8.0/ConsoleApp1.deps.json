@@ -16,10 +16,6 @@
         }
       },
       "CSharpMath/0.5.1": {
-        "dependencies": {
-          "System.Memory": "4.5.4",
-          "System.Runtime.CompilerServices.Unsafe": "4.6.0"
-        },
         "runtime": {
           "lib/netstandard2.0/CSharpMath.dll": {
             "assemblyVersion": "1.0.0.0",
@@ -40,8 +36,7 @@
       },
       "CSharpMath.Rendering/0.5.1": {
         "dependencies": {
-          "CSharpMath.Editor": "0.5.1",
-          "System.Numerics.Vectors": "4.5.0"
+          "CSharpMath.Editor": "0.5.1"
         },
         "runtime": {
           "lib/netstandard2.0/CSharpMath.Rendering.dll": {
@@ -270,10 +265,8 @@
           }
         }
       },
-      "Microsoft.CodeAnalysis.Analyzers/3.11.0": {},
       "Microsoft.CodeAnalysis.Common/5.0.0": {
         "dependencies": {
-          "Microsoft.CodeAnalysis.Analyzers": "3.11.0",
           "System.Collections.Immutable": "9.0.0",
           "System.Reflection.Metadata": "9.0.0"
         },
@@ -327,7 +320,6 @@
       },
       "Microsoft.CodeAnalysis.CSharp/5.0.0": {
         "dependencies": {
-          "Microsoft.CodeAnalysis.Analyzers": "3.11.0",
           "Microsoft.CodeAnalysis.Common": "5.0.0",
           "System.Collections.Immutable": "9.0.0",
           "System.Reflection.Metadata": "9.0.0"
@@ -382,7 +374,6 @@
       },
       "Microsoft.CodeAnalysis.CSharp.Scripting/5.0.0": {
         "dependencies": {
-          "Microsoft.CodeAnalysis.Analyzers": "3.11.0",
           "Microsoft.CodeAnalysis.CSharp": "5.0.0",
           "Microsoft.CodeAnalysis.Common": "5.0.0",
           "Microsoft.CodeAnalysis.Scripting.Common": "5.0.0",
@@ -439,7 +430,6 @@
       },
       "Microsoft.CodeAnalysis.Scripting.Common/5.0.0": {
         "dependencies": {
-          "Microsoft.CodeAnalysis.Analyzers": "3.11.0",
           "Microsoft.CodeAnalysis.Common": "5.0.0",
           "System.Collections.Immutable": "9.0.0",
           "System.Reflection.Metadata": "9.0.0"
@@ -492,7 +482,6 @@
           }
         }
       },
-      "Microsoft.CSharp/4.7.0": {},
       "Microsoft.Win32.SystemEvents/10.0.0": {
         "runtime": {
           "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
@@ -526,7 +515,6 @@
       "SepalSolver/0.0.39": {
         "dependencies": {
           "Highs.Native": "1.12.0",
-          "Microsoft.CSharp": "4.7.0",
           "Microsoft.CodeAnalysis.CSharp.Scripting": "5.0.0",
           "System.Drawing.Common": "10.0.0"
         },
@@ -692,8 +680,6 @@
           }
         }
       },
-      "System.Memory/4.5.4": {},
-      "System.Numerics.Vectors/4.5.0": {},
       "System.Reflection.Metadata/9.0.0": {
         "dependencies": {
           "System.Collections.Immutable": "9.0.0"
@@ -704,8 +690,7 @@
             "fileVersion": "9.0.24.52809"
           }
         }
-      },
-      "System.Runtime.CompilerServices.Unsafe/4.6.0": {}
+      }
     }
   },
   "libraries": {
@@ -798,13 +783,6 @@
       "path": "magick.net.core/14.9.1",
       "hashPath": "magick.net.core.14.9.1.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.Analyzers/3.11.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-v/EW3UE8/lbEYHoC2Qq7AR/DnmvpgdtAMndfQNmpuIMx/Mto8L5JnuCfdBYtgvalQOtfNCnxFejxuRrryvUTsg==",
-      "path": "microsoft.codeanalysis.analyzers/3.11.0",
-      "hashPath": "microsoft.codeanalysis.analyzers.3.11.0.nupkg.sha512"
-    },
     "Microsoft.CodeAnalysis.Common/5.0.0": {
       "type": "package",
       "serviceable": true,
@@ -832,13 +810,6 @@
       "sha512": "sha512-XTulByMNxqXGCgMeODUoG2h4oK4/nLv1BcawRVcjv+UZHMpoaymtdaq3cJqlNrEvYEcbU48g5swJ3RhY1m3fBg==",
       "path": "microsoft.codeanalysis.scripting.common/5.0.0",
       "hashPath": "microsoft.codeanalysis.scripting.common.5.0.0.nupkg.sha512"
-    },
-    "Microsoft.CSharp/4.7.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
-      "path": "microsoft.csharp/4.7.0",
-      "hashPath": "microsoft.csharp.4.7.0.nupkg.sha512"
     },
     "Microsoft.Win32.SystemEvents/10.0.0": {
       "type": "package",
@@ -917,33 +888,12 @@
       "path": "system.drawing.common/10.0.0",
       "hashPath": "system.drawing.common.10.0.0.nupkg.sha512"
     },
-    "System.Memory/4.5.4": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
-      "path": "system.memory/4.5.4",
-      "hashPath": "system.memory.4.5.4.nupkg.sha512"
-    },
-    "System.Numerics.Vectors/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
-      "path": "system.numerics.vectors/4.5.0",
-      "hashPath": "system.numerics.vectors.4.5.0.nupkg.sha512"
-    },
     "System.Reflection.Metadata/9.0.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-ANiqLu3DxW9kol/hMmTWbt3414t9ftdIuiIU7j80okq2YzAueo120M442xk1kDJWtmZTqWQn7wHDvMRipVOEOQ==",
       "path": "system.reflection.metadata/9.0.0",
       "hashPath": "system.reflection.metadata.9.0.0.nupkg.sha512"
-    },
-    "System.Runtime.CompilerServices.Unsafe/4.6.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-HxozeSlipUK7dAroTYwIcGwKDeOVpQnJlpVaOkBz7CM4TsE5b/tKlQBZecTjh6FzcSbxndYaxxpsBMz+wMJeyw==",
-      "path": "system.runtime.compilerservices.unsafe/4.6.0",
-      "hashPath": "system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
     }
   }
 }

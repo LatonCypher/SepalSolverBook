@@ -1,16 +1,12 @@
-﻿using System;
-using SepalSolver;
-using System.Linq;
-using System.Collections.Generic;
-using static SepalSolver.Math;
-using static SepalSolver.PlotLib.Chart;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
 {
     public class Section_4_Collections_and_Linq
     {
         public static void Run()
         {
+            /// <BookContent>
+            /// 
+            /// </BookContent>
             //using Math
             ColVec x = Linspace(0, 10);
             ColVec y = Sin(x);

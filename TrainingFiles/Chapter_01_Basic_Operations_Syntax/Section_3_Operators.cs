@@ -1,19 +1,12 @@
-﻿using Microsoft.CodeAnalysis.Diagnostics;
-using ScottPlot.AxisLimitManagers;
-using ScottPlot.PlotStyles;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
 {
     public class Section_3_Operators
     {
         public static void Run()
         {
+            /// <BookContent>
+            /// 
+            /// </BookContent>
             // There are six broad catergories of operators
             {
                 //1.  Arithmetic Operators

@@ -1,13 +1,12 @@
-﻿using SepalSolver;
-using static SepalSolver.Math;
-using static SepalSolver.PlotLib.Chart;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_1_Interpolation
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_1_Interpolation
 {
     internal class Section_1_Linear_Interpolation
     {
         public static void Run()
         {
+            /// <BookContent>
+            /// 
+            /// </BookContent>
 
             {
                 // Example data points
