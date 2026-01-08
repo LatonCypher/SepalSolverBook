@@ -1,4 +1,5 @@
-Contents
+
+Partial Differential Equations
 ----------
 
 .. toctree::

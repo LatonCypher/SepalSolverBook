@@ -1,4 +1,5 @@
-Contents
+
+Linear Algebra
 ----------
 
 .. toctree::

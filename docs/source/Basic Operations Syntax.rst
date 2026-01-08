@@ -1,4 +1,5 @@
-Contents
+
+Basic Operations Syntax
 ----------
 
 .. toctree::

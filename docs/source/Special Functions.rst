@@ -1,4 +1,5 @@
-Contents
+
+Special Functions
 ----------
 
 .. toctree::

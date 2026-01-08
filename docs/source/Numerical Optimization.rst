@@ -1,4 +1,5 @@
-Contents
+
+Numerical Optimization
 ----------
 
 .. toctree::

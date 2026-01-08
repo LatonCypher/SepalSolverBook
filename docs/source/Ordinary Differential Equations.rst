@@ -1,4 +1,5 @@
-Contents
+
+Ordinary Differential Equations
 ----------
 
 .. toctree::

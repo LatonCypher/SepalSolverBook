@@ -65,8 +65,9 @@ namespace ConsoleApp1
 
 
                 string chapterfile = bookfolder + "\\" + relativePath + ".rst";
-                string chaptermessage = """
-                    Contents
+                string chaptermessage = $"""
+                    
+                    {relativePath}
                     ----------
                     
                     .. toctree::
