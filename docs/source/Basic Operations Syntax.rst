@@ -1,7 +1,12 @@
 
 Basic Operations Syntax
-----------
+=====================================================
 
+
+
+
+Contents
+--------
 .. toctree::
 
    Basic Operations Syntax\Section 1 Primitive Types.cs

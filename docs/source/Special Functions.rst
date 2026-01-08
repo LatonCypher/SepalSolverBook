@@ -1,7 +1,12 @@
 
 Special Functions
-----------
+=====================================================
 
+
+
+
+Contents
+--------
 .. toctree::
 
    Special Functions\Section 1 Gamma Beta Error LambertW.cs

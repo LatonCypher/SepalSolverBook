@@ -1,7 +1,12 @@
 
 Polynomials
-----------
+=====================================================
 
+
+
+
+Contents
+--------
 .. toctree::
 
    Polynomials\Section 1 Polynomial Evaluation.cs

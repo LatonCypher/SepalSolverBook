@@ -1,7 +1,12 @@
 
 Integration
-----------
+=====================================================
 
+
+
+
+Contents
+--------
 .. toctree::
 
    Integration\Section 1 Trapezoidal Method.cs

@@ -68,8 +68,13 @@ namespace ConsoleApp1
                 string chaptermessage = $"""
                     
                     {relativePath}
-                    ----------
+                    =====================================================
                     
+
+
+
+                    Contents
+                    --------
                     .. toctree::
 
                     """;

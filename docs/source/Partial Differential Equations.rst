@@ -1,7 +1,12 @@
 
 Partial Differential Equations
-----------
+=====================================================
 
+
+
+
+Contents
+--------
 .. toctree::
 
    Partial Differential Equations\Section 1 Solution Of PDE by Laplace Transform.cs

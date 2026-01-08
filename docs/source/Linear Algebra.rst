@@ -1,7 +1,12 @@
 
 Linear Algebra
-----------
+=====================================================
 
+
+
+
+Contents
+--------
 .. toctree::
 
    Linear Algebra\Section 1 Vectors Matrices.cs

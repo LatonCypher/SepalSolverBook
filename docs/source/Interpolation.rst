@@ -1,7 +1,12 @@
 
 Interpolation
-----------
+=====================================================
 
+
+
+
+Contents
+--------
 .. toctree::
 
    Interpolation\Section 1 Linear Interpolation.cs

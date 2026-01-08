@@ -1,7 +1,12 @@
 
 Numerical Optimization
-----------
+=====================================================
 
+
+
+
+Contents
+--------
 .. toctree::
 
    Numerical Optimization\Section 1 Linear Programming.cs
