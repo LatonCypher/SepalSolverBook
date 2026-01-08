@@ -14,7 +14,7 @@ namespace ConsoleApp1
 
         public void WriteBook()
         {
-            string filePath = bookfolder + "\\index.rst";
+            string indexfile = bookfolder + "\\index.rst";
             string indexmessage = """
                     Welcome to Numerical Methods with SepalSolver!
                 ============================================================
@@ -49,25 +49,41 @@ namespace ConsoleApp1
 
                 """;
 
-            using (StreamWriter writer = new(filePath))
+            using (StreamWriter writer = new(indexfile))
             {
-                // Write to file
                 writer.WriteLine(indexmessage);
             }
 
             string[] BookChapters = Directory.GetDirectories(projectfolder);
             foreach (string BookChapter in BookChapters)
             {
-                string relativePath = Path.GetRelativePath(projectfolder, BookChapter);
-                using (StreamWriter writer = new(filePath, append: true))
+                string relativePath = string.Join(' ', [.. BookChapter.Split(['_']).Skip(2)]);
+                using (StreamWriter writer = new(indexfile, append: true))
                 {
-                    // Write to file
-                    writer.WriteLine("   " + string.Join(' ', [.. BookChapter.Split(['_']).Skip(2)]));
+                    writer.WriteLine("   " + relativePath);
                 }
 
+
+                string chapterfile = bookfolder + "\\" + relativePath + ".rst";
+                string chaptermessage = """
+                    Contents
+                    ----------
+                    
+                    .. toctree::
+
+                    """;
+                using (StreamWriter writer = new(chapterfile))
+                {
+                    writer.WriteLine(chaptermessage);
+                }
                 string[] ChapterSections = Directory.GetFiles(BookChapter, "*.cs");
                 foreach (string ChapterSection in ChapterSections)
                 {
+                    relativePath = string.Join(' ', [.. ChapterSection.Split(['_']).Skip(2)]);
+                    using (StreamWriter writer = new(chapterfile, append: true))
+                    {
+                        writer.WriteLine("   " + relativePath);
+                    }
                     Run(ChapterSection, bookfolder);
                 }
             }
