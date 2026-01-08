@@ -1,7 +1,8 @@
     Welcome to Numerical Methods with SepalSolver!
 ============================================================
 
-** Preface **
+Preface
+------------
 
 The study of numerical methods has long been a cornerstone of applied mathematics, engineering, and computational science. As problems in these fields grow in complexity, the need for efficient, reliable, and adaptable computational tools becomes ever more pressing. This book was written to address that need, offering readers both a rigorous introduction to numerical techniques and a practical guide to their implementation using SepalSolver.
 
@@ -18,8 +19,8 @@ SepalSolver is built with a focus on performance, accuracy, and ease of use. It 
 This document is designed t demonstract how to use the SepalSolver to solve commnom science and engineering problems
 
 
-**Abstract**
-
+Abstract
+------------
 Numerical methods form the backbone of modern scientific computing, enabling the approximation of solutions to problems that are analytically intractable. This book presents a comprehensive exploration of numerical techniques, with a particular emphasis on SepalSolver, a versatile computational framework designed to bridge theory and practice. By integrating classical algorithms with contemporary solver strategies, SepalSolver provides a unified environment for tackling linear and nonlinear systems, optimization problems, differential equations, and large-scale simulations.
 
 The text begins with foundational principles—error analysis, convergence, and stability—before progressing to advanced topics such as iterative methods, spectral techniques, and sparse matrix computations. Each chapter demonstrates how SepalSolver can be applied to real-world problems, offering readers both theoretical insight and practical implementation guidance. Worked examples, case studies, and performance benchmarks illustrate the solver’s efficiency and adaptability across diverse domains, including engineering, physics, finance, and data science.
@@ -29,7 +30,7 @@ This book is intended for students, researchers, and professionals seeking a dee
 
 
 Contents
---------
+----------
 
 .. toctree::
 
