@@ -1,6 +1,7 @@
-﻿using System;
-using System.IO;
+﻿using ScottPlot;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,7 +67,7 @@ namespace ConsoleApp1
                 }
 
 
-                string chapterfile = bookfolder + "\\" + relativePath + ".rst";
+                string chapterfile = bookfolder + relativePath + ".rst";
                 string chaptermessage = $"""
                     
                     {relativePath}
@@ -88,19 +89,19 @@ namespace ConsoleApp1
                 foreach (string ChapterSection in ChapterSections)
                 {
                     relativePath = Path.GetRelativePath(BookChapter, ChapterSection);
-                    relativePath = string.Join(' ', [.. relativePath.Split(['_']).Skip(2)]);
+                    var sectionname = string.Join(' ', [.. relativePath.Split(['_']).Skip(2)]);
+                    sectionname = sectionname.Split('.')[0];
                     using (StreamWriter writer = new(chapterfile, append: true))
                     {
-                        writer.WriteLine("   " + relativePath);
+                        writer.WriteLine("   " + sectionname);
                     }
-                    Run(ChapterSection, bookfolder);
+                    Run(ChapterSection, sectionname, bookfolder);
                 }
             }
         }
-        public static void Run(string Classname, string DocFolder)
+        public static void Run(string Classpath, string classname, string DocFolder)
         {
-            string name = string.Join(' ', Classname.Split(['.', '\\'])[^2].Split('_').Skip(2));
-            string[] lines = [..File.ReadAllLines(Classname)
+            string[] lines = [..File.ReadAllLines(Classpath)
                                 .SkipWhile(line => !line.Contains("<BookContent>"))   // skip until opening tag
                                 .Skip(1)                                              // skip the opening tag itself
                                 .TakeWhile(line => !line.Contains("</BookContent>"))  // take until closing tag
@@ -114,8 +115,14 @@ namespace ConsoleApp1
             }
 
 
-            using (StreamWriter writer = new(DocFolder + name + ".rst"))
+            using (StreamWriter writer = new(DocFolder + classname + ".rst"))
             {
+                writer.WriteLine($"""
+                    {classname}
+                    ============================
+
+
+                    """);
                 foreach (string line in Document)
                     writer.WriteLine(line);
             }

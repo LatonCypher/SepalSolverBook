@@ -9,8 +9,8 @@ Contents
 --------
 .. toctree::
 
-   Primitive Types.cs
-   Variables.cs
-   Operators.cs
-   Collections and Linq.cs
-   Algorithm Flow Control.cs
+   Primitive Types
+   Variables
+   Operators
+   Collections and Linq
+   Algorithm Flow Control

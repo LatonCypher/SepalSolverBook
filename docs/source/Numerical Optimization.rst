@@ -9,8 +9,8 @@ Contents
 --------
 .. toctree::
 
-   Linear Programming.cs
-   Mixed Integer Linear Programming.cs
-   NonLinear Optimization.cs
-   Curve Fitting.cs
-   Constrained Curve Fitting.cs
+   Linear Programming
+   Mixed Integer Linear Programming
+   NonLinear Optimization
+   Curve Fitting
+   Constrained Curve Fitting

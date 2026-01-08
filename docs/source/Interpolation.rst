@@ -9,6 +9,6 @@ Contents
 --------
 .. toctree::
 
-   Linear Interpolation.cs
-   Interpolation by Polynomial.cs
-   Hemite Spline.cs
+   Linear Interpolation
+   Interpolation by Polynomial
+   Hemite Spline

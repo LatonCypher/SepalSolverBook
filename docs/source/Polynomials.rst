@@ -9,7 +9,7 @@ Contents
 --------
 .. toctree::
 
-   Polynomial Evaluation.cs
-   Polynomial Fitting.cs
-   Polynomial Arithmetics.cs
-   Polynomial Roots.cs
+   Polynomial Evaluation
+   Polynomial Fitting
+   Polynomial Arithmetics
+   Polynomial Roots

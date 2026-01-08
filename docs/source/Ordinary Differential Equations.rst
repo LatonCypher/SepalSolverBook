@@ -9,9 +9,9 @@ Contents
 --------
 .. toctree::
 
-   First Order Differential Equation.cs
-   System of First Order Differential Equations.cs
-   Higher Order Differential Equations.cs
-   Stiff Differntial Equations.cs
-   Implicit Differential Equations.cs
-   Differential Algebraic Equations.cs
+   First Order Differential Equation
+   System of First Order Differential Equations
+   Higher Order Differential Equations
+   Stiff Differntial Equations
+   Implicit Differential Equations
+   Differential Algebraic Equations

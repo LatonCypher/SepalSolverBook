@@ -9,6 +9,6 @@ Contents
 --------
 .. toctree::
 
-   Gamma Beta Error LambertW.cs
-   Cheby Hermite Legendre Laguerre.cs
-   Bessel Hypergeometric.cs
+   Gamma Beta Error LambertW
+   Cheby Hermite Legendre Laguerre
+   Bessel Hypergeometric
