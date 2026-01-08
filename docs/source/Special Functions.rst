@@ -5,8 +5,6 @@ Special Functions
 
 
 
-Contents
---------
 .. toctree::
 
    Gamma Beta Error LambertW

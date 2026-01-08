@@ -5,8 +5,6 @@ Polynomials
 
 
 
-Contents
---------
 .. toctree::
 
    Polynomial Evaluation

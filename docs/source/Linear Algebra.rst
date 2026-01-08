@@ -5,8 +5,6 @@ Linear Algebra
 
 
 
-Contents
---------
 .. toctree::
 
    Vectors Matrices

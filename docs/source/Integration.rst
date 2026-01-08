@@ -5,8 +5,6 @@ Integration
 
 
 
-Contents
---------
 .. toctree::
 
    Trapezoidal Method

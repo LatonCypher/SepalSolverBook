@@ -5,8 +5,6 @@ Partial Differential Equations
 
 
 
-Contents
---------
 .. toctree::
 
    Solution Of PDE by Laplace Transform

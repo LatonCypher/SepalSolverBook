@@ -5,8 +5,6 @@ Numerical Optimization
 
 
 
-Contents
---------
 .. toctree::
 
    Linear Programming

@@ -15,7 +15,7 @@ namespace ConsoleApp1
 
         public void WriteBook()
         {
-            string indexfile = bookfolder + "\\index.rst";
+            string indexfile = bookfolder + "index.rst";
             string indexmessage = """
                 Welcome to Numerical Methods with SepalSolver!
                 ============================================================
@@ -45,8 +45,6 @@ namespace ConsoleApp1
 
 
 
-                Contents
-                ----------
 
                 .. toctree::
 
@@ -76,8 +74,6 @@ namespace ConsoleApp1
 
 
 
-                    Contents
-                    --------
                     .. toctree::
 
                     """;

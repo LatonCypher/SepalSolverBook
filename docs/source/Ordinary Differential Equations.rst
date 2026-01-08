@@ -5,8 +5,6 @@ Ordinary Differential Equations
 
 
 
-Contents
---------
 .. toctree::
 
    First Order Differential Equation

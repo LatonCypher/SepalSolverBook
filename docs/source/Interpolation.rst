@@ -5,8 +5,6 @@ Interpolation
 
 
 
-Contents
---------
 .. toctree::
 
    Linear Interpolation

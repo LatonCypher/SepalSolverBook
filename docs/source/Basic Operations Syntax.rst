@@ -5,8 +5,6 @@ Basic Operations Syntax
 
 
 
-Contents
---------
 .. toctree::
 
    Primitive Types

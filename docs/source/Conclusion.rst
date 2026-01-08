@@ -5,7 +5,5 @@ Conclusion
 
 
 
-Contents
---------
 .. toctree::
 
