@@ -16,7 +16,9 @@ using ConsoleApp1.TrainingFiles.Summary_and_Conclusion.Advanced_Problems_In_Proc
         Version = "1.2.0",
     };
 
-    var BookContent = new BookWriter(@"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\TrainingFiles\");
+    var ProjectFolder = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\TrainingFiles\";
+    var BookFolder = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\docs\source\";
+    var BookContent = new BookWriter(ProjectFolder, BookFolder);
     BookContent.WriteBook();
     {
         // Solve Nonlinear System of Polynomials

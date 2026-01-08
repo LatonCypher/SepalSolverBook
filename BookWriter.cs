@@ -7,18 +7,73 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class BookWriter (string BookFolder)
+    internal class BookWriter (string ProjectFolder, string BookFolder)
     {
         string bookfolder = BookFolder;
+        string projectfolder = ProjectFolder;
+
         public void WriteBook()
         {
-            string[] BookChapters = Directory.GetDirectories(bookfolder);
+            string filePath = bookfolder + "\\index.rst";
+            string indexmessage = """
+                    Welcome to Numerical Methods with SepalSolver!
+                ============================================================
+
+                ** Preface **
+
+                The study of numerical methods has long been a cornerstone of applied mathematics, engineering, and computational science. As problems in these fields grow in complexity, the need for efficient, reliable, and adaptable computational tools becomes ever more pressing. This book was written to address that need, offering readers both a rigorous introduction to numerical techniques and a practical guide to their implementation using SepalSolver.
+                
+                SepalSolver was chosen as the central framework for this text because of its ability to unify diverse numerical approaches under a single, coherent environment. By integrating classical algorithms with modern solver strategies, it provides a platform that is both accessible to beginners and powerful enough for advanced research. Throughout the book, readers will encounter worked examples, case studies, and performance analyses that demonstrate how SepalSolver can be applied to real-world problems across disciplines.
+                
+                This book is intended for a wide audience: undergraduate and graduate students seeking a solid foundation in numerical methods, researchers exploring computational techniques for specialized applications, and professionals who require practical tools for solving complex problems. Each chapter is designed to balance theory with practice, ensuring that readers not only understand the mathematical principles but also gain the skills to implement them effectively.
+                
+                The organization of the book reflects a progression from fundamental concepts—such as error analysis, stability, and convergence—to advanced topics including iterative solvers, spectral methods, and large-scale simulations. Readers are encouraged to engage actively with the examples and exercises, using SepalSolver as a hands-on companion to deepen their understanding.
+
+                Ultimately, this book aims to highlight the evolving synergy between mathematical theory and computational innovation. By combining rigorous exposition with practical application, it seeks to empower readers to design, analyze, and implement robust numerical solutions that meet the challenges of modern science and engineering.
+
+                SepalSolver is built with a focus on performance, accuracy, and ease of use. It provides a well-documented API and is designed to be easily integrated into your C# projects. Whether you're working on scientific research, engineering simulations, or data analysis, SepalSolver can significantly enhance your productivity and accelerate your mathematical computations.
+
+                This document is designed t demonstract how to use the SepalSolver to solve commnom science and engineering problems
+
+
+                **Abstract**
+
+                Numerical methods form the backbone of modern scientific computing, enabling the approximation of solutions to problems that are analytically intractable. This book presents a comprehensive exploration of numerical techniques, with a particular emphasis on SepalSolver, a versatile computational framework designed to bridge theory and practice. By integrating classical algorithms with contemporary solver strategies, SepalSolver provides a unified environment for tackling linear and nonlinear systems, optimization problems, differential equations, and large-scale simulations.
+                
+                The text begins with foundational principles—error analysis, convergence, and stability—before progressing to advanced topics such as iterative methods, spectral techniques, and sparse matrix computations. Each chapter demonstrates how SepalSolver can be applied to real-world problems, offering readers both theoretical insight and practical implementation guidance. Worked examples, case studies, and performance benchmarks illustrate the solver’s efficiency and adaptability across diverse domains, including engineering, physics, finance, and data science.
+                
+                This book is intended for students, researchers, and professionals seeking a deeper understanding of numerical methods and their computational realization. By combining rigorous mathematical exposition with hands-on solver applications, it equips readers with the tools to design, analyze, and implement robust numerical solutions. Ultimately, the integration of SepalSolver into the study of numerical methods highlights the evolving synergy between mathematical theory and computational innovation.
+
+                
+
+                Contents
+                --------
+
+                .. toctree::
+
+                """;
+
+            using (StreamWriter writer = new(filePath))
+            {
+                // Write to file
+                writer.WriteLine(indexmessage);
+            }
+
+            string[] BookChapters = Directory.GetDirectories(projectfolder);
             foreach (string BookChapter in BookChapters)
             {
+                string relativePath = Path.GetRelativePath(projectfolder, BookChapter);
+                using (StreamWriter writer = new(filePath, append: true))
+                {
+                    // Write to file
+                    writer.WriteLine("   " + string.Join(' ', [.. BookChapter.Split(['_']).Skip(2)]));
+                }
+
                 string[] ChapterSections = Directory.GetFiles(BookChapter, "*.cs");
                 foreach (string ChapterSection in ChapterSections)
                 {
-                    Run(ChapterSection, BookChapter + "\\");
+                    relativePath = Path.GetRelativePath(BookChapter, ChapterSection);
+                    Run(ChapterSection, bookfolder);
                 }
             }
         }
@@ -34,204 +89,16 @@ namespace ConsoleApp1
             int start = 0;
             while (start < lines.Length)
             {
-                var doc = getDoc(lines, ref start, out int indentation);
-                if (doc.Length == 1 && doc[0] == "")
-                    break;
-                string signature = doc.Last().TrimEnd();
-                string[] splitsignature = signature.Split(' ');
-                string last = splitsignature.Last();
-
-                string Name = ""; int opencount = 0;
-                int ind = 0;
-                for (int i = splitsignature.Length; i-->0;)
-                {
-                    opencount += parentIndex(splitsignature[i]);
-                    if (opencount == 0)
-                    { ind = i; break; }
-                }
-                if (last[last.Length - 1] == ')')
-                {
-                    // Method
-                    Name = splitsignature[ind].Split('(').First();
-                }
-                else
-                {
-                    // Property
-                    Name = last;
-
-                }
-
-                // check if method/property needs to be documented
-                bool doccheck = signature.Contains("public") && !signature.Contains("operator") && !signature.Contains("override") && !signature.Contains("readonly") && !last.Contains("Exception");
-
-                if (doccheck)
-                {
-                    // write for sphinx
-                    string space0 = string.Concat(Enumerable.Repeat("   ", indentation - 2)),
-                           space1 = string.Concat(Enumerable.Repeat("   ", indentation - 1)),
-                           space2 = string.Concat(Enumerable.Repeat("   ", indentation));
-
-                    bool paramSection = false;
-
-                    List<string> Doc = ["\n\n"+space0 + Name, space0+string.Concat(Enumerable.Repeat("=", Name.Length))];
-                    int i = -1;
-                    while (i < doc.Count() - 1)
-                    {
-                        string line = doc[++i].Substring(3);
-                        if (line.Contains("<summary"))
-                        {
-                            Doc.Add(space1 + "Description: ");
-                            line = doc[++i].Substring(3);
-                            while (!line.Contains("</summary>"))
-                            {
-                                if (line.Contains(".. math::"))
-                                    Doc.Add("");
-                                Doc.Add(space2 + line);
-                                line = doc[++i].Substring(3);
-
-                                if (line.Contains("<code"))
-                                {
-                                    Doc.Add("\n" + space2 + " .. code-block:: CSharp \n");
-                                    line = doc[++i].Substring(3);
-                                    while (!line.Contains("</code>"))
-                                    {
-                                        Doc.Add(space2 + line);
-                                        line = doc[++i].Substring(3);
-                                    }
-                                    line = doc[++i].Substring(3);
-                                }
-                            }
-                        }
-                        else if (line.Contains("<note"))
-                        {
-                            Doc.Add("\n" + space1 + "..note::" + "\n");
-                            while (!(line = doc[++i].Substring(3)).Contains("</note>"))
-                            {
-                                if (line.Contains(".. math::")) Doc.Add("");
-                                Doc.Add(space2 + line);
-                            }
-                            Doc.Add("\n\n");
-                        }
-                        else if (line.Contains("<param") && !line.Contains("<paramref"))
-                        {
-                            if (!paramSection)
-                            {
-                                Doc.Add(space1 + "Parameters: ");
-                                paramSection = true;
-                            }
-                            string[] linesplit = line.Split('"');
-                            Doc.Add(space2 + " " + linesplit[1] + ": ");
-                            string spacep = string.Concat(Enumerable.Repeat(" ", Doc.Last().IndexOf(':')));
-                            line = doc[++i].Substring(3);
-                            while (!line.Contains("</param>"))
-                            {
-                                Doc.Add(spacep + line);
-                                line = doc[++i].Substring(3);
-                            }
-                        }
-                        else if (line.Contains("<returns"))
-                        {
-                            Doc.Add(space1 + "Returns: ");
-                            line = doc[++i].Substring(3);
-                            while (!line.Contains("</returns>"))
-                            {
-                                Doc.Add(space2 + line);
-                                line = doc[++i].Substring(3);
-                            }
-                        }
-                        else if (line.Contains("<remarks"))
-                        {
-                            Doc.Add(space1 + "Remark: ");
-                            line = doc[++i].Substring(3);
-                            while (!line.Contains("</remarks>"))
-                            {
-                                Doc.Add(space2 + "| " + line);
-                                line = doc[++i].Substring(3);
-                            }
-                        }
-                        else if (line.Contains("<example"))
-                        {
-                            Doc.Add(space1 + "Example: ");
-                            line = doc[++i].Substring(3);
-                            while (!line.Contains("</example>"))
-                            {
-                                if (line.Contains(".. math::"))
-                                    Doc.Add("");
-                                Doc.Add(space2 + line);
-                                line = doc[++i].Substring(3);
-
-                                if (line.Contains("<code"))
-                                {
-                                    Doc.Add("\n" + space2 + " .. code-block:: CSharp \n");
-                                    line = doc[++i].Substring(3);
-                                    while (!line.Contains("</code>"))
-                                    {
-                                        Doc.Add(space2 + line);
-                                        line = doc[++i].Substring(3);
-                                    }
-                                    line = doc[++i].Substring(3);
-                                }
-
-                                if (line.Contains("<terminal"))
-                                {
-                                    Doc.Add("\n" + space2 + "Output: \n");
-                                    Doc.Add("\n" + space2 + " .. code-block:: Terminal \n");
-                                    line = doc[++i].Substring(3);
-                                    while (!line.Contains("</terminal>"))
-                                    {
-                                        Doc.Add(space2 + line);
-                                        line = doc[++i].Substring(3);
-                                    }
-                                    line = doc[++i].Substring(3);
-                                }
-
-                                if (line.Contains("<figure"))
-                                {
-                                    Doc.Add("\n" + space2 + "Output: \n");
-                                    line = doc[++i].Substring(3);
-                                    while (!line.Contains("</figure>"))
-                                    {
-                                        Doc.Add(space1 + line);
-                                        line = doc[++i].Substring(3);
-                                    }
-                                    Doc.Add("\n");
-                                    line = doc[++i].Substring(3);
-                                }
-                            }
-                        }
-                        else if (line.Contains("<exception"))
-                        {
-                            line = line.Replace("<exception", "");
-                            line = line.Replace("</exception>", "");
-                            line = line.Replace("paramref", "");
-                            line = line.Replace("name=", "");
-                            line = line.Replace("<", "");
-                            line = line.Replace(">", "");
-                            line = line.Replace("</", "");
-                            line = line.Replace("/", "");
-                            line = line.Replace("\"", "");
-                            line = line.Replace("xception", "xception is ");
-                            Doc.Add(space0 + "| " + line);
-                        }
-                    }
-                    Document.AddRange(Doc);
-                }
+                //var doc = getDoc(lines, ref start, out int indentation);
+                start++;
             }
 
-            int parentIndex(string str)
-            {
-                int ans = 0;
-                if (str.Contains(')')) ans++;
-                if (str.Contains('(')) ans--;
-                return ans;
-            }
 
             using (StreamWriter writer = new(DocFolder + Classname + ".rst"))
             {
                 foreach (string line in Document)
                     writer.WriteLine(line);
             }
-
         }
 
         static string[] getDoc(string[] lines, ref int start, out int indentation)
