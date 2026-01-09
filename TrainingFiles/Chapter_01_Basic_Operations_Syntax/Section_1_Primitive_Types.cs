@@ -70,7 +70,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             ///
             /// 
             /// <code> Character Type
-            { 
+            {
                 // * char: Represents a single Unicode character.
                 { char a = 'c'; }
             }

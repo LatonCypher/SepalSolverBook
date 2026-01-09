@@ -127,7 +127,6 @@ object, string, and dynamic
 .. code-block:: Character Type
 
    {
-       // * char: Represents a single 16-bit Unicode character. 
        { char a = 'c'; }
    }
 
@@ -136,8 +135,7 @@ object, string, and dynamic
 .. code-block:: String Type
 
    {
-       // * string: Represents a sequence of characters. 
-       // It's immutable, meaning once created, its value cannot be changed.
+       // * string: Represents a sequence of characters. It's immutable, meaning once created, its value cannot be changed.
        { string str = "string"; }
    }
    
@@ -159,10 +157,10 @@ object, string, and dynamic
        { decimal d = 0.303856569382726564575M; }
    }
    
+   These primitive types are the building blocks for more complex data structures
+   and are essential for various operations in C#.
    
-   
-These primitive types are the building blocks for more complex data structures and are essential for various operations in C#.
-   
+
 Inbuilt Derived Types in C# 
 -------------------------
 In C#, beyond the primitive types (like int, bool, char), there are several inbuilt 
