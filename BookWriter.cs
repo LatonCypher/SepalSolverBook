@@ -149,7 +149,7 @@ namespace ConsoleApp1
                         Document.Add("");
                         break;
                     case "code":
-                        Document.Add(".. code-block:: csharp");
+                        Document.Add($".. code-block:: {packet.title}");
                         Document.Add("");
                         foreach (var line in packet.content)
                         {

@@ -90,7 +90,7 @@ object, string, and dynamic
      -  Type resolved at runtime             
 
 
-.. code-block:: csharp
+.. code-block:: Integer Types
 
    {
        // * byte: 8-bit unsigned integer.
@@ -113,7 +113,7 @@ object, string, and dynamic
    
    
 
-.. code-block:: csharp
+.. code-block:: Floating-Point Types
 
    {
        // * float: Single-precision floating-point.
@@ -124,15 +124,16 @@ object, string, and dynamic
    
    
 
-.. code-block:: csharp
+.. code-block:: Character Type
 
-    
-   { char a = 'c'; }
+   {
+       // * char: Represents a single 16-bit Unicode character. 
+       { char a = 'c'; }
    }
 
 
 
-.. code-block:: csharp
+.. code-block:: String Type
 
    {
        // * string: Represents a sequence of characters. It's immutable, meaning once created, its value cannot be changed.
@@ -141,7 +142,7 @@ object, string, and dynamic
    
    
 
-.. code-block:: csharp
+.. code-block:: Boolean Type
 
    {
        // * bool: Represents a boolean value(true or false).
@@ -150,17 +151,17 @@ object, string, and dynamic
    
    
 
-.. code-block:: csharp
+.. code-block:: Decimal Type
 
    {
        // * decimal: High-precision decimal type, typically used for financial calculations.
        { decimal d = 0.303856569382726564575M; }
    }
    
-   These primitive types are the building blocks for more complex data structures
-   and are essential for various operations in C#.
    
-
+   
+These primitive types are the building blocks for more complex data structures and are essential for various operations in C#.
+   
 Inbuilt Derived Types in C# 
 -------------------------
 In C#, beyond the primitive types (like int, bool, char), there are several inbuilt 

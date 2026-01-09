@@ -56,7 +56,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
                 // * ulong: 64-bit unsigned integer.
                 { ulong a = 19; }
             }
-            ///</code>
+            /// </code>
             ///
             /// 
             /// <code> Floating-Point Types
@@ -66,7 +66,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
                 // * double: Double-precision floating-point.
                 { double a = 19; double b = -5; }
             }
-            ///</code>
+            /// </code>
             ///
             /// 
             /// <code> Character Type
@@ -74,31 +74,31 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
                 // * char: Represents a single Unicode character.
                 { char a = 'c'; }
             }
-            ///</code>
+            /// </code>
             ///
             /// 
-            ///<code> String Type
+            /// <code> String Type
             {
                 // * string: Represents a sequence of characters. It's immutable, meaning once created, its value cannot be changed.
                 { string str = "string"; }
             }
-            ///</code>
+            /// </code>
             ///
             ///
-            ///<code> Boolean Type
+            /// <code> Boolean Type
             {
                 // * bool: Represents a boolean value(true or false).
                 { bool T = true, F = false; }
             }
-            ///</code>
+            /// </code>
             ///
             ///
-            ///<code> Decimal Type
+            /// <code> Decimal Type
             {
                 // * decimal: High-precision decimal type, typically used for financial calculations.
                 { decimal d = 0.303856569382726564575M; }
             }
-            ///</code>
+            /// </code>
             ///
             /// These primitive types are the building blocks for more complex data structures
             /// and are essential for various operations in C#.
