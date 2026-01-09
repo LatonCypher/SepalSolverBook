@@ -178,7 +178,7 @@ namespace ConsoleApp1
 
         Packet PacketExtraction(string[] lines, ref int start)
         {
-            Packet packet = new() { info = "text", content = [] };
+            Packet packet = new() { info = "Text", content = [] };
             while (start < lines.Length)
             {
                 string line = lines[start];

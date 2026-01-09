@@ -16,28 +16,25 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             /// object, string, and dynamic
             ///
             /// <Table> List of Primitive Types 
-            /// +------------+------------------+----------------+--------------------------------------+
-            /// | C# Keyword | .NET Type        | Category       | Description                          |
-            /// +============+==================+================+======================================+
-            /// | bool       | System.Boolean   | Value type     | True/false values                    |
-            /// | byte       | System.Byte      | Value type     | 8-bit unsigned integer (0–255)       |
-            /// | sbyte      | System.SByte     | Value type     | 8-bit signed integer (−128–127)      |
-            /// | short      | System.Int16     | Value type     | 16-bit signed integer                |
-            /// | ushort     | System.UInt16    | Value type     | 16-bit unsigned integer              |
-            /// | int        | System.Int32     | Value type     | 32-bit signed integer                |
-            /// | uint       | System.UInt32    | Value type     | 32-bit unsigned integer              |
-            /// | long       | System.Int64     | Value type     | 64-bit signed integer                |
-            /// | ulong      | System.UInt64    | Value type     | 64-bit unsigned integer              |
-            /// | nint       | System.IntPtr    | Value type     | Native-sized signed integer          |
-            /// | nuint      | System.UIntPtr   | Value type     | Native-sized unsigned integer        |
-            /// | char       | System.Char      | Value type     | Single 16-bit Unicode character      |
-            /// | float      | System.Single    | Value type     | 32-bit floating-point number         |
-            /// | double     | System.Double    | Value type     | 64-bit floating-point number         |
-            /// | decimal    | System.Decimal   | Value type     | 128-bit precise decimal (financial)  |
-            /// | object     | System.Object    | Reference type | Base type for all objects            |
-            /// | string     | System.String    | Reference type | Sequence of characters               |
-            /// | dynamic    | System.Object    | Reference type | Type resolved at runtime             |
-            /// +------------+------------------+----------------+--------------------------------------+
+            ///  C# Keyword | .NET Type        | Category       | Description                          
+            ///  bool       | System.Boolean   | Value type     | True/false values                    
+            ///  byte       | System.Byte      | Value type     | 8-bit unsigned integer (0–255)       
+            ///  sbyte      | System.SByte     | Value type     | 8-bit signed integer (−128–127)      
+            ///  short      | System.Int16     | Value type     | 16-bit signed integer                
+            ///  ushort     | System.UInt16    | Value type     | 16-bit unsigned integer              
+            ///  int        | System.Int32     | Value type     | 32-bit signed integer                
+            ///  uint       | System.UInt32    | Value type     | 32-bit unsigned integer              
+            ///  long       | System.Int64     | Value type     | 64-bit signed integer                
+            ///  ulong      | System.UInt64    | Value type     | 64-bit unsigned integer              
+            ///  nint       | System.IntPtr    | Value type     | Native-sized signed integer          
+            ///  nuint      | System.UIntPtr   | Value type     | Native-sized unsigned integer        
+            ///  char       | System.Char      | Value type     | Single 16-bit Unicode character      
+            ///  float      | System.Single    | Value type     | 32-bit floating-point number         
+            ///  double     | System.Double    | Value type     | 64-bit floating-point number         
+            ///  decimal    | System.Decimal   | Value type     | 128-bit precise decimal (financial)  
+            ///  object     | System.Object    | Reference type | Base type for all objects            
+            ///  string     | System.String    | Reference type | Sequence of characters               
+            ///  dynamic    | System.Object    | Reference type | Type resolved at runtime             
             /// </Table>
             /// 
             /// <code>Integer Types
