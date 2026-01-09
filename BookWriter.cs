@@ -148,7 +148,7 @@ namespace ConsoleApp1
                         }
                         Document.Add("");
                         break;
-                    case "Code":
+                    case "code":
                         Document.Add(".. code-block:: csharp");
                         Document.Add("");
                         foreach (var line in packet.content)
@@ -196,12 +196,22 @@ namespace ConsoleApp1
                     }
                     if (packet.content.Count > 0) return packet;
                     packet.info = result;
-                    if(result == "Table")
+                    if(result == "code" || result == "Table")
                     {
                         int pos = line.IndexOf('>');
                         packet.title =  (pos >= 0 && pos < line.Length - 1)
                             ? line.Substring(pos + 1).TrimStart()   // take everything after '>'
                             : line;
+                    }
+                    if(result == "code")
+                    {
+                        line = lines[++start];
+                        int length = line.Length;
+                        while (!line.Contains("code"))
+                        {
+                            packet.content.Add(line.Substring(length-1));
+                            line = lines[++start];
+                        }
                     }
                 }
                 else

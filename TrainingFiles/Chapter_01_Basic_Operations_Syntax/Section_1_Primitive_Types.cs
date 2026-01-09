@@ -37,7 +37,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             ///  dynamic    | System.Object    | Reference type | Type resolved at runtime             
             /// </Table>
             /// 
-            /// <code>Integer Types
+            /// <code> Integer Types
             {
                 // * byte: 8-bit unsigned integer.
                 { byte a = 19; }
@@ -55,7 +55,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
                 { long a = 19; long b = -5; }
                 // * ulong: 64-bit unsigned integer.
                 { ulong a = 19; }
-
             }
             ///</code>
             ///
