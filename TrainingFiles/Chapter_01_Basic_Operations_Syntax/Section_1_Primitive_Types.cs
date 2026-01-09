@@ -79,7 +79,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             /// 
             /// <code> String Type
             {
-                // * string: Represents a sequence of characters. It's immutable, meaning once created, its value cannot be changed.
+                // * string: Represents a sequence of characters.
+                // It's immutable, meaning once created, its value cannot be changed.
                 { string str = "string"; }
             }
             /// </code>
