@@ -206,10 +206,11 @@ namespace ConsoleApp1
                 }
                 else
                 {
+                    
                     line = line.TrimStart();
                     if (line.Contains("///")) 
                         line = line.Substring(3);
-                    packet.content.Add(line); 
+                    packet.content.Add(line.TrimStart()); 
                 }
                 start++;
             }

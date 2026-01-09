@@ -1,6 +1,7 @@
 Primitive Types
 ============================
 
+
 Primitive Types in C# 
 -------------------------
 In C#, primitive types are the basic data types provided by the language. 
@@ -11,90 +12,90 @@ object, string, and dynamic
 .. list-table:: List of Primitive Types 
    :header-rows: 1
 
-   * -   C# Keyword 
+   * - C# Keyword 
      -  .NET Type        
      -  Category       
      -  Description                          
-   * -   bool       
+   * - bool       
      -  System.Boolean   
      -  Value type     
      -  True/false values                    
-   * -   byte       
+   * - byte       
      -  System.Byte      
      -  Value type     
      -  8-bit unsigned integer (0–255)       
-   * -   sbyte      
+   * - sbyte      
      -  System.SByte     
      -  Value type     
      -  8-bit signed integer (−128–127)      
-   * -   short      
+   * - short      
      -  System.Int16     
      -  Value type     
      -  16-bit signed integer                
-   * -   ushort     
+   * - ushort     
      -  System.UInt16    
      -  Value type     
      -  16-bit unsigned integer              
-   * -   int        
+   * - int        
      -  System.Int32     
      -  Value type     
      -  32-bit signed integer                
-   * -   uint       
+   * - uint       
      -  System.UInt32    
      -  Value type     
      -  32-bit unsigned integer              
-   * -   long       
+   * - long       
      -  System.Int64     
      -  Value type     
      -  64-bit signed integer                
-   * -   ulong      
+   * - ulong      
      -  System.UInt64    
      -  Value type     
      -  64-bit unsigned integer              
-   * -   nint       
+   * - nint       
      -  System.IntPtr    
      -  Value type     
      -  Native-sized signed integer          
-   * -   nuint      
+   * - nuint      
      -  System.UIntPtr   
      -  Value type     
      -  Native-sized unsigned integer        
-   * -   char       
+   * - char       
      -  System.Char      
      -  Value type     
      -  Single 16-bit Unicode character      
-   * -   float      
+   * - float      
      -  System.Single    
      -  Value type     
      -  32-bit floating-point number         
-   * -   double     
+   * - double     
      -  System.Double    
      -  Value type     
      -  64-bit floating-point number         
-   * -   decimal    
+   * - decimal    
      -  System.Decimal   
      -  Value type     
      -  128-bit precise decimal (financial)  
-   * -   object     
+   * - object     
      -  System.Object    
      -  Reference type 
      -  Base type for all objects            
-   * -   string     
+   * - string     
      -  System.String    
      -  Reference type 
      -  Sequence of characters               
-   * -   dynamic    
+   * - dynamic    
      -  System.Object    
      -  Reference type 
      -  Type resolved at runtime             
 
- 
 
- 
 
- 
 
- 
+
+
+
+
 
 
 
@@ -109,43 +110,43 @@ In C#, beyond the primitive types (like int, bool, char), there are several inbu
 derived types that the language provides out of the box. These are types that are not 
 primitives themselves but are built into the framework and derive from other base 
 classes (usually System.Object).
- 
+
 .. list-table:: List of Inbuilt Derived Types
    :header-rows: 1
 
-   * -   Type              
+   * - Type              
      -  Base Class       
      -  Category       
      -  Description                                             
-   * -   string            
+   * - string            
      -  System.Object    
      -  Reference type 
      -  Represents a sequence of characters (immutable)      
-   * -   object            
+   * - object            
      -  Root of all types
      -  Reference type 
      -  Base type for all classes in C#.                     
-   * -   dynamic           
+   * - dynamic           
      -  System.Object    
      -  Reference type 
      -  Type resolved at runtime.                            
-   * -   Array             
+   * - Array             
      -  System.Object    
      -  Reference type 
      -  Base class for all arrays (e.g., int[], string[]).   
-   * -   Delegate          
+   * - Delegate          
      -  System.Object    
      -  Reference type 
      -  Base class for all delegates (function pointers).    
-   * -   MulticastDelegate 
+   * - MulticastDelegate 
      -  Delegate         
      -  Reference type 
      -  Supports invocation of multiple methods.             
-   * -   Enum              
+   * - Enum              
      -  System.ValueType 
      -  Value type     
      -  Base class for all enumerations.                     
-   * -   ValueType         
+   * - ValueType         
      -  System.Object    
      -  Value type     
      -  Base class for all structs.                          
