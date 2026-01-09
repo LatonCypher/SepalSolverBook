@@ -149,7 +149,8 @@ namespace ConsoleApp1
                         Document.Add("");
                         break;
                     case "code":
-                        Document.Add($".. code-block:: {packet.title.Replace(" ", "_")}");
+                        Document.Add(packet.title);
+                        Document.Add($".. code-block:: C#");
                         Document.Add("");
                         foreach (var line in packet.content)
                         {

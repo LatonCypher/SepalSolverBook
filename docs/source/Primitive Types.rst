@@ -90,7 +90,8 @@ object, string, and dynamic
      -  Type resolved at runtime             
 
 
-.. code-block:: Integer_Types
+Integer Types
+.. code-block:: C#
 
    {
        // * byte: 8-bit unsigned integer.
@@ -113,7 +114,8 @@ object, string, and dynamic
    
    
 
-.. code-block:: Floating-Point_Types
+Floating-Point Types
+.. code-block:: C#
 
    {
        // * float: Single-precision floating-point.
@@ -124,7 +126,8 @@ object, string, and dynamic
    
    
 
-.. code-block:: Character_Type
+Character Type
+.. code-block:: C#
 
    {
        // * char: Represents a single Unicode character.
@@ -133,7 +136,8 @@ object, string, and dynamic
    
    
 
-.. code-block:: String_Type
+String Type
+.. code-block:: C#
 
    {
        // * string: Represents a sequence of characters. It's immutable, meaning once created, its value cannot be changed.
@@ -142,7 +146,8 @@ object, string, and dynamic
    
    
 
-.. code-block:: Boolean_Type
+Boolean Type
+.. code-block:: C#
 
    {
        // * bool: Represents a boolean value(true or false).
@@ -151,7 +156,8 @@ object, string, and dynamic
    
    
 
-.. code-block:: Decimal_Type
+Decimal Type
+.. code-block:: C#
 
    {
        // * decimal: High-precision decimal type, typically used for financial calculations.
