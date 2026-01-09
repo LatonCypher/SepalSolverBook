@@ -9,7 +9,7 @@ Primitive Types
  ushort, int, uint, long, ulong, char, float, double, decimal, nint, nuint, 
  object, string, and dynamic
 
-.. list-table::
+.. list-table:: List of Primitive Types 
    :header-rows: 1
 
    * -   C# Keyword 
@@ -106,65 +106,44 @@ Primitive Types
 
  In C#, beyond the primitive types (like int, bool, char), there are several inbuilt 
 =========================
-.. list-table::
+.. list-table:: List of Inbuilt Derived Types
    :header-rows: 1
 
-   * -  +-------------------+------------------+----------------+------------------------------------------------------+
-   * -  
-     -  Type              
+   * -   Type              
      -  Base Class       
      -  Category       
-     -  Description                                          
-     -           
-   * -  +===================+==================+================+======================================================
-     - 
-   * -  
-     -  string            
+     -  Description                                             
+   * -   string            
      -  System.Object    
      -  Reference type 
      -  Represents a sequence of characters (immutable)      
-     - 
-   * -  
-     -  object            
+   * -   object            
      -  Root of all types
      -  Reference type 
      -  Base type for all classes in C#.                     
-     - 
-   * -  
-     -  dynamic           
+   * -   dynamic           
      -  System.Object    
      -  Reference type 
      -  Type resolved at runtime.                            
-     - 
-   * -  
-     -  Array             
+   * -   Array             
      -  System.Object    
      -  Reference type 
      -  Base class for all arrays (e.g., int[], string[]).   
-     - 
-   * -  
-     -  Delegate          
+   * -   Delegate          
      -  System.Object    
      -  Reference type 
      -  Base class for all delegates (function pointers).    
-     - 
-   * -  
-     -  MulticastDelegate 
+   * -   MulticastDelegate 
      -  Delegate         
      -  Reference type 
      -  Supports invocation of multiple methods.             
-     - 
-   * -  
-     -  Enum              
+   * -   Enum              
      -  System.ValueType 
      -  Value type     
      -  Base class for all enumerations.                     
-     - 
-   * -  
-     -  ValueType         
+   * -   ValueType         
      -  System.Object    
      -  Value type     
      -  Base class for all structs.                          
-     - 
 
 

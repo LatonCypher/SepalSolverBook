@@ -6,6 +6,7 @@ namespace ConsoleApp1
     internal class Packet
     {
         public string info;
+        public string title;
         public List<string> content;
     }
     internal class BookWriter (string ProjectFolder, string BookFolder)
@@ -138,7 +139,7 @@ namespace ConsoleApp1
                         Document.Add("~~~~~~~~~~~~~~~~~~~~~~~~~");
                         break;
                     case "Table":
-                        Document.Add(".. list-table::");
+                        Document.Add($".. list-table:: {packet.title}");
                         Document.Add("   :header-rows: 1");
                         Document.Add("");
                         foreach (var line in packet.content)
@@ -195,6 +196,13 @@ namespace ConsoleApp1
                     }
                     if (packet.content.Count > 0) return packet;
                     packet.info = result;
+                    if(result == "Table")
+                    {
+                        int pos = line.IndexOf('>');
+                        packet.title =  (pos >= 0 && pos < line.Length - 1)
+                            ? line.Substring(pos + 1).TrimStart()   // take everything after '>'
+                            : line;
+                    }
                 }
                 else
                 {
