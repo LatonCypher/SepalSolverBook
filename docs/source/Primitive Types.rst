@@ -136,7 +136,8 @@ object, string, and dynamic
 .. code-block:: String Type
 
    {
-       // * string: Represents a sequence of characters. It's immutable, meaning once created, its value cannot be changed.
+       // * string: Represents a sequence of characters. 
+       // It's immutable, meaning once created, its value cannot be changed.
        { string str = "string"; }
    }
    
