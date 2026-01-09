@@ -1,9 +1,18 @@
-﻿namespace ConsoleApp1
+﻿using ScottPlot;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApp1
 {
+    internal class Packet
+    {
+        public string info;
+        public List<string> content;
+    }
     internal class BookWriter (string ProjectFolder, string BookFolder)
     {
         string bookfolder = BookFolder;
         string projectfolder = ProjectFolder;
+        string pattern = "<.*?>";
 
         public void WriteBook()
         {
@@ -102,7 +111,7 @@
                 }
             }
         }
-        public static void Run(string Classpath, string classname, string DocFolder)
+        public void Run(string Classpath, string classname, string DocFolder)
         {
             string[] lines = [..File.ReadAllLines(Classpath)
                                 .SkipWhile(line => !line.Contains("<BookContent>"))   // skip until opening tag
@@ -113,8 +122,44 @@
             int start = 0;
             while (start < lines.Length)
             {
-                //var doc = getDoc(lines, ref start, out int indentation);
-                start++;
+                var packet = PacketExtraction(lines, ref start);
+                switch (packet.info)
+                {
+                    case "Header 1":
+                        Document.Add(packet.content[0]);
+                        Document.Add("=========================");
+                        break;
+                    case "Header 2":
+                        Document.Add(packet.content[0]);
+                        Document.Add("-------------------------");
+                        break;
+                    case "Header 3":
+                        Document.Add(packet.content[0]);
+                        Document.Add("~~~~~~~~~~~~~~~~~~~~~~~~~");
+                        break;
+                    case "Table":
+                        Document.Add(".. list-table::");
+                        Document.Add("   :header-rows: 1");
+                        Document.Add("");
+                        foreach (var line in packet.content)
+                        {
+                            Document.Add("   * - " + string.Join("\n     - ", line.Split('|')));
+                        }
+                        Document.Add("");
+                        break;
+                    case "Code":
+                        Document.Add(".. code-block:: csharp");
+                        Document.Add("");
+                        foreach (var line in packet.content)
+                        {
+                            Document.Add("   " + line);
+                        }
+                        Document.Add("");
+                        break;
+                    case "Text":
+                        Document.AddRange(packet.content);
+                        break;
+                }
             }
 
 
@@ -126,9 +171,41 @@
 
 
                     """);
-                foreach (string line in lines)
+                foreach (string line in Document)
                     writer.WriteLine(line);
             }
+        }
+
+        Packet PacketExtraction(string[] lines, ref int start)
+        {
+            Packet packet = new() { info = "text", content = [] };
+            while (start < lines.Length)
+            {
+                string line = lines[start];
+                Match match = Regex.Match(line, pattern);
+                if (match.Success)
+                {
+                    
+                    string anglebrackets = match.Groups[0].Value;
+                    string result = anglebrackets.Substring(1, anglebrackets.Length - 2);
+                    if(result.Contains('/'))
+                    {
+                        start++;
+                        return packet;
+                    }
+                    if (packet.content.Count > 0) return packet;
+                    packet.info = result;
+                }
+                else
+                {
+                    line = line.TrimStart();
+                    if (line.Contains("///")) 
+                        line = line.Substring(3);
+                    packet.content.Add(line); 
+                }
+                start++;
+            }
+            return packet;
         }
 
         static string[] getDoc(string[] lines, ref int start, out int indentation)
