@@ -91,6 +91,7 @@ object, string, and dynamic
 
 
 Integer Types
+
 .. code-block:: C#
 
    {
@@ -115,6 +116,7 @@ Integer Types
    
 
 Floating-Point Types
+
 .. code-block:: C#
 
    {
@@ -127,6 +129,7 @@ Floating-Point Types
    
 
 Character Type
+
 .. code-block:: C#
 
    {
@@ -137,6 +140,7 @@ Character Type
    
 
 String Type
+
 .. code-block:: C#
 
    {
@@ -147,6 +151,7 @@ String Type
    
 
 Boolean Type
+
 .. code-block:: C#
 
    {
@@ -157,6 +162,7 @@ Boolean Type
    
 
 Decimal Type
+
 .. code-block:: C#
 
    {

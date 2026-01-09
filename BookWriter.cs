@@ -150,7 +150,8 @@ namespace ConsoleApp1
                         break;
                     case "code":
                         Document.Add(packet.title);
-                        Document.Add($".. code-block:: C#");
+                        Document.Add("");
+                        Document.Add(".. code-block:: C#");
                         Document.Add("");
                         foreach (var line in packet.content)
                         {
