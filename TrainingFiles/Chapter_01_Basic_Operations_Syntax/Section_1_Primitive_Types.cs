@@ -14,8 +14,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             /// object, string, and dynamic
             ///
             /// <Table> List of Primitive Types 
+            /// +------------+------------------+----------------+--------------------------------------+
             /// | C# Keyword | .NET Type        | Category       | Description                          |
-            /// |------------|------------------|----------------|--------------------------------------|
+            /// +============+==================+================+======================================+
             /// | bool       | System.Boolean   | Value type     | True/false values                    |
             /// | byte       | System.Byte      | Value type     | 8-bit unsigned integer (0–255)       |
             /// | sbyte      | System.SByte     | Value type     | 8-bit signed integer (−128–127)      |
@@ -34,6 +35,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             /// | object     | System.Object    | Reference type | Base type for all objects            |
             /// | string     | System.String    | Reference type | Sequence of characters               |
             /// | dynamic    | System.Object    | Reference type | Type resolved at runtime             |
+            /// +------------+------------------+----------------+--------------------------------------+
             /// </Table>
             /// 
             /// <code>Integer Types
@@ -110,8 +112,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             /// classes (usually System.Object).
             /// 
             /// <Table> List of Inbuilt Derived Types
+            /// +-------------------+------------------+----------------+------------------------------------------------------+
             /// | Type              | Base Class       | Category       | Description                                          |          
-            /// |-------------------|------------------|----------------|------------------------------------------------------|
+            /// +===================+==================+================+======================================================|
             /// | string            | System.Object    | Reference type | Represents a sequence of characters (immutable)      |
             /// | object            | Root of all types| Reference type | Base type for all classes in C#.                     |
             /// | dynamic           | System.Object    | Reference type | Type resolved at runtime.                            |
@@ -120,7 +123,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             /// | MulticastDelegate | Delegate         | Reference type | Supports invocation of multiple methods.             |
             /// | Enum              | System.ValueType | Value type     | Base class for all enumerations.                     |
             /// | ValueType         | System.Object    | Value type     | Base class for all structs.                          |
-            /// | Nullable <T>      | System.ValueType | Value type     | Allows value types to be null (e.g., int?).          |           
+            /// | Nullable <T>      | System.ValueType | Value type     | Allows value types to be null (e.g., int?).          |  
+            /// +-------------------+------------------+----------------+------------------------------------------------------+         
             /// </Table>
             ///
             /// </BookContent>

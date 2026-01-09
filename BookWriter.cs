@@ -126,7 +126,7 @@
 
 
                     """);
-                foreach (string line in Document)
+                foreach (string line in lines)
                     writer.WriteLine(line);
             }
         }
