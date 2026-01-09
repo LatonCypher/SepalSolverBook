@@ -127,10 +127,11 @@ object, string, and dynamic
 .. code-block:: Character Type
 
    {
+       // * char: Represents a single Unicode character.
        { char a = 'c'; }
    }
-
-
+   
+   
 
 .. code-block:: String Type
 

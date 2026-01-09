@@ -207,7 +207,7 @@ namespace ConsoleApp1
                     {
                         line = lines[++start];
                         int length = line.Length;
-                        while (!line.Contains("code"))
+                        while (!line.Contains("/code"))
                         {
                             packet.content.Add(line.Substring(length-1));
                             line = lines[++start];
