@@ -90,7 +90,7 @@ object, string, and dynamic
      -  Type resolved at runtime             
 
 
-.. code-block:: Integer Types
+.. code-block:: Integer_Types
 
    {
        // * byte: 8-bit unsigned integer.
@@ -113,7 +113,7 @@ object, string, and dynamic
    
    
 
-.. code-block:: Floating-Point Types
+.. code-block:: Floating-Point_Types
 
    {
        // * float: Single-precision floating-point.
@@ -124,7 +124,7 @@ object, string, and dynamic
    
    
 
-.. code-block:: Character Type
+.. code-block:: Character_Type
 
    {
        // * char: Represents a single Unicode character.
@@ -133,7 +133,7 @@ object, string, and dynamic
    
    
 
-.. code-block:: String Type
+.. code-block:: String_Type
 
    {
        // * string: Represents a sequence of characters. It's immutable, meaning once created, its value cannot be changed.
@@ -142,7 +142,7 @@ object, string, and dynamic
    
    
 
-.. code-block:: Boolean Type
+.. code-block:: Boolean_Type
 
    {
        // * bool: Represents a boolean value(true or false).
@@ -151,7 +151,7 @@ object, string, and dynamic
    
    
 
-.. code-block:: Decimal Type
+.. code-block:: Decimal_Type
 
    {
        // * decimal: High-precision decimal type, typically used for financial calculations.
