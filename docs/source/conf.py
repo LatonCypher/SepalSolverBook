@@ -2,9 +2,9 @@
 
 # -- Project information
 
-project = 'CypherCresent'
+project = 'Numerical Methods with SepalSolver'
 copyright = '2025, CypherCrescent'
-author = 'CypherCrescent'
+author = 'Lateef A. Kareem'
 
 release = '0.1'
 version = '0.1.0'
