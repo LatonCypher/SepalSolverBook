@@ -116,10 +116,27 @@ namespace ConsoleApp1
                 Console.WriteLine("No <BookContent> block found.");
                 return;
             }
+
             string bookContent = bookMatch.Groups[1].Value;
 
             // Remove leading "///"
             bookContent = Regex.Replace(bookContent, @"^\s*/// ?", "", RegexOptions.Multiline);
+
+            // Process headers
+            bookContent = Regex.Replace(bookContent,
+                @"<header 1>(.*?)</header 1>",
+                m => $"{m.Groups[1].Value.Trim()}\n{new string('=', m.Groups[1].Value.Trim().Length)}",
+                RegexOptions.Singleline);
+
+            bookContent = Regex.Replace(bookContent,
+                @"<header 2>(.*?)</header 2>",
+                m => $"{m.Groups[1].Value.Trim()}\n{new string('-', m.Groups[1].Value.Trim().Length)}",
+                RegexOptions.Singleline);
+
+            bookContent = Regex.Replace(bookContent,
+                @"<header 3>(.*?)</header 3>",
+                m => $"{m.Groups[1].Value.Trim()}\n{new string('~', m.Groups[1].Value.Trim().Length)}",
+                RegexOptions.Singleline);
 
             // Convert <example *> blocks
             bookContent = Regex.Replace(bookContent,
@@ -130,9 +147,10 @@ namespace ConsoleApp1
                     string inner = m.Groups[2].Value;
 
                     // Handle <code> blocks inside example
-                    string code = Regex.Match(inner, @"<code>(.*?)</code>", RegexOptions.Singleline).Groups[1].Value;
-                    if (!string.IsNullOrEmpty(code))
+                    var codeMatch = Regex.Match(inner, @"<code>(.*?)</code>", RegexOptions.Singleline);
+                    if (codeMatch.Success)
                     {
+                        string code = codeMatch.Groups[1].Value;
                         code = Regex.Replace(code, @"^\s*/// ?", "", RegexOptions.Multiline);
                         return $".. admonition:: Example {title}\n\n   .. code-block:: csharp\n\n{Indent(code, 6)}";
                     }
@@ -161,8 +179,10 @@ namespace ConsoleApp1
                 m => $".. code-block:: csharp\n\n{Indent(m.Value, 3)}",
                 RegexOptions.Singleline);
 
-            File.WriteAllText(outputPath, bookContent);
-
+            using (StreamWriter writer = new(outputPath, true))
+            {
+                writer.WriteLine(bookContent);
+            }
         }
 
         static string BuildRstTable(string[] rows)

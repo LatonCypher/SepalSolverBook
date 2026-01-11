@@ -4,7 +4,7 @@
     {
         public static void Run()
         {
-            ///<BookContent>
+            /// <BookContent>
             /// # Chapter 8: Ordinary Differential Equations (ODEs)
             /// 1. What is a Differential Equation?
             /// A differential equation(DE) is a mathematical equation that relates a function with its derivatives. In simpler terms, it describes how a quantity changes in relation to its current state.
@@ -39,7 +39,7 @@
             /// where :math: `f(t, y)` is a function that defines the rate of change of :math: `y` with respect to :math:`t`, and :math:`y_0` is the initial value of :math: `y` at time :math: `t_0`.
             /// <example 1>
             /// Solve the first-order ODE :math:`\cfrac{dy}{dt} = -2y` with the initial condition :math:`y(0) = 1` over the interval :math:`t \in [0, 5]`.
-            ///<code> 
+            /// <code> 
             {
                 // Define the ODE as a function
                 double dydt(double t, double y) => -2*y;

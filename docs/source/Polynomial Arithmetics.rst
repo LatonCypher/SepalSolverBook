@@ -1,5 +1,2 @@
-Polynomial Arithmetics
-============================
 
-
-
+            
