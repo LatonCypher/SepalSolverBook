@@ -1,4 +1,6 @@
-System.Collections.Generic.List`1[System.String]
+Primitive Types
+===============
+
 ** Primitive Types in C# **
             /// In C#, primitive types are the basic data types provided by the language. 
             /// The primitive (built-in) types in C# include bool, byte, sbyte, short, 

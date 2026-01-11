@@ -132,9 +132,13 @@ namespace ConsoleApp1
             TreatCodeBlock(bookContent);
             TreatTableBlock(bookContent);
 
-            using (StreamWriter writer = new(outputPath, append: true))
+            
+            using (StreamWriter writer = new(outputPath))
             {
-                foreach(var line in bookContent)
+                writer.WriteLine(classname);
+                writer.WriteLine(new string('=', classname.Length));
+                writer.WriteLine("");
+                foreach (var line in bookContent)
                     writer.WriteLine(line);
             }
         }

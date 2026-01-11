@@ -1,5 +1,4 @@
+Linear Interpolation
+====================
 
-            System.Collections.Generic.List`1[System.String]
-System.Collections.Generic.List`1[System.String]
-System.Collections.Generic.List`1[System.String]
-System.Collections.Generic.List`1[System.String]
+            /// 

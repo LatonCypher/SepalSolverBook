@@ -1,5 +1,4 @@
+Polynomial Roots
+================
 
-            System.Collections.Generic.List`1[System.String]
-System.Collections.Generic.List`1[System.String]
-System.Collections.Generic.List`1[System.String]
-System.Collections.Generic.List`1[System.String]
+            /// 
