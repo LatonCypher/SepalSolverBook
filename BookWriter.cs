@@ -274,19 +274,17 @@ namespace ConsoleApp1
                 Replace(bookContent, startIndex, Length + 1, Codelines);
             }
         }
-
         static string[] GetImageReference(string line)
         {
             // Regex to capture content inside parentheses
             var match = Regex.Match(line, @"\((.*?)\)");
             string content = match.Groups[1].Value;
             return ["",
-                    $".. figure:: images/{content}",
+                    $".. figure:: images/"+content,
                     $"   :align: center",
-                    $"   :alt: {content}",
+                    $"   :alt: " + content,
                     ""];
         }
-
         static void TreatTableBlock(List<string> bookContent)
         {
             while (bookContent.Any(line => line.Contains("<table>")))
