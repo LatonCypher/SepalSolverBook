@@ -35,7 +35,12 @@ First Order Differential Equation
 
 .. Admonition:: Example 1
 
-   Solve the first-order ODE :math:`\cfrac{dy}{dt} = -2y` with the initial condition :math:`y(0) = 1` over the interval :math:`t \in [0, 5]`.
+   Solve the first-order ordinary differential equation 
+   :math:`\cfrac{dy}{dt} = -2y`
+   with the initial condition 
+   :math:`y(0) = 1` 
+   over the interval 
+   :math:`t \in [0, 5]`.
    
    .. code-block:: csharp
    
