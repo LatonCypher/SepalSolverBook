@@ -57,9 +57,9 @@ First Order Differential Equation
       SaveAs("First_Order_ODE_Solution.png");
    
    
-   .. figure:: images/"First_Order_ODE_Solution.png"
+   .. figure:: images/First_Order_ODE_Solution.png
       :align: center
-      :alt: "First_Order_ODE_Solution.png"
+      :alt: First_Order_ODE_Solution.png
    
             /// 
 
@@ -87,9 +87,9 @@ First Order Differential Equation
       SaveAs("First_Order_ODE_Solution_example2.png");
    
    
-   .. figure:: images/"First_Order_ODE_Solution_example2.png"
+   .. figure:: images/First_Order_ODE_Solution_example2.png
       :align: center
-      :alt: "First_Order_ODE_Solution_example2.png"
+      :alt: First_Order_ODE_Solution_example2.png
    
             /// 
 
@@ -116,9 +116,9 @@ First Order Differential Equation
       SaveAs("Simple_Harmonic_Oscillator.png");
    
    
-   .. figure:: images/"Simple_Harmonic_Oscillator.png"
+   .. figure:: images/Simple_Harmonic_Oscillator.png
       :align: center
-      :alt: "Simple_Harmonic_Oscillator.png"
+      :alt: Simple_Harmonic_Oscillator.png
    
             /// 
 
@@ -148,9 +148,9 @@ First Order Differential Equation
       SaveAs("Damping_Harmonic_Oscillator.png");
    
    
-   .. figure:: images/"Damping_Harmonic_Oscillator.png"
+   .. figure:: images/Damping_Harmonic_Oscillator.png
       :align: center
-      :alt: "Damping_Harmonic_Oscillator.png"
+      :alt: Damping_Harmonic_Oscillator.png
    
             /// 
 
@@ -168,9 +168,9 @@ First Order Differential Equation
       SaveAs("Predator_Prey_Model.png");
    
    
-   .. figure:: images/"Predator_Prey_Model.png"
+   .. figure:: images/Predator_Prey_Model.png
       :align: center
-      :alt: "Predator_Prey_Model.png"
+      :alt: Predator_Prey_Model.png
    
             ///
 
@@ -199,9 +199,9 @@ First Order Differential Equation
       SaveAs("Blasius_Boundary_Layer.png");
    
    
-   .. figure:: images/"Blasius_Boundary_Layer.png"
+   .. figure:: images/Blasius_Boundary_Layer.png
       :align: center
-      :alt: "Blasius_Boundary_Layer.png"
+      :alt: Blasius_Boundary_Layer.png
    
 
             ///</BookContent>

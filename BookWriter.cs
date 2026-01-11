@@ -278,11 +278,11 @@ namespace ConsoleApp1
         {
             // Regex to capture content inside parentheses
             var match = Regex.Match(line, @"\((.*?)\)");
-            string content = match.Groups[1].Value;
+            string content = match.Groups[1].Value.Trim('"');
             return ["",
-                    $".. figure:: images/"+content,
-                    $"   :align: center",
-                    $"   :alt: " + content,
+                    ".. figure:: images/"+content,
+                    "   :align: center",
+                    "   :alt: " + content,
                     ""];
         }
         static void TreatTableBlock(List<string> bookContent)
