@@ -27,10 +27,10 @@ First Order Differential Equation
             /// 
             /// 4. The Anatomy of an Initial Value Problem (IVP)
             /// To get a single, specific answer from an ODE, you need a starting point, known as the Initial Condition.
-            /// The Equation: :math:`\cfrac{dt}{dy} = f(t, y)` (The rule of change), The Initial Condition: :math:`y(0) = y_0 (The starting point). 
+            /// The Equation:  :math:`\cfrac{dt}{dy} = f(t, y)` (The rule of change), The Initial Condition:  :math:`y(0)=y_0` (The starting point). 
             /// Without a starting point, a differential equation has an infinite number of solutions(a "family" of curves). The initial condition picks the specific path the system takes.
             /// Numerical methods are essential because most real-world ordinary differential equations (ODEs) cannot be solved analytically (with pen and paper). Instead of finding a continuous formula for $y(x)$, we calculate discrete values at specific points.
-            /// This guide covers the use of sepalsolver for solving an Initial Value Problem (IVP) defined by: math:`\cfrac{dy}{dt} = f(t, y), \quad y(t_0) = y_0`
+            /// This guide covers the use of sepalsolver for solving an Initial Value Problem (IVP) defined by: math: `\frac{dy}{dt} = f(t, y), \quad y(t_0) = y_0`
             /// where :math:`f(t, y)` is a function that defines the rate of change of :math:`y` with respect to :math:`t`, and :math:`y_0` is the initial value of :math:`y` at time :math:`t_0`.
 
 .. Admonition:: Example 1
