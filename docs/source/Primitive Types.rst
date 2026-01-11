@@ -8,7 +8,7 @@ Primitive Types
             /// object, string, and dynamic
             ///
 
-..list-table:: List of Primitive Types 
+.. list-table:: List of Primitive Types 
    : header-rows: 1
 
    * - C# Keyword
@@ -156,7 +156,7 @@ Primitive Types
             /// classes (usually System.Object).
             /// 
 
-..list-table:: List of Inbuilt Derived Types
+.. list-table:: List of Inbuilt Derived Types
    : header-rows: 1
 
    * - Type
