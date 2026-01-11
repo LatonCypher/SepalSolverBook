@@ -7,8 +7,8 @@
             /// <BookContent>
             /// <header 2> 1. What is a Differential Equation?</header 2>
             /// A differential equation(DE) is a mathematical equation that relates a function with its derivatives. In simpler terms, it describes how a quantity changes in relation to its current state.
-            /// - The Function(y): Represents the "state" of a system(e.g., the position of a car, the temperature of a room).
-            /// - The Derivative :math:`\cfrac{dt}{dy}` Represents the "rate of change"(e.g., the speed of the car, how fast the room is cooling).
+            /// - The Function: math:`(y)`: Represents the "state" of a system(e.g., the position of a car, the temperature of a room).
+            /// - The Derivative: :math:`\cfrac{dt}{dy}` Represents the "rate of change"(e.g., the speed of the car, how fast the room is cooling).
             ///
             /// An ODE is "Ordinary" because the unknown function depends on only one independent variable(usually time t or distance x).
             ///
