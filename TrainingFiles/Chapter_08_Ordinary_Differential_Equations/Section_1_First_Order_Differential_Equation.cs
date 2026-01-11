@@ -110,9 +110,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// 
             /// .. math:: \frac{d^2y}{dt^2} = -4y
             /// .. math:: y_0 = 0; y'_0 = 5; t = [0, 10];
+            /// 
             /// To solve this, we first transform the problem into a system of first order differential equations:
+            /// 
             /// Let :math: `v = \frac{dy}{dt}`
+            /// 
             /// hence :math: `\frac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
+            /// 
             /// Now we have 2 equations :math: `\frac{dy}{dt} = v, \frac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
             /// <code>
             {
