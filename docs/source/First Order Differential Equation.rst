@@ -3,6 +3,7 @@ First Order Differential Equation
 
  1. What is a Differential Equation?
 ------------------------------------
+
 A differential equation(DE) is a mathematical equation that relates a function with its derivatives. In simpler terms, it describes how a quantity changes in relation to its current state.
 - The Function(y): Represents the "state" of a system(e.g., the position of a car, the temperature of a room).
 - The Derivative :math:`\cfrac{dt}{dy}` Represents the "rate of change"(e.g., the speed of the car, how fast the room is cooling).
@@ -11,11 +12,13 @@ An ODE is "Ordinary" because the unknown function depends on only one independen
 
  2. The Intuition: The Slope Field 
 -----------------------------------
+
 If you have an equation like :math:`\cfrac{dt}{dy} = y`, the equation is telling you: "The steeper the graph gets, the higher the value of y must be."
 Even before solving an equation, we can visualize it using a Slope Field(or Direction Field).At every point(t, y) on a graph, we draw a tiny line segment with the slope dictated by the differential equation. A solution to the ODE is simply a curve that "follows the arrows."
 
  3. Analytical vs.Numerical Solutions 
 --------------------------------------
+
 *Analytical Solutions(The "Exact" Way)*
 This is what you do in a calculus class. You use integration techniques to find a precise formula for y(t).
 
@@ -30,6 +33,7 @@ When an equation is too "messy" for calculus, we use numerical methods.Instead o
 
  4. The Anatomy of an Initial Value Problem (IVP)  
 ---------------------------------------------------
+
 To get a single, specific answer from an ODE, you need a starting point, known as the Initial Condition.
 The Equation:  :math:`\cfrac{dt}{dy} = f(t, y)` (The rule of change), The Initial Condition:  :math:`y(0)=y_0` (The starting point). 
 Without a starting point, a differential equation has an infinite number of solutions(a "family" of curves). The initial condition picks the specific path the system takes.

@@ -23,24 +23,6 @@ The text begins with foundational principles—error analysis, convergence, and 
 This book is intended for students, researchers, and professionals seeking a deeper understanding of numerical methods and their computational realization. By combining rigorous mathematical exposition with hands-on solver applications, it equips readers with the tools to design, analyze, and implement robust numerical solutions. Ultimately, the integration of SepalSolver into the study of numerical methods highlights the evolving synergy between mathematical theory and computational innovation.
 
 
-.. list-table:: Numerical Methods
-   :header-rows: 1
-
-   * - Method
-     - Accuracy
-     - Speed
-   * - Euler
-     - Low
-     - Fast
-   * - Runge-Kutta
-     - High
-     - Moderate
-   * - SepalSolver
-     - High
-     - High
-
-
-
 
 .. toctree::
 
