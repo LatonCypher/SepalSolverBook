@@ -8,5 +8,5 @@ global using SepalSolver;
 global using SepalSolver.PlotLib;
 global using static SepalSolver.Math;
 global using static SepalSolver.PlotLib.Chart;
-global using static SepalSolver.PlotLib.Chart.Interpreter;
-global using static SepalSolver.PlotLib.Chart.Location;
+global using static SepalSolver.PlotLib.Interpreter;
+global using static SepalSolver.PlotLib.Location;

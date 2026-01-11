@@ -35,12 +35,9 @@ First Order Differential Equation
 
 .. Admonition:: Example 1
 
-   Solve the first-order ordinary differential equation 
-   :math:`\cfrac{dy}{dt} = -2y`
-   with the initial condition 
-   :math:`y(0) = 1` 
-   over the interval 
-   :math:`t \in [0, 5]`.
+   Solve the first-order ODE: :math:`\cfrac{dy}{dt} = -2y`,\
+   with the initial condition: :math:`y(0) = 1`,\
+   over the interval: :math:`t \in [0, 5]`.
    
    .. code-block:: csharp
    
@@ -59,11 +56,18 @@ First Order Differential Equation
       Ylabel("Function y");
       SaveAs("First_Order_ODE_Solution.png");
    
+   
+   .. figure:: images/"First_Order_ODE_Solution.png"
+      :align: center
+      :alt: "First_Order_ODE_Solution.png"
+   
             /// 
 
 .. Admonition:: Example 2
 
-   Solve the first-order ODE :math:`\cfrac{dy}{dt} = \sin(t) - y` with the initial condition :math:`y(0) = 0` over the interval :math:`t \in [0, 10]`.
+   Solve the first-order ODE :math:`\cfrac{dy}{dt} = \sin(t) - y`\
+   with the initial condition :math:`y(0) = 0`\
+   over the interval :math:`t \in [0, 10]`.
    
    .. code-block:: csharp
    
@@ -82,6 +86,11 @@ First Order Differential Equation
       Ylabel("Function y");
       SaveAs("First_Order_ODE_Solution_example2.png");
    
+   
+   .. figure:: images/"First_Order_ODE_Solution_example2.png"
+      :align: center
+      :alt: "First_Order_ODE_Solution_example2.png"
+   
             /// 
 
 .. Admonition:: Example 3
@@ -94,10 +103,7 @@ First Order Differential Equation
    
    To solve this, we first transform the problem into a system of first order differential equations:
    
-   Let :math:`v = \cfrac{dy}{dt}`
-   
-   hence :math:`\cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
-   
+   Let :math:`v = \cfrac{dy}{dt}`, hence :math:`\cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`,
    Now we have 2 equations :math:`\cfrac{dy}{dt} = v, \cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
    
    .. code-block:: csharp
@@ -108,6 +114,11 @@ First Order Differential Equation
       (ColVec T, Matrix Y) = Ode45(dydt, [0,5], [0,10]);
       Plot(T, Y, Linewidth: 2); 
       SaveAs("Simple_Harmonic_Oscillator.png");
+   
+   
+   .. figure:: images/"Simple_Harmonic_Oscillator.png"
+      :align: center
+      :alt: "Simple_Harmonic_Oscillator.png"
    
             /// 
 
@@ -121,8 +132,7 @@ First Order Differential Equation
    where :math:`m` is the mass, :math:`c` is the damping coefficient, and :math:`k` is the spring constant.
    To solve this, we first transform the problem into a system of first order differential equations:
    
-   Let :math:`v = \cfrac{dy}{dt}`
-   hence :math:`\cfrac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`
+   Let :math:`v = \cfrac{dy}{dt}`, hence :math:`\cfrac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`,
    Now we have 2 equations :math:`\cfrac{dy}{dt} = v, \cfrac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`
    
    
@@ -136,6 +146,11 @@ First Order Differential Equation
       (ColVec T, Matrix Y) = Ode45(dydt, [0.7, 0], [0, 30]);
       Plot(T, Y, Linewidth: 2); 
       SaveAs("Damping_Harmonic_Oscillator.png");
+   
+   
+   .. figure:: images/"Damping_Harmonic_Oscillator.png"
+      :align: center
+      :alt: "Damping_Harmonic_Oscillator.png"
    
             /// 
 
@@ -151,6 +166,11 @@ First Order Differential Equation
       (ColVec T, Matrix Y) = Ode45(dydt, [20, 20], [0, 15]);
       Plot(T, Y, Linewidth: 2);
       SaveAs("Predator_Prey_Model.png");
+   
+   
+   .. figure:: images/"Predator_Prey_Model.png"
+      :align: center
+      :alt: "Predator_Prey_Model.png"
    
             ///
 
@@ -177,6 +197,11 @@ First Order Differential Equation
       Axis([0, 6, 0, 2]); Xlabel("η"); 
       Title("Blasius Boundary Layer");
       SaveAs("Blasius_Boundary_Layer.png");
+   
+   
+   .. figure:: images/"Blasius_Boundary_Layer.png"
+      :align: center
+      :alt: "Blasius_Boundary_Layer.png"
    
 
             ///</BookContent>

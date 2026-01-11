@@ -1,8 +1,4 @@
-﻿using SepalSolver;
-using static SepalSolver.Math;
-using static SepalSolver.PlotLib.Chart;
-using static SepalSolver.PlotLib.Chart.Location;
-
+﻿
 namespace ConsoleApp1.TrainingFiles
 {
     public class WaterInfluxPublication

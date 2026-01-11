@@ -256,6 +256,7 @@ namespace ConsoleApp1
                 }
                 int Length = 1;
                 List<string> Codelines = ["", ".. code-block:: csharp"];
+                List<string> Imagelines = [];
                 int space = bookContent[startIndex + Length].TakeWhile(c => c == ' ').Count()+1;
                 while (!bookContent[startIndex + Length].Contains("</code>"))
                 {
@@ -265,10 +266,27 @@ namespace ConsoleApp1
                     else
                         Codelines.Add(line);
                     Length++;
+
+                    if(line.Contains("SaveAs"))
+                    { Imagelines.AddRange(GetImageReference(line)); }
                 }
+                Codelines.AddRange(Imagelines);
                 Replace(bookContent, startIndex, Length + 1, Codelines);
             }
         }
+
+        static string[] GetImageReference(string line)
+        {
+            // Regex to capture content inside parentheses
+            var match = Regex.Match(line, @"\((.*?)\)");
+            string content = match.Groups[1].Value;
+            return ["",
+                    $".. figure:: images/{content}",
+                    $"   :align: center",
+                    $"   :alt: {content}",
+                    ""];
+        }
+
         static void TreatTableBlock(List<string> bookContent)
         {
             while (bookContent.Any(line => line.Contains("<table>")))
