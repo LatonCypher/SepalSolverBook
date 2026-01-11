@@ -1,19 +1,11 @@
-﻿using ScottPlot;
-using System.Text.RegularExpressions;
+﻿
 
 namespace ConsoleApp1
 {
-    internal class Packet
-    {
-        public string info;
-        public string title;
-        public List<string> content;
-    }
     internal class BookWriter (string ProjectFolder, string BookFolder)
     {
         string bookfolder = BookFolder;
         string projectfolder = ProjectFolder;
-        string pattern = "<.*?>";
 
         public void WriteBook()
         {
@@ -86,7 +78,7 @@ namespace ConsoleApp1
                 string chaptermessage = $"""
                     
                     {relativePath}
-                    =====================================================
+                    =========================================================
                     
 
 
@@ -112,189 +104,98 @@ namespace ConsoleApp1
                 }
             }
         }
-        public void Run(string Classpath, string classname, string DocFolder)
+        public void Run(string inputPath, string classname, string DocFolder)
         {
-            string[] lines = [..File.ReadAllLines(Classpath)
-                                .SkipWhile(line => !line.Contains("<BookContent>"))   // skip until opening tag
-                                .Skip(1)                                              // skip the opening tag itself
-                                .TakeWhile(line => !line.Contains("</BookContent>"))  // take until closing tag
-                                    ];
-            List<string> Document = [];
-            int start = 0;
-            while (start < lines.Length)
-            {
-                var packet = PacketExtraction(lines, ref start);
-                switch (packet.info)
-                {
-                    case "header 1":
-                        Document.Add(packet.content[0]);
-                        Document.Add("=========================");
-                        break;
-                    case "header 2":
-                        Document.Add(packet.content[0]);
-                        Document.Add("-------------------------");
-                        break;
-                    case "header 3":
-                        Document.Add(packet.content[0]);
-                        Document.Add("~~~~~~~~~~~~~~~~~~~~~~~~~");
-                        break;
-                    case "table":
-                        Document.Add($".. list-table:: {packet.title}");
-                        Document.Add("   :header-rows: 1");
-                        Document.Add("");
-                        foreach (var line in packet.content)
-                        {
-                            Document.Add("   * - " + string.Join("\n     - ", line.Split('|')));
-                        }
-                        Document.Add("");
-                        break;
-                    case "code":
-                        Document.Add(packet.title);
-                        Document.Add("");
-                        Document.Add(".. code-block:: C#");
-                        Document.Add("");
-                        foreach (var line in packet.content)
-                        {
-                            Document.Add("   " + line);
-                        }
-                        Document.Add("");
-                        break;
-                    case "example":
-                        Document.Add("");
-                        Document.Add(".. admonition:: C#");
-                        Document.Add("");
+            string outputPath = DocFolder + classname + ".rst";
+            string csContent = File.ReadAllText(inputPath);
 
-                        break;
-                    case "text":
-                        Document.AddRange(packet.content);
-                        break;
-                }
+            // Extract BookContent block
+            var bookMatch = Regex.Match(csContent, @"/// <BookContent>(.*?)///</BookContent>", RegexOptions.Singleline);
+            if (!bookMatch.Success)
+            {
+                Console.WriteLine("No <BookContent> block found.");
+                return;
             }
+            string bookContent = bookMatch.Groups[1].Value;
 
+            // Remove leading "///"
+            bookContent = Regex.Replace(bookContent, @"^\s*/// ?", "", RegexOptions.Multiline);
 
-            using (StreamWriter writer = new(DocFolder + classname + ".rst"))
-            {
-                writer.WriteLine($"""
-                    {classname}
-                    ============================
-
-
-                    """);
-                foreach (string line in Document)
-                    writer.WriteLine(line);
-            }
-        }
-
-        Packet PacketExtraction(string[] lines, ref int start)
-        {
-            Packet packet = new() { info = "text", content = [] };
-            while (start < lines.Length)
-            {
-                string line = lines[start];
-                Match match = Regex.Match(line, pattern);
-                if (match.Success)
+            // Convert <example *> blocks
+            bookContent = Regex.Replace(bookContent,
+                @"<example\s+(.*?)>(.*?)</example\s+\1>",
+                m =>
                 {
-                    string anglebrackets = match.Groups[0].Value;
-                    string result = anglebrackets.Substring(1, anglebrackets.Length - 2);
-                    if(result.Contains('/'))
-                    {
-                        start++;
-                        return packet;
-                    }
-                    if (packet.content.Count > 0) return packet;
-                    packet.info = result;
-                    if(result == "code" || result == "table")
-                    {
-                        int pos = line.IndexOf('>');
-                        packet.title =  (pos >= 0 && pos < line.Length - 1)
-                            ? line.Substring(pos + 1).TrimStart()   // take everything after '>'
-                            : line;
-                    }
-                    if(result == "code")
-                    {
-                        line = lines[++start];
-                        int length = line.Length;
-                        while (!line.Contains("/code"))
-                        {
-                            packet.content.Add(line.Substring(length-1));
-                            line = lines[++start];
-                        }
-                    }
-                    if(result == "example")
-                    {
+                    string title = m.Groups[1].Value.Trim();
+                    string inner = m.Groups[2].Value;
 
-                    }
-                }
-                else
-                {
-                    
-                    line = line.TrimStart();
-                    if (line.Contains("///")) 
-                        line = line.Substring(3);
-                    packet.content.Add(line.TrimStart()); 
-                }
-                start++;
-            }
-            return packet;
-        }
-
-        static string[] getDoc(string[] lines, ref int start, out int indentation)
-        {
-            List<string> result = [];
-
-            // get doc start
-            string line = lines[start].TrimStart();
-            while (true)
-            {
-                if (line.Length >= 3 && line.Substring(0, 3) == "///")
-                    break;
-                else if (start < lines.Length - 1)
-                    line = lines[++start].TrimStart();
-                else break;
-            }
-
-            // get doc
-            indentation = 0;
-            if (line != "")
-            {
-                indentation = lines[start].IndexOf(line[0]) / 4;
-                while (true)
-                {
-                    if (line.Length >= 3 && line.Substring(0, 3) == "///")
+                    // Handle <code> blocks inside example
+                    string code = Regex.Match(inner, @"<code>(.*?)</code>", RegexOptions.Singleline).Groups[1].Value;
+                    if (!string.IsNullOrEmpty(code))
                     {
-                        result.Add(line);
-                        if (start < lines.Length - 1)
-                            line = lines[++start].TrimStart();
+                        code = Regex.Replace(code, @"^\s*/// ?", "", RegexOptions.Multiline);
+                        return $".. admonition:: Example {title}\n\n   .. code-block:: csharp\n\n{Indent(code, 6)}";
                     }
                     else
-                        break;
-
-                }
-
-                // get signature
-                string signature = "";
-                while (true && line != "}")
-                {
-                    string[] linesplit = line.Split(' ');
-                    bool completed = false;
-                    foreach (var split in linesplit)
                     {
-                        if (completed = split == "{" || split == "=>" || split == ":")
-                            break;
-                        else
-                            signature += split + " ";
+                        inner = Regex.Replace(inner, @"^\s*/// ?", "", RegexOptions.Multiline);
+                        return $".. admonition:: Example {title}\n\n   {inner.Trim()}";
                     }
-                    if (completed)
-                        break;
-                    else if (start < lines.Length - 1)
-                        line = lines[++start].TrimStart();
+                },
+                RegexOptions.Singleline);
 
-                }
-                result.Add(signature);
-            }
+            // Convert <table> blocks
+            bookContent = Regex.Replace(bookContent,
+                @"<table>(.*?)</table>",
+                m =>
+                {
+                    string[] rows = m.Groups[1].Value.Trim().Split('\n');
+                    return BuildRstTable(rows);
+                },
+                RegexOptions.Singleline);
 
-            return [.. result];
+            // Wrap remaining code snippets in code-block
+            // (simple heuristic: braces or semicolons indicate code)
+            bookContent = Regex.Replace(bookContent,
+                @"\{[^}]*\}",
+                m => $".. code-block:: csharp\n\n{Indent(m.Value, 3)}",
+                RegexOptions.Singleline);
+
+            File.WriteAllText(outputPath, bookContent);
+
         }
 
+        static string BuildRstTable(string[] rows)
+        {
+            // Assume pipe-separated values
+            string[][] cells = Array.ConvertAll(rows, r => r.Split('|'));
+            int cols = cells[0].Length;
+            int[] widths = new int[cols];
+
+            // Compute column widths
+            for (int c = 0; c < cols; c++)
+                foreach (var row in cells)
+                    widths[c] = Max(widths[c], row[c].Trim().Length);
+
+            string line = "+" + string.Join("+", Array.ConvertAll(widths, w => new string('-', w + 2))) + "+";
+
+            var table = new System.Text.StringBuilder();
+            table.AppendLine(line);
+            foreach (var row in cells)
+            {
+                table.Append("|");
+                for (int c = 0; c < cols; c++)
+                    table.Append(" " + row[c].Trim().PadRight(widths[c]) + " |");
+                table.AppendLine();
+                table.AppendLine(line);
+            }
+            return table.ToString();
+        }
+
+        static string Indent(string text, int spaces)
+        {
+            string pad = new string(' ', spaces);
+            return Regex.Replace(text.Trim(), @"^", pad, RegexOptions.Multiline);
+        }
     }
 }

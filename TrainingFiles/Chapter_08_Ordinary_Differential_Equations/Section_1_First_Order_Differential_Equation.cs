@@ -1,27 +1,4 @@
-﻿using CSharpMath.Atom.Atoms;
-using HarfBuzzSharp;
-using Microsoft.VisualBasic;
-using ScottPlot;
-using ScottPlot.ArrowShapes;
-using ScottPlot.Colormaps;
-using ScottPlot.Interactivity.UserActions;
-using ScottPlot.TickGenerators.TimeUnits;
-using SepalSolver;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Runtime.Intrinsics.X86;
-using System.Text;
-using System.Threading.Tasks;
-using static SepalSolver.Math;
-using static SepalSolver.PlotLib.Chart;
-using static SepalSolver.PlotLib.Chart.Location;
-using static SepalSolver.Statistics;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
 {
     internal class Section_1_First_Order_Differential_Equation
     {
@@ -32,19 +9,19 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// 1. What is a Differential Equation?
             /// A differential equation(DE) is a mathematical equation that relates a function with its derivatives. In simpler terms, it describes how a quantity changes in relation to its current state.
             /// - The Function(y): Represents the "state" of a system(e.g., the position of a car, the temperature of a room).
-            /// - The Derivative :math:`\frac{dt}{dy}` Represents the "rate of change"(e.g., the speed of the car, how fast the room is cooling).
+            /// - The Derivative :math:`\cfrac{dt}{dy}` Represents the "rate of change"(e.g., the speed of the car, how fast the room is cooling).
             ///
             /// An ODE is "Ordinary" because the unknown function depends on only one independent variable(usually time t or distance x).
             ///
             /// 2.The Intuition: The Slope Field
-            /// If you have an equation like :math:`\frac{dt}{dy} = y`, the equation is telling you: "The steeper the graph gets, the higher the value of y must be."
+            /// If you have an equation like :math:`\cfrac{dt}{dy} = y`, the equation is telling you: "The steeper the graph gets, the higher the value of y must be."
             /// Even before solving an equation, we can visualize it using a Slope Field(or Direction Field).At every point(t, y) on a graph, we draw a tiny line segment with the slope dictated by the differential equation. A solution to the ODE is simply a curve that "follows the arrows."
             ///
             /// 3.Analytical vs.Numerical Solutions
             ///  *Analytical Solutions(The "Exact" Way)*
             /// This is what you do in a calculus class. You use integration techniques to find a precise formula for y(t).
             /// 
-            /// - example: For :math:`\frac{dt}{dy} = ky`, the analytical solution is  :math:`y(t) = Ce^{kt}`
+            /// - example: For :math:`\cfrac{dt}{dy} = ky`, the analytical solution is  :math:`y(t) = Ce^{kt}`
             /// - Pros: Perfectly accurate; gives you a formula you can use forever.
             /// - Cons: Most complex equations in physics and engineering cannot be solved this way.
             /// 
@@ -55,13 +32,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// 
             /// 4. The Anatomy of an Initial Value Problem (IVP)
             /// To get a single, specific answer from an ODE, you need a starting point, known as the Initial Condition.
-            /// The Equation:  :math:`\frac{dt}{dy} = f(t, y)` (The rule of change), The Initial Condition:  :math:`y(0)=y_0 (The starting point). 
+            /// The Equation:  :math:`\cfrac{dt}{dy} = f(t, y)` (The rule of change), The Initial Condition:  :math:`y(0)=y_0 (The starting point). 
             /// Without a starting point, a differential equation has an infinite number of solutions(a "family" of curves). The initial condition picks the specific path the system takes.
             /// Numerical methods are essential because most real-world ordinary differential equations (ODEs) cannot be solved analytically (with pen and paper). Instead of finding a continuous formula for $y(x)$, we calculate discrete values at specific points.
             /// This guide covers the use of sepalsolver for solving an Initial Value Problem (IVP) defined by: math: `\frac{dy}{dt} = f(t, y), \quad y(t_0) = y_0`
             /// where :math: `f(t, y)` is a function that defines the rate of change of :math: `y` with respect to :math:`t`, and :math:`y_0` is the initial value of :math: `y` at time :math: `t_0`.
             /// <example 1>
-            /// Solve the first-order ODE :math:`\frac{dy}{dt} = -2y` with the initial condition :math:`y(0) = 1` over the interval :math:`t \in [0, 5]`.
+            /// Solve the first-order ODE :math:`\cfrac{dy}{dt} = -2y` with the initial condition :math:`y(0) = 1` over the interval :math:`t \in [0, 5]`.
             ///<code> 
             {
                 // Define the ODE as a function
@@ -83,7 +60,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// </example 1>
             /// 
             /// <example 2>
-            /// Solve the first-order ODE :math:`\frac{dy}{dt} = \sin(t) - y` with the initial condition :math:`y(0) = 0` over the interval :math:`t \in [0, 10]`.
+            /// Solve the first-order ODE :math:`\cfrac{dy}{dt} = \sin(t) - y` with the initial condition :math:`y(0) = 0` over the interval :math:`t \in [0, 10]`.
             /// <code>
             {
                 // Define the ODE as a function
@@ -113,11 +90,11 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// 
             /// To solve this, we first transform the problem into a system of first order differential equations:
             /// 
-            /// Let :math: `v = \frac{dy}{dt}`
+            /// Let :math: `v = \cfrac{dy}{dt}`
             /// 
-            /// hence :math: `\frac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
+            /// hence :math: `\cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
             /// 
-            /// Now we have 2 equations :math: `\frac{dy}{dt} = v, \frac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
+            /// Now we have 2 equations :math: `\cfrac{dy}{dt} = v, \cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
             /// <code>
             {
                 // Simple Harmonic Oscillator
@@ -133,18 +110,15 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// <example 4>
             /// lets look at harmonic oscillator with damping
             /// 
-            /// .. math:: m\frac{d^2y}{dt^2} + c\frac{dy}{dt} + ky = 0
+            /// .. math:: m\cfrac{d^2y}{dt^2} + c\cfrac{dy}{dt} + ky = 0
             /// .. math:: y_0 = 0.7; y'_0 = 0; t = [0, 30];
             /// 
             /// where :math: `m` is the mass, :math: `c` is the damping coefficient, and :math: `k` is the spring constant.
-            /// 
             /// To solve this, we first transform the problem into a system of first order differential equations:
             /// 
-            /// Let :math: `v = \frac{dy}{dt}`
-            /// 
-            /// hence :math: `\frac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`
-            /// 
-            /// Now we have 2 equations :math: `\frac{dy}{dt} = v, \frac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`
+            /// Let :math: `v = \cfrac{dy}{dt}`
+            /// hence :math: `\cfrac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`
+            /// Now we have 2 equations :math: `\cfrac{dy}{dt} = v, \cfrac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`
             /// 
             /// <code>
             {
@@ -159,7 +133,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             }
             /// </code>
             /// </example 4>
-
+            /// <example 5>
+            /// <code>
             {
                 // Predator Prey Model
                 double alpha = 0.01, beta = 0.02;
@@ -169,7 +144,11 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
                 Plot(T, Y, Linewidth: 2);
                 SaveAs("Predator_Prey_Model.png");
             }
+            /// </code>
+            /// </example 5>
 
+            /// <example 6>
+            /// <code>
             {
                 // Blausius Boundary Layer
 
@@ -190,8 +169,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
                 Title("Blasius Boundary Layer");
                 SaveAs("Blasius_Boundary_Layer.png");
             }
-
-
+            /// </code>
+            /// </example 6>
 
             ///</BookContent>
         }

@@ -2,13 +2,18 @@
 {
     internal class Writer
     {
-        public static void Run()
+        static string projectRoot = Directory.GetParent(AppContext.BaseDirectory).Parent.Parent.FullName;
+        static string ProjectFolder, BookFolder, ImageFolder;
+        public static void SetPath()
         {
-            var projectRoot = Directory.GetParent(AppContext.BaseDirectory).Parent.Parent.FullName;
             projectRoot = projectRoot.Replace("bin", "");
-            var ProjectFolder = projectRoot + "TrainingFiles\\";
-            var BookFolder = projectRoot + "docs\\source\\";
-            var ImageFolder = BookFolder + "images\\";
+            ProjectFolder = projectRoot + "TrainingFiles\\";
+            BookFolder = projectRoot + "docs\\source\\";
+            ImageFolder = BookFolder + "images\\";
+            folderpath = ImageFolder;
+        }
+        public static void Run()
+        { 
             var BookContent = new BookWriter(ProjectFolder, BookFolder);
             BookContent.WriteBook();
         }

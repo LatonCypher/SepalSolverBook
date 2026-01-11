@@ -22,8 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="SepalSolver" Version="0.0.39" />
-    <PackageReference Include="SepalSolver.PlotLib" Version="0.0.39" />
+    <PackageReference Include="SepalSolver" Version="0.0.42" />
+    <PackageReference Include="SepalSolver.PlotLib" Version="0.0.42" />
   </ItemGroup>
 
 </Project>
