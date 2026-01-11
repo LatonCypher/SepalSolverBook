@@ -116,8 +116,15 @@ namespace ConsoleApp1
             string outputPath = DocFolder + classname + ".rst";
             string[] Content = File.ReadAllLines(inputPath);
 
-            // Extract BookContent block
-            List<string> bookContent = [..Content.SkipWhile(line=> !line.Contains("/// <BookContent>")).
+            using (StreamWriter writer = new(outputPath))
+            {
+                writer.WriteLine(classname);
+                writer.WriteLine(new string('=', classname.Length));
+                writer.WriteLine("");
+            }
+
+                // Extract BookContent block
+                List<string> bookContent = [..Content.SkipWhile(line=> !line.Contains("/// <BookContent>")).
                                           TakeWhile(line=>!line.Contains("/// </BookContent>"))];
             if (bookContent.Count == 0)
             {
@@ -133,11 +140,8 @@ namespace ConsoleApp1
             TreatTableBlock(bookContent);
 
             
-            using (StreamWriter writer = new(outputPath))
+            using (StreamWriter writer = new(outputPath, true))
             {
-                writer.WriteLine(classname);
-                writer.WriteLine(new string('=', classname.Length));
-                writer.WriteLine("");
                 foreach (var line in bookContent)
                     writer.WriteLine(line);
             }
