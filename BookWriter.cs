@@ -126,19 +126,19 @@ namespace ConsoleApp1
                 var packet = PacketExtraction(lines, ref start);
                 switch (packet.info)
                 {
-                    case "Header 1":
+                    case "header 1":
                         Document.Add(packet.content[0]);
                         Document.Add("=========================");
                         break;
-                    case "Header 2":
+                    case "header 2":
                         Document.Add(packet.content[0]);
                         Document.Add("-------------------------");
                         break;
-                    case "Header 3":
+                    case "header 3":
                         Document.Add(packet.content[0]);
                         Document.Add("~~~~~~~~~~~~~~~~~~~~~~~~~");
                         break;
-                    case "Table":
+                    case "table":
                         Document.Add($".. list-table:: {packet.title}");
                         Document.Add("   :header-rows: 1");
                         Document.Add("");
@@ -159,7 +159,7 @@ namespace ConsoleApp1
                         }
                         Document.Add("");
                         break;
-                    case "Text":
+                    case "text":
                         Document.AddRange(packet.content);
                         break;
                 }
@@ -181,14 +181,13 @@ namespace ConsoleApp1
 
         Packet PacketExtraction(string[] lines, ref int start)
         {
-            Packet packet = new() { info = "Text", content = [] };
+            Packet packet = new() { info = "text", content = [] };
             while (start < lines.Length)
             {
                 string line = lines[start];
                 Match match = Regex.Match(line, pattern);
                 if (match.Success)
                 {
-                    
                     string anglebrackets = match.Groups[0].Value;
                     string result = anglebrackets.Substring(1, anglebrackets.Length - 2);
                     if(result.Contains('/'))
@@ -198,7 +197,7 @@ namespace ConsoleApp1
                     }
                     if (packet.content.Count > 0) return packet;
                     packet.info = result;
-                    if(result == "code" || result == "Table")
+                    if(result == "code" || result == "table")
                     {
                         int pos = line.IndexOf('>');
                         packet.title =  (pos >= 0 && pos < line.Length - 1)

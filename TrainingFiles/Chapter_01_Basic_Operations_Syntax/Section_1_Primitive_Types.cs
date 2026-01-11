@@ -7,15 +7,15 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
         public static void Run()
         {
             /// <BookContent>
-            /// <Header 2> 
+            /// <header 2> 
             /// Primitive Types in C# 
-            /// </Header 2>
+            /// </header 2>
             /// In C#, primitive types are the basic data types provided by the language. 
             /// The primitive (built-in) types in C# include bool, byte, sbyte, short, 
             /// ushort, int, uint, long, ulong, char, float, double, decimal, nint, nuint, 
             /// object, string, and dynamic
             ///
-            /// <Table> List of Primitive Types 
+            /// <table> List of Primitive Types 
             ///  C# Keyword | .NET Type        | Category       | Description                          
             ///  bool       | System.Boolean   | Value type     | True/false values                    
             ///  byte       | System.Byte      | Value type     | 8-bit unsigned integer (0–255)       
@@ -35,7 +35,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             ///  object     | System.Object    | Reference type | Base type for all objects            
             ///  string     | System.String    | Reference type | Sequence of characters               
             ///  dynamic    | System.Object    | Reference type | Type resolved at runtime             
-            /// </Table>
+            /// </table>
             /// 
             /// <code> Integer Types
             {
@@ -104,15 +104,15 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             /// These primitive types are the building blocks for more complex data structures
             /// and are essential for various operations in C#.
             ///
-            /// <Header 2> 
+            /// <header 2> 
             /// Inbuilt Derived Types in C# 
-            /// </Header 2>
+            /// </header 2>
             /// In C#, beyond the primitive types (like int, bool, char), there are several inbuilt 
             /// derived types that the language provides out of the box. These are types that are not 
             /// primitives themselves but are built into the framework and derive from other base 
             /// classes (usually System.Object).
             /// 
-            /// <Table> List of Inbuilt Derived Types
+            /// <table> List of Inbuilt Derived Types
             ///  Type              | Base Class       | Category       | Description                                             
             ///  string            | System.Object    | Reference type | Represents a sequence of characters (immutable)      
             ///  object            | Root of all types| Reference type | Base type for all classes in C#.                     
@@ -123,7 +123,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             ///  Enum              | System.ValueType | Value type     | Base class for all enumerations.                     
             ///  ValueType         | System.Object    | Value type     | Base class for all structs.                          
             ///  Nullable <T>      | System.ValueType | Value type     | Allows value types to be null (e.g., int?).                  
-            /// </Table>
+            /// </table>
             ///
             /// </BookContent>
         }

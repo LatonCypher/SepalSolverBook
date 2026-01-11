@@ -44,7 +44,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             ///  *Analytical Solutions(The "Exact" Way)*
             /// This is what you do in a calculus class. You use integration techniques to find a precise formula for y(t).
             /// 
-            /// - Example: For :math:`\frac{dt}{dy} = ky`, the analytical solution is  :math:`y(t) = Ce^{kt}`
+            /// - example: For :math:`\frac{dt}{dy} = ky`, the analytical solution is  :math:`y(t) = Ce^{kt}`
             /// - Pros: Perfectly accurate; gives you a formula you can use forever.
             /// - Cons: Most complex equations in physics and engineering cannot be solved this way.
             /// 
@@ -60,7 +60,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// Numerical methods are essential because most real-world ordinary differential equations (ODEs) cannot be solved analytically (with pen and paper). Instead of finding a continuous formula for $y(x)$, we calculate discrete values at specific points.
             /// This guide covers the use of sepalsolver for solving an Initial Value Problem (IVP) defined by: math: `\frac{dy}{dt} = f(t, y), \quad y(t_0) = y_0`
             /// where :math: `f(t, y)` is a function that defines the rate of change of :math: `y` with respect to :math:`t`, and :math:`y_0` is the initial value of :math: `y` at time :math: `t_0`.
-            /// <Example 1>
+            /// <example 1>
             /// Solve the first-order ODE :math:`\frac{dy}{dt} = -2y` with the initial condition :math:`y(0) = 1` over the interval :math:`t \in [0, 5]`.
             ///<code> 
             {
@@ -80,9 +80,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
                 SaveAs("First_Order_ODE_Solution.png");
             }
             /// </code>
-            /// </Example 1>
+            /// </example 1>
             /// 
-            /// <Example 2>
+            /// <example 2>
             /// Solve the first-order ODE :math:`\frac{dy}{dt} = \sin(t) - y` with the initial condition :math:`y(0) = 0` over the interval :math:`t \in [0, 10]`.
             /// <code>
             {
@@ -99,12 +99,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
                 Title("Solution of dy/dt = sin(t) - y with y(0) = 0");
                 Xlabel("Time t");
                 Ylabel("Function y");
-                SaveAs("First_Order_ODE_Solution_Example2.png");
+                SaveAs("First_Order_ODE_Solution_example2.png");
             }
             /// </code>
-            /// </Example 2>
+            /// </example 2>
             /// 
-            /// </Example 3>
+            /// </example 3>
             /// Solve a second order ODE (simple harmonic oscillator) by first converting to system of first order equation and 
             /// then solve the system of first-order ODEs representing the simple harmonic oscillator:
             /// 
@@ -124,7 +124,25 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
                 SaveAs("Simple_Harmonic_Oscillator.png");
             }
             /// </code>
-
+            /// </example 3>
+            /// 
+            /// <example 4>
+            /// lets look at harmonic oscillator with damping
+            /// 
+            /// .. math:: m\frac{d^2y}{dt^2} + c\frac{dy}{dt} + ky = 0
+            /// .. math:: y_0 = 0.7; y'_0 = 0; t = [0, 30];
+            /// 
+            /// where :math: `m` is the mass, :math: `c` is the damping coefficient, and :math: `k` is the spring constant.
+            /// 
+            /// To solve this, we first transform the problem into a system of first order differential equations:
+            /// 
+            /// Let :math: `v = \frac{dy}{dt}`
+            /// 
+            /// hence :math: `\frac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`
+            /// 
+            /// Now we have 2 equations :math: `\frac{dy}{dt} = v, \frac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`
+            /// 
+            /// <code>
             {
                 // Damping System
                 double stiffness = 3.5, damping = 0.5, 
@@ -135,6 +153,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
                 Plot(T, Y, Linewidth: 2); 
                 SaveAs("Damping_Harmonic_Oscillator.png");
             }
+            /// </code>
+            /// </example 4>
 
             {
                 // Predator Prey Model

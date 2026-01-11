@@ -18,7 +18,7 @@ Even before solving an equation, we can visualize it using a Slope Field(or Dire
 *Analytical Solutions(The "Exact" Way)*
 This is what you do in a calculus class. You use integration techniques to find a precise formula for y(t).
 
-- Example: For :math:`\frac{dt}{dy} = ky`, the analytical solution is  :math:`y(t) = Ce^{kt}`
+- example: For :math:`\frac{dt}{dy} = ky`, the analytical solution is  :math:`y(t) = Ce^{kt}`
 - Pros: Perfectly accurate; gives you a formula you can use forever.
 - Cons: Most complex equations in physics and engineering cannot be solved this way.
 
@@ -74,7 +74,7 @@ where :math: `f(t, y)` is a function that defines the rate of change of :math: `
        Title("Solution of dy/dt = sin(t) - y with y(0) = 0");
        Xlabel("Time t");
        Ylabel("Function y");
-       SaveAs("First_Order_ODE_Solution_Example2.png");
+       SaveAs("First_Order_ODE_Solution_example2.png");
    }
 
 
@@ -99,49 +99,54 @@ Now we have 2 equations :math: `\frac{dy}{dt} = v, \frac{dv}{dt} = -4y, y_0 = 0,
        Plot(T, Y, Linewidth: 2); 
        SaveAs("Simple_Harmonic_Oscillator.png");
    }
-   
+
+
+            /// <code>
+
+.. code-block:: C#
+
    {
-   // Damping System
-   double stiffness = 3.5, damping = 0.5, 
-   mass = 2.0, k = stiffness/mass, c = damping/mass;
-   double[] dydt(double t, double[] y) => 
-   [y[1], -(k*y[0] + c*y[1])];
-   (ColVec T, Matrix Y) = Ode45(dydt, [0.7, 0], [0, 30]);
-   Plot(T, Y, Linewidth: 2); 
-   SaveAs("Damping_Harmonic_Oscillator.png");
+       // Damping System
+       double stiffness = 3.5, damping = 0.5, 
+           mass = 2.0, k = stiffness/mass, c = damping/mass;
+       double[] dydt(double t, double[] y) => 
+           [y[1], -(k*y[0] + c*y[1])];
+       (ColVec T, Matrix Y) = Ode45(dydt, [0.7, 0], [0, 30]);
+       Plot(T, Y, Linewidth: 2); 
+       SaveAs("Damping_Harmonic_Oscillator.png");
    }
-   
-   {
-   // Predator Prey Model
-   double alpha = 0.01, beta = 0.02;
-   double[] dydt(double t, double[] y) =>
-   [(1 - alpha*y[1])*y[0], (-1 + beta*y[0])*y[1]];
-   (ColVec T, Matrix Y) = Ode45(dydt, [20, 20], [0, 15]);
-   Plot(T, Y, Linewidth: 2);
-   SaveAs("Predator_Prey_Model.png");
-   }
-   
-   {
-   // Blausius Boundary Layer
-   
-   // define function
-   double[] dydt(double t, double[] y) =>
-   [y[1], y[2], -0.5 * y[2] * y[0]];
-   
-   // set time span
-   double[] tspan = [0, 6];
-   
-   double[] y0 = [0, 0, 0.5];
-   (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
-   
-   // plot the result
-   Plot(T, Y, Linewidth: 2);
-   Legend(["f", "f'", "f''"], UpperLeft);
-   Axis([0, 6, 0, 2]); Xlabel("η"); 
-   Title("Blasius Boundary Layer");
-   SaveAs("Blasius_Boundary_Layer.png");
-   }
-   
-   
-   
+
+
+{
+// Predator Prey Model
+double alpha = 0.01, beta = 0.02;
+double[] dydt(double t, double[] y) =>
+[(1 - alpha*y[1])*y[0], (-1 + beta*y[0])*y[1]];
+(ColVec T, Matrix Y) = Ode45(dydt, [20, 20], [0, 15]);
+Plot(T, Y, Linewidth: 2);
+SaveAs("Predator_Prey_Model.png");
+}
+
+{
+// Blausius Boundary Layer
+
+// define function
+double[] dydt(double t, double[] y) =>
+[y[1], y[2], -0.5 * y[2] * y[0]];
+
+// set time span
+double[] tspan = [0, 6];
+
+double[] y0 = [0, 0, 0.5];
+(ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+
+// plot the result
+Plot(T, Y, Linewidth: 2);
+Legend(["f", "f'", "f''"], UpperLeft);
+Axis([0, 6, 0, 2]); Xlabel("η"); 
+Title("Blasius Boundary Layer");
+SaveAs("Blasius_Boundary_Layer.png");
+}
+
+
 
