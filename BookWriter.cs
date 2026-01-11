@@ -159,6 +159,12 @@ namespace ConsoleApp1
                         }
                         Document.Add("");
                         break;
+                    case "example":
+                        Document.Add("");
+                        Document.Add(".. admonition:: C#");
+                        Document.Add("");
+
+                        break;
                     case "text":
                         Document.AddRange(packet.content);
                         break;
@@ -213,6 +219,10 @@ namespace ConsoleApp1
                             packet.content.Add(line.Substring(length-1));
                             line = lines[++start];
                         }
+                    }
+                    if(result == "example")
+                    {
+
                     }
                 }
                 else
