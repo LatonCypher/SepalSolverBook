@@ -52,6 +52,10 @@
          Ylabel("Function y");
          SaveAs("First_Order_ODE_Solution.png");
 
+      .. figure:: images/First_Order_ODE_Solution.png
+         :align: center
+         :alt: First_Order_ODE_Solution.png
+
    .. admonition:: Example 2
 
       Solve the first-order ODE :math:`\frac{dy}{dt} = \sin(t) - y` with the initial condition :math:`y(0) = 0` over the interval :math:`t \in [0, 10]`.
@@ -68,6 +72,10 @@
          Ylabel("Function y");
          SaveAs("First_Order_ODE_Solution_example2.png");
 
+      .. figure:: images/First_Order_ODE_Solution_example2.png
+         :align: center
+         :alt: First_Order_ODE_Solution_example2.png
+
    .. admonition:: Example 3
 
       Solve a second order ODE (simple harmonic oscillator) by first converting to system of first order equations:
@@ -82,6 +90,10 @@
          (ColVec T, Matrix Y) = Ode45(dydt, [0,5], [0,10]);
          Plot(T, Y, Linewidth: 2);
          SaveAs("Simple_Harmonic_Oscillator.png");
+
+       .. figure:: images/Simple_Harmonic_Oscillator.png
+         :align: center
+         :alt: Simple_Harmonic_Oscillator.png
 
    .. admonition:: Example 4
 
@@ -98,28 +110,9 @@
              [y[1], -(k*y[0] + c*y[1])];
          (ColVec T, Matrix Y) = Ode45(dydt, [0.7, 0], [0, 30]);
          Plot(T, Y, Linewidth: 2);
-         SaveAs("Damping_Harmonic_Oscillator.png");
+         SaveAs("Damped_Harmonic_Oscillator.png");
 
-   .. code-block:: csharp
-
-      // Predator Prey Model
-      double alpha = 0.01, beta = 0.02;
-      double[] dydt(double t, double[] y) =>
-          [(1 - alpha*y[1])*y[0], (-1 + beta*y[0])*y[1]];
-      (ColVec T, Matrix Y) = Ode45(dydt, [20, 20], [0, 15]);
-      Plot(T, Y, Linewidth: 2);
-      SaveAs("Predator_Prey_Model.png");
-
-   .. code-block:: csharp
-
-      // Blasius Boundary Layer
-      double[] dydt(double t, double[] y) =>
-          [y[1], y[2], -0.5 * y[2] * y[0]];
-      double[] tspan = [0, 6];
-      double[] y0 = [0, 0, 0.5];
-      (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
-      Plot(T, Y, Linewidth: 2);
-      Legend(["f", "f'", "f''"], UpperLeft);
-      Axis([0, 6, 0, 2]); Xlabel("η");
-      Title("Blasius Boundary Layer");
-      SaveAs("Blasius_Boundary_Layer.png");
+       .. figure:: images/Damped_Harmonic_Oscillator.png
+         :align: center
+         :alt: Damped_Harmonic_Oscillator.png
+    
