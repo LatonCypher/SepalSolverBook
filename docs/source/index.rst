@@ -45,13 +45,3 @@ This book is intended for students, researchers, and professionals seeking a dee
 .. toctree::
 
    Basic Operations Syntax
-   Polynomials
-   Interpolation
-   Special Functions
-   Linear Algebra
-   Nonlinear System
-   Integration
-   Ordinary Differential Equations
-   Numerical Optimization
-   Partial Differential Equations
-   Conclusion

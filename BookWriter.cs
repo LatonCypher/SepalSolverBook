@@ -1,6 +1,11 @@
 ﻿
 
 using ScottPlot;
+using ScottPlot.Colormaps;
+using ScottPlot.MultiplotLayouts;
+using System.Data;
+using System.Reflection.Metadata;
+using System.Reflection.PortableExecutable;
 
 namespace ConsoleApp1
 {
@@ -125,12 +130,16 @@ namespace ConsoleApp1
             TreatHeader2(bookContent);
             TreatHeader3(bookContent);
             TreatCodeBlock(bookContent);
+            TreatTableBlock(bookContent);
 
-            using (StreamWriter writer = new(outputPath, true))
+            using (StreamWriter writer = new(outputPath, append: true))
             {
-                writer.WriteLine(bookContent);
+                foreach(var line in bookContent)
+                    writer.WriteLine(line);
             }
         }
+
+       
 
         static void Replace(List<string> content, int start, int length, List<string> replacement)
         {
@@ -251,33 +260,55 @@ namespace ConsoleApp1
                 Replace(bookContent, startIndex, Length + 1, Codelines);
             }
         }
-        static string BuildRstTable(string[] rows)
+        static void TreatTableBlock(List<string> bookContent)
         {
-            // Assume pipe-separated values
-            string[][] cells = Array.ConvertAll(rows, r => r.Split('|'));
-            int cols = cells[0].Length;
-            int[] widths = new int[cols];
-
-            // Compute column widths
-            for (int c = 0; c < cols; c++)
-                foreach (var row in cells)
-                    widths[c] = Max(widths[c], row[c].Trim().Length);
-
-            string line = "+" + string.Join("+", Array.ConvertAll(widths, w => new string('-', w + 2))) + "+";
-
-            var table = new System.Text.StringBuilder();
-            table.AppendLine(line);
-            foreach (var row in cells)
+            while (bookContent.Any(line => line.Contains("<table>")))
             {
-                table.Append("|");
-                for (int c = 0; c < cols; c++)
-                    table.Append(" " + row[c].Trim().PadRight(widths[c]) + " |");
-                table.AppendLine();
-                table.AppendLine(line);
-            }
-            return table.ToString();
-        }
+                int startIndex = -1;
+                // replace code blocks with rst format
+                for (int i = 0; i < bookContent.Count; i++)
+                {
+                    if (bookContent[i].Contains("<table>"))
+                    {
+                        startIndex = i;
+                        break;
+                    }
+                }
+                int Length = 1;
+                List<string> Codelines = ["..list-table::"];
+                string line = bookContent[startIndex];
+                var match = Regex.Match(line, @"<table>\s*(.*)");
+                if (match.Success)
+                {
+                    string content = match.Groups[1].Value;
+                    Codelines = [$"..list-table:: {content}"];
+                }
+                Codelines.Add("   : header-rows: 1");
+                Codelines.Add("");
+                while(!bookContent[startIndex + Length].Contains("</table>"))
+                {
+                    string tableline = bookContent[startIndex + Length];
+                    // Remove leading "///"
+                    line = tableline.TrimStart(' ', '\t', '/').Trim();
 
+                    // Split by '|'
+                    string[] columns = line.Split('|');
+
+                    // Trim each column
+                    for (int i = 0; i < columns.Length; i++)
+                        columns[i] = columns[i].Trim();
+
+                    // Print header row
+                    columns[0] = "   * - " + columns[0];
+                    for (int i = 1; i < columns.Length; i++)
+                        columns[i] = "     - " + columns[i];
+
+                    Codelines.AddRange(columns);
+                    Length++;
+                }
+                Replace(bookContent, startIndex, Length + 1, Codelines);
+            }
+        }
         static string Indent(string text, int spaces)
         {
             string pad = new string(' ', spaces);
