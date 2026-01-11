@@ -283,13 +283,13 @@ namespace ConsoleApp1
                     }
                 }
                 int Length = 1;
-                List<string> Codelines = ["..list-table::"];
+                List<string> Codelines = ["", "..list-table::"];
                 string line = bookContent[startIndex];
                 var match = Regex.Match(line, @"<table>\s*(.*)");
                 if (match.Success)
                 {
                     string content = match.Groups[1].Value;
-                    Codelines = [$"..list-table:: {content}"];
+                    Codelines = ["", $"..list-table:: {content}"];
                 }
                 Codelines.Add("   : header-rows: 1");
                 Codelines.Add("");

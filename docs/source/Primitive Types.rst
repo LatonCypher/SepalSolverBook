@@ -7,6 +7,7 @@ Primitive Types
             /// ushort, int, uint, long, ulong, char, float, double, decimal, nint, nuint, 
             /// object, string, and dynamic
             ///
+
 ..list-table:: List of Primitive Types 
    : header-rows: 1
 
@@ -154,6 +155,7 @@ Primitive Types
             /// primitives themselves but are built into the framework and derive from other base 
             /// classes (usually System.Object).
             /// 
+
 ..list-table:: List of Inbuilt Derived Types
    : header-rows: 1
 
