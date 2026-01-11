@@ -255,7 +255,7 @@ namespace ConsoleApp1
                     }
                 }
                 int Length = 1;
-                List<string> Codelines = [".. code-block:: csharp"];
+                List<string> Codelines = ["", ".. code-block:: csharp"];
                 int space = bookContent[startIndex + Length].TakeWhile(c => c == ' ').Count()+1;
                 while (!bookContent[startIndex + Length].Contains("</code>"))
                 {
@@ -335,7 +335,7 @@ namespace ConsoleApp1
                 int Length = 1;
                 string contentangle = Regex.Match(bookContent[startIndex], "<(.*?)>").Value;
                 string[] examplen = contentangle.Substring(1, contentangle.Length-2).Split(' ');
-                List<string> Codelines = [$".. Admonition:: Example {examplen[1]}"];
+                List<string> Codelines = ["", $".. Admonition:: Example {examplen[1]}"];
                 while (!bookContent[startIndex + Length].Contains("</example"))
                 {
                     string line = bookContent[startIndex + Length];

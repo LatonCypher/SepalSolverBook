@@ -88,6 +88,7 @@ Primitive Types
      - Reference type
      - Type resolved at runtime
             /// 
+
 .. code-block:: csharp
 
    // * byte: 8-bit unsigned integer.
@@ -109,6 +110,7 @@ Primitive Types
 
             ///
             /// 
+
 .. code-block:: csharp
 
    // * float: Single-precision floating-point.
@@ -118,6 +120,7 @@ Primitive Types
 
             ///
             /// 
+
 .. code-block:: csharp
 
    // * char: Represents a single Unicode character.
@@ -125,6 +128,7 @@ Primitive Types
 
             ///
             /// 
+
 .. code-block:: csharp
 
    // * string: Represents a sequence of characters.
@@ -133,6 +137,7 @@ Primitive Types
 
             ///
             ///
+
 .. code-block:: csharp
 
    // * bool: Represents a boolean value(true or false).
@@ -140,6 +145,7 @@ Primitive Types
 
             ///
             ///
+
 .. code-block:: csharp
 
    // * decimal: High-precision decimal type, typically used for financial calculations.
