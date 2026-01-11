@@ -35,7 +35,7 @@
             /// Without a starting point, a differential equation has an infinite number of solutions(a "family" of curves). The initial condition picks the specific path the system takes.
             /// Numerical methods are essential because most real-world ordinary differential equations (ODEs) cannot be solved analytically (with pen and paper). Instead of finding a continuous formula for $y(x)$, we calculate discrete values at specific points.
             /// This guide covers the use of sepalsolver for solving an Initial Value Problem (IVP) defined by: math: `\frac{dy}{dt} = f(t, y), \quad y(t_0) = y_0`
-            /// where :math: `f(t, y)` is a function that defines the rate of change of :math: `y` with respect to :math:`t`, and :math:`y_0` is the initial value of :math: `y` at time :math: `t_0`.
+            /// where :math:`f(t, y)` is a function that defines the rate of change of :math:`y` with respect to :math:`t`, and :math:`y_0` is the initial value of :math:`y` at time :math:`t_0`.
             /// <example 1>
             /// Solve the first-order ODE :math:`\cfrac{dy}{dt} = -2y` with the initial condition :math:`y(0) = 1` over the interval :math:`t \in [0, 5]`.
             /// <code> 
@@ -89,11 +89,11 @@
             /// 
             /// To solve this, we first transform the problem into a system of first order differential equations:
             /// 
-            /// Let :math: `v = \cfrac{dy}{dt}`
+            /// Let :math:`v = \cfrac{dy}{dt}`
             /// 
-            /// hence :math: `\cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
+            /// hence :math:`\cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
             /// 
-            /// Now we have 2 equations :math: `\cfrac{dy}{dt} = v, \cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
+            /// Now we have 2 equations :math:`\cfrac{dy}{dt} = v, \cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
             /// <code>
             {
                 // Simple Harmonic Oscillator
@@ -112,12 +112,12 @@
             /// .. math:: m\cfrac{d^2y}{dt^2} + c\cfrac{dy}{dt} + ky = 0
             /// .. math:: y_0 = 0.7; y'_0 = 0; t = [0, 30];
             /// 
-            /// where :math: `m` is the mass, :math: `c` is the damping coefficient, and :math: `k` is the spring constant.
+            /// where :math:`m` is the mass, :math:`c` is the damping coefficient, and :math:`k` is the spring constant.
             /// To solve this, we first transform the problem into a system of first order differential equations:
             /// 
-            /// Let :math: `v = \cfrac{dy}{dt}`
-            /// hence :math: `\cfrac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`
-            /// Now we have 2 equations :math: `\cfrac{dy}{dt} = v, \cfrac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`
+            /// Let :math:`v = \cfrac{dy}{dt}`
+            /// hence :math:`\cfrac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`
+            /// Now we have 2 equations :math:`\cfrac{dy}{dt} = v, \cfrac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`
             /// 
             /// <code>
             {
