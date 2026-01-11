@@ -7,6 +7,7 @@
             /// <BookContent>
             /// <header 2> 1. What is a Differential Equation?</header 2>
             /// A differential equation(DE) is a mathematical equation that relates a function with its derivatives. In simpler terms, it describes how a quantity changes in relation to its current state.
+            /// 
             /// - The Function: math:`(y)`: Represents the "state" of a system(e.g., the position of a car, the temperature of a room).
             /// - The Derivative: :math:`\cfrac{dt}{dy}` Represents the "rate of change"(e.g., the speed of the car, how fast the room is cooling).
             ///
@@ -26,6 +27,7 @@
             /// 
             /// **Numerical Solutions (The "Approximate" Way)**
             /// When an equation is too "messy" for calculus, we use numerical methods.Instead of finding a pretty formula, we use a computer to start at an initial point and take tiny steps forward, calculating the slope as we go.
+            /// 
             /// - Pros: Can solve almost any equation, no matter how complex.
             /// - Cons: Always contains a small amount of "truncation error" because we are approximating a smooth curve with small straight lines.
             /// 
