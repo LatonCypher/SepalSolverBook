@@ -33,47 +33,45 @@ First Order Differential Equation
             /// Numerical methods are essential because most real-world ordinary differential equations (ODEs) cannot be solved analytically (with pen and paper). Instead of finding a continuous formula for $y(x)$, we calculate discrete values at specific points.
             /// This guide covers the use of sepalsolver for solving an Initial Value Problem (IVP) defined by: math: `\frac{dy}{dt} = f(t, y), \quad y(t_0) = y_0`
             /// where :math: `f(t, y)` is a function that defines the rate of change of :math: `y` with respect to :math:`t`, and :math:`y_0` is the initial value of :math: `y` at time :math: `t_0`.
-            /// <example 1>
-            /// Solve the first-order ODE :math:`\cfrac{dy}{dt} = -2y` with the initial condition :math:`y(0) = 1` over the interval :math:`t \in [0, 5]`.
-.. code-block:: csharp
-
-   // Define the ODE as a function
-   double dydt(double t, double y) => -2*y;
-   // Initial condition
-   double y0 = 1;
-   // Time span
-   double[] tspan = [0, 5];
-   // Solve the ODE using Ode45
-   (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
-   // Plot the results
-   Plot(T, Y, Linewidth: 2);
-   Title("Solution of dy/dt = -2y with y(0) = 1");
-   Xlabel("Time t");
-   Ylabel("Function y");
-   SaveAs("First_Order_ODE_Solution.png");
-
-            /// </example 1>
+.. Admonition:: Example 1>
+   Solve the first-order ODE :math:`\cfrac{dy}{dt} = -2y` with the initial condition :math:`y(0) = 1` over the interval :math:`t \in [0, 5]`.
+   .. code-block:: csharp
+   
+      // Define the ODE as a function
+      double dydt(double t, double y) => -2*y;
+      // Initial condition
+      double y0 = 1;
+      // Time span
+      double[] tspan = [0, 5];
+      // Solve the ODE using Ode45
+      (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+      // Plot the results
+      Plot(T, Y, Linewidth: 2);
+      Title("Solution of dy/dt = -2y with y(0) = 1");
+      Xlabel("Time t");
+      Ylabel("Function y");
+      SaveAs("First_Order_ODE_Solution.png");
+   
             /// 
-            /// <example 2>
-            /// Solve the first-order ODE :math:`\cfrac{dy}{dt} = \sin(t) - y` with the initial condition :math:`y(0) = 0` over the interval :math:`t \in [0, 10]`.
-.. code-block:: csharp
-
-   // Define the ODE as a function
-   double dydt(double t, double y) => Sin(t) - y;
-   // Initial condition
-   double y0 = 0;
-   // Time span
-   double[] tspan = [0, 10];
-   // Solve the ODE using Ode45
-   (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
-   // Plot the results
-   Plot(T, Y, Linewidth: 2);
-   Title("Solution of dy/dt = sin(t) - y with y(0) = 0");
-   Xlabel("Time t");
-   Ylabel("Function y");
-   SaveAs("First_Order_ODE_Solution_example2.png");
-
-            /// </example 2>
+.. Admonition:: Example 2>
+   Solve the first-order ODE :math:`\cfrac{dy}{dt} = \sin(t) - y` with the initial condition :math:`y(0) = 0` over the interval :math:`t \in [0, 10]`.
+   .. code-block:: csharp
+   
+      // Define the ODE as a function
+      double dydt(double t, double y) => Sin(t) - y;
+      // Initial condition
+      double y0 = 0;
+      // Time span
+      double[] tspan = [0, 10];
+      // Solve the ODE using Ode45
+      (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+      // Plot the results
+      Plot(T, Y, Linewidth: 2);
+      Title("Solution of dy/dt = sin(t) - y with y(0) = 0");
+      Xlabel("Time t");
+      Ylabel("Function y");
+      SaveAs("First_Order_ODE_Solution_example2.png");
+   
             /// 
             /// </example 3>
             /// Solve a second order ODE (simple harmonic oscillator) by first converting to system of first order equation and 
@@ -100,67 +98,64 @@ First Order Differential Equation
 
             /// </example 3>
             /// 
-            /// <example 4>
-            /// lets look at harmonic oscillator with damping
-            /// 
-            /// .. math:: m\cfrac{d^2y}{dt^2} + c\cfrac{dy}{dt} + ky = 0
-            /// .. math:: y_0 = 0.7; y'_0 = 0; t = [0, 30];
-            /// 
-            /// where :math: `m` is the mass, :math: `c` is the damping coefficient, and :math: `k` is the spring constant.
-            /// To solve this, we first transform the problem into a system of first order differential equations:
-            /// 
-            /// Let :math: `v = \cfrac{dy}{dt}`
-            /// hence :math: `\cfrac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`
-            /// Now we have 2 equations :math: `\cfrac{dy}{dt} = v, \cfrac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`
-            /// 
-.. code-block:: csharp
+.. Admonition:: Example 4>
+   lets look at harmonic oscillator with damping
+   
+   .. math:: m\cfrac{d^2y}{dt^2} + c\cfrac{dy}{dt} + ky = 0
+   .. math:: y_0 = 0.7; y'_0 = 0; t = [0, 30];
+   
+   where :math: `m` is the mass, :math: `c` is the damping coefficient, and :math: `k` is the spring constant.
+   To solve this, we first transform the problem into a system of first order differential equations:
+   
+   Let :math: `v = \cfrac{dy}{dt}`
+   hence :math: `\cfrac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`
+   Now we have 2 equations :math: `\cfrac{dy}{dt} = v, \cfrac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`
+   
+   .. code-block:: csharp
+   
+      // Damping System
+      double stiffness = 3.5, damping = 0.5, 
+          mass = 2.0, k = stiffness/mass, c = damping/mass;
+      double[] dydt(double t, double[] y) => 
+          [y[1], -(k*y[0] + c*y[1])];
+      (ColVec T, Matrix Y) = Ode45(dydt, [0.7, 0], [0, 30]);
+      Plot(T, Y, Linewidth: 2); 
+      SaveAs("Damping_Harmonic_Oscillator.png");
+   
+.. Admonition:: Example 5>
+   .. code-block:: csharp
+   
+      // Predator Prey Model
+      double alpha = 0.01, beta = 0.02;
+      double[] dydt(double t, double[] y) =>
+          [(1 - alpha*y[1])*y[0], (-1 + beta*y[0])*y[1]];
+      (ColVec T, Matrix Y) = Ode45(dydt, [20, 20], [0, 15]);
+      Plot(T, Y, Linewidth: 2);
+      SaveAs("Predator_Prey_Model.png");
+   
 
-   // Damping System
-   double stiffness = 3.5, damping = 0.5, 
-       mass = 2.0, k = stiffness/mass, c = damping/mass;
-   double[] dydt(double t, double[] y) => 
-       [y[1], -(k*y[0] + c*y[1])];
-   (ColVec T, Matrix Y) = Ode45(dydt, [0.7, 0], [0, 30]);
-   Plot(T, Y, Linewidth: 2); 
-   SaveAs("Damping_Harmonic_Oscillator.png");
-
-            /// </example 4>
-            /// <example 5>
-.. code-block:: csharp
-
-   // Predator Prey Model
-   double alpha = 0.01, beta = 0.02;
-   double[] dydt(double t, double[] y) =>
-       [(1 - alpha*y[1])*y[0], (-1 + beta*y[0])*y[1]];
-   (ColVec T, Matrix Y) = Ode45(dydt, [20, 20], [0, 15]);
-   Plot(T, Y, Linewidth: 2);
-   SaveAs("Predator_Prey_Model.png");
-
-            /// </example 5>
-
-            /// <example 6>
-.. code-block:: csharp
-
-   // Blausius Boundary Layer
-
-   // define function
-   double[] dydt(double t, double[] y) =>
-       [y[1], y[2], -0.5 * y[2] * y[0]];
-
-   // set time span
-   double[] tspan = [0, 6];
-
-   double[] y0 = [0, 0, 0.5];
-   (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
-
-   // plot the result
-   Plot(T, Y, Linewidth: 2);
-   Legend(["f", "f'", "f''"], UpperLeft);
-   Axis([0, 6, 0, 2]); Xlabel("η"); 
-   Title("Blasius Boundary Layer");
-   SaveAs("Blasius_Boundary_Layer.png");
-
-            /// </example 6>
+.. Admonition:: Example 6>
+   .. code-block:: csharp
+   
+      // Blausius Boundary Layer
+   
+      // define function
+      double[] dydt(double t, double[] y) =>
+          [y[1], y[2], -0.5 * y[2] * y[0]];
+   
+      // set time span
+      double[] tspan = [0, 6];
+   
+      double[] y0 = [0, 0, 0.5];
+      (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+   
+      // plot the result
+      Plot(T, Y, Linewidth: 2);
+      Legend(["f", "f'", "f''"], UpperLeft);
+      Axis([0, 6, 0, 2]); Xlabel("η"); 
+      Title("Blasius Boundary Layer");
+      SaveAs("Blasius_Boundary_Layer.png");
+   
 
             ///</BookContent>
         }

@@ -6,6 +6,7 @@ using ScottPlot.MultiplotLayouts;
 using System.Data;
 using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
+using System.Text.RegularExpressions;
 
 namespace ConsoleApp1
 {
@@ -138,6 +139,7 @@ namespace ConsoleApp1
             TreatHeader3(bookContent);
             TreatCodeBlock(bookContent);
             TreatTableBlock(bookContent);
+            TreatExampleBlock(bookContent);
 
             
             using (StreamWriter writer = new(outputPath, true))
@@ -147,7 +149,6 @@ namespace ConsoleApp1
             }
         }
 
-       
 
         static void Replace(List<string> content, int start, int length, List<string> replacement)
         {
@@ -317,11 +318,36 @@ namespace ConsoleApp1
                 Replace(bookContent, startIndex, Length + 1, Codelines);
             }
         }
-        static string Indent(string text, int spaces)
+        static void TreatExampleBlock(List<string> bookContent)
         {
-            string pad = new string(' ', spaces);
-            string indentedText = Regex.Replace(text.Trim(), @"^", pad, RegexOptions.Multiline);
-            return indentedText;
+            while (bookContent.Any(line => line.Contains("<example")))
+            {
+                int startIndex = -1;
+                // replace code blocks with rst format
+                for (int i = 0; i < bookContent.Count; i++)
+                {
+                    if (bookContent[i].Contains("<example"))
+                    {
+                        startIndex = i;
+                        break;
+                    }
+                }
+                int Length = 1;
+                string contentangle = Regex.Match(bookContent[startIndex], "<(.*?)>").Value;
+                string[] examplen = contentangle.Split(' ');
+                List<string> Codelines = [$".. Admonition:: Example {examplen[1]}"];
+                while (!bookContent[startIndex + Length].Contains("</example"))
+                {
+                    string line = bookContent[startIndex + Length];
+                    if(line.Contains("///"))
+                        Codelines.Add("   " + line.TrimStart(' ', '\t', '/').Trim());
+                    else
+                        Codelines.Add("   " + line);
+                    Length++;
+                }
+                Replace(bookContent, startIndex, Length + 1, Codelines);
+            }
         }
+
     }
 }
