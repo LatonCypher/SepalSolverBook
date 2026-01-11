@@ -81,7 +81,7 @@
             /// </code>
             /// </example 2>
             /// 
-            /// </example 3>
+            /// <example 3>
             /// Solve a second order ODE (simple harmonic oscillator) by first converting to system of first order equation and 
             /// then solve the system of first-order ODEs representing the simple harmonic oscillator:
             /// 
@@ -133,6 +133,7 @@
             }
             /// </code>
             /// </example 4>
+            /// 
             /// <example 5>
             /// <code>
             {
@@ -146,7 +147,7 @@
             }
             /// </code>
             /// </example 5>
-
+            ///
             /// <example 6>
             /// <code>
             {

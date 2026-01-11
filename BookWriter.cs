@@ -334,7 +334,7 @@ namespace ConsoleApp1
                 }
                 int Length = 1;
                 string contentangle = Regex.Match(bookContent[startIndex], "<(.*?)>").Value;
-                string[] examplen = contentangle.Split(' ');
+                string[] examplen = contentangle.Substring(1, contentangle.Length-2).Split(' ');
                 List<string> Codelines = [$".. Admonition:: Example {examplen[1]}"];
                 while (!bookContent[startIndex + Length].Contains("</example"))
                 {
@@ -348,6 +348,5 @@ namespace ConsoleApp1
                 Replace(bookContent, startIndex, Length + 1, Codelines);
             }
         }
-
     }
 }

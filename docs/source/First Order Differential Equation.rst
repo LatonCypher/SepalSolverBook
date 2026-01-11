@@ -33,7 +33,7 @@ First Order Differential Equation
             /// Numerical methods are essential because most real-world ordinary differential equations (ODEs) cannot be solved analytically (with pen and paper). Instead of finding a continuous formula for $y(x)$, we calculate discrete values at specific points.
             /// This guide covers the use of sepalsolver for solving an Initial Value Problem (IVP) defined by: math: `\frac{dy}{dt} = f(t, y), \quad y(t_0) = y_0`
             /// where :math: `f(t, y)` is a function that defines the rate of change of :math: `y` with respect to :math:`t`, and :math:`y_0` is the initial value of :math: `y` at time :math: `t_0`.
-.. Admonition:: Example 1>
+.. Admonition:: Example 1
    Solve the first-order ODE :math:`\cfrac{dy}{dt} = -2y` with the initial condition :math:`y(0) = 1` over the interval :math:`t \in [0, 5]`.
    .. code-block:: csharp
    
@@ -53,7 +53,7 @@ First Order Differential Equation
       SaveAs("First_Order_ODE_Solution.png");
    
             /// 
-.. Admonition:: Example 2>
+.. Admonition:: Example 2
    Solve the first-order ODE :math:`\cfrac{dy}{dt} = \sin(t) - y` with the initial condition :math:`y(0) = 0` over the interval :math:`t \in [0, 10]`.
    .. code-block:: csharp
    
@@ -73,32 +73,31 @@ First Order Differential Equation
       SaveAs("First_Order_ODE_Solution_example2.png");
    
             /// 
-            /// </example 3>
-            /// Solve a second order ODE (simple harmonic oscillator) by first converting to system of first order equation and 
-            /// then solve the system of first-order ODEs representing the simple harmonic oscillator:
+.. Admonition:: Example 3
+   Solve a second order ODE (simple harmonic oscillator) by first converting to system of first order equation and
+   then solve the system of first-order ODEs representing the simple harmonic oscillator:
+   
+   .. math:: \frac{d^2y}{dt^2} = -4y
+   .. math:: y_0 = 0; y'_0 = 5; t = [0, 10];
+   
+   To solve this, we first transform the problem into a system of first order differential equations:
+   
+   Let :math: `v = \cfrac{dy}{dt}`
+   
+   hence :math: `\cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
+   
+   Now we have 2 equations :math: `\cfrac{dy}{dt} = v, \cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
+   .. code-block:: csharp
+   
+      // Simple Harmonic Oscillator
+      double[] dydt(double t, double[] y) => 
+          [y[1], -4*y[0]];
+      (ColVec T, Matrix Y) = Ode45(dydt, [0,5], [0,10]);
+      Plot(T, Y, Linewidth: 2); 
+      SaveAs("Simple_Harmonic_Oscillator.png");
+   
             /// 
-            /// .. math:: \frac{d^2y}{dt^2} = -4y
-            /// .. math:: y_0 = 0; y'_0 = 5; t = [0, 10];
-            /// 
-            /// To solve this, we first transform the problem into a system of first order differential equations:
-            /// 
-            /// Let :math: `v = \cfrac{dy}{dt}`
-            /// 
-            /// hence :math: `\cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
-            /// 
-            /// Now we have 2 equations :math: `\cfrac{dy}{dt} = v, \cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
-.. code-block:: csharp
-
-   // Simple Harmonic Oscillator
-   double[] dydt(double t, double[] y) => 
-       [y[1], -4*y[0]];
-   (ColVec T, Matrix Y) = Ode45(dydt, [0,5], [0,10]);
-   Plot(T, Y, Linewidth: 2); 
-   SaveAs("Simple_Harmonic_Oscillator.png");
-
-            /// </example 3>
-            /// 
-.. Admonition:: Example 4>
+.. Admonition:: Example 4
    lets look at harmonic oscillator with damping
    
    .. math:: m\cfrac{d^2y}{dt^2} + c\cfrac{dy}{dt} + ky = 0
@@ -122,7 +121,8 @@ First Order Differential Equation
       Plot(T, Y, Linewidth: 2); 
       SaveAs("Damping_Harmonic_Oscillator.png");
    
-.. Admonition:: Example 5>
+            /// 
+.. Admonition:: Example 5
    .. code-block:: csharp
    
       // Predator Prey Model
@@ -133,8 +133,8 @@ First Order Differential Equation
       Plot(T, Y, Linewidth: 2);
       SaveAs("Predator_Prey_Model.png");
    
-
-.. Admonition:: Example 6>
+            ///
+.. Admonition:: Example 6
    .. code-block:: csharp
    
       // Blausius Boundary Layer
