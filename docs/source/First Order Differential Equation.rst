@@ -411,3 +411,4 @@ Now we have 2 equations :math: `\cfrac.. code-block:: csharp
                      }
 
             
+System.Collections.Generic.List`1[System.String]

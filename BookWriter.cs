@@ -1,5 +1,7 @@
 ﻿
 
+using ScottPlot;
+
 namespace ConsoleApp1
 {
     internal class BookWriter (string ProjectFolder, string BookFolder)
@@ -107,77 +109,22 @@ namespace ConsoleApp1
         public void Run(string inputPath, string classname, string DocFolder)
         {
             string outputPath = DocFolder + classname + ".rst";
-            string csContent = File.ReadAllText(inputPath);
+            string[] Content = File.ReadAllLines(inputPath);
 
             // Extract BookContent block
-            var bookMatch = Regex.Match(csContent, @"/// <BookContent>(.*?)///</BookContent>", RegexOptions.Singleline);
-            if (!bookMatch.Success)
+            List<string> bookContent = [..Content.SkipWhile(line=> !line.Contains("/// <BookContent>")).
+                                          TakeWhile(line=>!line.Contains("/// </BookContent>"))];
+            if (bookContent.Count == 0)
             {
                 Console.WriteLine("No <BookContent> block found.");
                 return;
             }
-
-            string bookContent = bookMatch.Groups[1].Value;
-
-            // Remove leading "///"
-            bookContent = Regex.Replace(bookContent, @"^\s*/// ?", "", RegexOptions.Multiline);
-
-            // Process headers
-            bookContent = Regex.Replace(bookContent,
-                @"<header 1>(.*?)</header 1>",
-                m => $"{m.Groups[1].Value.Trim()}\n{new string('=', m.Groups[1].Value.Trim().Length)}",
-                RegexOptions.Singleline);
-
-            bookContent = Regex.Replace(bookContent,
-                @"<header 2>(.*?)</header 2>",
-                m => $"{m.Groups[1].Value.Trim()}\n{new string('-', m.Groups[1].Value.Trim().Length)}",
-                RegexOptions.Singleline);
-
-            bookContent = Regex.Replace(bookContent,
-                @"<header 3>(.*?)</header 3>",
-                m => $"{m.Groups[1].Value.Trim()}\n{new string('~', m.Groups[1].Value.Trim().Length)}",
-                RegexOptions.Singleline);
-
-            // Convert <example *> blocks
-            bookContent = Regex.Replace(bookContent,
-                @"<example\s+(.*?)>(.*?)</example\s+\1>",
-                m =>
-                {
-                    string title = m.Groups[1].Value.Trim();
-                    string inner = m.Groups[2].Value;
-
-                    // Handle <code> blocks inside example
-                    var codeMatch = Regex.Match(inner, @"<code>(.*?)</code>", RegexOptions.Singleline);
-                    if (codeMatch.Success)
-                    {
-                        string code = codeMatch.Groups[1].Value;
-                        code = Regex.Replace(code, @"^\s*/// ?", "", RegexOptions.Multiline);
-                        return $".. admonition:: Example {title}\n\n   .. code-block:: csharp\n\n{Indent(code, 6)}";
-                    }
-                    else
-                    {
-                        inner = Regex.Replace(inner, @"^\s*/// ?", "", RegexOptions.Multiline);
-                        return $".. admonition:: Example {title}\n\n   {inner.Trim()}";
-                    }
-                },
-                RegexOptions.Singleline);
-
-            // Convert <table> blocks
-            bookContent = Regex.Replace(bookContent,
-                @"<table>(.*?)</table>",
-                m =>
-                {
-                    string[] rows = m.Groups[1].Value.Trim().Split('\n');
-                    return BuildRstTable(rows);
-                },
-                RegexOptions.Singleline);
-
-            // Wrap remaining code snippets in code-block
-            // (simple heuristic: braces or semicolons indicate code)
-            bookContent = Regex.Replace(bookContent,
-                @"\{[^}]*\}",
-                m => $".. code-block:: csharp\n\n{Indent(m.Value, 3)}",
-                RegexOptions.Singleline);
+            bookContent.RemoveAt(0); // Remove the starting tag line
+            //Headers format
+            TreatHeader1(bookContent);
+            TreatHeader2(bookContent);
+            TreatHeader3(bookContent);
+            TreatCodeBlock(bookContent);
 
             using (StreamWriter writer = new(outputPath, true))
             {
@@ -185,6 +132,125 @@ namespace ConsoleApp1
             }
         }
 
+        static void Replace(List<string> content, int start, int length, List<string> replacement)
+        {
+            // Remove specified range
+            content.RemoveRange(start, length);
+
+            // Insert new items starting at index 1
+            content.InsertRange(start, replacement);
+
+        }
+
+        static void TreatHeader1(List<string> bookContent)
+        {
+            while (bookContent.Any(line => line.Contains("<header 1>")))
+            {
+                int startIndex = -1;
+                // replace code blocks with rst format
+                for (int i = 0; i < bookContent.Count; i++)
+                {
+                    if (bookContent[i].Contains("<header 1>"))
+                    {
+                        startIndex = i;
+                        break;
+                    }
+                }
+                string line = bookContent[startIndex];
+                // Regex to capture content between <header 1> and </header 1>
+                var match = Regex.Match(line, @"<header 1>(.*?)</header 1>");
+
+                if (match.Success)
+                {
+                    string header1 = match.Groups[1].Value;
+                    List<string> header1lines = [$"***{header1}***"];
+                    Replace(bookContent, startIndex, 1, header1lines);
+                }
+            }
+        }
+        static void TreatHeader2(List<string> bookContent)
+        {
+            while (bookContent.Any(line => line.Contains("<header 2>")))
+            {
+                int startIndex = -1;
+                // replace code blocks with rst format
+                for (int i = 0; i < bookContent.Count; i++)
+                {
+                    if (bookContent[i].Contains("<header 2>"))
+                    {
+                        startIndex = i;
+                        break;
+                    }
+                }
+
+                string line = bookContent[startIndex];
+                // Regex to capture content between <header 2> and </header 2>
+                var match = Regex.Match(line, @"<header 2>(.*?)</header 2>");
+
+                if (match.Success)
+                {
+                    string header2 = match.Groups[1].Value;
+                    List<string> header2lines = [$"**{header2}**"];
+                    Replace(bookContent, startIndex, 1, header2lines);
+                }
+            }
+        }
+        static void TreatHeader3(List<string> bookContent)
+        {
+            while (bookContent.Any(line => line.Contains("<header 3>")))
+            {
+                int startIndex = -1;
+                // replace code blocks with rst format
+                for (int i = 0; i < bookContent.Count; i++)
+                {
+                    if (bookContent[i].Contains("<header 3>"))
+                    {
+                        startIndex = i;
+                        break;
+                    }
+                }
+                string line = bookContent[startIndex];
+                // Regex to capture content between <header 3> and </header 3>
+                var match = Regex.Match(line, @"<header 3>(.*?)</header 3>");
+
+                if (match.Success)
+                {
+                    string header3 = match.Groups[1].Value;
+                    List<string> header3lines = [$"*{header3}*"];
+                    Replace(bookContent, startIndex, 1, header3lines);
+                }
+
+            }
+        }
+        static void TreatCodeBlock(List<string> bookContent)
+        {
+            while (bookContent.Any(line => line.Contains("<code>")))
+            {
+                int startIndex = -1;
+                // replace code blocks with rst format
+                for (int i = 0; i < bookContent.Count; i++)
+                {
+                    if (bookContent[i].Contains("<code>"))
+                    {
+                        startIndex = i;
+                        break;
+                    }
+                }
+                int Length = 1;
+                List<string> Codelines = [".. code-block:: csharp"];
+                int space = bookContent[startIndex + Length].TakeWhile(c => c == ' ').Count()+1;
+                while (!bookContent[startIndex + Length].Contains("</code>"))
+                {
+                    string line = bookContent[startIndex + Length];
+                    if(line.Length >= space)
+                        Codelines.Add(line.Substring(space));
+                    else
+                        Codelines.Add(line);
+                    Length++;
+                }
+                Replace(bookContent, startIndex, Length + 1, Codelines);
+            }
+        }
         static string BuildRstTable(string[] rows)
         {
             // Assume pipe-separated values
@@ -215,7 +281,8 @@ namespace ConsoleApp1
         static string Indent(string text, int spaces)
         {
             string pad = new string(' ', spaces);
-            return Regex.Replace(text.Trim(), @"^", pad, RegexOptions.Multiline);
+            string indentedText = Regex.Replace(text.Trim(), @"^", pad, RegexOptions.Multiline);
+            return indentedText;
         }
     }
 }

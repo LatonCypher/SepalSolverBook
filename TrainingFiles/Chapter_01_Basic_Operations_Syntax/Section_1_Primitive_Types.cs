@@ -7,9 +7,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
         public static void Run()
         {
             /// <BookContent>
-            /// <header 2> 
-            /// Primitive Types in C# 
-            /// </header 2>
+            /// <header 2> Primitive Types in C# </header 2>
             /// In C#, primitive types are the basic data types provided by the language. 
             /// The primitive (built-in) types in C# include bool, byte, sbyte, short, 
             /// ushort, int, uint, long, ulong, char, float, double, decimal, nint, nuint, 
@@ -104,9 +102,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             /// These primitive types are the building blocks for more complex data structures
             /// and are essential for various operations in C#.
             ///
-            /// <header 2> 
-            /// Inbuilt Derived Types in C# 
-            /// </header 2>
+            /// <header 2> Inbuilt Derived Types in C# </header 2>
             /// In C#, beyond the primitive types (like int, bool, char), there are several inbuilt 
             /// derived types that the language provides out of the box. These are types that are not 
             /// primitives themselves but are built into the framework and derive from other base 
