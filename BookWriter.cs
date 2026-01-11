@@ -156,6 +156,7 @@ namespace ConsoleApp1
                 if (match.Success)
                 {
                     string header1 = match.Groups[1].Value;
+                    header1 = header1.TrimStart().Trim();
                     List<string> header1lines = [header1, new string('=', header1.Length), ""];
                     Replace(bookContent, startIndex, 1, header1lines);
                 }
@@ -183,6 +184,7 @@ namespace ConsoleApp1
                 if (match.Success)
                 {
                     string header2 = match.Groups[1].Value;
+                    header2 = header2.TrimStart().Trim();
                     List<string> header2lines = [header2, new string('-', header2.Length), ""];
                     Replace(bookContent, startIndex, 1, header2lines);
                 }
@@ -209,6 +211,7 @@ namespace ConsoleApp1
                 if (match.Success)
                 {
                     string header3 = match.Groups[1].Value;
+                    header3 = header3.TrimStart().Trim();
                     List<string> header3lines = [header3, new string('~', header3.Length), ""];
                     Replace(bookContent, startIndex, 1, header3lines);
                 }

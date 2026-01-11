@@ -1,8 +1,8 @@
 Primitive Types
 ===============
 
- Primitive Types in C# 
------------------------
+Primitive Types in C#
+---------------------
 
 In C#, primitive types are the basic data types provided by the language. 
 The primitive (built-in) types in C# include bool, byte, sbyte, short, 
@@ -157,8 +157,8 @@ object, string, and dynamic
 These primitive types are the building blocks for more complex data structures
 and are essential for various operations in C#.
 
- Inbuilt Derived Types in C# 
------------------------------
+Inbuilt Derived Types in C#
+---------------------------
 
 In C#, beyond the primitive types (like int, bool, char), there are several inbuilt 
 derived types that the language provides out of the box. These are types that are not 
