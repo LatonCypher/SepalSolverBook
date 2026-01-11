@@ -9,7 +9,7 @@ Primitive Types
             ///
 
 .. list-table:: List of Primitive Types 
-   : header-rows: 1
+   :header-rows: 1
 
    * - C# Keyword
      - .NET Type
@@ -157,7 +157,7 @@ Primitive Types
             /// 
 
 .. list-table:: List of Inbuilt Derived Types
-   : header-rows: 1
+   :header-rows: 1
 
    * - Type
      - Base Class

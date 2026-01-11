@@ -292,7 +292,7 @@ namespace ConsoleApp1
                     string content = match.Groups[1].Value;
                     Codelines = ["", $".. list-table:: {content}"];
                 }
-                Codelines.Add("   : header-rows: 1");
+                Codelines.Add("   :header-rows: 1");
                 Codelines.Add("");
                 while(!bookContent[startIndex + Length].Contains("</table>"))
                 {

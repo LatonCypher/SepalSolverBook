@@ -1,7 +1,6 @@
 First Order Differential Equation
 =================================
 
-            /// # Chapter 8: Ordinary Differential Equations (ODEs)
             /// 1. What is a Differential Equation?
             /// A differential equation(DE) is a mathematical equation that relates a function with its derivatives. In simpler terms, it describes how a quantity changes in relation to its current state.
             /// - The Function(y): Represents the "state" of a system(e.g., the position of a car, the temperature of a room).
