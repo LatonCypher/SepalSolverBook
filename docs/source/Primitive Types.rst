@@ -2,11 +2,11 @@ Primitive Types
 ===============
 
 ** Primitive Types in C# **
-            /// In C#, primitive types are the basic data types provided by the language. 
-            /// The primitive (built-in) types in C# include bool, byte, sbyte, short, 
-            /// ushort, int, uint, long, ulong, char, float, double, decimal, nint, nuint, 
-            /// object, string, and dynamic
-            ///
+In C#, primitive types are the basic data types provided by the language. 
+The primitive (built-in) types in C# include bool, byte, sbyte, short, 
+ushort, int, uint, long, ulong, char, float, double, decimal, nint, nuint, 
+object, string, and dynamic
+
 
 .. list-table:: List of Primitive Types 
    :header-rows: 1
@@ -87,7 +87,7 @@ Primitive Types
      - System.Object
      - Reference type
      - Type resolved at runtime
-            /// 
+
 
 .. code-block:: csharp
 
@@ -108,8 +108,8 @@ Primitive Types
    // * ulong: 64-bit unsigned integer.
    { ulong a = 19; }
 
-            ///
-            /// 
+
+
 
 .. code-block:: csharp
 
@@ -118,16 +118,16 @@ Primitive Types
    // * double: Double-precision floating-point.
    { double a = 19; double b = -5; }
 
-            ///
-            /// 
+
+
 
 .. code-block:: csharp
 
    // * char: Represents a single Unicode character.
    { char a = 'c'; }
 
-            ///
-            /// 
+
+
 
 .. code-block:: csharp
 
@@ -135,32 +135,32 @@ Primitive Types
    // It's immutable, meaning once created, its value cannot be changed.
    { string str = "string"; }
 
-            ///
-            ///
+
+
 
 .. code-block:: csharp
 
    // * bool: Represents a boolean value(true or false).
    { bool T = true, F = false; }
 
-            ///
-            ///
+
+
 
 .. code-block:: csharp
 
    // * decimal: High-precision decimal type, typically used for financial calculations.
    { decimal d = 0.303856569382726564575M; }
 
-            ///
-            /// These primitive types are the building blocks for more complex data structures
-            /// and are essential for various operations in C#.
-            ///
+
+These primitive types are the building blocks for more complex data structures
+and are essential for various operations in C#.
+
 ** Inbuilt Derived Types in C# **
-            /// In C#, beyond the primitive types (like int, bool, char), there are several inbuilt 
-            /// derived types that the language provides out of the box. These are types that are not 
-            /// primitives themselves but are built into the framework and derive from other base 
-            /// classes (usually System.Object).
-            /// 
+In C#, beyond the primitive types (like int, bool, char), there are several inbuilt 
+derived types that the language provides out of the box. These are types that are not 
+primitives themselves but are built into the framework and derive from other base 
+classes (usually System.Object).
+
 
 .. list-table:: List of Inbuilt Derived Types
    :header-rows: 1
@@ -205,4 +205,4 @@ Primitive Types
      - System.ValueType
      - Value type
      - Allows value types to be null (e.g., int?).
-            ///
+

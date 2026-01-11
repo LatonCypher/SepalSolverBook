@@ -1,13 +1,5 @@
 ﻿
 
-using ScottPlot;
-using ScottPlot.Colormaps;
-using ScottPlot.MultiplotLayouts;
-using System.Data;
-using System.Reflection.Metadata;
-using System.Reflection.PortableExecutable;
-using System.Text.RegularExpressions;
-
 namespace ConsoleApp1
 {
     internal class BookWriter (string ProjectFolder, string BookFolder)
@@ -140,8 +132,9 @@ namespace ConsoleApp1
             TreatCodeBlock(bookContent);
             TreatTableBlock(bookContent);
             TreatExampleBlock(bookContent);
+            TreatDocSlashed(bookContent);
 
-            
+
             using (StreamWriter writer = new(outputPath, true))
             {
                 foreach (var line in bookContent)
@@ -362,6 +355,15 @@ namespace ConsoleApp1
                     Length++;
                 }
                 Replace(bookContent, startIndex, Length + 1, Codelines);
+            }
+        }
+
+        static void TreatDocSlashed(List<string> bookContent)
+        {
+            for (int i = 0; i < bookContent.Count; i++)
+            {
+                if (bookContent[i].Contains("///"))
+                    bookContent[i] = bookContent[i].TrimStart(' ', '\t', '/');
             }
         }
     }

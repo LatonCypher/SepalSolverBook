@@ -1,37 +1,37 @@
 First Order Differential Equation
 =================================
 
-            /// 1. What is a Differential Equation?
-            /// A differential equation(DE) is a mathematical equation that relates a function with its derivatives. In simpler terms, it describes how a quantity changes in relation to its current state.
-            /// - The Function(y): Represents the "state" of a system(e.g., the position of a car, the temperature of a room).
-            /// - The Derivative :math:`\cfrac{dt}{dy}` Represents the "rate of change"(e.g., the speed of the car, how fast the room is cooling).
-            ///
-            /// An ODE is "Ordinary" because the unknown function depends on only one independent variable(usually time t or distance x).
-            ///
-            /// 2.The Intuition: The Slope Field
-            /// If you have an equation like :math:`\cfrac{dt}{dy} = y`, the equation is telling you: "The steeper the graph gets, the higher the value of y must be."
-            /// Even before solving an equation, we can visualize it using a Slope Field(or Direction Field).At every point(t, y) on a graph, we draw a tiny line segment with the slope dictated by the differential equation. A solution to the ODE is simply a curve that "follows the arrows."
-            ///
-            /// 3.Analytical vs.Numerical Solutions
-            ///  *Analytical Solutions(The "Exact" Way)*
-            /// This is what you do in a calculus class. You use integration techniques to find a precise formula for y(t).
-            /// 
-            /// - example: For :math:`\cfrac{dt}{dy} = ky`, the analytical solution is  :math:`y(t) = Ce^{kt}`
-            /// - Pros: Perfectly accurate; gives you a formula you can use forever.
-            /// - Cons: Most complex equations in physics and engineering cannot be solved this way.
-            /// 
-            /// *Numerical Solutions (The "Approximate" Way)*
-            /// When an equation is too "messy" for calculus, we use numerical methods.Instead of finding a pretty formula, we use a computer to start at an initial point and take tiny steps forward, calculating the slope as we go.
-            /// - Pros: Can solve almost any equation, no matter how complex.
-            /// - Cons: Always contains a small amount of "truncation error" because we are approximating a smooth curve with small straight lines.
-            /// 
-            /// 4. The Anatomy of an Initial Value Problem (IVP)
-            /// To get a single, specific answer from an ODE, you need a starting point, known as the Initial Condition.
-            /// The Equation:  :math:`\cfrac{dt}{dy} = f(t, y)` (The rule of change), The Initial Condition:  :math:`y(0)=y_0` (The starting point). 
-            /// Without a starting point, a differential equation has an infinite number of solutions(a "family" of curves). The initial condition picks the specific path the system takes.
-            /// Numerical methods are essential because most real-world ordinary differential equations (ODEs) cannot be solved analytically (with pen and paper). Instead of finding a continuous formula for $y(x)$, we calculate discrete values at specific points.
-            /// This guide covers the use of sepalsolver for solving an Initial Value Problem (IVP) defined by: math: `\frac{dy}{dt} = f(t, y), \quad y(t_0) = y_0`
-            /// where :math:`f(t, y)` is a function that defines the rate of change of :math:`y` with respect to :math:`t`, and :math:`y_0` is the initial value of :math:`y` at time :math:`t_0`.
+1. What is a Differential Equation?
+A differential equation(DE) is a mathematical equation that relates a function with its derivatives. In simpler terms, it describes how a quantity changes in relation to its current state.
+- The Function(y): Represents the "state" of a system(e.g., the position of a car, the temperature of a room).
+- The Derivative :math:`\cfrac{dt}{dy}` Represents the "rate of change"(e.g., the speed of the car, how fast the room is cooling).
+
+An ODE is "Ordinary" because the unknown function depends on only one independent variable(usually time t or distance x).
+
+2.The Intuition: The Slope Field
+If you have an equation like :math:`\cfrac{dt}{dy} = y`, the equation is telling you: "The steeper the graph gets, the higher the value of y must be."
+Even before solving an equation, we can visualize it using a Slope Field(or Direction Field).At every point(t, y) on a graph, we draw a tiny line segment with the slope dictated by the differential equation. A solution to the ODE is simply a curve that "follows the arrows."
+
+3.Analytical vs.Numerical Solutions
+*Analytical Solutions(The "Exact" Way)*
+This is what you do in a calculus class. You use integration techniques to find a precise formula for y(t).
+
+- example: For :math:`\cfrac{dt}{dy} = ky`, the analytical solution is  :math:`y(t) = Ce^{kt}`
+- Pros: Perfectly accurate; gives you a formula you can use forever.
+- Cons: Most complex equations in physics and engineering cannot be solved this way.
+
+*Numerical Solutions (The "Approximate" Way)*
+When an equation is too "messy" for calculus, we use numerical methods.Instead of finding a pretty formula, we use a computer to start at an initial point and take tiny steps forward, calculating the slope as we go.
+- Pros: Can solve almost any equation, no matter how complex.
+- Cons: Always contains a small amount of "truncation error" because we are approximating a smooth curve with small straight lines.
+
+4. The Anatomy of an Initial Value Problem (IVP)
+To get a single, specific answer from an ODE, you need a starting point, known as the Initial Condition.
+The Equation:  :math:`\cfrac{dt}{dy} = f(t, y)` (The rule of change), The Initial Condition:  :math:`y(0)=y_0` (The starting point). 
+Without a starting point, a differential equation has an infinite number of solutions(a "family" of curves). The initial condition picks the specific path the system takes.
+Numerical methods are essential because most real-world ordinary differential equations (ODEs) cannot be solved analytically (with pen and paper). Instead of finding a continuous formula for $y(x)$, we calculate discrete values at specific points.
+This guide covers the use of sepalsolver for solving an Initial Value Problem (IVP) defined by: math: `\frac{dy}{dt} = f(t, y), \quad y(t_0) = y_0`
+where :math:`f(t, y)` is a function that defines the rate of change of :math:`y` with respect to :math:`t`, and :math:`y_0` is the initial value of :math:`y` at time :math:`t_0`.
 
 .. Admonition:: Example 1
 
@@ -61,7 +61,7 @@ First Order Differential Equation
       :align: center
       :alt: First_Order_ODE_Solution.png
    
-            /// 
+
 
 .. Admonition:: Example 2
 
@@ -91,7 +91,7 @@ First Order Differential Equation
       :align: center
       :alt: First_Order_ODE_Solution_example2.png
    
-            /// 
+
 
 .. Admonition:: Example 3
 
@@ -120,7 +120,7 @@ First Order Differential Equation
       :align: center
       :alt: Simple_Harmonic_Oscillator.png
    
-            /// 
+
 
 .. Admonition:: Example 4
 
@@ -152,7 +152,7 @@ First Order Differential Equation
       :align: center
       :alt: Damping_Harmonic_Oscillator.png
    
-            /// 
+
 
 .. Admonition:: Example 5
 
@@ -172,7 +172,7 @@ First Order Differential Equation
       :align: center
       :alt: Predator_Prey_Model.png
    
-            ///
+
 
 .. Admonition:: Example 6
 
@@ -204,7 +204,7 @@ First Order Differential Equation
       :alt: Blasius_Boundary_Layer.png
    
 
-            ///</BookContent>
+</BookContent>
         }
 
     }
