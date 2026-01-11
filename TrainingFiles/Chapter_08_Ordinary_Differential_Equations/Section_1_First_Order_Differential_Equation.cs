@@ -17,14 +17,14 @@
             /// Even before solving an equation, we can visualize it using a Slope Field(or Direction Field).At every point(t, y) on a graph, we draw a tiny line segment with the slope dictated by the differential equation. A solution to the ODE is simply a curve that "follows the arrows."
             ///
             /// <header 2> 3. Analytical vs.Numerical Solutions </header 2>
-            ///  *Analytical Solutions(The "Exact" Way)*
+            /// **Analytical Solutions(The "Exact" Way)**
             /// This is what you do in a calculus class. You use integration techniques to find a precise formula for y(t).
             /// 
             /// - example: For :math:`\cfrac{dt}{dy} = ky`, the analytical solution is  :math:`y(t) = Ce^{kt}`
             /// - Pros: Perfectly accurate; gives you a formula you can use forever.
             /// - Cons: Most complex equations in physics and engineering cannot be solved this way.
             /// 
-            /// *Numerical Solutions (The "Approximate" Way)*
+            /// **Numerical Solutions (The "Approximate" Way)**
             /// When an equation is too "messy" for calculus, we use numerical methods.Instead of finding a pretty formula, we use a computer to start at an initial point and take tiny steps forward, calculating the slope as we go.
             /// - Pros: Can solve almost any equation, no matter how complex.
             /// - Cons: Always contains a small amount of "truncation error" because we are approximating a smooth curve with small straight lines.
