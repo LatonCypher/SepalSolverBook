@@ -37,8 +37,8 @@
             /// This guide covers the use of sepalsolver for solving an Initial Value Problem (IVP) defined by: math: `\frac{dy}{dt} = f(t, y), \quad y(t_0) = y_0`
             /// where :math:`f(t, y)` is a function that defines the rate of change of :math:`y` with respect to :math:`t`, and :math:`y_0` is the initial value of :math:`y` at time :math:`t_0`.
             /// <example 1>
-            /// Solve the first-order ODE: :math:`\cfrac{dy}{dt} = -2y`,\
-            /// with the initial condition: :math:`y(0) = 1`,\
+            /// Solve the first-order ODE: :math:`\cfrac{dy}{dt} = -2y`,  
+            /// with the initial condition: :math:`y(0) = 1`,  
             /// over the interval: :math:`t \in [0, 5]`.
             /// <code> 
             {
@@ -61,8 +61,8 @@
             /// </example 1>
             /// 
             /// <example 2>
-            /// Solve the first-order ODE :math:`\cfrac{dy}{dt} = \sin(t) - y`\
-            /// with the initial condition :math:`y(0) = 0`\
+            /// Solve the first-order ODE :math:`\cfrac{dy}{dt} = \sin(t) - y`,  
+            /// with the initial condition :math:`y(0) = 0`,  
             /// over the interval :math:`t \in [0, 10]`.
             /// <code>
             {

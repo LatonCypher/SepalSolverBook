@@ -35,8 +35,8 @@ First Order Differential Equation
 
 .. Admonition:: Example 1
 
-   Solve the first-order ODE: :math:`\cfrac{dy}{dt} = -2y`,\
-   with the initial condition: :math:`y(0) = 1`,\
+   Solve the first-order ODE: :math:`\cfrac{dy}{dt} = -2y`,  
+   with the initial condition: :math:`y(0) = 1`,  
    over the interval: :math:`t \in [0, 5]`.
    
    .. code-block:: csharp
@@ -65,8 +65,8 @@ First Order Differential Equation
 
 .. Admonition:: Example 2
 
-   Solve the first-order ODE :math:`\cfrac{dy}{dt} = \sin(t) - y`\
-   with the initial condition :math:`y(0) = 0`\
+   Solve the first-order ODE :math:`\cfrac{dy}{dt} = \sin(t) - y`,  
+   with the initial condition :math:`y(0) = 0`,  
    over the interval :math:`t \in [0, 10]`.
    
    .. code-block:: csharp
@@ -95,7 +95,7 @@ First Order Differential Equation
 
 .. Admonition:: Example 3
 
-   Solve a second order ODE (simple harmonic oscillator) by first converting to system of first order equation and
+   Solve a second order ODE (simple harmonic oscillator) by first converting to system of first order equation and 
    then solve the system of first-order ODEs representing the simple harmonic oscillator:
    
    .. math:: \frac{d^2y}{dt^2} = -4y
@@ -103,7 +103,7 @@ First Order Differential Equation
    
    To solve this, we first transform the problem into a system of first order differential equations:
    
-   Let :math:`v = \cfrac{dy}{dt}`, hence :math:`\cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`,
+   Let :math:`v = \cfrac{dy}{dt}`, hence :math:`\cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`, 
    Now we have 2 equations :math:`\cfrac{dy}{dt} = v, \cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
    
    .. code-block:: csharp

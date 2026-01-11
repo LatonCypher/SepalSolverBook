@@ -356,7 +356,7 @@ namespace ConsoleApp1
                 {
                     string line = bookContent[startIndex + Length];
                     if(line.Contains("///"))
-                        Codelines.Add("   " + line.TrimStart(' ', '\t', '/').Trim());
+                        Codelines.Add("   " + line.TrimStart(' ', '\t', '/'));
                     else
                         Codelines.Add("   " + line);
                     Length++;
