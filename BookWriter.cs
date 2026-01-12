@@ -325,12 +325,14 @@ namespace ConsoleApp1
                     }
                 }
                 int Length = 1;
-                string contentangle = Regex.Match(bookContent[startIndex], "<(.*?)>").Value;
+                string line = bookContent[startIndex];
+                string contentangle = Regex.Match(line, "<(.*?)>").Value;
                 string[] examplen = contentangle.Substring(1, contentangle.Length-2).Split(' ');
-                List<string> Codelines = ["", $".. Admonition:: Example {examplen[1]}", ""];
+                List<string> Codelines = ["", $".. Admonition:: Example {examplen[1]} : {line.Substring(line.IndexOf(">")+1)}", ""];
+
                 while (!bookContent[startIndex + Length].Contains("</example"))
                 {
-                    string line = bookContent[startIndex + Length];
+                    line = bookContent[startIndex + Length];
                     if(line.Contains("///"))
                         Codelines.Add("   " + line.TrimStart(' ', '\t', '/'));
                     else

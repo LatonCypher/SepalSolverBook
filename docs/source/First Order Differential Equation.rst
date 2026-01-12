@@ -39,16 +39,16 @@ Numerical methods are essential because most real-world ordinary differential eq
 This guide covers the use of sepalsolver for solving an Initial Value Problem (IVP) defined by:  :math:`\cfrac{dy}{dt} = f(t, y), \quad y(t_0) = y_0`
 where :math:`f(t, y)` is a function that defines the rate of change of :math:`y` with respect to :math:`t`, and :math:`y_0` is the initial value of :math:`y` at time :math:`t_0`.
 
-.. Admonition:: Example 1
+.. Admonition:: Example 1 :  Exponential Growth
 
-   | Solve the first-order ODE: :math:`\cfrac{dy}{dt} = -2y`,
+   | Solve the first-order ODE: :math:`\cfrac{dy}{dt} = 0.5y`,
    | with the initial condition: :math:`y(0) = 1`,
    | over the interval: :math:`t \in [0, 5]`.
    
    .. code-block:: csharp
    
       // Define the ODE as a function
-      double dydt(double t, double y) => -2*y;
+      double dydt(double t, double y) => 0.5*y;
       // Initial condition
       double y0 = 1;
       // Time span
@@ -57,28 +57,28 @@ where :math:`f(t, y)` is a function that defines the rate of change of :math:`y`
       (ColVec T, ColVec Y) = Ode45(dydt, y0, tspan);
       // Plot the results
       Plot(T, Y, Linewidth: 2);
-      Title("Solution of dy/dt = -2y with y(0) = 1");
+      Title("Exponential Growth: y' = 0.5y");
       Xlabel("Time t");
       Ylabel("Function y");
-      SaveAs("First_Order_ODE_Solution.png");
+      SaveAs("Exponential_Growth.png");
    
    
-   .. figure:: images/First_Order_ODE_Solution.png
+   .. figure:: images/Exponential_Growth.png
       :align: center
-      :alt: First_Order_ODE_Solution.png
+      :alt: Exponential_Growth.png
    
 
 
-.. Admonition:: Example 2
+.. Admonition:: Example 2 :  Linear Decay with Forcing
 
-   | Solve the first-order ODE :math:`\cfrac{dy}{dt} = \sin(t) - y`,  
+   | Solve the first-order ODE :math:`\cfrac{dy}{dt} = -2y + \sin(t)`,  
    | with the initial condition :math:`y(0) = 0`,  
    | over the interval :math:`t \in [0, 10]`.
    
    .. code-block:: csharp
    
       // Define the ODE as a function
-      double dydt(double t, double y) => Sin(t) - y;
+      double dydt(double t, double y) => -2*y + Sin(t);
       // Initial condition
       double y0 = 0;
       // Time span
@@ -87,124 +87,105 @@ where :math:`f(t, y)` is a function that defines the rate of change of :math:`y`
       (ColVec T, ColVec Y) = Ode45(dydt, y0, tspan);
       // Plot the results
       Plot(T, Y, Linewidth: 2);
-      Title("Solution of dy/dt = sin(t) - y with y(0) = 0");
+      Title("Linear Decay with Forcing, y' = -2*y + sin(t)");
       Xlabel("Time t");
       Ylabel("Function y");
-      SaveAs("First_Order_ODE_Solution_example2.png");
+      SaveAs("Linear_Decay_with_Forcing.png");
    
    
-   .. figure:: images/First_Order_ODE_Solution_example2.png
+   .. figure:: images/Linear_Decay_with_Forcing.png
       :align: center
-      :alt: First_Order_ODE_Solution_example2.png
+      :alt: Linear_Decay_with_Forcing.png
    
 
 
-.. Admonition:: Example 3
+.. Admonition:: Example 3 :  Logistic Growth
 
-   Solve a second order ODE (simple harmonic oscillator) by first converting to system of first order equation and 
-   then solve the system of first-order ODEs representing the simple harmonic oscillator:
-   
-   .. math:: \frac{d^2y}{dt^2} = -4y
-   .. math:: y_0 = 0, \quad y'_0 = 5, \quad t = [0, 10];
-   
-   | To solve this, we first transform the problem into a system of first order differential equations:
-   | Let :math:`v = \cfrac{dy}{dt}`,   hence :math:`\cfrac{dv}{dt} = -4y, \quad y_0 = 0, \quad v_0 = 5`, 
-   | Now we have 2 equations :math:`\cfrac{dy}{dt} = v, \quad \cfrac{dv}{dt} = -4y`
+   | Solve the first-order ODE :math:`\cfrac{dy}{dt} = -0.2y\left(1 - \cfrac{y}{K}\right)`,  
+   | with the initial condition :math:`y(0) = 10`,  
+   | over the interval :math:`t \in [0, 50]`.
    
    .. code-block:: csharp
    
-      // Simple Harmonic Oscillator
-      double[] dydt(double t, double[] y) => 
-          [y[1], -4*y[0]];
-      (ColVec T, Matrix Y) = Ode45(dydt, [0,5], [0,10]);
-      Plot(T, Y, Linewidth: 2); 
-      SaveAs("Simple_Harmonic_Oscillator.png");
-   
-   
-   .. figure:: images/Simple_Harmonic_Oscillator.png
-      :align: center
-      :alt: Simple_Harmonic_Oscillator.png
-   
-
-
-.. Admonition:: Example 4
-
-   lets look at harmonic oscillator with damping
-   
-   .. math:: m\cfrac{d^2y}{dt^2} + c\cfrac{dy}{dt} + ky = 0
-   .. math:: y_0 = 0.7, \quad y'_0 = 0, \quad t = [0, 30];
-   
-   | where :math:`m` is the mass, :math:`c` is the damping coefficient, and :math:`k` is the spring constant.
-   | To solve this, we first transform the problem into a system of first order differential equations:
-   
-   | Let :math:`v = \cfrac{dy}{dt}`,   hence :math:`\cfrac{dv}{dt} =  -\cfrac{c}{m}v - \cfrac{k}{m}y, \quad y_0 = 0.7, \quad v_0 = 0`,
-   | Now we have 2 equations :math:`\cfrac{dy}{dt} = v, \quad \cfrac{dv}{dt} = -\cfrac{c}{m}v - \cfrac{k}{m}y`
-   
-   
-   .. code-block:: csharp
-   
-      // Damped System
-      double k = 3.5, c = 0.5, m = 2.0, k_m = k/m, c_m = c/m;
-      double[] dydt(double t, double[] y) =>
-          [y[1], - k_m * y[0] - c_m * y[1]];
-      (ColVec T, Matrix Y) = Ode45(dydt, [0.7, 0], [0, 30]);
+      // Define the ODE as a function
+      double r = 0.2, K = 100;
+      double dydt(double t, double y) => r * y * (1 - y / K);
+      // Initial condition
+      double y0 = 10;
+      // Time span
+      double[] tspan = [0, 50];
+      // Solve the ODE using Ode45
+      (ColVec T, ColVec Y) = Ode45(dydt, y0, tspan);
+      // Plot the results
       Plot(T, Y, Linewidth: 2);
-      SaveAs("Damped_Harmonic_Oscillator.png");
+      Title("Logistic Growth, y' = ry(1 - y / K)");
+      Xlabel("Time t");
+      Ylabel("Function y");
+      SaveAs("Logistic_Growth.png");
    
    
-   .. figure:: images/Damped_Harmonic_Oscillator.png
+   .. figure:: images/Logistic_Growth.png
       :align: center
-      :alt: Damped_Harmonic_Oscillator.png
+      :alt: Logistic_Growth.png
    
 
 
-.. Admonition:: Example 5
+.. Admonition:: Example 4 :  Michaelis–Menten Type ODE
 
+   | Solve the first-order ODE :math:`\cfrac{dy}{dt} = \cfrac{V_{max}y}{K + y}y`,  
+   | with the initial condition :math:`y(0) = 0`,  
+   | over the interval :math:`t \in [0, 10]`.
    
    .. code-block:: csharp
    
-      // Predator Prey Model
-      double alpha = 0.01, beta = 0.02;
-      double[] dydt(double t, double[] y) =>
-          [(1 - alpha*y[1])*y[0], (-1 + beta*y[0])*y[1]];
-      (ColVec T, Matrix Y) = Ode45(dydt, [20, 20], [0, 15]);
+      // Define the ODE as a function
+      double Vmax = 1.0, K = 2.0;
+      double dydt(double t, double y) => (Vmax * y) / (K + y);
+      // Initial condition
+      double y0 = 1;
+      // Time span
+      double[] tspan = [0, 20];
+      // Solve the ODE using Ode45
+      (ColVec T, ColVec Y) = Ode45(dydt, y0, tspan);
+      // Plot the results
       Plot(T, Y, Linewidth: 2);
-      SaveAs("Predator_Prey_Model.png");
+      Title("Michaelis–Menten Type ODE");
+      Xlabel("Time t");
+      Ylabel("Function y");
+      SaveAs("Michaelis_Menten_Type_ODE.png");
    
    
-   .. figure:: images/Predator_Prey_Model.png
+   .. figure:: images/Michaelis_Menten_Type_ODE.png
       :align: center
-      :alt: Predator_Prey_Model.png
+      :alt: Michaelis_Menten_Type_ODE.png
    
 
 
-.. Admonition:: Example 6
 
+.. Admonition:: Example 5 :  NonLinear Damping
+
+   | Solve the first-order ODE :math:`\cfrac{dy}{dt} = -0.1y^3 + \cos(t)`,  
+   | with the initial condition :math:`y(0) = 0`,  
+   | over the interval :math:`t \in [0, 20]`.
    
    .. code-block:: csharp
    
-      // Blausius Boundary Layer
-   
-      // define function
-      double[] dydt(double t, double[] y) =>
-          [y[1], y[2], -0.5 * y[2] * y[0]];
-   
-      // set time span
-      double[] tspan = [0, 6];
-   
-      double[] y0 = [0, 0, 0.5];
-      (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
-   
-      // plot the result
+      // Define the ODE as a function
+      double dydt(double t, double y) => -0.1 * Pow(y, 3) + Cos(t);
+      // Initial condition
+      double y0 = 0;
+      // Time span
+      double[] tspan = [0, 20];
+      // Solve the ODE using Ode45
+      (ColVec T, ColVec Y) = Ode45(dydt, y0, tspan);
+      // Plot the results
       Plot(T, Y, Linewidth: 2);
-      Legend(["f", "f'", "f''"], UpperLeft);
-      Axis([0, 6, 0, 2]); Xlabel("η"); 
-      Title("Blasius Boundary Layer");
-      SaveAs("Blasius_Boundary_Layer.png");
+      Title("Nonlinear damping: y' = -0.1 y^3 + cos(t)");
+      Xlabel("Time t");
+      Ylabel("Function y");
+      SaveAs("Non_Linear_Damping.png");
    
    
-   .. figure:: images/Blasius_Boundary_Layer.png
+   .. figure:: images/Non_Linear_Damping.png
       :align: center
-      :alt: Blasius_Boundary_Layer.png
-   
-
+      :alt: Non_Linear_Damping.png
