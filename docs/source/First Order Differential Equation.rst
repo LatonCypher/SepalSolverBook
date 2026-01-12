@@ -138,23 +138,23 @@ where :math:`f(t, y)` is a function that defines the rate of change of :math:`y`
    | To solve this, we first transform the problem into a system of first order differential equations:
    
    | Let :math:`v = \cfrac{dy}{dt}`,   hence :math:`\cfrac{dv}{dt} =  -\cfrac{c}{m}v - \cfrac{k}{m}y, \quad y_0 = 0.7, \quad v_0 = 0`,
-   | Now we have 2 equations :math:`\cfrac{dy}{dt} = v, \quad \cfrac{dv}{dt} = -(k/m)y - (c/m)v`
+   | Now we have 2 equations :math:`\cfrac{dy}{dt} = v, \quad \cfrac{dv}{dt} = -\cfrac{c}{m}v - \cfrac{k}{m}y`
    
    
    .. code-block:: csharp
    
-      // Damping System
+      // Damped System
       double k = 3.5, c = 0.5, m = 2.0, k_m = k/m, c_m = c/m;
       double[] dydt(double t, double[] y) =>
           [y[1], - k_m * y[0] - c_m * y[1]];
       (ColVec T, Matrix Y) = Ode45(dydt, [0.7, 0], [0, 30]);
       Plot(T, Y, Linewidth: 2);
-      SaveAs("Damping_Harmonic_Oscillator.png");
+      SaveAs("Damped_Harmonic_Oscillator.png");
    
    
-   .. figure:: images/Damping_Harmonic_Oscillator.png
+   .. figure:: images/Damped_Harmonic_Oscillator.png
       :align: center
-      :alt: Damping_Harmonic_Oscillator.png
+      :alt: Damped_Harmonic_Oscillator.png
    
 
 
