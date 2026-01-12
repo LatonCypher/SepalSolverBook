@@ -10,3 +10,5 @@ Basic Operations Syntax
    Primitive Types
    Variables
    Operators
+   Collections and Linq
+   Algorithm Flow Control

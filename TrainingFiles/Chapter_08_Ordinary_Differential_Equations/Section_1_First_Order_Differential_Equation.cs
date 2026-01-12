@@ -65,9 +65,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// </example 1>
             /// 
             /// <example 2>
-            /// Solve the first-order ODE :math:`\cfrac{dy}{dt} = \sin(t) - y`,  
-            /// with the initial condition :math:`y(0) = 0`,  
-            /// over the interval :math:`t \in [0, 10]`.
+            /// | Solve the first-order ODE :math:`\cfrac{dy}{dt} = \sin(t) - y`,  
+            /// | with the initial condition :math:`y(0) = 0`,  
+            /// | over the interval :math:`t \in [0, 10]`.
             /// <code>
             {
                 // Define the ODE as a function
@@ -95,10 +95,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// .. math:: \frac{d^2y}{dt^2} = -4y
             /// .. math:: y_0 = 0; y'_0 = 5; t = [0, 10];
             /// 
-            /// To solve this, we first transform the problem into a system of first order differential equations:
-            /// 
-            /// Let :math:`v = \cfrac{dy}{dt}`, hence :math:`\cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`, 
-            /// Now we have 2 equations :math:`\cfrac{dy}{dt} = v, \cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`
+            /// | To solve this, we first transform the problem into a system of first order differential equations:
+            /// | Let :math:`v = \cfrac{dy}{dt}`, hence :math:`\cfrac{dv}{dt} = -4y, y_0 = 0, v_0 = 5`, 
+            /// | Now we have 2 equations :math:`\cfrac{dy}{dt} = v, \cfrac{dv}{dt} = -4y`
             /// <code>
             {
                 // Simple Harmonic Oscillator
@@ -117,11 +116,11 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// .. math:: m\cfrac{d^2y}{dt^2} + c\cfrac{dy}{dt} + ky = 0
             /// .. math:: y_0 = 0.7; y'_0 = 0; t = [0, 30];
             /// 
-            /// where :math:`m` is the mass, :math:`c` is the damping coefficient, and :math:`k` is the spring constant.
-            /// To solve this, we first transform the problem into a system of first order differential equations:
+            /// | where :math:`m` is the mass, :math:`c` is the damping coefficient, and :math:`k` is the spring constant.
+            /// | To solve this, we first transform the problem into a system of first order differential equations:
             /// 
-            /// Let :math:`v = \cfrac{dy}{dt}`, hence :math:`\cfrac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`,
-            /// Now we have 2 equations :math:`\cfrac{dy}{dt} = v, \cfrac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`
+            /// | Let :math:`v = \cfrac{dy}{dt}`, hence :math:`\cfrac{dv}{dt} = -(k/m)y - (c/m)v, y_0 = 0.7, v_0 = 0`,
+            /// | Now we have 2 equations :math:`\cfrac{dy}{dt} = v, \cfrac{dv}{dt} = -(k/m)y - (c/m)v`
             /// 
             /// <code>
             {
@@ -176,7 +175,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// </code>
             /// </example 6>
 
-            ///</BookContent>
+            /// </BookContent>
         }
 
     }
