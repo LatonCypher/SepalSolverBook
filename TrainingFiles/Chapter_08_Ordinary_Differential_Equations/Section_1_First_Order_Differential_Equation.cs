@@ -53,7 +53,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
                 // Time span
                 double[] tspan = [0, 5];
                 // Solve the ODE using Ode45
-                (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+                (ColVec T, ColVec Y) = Ode45(dydt, y0, tspan);
                 // Plot the results
                 Plot(T, Y, Linewidth: 2);
                 Title("Solution of dy/dt = -2y with y(0) = 1");
@@ -77,7 +77,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
                 // Time span
                 double[] tspan = [0, 10];
                 // Solve the ODE using Ode45
-                (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+                (ColVec T, ColVec Y) = Ode45(dydt, y0, tspan);
                 // Plot the results
                 Plot(T, Y, Linewidth: 2);
                 Title("Solution of dy/dt = sin(t) - y with y(0) = 0");
