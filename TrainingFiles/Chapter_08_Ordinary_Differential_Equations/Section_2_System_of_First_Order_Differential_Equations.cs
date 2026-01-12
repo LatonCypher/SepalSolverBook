@@ -18,7 +18,7 @@
             /// SepalSolver provides tools to solve these systems numerically using , just as with single ODEs, but the function signature changes to accept and return arrays.
             /// 
             /// <header 2> General Form </header 2>
-            /// A system of n first‑order ODEs can be written as:
+            /// A system of :math:`n` first‑order ODEs can be written as:
             /// 
             /// .. math ::
             /// 
