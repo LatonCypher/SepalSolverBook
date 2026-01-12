@@ -96,7 +96,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// .. math:: y_0 = 0, \quad y'_0 = 5, \quad t = [0, 10];
             /// 
             /// | To solve this, we first transform the problem into a system of first order differential equations:
-            /// | Let :math:`v = \cfrac{dy}{dt}`, hence :math:`\cfrac{dv}{dt} = -4y, \quad y_0 = 0, \quad v_0 = 5`, 
+            /// | Let :math:`v = \cfrac{dy}{dt}`,   hence :math:`\cfrac{dv}{dt} = -4y, \quad y_0 = 0, \quad v_0 = 5`, 
             /// | Now we have 2 equations :math:`\cfrac{dy}{dt} = v, \quad \cfrac{dv}{dt} = -4y`
             /// <code>
             {
@@ -119,7 +119,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// | where :math:`m` is the mass, :math:`c` is the damping coefficient, and :math:`k` is the spring constant.
             /// | To solve this, we first transform the problem into a system of first order differential equations:
             /// 
-            /// | Let :math:`v = \cfrac{dy}{dt}`, hence :math:`\cfrac{dv}{dt} = -(k/m)y - (c/m)v, \quad y_0 = 0.7, \quad v_0 = 0`,
+            /// | Let :math:`v = \cfrac{dy}{dt}`,   hence :math:`\cfrac{dv}{dt} = -(k/m)y - (c/m)v, \quad y_0 = 0.7, \quad v_0 = 0`,
             /// | Now we have 2 equations :math:`\cfrac{dy}{dt} = v, \quad \cfrac{dv}{dt} = -(k/m)y - (c/m)v`
             /// 
             /// <code>
