@@ -125,12 +125,11 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// <code>
             {
                 // Damping System
-                double stiffness = 3.5, damping = 0.5, 
-                    mass = 2.0, k = stiffness/mass, c = damping/mass;
-                double[] dydt(double t, double[] y) => 
-                    [y[1], -(k*y[0] + c*y[1])];
+                double k = 3.5, c = 0.5, m = 2.0;
+                double[] dydt(double t, double[] y) =>
+                    [y[1], -(k/m)*y[0] - (c/m)*y[1]];
                 (ColVec T, Matrix Y) = Ode45(dydt, [0.7, 0], [0, 30]);
-                Plot(T, Y, Linewidth: 2); 
+                Plot(T, Y, Linewidth: 2);
                 SaveAs("Damping_Harmonic_Oscillator.png");
             }
             /// </code>
