@@ -41,8 +41,8 @@ where :math:`f(t, y)` is a function that defines the rate of change of :math:`y`
 
 .. Admonition:: Example 1
 
-   Solve the first-order ODE: :math:`\cfrac{dy}{dt} = -2y`, \\
-   with the initial condition: :math:`y(0) = 1`, \\
+   Solve the first-order ODE: :math:`\cfrac{dy}{dt} = -2y`,  
+   with the initial condition: :math:`y(0) = 1`,  
    over the interval: :math:`t \in [0, 5]`.
    
    .. code-block:: csharp
