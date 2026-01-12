@@ -7,6 +7,7 @@ Introduction
 A system of first‑order differential equations involves multiple dependent variables, each with its own derivative, coupled together. Many physical, biological, and engineering models naturally lead to such systems.
 
 Examples:
+
 - Predator–prey dynamics(Lotka–Volterra)
 - Coupled oscillators
 - Chaotic systems(Lorenz attractor)
