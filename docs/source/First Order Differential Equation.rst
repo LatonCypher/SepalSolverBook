@@ -132,7 +132,7 @@ where :math:`f(t, y)` is a function that defines the rate of change of :math:`y`
 
 .. Admonition:: Example 4 :  Michaelis–Menten Type ODE
 
-   | Solve the first-order ODE :math:`\cfrac{dy}{dt} = \cfrac{V_{max}y}{K + y}y`,  
+   | Solve the first-order ODE :math:`\cfrac{dy}{dt} = \cfrac{V_{max}y}{K + y}`,  
    | with the initial condition :math:`y(0) = 0`,  
    | over the interval :math:`t \in [0, 10]`.
    
@@ -189,3 +189,5 @@ where :math:`f(t, y)` is a function that defines the rate of change of :math:`y`
    .. figure:: images/Non_Linear_Damping.png
       :align: center
       :alt: Non_Linear_Damping.png
+   
+

@@ -114,7 +114,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// </example 3>
             /// 
             /// <example 4> Michaelis–Menten Type ODE
-            /// | Solve the first-order ODE :math:`\cfrac{dy}{dt} = \cfrac{V_{max}y}{K + y}y`,  
+            /// | Solve the first-order ODE :math:`\cfrac{dy}{dt} = \cfrac{V_{max}y}{K + y}`,  
             /// | with the initial condition :math:`y(0) = 0`,  
             /// | over the interval :math:`t \in [0, 10]`.
             /// <code>
