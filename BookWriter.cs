@@ -100,12 +100,13 @@ namespace ConsoleApp1
 
                 // Extract BookContent block
                 List<string> bookContent = [..Content.SkipWhile(line=> !line.Contains("/// <BookContent>")).
-                                          TakeWhile(line=>!line.Contains("/// </BookContent>"))];
+                                              TakeWhile(line=>!line.Contains("/// </BookContent>"))];
             if (bookContent.Count == 0)
             {
                 Console.WriteLine("No <BookContent> block found.");
                 return;
             }
+
             bookContent.RemoveAt(0); // Remove the starting tag line
             //Headers format
             TreatHeader1(bookContent);
@@ -339,7 +340,6 @@ namespace ConsoleApp1
                 Replace(bookContent, startIndex, Length + 1, Codelines);
             }
         }
-
         static void TreatDocSlashed(List<string> bookContent)
         {
             for (int i = 0; i < bookContent.Count; i++)
