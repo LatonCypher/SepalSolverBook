@@ -41,3 +41,8 @@ epub_show_urls = 'footnote'
 
 # -- Options for Pygment style
 pygments_style = 'sphinx'
+
+
+html_static_path = ['_static']
+html_css_files = ['custom.css']
+html_logo = '_static/SepalSolver.png'
