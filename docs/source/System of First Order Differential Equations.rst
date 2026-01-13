@@ -118,32 +118,85 @@ where :math:`y` is the vector of dependent variables.
 
 
 
-.. Admonition:: Example 3 :  Lotka–Volterra Predator–Prey
+.. Admonition:: Example 3 :  Lorenz System (Chaotic, Non‑analytical)
 
-   The Lotka–Volterra equations model the dynamics between predator and prey populations. Mathemtically, it is defined as:
-   :math:`x'=\alpha x-\beta xy,\quad y'=\delta xy-\gamma y`
+   The Lorenz system is a set of three coupled, first‑order ODEs that exhibit chaotic behavior:
+   
+   .. math ::
+   
+      \begin{eqnarray}
+      \cfrac{dx}{dt} &= \sigma (y - x) \\
+      \cfrac{dy}{dt} &= x(\rho - z) - y \\
+      \cfrac{dz}{dt} &= xy - \beta z
+      \end{eqnarray}
+   
    
    .. code-block:: csharp
    
       // Define the ODE as a function
-      double alpha = 1.0, beta = 0.01, delta = 0.02, gamma = 1.0;
+      double sigma = 10.0, rho = 28.0, beta = 8.0 / 3.0;
       double[] dydt(double t, double[] y) => [
-          alpha * y[0] - beta * y[0] * y[1],
-          delta * y[0] * y[1] - gamma * y[1]];
+          sigma * (y[1] - y[0]),
+          y[0] * (rho - y[2]) - y[1],
+          y[0] * y[1] - beta * y[2]];
       // Initial condition
-      double[] y0 = [20.0, 20.0];
+      double[] y0 = [ 1.0, 1.0, 1.0 ];
       // Time span
-      double[] tspan = [0, 15];
+      double[] tspan = [ 0, 30 ];
       // Solve the ODE using Ode45
       (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
-      // Plot the results
+      //  Plot the results
       Plot(T, Y, Linewidth: 2);
-      Legend(["Prey", "Predator"], UpperLeft);
-      Title("Lotka–Volterra Predator–Prey System");
-      SaveAs("Lotka_Volterra_Predator_Prey_System.png");
+      Legend(["x", "y", "z"], UpperLeft);
+      Title("Lorenz System (σ = 10, ρ = 28, β = 8/3)");
+      Xlabel("t");
+      Ylabel("state");
+      SaveAs("Lorenz_System.png");
    
    
-   .. figure:: images/Lotka_Volterra_Predator_Prey_System.png
+   .. figure:: images/Lorenz_System.png
       :align: center
-      :alt: Lotka_Volterra_Predator_Prey_System.png
+      :alt: Lorenz_System.png
+   
+
+
+.. Admonition:: Example 4 :  SIR Epidemic Model
+
+   The SIR model divides a population into three compartments: Susceptible (S), Infected (I), and Recovered (R). The model is defined by the following system of ODEs:
+   
+   .. math ::
+   
+      \begin{eqnarray}
+      \cfrac{dS}{dt} &= -\beta\cfrac{S I}{N} \\
+      \cfrac{dI}{dt} &= \beta\cfrac{S I}{N} - \gamma I \\
+      \cfrac{dR}{dt} &= \gamma I
+      \end{eqnarray}
+   
+   
+   .. code-block:: csharp
+   
+      // Define the ODE as a function
+      double betaSIR = 0.3, gammaSIR = 0.1, N = 1000.0;
+      double[] dydt(double t, double[] y) => [
+          -betaSIR * y[0] * y[1] / N,
+           betaSIR * y[0] * y[1] / N - gammaSIR * y[1],
+           gammaSIR * y[1]];
+      // Initial condition
+      double[] y0 = [999.0, 1.0, 0.0];
+      // Time span
+      double[] tspan = [0, 160];
+      // Solve the ODE using Ode45
+      (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+      //  Plot the results
+      Plot(T, Y, Linewidth: 2);
+      Legend(["S", "I", "R"], UpperLeft);
+      Title("SIR Epidemic Model");
+      Xlabel("t");
+      Ylabel("population");
+      SaveAs("SIR_Epidemic_Model.png");
+   
+   
+   .. figure:: images/SIR_Epidemic_Model.png
+      :align: center
+      :alt: SIR_Epidemic_Model.png
    
