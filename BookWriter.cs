@@ -219,7 +219,6 @@ namespace ConsoleApp1
 
             }
         }
-        
         static void TreatCodeBlock(List<string> bookContent)
         {
             while (bookContent.Any(line => line.Contains("<code>")))
@@ -354,7 +353,6 @@ namespace ConsoleApp1
                     bookContent[i] = bookContent[i].TrimStart(' ', '\t', '/');
             }
         }
-
         static void TreatMathTag(List<string> bookContent)
         {
             while (bookContent.Any(line => line.Contains("<math>")))
@@ -380,6 +378,7 @@ namespace ConsoleApp1
                         Codelines.Add("   " + line.TrimStart(' ', '\t', '/'));
                     Length++;
                 }
+                Codelines.Add("");
                 Replace(bookContent, startIndex, Length + 1, Codelines);
             }
         }

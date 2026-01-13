@@ -40,6 +40,7 @@ Higher Order Differential Equations
       m\cfrac{d^2y}{dt^2} + c\cfrac{dy}{dt} + ky = 0
       y_0 = 0.7, \quad y'_0 = 0, \quad t = [0, 30];
    
+   
    | where :math:`m` is the mass, :math:`c` is the damping coefficient, and :math:`k` is the spring constant.
    | To solve this, we first transform the problem into a system of first order differential equations:
    

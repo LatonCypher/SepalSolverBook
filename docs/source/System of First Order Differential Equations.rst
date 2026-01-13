@@ -21,12 +21,13 @@ A system of :math:`n` first‑order ODEs can be written as:
 
 .. math ::
 
-   \begin{array}{c}
+   \begin{matrix}
    \frac{ dy_1}{ dt} = f_1(t, y_1, y_2,\dots, y_n) \\
    \frac{ dy_2}{ dt} = f_2(t, y_1, y_2,\dots, y_n) \\
    \vdots                      \\
    \frac{ dy_n}{ dt} = f_n(t, y_1, y_2,\dots, y_n) 
-   \end{array}
+   \end{ matrix}
+
 In SepalSolver, this is represented by a function:
 
 .. code-block:: csharp
