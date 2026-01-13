@@ -79,14 +79,14 @@ where :math:`y` is the vector of dependent variables.
    .. code-block:: csharp
    
       // Define the ODE as a function
-      double alpha = 1.0, beta = 0.5, delta = 0.5, gamma = 2.0;
+      double alpha = 1.0, beta = 0.01, delta = 0.02, gamma = 1.0;
       double[] dydt(double t, double[] y) => [
           alpha * y[0] - beta * y[0] * y[1],
           delta * y[0] * y[1] - gamma * y[1]];
       // Initial condition
-      double[] y0 = [2.0, 1.0];
+      double[] y0 = [20.0, 20.0];
       // Time span
-      double[] tspan = [0, 40];
+      double[] tspan = [0, 15];
       // Solve the ODE using Ode45
       (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
       // Plot the results
