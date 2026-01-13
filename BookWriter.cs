@@ -234,21 +234,38 @@ namespace ConsoleApp1
                 }
                 int Length = 1;
                 List<string> Codelines = ["", ".. code-block:: csharp"];
-                List<string> Imagelines = [];
-                int space = bookContent[startIndex + Length].TakeWhile(c => c == ' ').Count()+1;
-                while (!bookContent[startIndex + Length].Contains("</code>"))
+                string line = bookContent[startIndex + Length];
+                if (line.Contains("///"))
                 {
-                    string line = bookContent[startIndex + Length];
-                    if(line.Length >= space)
-                        Codelines.Add(line.Substring(space));
-                    else
-                        Codelines.Add(line);
-                    Length++;
-
-                    if(line.Contains("SaveAs"))
-                    { Imagelines.AddRange(GetImageReference(line)); }
+                    int start = line.LastIndexOf('/') + 1;
+                    while (!bookContent[startIndex + Length].Contains("</code>"))
+                    {
+                        line = bookContent[startIndex + Length];
+                        if (line.Length >= start)
+                            Codelines.Add(line.Substring(start));
+                        else
+                            Codelines.Add("");
+                        Length++;
+                    }
                 }
-                Codelines.AddRange(Imagelines);
+                else
+                {
+                    List<string> Imagelines = [];
+                    int space = bookContent[startIndex + Length].TakeWhile(c => c == ' ').Count()+1;
+                    while (!bookContent[startIndex + Length].Contains("</code>"))
+                    {
+                        line = bookContent[startIndex + Length];
+                        if (line.Length >= space)
+                            Codelines.Add(line.Substring(space));
+                        else
+                            Codelines.Add(line);
+                        Length++;
+
+                        if (line.Contains("SaveAs"))
+                        { Imagelines.AddRange(GetImageReference(line)); }
+                    }
+                    Codelines.AddRange(Imagelines);
+                }
                 Replace(bookContent, startIndex, Length + 1, Codelines);
             }
         }

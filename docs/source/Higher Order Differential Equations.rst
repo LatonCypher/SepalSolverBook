@@ -16,7 +16,7 @@ Examples:
 - Beam deflection problems
 - RLC electrical circuits
 
-SepalSolver solves higher‑order ODEs by first converting them into equivalent systems
+To use SepalSolver to solve higher‑order ODEs, they have to first be converted into equivalent systems
 of first‑order equations.
 
 General Form
@@ -50,10 +50,10 @@ Then the system becomes:
 
 
 .. code-block:: csharp
-// {
-//     // Define the ODE system as a function
-//     double[] dydt(double t, double[] y) => [y[1], y[2], ..., f(t,y)];
-// }
+ {
+     // Define the ODE system as a function
+     double[] dydt(double t, double[] y) => [y[1], y[2], ..., f(t,y)];
+ }
 
 
 .. Admonition:: Example 1 :  Simple Harmonic Oscillator (Second Order)
@@ -70,21 +70,16 @@ Then the system becomes:
    
    
    .. code-block:: csharp
-   // {
-   //     double[] dydt(double t, double[] y) => [ y[1], -y[0] ];
-   //     double[] y0 = [1.0, 0.0]; // y(0)=1, y'(0)=0
-   //     double[] tspan = [0, 20];
-   //     (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
-   //     Plot(T, Y, Linewidth: 2);
-   //     Legend(["y", "y'"], UpperLeft);
-   //     Title("Simple Harmonic Oscillator");
-   //     SaveAs("HigherOrder_SHO.png");
-   // }
-   
-   .. figure:: images/HigherOrder_SHO.png
-      :align: center
-      :alt: HigherOrder_SHO.png
-   
+    {
+        double[] dydt(double t, double[] y) => [ y[1], -y[0] ];
+        double[] y0 = [1.0, 0.0]; // y(0)=1, y'(0)=0
+        double[] tspan = [0, 20];
+        (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+        Plot(T, Y, Linewidth: 2);
+        Legend(["y", "y'"], UpperLeft);
+        Title("Simple Harmonic Oscillator");
+        SaveAs("HigherOrder_SHO.png");
+    }
 
 
 .. Admonition:: Example 2 :  Damped Oscillator
@@ -101,22 +96,17 @@ Then the system becomes:
    
    
    .. code-block:: csharp
-   // {
-   //     double beta = 0.1, omega = 2.0;
-   //     double[] dydt(double t, double[] y) => [ y[1], -2*beta*y[1] - omega*omega*y[0] ];
-   //     double[] y0 = [1.0, 0.0];
-   //     double[] tspan = [0, 20];
-   //     (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
-   //     Plot(T, Y, Linewidth: 2);
-   //     Legend(["y", "y'"], UpperLeft);
-   //     Title("Damped Oscillator");
-   //     SaveAs("HigherOrder_Damped.png");
-   // }
-   
-   .. figure:: images/HigherOrder_Damped.png
-      :align: center
-      :alt: HigherOrder_Damped.png
-   
+    {
+        double beta = 0.1, omega = 2.0;
+        double[] dydt(double t, double[] y) => [ y[1], -2*beta*y[1] - omega*omega*y[0] ];
+        double[] y0 = [1.0, 0.0];
+        double[] tspan = [0, 20];
+        (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+        Plot(T, Y, Linewidth: 2);
+        Legend(["y", "y'"], UpperLeft);
+        Title("Damped Oscillator");
+        SaveAs("HigherOrder_Damped.png");
+    }
 
 
 .. Admonition:: Example 3 :  Forced Oscillator
@@ -133,21 +123,16 @@ Then the system becomes:
    
    
    .. code-block:: csharp
-   // {
-   //     double[] dydt(double t, double[] y) => [ y[1], -y[0] + Math.Cos(t) ];
-   //     double[] y0 = [0.0, 0.0];
-   //     double[] tspan = [0, 20];
-   //     (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
-   //     Plot(T, Y, Linewidth: 2);
-   //     Legend(["y", "y'"], UpperLeft);
-   //     Title("Forced Oscillator");
-   //     SaveAs("HigherOrder_Forced.png");
-   // }
-   
-   .. figure:: images/HigherOrder_Forced.png
-      :align: center
-      :alt: HigherOrder_Forced.png
-   
+    {
+        double[] dydt(double t, double[] y) => [ y[1], -y[0] + Math.Cos(t) ];
+        double[] y0 = [0.0, 0.0];
+        double[] tspan = [0, 20];
+        (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+        Plot(T, Y, Linewidth: 2);
+        Legend(["y", "y'"], UpperLeft);
+        Title("Forced Oscillator");
+        SaveAs("HigherOrder_Forced.png");
+    }
 
 
 .. Admonition:: Example 4 :  RLC Circuit
@@ -164,22 +149,17 @@ Then the system becomes:
    
    
    .. code-block:: csharp
-   // {
-   //     double L = 1.0, R = 0.5, C = 0.2;
-   //     double[] dydt(double t, double[] i) => [ i[1], -(R/L)*i[1] - (1.0/(L*C))*i[0] ];
-   //     double[] i0 = [1.0, 0.0];
-   //     double[] tspan = [0, 20];
-   //     (ColVec T, Matrix Y) = Ode45(dydt, i0, tspan);
-   //     Plot(T, Y, Linewidth: 2);
-   //     Legend(["i", "i'"], UpperLeft);
-   //     Title("RLC Circuit");
-   //     SaveAs("HigherOrder_RLC.png");
-   // }
-   
-   .. figure:: images/HigherOrder_RLC.png
-      :align: center
-      :alt: HigherOrder_RLC.png
-   
+    {
+        double L = 1.0, R = 0.5, C = 0.2;
+        double[] dydt(double t, double[] i) => [ i[1], -(R/L)*i[1] - (1.0/(L*C))*i[0] ];
+        double[] i0 = [1.0, 0.0];
+        double[] tspan = [0, 20];
+        (ColVec T, Matrix Y) = Ode45(dydt, i0, tspan);
+        Plot(T, Y, Linewidth: 2);
+        Legend(["i", "i'"], UpperLeft);
+        Title("RLC Circuit");
+        SaveAs("HigherOrder_RLC.png");
+    }
 
 
 .. Admonition:: Example 5 :  Third‑Order Example
@@ -197,19 +177,14 @@ Then the system becomes:
    
    
    .. code-block:: csharp
-   // {
-   //     double[] dydt(double t, double[] y) => [ y[1], y[2], y[0] ];
-   //     double[] y0 = [1.0, 0.0, 0.0];
-   //     double[] tspan = [0, 20];
-   //     (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
-   //     Plot(T, Y, Linewidth: 2);
-   //     Legend(["y", "y'", "y''"], UpperLeft);
-   //     Title("Third‑Order Example");
-   //     SaveAs("HigherOrder_Third.png");
-   // }
-   
-   .. figure:: images/HigherOrder_Third.png
-      :align: center
-      :alt: HigherOrder_Third.png
-   
+    {
+        double[] dydt(double t, double[] y) => [ y[1], y[2], y[0] ];
+        double[] y0 = [1.0, 0.0, 0.0];
+        double[] tspan = [0, 20];
+        (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+        Plot(T, Y, Linewidth: 2);
+        Legend(["y", "y'", "y''"], UpperLeft);
+        Title("Third‑Order Example");
+        SaveAs("HigherOrder_Third.png");
+    }
 

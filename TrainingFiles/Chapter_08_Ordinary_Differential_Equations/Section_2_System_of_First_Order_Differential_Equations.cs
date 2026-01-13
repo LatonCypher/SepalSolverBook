@@ -2,8 +2,6 @@
 {
     internal class Section_2_System_of_First_Order_Differential_Equations
     {
-        static double f1, f2;
-        static double[] fn;
         public static void Run()
         {
             /// <BookContent>
@@ -32,10 +30,10 @@
             /// </math>
             /// In SepalSolver, this is represented by a function:
             /// <code> 
-            {
-                // Define the ODE as a function
-                double[] dydt(double t, double[] y) => [f1, f2, ..fn];
-            }
+            /// {
+            ///     // Define the ODE as a function
+            ///     double[] dydt(double t, double[] y) => [f1, f2, ..., fn];
+            /// }
             /// </code>
             /// where :math:`y` is the vector of dependent variables.
             /// 

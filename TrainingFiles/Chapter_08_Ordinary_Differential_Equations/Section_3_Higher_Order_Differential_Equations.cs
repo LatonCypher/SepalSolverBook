@@ -19,7 +19,7 @@
             /// - Beam deflection problems
             /// - RLC electrical circuits
             /// 
-            /// SepalSolver solves higher‑order ODEs by first converting them into equivalent systems
+            /// To use SepalSolver to solve higher‑order ODEs, they have to first be converted into equivalent systems
             /// of first‑order equations.
             /// 
             /// <header 2> General Form </header 2>
