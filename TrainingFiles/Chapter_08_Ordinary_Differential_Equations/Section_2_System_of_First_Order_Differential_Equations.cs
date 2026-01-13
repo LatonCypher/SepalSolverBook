@@ -76,7 +76,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// 
             /// <example 2> Lotka–Volterra Predator–Prey
             /// The Lotka–Volterra equations model the dynamics between predator and prey populations. Mathemtically, it is defined as:
-            /// :math:`x'=\alpha x-\beta xy,\quad y'=\delta xy-\gamma y`
+            /// 
+            /// <math>
+            /// \begin{eqnarray}
+            ///       x' &= \alpha x-\beta xy \\
+            ///       y' &= \delta xy-\gamma y`
+            /// \end{eqnarray}
+            /// </math>
             /// <code>
             {
                 // Define the ODE as a function
