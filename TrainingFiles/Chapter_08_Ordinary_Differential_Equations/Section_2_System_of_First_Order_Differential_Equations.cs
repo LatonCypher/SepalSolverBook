@@ -37,6 +37,7 @@
             /// </code>
             /// where :math:`y` is the vector of dependent variables.
             /// 
+            /// <header 2> Examples </header 2>
             /// These are examples of how to use SepalSolver to solve various systems of first-order ODEs.
             /// 
             /// <example 1> Simple Harmonic Oscillator

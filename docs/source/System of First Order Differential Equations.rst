@@ -37,6 +37,8 @@ In SepalSolver, this is represented by a function:
  }
 where :math:`y` is the vector of dependent variables.
 
+Examples
+--------
 These are examples of how to use SepalSolver to solve various systems of first-order ODEs.
 
 

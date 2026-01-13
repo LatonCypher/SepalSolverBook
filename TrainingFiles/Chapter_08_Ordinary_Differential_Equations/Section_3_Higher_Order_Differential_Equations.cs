@@ -51,6 +51,9 @@
             /// }
             /// </code>
             /// 
+            /// <header 2> Examples </header 2>
+            /// Here are examples of converting and solving various higher‑order ODEs using SepalSolver.
+            ///
             /// <example 1> Simple Harmonic Oscillator (Second Order)
             /// Equation: y'' + y = 0
             /// Converted system:
@@ -61,16 +64,16 @@
             /// \end{eqnarray}
             /// </math>
             /// <code>
-            /// {
-            ///     double[] dydt(double t, double[] y) => [ y[1], -y[0] ];
-            ///     double[] y0 = [1.0, 0.0]; // y(0)=1, y'(0)=0
-            ///     double[] tspan = [0, 20];
-            ///     (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
-            ///     Plot(T, Y, Linewidth: 2);
-            ///     Legend(["y", "y'"], UpperLeft);
-            ///     Title("Simple Harmonic Oscillator");
-            ///     SaveAs("HigherOrder_SHO.png");
-            /// }
+            {
+                 double[] dydt(double t, double[] y) => [ y[1], -y[0] ];
+                 double[] y0 = [1.0, 0.0]; // y(0)=1, y'(0)=0
+                 double[] tspan = [0, 20];
+                 (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+                 Plot(T, Y, Linewidth: 2);
+                 Legend(["y", "y'"], UpperLeft);
+                 Title("Simple Harmonic Oscillator");
+                 SaveAs("HigherOrder_SHO.png");
+            }
             /// </code>
             /// </example 1>
             /// 
@@ -84,17 +87,17 @@
             /// \end{eqnarray}
             /// </math>
             /// <code>
-            /// {
-            ///     double beta = 0.1, omega = 2.0;
-            ///     double[] dydt(double t, double[] y) => [ y[1], -2*beta*y[1] - omega*omega*y[0] ];
-            ///     double[] y0 = [1.0, 0.0];
-            ///     double[] tspan = [0, 20];
-            ///     (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
-            ///     Plot(T, Y, Linewidth: 2);
-            ///     Legend(["y", "y'"], UpperLeft);
-            ///     Title("Damped Oscillator");
-            ///     SaveAs("HigherOrder_Damped.png");
-            /// }
+            {
+                 double beta = 0.1, omega = 2.0;
+                 double[] dydt(double t, double[] y) => [ y[1], -2*beta*y[1] - omega*omega*y[0] ];
+                 double[] y0 = [1.0, 0.0];
+                 double[] tspan = [0, 20];
+                 (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+                 Plot(T, Y, Linewidth: 2);
+                 Legend(["y", "y'"], UpperLeft);
+                 Title("Damped Oscillator");
+                 SaveAs("HigherOrder_Damped.png");
+            }
             /// </code>
             /// </example 2>
             /// 
@@ -108,16 +111,16 @@
             /// \end{eqnarray}
             /// </math>
             /// <code>
-            /// {
-            ///     double[] dydt(double t, double[] y) => [ y[1], -y[0] + Math.Cos(t) ];
-            ///     double[] y0 = [0.0, 0.0];
-            ///     double[] tspan = [0, 20];
-            ///     (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
-            ///     Plot(T, Y, Linewidth: 2);
-            ///     Legend(["y", "y'"], UpperLeft);
-            ///     Title("Forced Oscillator");
-            ///     SaveAs("HigherOrder_Forced.png");
-            /// }
+            {
+                 double[] dydt(double t, double[] y) => [ y[1], -y[0] + Cos(t) ];
+                 double[] y0 = [0.0, 0.0];
+                 double[] tspan = [0, 20];
+                 (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+                 Plot(T, Y, Linewidth: 2);
+                 Legend(["y", "y'"], UpperLeft);
+                 Title("Forced Oscillator");
+                 SaveAs("HigherOrder_Forced.png");
+            }
             /// </code>
             /// </example 3>
             /// 
@@ -131,17 +134,17 @@
             /// \end{eqnarray}
             /// </math>
             /// <code>
-            /// {
-            ///     double L = 1.0, R = 0.5, C = 0.2;
-            ///     double[] dydt(double t, double[] i) => [ i[1], -(R/L)*i[1] - (1.0/(L*C))*i[0] ];
-            ///     double[] i0 = [1.0, 0.0];
-            ///     double[] tspan = [0, 20];
-            ///     (ColVec T, Matrix Y) = Ode45(dydt, i0, tspan);
-            ///     Plot(T, Y, Linewidth: 2);
-            ///     Legend(["i", "i'"], UpperLeft);
-            ///     Title("RLC Circuit");
-            ///     SaveAs("HigherOrder_RLC.png");
-            /// }
+            {
+                 double L = 1.0, R = 0.5, C = 0.2;
+                 double[] dydt(double t, double[] i) => [ i[1], -(R/L)*i[1] - (1.0/(L*C))*i[0] ];
+                 double[] i0 = [1.0, 0.0];
+                 double[] tspan = [0, 20];
+                 (ColVec T, Matrix Y) = Ode45(dydt, i0, tspan);
+                 Plot(T, Y, Linewidth: 2);
+                 Legend(["i", "i'"], UpperLeft);
+                Title("RLC Circuit");
+                 SaveAs("HigherOrder_RLC.png");
+            }
             /// </code>
             /// </example 4>
             /// 
@@ -156,16 +159,16 @@
             /// \end{eqnarray}
             /// </math>
             /// <code>
-            /// {
-            ///     double[] dydt(double t, double[] y) => [ y[1], y[2], y[0] ];
-            ///     double[] y0 = [1.0, 0.0, 0.0];
-            ///     double[] tspan = [0, 20];
-            ///     (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
-            ///     Plot(T, Y, Linewidth: 2);
-            ///     Legend(["y", "y'", "y''"], UpperLeft);
-            ///     Title("Third‑Order Example");
-            ///     SaveAs("HigherOrder_Third.png");
-            /// }
+            {
+                 double[] dydt(double t, double[] y) => [ y[1], y[2], y[0] ];
+                 double[] y0 = [1.0, 0.0, 0.0];
+                 double[] tspan = [0, 20];
+                 (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+                 Plot(T, Y, Linewidth: 2);
+                 Legend(["y", "y'", "y''"], UpperLeft);
+                 Title("Third‑Order Example");
+                 SaveAs("HigherOrder_Third.png");
+            }
             /// </code>
             /// </example 5>
             /// 
