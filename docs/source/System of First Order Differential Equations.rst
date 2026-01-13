@@ -33,7 +33,7 @@ In SepalSolver, this is represented by a function:
 .. code-block:: csharp
 
    // Define the ODE as a function
-   static extern double[] dydt(double t, double[] y);
+   double[] dydt(double t, double[] y) => [f1, f2, ..fn];
 
 where :math:`y` is the vector of dependent variables.
 
