@@ -1,4 +1,18 @@
+
+/* Dark theme for code blocks */
 div.highlight pre {
-    background-color: #2d2d2d;  /* dark background */
-    color: #f8f8f2;             /* light text */
+    background-color: #2d2d2d;   /* dark gray background */
+    color: #f8f8f2;              /* light text */
+    padding: 10px;
+    border-radius: 6px;
+    font-family: Consolas, Monaco, 'Courier New', monospace;
 }
+
+/* Inline code (like :code:`example`) */
+code {
+    background-color: #44475a;   /* slightly lighter gray */
+    color: #f8f8f2;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
