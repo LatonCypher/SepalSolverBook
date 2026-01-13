@@ -62,7 +62,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
 
 .. Admonition:: Example 1 :  Simple Harmonic Oscillator (Second Order)
 
-   | Equation: :math:`y'' + y = 0`
+   | Equation: :math:`y'' + y = 0`,
    | Converted system:
    
    .. math ::
@@ -93,7 +93,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
 
 .. Admonition:: Example 2 :  Damped Oscillator
 
-   | Equation: :math:`y'' + 2β y' + ω^2 y = 0`
+   | Equation: :math:`y'' + 2β y' + ω^2 y = 0`,
    | Converted system:
    
    .. math ::
@@ -125,7 +125,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
 
 .. Admonition:: Example 3 :  Forced Oscillator
 
-   | Equation: :math:`y'' + y = cos(t)`
+   | Equation: :math:`y'' + y = cos(t)`,
    | Converted system:
    
    .. math ::
@@ -156,7 +156,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
 
 .. Admonition:: Example 4 :  RLC Circuit
 
-   | Equation: :math:`L i'' + R i' + (1/C) i = 0`
+   | Equation: :math:`L i'' + R i' + (1/C) i = 0`,
    | Converted system:
    
    .. math ::
@@ -188,7 +188,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
 
 .. Admonition:: Example 5 :  Third‑Order Example
 
-   | Equation: :math:`y''' - y = 0`
+   | Equation: :math:`y''' - y = 0`,
    | Converted system:
    
    .. math ::
