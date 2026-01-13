@@ -120,7 +120,6 @@ namespace ConsoleApp1
             TreatExampleBlock(bookContent);
             TreatDocSlashed(bookContent);
 
-
             using (StreamWriter writer = new(outputPath, true))
             {
                 foreach (var line in bookContent)
