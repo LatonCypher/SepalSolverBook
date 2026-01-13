@@ -55,7 +55,7 @@
             /// Here are examples of converting and solving various higher‑order ODEs using SepalSolver.
             ///
             /// <example 1> Simple Harmonic Oscillator (Second Order)
-            /// Equation: y'' + y = 0
+            /// Equation: :math:`y'' + y = 0`
             /// Converted system:
             /// <math>
             /// \begin{eqnarray}
@@ -78,7 +78,7 @@
             /// </example 1>
             /// 
             /// <example 2> Damped Oscillator
-            /// Equation: y'' + 2β y' + ω^2 y = 0
+            /// Equation: :math:`y'' + 2β y' + ω^2 y = 0`
             /// Converted system:
             /// <math>
             /// \begin{eqnarray}
@@ -102,7 +102,7 @@
             /// </example 2>
             /// 
             /// <example 3> Forced Oscillator
-            /// Equation: y'' + y = cos(t)
+            /// Equation: :math:`y'' + y = cos(t)`
             /// Converted system:
             /// <math>
             /// \begin{eqnarray}
@@ -125,7 +125,7 @@
             /// </example 3>
             /// 
             /// <example 4> RLC Circuit
-            /// Equation: L i'' + R i' + (1/C) i = 0
+            /// Equation: :math:`L i'' + R i' + (1/C) i = 0`
             /// Converted system:
             /// <math>
             /// \begin{eqnarray}
@@ -149,7 +149,7 @@
             /// </example 4>
             /// 
             /// <example 5> Third‑Order Example
-            /// Equation: y''' - y = 0
+            /// Equation: :math:`y''' - y = 0`
             /// Converted system:
             /// <math>
             /// \begin{eqnarray}
@@ -162,7 +162,7 @@
             {
                  double[] dydt(double t, double[] y) => [ y[1], y[2], y[0] ];
                  double[] y0 = [1.0, 0.0, 0.0];
-                 double[] tspan = [0, 20];
+                 double[] tspan = [0, 3];
                  (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
                  Plot(T, Y, Linewidth: 2);
                  Legend(["y", "y'", "y''"], UpperLeft);
