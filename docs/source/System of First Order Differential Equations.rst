@@ -87,7 +87,7 @@ where :math:`y` is the vector of dependent variables.
    
       \begin{eqnarray}
       x' &= \alpha x-\beta xy \\
-      y' &= \delta xy-\gamma y`
+      y' &= \delta xy-\gamma y
       \end{eqnarray}
    
    
