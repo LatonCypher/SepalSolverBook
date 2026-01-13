@@ -68,3 +68,35 @@ where :math:`y` is the vector of dependent variables.
       :align: center
       :alt: Simple_Harmonic_Oscillator.png
    
+
+
+
+.. Admonition:: Example 2 :  Lotka–Volterra Predator–Prey
+
+   The Lotka–Volterra equations model the dynamics between predator and prey populations. Mathemtically, it is defined as:
+   :math:`x'=\alpha x-\beta xy,\quad y'=\delta xy-\gamma y`
+   
+   .. code-block:: csharp
+   
+      // Define the ODE as a function
+      double alpha = 1.0, beta = 0.5, delta = 0.5, gamma = 2.0;
+      double[] dydt(double t, double[] y) => [
+          alpha * y[0] - beta * y[0] * y[1],
+          delta * y[0] * y[1] - gamma * y[1]];
+      // Initial condition
+      double[] y0 = [2.0, 1.0];
+      // Time span
+      double[] tspan = [0, 40];
+      // Solve the ODE using Ode45
+      (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+      // Plot the results
+      Plot(T, Y, Linewidth: 2);
+      Legend(["Prey", "Predator"], UpperLeft);
+      Title("Lotka–Volterra Predator–Prey System");
+      SaveAs("Lotka_Volterra_Predator_Prey_System.png");
+   
+   
+   .. figure:: images/Lotka_Volterra_Predator_Prey_System.png
+      :align: center
+      :alt: Lotka_Volterra_Predator_Prey_System.png
+   
