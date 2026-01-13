@@ -1,102 +1,174 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
 {
     internal class Section_3_Higher_Order_Differential_Equations
     {
-        public void Run()
+        public static void Run()
         {
             /// <BookContent>
-            /// /// <example 3>
-            /// Solve a second order ODE (simple harmonic oscillator) by first converting to system of first order equation and 
-            /// then solve the system of first-order ODEs representing the simple harmonic oscillator:
             /// 
-            /// .. math:: \frac{d^2y}{dt^2} = -4y
-            /// .. math:: y_0 = 0, \quad y'_0 = 5, \quad t = [0, 10];
+            /// <header 2> Introduction </header 2>
+            /// A higher‑order differential equation involves derivatives of order two or higher.
+            /// Many physical systems such as oscillations, mechanical vibrations, and electrical circuits
+            /// are naturally modeled by second‑order or higher‑order equations.
             /// 
-            /// | To solve this, we first transform the problem into a system of first order differential equations:
-            /// | Let :math:`v = \cfrac{dy}{dt}`,   hence :math:`\cfrac{dv}{dt} = -4y, \quad y_0 = 0, \quad v_0 = 5`, 
-            /// | Now we have 2 equations :math:`\cfrac{dy}{dt} = v, \quad \cfrac{dv}{dt} = -4y`
+            /// Examples:
+            /// 
+            /// - Simple harmonic oscillator (second order)
+            /// - Damped oscillator
+            /// - Forced oscillator
+            /// - Beam deflection problems
+            /// - RLC electrical circuits
+            /// 
+            /// SepalSolver solves higher‑order ODEs by first converting them into equivalent systems
+            /// of first‑order equations.
+            /// 
+            /// <header 2> General Form </header 2>
+            /// A general n‑th order ODE can be written as:
+            /// 
+            /// <math>
+            ///    \cfrac{d^n y}{dt^n} = f(t, y, y', y'', \dots, y^{(n-1)})
+            /// </math>
+            /// 
+            /// To solve with SepalSolver, we introduce variables:
+            /// <math>
+            ///    y_1 = y,\; y_2 = y',\; y_3 = y'',\;\dots,\; y_n = y^{(n-1)}
+            /// </math>
+            /// 
+            /// Then the system becomes:
+            /// <math>
+            /// \begin{array}{c}
+            ///    y_1' = y_2 \\
+            ///    y_2' = y_3 \\
+            ///    \vdots \\
+            ///    y_n' = f(t, y_1, y_2, \dots, y_n)
+            /// \end{array}
+            /// </math>
+            /// 
             /// <code>
-            {
-                // Simple Harmonic Oscillator
-                double[] dydt(double t, double[] y) =>
-                    [y[1], -4*y[0]];
-                (ColVec T, Matrix Y) = Ode45(dydt, [0, 5], [0, 10]);
-                Plot(T, Y, Linewidth: 2);
-                SaveAs("Simple_Harmonic_Oscillator.png");
-            }
+            /// {
+            ///     // Define the ODE system as a function
+            ///     double[] dydt(double t, double[] y) => [y[1], y[2], ..., f(t,y)];
+            /// }
+            /// </code>
+            /// 
+            /// <example 1> Simple Harmonic Oscillator (Second Order)
+            /// Equation: y'' + y = 0
+            /// Converted system:
+            /// <math>
+            /// \begin{eqnarray}
+            ///    y_1' &= y_2 \\
+            ///    y_2' &= -y_1
+            /// \end{eqnarray}
+            /// </math>
+            /// <code>
+            /// {
+            ///     double[] dydt(double t, double[] y) => [ y[1], -y[0] ];
+            ///     double[] y0 = [1.0, 0.0]; // y(0)=1, y'(0)=0
+            ///     double[] tspan = [0, 20];
+            ///     (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+            ///     Plot(T, Y, Linewidth: 2);
+            ///     Legend(["y", "y'"], UpperLeft);
+            ///     Title("Simple Harmonic Oscillator");
+            ///     SaveAs("HigherOrder_SHO.png");
+            /// }
+            /// </code>
+            /// </example 1>
+            /// 
+            /// <example 2> Damped Oscillator
+            /// Equation: y'' + 2β y' + ω^2 y = 0
+            /// Converted system:
+            /// <math>
+            /// \begin{eqnarray}
+            ///    y_1' &= y_2 \\
+            ///    y_2' &= -2β y_2 - ω^2 y_1
+            /// \end{eqnarray}
+            /// </math>
+            /// <code>
+            /// {
+            ///     double beta = 0.1, omega = 2.0;
+            ///     double[] dydt(double t, double[] y) => [ y[1], -2*beta*y[1] - omega*omega*y[0] ];
+            ///     double[] y0 = [1.0, 0.0];
+            ///     double[] tspan = [0, 20];
+            ///     (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+            ///     Plot(T, Y, Linewidth: 2);
+            ///     Legend(["y", "y'"], UpperLeft);
+            ///     Title("Damped Oscillator");
+            ///     SaveAs("HigherOrder_Damped.png");
+            /// }
+            /// </code>
+            /// </example 2>
+            /// 
+            /// <example 3> Forced Oscillator
+            /// Equation: y'' + y = cos(t)
+            /// Converted system:
+            /// <math>
+            /// \begin{eqnarray}
+            ///    y_1' &= y_2 \\
+            ///    y_2' &= -y_1 + \cos(t)
+            /// \end{eqnarray}
+            /// </math>
+            /// <code>
+            /// {
+            ///     double[] dydt(double t, double[] y) => [ y[1], -y[0] + Math.Cos(t) ];
+            ///     double[] y0 = [0.0, 0.0];
+            ///     double[] tspan = [0, 20];
+            ///     (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+            ///     Plot(T, Y, Linewidth: 2);
+            ///     Legend(["y", "y'"], UpperLeft);
+            ///     Title("Forced Oscillator");
+            ///     SaveAs("HigherOrder_Forced.png");
+            /// }
             /// </code>
             /// </example 3>
             /// 
-            /// <example 4>
-            /// lets look at harmonic oscillator with damping
-            /// 
-            /// .. math :: m\cfrac{d^2y}{dt^2} + c\cfrac{dy}{dt} + ky = 0                      
-            /// .. math :: y_0 = 0.7, \quad y'_0 = 0, \quad t = [0, 30]
-            /// 
-            /// 
-            /// | where :math:`m` is the mass, :math:`c` is the damping coefficient, and :math:`k` is the spring constant.
-            /// | To solve this, we first transform the problem into a system of first order differential equations:
-            /// 
-            /// | Let :math:`v = \cfrac{dy}{dt}`,   hence :math:`\cfrac{dv}{dt} =  -\cfrac{c}{m}v - \cfrac{k}{m}y, \quad y_0 = 0.7, \quad v_0 = 0`,
-            /// | Now we have 2 equations :math:`\cfrac{dy}{dt} = v, \quad \cfrac{dv}{dt} = -\cfrac{c}{m}v - \cfrac{k}{m}y`
-            /// 
+            /// <example 4> RLC Circuit
+            /// Equation: L i'' + R i' + (1/C) i = 0
+            /// Converted system:
+            /// <math>
+            /// \begin{eqnarray}
+            ///    i_1' &= i_2 \\
+            ///    i_2' &= -(R/L) i_2 - (1/(L C)) i_1
+            /// \end{eqnarray}
+            /// </math>
             /// <code>
-            {
-                // Damped System
-                double k = 3.5, c = 0.5, m = 2.0, k_m = k/m, c_m = c/m;
-                double[] dydt(double t, double[] y) =>
-                    [y[1], -k_m * y[0] - c_m * y[1]];
-                (ColVec T, Matrix Y) = Ode45(dydt, [0.7, 0], [0, 30]);
-                Plot(T, Y, Linewidth: 2);
-                SaveAs("Damped_Harmonic_Oscillator.png");
-            }
+            /// {
+            ///     double L = 1.0, R = 0.5, C = 0.2;
+            ///     double[] dydt(double t, double[] i) => [ i[1], -(R/L)*i[1] - (1.0/(L*C))*i[0] ];
+            ///     double[] i0 = [1.0, 0.0];
+            ///     double[] tspan = [0, 20];
+            ///     (ColVec T, Matrix Y) = Ode45(dydt, i0, tspan);
+            ///     Plot(T, Y, Linewidth: 2);
+            ///     Legend(["i", "i'"], UpperLeft);
+            ///     Title("RLC Circuit");
+            ///     SaveAs("HigherOrder_RLC.png");
+            /// }
             /// </code>
             /// </example 4>
             /// 
-            /// <example 5>
+            /// <example 5> Third‑Order Example
+            /// Equation: y''' - y = 0
+            /// Converted system:
+            /// <math>
+            /// \begin{eqnarray}
+            ///    y_1' &= y_2 \\
+            ///    y_2' &= y_3 \\
+            ///    y_3' &= y_1
+            /// \end{eqnarray}
+            /// </math>
             /// <code>
-            {
-                // Predator Prey Model
-                double alpha = 0.01, beta = 0.02;
-                double[] dydt(double t, double[] y) =>
-                    [(1 - alpha*y[1])*y[0], (-1 + beta*y[0])*y[1]];
-                (ColVec T, Matrix Y) = Ode45(dydt, [20, 20], [0, 15]);
-                Plot(T, Y, Linewidth: 2);
-                SaveAs("Predator_Prey_Model.png");
-            }
+            /// {
+            ///     double[] dydt(double t, double[] y) => [ y[1], y[2], y[0] ];
+            ///     double[] y0 = [1.0, 0.0, 0.0];
+            ///     double[] tspan = [0, 20];
+            ///     (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+            ///     Plot(T, Y, Linewidth: 2);
+            ///     Legend(["y", "y'", "y''"], UpperLeft);
+            ///     Title("Third‑Order Example");
+            ///     SaveAs("HigherOrder_Third.png");
+            /// }
             /// </code>
             /// </example 5>
-            ///
-            /// <example 6>
-            /// <code>
-            {
-                // Blausius Boundary Layer
-
-                // define function
-                double[] dydt(double t, double[] y) =>
-                    [y[1], y[2], -0.5 * y[2] * y[0]];
-
-                // set time span
-                double[] tspan = [0, 6];
-
-                double[] y0 = [0, 0, 0.5];
-                (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
-
-                // plot the result
-                Plot(T, Y, Linewidth: 2);
-                Legend(["f", "f'", "f''"], UpperLeft);
-                Axis([0, 6, 0, 2]); Xlabel("η");
-                Title("Blasius Boundary Layer");
-                SaveAs("Blasius_Boundary_Layer.png");
-            }
-            /// </code>
-            /// </example 6>
+            /// 
             /// </BookContent>
         }
     }

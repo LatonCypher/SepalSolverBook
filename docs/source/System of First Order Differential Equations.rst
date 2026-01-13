@@ -37,6 +37,7 @@ In SepalSolver, this is represented by a function:
 
 where :math:`y` is the vector of dependent variables.
 
+These are examples of how to use SepalSolver to solve various systems of first-order ODEs.
 
 
 .. Admonition:: Example 1 :  Simple Harmonic Oscillator
@@ -199,4 +200,46 @@ where :math:`y` is the vector of dependent variables.
    .. figure:: images/SIR_Epidemic_Model.png
       :align: center
       :alt: SIR_Epidemic_Model.png
+   
+
+
+
+.. Admonition:: Example 5 :  Brusselator Model
+
+   The brusselator is a theoretical model for a type of autocatalytic reaction. It is defined by the following system of ODEs:
+   
+   .. math ::
+   
+      \begin{eqnarray}
+      \cfrac{dx}{dt} &= A - (B + 1)x + x^2y \\
+      \cfrac{dy}{dt} &= Bx - x^2y
+      \end{eqnarray}
+   
+   
+   .. code-block:: csharp
+   
+      // Define the ODE as a function
+      double A = 1.0, B = 3.0;
+      double[] dydt(double t, double[] y) => [
+          A - (B + 1.0) * y[0] + y[0] * y[0] * y[1],
+          B * y[0] - y[0] * y[0] * y[1]];
+   
+      // Initial condition
+      double[] y0 = [1.5, 1.0];
+      // Time span
+      double[] tspan = [0, 15];
+      // Solve the ODE using Ode45
+      (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+      //  Plot the results
+      Plot(T, Y, Linewidth: 2);
+      Legend(["X", "Y"], UpperLeft);
+      Title("Brusselator (A=1, B=3)");
+      Xlabel("t");
+      Ylabel("concentration");
+      SaveAs("Brusselator_Model.png");
+   
+   
+   .. figure:: images/Brusselator_Model.png
+      :align: center
+      :alt: Brusselator_Model.png
    

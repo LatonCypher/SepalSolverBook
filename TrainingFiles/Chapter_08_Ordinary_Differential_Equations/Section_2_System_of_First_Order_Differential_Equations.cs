@@ -1,7 +1,4 @@
-﻿using System.Text;
-using Typography.OpenFont.Tables;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
 {
     internal class Section_2_System_of_First_Order_Differential_Equations
     {
@@ -42,7 +39,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// </code>
             /// where :math:`y` is the vector of dependent variables.
             /// 
-            ///
+            /// These are examples of how to use SepalSolver to solve various systems of first-order ODEs.
+            /// 
             /// <example 1> Simple Harmonic Oscillator
             /// A simple harmonic oscillator can be modeled as a system of first-order ODEs:
             /// <math>
@@ -194,7 +192,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
                 // Initial condition
                 double[] y0 = [1.5, 1.0];
                 // Time span
-                double[] tspan = [0, 40];
+                double[] tspan = [0, 15];
                 // Solve the ODE using Ode45
                 (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
                 //  Plot the results
@@ -206,7 +204,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
                 SaveAs("Brusselator_Model.png");
             }
             /// </code>
-            /// </example 4>
+            /// </example 5>
             /// </BookContent>
         }
     }
