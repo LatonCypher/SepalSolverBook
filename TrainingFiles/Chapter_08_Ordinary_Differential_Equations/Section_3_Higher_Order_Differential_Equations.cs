@@ -36,8 +36,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// <example 4>
             /// lets look at harmonic oscillator with damping
             /// 
-            /// .. math:: m\cfrac{d^2y}{dt^2} + c\cfrac{dy}{dt} + ky = 0
-            /// .. math:: y_0 = 0.7, \quad y'_0 = 0, \quad t = [0, 30];
+            /// <math>
+            /// m\cfrac{d^2y}{dt^2} + c\cfrac{dy}{dt} + ky = 0
+            /// y_0 = 0.7, \quad y'_0 = 0, \quad t = [0, 30];
+            /// </math>
             /// 
             /// | where :math:`m` is the mass, :math:`c` is the damping coefficient, and :math:`k` is the spring constant.
             /// | To solve this, we first transform the problem into a system of first order differential equations:

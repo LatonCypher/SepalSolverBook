@@ -1,5 +1,7 @@
 ﻿
 
+using ScottPlot;
+
 namespace ConsoleApp1
 {
     internal class BookWriter (string ProjectFolder, string BookFolder)
@@ -112,6 +114,7 @@ namespace ConsoleApp1
             TreatHeader1(bookContent);
             TreatHeader2(bookContent);
             TreatHeader3(bookContent);
+            TreatMathTag(bookContent);
             TreatCodeBlock(bookContent);
             TreatTableBlock(bookContent);
             TreatExampleBlock(bookContent);
@@ -216,6 +219,7 @@ namespace ConsoleApp1
 
             }
         }
+        
         static void TreatCodeBlock(List<string> bookContent)
         {
             while (bookContent.Any(line => line.Contains("<code>")))
@@ -348,6 +352,35 @@ namespace ConsoleApp1
             {
                 if (bookContent[i].Contains("///"))
                     bookContent[i] = bookContent[i].TrimStart(' ', '\t', '/');
+            }
+        }
+
+        static void TreatMathTag(List<string> bookContent)
+        {
+            while (bookContent.Any(line => line.Contains("<math>")))
+            {
+                int startIndex = -1;
+                // replace code blocks with rst format
+                for (int i = 0; i < bookContent.Count; i++)
+                {
+                    if (bookContent[i].Contains("<math>"))
+                    {
+                        startIndex = i;
+                        break;
+                    }
+                }
+                int Length = 1;
+                List<string> Codelines = ["", ".. math ::", ""];
+                string line = bookContent[startIndex + Length];
+                int space = line.TakeWhile(c => c == ' ').Count()+1;
+                while (!bookContent[startIndex + Length].Contains("</math>"))
+                {
+                    line = bookContent[startIndex + Length];
+                    if (line.Contains("///"))
+                        Codelines.Add("   " + line.TrimStart(' ', '\t', '/'));
+                    Length++;
+                }
+                Replace(bookContent, startIndex, Length + 1, Codelines);
             }
         }
     }
