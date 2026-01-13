@@ -44,8 +44,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// 
             ///
             /// <example 1> Simple Harmonic Oscillator
-            /// 
-            /// :math:`y_1'=y_2,\quad y_2'=-y_1`
+            /// A simple harmonic oscillator can be modeled as a system of first-order ODEs:
+            /// <math>
+            /// \begin{eqnarray}
+            ///       y_1' &= y_2 \\
+            ///       y_2' &= -y_1
+            /// \end{ eqnarray}
+            /// </math>
             ///    
             /// This represents a simple harmonic oscillator written as a system.
             /// <code>
@@ -93,6 +98,32 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             }
             /// </code>
             /// </example 2>
+            /// 
+            /// 
+            /// /// <example 3> Lotka–Volterra Predator–Prey
+            /// The Lotka–Volterra equations model the dynamics between predator and prey populations. Mathemtically, it is defined as:
+            /// :math:`x'=\alpha x-\beta xy,\quad y'=\delta xy-\gamma y`
+            /// <code>
+            {
+                // Define the ODE as a function
+                double alpha = 1.0, beta = 0.01, delta = 0.02, gamma = 1.0;
+                double[] dydt(double t, double[] y) => [
+                    alpha * y[0] - beta * y[0] * y[1],
+                    delta * y[0] * y[1] - gamma * y[1]];
+                // Initial condition
+                double[] y0 = [20.0, 20.0];
+                // Time span
+                double[] tspan = [0, 15];
+                // Solve the ODE using Ode45
+                (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+                // Plot the results
+                Plot(T, Y, Linewidth: 2);
+                Legend(["Prey", "Predator"], UpperLeft);
+                Title("Lotka–Volterra Predator–Prey System");
+                SaveAs("Lotka_Volterra_Predator_Prey_System.png");
+            }
+            /// </code>
+            /// </example 3>
             /// </BookContent>
         }
     }
