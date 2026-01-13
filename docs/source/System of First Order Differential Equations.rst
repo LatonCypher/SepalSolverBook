@@ -48,7 +48,7 @@ where :math:`y` is the vector of dependent variables.
       \begin{eqnarray}
       y_1' &= y_2 \\
       y_2' &= -y_1
-      \end{ eqnarray}
+      \end{eqnarray}
    
    
    This represents a simple harmonic oscillator written as a system.

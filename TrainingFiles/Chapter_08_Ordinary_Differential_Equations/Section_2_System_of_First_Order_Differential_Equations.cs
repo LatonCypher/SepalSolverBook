@@ -49,7 +49,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// \begin{eqnarray}
             ///       y_1' &= y_2 \\
             ///       y_2' &= -y_1
-            /// \end{ eqnarray}
+            /// \end{eqnarray}
             /// </math>
             ///    
             /// This represents a simple harmonic oscillator written as a system.
