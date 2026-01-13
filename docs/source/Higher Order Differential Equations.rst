@@ -62,8 +62,8 @@ Here are examples of converting and solving various higher‑order ODEs using Se
 
 .. Admonition:: Example 1 :  Simple Harmonic Oscillator (Second Order)
 
-   Equation: :math:`y'' + y = 0`
-   Converted system:
+   | Equation: :math:`y'' + y = 0`
+   | Converted system:
    
    .. math ::
    
@@ -75,7 +75,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
    
    .. code-block:: csharp
    
-       double[] dydt(double t, double[] y) => [ y[1], -y[0] ];
+      double[] dydt(double t, double[] y) => [ y[1], -y[0] ];
        double[] y0 = [1.0, 0.0]; // y(0)=1, y'(0)=0
        double[] tspan = [0, 20];
        (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
@@ -93,8 +93,8 @@ Here are examples of converting and solving various higher‑order ODEs using Se
 
 .. Admonition:: Example 2 :  Damped Oscillator
 
-   Equation: :math:`y'' + 2β y' + ω^2 y = 0`
-   Converted system:
+   | Equation: :math:`y'' + 2β y' + ω^2 y = 0`
+   | Converted system:
    
    .. math ::
    
@@ -106,7 +106,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
    
    .. code-block:: csharp
    
-       double beta = 0.1, omega = 2.0;
+      double beta = 0.1, omega = 2.0;
        double[] dydt(double t, double[] y) => [ y[1], -2*beta*y[1] - omega*omega*y[0] ];
        double[] y0 = [1.0, 0.0];
        double[] tspan = [0, 20];
@@ -125,8 +125,8 @@ Here are examples of converting and solving various higher‑order ODEs using Se
 
 .. Admonition:: Example 3 :  Forced Oscillator
 
-   Equation: :math:`y'' + y = cos(t)`
-   Converted system:
+   | Equation: :math:`y'' + y = cos(t)`
+   | Converted system:
    
    .. math ::
    
@@ -138,7 +138,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
    
    .. code-block:: csharp
    
-       double[] dydt(double t, double[] y) => [ y[1], -y[0] + Cos(t) ];
+      double[] dydt(double t, double[] y) => [ y[1], -y[0] + Cos(t) ];
        double[] y0 = [0.0, 0.0];
        double[] tspan = [0, 20];
        (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
@@ -156,8 +156,8 @@ Here are examples of converting and solving various higher‑order ODEs using Se
 
 .. Admonition:: Example 4 :  RLC Circuit
 
-   Equation: :math:`L i'' + R i' + (1/C) i = 0`
-   Converted system:
+   | Equation: :math:`L i'' + R i' + (1/C) i = 0`
+   | Converted system:
    
    .. math ::
    
@@ -188,8 +188,8 @@ Here are examples of converting and solving various higher‑order ODEs using Se
 
 .. Admonition:: Example 5 :  Third‑Order Example
 
-   Equation: :math:`y''' - y = 0`
-   Converted system:
+   | Equation: :math:`y''' - y = 0`
+   | Converted system:
    
    .. math ::
    
