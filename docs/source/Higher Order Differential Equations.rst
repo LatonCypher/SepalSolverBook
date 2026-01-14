@@ -24,21 +24,21 @@ General Form
 A general n‑th order ODE can be written as:
 
 
-.. math ::
+.. math::
 
    \cfrac{d^n y}{dt^n} = f(t, y, y', y'', \dots, y^{(n-1)})
 
 
 To solve with SepalSolver, we introduce variables:
 
-.. math ::
+.. math::
 
    y_1 = y,\; y_2 = y',\; y_3 = y'',\;\dots,\; y_n = y^{(n-1)}
 
 
 Then the system becomes:
 
-.. math ::
+.. math::
 
    \begin{array}{c}
    y_1' = y_2 \\
@@ -65,7 +65,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
    | Equation: :math:`y'' + y = 0`,
    | Converted system:
    
-   .. math ::
+   .. math::
    
       \begin{eqnarray}
       y_1' &= y_2 \\
@@ -96,7 +96,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
    | Equation: :math:`y'' + 2β y' + ω^2 y = 0`,
    | Converted system:
    
-   .. math ::
+   .. math::
    
       \begin{eqnarray}
       y_1' &= y_2 \\
@@ -128,7 +128,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
    | Equation: :math:`y'' + y = cos(t)`,
    | Converted system:
    
-   .. math ::
+   .. math::
    
       \begin{eqnarray}
       y_1' &= y_2 \\
@@ -159,7 +159,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
    | Equation: :math:`L i'' + R i' + (1/C) i = 0`,
    | Converted system:
    
-   .. math ::
+   .. math::
    
       \begin{eqnarray}
       i_1' &= i_2 \\
@@ -191,7 +191,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
    | Equation: :math:`y''' - y = 0`,
    | Converted system:
    
-   .. math ::
+   .. math::
    
       \begin{eqnarray}
       y_1' &= y_2 \\

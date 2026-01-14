@@ -1,33 +1,34 @@
-/* Container for the terminal window */
-.terminal {
-    background-color: #1e1e1e;
-    color: #d4d4d4;
-    border-radius: 6px;
-    padding: 35px 15px 15px 15px;
+/* Target the container specifically */
+div.terminal {
+    background-color: #1a1a1a !important;
+    border-radius: 8px;
+    padding: 30px 15px 15px 15px !important;
     position: relative;
-    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-    line-height: 1.5;
-    margin-bottom: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    border: 1px solid #333;
-    white-space: pre-wrap; /* Preserves line breaks from console */
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border: 1px solid #444 !important;
 }
 
-/* The three colorful window buttons */
-.terminal::before {
+/* Red, Yellow, Green buttons */
+div.terminal::before {
     content: "● ● ●";
     position: absolute;
-    top: 10px;
+    top: 8px;
     left: 15px;
-    font-size: 12px;
-    letter-spacing: 3px;
-    color: #ff5f56; /* Red, Yellow, Green */
-    text-shadow: 18px 0 #ffbd2e, 36px 0 #27c93f;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #ff5f56;
+    text-shadow: 15px 0 #ffbd2e, 30px 0 #27c93f;
+    opacity: 0.8;
 }
 
-/* Style for the text inside */
-.terminal code {
+/* The actual text inside */
+div.terminal pre, div.terminal .terminal-text {
     background: transparent !important;
-    color: #00ff00 !important; /* Classic terminal green */
+    color: #00ff41 !important; /* Matrix/Terminal Green */
+    font-family: 'Consolas', 'Monaco', monospace !important;
+    border: none !important;
+    margin: 0 !important;
     padding: 0 !important;
+    font-size: 0.9em !important;
 }

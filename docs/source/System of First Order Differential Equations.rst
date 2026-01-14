@@ -19,7 +19,7 @@ General Form
 A system of :math:`n` first‑order ODEs can be written as:
 
 
-.. math ::
+.. math::
 
    \begin{array}{c}
    \cfrac{dy_1}{dt} = f_1(t, y_1, y_2,\dots, y_n) \\
@@ -46,7 +46,7 @@ These are examples of how to use SepalSolver to solve various systems of first-o
 
    A simple harmonic oscillator can be modeled as a system of first-order ODEs:
    
-   .. math ::
+   .. math::
    
       \begin{eqnarray}
       y_1' &= y_2 \\
@@ -86,7 +86,7 @@ These are examples of how to use SepalSolver to solve various systems of first-o
    The Lotka–Volterra equations model the dynamics between predator and prey populations. Mathemtically, it is defined as:
    
    
-   .. math ::
+   .. math::
    
       \begin{eqnarray}
       x' &= \alpha x-\beta xy \\
@@ -125,7 +125,7 @@ These are examples of how to use SepalSolver to solve various systems of first-o
 
    The Lorenz system is a set of three coupled, first‑order ODEs that exhibit chaotic behavior:
    
-   .. math ::
+   .. math::
    
       \begin{eqnarray}
       \cfrac{dx}{dt} &= \sigma (y - x) \\
@@ -167,7 +167,7 @@ These are examples of how to use SepalSolver to solve various systems of first-o
 
    The SIR model divides a population into three compartments: Susceptible (S), Infected (I), and Recovered (R). The model is defined by the following system of ODEs:
    
-   .. math ::
+   .. math::
    
       \begin{eqnarray}
       \cfrac{dS}{dt} &= -\beta\cfrac{S I}{N} \\
@@ -210,7 +210,7 @@ These are examples of how to use SepalSolver to solve various systems of first-o
 
    The brusselator is a theoretical model for a type of autocatalytic reaction. It is defined by the following system of ODEs:
    
-   .. math ::
+   .. math::
    
       \begin{eqnarray}
       \cfrac{dx}{dt} &= A - (B + 1)x + x^2y \\
