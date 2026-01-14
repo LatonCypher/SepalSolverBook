@@ -1,33 +1,50 @@
-/* Target the pre tag directly */
+/* Target the terminal with Dark Gray background and Courier New font */
 pre.terminal {
-    background-color: #1a1a1a !important;
-    color: #00ff41 !important; /* Terminal Green */
-    border-radius: 8px !important;
-    padding: 35px 15px 15px 15px !important;
+    /* Dark Gray background distinct from code panels */
+    background-color: #2d2d2d !important; 
+    
+    /* Terminal Green text */
+    color: #4AF626 !important; 
+    
+    /* SETTING FONT TO COURIER NEW */
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 0.95em !important;
+    line-height: 1.4 !important;
+
+    /* Terminal Window Styling */
+    border-radius: 6px !important;
+    padding: 40px 20px 20px 20px !important;
     position: relative;
-    margin: 20px 0;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    border: 1px solid #444 !important;
-    font-family: 'Consolas', 'Monaco', monospace !important;
+    margin: 25px 0;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
+    border: 1px solid #444444 !important;
     white-space: pre !important;
     overflow-x: auto;
 }
 
-/* Red, Yellow, Green buttons */
+/* Red, Yellow, Green Window Buttons */
 pre.terminal::before {
     content: "● ● ●";
     position: absolute;
-    top: 10px;
-    left: 15px;
-    font-size: 12px;
-    letter-spacing: 2px;
-    color: #ff5f56;
-    text-shadow: 18px 0 #ffbd2e, 36px 0 #27c93f;
-    opacity: 0.9;
-    font-family: sans-serif !important;
+    top: 12px;
+    left: 18px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #ff5f56; 
+    text-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f; 
+    opacity: 1;
+    font-family: sans-serif !important; /* Keep buttons as standard sans-serif */
 }
 
-/* Ensure the copy button from sphinx_copybutton doesn't overlap buttons */
-pre.terminal .copybtn {
-    top: 10px !important;
+/* Optional: Label for the terminal window */
+pre.terminal::after {
+    content: "SepalSolver Output";
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #777;
+    font-size: 11px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
 }
