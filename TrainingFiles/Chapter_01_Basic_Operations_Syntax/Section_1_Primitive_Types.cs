@@ -102,7 +102,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             /// These primitive types are the building blocks for more complex data structures
             /// and are essential for various operations in C#.
             /// 
-            /// <header 2> Examples </header 2>
+            /// <header 3> Examples </header 3>
             ///
             /// <example 1> Integer Arithmetic 
             /// <code>
@@ -157,7 +157,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             {
                 Writer.SetOut("Primitive_Types_Example5.txt");
                 string firstName = "Lateef";
-                string lastName = "O.";
+                string lastName = "K.";
                 string fullName = firstName + " " + lastName;
                 Console.WriteLine($"Full Name: {fullName}");
             }

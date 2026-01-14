@@ -157,7 +157,7 @@ These primitive types are the building blocks for more complex data structures
 and are essential for various operations in C#.
 
 Examples
---------
+~~~~~~~~
 
 
 .. Admonition:: Example 1 :  Integer Arithmetic 
@@ -230,14 +230,14 @@ Examples
    .. code-block:: csharp
    
       string firstName = "Lateef";
-      string lastName = "O.";
+      string lastName = "K.";
       string fullName = firstName + " " + lastName;
       Console.WriteLine($"Full Name: {fullName}");
    
    
    .. terminal::
    
-      Full Name: Lateef O.
+      Full Name: Lateef K.
 
 Inbuilt Derived Types in C#
 ---------------------------
