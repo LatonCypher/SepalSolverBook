@@ -51,7 +51,7 @@
             /// }
             /// </code>
             /// 
-            /// <header 2> Examples </header 2>
+            /// <header 3> Examples </header 3>
             /// Here are examples of converting and solving various higher‑order ODEs using SepalSolver.
             ///
             /// <example 1> Simple Harmonic Oscillator (Second Order)

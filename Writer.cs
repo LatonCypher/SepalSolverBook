@@ -31,7 +31,8 @@
             writer?.Close();
             string filepath = TextFolder + filename;
             string[] lines = File.ReadAllLines(filepath);
-            string[] completelines = ["", ".. terminal::", "", ..lines.Select(l => "   " + l)];
+            string[] completelines = ["", "Ouput", "", "", ".. terminal::", "",
+                ..lines.Select(l => "   " + l)];
             return completelines;
         }
         public static void Run()

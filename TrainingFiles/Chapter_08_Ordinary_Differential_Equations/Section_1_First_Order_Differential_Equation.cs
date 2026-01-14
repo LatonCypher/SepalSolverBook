@@ -40,6 +40,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
             /// Numerical methods are essential because most real-world ordinary differential equations (ODEs) cannot be solved analytically (with pen and paper). Instead of finding a continuous formula for :math:`y(x)`, we calculate discrete values at specific points.
             /// This guide covers the use of sepalsolver for solving an Initial Value Problem (IVP) defined by:  :math:`\cfrac{dy}{dt} = f(t, y), \quad y(t_0) = y_0`
             /// where :math:`f(t, y)` is a function that defines the rate of change of :math:`y` with respect to :math:`t`, and :math:`y_0` is the initial value of :math:`y` at time :math:`t_0`.
+            /// 
+            /// 
+            /// <header 3> Examples </header 3>
             /// <example 1> Exponential Growth
             /// | Solve the first-order ODE: :math:`\cfrac{dy}{dt} = 0.5y`,
             /// | with the initial condition: :math:`y(0) = 1`,

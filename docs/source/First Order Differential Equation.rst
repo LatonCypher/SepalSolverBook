@@ -39,6 +39,10 @@ Numerical methods are essential because most real-world ordinary differential eq
 This guide covers the use of sepalsolver for solving an Initial Value Problem (IVP) defined by:  :math:`\cfrac{dy}{dt} = f(t, y), \quad y(t_0) = y_0`
 where :math:`f(t, y)` is a function that defines the rate of change of :math:`y` with respect to :math:`t`, and :math:`y_0` is the initial value of :math:`y` at time :math:`t_0`.
 
+
+Examples
+~~~~~~~~
+
 .. Admonition:: Example 1 :  Exponential Growth
 
    | Solve the first-order ODE: :math:`\cfrac{dy}{dt} = 0.5y`,

@@ -171,6 +171,9 @@ Examples
       Console.WriteLine($"Sum = {sum}");
    
    
+   Ouput
+   
+   
    .. terminal::
    
       Sum = 30
@@ -188,6 +191,9 @@ Examples
       Console.WriteLine($"Area = {area}");
    
    
+   Ouput
+   
+   
    .. terminal::
    
       Area = 78.53981633974483
@@ -201,6 +207,9 @@ Examples
       char c = 'A';
       int ascii = (int)c;
       Console.WriteLine($"Character: {c}, ASCII: {ascii}");
+   
+   
+   Ouput
    
    
    .. terminal::
@@ -219,6 +228,9 @@ Examples
       Console.WriteLine($"Go out? {goOut}");
    
    
+   Ouput
+   
+   
    .. terminal::
    
       Go out? False
@@ -233,6 +245,9 @@ Examples
       string lastName = "K.";
       string fullName = firstName + " " + lastName;
       Console.WriteLine($"Full Name: {fullName}");
+   
+   
+   Ouput
    
    
    .. terminal::
