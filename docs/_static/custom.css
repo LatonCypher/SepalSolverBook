@@ -1,28 +1,29 @@
-/* Target the terminal with Dark Gray background and Courier New font */
+/* Target the terminal specifically */
 pre.terminal {
-    /* Dark Gray background distinct from code panels */
-    background-color: #2d2d2d !important; 
+    background-color: #2d2d2d !important; /* Dark Gray */
+    color: #4AF626 !important; /* Courier Green */
     
-    /* Terminal Green text */
-    color: #4AF626 !important; 
-    
-    /* SETTING FONT TO COURIER NEW */
     font-family: 'Courier New', Courier, monospace !important;
-    font-size: 0.95em !important;
-    line-height: 1.4 !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
 
-    /* Terminal Window Styling */
     border-radius: 6px !important;
     padding: 40px 20px 20px 20px !important;
     position: relative;
     margin: 25px 0;
     box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
-    border: 1px solid #444444 !important;
+    border: 1px solid #444 !important;
     white-space: pre !important;
-    overflow-x: auto;
 }
 
-/* Red, Yellow, Green Window Buttons */
+/* FORCE ALL CHILD TEXT (SPANS) TO BE GREEN */
+/* This stops the syntax highlighter from making some words blue/red */
+pre.terminal span {
+    color: #4AF626 !important;
+    background: transparent !important;
+}
+
+/* Window Buttons */
 pre.terminal::before {
     content: "● ● ●";
     position: absolute;
@@ -32,19 +33,5 @@ pre.terminal::before {
     letter-spacing: 4px;
     color: #ff5f56; 
     text-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f; 
-    opacity: 1;
-    font-family: sans-serif !important; /* Keep buttons as standard sans-serif */
-}
-
-/* Optional: Label for the terminal window */
-pre.terminal::after {
-    content: "SepalSolver Output";
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #777;
-    font-size: 11px;
-    font-family: sans-serif;
-    letter-spacing: 1px;
+    font-family: sans-serif !important;
 }

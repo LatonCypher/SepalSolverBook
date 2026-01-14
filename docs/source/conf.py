@@ -57,15 +57,14 @@ from docutils.parsers.rst import Directive
 class TerminalDirective(Directive):
     has_content = True
     def run(self):
-        # Join content into a single string
         text = '\n'.join(self.content)
         
-        # Create a literal block directly
-        # This renders as a <pre> tag in HTML
+        # Create the block
         node = nodes.literal_block(text, text)
         
-        # Add the 'terminal' class directly to the <pre> tag
+        # ADD THESE TWO LINES:
         node['classes'].append('terminal')
+        node['language'] = 'none'  # Forces Sphinx to skip syntax coloring
         
         return [node]
 
