@@ -57,17 +57,17 @@ from docutils.parsers.rst import Directive
 class TerminalDirective(Directive):
     has_content = True
     def run(self):
-        # Create the outer container
-        shell_node = nodes.container()
-        shell_node['classes'].append('terminal')
-        
-        # Create a literal block (preformatted text) inside the container
+        # Join content into a single string
         text = '\n'.join(self.content)
-        content_node = nodes.literal_block(text, text)
-        content_node['classes'].append('terminal-text')
         
-        shell_node += content_node
-        return [shell_node]
+        # Create a literal block directly
+        # This renders as a <pre> tag in HTML
+        node = nodes.literal_block(text, text)
+        
+        # Add the 'terminal' class directly to the <pre> tag
+        node['classes'].append('terminal')
+        
+        return [node]
 
 def setup(app):
     app.add_directive("terminal", TerminalDirective)
