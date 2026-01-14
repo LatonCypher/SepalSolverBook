@@ -1,12 +1,19 @@
-/* Target the terminal specifically */
+/* Increased specificity to outrank the RTD theme */
+div.highlight pre.terminal, 
+.rst-content .highlight pre.terminal,
 pre.terminal {
-    background-color: #2d2d2d !important; /* Dark Gray */
-    color: #4AF626 !important; /* Courier Green */
+    /* Dark Gray background */
+    background-color: #2d2d2d !important; 
     
+    /* Courier Green text */
+    color: #4AF626 !important; 
+    
+    /* Font Settings */
     font-family: 'Courier New', Courier, monospace !important;
     font-size: 14px !important;
     line-height: 1.5 !important;
 
+    /* Window Styling */
     border-radius: 6px !important;
     padding: 40px 20px 20px 20px !important;
     position: relative;
@@ -16,15 +23,14 @@ pre.terminal {
     white-space: pre !important;
 }
 
-/* FORCE ALL CHILD TEXT (SPANS) TO BE GREEN */
-/* This stops the syntax highlighter from making some words blue/red */
-pre.terminal span {
+/* Force all internal text to be green and ignore syntax highlighting */
+div.highlight pre.terminal span {
     color: #4AF626 !important;
     background: transparent !important;
 }
 
 /* Window Buttons */
-pre.terminal::before {
+div.highlight pre.terminal::before {
     content: "● ● ●";
     position: absolute;
     top: 12px;
@@ -34,4 +40,16 @@ pre.terminal::before {
     color: #ff5f56; 
     text-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f; 
     font-family: sans-serif !important;
+}
+
+/* Label for the window */
+div.highlight pre.terminal::after {
+    content: "SepalSolver Output";
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #777;
+    font-size: 11px;
+    font-family: sans-serif;
 }
