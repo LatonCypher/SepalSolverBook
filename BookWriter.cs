@@ -103,11 +103,7 @@ namespace ConsoleApp1
                 // Extract BookContent block
                 List<string> bookContent = [..Content.SkipWhile(line=> !line.Contains("/// <BookContent>")).
                                               TakeWhile(line=>!line.Contains("/// </BookContent>"))];
-            if (bookContent.Count == 0)
-            {
-                Console.WriteLine("No <BookContent> block found.");
-                return;
-            }
+            if (bookContent.Count == 0) return;
 
             bookContent.RemoveAt(0); // Remove the starting tag line
             //Headers format
@@ -251,19 +247,32 @@ namespace ConsoleApp1
                 else
                 {
                     List<string> Imagelines = [];
+                    List<string> Outputlines = [];
+                    bool loadoutputfile = false;
+                    string terminalfilename = "";
                     int space = bookContent[startIndex + Length].TakeWhile(c => c == ' ').Count()+1;
                     while (!bookContent[startIndex + Length].Contains("</code>"))
                     {
                         line = bookContent[startIndex + Length];
-                        if (line.Length >= space)
-                            Codelines.Add(line.Substring(space));
+                        if (line.Contains("SetOut"))
+                        {
+                            loadoutputfile = true;
+                            terminalfilename = GetFileReference(line);
+                        }
                         else
-                            Codelines.Add(line);
+                        {
+                            if (line.Length >= space)
+                                Codelines.Add(line.Substring(space));
+                            else
+                                Codelines.Add(line);
+                        }
                         Length++;
 
                         if (line.Contains("SaveAs"))
                         { Imagelines.AddRange(GetImageReference(line)); }
                     }
+                    if(loadoutputfile)
+                        Codelines.AddRange(Writer.Load(terminalfilename));
                     Codelines.AddRange(Imagelines);
                 }
                 Replace(bookContent, startIndex, Length + 1, Codelines);
@@ -279,6 +288,12 @@ namespace ConsoleApp1
                     "   :align: center",
                     "   :alt: " + content,
                     ""];
+        }
+        static string GetFileReference(string line)
+        {
+            // Regex to capture content inside parentheses
+            var match = Regex.Match(line, @"\((.*?)\)");
+            return match.Groups[1].Value.Trim('"');
         }
         static void TreatTableBlock(List<string> bookContent)
         {
@@ -384,7 +399,7 @@ namespace ConsoleApp1
                     }
                 }
                 int Length = 1;
-                List<string> Codelines = ["", ".. math ::", ""];
+                List<string> Codelines = ["", ".. math::", ""];
                 string line = bookContent[startIndex + Length];
                 int space = line.TakeWhile(c => c == ' ').Count()+1;
                 while (!bookContent[startIndex + Length].Contains("</math>"))

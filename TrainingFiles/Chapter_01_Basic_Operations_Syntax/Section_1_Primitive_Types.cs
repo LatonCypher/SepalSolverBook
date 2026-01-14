@@ -101,7 +101,69 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             ///
             /// These primitive types are the building blocks for more complex data structures
             /// and are essential for various operations in C#.
+            /// 
+            /// <header 2> Examples </header 2>
             ///
+            /// <example 1> Integer Arithmetic 
+            /// <code>
+            {
+                Writer.SetOut("Primitive_Types_Example1.txt");
+                int a = 10;
+                int b = 20;
+                int sum = a + b;
+                Console.WriteLine($"Sum = {sum}");
+            }
+            /// </code>
+            /// 
+            /// 
+            /// </example 1>
+            ///
+            /// <example 2> Floating Point Calculation 
+            /// <code>
+            {
+                Writer.SetOut("Primitive_Types_Example2.txt");
+                double radius = 5.0;
+                double area = pi * radius * radius;
+                Console.WriteLine($"Area = {area}");
+            }
+            /// </code>
+            /// </example 2>
+            /// 
+            /// <example 3> Character and ASCII 
+            /// <code>
+            {
+                Writer.SetOut("Primitive_Types_Example3.txt");
+                char c = 'A';
+                int ascii = (int)c;
+                Console.WriteLine($"Character: {c}, ASCII: {ascii}");
+            }
+            /// </code>
+            /// </example 3>
+            ///
+            /// <example 4> Boolean Logic 
+            /// <code>
+            {
+                Writer.SetOut("Primitive_Types_Example4.txt");
+                bool isSunny = true;
+                bool isWeekend = false;
+                bool goOut = isSunny && isWeekend;
+                Console.WriteLine($"Go out? {goOut}");
+            }
+            /// </code>
+            /// </example 4>
+            /// 
+            /// <example 5> Strings 
+            /// <code>
+            {
+                Writer.SetOut("Primitive_Types_Example5.txt");
+                string firstName = "Lateef";
+                string lastName = "O.";
+                string fullName = firstName + " " + lastName;
+                Console.WriteLine($"Full Name: {fullName}");
+            }
+            /// </code>
+            /// </example 5>
+
             /// <header 2> Inbuilt Derived Types in C# </header 2>
             /// In C#, beyond the primitive types (like int, bool, char), there are several inbuilt 
             /// derived types that the language provides out of the box. These are types that are not 

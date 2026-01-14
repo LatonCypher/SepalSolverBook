@@ -43,6 +43,26 @@ epub_show_urls = 'footnote'
 pygments_style = 'sphinx'
 
 
+# Custom configurations
+html_logo = '_static/SepalSolver.png'
+
+# 1. Add the path to your custom CSS
 html_static_path = ['_static']
 html_css_files = ['custom.css']
-html_logo = '_static/SepalSolver.png'
+
+# 2. Define the .. terminal:: directive
+from docutils import nodes
+from docutils.parsers.rst import Directive
+
+class TerminalDirective(Directive):
+    has_content = True
+    def run(self):
+        # Wraps the content in a <div> with the class "terminal"
+        content = '\n'.join(self.content)
+        node = nodes.container(content)
+        node['classes seal'] = ['terminal']
+        self.state.nested_parse(self.content, self.content_offset, node)
+        return [node]
+
+def setup(app):
+    app.add_directive("terminal", TerminalDirective)

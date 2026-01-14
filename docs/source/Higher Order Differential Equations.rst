@@ -75,7 +75,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
    
    .. code-block:: csharp
    
-      double[] dydt(double t, double[] y) => [ y[1], -y[0] ];
+       double[] dydt(double t, double[] y) => [ y[1], -y[0] ];
        double[] y0 = [1.0, 0.0]; // y(0)=1, y'(0)=0
        double[] tspan = [0, 20];
        (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
@@ -106,7 +106,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
    
    .. code-block:: csharp
    
-      double beta = 0.1, omega = 2.0;
+       double beta = 0.1, omega = 2.0;
        double[] dydt(double t, double[] y) => [ y[1], -2*beta*y[1] - omega*omega*y[0] ];
        double[] y0 = [1.0, 0.0];
        double[] tspan = [0, 20];
@@ -138,7 +138,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
    
    .. code-block:: csharp
    
-      double[] dydt(double t, double[] y) => [ y[1], -y[0] + Cos(t) ];
+       double[] dydt(double t, double[] y) => [ y[1], -y[0] + Cos(t) ];
        double[] y0 = [0.0, 0.0];
        double[] tspan = [0, 20];
        (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);

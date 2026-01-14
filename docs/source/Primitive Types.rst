@@ -156,6 +156,89 @@ object, string, and dynamic
 These primitive types are the building blocks for more complex data structures
 and are essential for various operations in C#.
 
+Examples
+--------
+
+
+.. Admonition:: Example 1 :  Integer Arithmetic 
+
+   
+   .. code-block:: csharp
+   
+      int a = 10;
+      int b = 20;
+      int sum = a + b;
+      Console.WriteLine($"Sum = {sum}");
+   
+   
+   .. terminal::
+   
+      Sum = 30
+   
+   
+
+
+.. Admonition:: Example 2 :  Floating Point Calculation 
+
+   
+   .. code-block:: csharp
+   
+      double radius = 5.0;
+      double area = pi * radius * radius;
+      Console.WriteLine($"Area = {area}");
+   
+   
+   .. terminal::
+   
+      Area = 78.53981633974483
+
+
+.. Admonition:: Example 3 :  Character and ASCII 
+
+   
+   .. code-block:: csharp
+   
+      char c = 'A';
+      int ascii = (int)c;
+      Console.WriteLine($"Character: {c}, ASCII: {ascii}");
+   
+   
+   .. terminal::
+   
+      Character: A, ASCII: 65
+
+
+.. Admonition:: Example 4 :  Boolean Logic 
+
+   
+   .. code-block:: csharp
+   
+      bool isSunny = true;
+      bool isWeekend = false;
+      bool goOut = isSunny && isWeekend;
+      Console.WriteLine($"Go out? {goOut}");
+   
+   
+   .. terminal::
+   
+      Go out? False
+
+
+.. Admonition:: Example 5 :  Strings 
+
+   
+   .. code-block:: csharp
+   
+      string firstName = "Lateef";
+      string lastName = "O.";
+      string fullName = firstName + " " + lastName;
+      Console.WriteLine($"Full Name: {fullName}");
+   
+   
+   .. terminal::
+   
+      Full Name: Lateef O.
+
 Inbuilt Derived Types in C#
 ---------------------------
 In C#, beyond the primitive types (like int, bool, char), there are several inbuilt 

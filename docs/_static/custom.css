@@ -1,18 +1,33 @@
-
-/* Dark theme for code blocks */
-div.highlight pre {
-    background-color: #2d2d2d;   /* dark gray background */
-    color: #f8f8f2;              /* light text */
-    padding: 10px;
+/* Container for the terminal window */
+.terminal {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
     border-radius: 6px;
-    font-family: Consolas, Monaco, 'Courier New', monospace;
+    padding: 35px 15px 15px 15px;
+    position: relative;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 1px solid #333;
+    white-space: pre-wrap; /* Preserves line breaks from console */
 }
 
-/* Inline code (like :code:`example`) */
-code {
-    background-color: #44475a;   /* slightly lighter gray */
-    color: #f8f8f2;
-    padding: 2px 4px;
-    border-radius: 4px;
+/* The three colorful window buttons */
+.terminal::before {
+    content: "● ● ●";
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #ff5f56; /* Red, Yellow, Green */
+    text-shadow: 18px 0 #ffbd2e, 36px 0 #27c93f;
 }
 
+/* Style for the text inside */
+.terminal code {
+    background: transparent !important;
+    color: #00ff00 !important; /* Classic terminal green */
+    padding: 0 !important;
+}
