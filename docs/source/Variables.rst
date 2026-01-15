@@ -70,17 +70,16 @@ Examples
    
    .. code-block:: csharp
    
-      double precision = 0.0001;
-      // Explicit var tolerance = 1e-6; 
-      // Implicit (compiler sees it is a double) 
-      Console.WriteLine("Precision: {precision}, Tolerance: {tolerance}");
+      double precision = 0.0001; //Explicit
+      var tolerance = 1e-6; // Implicit (compiler sees it is a double) 
+      Console.WriteLine($"Precision: {precision}, Tolerance: {tolerance}");
    
    
    Ouput
    
    .. terminal::
    
-      Precision: {precision}, Tolerance: {tolerance}
+      Precision: 0.0001, Tolerance: 1E-06
 
 
 .. Admonition:: Example 2 :  Constant Variables 
@@ -88,17 +87,16 @@ Examples
    
    .. code-block:: csharp
     
-      const double Gravity = 9.81; 
-      // Gravity = 10; 
+      const double Gravity = 9.81; // Gravity = 10; 
       // This would cause a compilation error 
-      Console.WriteLine("Acceleration due to gravity: {Gravity} m/s²"); 
+      Console.WriteLine($"Acceleration due to gravity: {Gravity} m/s²"); 
     
    
    Ouput
    
    .. terminal::
    
-      Acceleration due to gravity: {Gravity} m/s²
+      Acceleration due to gravity: 9.81 m/s²
 
 
 .. Admonition:: Example 3 :  Scope and Braces
@@ -130,12 +128,12 @@ Examples
       string? name = null; 
       // The '?' allows the reference to be null 
       name = "Sepal Solver"; 
-      Console.WriteLine("Project: {name}"); 
+      Console.WriteLine($"Project: {name}"); 
     
    
    Ouput
    
    .. terminal::
    
-      Project: {name}
+      Project: Sepal Solver
 

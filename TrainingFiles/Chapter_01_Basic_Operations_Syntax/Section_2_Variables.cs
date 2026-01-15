@@ -55,10 +55,9 @@
             /// <example 1> Explicit vs Implicit Typing 
             /// <code> 
             {
-                double precision = 0.0001;
-                // Explicit var tolerance = 1e-6; 
-                // Implicit (compiler sees it is a double) 
-                Console.WriteLine("Precision: {precision}, Tolerance: {tolerance}");
+                double precision = 0.0001; //Explicit
+                var tolerance = 1e-6; // Implicit (compiler sees it is a double) 
+                Console.WriteLine($"Precision: {precision}, Tolerance: {tolerance}");
             }
             /// </code> 
             /// </example 1>
@@ -66,10 +65,9 @@
             /// <example 2> Constant Variables 
             /// <code> 
             { 
-                const double Gravity = 9.81; 
-                // Gravity = 10; 
+                const double Gravity = 9.81; // Gravity = 10; 
                 // This would cause a compilation error 
-                Console.WriteLine("Acceleration due to gravity: {Gravity} m/s²"); 
+                Console.WriteLine($"Acceleration due to gravity: {Gravity} m/s²"); 
             } 
             /// </code> 
             /// </example 2>
@@ -94,7 +92,7 @@
                 string? name = null; 
                 // The '?' allows the reference to be null 
                 name = "Sepal Solver"; 
-                Console.WriteLine("Project: {name}"); 
+                Console.WriteLine($"Project: {name}"); 
             } 
             /// </code> 
             /// </example 4>
