@@ -69,49 +69,73 @@ Examples
 
    
    .. code-block:: csharp
-    {
-        double precision = 0.0001; 
-        // Explicit var tolerance = 1e-6; 
-        // Implicit (compiler sees it is a double) 
-        Console.WriteLine("Precision: {precision}, Tolerance: {tolerance}"); 
-    }
+   
+      double precision = 0.0001;
+      // Explicit var tolerance = 1e-6; 
+      // Implicit (compiler sees it is a double) 
+      Console.WriteLine("Precision: {precision}, Tolerance: {tolerance}");
+   
+   
+   Ouput
+   
+   .. terminal::
+   
+      Precision: {precision}, Tolerance: {tolerance}
 
 
 .. Admonition:: Example 2 :  Constant Variables 
 
    
    .. code-block:: csharp
-    { 
-        const double Gravity = 9.81; 
-        // Gravity = 10; 
-        // This would cause a compilation error 
-        Console.WriteLine("Acceleration due to gravity: {Gravity} m/s²"); 
-    } 
+    
+      const double Gravity = 9.81; 
+      // Gravity = 10; 
+      // This would cause a compilation error 
+      Console.WriteLine("Acceleration due to gravity: {Gravity} m/s²"); 
+    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Acceleration due to gravity: {Gravity} m/s²
 
 
 .. Admonition:: Example 3 :  Scope and Braces
 
    
    .. code-block:: csharp
-    { 
-        int outer = 10; 
-        { 
-            int inner = 20; 
-            Console.WriteLine("Sum: {outer + inner}"); 
-        } 
-        // Console.WriteLine(inner); 
-        // Error: 'inner' is out of scope 
-    } 
+    
+      int outer = 10; 
+      { 
+          int inner = 20; 
+          Console.WriteLine($"Sum: {outer + inner}"); 
+      } 
+      // Console.WriteLine(inner); 
+      // Error: 'inner' is out of scope 
+    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Sum: 30
 
 
 .. Admonition:: Example 4 :  Nullable Reference Types 
 
    
    .. code-block:: csharp
-    { 
-        string? name = null; 
-        // The '?' allows the reference to be null 
-        name = "Sepal Solver"; 
-        Console.WriteLine("Project: {name}"); 
-    } 
+    
+      string? name = null; 
+      // The '?' allows the reference to be null 
+      name = "Sepal Solver"; 
+      Console.WriteLine("Project: {name}"); 
+    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Project: {name}
 
