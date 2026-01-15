@@ -15,7 +15,8 @@ namespace ConsoleApp1
             folderpath = ImageFolder;
         }
         public static void Run()
-        { 
+        {
+            SetPath();
             var BookContent = new BookWriter(ProjectFolder, BookFolder);
             BookContent.WriteBook();
         }
