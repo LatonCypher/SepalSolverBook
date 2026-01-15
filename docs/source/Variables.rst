@@ -87,7 +87,8 @@ Examples
    
    .. code-block:: csharp
     
-      const double Gravity = 9.81; // Gravity = 10; 
+      const double Gravity = 9.81; 
+      // Gravity = 10; 
       // This would cause a compilation error 
       Console.WriteLine($"Acceleration due to gravity: {Gravity} m/s²"); 
     
