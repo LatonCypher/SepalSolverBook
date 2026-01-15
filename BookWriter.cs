@@ -1,6 +1,7 @@
 ﻿
 
 using ScottPlot;
+using System.Collections.Generic;
 
 namespace ConsoleApp1
 {
@@ -254,25 +255,16 @@ namespace ConsoleApp1
                     while (!bookContent[startIndex + Length].Contains("</code>"))
                     {
                         line = bookContent[startIndex + Length];
-                        if (line.Contains("SetOut"))
-                        {
-                            loadoutputfile = true;
-                            terminalfilename = GetFileReference(line);
-                        }
+                        if (line.Length >= space)
+                            Codelines.Add(line.Substring(space));
                         else
-                        {
-                            if (line.Length >= space)
-                                Codelines.Add(line.Substring(space));
-                            else
-                                Codelines.Add(line);
-                        }
+                            Codelines.Add(line);
                         Length++;
 
                         if (line.Contains("SaveAs"))
                         { Imagelines.AddRange(GetImageReference(line)); }
                     }
-                    if(loadoutputfile)
-                        Codelines.AddRange(Writer.Load(terminalfilename));
+                    Codelines.AddRange(Writer.CodeRunner([.. Codelines.Skip(2)]));
                     Codelines.AddRange(Imagelines);
                 }
                 Replace(bookContent, startIndex, Length + 1, Codelines);

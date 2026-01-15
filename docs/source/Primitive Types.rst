@@ -173,7 +173,6 @@ Examples
    
    Ouput
    
-   
    .. terminal::
    
       Sum = 30
@@ -193,7 +192,6 @@ Examples
    
    Ouput
    
-   
    .. terminal::
    
       Area = 78.53981633974483
@@ -210,7 +208,6 @@ Examples
    
    
    Ouput
-   
    
    .. terminal::
    
@@ -230,7 +227,6 @@ Examples
    
    Ouput
    
-   
    .. terminal::
    
       Go out? False
@@ -248,7 +244,6 @@ Examples
    
    
    Ouput
-   
    
    .. terminal::
    

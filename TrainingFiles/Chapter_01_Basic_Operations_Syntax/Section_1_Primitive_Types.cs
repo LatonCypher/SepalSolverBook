@@ -107,7 +107,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             /// <example 1> Integer Arithmetic 
             /// <code>
             {
-                Writer.SetOut("Primitive_Types_Example1.txt");
                 int a = 10;
                 int b = 20;
                 int sum = a + b;
@@ -121,7 +120,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             /// <example 2> Floating Point Calculation 
             /// <code>
             {
-                Writer.SetOut("Primitive_Types_Example2.txt");
                 double radius = 5.0;
                 double area = pi * radius * radius;
                 Console.WriteLine($"Area = {area}");
@@ -132,7 +130,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             /// <example 3> Character and ASCII 
             /// <code>
             {
-                Writer.SetOut("Primitive_Types_Example3.txt");
                 char c = 'A';
                 int ascii = (int)c;
                 Console.WriteLine($"Character: {c}, ASCII: {ascii}");
@@ -143,7 +140,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             /// <example 4> Boolean Logic 
             /// <code>
             {
-                Writer.SetOut("Primitive_Types_Example4.txt");
                 bool isSunny = true;
                 bool isWeekend = false;
                 bool goOut = isSunny && isWeekend;
@@ -155,7 +151,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
             /// <example 5> Strings 
             /// <code>
             {
-                Writer.SetOut("Primitive_Types_Example5.txt");
                 string firstName = "Lateef";
                 string lastName = "K.";
                 string fullName = firstName + " " + lastName;

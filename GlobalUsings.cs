@@ -10,3 +10,10 @@ global using static SepalSolver.Math;
 global using static SepalSolver.PlotLib.Chart;
 global using static SepalSolver.PlotLib.Interpreter;
 global using static SepalSolver.PlotLib.Location;
+
+global using Microsoft.CodeAnalysis.CSharp.Scripting;
+global using Microsoft.CodeAnalysis.Scripting;
+global using System.Reflection;
+global using System.Text;
+global using System.CodeDom.Compiler;
+global using Microsoft.CSharp;
