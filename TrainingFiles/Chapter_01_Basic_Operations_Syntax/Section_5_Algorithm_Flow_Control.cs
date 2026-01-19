@@ -1,91 +1,157 @@
-﻿namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
+﻿using ScottPlot;
+using ScottPlot.Colormaps;
+using static System.Collections.Specialized.BitVector32;
+
+namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
 {
     public class Section_5_Algorithm_Flow_Control
     {
         public static void Run()
         {
             /// <BookContent>
-            /// 
-            /// </BookContent>
-            //Sequence
+            /// <header 2> Algorithm Flow Control </header 2>
+            /// Algorithms are rarely linear. In numerical analysis, we must make decisions
+            /// based on error thresholds and repeat operations until a solution converges.
+            /// Flow control allows us to dictate the path our code takes using conditional
+            /// logic and iterative loops.
+            ///
+            /// <header 3> 1. Conditional Logic (if-else and switch) </header 3>
+            /// Decisions in C# are handled primarily by `if` and `switch` statements.
+            /// While `if` is perfect for range-based checks (like error tolerances),
+            /// `switch` is ideal for choosing between discrete "modes" or "states"
+            /// of an algorithm.
+            ///
+            ///
+            ///
+            /// <code> Selection Logic in Solvers
             {
-                int a = 10;
-                int b = 20;
-                int c = a + b;
-                Console.WriteLine($"The sum of {a} and {b} is {c}");
-            }
-            //Selection(if-else if-else)
-            {
-                int a = 10;
-                if (a > 0)
+                // if-else: used for logical ranges
+                double residual = 1e-5;
+                if (residual < 1e-6) { /* Converged */ }
+
+
+                // switch: used for distinct algorithm modes
+                string solverType = "Linear";
+                switch (solverType)
                 {
-                    Console.WriteLine("a is positive");
+                    case "Linear": /* Use Direct Solver */ break;
+                    case "NonLinear": /* Use Newton-Raphson */ break;
+                    default: /* Use Default */ break;
                 }
-                else if (a < 0)
+
+            }
+            /// </code>
+            ///
+            /// <header 3> 2. Iterative Loops </header 3>
+            /// Loops allow us to repeat a block of code. For numerical methods, the `for`
+            /// loop is king when we know the number of iterations, while the `while`
+            /// loop is used when we wait for a specific condition to be met.
+            ///
+            /// [Image comparison of for-loop, while-loop, and foreach-loop structures]
+            ///
+            /// <table> Loop Types in C#
+            ///  Loop Type  | Best Use Case                                      | Key Characteristic
+            ///  for        | Stepping through matrices with an index.           | Precise index control.
+            ///  foreach    | Iterating over all nodes in a mesh.                | Read-only and safe.
+            ///  while      | Running a solver until convergence.                | Condition-based exit.
+            ///  do-while   | When the first iteration must occur.               | Post-condition check.
+            /// </table>
+            ///
+            /// <header 2> Examples </header 2>
+            ///
+            /// <example 1> The If-Condition: Safety Checks
+            /// Before performing a division in a numerical formula, such as normalizing
+            /// a vector, it is vital to ensure we aren't dividing by zero. An `if`
+            /// statement acts as a "Guard Clause" to keep the solver stable.
+            /// <code>
+            {
+                double determinant = 0.00000001;
+                if (Abs(determinant) < 1e-12)
                 {
-                    Console.WriteLine("a is negative");
+                    Console.WriteLine("Warning: Singular Matrix detected.");
                 }
                 else
                 {
-                    Console.WriteLine("a is zero");
+                    double inverse = 1.0 / determinant;
+                    Console.WriteLine($"Inversion successful: {inverse}");
                 }
             }
-            //Selection(switch-case)
+            /// </code>
+            /// </example 1>
+            ///
+            /// <example 2> The Switch-Condition: Solver Selection
+            /// In a multi-physics application, you might need to switch between different
+            /// integration schemes. The `switch` statement makes this choice clear and
+            /// organized compared to a long chain of `if-else` blocks.
+            /// <code>
             {
-                int a = 10;
-                switch (a)
+                int methodCode = 2;
+
+                switch (methodCode)
                 {
-                    case 0:
-                        Console.WriteLine("a is zero");
-                        break;
                     case 1:
-                        Console.WriteLine("a is one");
+                        Console.WriteLine("Executing Forward Euler...");
                         break;
                     case 2:
-                        Console.WriteLine("a is two");
+                        Console.WriteLine("Executing Runge-Kutta 4th Order...");
                         break;
                     default:
-                        Console.WriteLine("a is greater than two");
+                        Console.WriteLine("Falling back to Static Analysis.");
                         break;
                 }
-            }
 
-            //Iteration(while)
+            }
+            /// </code>
+            /// </example 2>
+            ///
+            /// <example 3> The While-Loop: Convergence Monitor
+            /// A `while` loop is the heartbeat of iterative methods. In this example,
+            /// we simulate a cooling process where we keep calculating the temperature
+            /// until it reaches the ambient environment temperature.
+            /// <code>
             {
-                int a = 10;
-                while (a > 0)
+                double temperature = 100.0;
+                double ambient = 25.0;
+                int seconds = 0;
+
+                while (temperature > ambient + 0.1)
                 {
-                    Console.WriteLine($"a is {a}");
-                    a--;
+                    temperature -= (temperature - ambient) * 0.1; // Cool by 10%
+                    seconds++;
                 }
-            }
 
-            //Iteration(do-while)
-            {
-                int a = 10;
-                do
-                {
-                    Console.WriteLine($"a is {a}");
-                    a--;
-                } while (a > 0);
-            }
+                Console.WriteLine($"Cooled to {temperature:F2}°C in {seconds} seconds.");
 
-            //Iteration(for)
+            }
+            /// </code>
+            /// </example 3>
+            ///
+            /// <example 4> The Foreach Loop: Property Calculation
+            /// When you need to perform an operation on every element in a collection,
+            /// like calculating the total mass of all elements in a structural model,
+            /// `foreach` is the most readable choice because it eliminates index management.
+            /// <code>
             {
-                for (int a = 10; a > 0; a--)
+                double[] elementMasses = { 5.2, 3.8, 4.1, 6.0 };
+                double totalMass = 0;
+
+
+                foreach (double m in elementMasses)
                 {
-                    Console.WriteLine($"a is {a}");
+                    totalMass += m;
                 }
-            }
 
-            //Iteration(foreach)
-            {
-                List<int> numbers = [1, 2, 3, 4, 5];
-                foreach (int number in numbers)
-                {
-                    Console.WriteLine($"Number is {number}");
-                }
+                Console.WriteLine($"Total System Mass: {totalMass}");
             }
+            /// </code>
+            /// </example 4>
+            ///
+            /// <header 3> Pro-Tip: Nested Loops </header 3>
+            /// When working with 2D Matrices, you will often nest a `for` loop inside
+            /// another. Remember that C# stores arrays in row-major order; iterating
+            /// through rows in the outer loop and columns in the inner loop is
+            /// significantly faster due to CPU cache optimization.
+            /// </BookContent>
         }
     }
 }
