@@ -5,6 +5,8 @@ Basic Operations Syntax
 Basic Operation and Syntax in C#
 --------------------------------
 To build a powerful numerical engine like SepalSolver, we must first master the "grammar" of C#. C# is a strongly-typed, object-oriented language designed for clarity and performance. Its syntax provides a structured way to express mathematical logic, ensuring that the computer interprets our engineering formulas exactly as intended.
+
+
 1. The Structure of a C# Program
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Every instruction in C# lives inside a Statement, and statements are grouped into Blocks defined by curly braces { }. For our solver, this structure helps us separate different mathematical concerns—like keeping the matrix inversion logic separate from the file-saving logic. 
