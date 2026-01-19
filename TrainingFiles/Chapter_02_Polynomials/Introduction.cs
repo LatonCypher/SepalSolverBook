@@ -29,7 +29,7 @@
             /// </code> 
             ///
             /// <header 3> 2. Evaluation via Horner's Method </header 3> 
-            /// Evaluating a polynomial like :math:`3x^3+2x^2+x+5` by calling Math.Pow repeatedly is computationally expensive. Instead, we use Horner's Method, which reduces the operation to a simple loop of multiplications and additions, significantly boosting performance in iterative solvers. 
+            /// Evaluating a polynomial like :math:`3x^3+2x^2+x+5` by calling ``Pow`` repeatedly is computationally expensive. Instead, we use Horner's Method, which reduces the operation to a simple loop of multiplications and additions, significantly boosting performance in iterative solvers. 
             ///
             /// 
             /// <header 2> Examples </header 2> /// 

@@ -29,7 +29,7 @@ A polynomial :math:`P(x)=a_0 x^n + a_1 x^{n-1} + a_2 x^{n - 2} + \cdots + a_n` i
 
 2. Evaluation via Horner's Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Evaluating a polynomial like :math:`3x^3+2x^2+x+5` by calling Math.Pow repeatedly is computationally expensive. Instead, we use Horner's Method, which reduces the operation to a simple loop of multiplications and additions, significantly boosting performance in iterative solvers. 
+Evaluating a polynomial like :math:`3x^3+2x^2+x+5` by calling ``Pow`` repeatedly is computationally expensive. Instead, we use Horner's Method, which reduces the operation to a simple loop of multiplications and additions, significantly boosting performance in iterative solvers. 
 
 
 Examples
