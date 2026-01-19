@@ -16,16 +16,16 @@ A polynomial :math:`P(x)=a_0 x^n + a_1 x^{n-1} + a_2 x^{n - 2} + \cdots + a_n` i
 
 
 .. code-block:: csharp
-{ 
-    public class Polynomial 
-    { 
-     private readonly double[] _coeffs;
-     public int Degree => _coeffs.Length - 1;
-                      ...
-                      ...
-                      ...
-    }
-} 
+ { 
+     public class Polynomial 
+     { 
+         private readonly double[] _coeffs;
+         public int Degree => _coeffs.Length - 1;
+                        ...
+                        ...
+                        ...
+     }
+ } 
 
 2. Evaluation via Horner's Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -85,7 +85,7 @@ Examples
 .. Admonition:: Example 3 :  Polynomial Arithmetic 
 
    Just like numbers, polynomials can be added, subtracted, multiplied (convolution) or devided (deconvolution). 
-By overloading /// operators, SepalSolver allows you to combine models easily. Adding two polynomials simply involves summing their corresponding coefficients. 
+   By overloading operators, SepalSolver allows you to combine models easily. Adding two polynomials simply involves summing their corresponding coefficients. 
    
    .. code-block:: csharp
     

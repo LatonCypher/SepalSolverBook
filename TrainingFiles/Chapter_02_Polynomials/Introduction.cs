@@ -16,16 +16,16 @@
             ///
             /// 
             /// <code> Polynomial Class Structure 
-            ///{ 
-            ///    public class Polynomial 
-            ///    { 
-            ///     private readonly double[] _coeffs;
-            ///     public int Degree => _coeffs.Length - 1;
-            ///                      ...
-            ///                      ...
-            ///                      ...
-            ///    }
-            ///} 
+            /// { 
+            ///     public class Polynomial 
+            ///     { 
+            ///         private readonly double[] _coeffs;
+            ///         public int Degree => _coeffs.Length - 1;
+            ///                        ...
+            ///                        ...
+            ///                        ...
+            ///     }
+            /// } 
             /// </code> 
             ///
             /// <header 3> 2. Evaluation via Horner's Method </header 3> 
@@ -68,7 +68,7 @@
             /// 
             /// <example 3> Polynomial Arithmetic 
             /// Just like numbers, polynomials can be added, subtracted, multiplied (convolution) or devided (deconvolution). 
-            /// By overloading /// operators, SepalSolver allows you to combine models easily. Adding two polynomials simply involves summing their corresponding coefficients. 
+            /// By overloading operators, SepalSolver allows you to combine models easily. Adding two polynomials simply involves summing their corresponding coefficients. 
             /// <code> 
             { 
                 double[] p1 = [2, 1]; // 2x + 1
