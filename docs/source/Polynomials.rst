@@ -114,3 +114,4 @@ But SepalSolver already did this, so, users only need to call the roots method a
    Polynomial Fitting
    Polynomial Arithmetics
    Polynomial Roots
+   Polynomial Differentiation and Integration

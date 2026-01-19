@@ -4,93 +4,71 @@
     {
         public static void Run()
         {
-            /// <BookContent>
+            /// <BookContent> 
+            /// <header 2> Polynomial Representation and Order </header 2> 
+            /// In numerical analysis and engineering software like MATLAB, it is a standard convention to represent polynomials with coefficients in Descending Order. This means the first element of the array corresponds to the highest power of :math:`x`, making it easier to read and align with long-hand mathematical notation.
             /// 
+            /// <header 3> 1. The Descending Order Convention </header 3>
+            /// A polynomial :math:`P(x)= a_{n}x^{n} + a_{n-1}x^{n-1} + a_{n-2}x^{n-2} + \cdots + a_{1}x + a_{0}` is stored in an array where coeffs[0] is :math:`a_n`, coeffs[1] is :math:`a_{n-1}`, and so on, down to coeffs[n] which is :math:`a_0`. This ordering simplifies both the evaluation and manipulation of polynomials in code.
+            /// <code> Descending Order Logic 
+            { 
+                // P(x) = 5x^2 + 2x + 1 
+                // Power: 2 1 0
+                double[] poly = [5, 2, 1];
+                
+                // Degree is determined by (Length - 1)
+                int degree = poly.Length - 1; // 2
+            }
+            /// </code> 
+            /// 
+            /// 
+            /// <header 3> 2. Horner's Method (Descending) </header 3> 
+            /// When coefficients are in descending order, Horner's method becomes particularly elegant. We start with the first coefficient and repeatedly multiply by x and add the next coefficient: 
+            /// :math:`P(x) = ( \cdot ((a_{n}x + a_{n-1})x + a_{n-2})x + \cdots + a_{1})x + a_{0}` 
+            ///
+            /// 
+            /// <header 2> Examples </header 2> 
+            /// <example 1> Real Value Evaluation (Descending) /// We define a cubic polynomial :math:`P(x)= 2x^3 −6x^2 + 2x−1`. Notice how the input sequence exactly matches the mathematical coefficients written from highest to lowest degree.
+            /// <code> 
+            { 
+                // 2x^3 - 6x^2 + 2x - 1
+                double[] poly = [2, -6, 2, -1.0];
+                double result = Polyval(poly, 3.0);
+                Console.WriteLine($"P(3.0) = {result}");
+            }
+            /// </code> 
+            /// </example 1> 
+            /// 
+            /// <example 2> Complex Evaluation (Descending) 
+            /// Evaluating at a complex point s=σ+jω is common in control theory. Here we evaluate :math:`P(s)=1s^2 + 0s + 1` (which is :math:`s^2 + 1`) at the imaginary unit i.
+            /// <code> 
+            { 
+                double[] poly = [1.0, 0.0, 1.0];
+                Complex s = new(0, 1); // s = i
+                Complex result = Polyval(poly, s);
+                Console.WriteLine($"P(i) = {result}");
+            } 
+            /// </code> 
+            /// </example 2> 
+            /// 
+            /// <example 3> Column Vector Evaluation (Vectorized) 
+            /// In this case, we have a set of measurements in a ColVec and we want to pass them through our polynomial model. SepalSolver iterates /// through the vector, applying the descending-order Horner's method /// to each element. 
+            /// <code> 
+            { 
+                // P(x) = x^2 + 2x + 3
+                double[] poly = [1.0, 2.0, 3.0];
+
+                ColVec x = new double[] { 0, 1, 2 };
+                ColVec y = x.Select(x=>Polyval(poly, x)).ToArray();
+                Console.WriteLine($"Result at x = [{x.T}]^T is: [{y.T}]^T"); // 4 + 4 + 3 = 11
+            } 
+            /// </code> 
+            /// 
+            /// </example 3>
+            /// 
+            /// <header 3> Implementation Tip: Power Mapping </header 3> 
+            /// Because we use descending order, the power associated with a coefficient at index i is calculated as Degree - i. This is important when performing differentiation, as the derivative of the term at coeffs[i] involves multiplying by (Degree - i).
             /// </BookContent>
-
-            {
-                // Example of polynomial evaluation
-                double[] coeff = [1, 2, 3, 4, 5];
-                double x = 2;
-                double val = Polyval(coeff, x);
-                Console.WriteLine($"Polynomial evaluated at x = {x}: {val}");
-            }
-
-            {
-                // Example of polynomial evaluation
-                double[] coeff = [1, 2, 3, 4, 5];
-                Complex x = new(2, 3);
-                Complex val = Polyval(coeff, x);
-                Console.WriteLine($"Polynomial evaluated at x = {x}: {val}");
-            }
-
-            {
-                // Example of polynomial fitting
-                double[] x = [1, 2, 3, 4, 5], y = [3, 4, 5, 6, 7];
-                double[] fit = Polyfit(x, y, 1);
-                Console.WriteLine($"Polynomial fit: [{string.Join(",", fit)}]");
-                ColVec xp = Linspace(1, 5);
-                ColVec yp = xp.Select(x => Polyval(fit, x)).ToList();
-                Scatter(x, y, "fob"); hold  = true;
-                Plot(xp, yp, "r");
-            }
-
-            {
-                // Example of polynomial fitting
-                double[] x = [1, 2, 3, 4, 5], y = [6, 9, 14, 21, 30];
-                Scatter(x, y, "fob"); hold  = true;
-
-                double[] fit1 = Polyfit(x, y, 1);
-                Console.WriteLine($"Linear fit : [{string.Join(",", fit1)}]");
-                double[] fit2 = Polyfit(x, y, 2);
-                Console.WriteLine($"Quadratic fit: [{string.Join(",", fit2)}]");
-
-                ColVec xp = Linspace(1, 5);
-                ColVec yp1 = xp.Select(x => Polyval(fit1, x)).ToList();
-                ColVec yp2 = xp.Select(x => Polyval(fit2, x)).ToList();
-                Plot(xp, yp1, "r"); Plot(xp, yp2, "g");
-            }
-
-
-            {
-                // Example of Polynomial Addition
-                double[] poly3 = [1, 2, 3, 4, 5], poly4 = [4, 5, 6];
-                var AddPoly = Polyadd(poly3, poly4);
-                Console.WriteLine($"AddPoly:\n [{string.Join(", ", AddPoly)}]");
-            }
-
-
-            {
-                // Example of Polynomial Subtraction
-                double[] poly5 = [1, 2, 3, 4, 5], poly6 = [4, 5, 6];
-                var SubPoly = Polysub(poly5, poly6);
-                Console.WriteLine($"SubPoly:\n [{string.Join(", ", SubPoly)}]");
-            }
-
-
-            {
-                // Example of Polynomial Convolution
-                double[] poly1 = [1, 2, 3], poly2 = [4, 5, 6];
-                var ConvPoly = Conv(poly1, poly2);
-                Console.WriteLine($"ConvPoly:\n [{string.Join(", ", ConvPoly)}]");
-            }
-
-
-            {
-                // Example of Polynomial Deconvolution
-                double[] P = [3, 2, 4, 6, 5], D = [4, 5, 6], Q, R;
-                (Q, R) = Deconv(P, D);
-                Console.WriteLine($"Quotient:\n [{string.Join(", ", Q)}]");
-                Console.WriteLine($"Remainder:\n [{string.Join(", ", R)}]");
-            }
-
-
-            {
-                // Roots of polynomials
-                double[] coeff = [1, 2, 3, 4, 5, 6, 7, 2, 3, 4, 5, 6, 7, 2, 3];
-                var roots = Roots(coeff);
-                Console.WriteLine($"Roots:\n {string.Join("\n ", roots)}");
-            }
         }
     }
 }
