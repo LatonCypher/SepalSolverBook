@@ -54,11 +54,11 @@
           "dependencies": {
             "SepalSolver": {
               "target": "Package",
-              "version": "[0.0.53, )"
+              "version": "[0.0.54, )"
             },
             "SepalSolver.PlotLib": {
               "target": "Package",
-              "version": "[0.0.53, )"
+              "version": "[0.0.54, )"
             }
           },
           "imports": [
