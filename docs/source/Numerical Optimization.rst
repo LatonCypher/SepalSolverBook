@@ -3,6 +3,9 @@ Numerical Optimization
 ======================
 
 
+
+
+
 .. toctree::
 
    Linear Programming

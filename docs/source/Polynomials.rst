@@ -108,6 +108,9 @@ Root Finding
 One of the most powerful features of the Polynomial class is its ability to interface with our iterative solvers. Finding the roots of a polynomial (where :math:`P(x)=0`) is a common task that we solve by passing the Evaluate and Differentiate methods into a Newton-Raphson solver. 
 But SepalSolver already did this, so, users only need to call the roots method and get the roots of the polynomial. This will be discussed in details under the root section
 
+
+
+
 .. toctree::
 
    Polynomial Evaluation

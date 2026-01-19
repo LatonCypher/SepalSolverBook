@@ -83,6 +83,9 @@ Key Syntax Rules for Engineers
 2. Strong Typing: You cannot put a string (text) into a double (decimal number) without explicit conversion.
 3. Entry Point: Every C# application starts executing at the Main method. 
 
+
+
+
 .. toctree::
 
    Primitive Types

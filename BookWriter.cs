@@ -86,6 +86,9 @@ namespace ConsoleApp1
 
                     string chapterchildren = $"""
                     
+
+
+
                     .. toctree::
 
                     """;
