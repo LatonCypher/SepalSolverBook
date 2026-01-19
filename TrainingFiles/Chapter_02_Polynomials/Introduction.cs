@@ -16,9 +16,9 @@
             ///
             /// 
             /// <code> Polynomial Class Structure 
-            /// { 
-            ///     public class Polynomial 
-            ///     { 
+            /// {
+            ///     public class Polynomial
+            ///     {
             ///         private readonly double[] _coeffs;
             ///         public int Degree => _coeffs.Length - 1;
             ///                        ...
