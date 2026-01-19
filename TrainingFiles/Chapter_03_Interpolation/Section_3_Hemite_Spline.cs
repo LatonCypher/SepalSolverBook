@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SepalSolver.PlotLib;
 
-namespace ConsoleApp1.TrainingFiles.Chapter_1_Interpolation
+namespace ConsoleApp1.TrainingFiles.Chapter_03_Interpolation
 {
     public class Section_3_Hemite_Spline
     {

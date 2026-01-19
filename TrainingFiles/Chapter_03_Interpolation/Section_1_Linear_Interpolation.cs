@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1.TrainingFiles.Chapter_1_Interpolation
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_03_Interpolation
 {
     internal class Section_1_Linear_Interpolation
     {

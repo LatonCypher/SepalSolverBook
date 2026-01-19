@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp1.TrainingFiles.Chapter_10_Partial_Differential_Equations
 {
-    internal class Section_1_Solution_Of_PDE_by_Laplace_Transform
+    internal class Introduction
     {
     }
 }

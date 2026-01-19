@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1.TrainingFiles.Chapter_1_Polynomials
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
 {
     public class Section_1_Polynomial_Evaluation
     {
@@ -19,7 +19,7 @@
             {
                 // Example of polynomial evaluation
                 double[] coeff = [1, 2, 3, 4, 5];
-                Complex x = new(2,3);
+                Complex x = new(2, 3);
                 Complex val = Polyval(coeff, x);
                 Console.WriteLine($"Polynomial evaluated at x = {x}: {val}");
             }

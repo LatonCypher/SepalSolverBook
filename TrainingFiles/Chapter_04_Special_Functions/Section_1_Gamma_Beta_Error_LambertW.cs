@@ -1,6 +1,4 @@
-﻿using static SepalSolver.Math;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_3_Special_Functions
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
 {
     internal class Section_1_Gamma_Beta_Error_LambertW
     {

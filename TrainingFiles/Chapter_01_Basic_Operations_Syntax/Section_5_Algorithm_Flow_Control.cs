@@ -1,8 +1,4 @@
-﻿using ScottPlot;
-using ScottPlot.Colormaps;
-using static System.Collections.Specialized.BitVector32;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_01_Basic_Operations_Syntax
 {
     public class Section_5_Algorithm_Flow_Control
     {

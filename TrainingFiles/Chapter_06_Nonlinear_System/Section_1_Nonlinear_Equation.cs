@@ -1,13 +1,4 @@
-﻿using SepalSolver;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using static SepalSolver.Math;
-using static SepalSolver.PlotLib.Chart;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_5_Solution_of_Nonlinear_System
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
 {
     internal class Section_1_Nonlinear_Equation
     {

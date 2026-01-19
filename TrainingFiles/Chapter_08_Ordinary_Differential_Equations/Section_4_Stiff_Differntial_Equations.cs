@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
+namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 {
     internal class Section_4_Stiff_Differntial_Equations
     {

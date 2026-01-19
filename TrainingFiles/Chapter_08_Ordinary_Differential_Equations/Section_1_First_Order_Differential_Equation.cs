@@ -1,6 +1,4 @@
-﻿using ScottPlot;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 {
     internal class Section_1_First_Order_Differential_Equation
     {

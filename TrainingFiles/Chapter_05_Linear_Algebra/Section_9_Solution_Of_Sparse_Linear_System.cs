@@ -1,9 +1,4 @@
-﻿using SepalSolver;
-using static SepalSolver.Math;
-using System.Diagnostics;
-using static SepalSolver.PlotLib.Chart;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algebra
 {
     public class Section_9_Solution_Of_Sparse_Linear_System
     {

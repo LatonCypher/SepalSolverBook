@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_01_Basic_Operations_Syntax
 {
     public class Section_4_Collections_and_Linq
     {

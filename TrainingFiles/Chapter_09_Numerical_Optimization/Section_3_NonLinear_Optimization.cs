@@ -1,7 +1,7 @@
 ﻿using SepalSolver;
 using static SepalSolver.Math;
 
-namespace ConsoleApp1.TrainingFiles.Chapter_8_Numerical_Optimization
+namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
 {
     public class Section_3_NonLinear_Optimization
     {

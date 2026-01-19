@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using SepalSolver;
 using static SepalSolver.Math;
 
-namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algerba
+namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
 {
     public class Section_5_Solution_of_Linear_Systems
     {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using static SepalSolver.Math;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_6_Integration
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
 {
     internal class Section_1_Trapezoidal_Method
     {

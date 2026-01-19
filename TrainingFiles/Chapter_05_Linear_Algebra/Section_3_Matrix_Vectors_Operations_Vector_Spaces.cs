@@ -1,7 +1,7 @@
 ﻿using SepalSolver;
 using static SepalSolver.Math;
 
-namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algerba
+namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
 {
     internal class Section_3_Matrix_Vectors_Operations_Vector_Spaces
     {

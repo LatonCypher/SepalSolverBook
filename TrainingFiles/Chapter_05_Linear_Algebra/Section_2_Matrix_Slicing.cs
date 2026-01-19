@@ -1,7 +1,7 @@
 ﻿using SepalSolver;
 using static SepalSolver.Math;
 
-namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algerba
+namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
 {
     public class Section_2_Matrix_Slicing
     {

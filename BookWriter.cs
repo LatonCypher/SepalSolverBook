@@ -63,12 +63,7 @@ namespace ConsoleApp1
                 string chaptermessage = $"""
                     
                     {relativePath}
-                    =========================================================
-                    
-
-
-
-                    .. toctree::
+                    {new string('=', relativePath.Length)}
 
                     """;
                 using (StreamWriter writer = new(chapterfile))
@@ -76,10 +71,33 @@ namespace ConsoleApp1
                     writer.WriteLine(chaptermessage);
                 }
                 string[] ChapterSections = Directory.GetFiles(BookChapter, "*.cs");
+                relativePath = Path.GetRelativePath(BookChapter, ChapterSections[0]);
+                var sectionname = string.Join(' ', [.. relativePath.Split(['_']).Skip(2)]);
+                string outputPath = bookfolder + sectionname + ".rst";
+                string[] Content = File.ReadAllLines(ChapterSections[0]);
+                List<string> bookContent = [..Content.SkipWhile(line=> !line.Contains("/// <BookContent>")).
+                                              TakeWhile(line=>!line.Contains("/// </BookContent>"))];
+                if(bookContent.Count > 0)
+                    bookContent = processBookContent(bookContent[1..]);
+                using (StreamWriter writer = new(chapterfile, true))
+                {
+                    foreach (var line in bookContent)
+                        writer.WriteLine(line);
+
+                    string chapterchildren = $"""
+                    
+                    .. toctree::
+
+                    """;
+                    writer.WriteLine(chapterchildren);
+                }
+
+                ChapterSections = ChapterSections[1..];
+
                 foreach (string ChapterSection in ChapterSections)
                 {
                     relativePath = Path.GetRelativePath(BookChapter, ChapterSection);
-                    var sectionname = string.Join(' ', [.. relativePath.Split(['_']).Skip(2)]);
+                    sectionname = string.Join(' ', [.. relativePath.Split(['_']).Skip(2)]);
                     sectionname = sectionname.Split('.')[0];
                     using (StreamWriter writer = new(chapterfile, append: true))
                     {
@@ -106,16 +124,8 @@ namespace ConsoleApp1
                                               TakeWhile(line=>!line.Contains("/// </BookContent>"))];
             if (bookContent.Count == 0) return;
 
-            bookContent.RemoveAt(0); // Remove the starting tag line
             //Headers format
-            TreatHeader1(bookContent);
-            TreatHeader2(bookContent);
-            TreatHeader3(bookContent);
-            TreatMathTag(bookContent);
-            TreatCodeBlock(bookContent);
-            TreatTableBlock(bookContent);
-            TreatExampleBlock(bookContent);
-            TreatDocSlashed(bookContent);
+            bookContent = processBookContent(bookContent[1..]);
 
             using (StreamWriter writer = new(outputPath, true))
             {
@@ -124,6 +134,18 @@ namespace ConsoleApp1
             }
         }
 
+        List<string> processBookContent(List<string> bookContent)
+        {
+            TreatHeader1(bookContent);
+            TreatHeader2(bookContent);
+            TreatHeader3(bookContent);
+            TreatMathTag(bookContent);
+            TreatCodeBlock(bookContent);
+            TreatTableBlock(bookContent);
+            TreatExampleBlock(bookContent);
+            TreatDocSlashed(bookContent);
+            return bookContent;
+        }
 
         static void Replace(List<string> content, int start, int length, List<string> replacement)
         {

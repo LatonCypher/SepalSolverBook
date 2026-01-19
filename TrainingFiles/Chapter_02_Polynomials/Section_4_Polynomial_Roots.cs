@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1.TrainingFiles.Chapter_1_Polynomials
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
 {
     public class Section_4_Polynomial_Roots
     {

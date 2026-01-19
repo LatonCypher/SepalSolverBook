@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1.TrainingFiles.Chapter_7_Ordinary_Differential_Equations
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 {
     internal class Section_3_Higher_Order_Differential_Equations
     {
