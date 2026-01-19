@@ -1,6 +1,4 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_0_Basic_Operations_Syntax
 {
     public class Section_3_Operators_And_Expressions
     {

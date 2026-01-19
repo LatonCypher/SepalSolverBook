@@ -4,6 +4,17 @@
     {
         public static void Run()
         {
+
+            {
+                var A = new double[,]
+                {
+                    { 1, 3 },
+                    { 3, 4 }
+                };
+                var (D, V) = Matrix.Eig(A);
+                Console.WriteLine($"V = {V}");
+                Console.WriteLine($"D = {D}");
+            }
             
 
             {
