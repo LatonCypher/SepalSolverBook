@@ -8,8 +8,8 @@
     ".NETCoreApp,Version=v8.0": {
       "ConsoleApp1/1.0.0": {
         "dependencies": {
-          "SepalSolver": "0.0.53",
-          "SepalSolver.PlotLib": "0.0.53"
+          "SepalSolver": "1.0.21",
+          "SepalSolver.PlotLib": "1.0.9"
         },
         "runtime": {
           "ConsoleApp1.dll": {}
@@ -512,20 +512,20 @@
           }
         }
       },
-      "SepalSolver/0.0.53": {
+      "SepalSolver/1.0.21": {
         "dependencies": {
           "Highs.Native": "1.12.0",
           "Microsoft.CodeAnalysis.CSharp.Scripting": "5.0.0",
           "System.Drawing.Common": "10.0.1"
         },
         "runtime": {
-          "lib/netstandard2.1/SepalSolver.dll": {
-            "assemblyVersion": "0.0.53.0",
-            "fileVersion": "0.0.53.0"
+          "lib/netstandard2.0/SepalSolver.dll": {
+            "assemblyVersion": "0.0.50.0",
+            "fileVersion": "0.0.50.0"
           }
         }
       },
-      "SepalSolver.PlotLib/0.0.53": {
+      "SepalSolver.PlotLib/1.0.9": {
         "dependencies": {
           "CSharpMath": "0.5.1",
           "CSharpMath.SkiaSharp": "0.5.1",
@@ -533,12 +533,12 @@
           "Magick.NET-Q16-AnyCPU": "14.10.0",
           "Magick.NET.Core": "14.10.0",
           "ScottPlot": "5.1.57",
-          "SepalSolver": "0.0.53"
+          "SepalSolver": "1.0.21"
         },
         "runtime": {
-          "lib/netstandard2.1/SepalSolver.PlotLib.dll": {
-            "assemblyVersion": "0.0.53.0",
-            "fileVersion": "0.0.53.0"
+          "lib/netstandard2.0/SepalSolver.PlotLib.dll": {
+            "assemblyVersion": "0.0.50.0",
+            "fileVersion": "0.0.50.0"
           }
         }
       },
@@ -825,19 +825,19 @@
       "path": "scottplot/5.1.57",
       "hashPath": "scottplot.5.1.57.nupkg.sha512"
     },
-    "SepalSolver/0.0.53": {
+    "SepalSolver/1.0.21": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-1OsJFCkKMOIYBy5XIXHUlmH5owKGo0TySCsG/knRakIdQHnsrQGHjO5fzOnCKWAQ51Hcxtmr5p6cc7HDYMy7/A==",
-      "path": "sepalsolver/0.0.53",
-      "hashPath": "sepalsolver.0.0.53.nupkg.sha512"
+      "sha512": "sha512-OnXpKRXxzz3Ew4M2Pyy4WKsl7e2AaKaOmHPqx8DrH45185XUt+6LYtCTM8w4B/2HFwGiaahCTm+7CHlq6hEncA==",
+      "path": "sepalsolver/1.0.21",
+      "hashPath": "sepalsolver.1.0.21.nupkg.sha512"
     },
-    "SepalSolver.PlotLib/0.0.53": {
+    "SepalSolver.PlotLib/1.0.9": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/LwMT/LdVAt2k3CFyV1n4tO36Jw2xRRk8bmxBNhXuIAaq5l8wBMT021ghO3jg39lbTVqyjO2O7PosVJl287fog==",
-      "path": "sepalsolver.plotlib/0.0.53",
-      "hashPath": "sepalsolver.plotlib.0.0.53.nupkg.sha512"
+      "sha512": "sha512-IdFiSxQ13OQcsO/qb8IIeaWn3WOxjLtsnThFHZLIILQhHe8GS3vJe/JaSz8ZjycVKrYVLA6xB6ESlZHPNXmC2Q==",
+      "path": "sepalsolver.plotlib/1.0.9",
+      "hashPath": "sepalsolver.plotlib.1.0.9.nupkg.sha512"
     },
     "SkiaSharp/3.119.0": {
       "type": "package",
