@@ -2,7 +2,6 @@
 Basic Operations Syntax
 =======================
 
-***Basic Operation and Syntax in C#***
 
 To build a powerful numerical engine like SepalSolver, we must first master the "grammar" of C#. C# is a strongly-typed, object-oriented language designed for clarity and performance. Its syntax provides a structured way to express mathematical logic, ensuring that the computer interprets our engineering formulas exactly as intended.
 
@@ -41,7 +40,7 @@ Writing code is only half the battle; explaining it is the other. C# provides tw
  
 
 
-***Examples***
+**Examples**
 
 *Basic Variable Assignment :*
 In this example, we see how to declare a variable and assign it a value. In SepalSolver, we use descriptive names to ensure that anyone reading  the code understands that tol represents a tolerance and maxIter  represents an iteration limit.
@@ -78,6 +77,8 @@ Variables created inside curly braces are part of a "Scope." This is  essential 
 1. Case Sensitivity: Matrix and matrix are different things in C#. 
 2. Strong Typing: You cannot put a string (text) into a double (decimal number) without explicit conversion.
 3. Entry Point: Every C# application starts executing at the Main method. 
+
+The rest of sytax, structure,  variable and operators are addressed in the following sections. 
 
 
 
