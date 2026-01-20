@@ -7,22 +7,24 @@ namespace ConsoleApp1.TrainingFiles.Chapter_01_Basic_Operations_Syntax
         public static void Run()
         {
             /// <BookContent> 
-            /// <header 2> Basic Operation and Syntax in C# </header 2>
+            /// ** Basic Operation and Syntax in C# **
+            /// 
             /// To build a powerful numerical engine like SepalSolver, we must first master the "grammar" of C#. C# is a strongly-typed, object-oriented language designed for clarity and performance. Its syntax provides a structured way to express mathematical logic, ensuring that the computer interprets our engineering formulas exactly as intended.
-            /// 
-            /// 
             /// <header 3> 1. The Structure of a C# Program </header 3> 
             /// Every instruction in C# lives inside a Statement, and statements are grouped into Blocks defined by curly braces { }. For our solver, this structure helps us separate different mathematical concerns—like keeping the matrix inversion logic separate from the file-saving logic. 
             /// 
             /// 
-            /// <header 3> 2. Semicolons and Whitespace </header 3> 
+            /// ** 2. Semicolons and Whitespace ** 
+            /// 
             /// In C#, every statement must end with a semicolon ;. This acts as a "terminator," telling the compiler that one instruction is finished and the next is beginning. Unlike some languages, C# ignores extra whitespace,  allowing us to format complex multi-line equations in a way that is readable to humans without confusing the machine.
             /// 
-            /// <header 3> 3. Comments for Documentation </header 3> 
+            /// ** 3. Comments for Documentation **
+            /// 
             /// Writing code is only half the battle; explaining it is the other. C# provides two main ways to leave notes for yourself and other engineers:
-            /// * Single-line (//): Best for quick notes about a specific line. 
-            /// * Multi-line (/* ... */): Best for describing complex algorithms. 
-            /// * XML Documentation (///): Used to generate tooltips for your library. 
+            /// 
+            /// - Single-line (//): Best for quick notes about a specific line. 
+            /// - Multi-line (/* ... */): Best for describing complex algorithms. 
+            /// - XML Documentation (///): Used to generate tooltips for your library. 
             /// 
             /// <code> Syntax Basics 
             { 
@@ -41,9 +43,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_01_Basic_Operations_Syntax
             /// </code> 
             /// 
             /// 
-            /// <header 2> Examples </header 2> 
+            /// ** Examples **
             /// 
-            /// <example 1> Basic Variable Assignment 
+            /// * Basic Variable Assignment * 
+            /// 
             /// In this example, we see how to declare a variable and assign it a value. In SepalSolver, we use descriptive names to ensure that anyone reading  the code understands that tol represents a tolerance and maxIter  represents an iteration limit.
             /// <code> 
             { 
@@ -52,9 +55,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_01_Basic_Operations_Syntax
                 Console.WriteLine($"Max Iterations: {maxIter}");
             } 
             /// </code> 
-            /// </example 1> 
             /// 
-            /// <example 2> Code Blocks and Scope 
+            /// * Code Blocks and Scope * 
+            /// 
             /// Variables created inside curly braces are part of a "Scope." This is  essential for solvers because it allows us to create temporary variables  (like a local residual) that disappear once the calculation is done,  keeping the computer's memory clean. 
             /// <code> 
             { 
@@ -66,9 +69,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_01_Basic_Operations_Syntax
                 // temporaryValue and sum are no longer accessible here
             } 
             /// </code> 
-            /// </example 2> 
             /// 
-            /// <header 3> Key Syntax Rules for Engineers </header 3> 
+            /// * Key Syntax Rules for Engineers *
+            /// 
             /// 1. Case Sensitivity: Matrix and matrix are different things in C#. 
             /// 2. Strong Typing: You cannot put a string (text) into a double (decimal number) without explicit conversion.
             /// 3. Entry Point: Every C# application starts executing at the Main method. 
