@@ -1,4 +1,5 @@
-﻿using static SepalSolver.Math;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using static SepalSolver.Math;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_3_Special_Functions
 {
@@ -6,7 +7,25 @@ namespace ConsoleApp1.TrainingFiles.Chapter_3_Special_Functions
     {
         public static void Run()
         {
+            {
+                // BesselJ function
+                double x = 2.5;
+                double y = BesselJ(0, x); //Here, we compute the Bessel function of the first kind of order 0 at x = 5.0
+                Console.WriteLine(y); // Expected output: -0.497094102271155
+            }
+            {
+                // Gamma function
+                double x = 4.0;
+                double y = Gamma(x); //Here, we compute the Gamma function at x = 5.0
+                Console.WriteLine(y); // Expected output: 6.0
+            }
 
+            {
+                // Error function
+                double x = 1.0;
+                double y = Erf(x); //Here, we compute the Error function at x = 1.0
+                Console.WriteLine(y);
+            }
             {
                 // Lambert W function
                 double x = -LambertW(0, -Log(2)/3)/Log(2);
