@@ -175,7 +175,7 @@ namespace ConsoleApp1
                     }
                 }
                 string line = bookContent[startIndex];
-                var match = Regex.Match(line, @"<header 1>(.*?)</header 1>");
+                var match = Regex.Match(line, @"<header 1>(.*?)</header");
 
                 if (match.Success)
                 {
@@ -202,7 +202,7 @@ namespace ConsoleApp1
                 }
 
                 string line = bookContent[startIndex];
-                var match = Regex.Match(line, @"<header 2>(.*?)</header 2>");
+                var match = Regex.Match(line, @"<header 2>(.*?)</header");
 
                 if (match.Success)
                 {
@@ -228,7 +228,7 @@ namespace ConsoleApp1
                     }
                 }
                 string line = bookContent[startIndex];
-                var match = Regex.Match(line, @"<header 3>(.*?)</header 3>");
+                var match = Regex.Match(line, @"<header 3>(.*?)</header");
 
                 if (match.Success)
                 {

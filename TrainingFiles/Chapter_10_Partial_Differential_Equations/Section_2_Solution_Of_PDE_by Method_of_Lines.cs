@@ -28,21 +28,27 @@ namespace ConsoleApp1.TrainingFiles.Chapter_10_Partial_Differential_Equations
             /// The **Method of Lines (MOL)** is a powerful numerical technique used to solve partial differential equations (PDEs), particularly those that are time-dependent (evolutionary).
 
             ///Instead of discretizing all dimensions(space and time) simultaneously, the core idea is to discretize the spatial variables while leaving the time variable continuous. This transforms a single PDE into a system of coupled **Ordinary Differential Equations(ODEs)**.
-            
+
 
             ///---
             ///
-            /// ## How It Works: The 3-Step Process
+            /// <header 3> How It Works: The 3-Step Process </header>
 
-            /// Imagine you are solving the heat equation: 
+            /// Imagine you are solving the heat equation: :math:`\frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}`
             /// 
-            /// 1. **Spatial Discretization**: You divide the spatial domain into a grid of points(e.g., ). You replace the spatial derivatives() with finite difference approximations, such as:
+            /// 1. **Spatial Discretization**: You divide the spatial domain into a grid of points(e.g., :math:`x_1, x_2, \cdot, x_n`). You replace the spatial derivatives :math: `(\frac{\partial^2 u}{\partial x^2})` with finite difference approximations, such as:
             /// 
+            /// <math>
+            /// \frac{\partial^2 u}{\partial x^2} = \frac{u_{i+1} - 2u_i + u_{i-1}}{(\Delta x)^2}
+            /// </math>
             /// 
             /// 2. **Conversion to ODEs**: By applying this at every grid point, the PDE becomes a set of ODEs, one for each point :
             /// 
+            /// <math>
+            /// \frac{\partial u_i(t)}{\partial t} \approx \alpha \frac{u_{i+1}(t) - 2u_i(t) + u_{i-1}(t)}{(\Delta x)^2}
+            /// </math>
             /// 
-            /// 3. **Temporal Integration**: Now that you have a system of ODEs, you can use standard, high-performance ODE solvers like **Runge-Kutta**or **Euler’s method**to step forward in time.
+            /// 3. **Temporal Integration**: Now that you have a system of ODEs, you can use standard, high-performance ODE solvers like **Runge-Kutta** or **Euler’s method** to step forward in time.
             /// 
             /// ---
             /// 
