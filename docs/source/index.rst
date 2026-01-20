@@ -35,5 +35,3 @@ This book is intended for students, researchers, and professionals seeking a dee
    Integration
    Ordinary Differential Equations
    Numerical Optimization
-   Partial Differential Equations
-   Conclusion

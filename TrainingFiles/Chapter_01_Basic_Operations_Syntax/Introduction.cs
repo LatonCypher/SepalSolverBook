@@ -7,18 +7,22 @@ namespace ConsoleApp1.TrainingFiles.Chapter_01_Basic_Operations_Syntax
         public static void Run()
         {
             /// <BookContent> 
-            /// **Basic Operation and Syntax in C#**
+            /// ***Basic Operation and Syntax in C#***
+            /// 
             /// To build a powerful numerical engine like SepalSolver, we must first master the "grammar" of C#. C# is a strongly-typed, object-oriented language designed for clarity and performance. Its syntax provides a structured way to express mathematical logic, ensuring that the computer interprets our engineering formulas exactly as intended.
             /// 
             /// 
-            /// **1. The Structure of a C# Program** 
+            /// **1. The Structure of a C# Program**
+            /// 
             /// Every instruction in C# lives inside a Statement, and statements are grouped into Blocks defined by curly braces { }. For our solver, this structure helps us separate different mathematical concerns—like keeping the matrix inversion logic separate from the file-saving logic. 
             /// 
             /// 
             /// **2. Semicolons and Whitespace** 
-            /// In C#, every statement must end with a semicolon ;. This acts as a "terminator," telling the compiler that one instruction is finished and the next is beginning. Unlike some languages, C# ignores extra whitespace,  allowing us to format complex multi-line equations in a way that is readable to humans without confusing the machine.
+            /// 
+            /// In C#, every statement must end with a semicolon `;`. This acts as a "terminator," telling the compiler that one instruction is finished and the next is beginning. Unlike some languages, C# ignores extra whitespace,  allowing us to format complex multi-line equations in a way that is readable to humans without confusing the machine.
             /// 
             /// **3. Comments for Documentation**
+            /// 
             /// Writing code is only half the battle; explaining it is the other. C# provides two main ways to leave notes for yourself and other engineers:
             /// 
             /// - Single-line (//): Best for quick notes about a specific line. 
@@ -42,9 +46,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_01_Basic_Operations_Syntax
             /// </code> 
             /// 
             /// 
-            /// **Examples**
+            /// ***Examples***
             /// 
-            /// *Basic Variable Assignment*
+            /// *Basic Variable Assignment :*
             /// In this example, we see how to declare a variable and assign it a value. In SepalSolver, we use descriptive names to ensure that anyone reading  the code understands that tol represents a tolerance and maxIter  represents an iteration limit.
             /// <code> 
             { 
@@ -54,7 +58,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_01_Basic_Operations_Syntax
             } 
             /// </code> 
             /// 
-            /// *Code Blocks and Scope* 
+            /// *Code Blocks and Scope :* 
             /// Variables created inside curly braces are part of a "Scope." This is  essential for solvers because it allows us to create temporary variables  (like a local residual) that disappear once the calculation is done,  keeping the computer's memory clean. 
             /// <code> 
             { 
