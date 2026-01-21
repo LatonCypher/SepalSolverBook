@@ -27,6 +27,7 @@ __pycache__/
 *.suo
 *.backup.json
 *.vsidx
+*.v2 
 
 # Distribution / packaging
 .Python
