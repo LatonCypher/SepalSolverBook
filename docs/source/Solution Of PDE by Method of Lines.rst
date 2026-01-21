@@ -6,7 +6,6 @@ The **Method of Lines (MOL)** is a powerful numerical technique used to solve pa
 Instead of discretizing all dimensions(space and time) simultaneously, the core idea is to discretize the spatial variables while leaving the time variable continuous. This transforms a single PDE into a system of coupled **Ordinary Differential Equations(ODEs)**.
 
 
----
 
 How It Works: The 3-Step Process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -26,12 +25,12 @@ Imagine you are solving the heat equation: :math:`\frac{\partial u}{\partial t} 
 
 .. math::
 
-   \frac{\partial u_i(t)}{\partial t} = \alpha \frac{u_{i+1}(t) - 2u_i(t) + u_{i-1}(t)}{(\Delta x)^2}
+   \frac{\partial u_i(t)}{\partial t} \approx \alpha \frac{u_{i+1}(t) - 2u_i(t) + u_{i-1}(t)}{(\Delta x)^2}
 
 
 3. **Temporal Integration**: Now that you have a system of ODEs, you can use standard, high-performance ODE solvers like **Runge-Kutta** or **Euler’s method** to step forward in time.
 
----
+
 
 ## Why Use It? (Advantages)
 
@@ -44,17 +43,14 @@ Imagine you are solving the heat equation: :math:`\frac{\partial u}{\partial t} 
 - **Stiffness**: The resulting system of ODEs is often "stiff," meaning you may need implicit solvers to avoid tiny, inefficient time steps.
 - **Not for All PDEs**: It is designed for "evolutionary" problems (parabolic and hyperbolic). It cannot be used directly for purely "steady-state" elliptic equations(like Laplace’s equation) without adding a "pseudo-time" variable.
 
----
 
-### Comparison at a Glance
 
-.. list-table:: 
+.. list-table:: Comparison at a Glance
    :header-rows: 1
 
    * - Feature
      - Standard Finite Difference(FDM)
      - Method of Lines(MOL)
-     - 
    * - **Time Treatment**
      - Discretized at the start
      - Kept continuous initially
@@ -64,5 +60,5 @@ Imagine you are solving the heat equation: :math:`\frac{\partial u}{\partial t} 
    * - **Software**
      - Requires custom time-stepping
      - Uses off-the-shelf ODE solvers
-     - 
-   * - 
+
+

@@ -21,3 +21,4 @@ In this chapter, we will explore different numerical methods for solving ODEs, t
    Stiff Differntial Equations
    Implicit Differential Equations
    Differential Algebraic Equations
+   Exercise
