@@ -28,7 +28,8 @@
             ///
             /// 
             /// <header 2> Examples </header 2> 
-            /// <example 1> Real Value Evaluation (Descending) /// We define a cubic polynomial :math:`P(x)= 2x^3 −6x^2 + 2x−1`. Notice how the input sequence exactly matches the mathematical coefficients written from highest to lowest degree.
+            /// <example 1> Real Value Evaluation (Descending)
+            /// We define a cubic polynomial :math:`P(x)= 2x^3 −6x^2 + 2x−1`. Notice how the input sequence exactly matches the mathematical coefficients written from highest to lowest degree.
             /// <code> 
             { 
                 // 2x^3 - 6x^2 + 2x - 1
@@ -40,7 +41,7 @@
             /// </example 1> 
             /// 
             /// <example 2> Complex Evaluation (Descending) 
-            /// Evaluating at a complex point s=σ+jω is common in control theory. Here we evaluate :math:`P(s)=1s^2 + 0s + 1` (which is :math:`s^2 + 1`) at the imaginary unit i.
+            /// Evaluating at a complex point :math:`s = \sigma + j \omega` is common in control theory. Here we evaluate :math:`P(s)=1s^2 + 0s + 1` (which is :math:`s^2 + 1`) at the imaginary unit i.
             /// <code> 
             { 
                 double[] poly = [1.0, 0.0, 1.0];
@@ -60,7 +61,7 @@
 
                 ColVec x = new double[] { 0, 1, 2 };
                 ColVec y = x.Select(x=>Polyval(poly, x)).ToArray();
-                Console.WriteLine($"Result at x = [{x.T}]^T is: [{y.T}]^T"); // 4 + 4 + 3 = 11
+                Console.WriteLine($"Result at x = {x.T} is: {y.T}"); // 4 + 4 + 3 = 11
             } 
             /// </code> 
             /// 

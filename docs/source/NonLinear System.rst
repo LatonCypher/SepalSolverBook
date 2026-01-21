@@ -2,4 +2,4 @@ NonLinear System
 ================
 
    Large NonLinear Systems
-   Exercise
+   Chapter 06 Exercise

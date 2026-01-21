@@ -29,8 +29,9 @@ When coefficients are in descending order, Horner's method becomes particularly 
 Examples
 --------
 
-.. Admonition:: Example 1 :  Real Value Evaluation (Descending) /// We define a cubic polynomial :math:`P(x)= 2x^3 −6x^2 + 2x−1`. Notice how the input sequence exactly matches the mathematical coefficients written from highest to lowest degree.
+.. Admonition:: Example 1 :  Real Value Evaluation (Descending)
 
+   We define a cubic polynomial :math:`P(x)= 2x^3 −6x^2 + 2x−1`. Notice how the input sequence exactly matches the mathematical coefficients written from highest to lowest degree.
    
    .. code-block:: csharp
     
@@ -49,7 +50,7 @@ Examples
 
 .. Admonition:: Example 2 :  Complex Evaluation (Descending) 
 
-   Evaluating at a complex point s=σ+jω is common in control theory. Here we evaluate :math:`P(s)=1s^2 + 0s + 1` (which is :math:`s^2 + 1`) at the imaginary unit i.
+   Evaluating at a complex point :math:`s = \sigma + j \omega` is common in control theory. Here we evaluate :math:`P(s)=1s^2 + 0s + 1` (which is :math:`s^2 + 1`) at the imaginary unit i.
    
    .. code-block:: csharp
     
@@ -77,18 +78,18 @@ In this case, we have a set of measurements in a ColVec and we want to pass them
    
       ColVec x = new double[] { 0, 1, 2 };
       ColVec y = x.Select(x=>Polyval(poly, x)).ToArray();
-      Console.WriteLine($"Result at x = [{x.T}]^T is: [{y.T}]^T"); // 4 + 4 + 3 = 11
+      Console.WriteLine($"Result at x = {x.T} is: {y.T}"); // 4 + 4 + 3 = 11
     
    
    Ouput
    
    .. terminal::
    
-      Result at x = [
+      Result at x = 
          0.0000    1.0000    2.0000
-      ]^T is: [
+       is: 
          3.0000    6.0000   11.0000
-      ]^T
+      
    
 
 Implementation Tip: Power Mapping

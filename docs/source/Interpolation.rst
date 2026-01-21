@@ -18,4 +18,4 @@ In this chapter, we will explore different interpolation methods, their implemen
    Linear Interpolation
    Interpolation by Polynomial
    Hemite Spline
-   Exercise
+   Chapter 03 Exercise

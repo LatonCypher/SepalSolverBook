@@ -19,4 +19,4 @@ In this chapter, we will explore different numerical integration methods, their 
    Gauss Legendre
    Gauss Laguerre
    Polynomial Integration
-   Exercise
+   Chapter 07 Exercise

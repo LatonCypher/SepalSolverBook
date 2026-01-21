@@ -1,7 +1,7 @@
 ﻿
 namespace ConsoleApp1.TrainingFiles.Chapter_01_Basic_Operations_Syntax
 {
-    internal class Section_99_Exercise
+    internal class Section_99_Chapter_01_Exercise
     {
         public static void Run()
         {

@@ -90,4 +90,4 @@ The rest of sytax, structure,  variable and operators are addressed in the follo
    Operators And Expressions
    Collections and Linq
    Algorithm Flow Control
-   Exercise
+   Chapter 01  Exercise
