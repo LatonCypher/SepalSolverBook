@@ -31,10 +31,10 @@ A system of :math:`n` first‑order ODEs can be written as:
 In SepalSolver, this is represented by a function:
 
 .. code-block:: csharp
- {
-     // Define the ODE as a function
-     double[] dydt(double t, double[] y) => [f1, f2, ..., fn];
- }
+
+   // Define the ODE as a function
+   double[] dydt(double t, double[] y) => [f1, f2, ..., fn];
+
 where :math:`y` is the vector of dependent variables.
 
 Examples

@@ -14,12 +14,12 @@ is declared (usually on the stack). When you copy a value type, a complete
 independent copy of the data is made.
 
 .. code-block:: csharp
- { 
-     int original = 100; int copy = original; 
-     // A new copy is created copy = 200; 
-     // Changing the copy does NOT affect the original 
-     Console.WriteLine("Original: {original}, Copy: {copy}"); 
- }
+ 
+   int original = 100; int copy = original; 
+   // A new copy is created copy = 200; 
+   // Changing the copy does NOT affect the original 
+   Console.WriteLine("Original: {original}, Copy: {copy}"); 
+
 
 2. Reference Types
 ~~~~~~~~~~~~~~~~~~
@@ -29,12 +29,12 @@ When you copy a reference type, you are only copying the pointer, not the data i
 
 
 .. code-block:: csharp
- {
-     int[] originalArray = { 1, 2, 3 }; int[] aliasArray = originalArray; 
-     // Both variables point to the same memory aliasArray[0] = 99; 
-     // Changing aliasArray affects originalArray 
-     Console.WriteLine("Original[0]: {originalArray[0]}, Alias[0]: {aliasArray[0]}");     
- } 
+
+   int[] originalArray = { 1, 2, 3 }; int[] aliasArray = originalArray; 
+   // Both variables point to the same memory aliasArray[0] = 99; 
+   // Changing aliasArray affects originalArray 
+   Console.WriteLine("Original[0]: {originalArray[0]}, Alias[0]: {aliasArray[0]}");     
+ 
 
 
 .. list-table:: Variable Categories 

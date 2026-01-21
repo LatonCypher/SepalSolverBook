@@ -50,10 +50,10 @@ Then the system becomes:
 
 
 .. code-block:: csharp
- {
-     // Define the ODE system as a function
-     double[] dydt(double t, double[] y) => [y[1], y[2], ..., f(t,y)];
- }
+
+   // Define the ODE system as a function
+   double[] dydt(double t, double[] y) => [y[1], y[2], ..., f(t,y)];
+
 
 Examples
 ~~~~~~~~

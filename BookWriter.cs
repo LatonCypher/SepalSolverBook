@@ -259,7 +259,7 @@ namespace ConsoleApp1
                 string line = bookContent[startIndex + Length];
                 if (line.Contains("///"))
                 {
-                    int start = line.LastIndexOf('/') + 1;
+                    int start = line.LastIndexOf('/') + 3;
                     while (!bookContent[startIndex + Length].Contains("</code>"))
                     {
                         line = bookContent[startIndex + Length];
