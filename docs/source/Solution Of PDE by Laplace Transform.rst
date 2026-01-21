@@ -29,7 +29,7 @@ Consider the one-dimensional heat equation:
 
 :math:`\frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}`
 
-with initial condition :math:`u(x,0) = f(x)` and boundary conditions :math:`u(0,t) = u(L,t) = 0`.
+with initial condition :math:`u(x,0) = \sin(x)` and boundary conditions :math:`u(0,t) = u(\pi,t) = 0`.
 
 **Solution Steps:**
 
@@ -49,8 +49,11 @@ Homogeneous solution and particular solution methods can be applied here.
 General solution: 
 :math:`U(x,s) = A(s) \sinh(\sqrt{(s/α)}x) + B(s) \cosh(\sqrt{(s/α)}x)`
 
+Particular solution can be found using methods like undetermined coefficients or variation of parameters.
+
+
 Step 3: Apply the inverse Laplace Transform to find u(x,t)
-            // 
+
 
 
 <\BookContent>
