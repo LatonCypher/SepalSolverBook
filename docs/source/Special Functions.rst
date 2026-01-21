@@ -18,4 +18,4 @@ In this chapter, we will explore different special functions, their implementati
    Gamma Beta Error LambertW
    Cheby Hermite Legendre Laguerre
    Bessel Hypergeometric
-   Chapter 04 Exercise
+   Exercise On Special Functions

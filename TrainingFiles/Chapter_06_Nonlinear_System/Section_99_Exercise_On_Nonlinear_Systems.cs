@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_06_Nonlinear_System
 {
-    internal class Section_99_Chapter_06_Exercise
+    internal class Section_99_Exercise_On_Nonlinear_Systems
     {
     }
 }

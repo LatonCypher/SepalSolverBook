@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 {
-    internal class Section_99_Chapter_08_Exercise
+    internal class Section_99_Exercise_On_Ordinary_Differential_Equations
     {
     }
 }

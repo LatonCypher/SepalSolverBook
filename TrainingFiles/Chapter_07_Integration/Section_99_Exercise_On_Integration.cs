@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1.TrainingFiles.Chapter_03_Interpolation
+namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
 {
-    internal class Section_99_Chapter_03_Exercise
+    internal class Section_99_Exercise_On_Integration
     {
     }
 }

@@ -26,7 +26,7 @@ This book is intended for students, researchers, and professionals seeking a dee
 
 .. toctree::
 
-   Basic Operations Syntax
+   Basic Operations and Syntax
    Polynomials
    Interpolation
    Special Functions

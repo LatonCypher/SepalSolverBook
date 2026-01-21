@@ -18,4 +18,4 @@ In this chapter, we will explore different numerical methods for solving PDEs, t
    Solution Of PDE by Laplace Transform
    Solution Of PDE by Method of Lines
    Solution Of PDE by Full Descretization
-   Chapter 10 Exercise
+   Exercise On Partial Differetial Equations

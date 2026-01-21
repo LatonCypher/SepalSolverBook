@@ -33,6 +33,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_01_Basic_Operations_Syntax
             ///     Console.WriteLine($"Subtraction: {}"); // call Subtract method and display result
             ///     Console.WriteLine($"Multiplication: {}"); // call Multiply method and display result
             ///     Console.WriteLine($"Division: {}"); // call Divide method and display result
+            /// }
             /// </code>
 
             /// Task 2: User Input Handling

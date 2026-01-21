@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_10_Partial_Differential_Equations
 {
-    internal class Section_99_Chapter_10_Exercise
+    internal class Section_99_Exercise_On_Partial_Differetial_Equations
     {
     }
 }
