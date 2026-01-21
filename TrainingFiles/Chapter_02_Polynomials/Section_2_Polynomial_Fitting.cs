@@ -36,10 +36,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
                 Console.WriteLine($"Coefficients: {string.Join(", ", coefficients)}");
 
                 // Plotting the results
-                Scatter(X, Y, "fob"); hold  = true;
+                Scatter(X, Y, "fob"); hold = true;
                 double[] x = Linspace(1, 4);
                 double[] y = [..x.Select(x => Polyval(coefficients, x))];
-                Plot(x, y, "r", Linewidth: 2);
+                Plot(x, y, "r", Linewidth: 2); hold = false;
                 SaveAs("Polyfit_Example1.png");
             }
             /// </code> 
@@ -97,7 +97,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
                     Residual: {yp1.Zip(y, (l, m) => Pow(l-m, 2)).Sum()}
                     """);
 
-
                 double[] fit2 = Polyfit(x, y, 2);
                 double[] yp2 = [.. xp.Select(x => Polyval(fit2, x))];
                 Plot(xp, yp2, "g");
@@ -105,7 +104,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
                     Linear fit : [{string.Join(",", fit2)}] 
                     Residual: {yp2.Zip(y, (q, m) => Pow(q-m, 2)).Sum()}
                     """);
+
                 Legend(["Data", "Linear Fit", "Quadratic Fit"]);
+                hold = false;
                 SaveAs("Polyfit_Example_4.png");
             }
             /// </code> 

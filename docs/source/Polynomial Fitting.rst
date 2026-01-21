@@ -37,10 +37,10 @@ Examples
       Console.WriteLine($"Coefficients: {string.Join(", ", coefficients)}");
    
       // Plotting the results
-      Scatter(X, Y, "fob"); hold  = true;
+      Scatter(X, Y, "fob"); hold = true;
       double[] x = Linspace(1, 4);
       double[] y = [..x.Select(x => Polyval(coefficients, x))];
-      Plot(x, y, "r", Linewidth: 2);
+      Plot(x, y, "r", Linewidth: 2); hold = false;
       SaveAs("Polyfit_Example1.png");
    
    
@@ -48,7 +48,7 @@ Examples
    
    .. terminal::
    
-      Coefficients: 176.00000000000242, -924.0000000000128, 1015.0000000000142
+      Coefficients: 1, 0, 0
    
    .. figure:: images/Polyfit_Example1.png
       :align: center
@@ -97,7 +97,7 @@ Examples
    
    .. terminal::
    
-      Quadratic term (should be small): 74.0571428571426
+      Quadratic term (should be small): -0.04285714285714347
 
 Usage Warning
 ~~~~~~~~~~~~~
@@ -125,7 +125,6 @@ Overfitting can occur if the degree is too high, while underfitting can happen i
           Residual: {yp1.Zip(y, (l, m) => Pow(l-m, 2)).Sum()}
           """);
    
-   
       double[] fit2 = Polyfit(x, y, 2);
       double[] yp2 = [.. xp.Select(x => Polyval(fit2, x))];
       Plot(xp, yp2, "g");
@@ -133,7 +132,9 @@ Overfitting can occur if the degree is too high, while underfitting can happen i
           Linear fit : [{string.Join(",", fit2)}] 
           Residual: {yp2.Zip(y, (q, m) => Pow(q-m, 2)).Sum()}
           """);
+   
       Legend(["Data", "Linear Fit", "Quadratic Fit"]);
+      hold = false;
       SaveAs("Polyfit_Example_4.png");
    
    
@@ -143,8 +144,8 @@ Overfitting can occur if the degree is too high, while underfitting can happen i
    
       Linear fit : [5.999999999999998,-1.9999999999999942] 
       Residual: 1008.4903581267214
-      Linear fit : [205.28571428571348,-1313.714285714281,1742.9999999999945] 
-      Residual: 1516273.4813098805
+      Linear fit : [0.9999999999999957,2.7003933940572107E-14,4.999999999999965] 
+      Residual: 846.555844532397
    
    .. figure:: images/Polyfit_Example_4.png
       :align: center
