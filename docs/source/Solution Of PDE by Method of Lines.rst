@@ -12,7 +12,7 @@ How It Works: The 3-Step Process
 
 Imagine you are solving the heat equation: :math:`\frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}`
 
-1. **Spatial Discretization**: You divide the spatial domain into a grid of points(e.g., :math:`x_1, x_2, \cdot, x_n`). You replace the spatial derivatives :math: `(\frac{\partial^2 u}{\partial x^2})` with finite difference approximations, such as:
+1. **Spatial Discretization**: You divide the spatial domain into a grid of points(e.g., :math:`x_1, x_2, \cdot, x_n`). You replace the spatial derivatives :math:`(\frac{\partial^2 u}{\partial x^2})` with finite difference approximations, such as:
 
 
 .. math::
