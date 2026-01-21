@@ -3,7 +3,7 @@ using static SepalSolver.Math;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
 {
-    public class Section_6_Cholesky_Factorization_FactorUpdate_Positive_Definicy
+    public class Section_06_Cholesky_Factorization_FactorUpdate_Positive_Definicy
     {
         public static void Run()
         {

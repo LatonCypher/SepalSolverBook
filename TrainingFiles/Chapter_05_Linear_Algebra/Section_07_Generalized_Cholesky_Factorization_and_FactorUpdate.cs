@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
 {
-    internal class Section_7_Generalized_Cholesky_Factorization_and_FactorUpdate
+    internal class Section_07_Generalized_Cholesky_Factorization_and_FactorUpdate
     {
     }
 }

@@ -3,7 +3,7 @@ using static SepalSolver.Math;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
 {
-    internal class Section_3_Matrix_Vectors_Operations_Vector_Spaces
+    internal class Section_03_Matrix_Vectors_Operations_Vector_Spaces
     {
         public static void Run()
         {

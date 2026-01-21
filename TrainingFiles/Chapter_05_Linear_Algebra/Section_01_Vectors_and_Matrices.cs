@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
 {
-    internal class Section_1_Vectors_and_Matrices
+    internal class Section_01_Vectors_and_Matrices
     {
         public static void Run()
         {

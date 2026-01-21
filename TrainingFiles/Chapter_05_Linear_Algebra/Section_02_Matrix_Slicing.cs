@@ -3,7 +3,7 @@ using static SepalSolver.Math;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
 {
-    public class Section_2_Matrix_Slicing
+    public class Section_02_Matrix_Slicing
     {
         public static void Run()
         {

@@ -23,5 +23,5 @@ In this chapter, we will explore different linear algebra methods, their impleme
    Cholesky Factorization FactorUpdate Positive Definicy
    Generalized Cholesky Factorization and FactorUpdate
    Sparse Matrices
-   Exercise
    Solution Of Sparse Linear System
+   Exercise

@@ -8,7 +8,7 @@ using static SepalSolver.Math;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
 {
-    public class Section_5_Solution_of_Linear_Systems
+    public class Section_05_Solution_of_Linear_Systems
     {
         public static void Run()
         {

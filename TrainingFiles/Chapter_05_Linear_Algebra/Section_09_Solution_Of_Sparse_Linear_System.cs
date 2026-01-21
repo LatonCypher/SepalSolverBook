@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algebra
 {
-    public class Section_9_Solution_Of_Sparse_Linear_System
+    public class Section_09_Solution_Of_Sparse_Linear_System
     {
 
         public static void Run()
