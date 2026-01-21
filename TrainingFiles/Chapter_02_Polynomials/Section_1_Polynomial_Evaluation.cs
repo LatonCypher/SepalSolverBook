@@ -6,7 +6,7 @@
         {
             /// <BookContent> 
             /// <header 2> Polynomial Representation and Order </header 2> 
-            /// In numerical analysis and engineering software like MATLAB, it is a standard convention to represent polynomials with coefficients in Descending Order. This means the first element of the array corresponds to the highest power of :math:`x`, making it easier to read and align with long-hand mathematical notation.
+            /// As in other numerical analysis and engineering software, SepalSolver uses the standard convention of represent polynomials with coefficients in Descending Order. This means the first element of the array corresponds to the highest power of :math:`x`, making it easier to read and align with long-hand mathematical notation.
             /// 
             /// <header 3> 1. The Descending Order Convention </header 3>
             /// A polynomial :math:`P(x)= a_{n}x^{n} + a_{n-1}x^{n-1} + a_{n-2}x^{n-2} + \cdots + a_{1}x + a_{0}` is stored in an array where coeffs[0] is :math:`a_n`, coeffs[1] is :math:`a_{n-1}`, and so on, down to coeffs[n] which is :math:`a_0`. This ordering simplifies both the evaluation and manipulation of polynomials in code.

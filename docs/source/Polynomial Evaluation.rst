@@ -3,7 +3,7 @@ Polynomial Evaluation
 
 Polynomial Representation and Order
 -----------------------------------
-In numerical analysis and engineering software like MATLAB, it is a standard convention to represent polynomials with coefficients in Descending Order. This means the first element of the array corresponds to the highest power of :math:`x`, making it easier to read and align with long-hand mathematical notation.
+As in other numerical analysis and engineering software, SepalSolver uses the standard convention of represent polynomials with coefficients in Descending Order. This means the first element of the array corresponds to the highest power of :math:`x`, making it easier to read and align with long-hand mathematical notation.
 
 1. The Descending Order Convention
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
