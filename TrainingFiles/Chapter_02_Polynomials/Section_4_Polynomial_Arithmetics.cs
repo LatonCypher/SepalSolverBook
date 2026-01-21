@@ -2,7 +2,7 @@
 
 namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
 {
-    public class Section_3_Polynomial_Arithmetics
+    public class Section_4_Polynomial_Arithmetics
     {
         public static void Run()
         {

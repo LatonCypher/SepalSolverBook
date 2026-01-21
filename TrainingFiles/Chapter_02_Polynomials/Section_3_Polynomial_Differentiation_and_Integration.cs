@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
 {
-    internal class Section_5_Polynomial_Differentiation_and_Integration
+    internal class Section_3_Polynomial_Differentiation_and_Integration
     {
         public static void Run()
         {
