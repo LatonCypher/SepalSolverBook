@@ -34,7 +34,7 @@ Examples
       double[] coefficients = Polyfit(X, Y, N);
    
       // Output: 1, 0, 0 (representing 1x^2 + 0x + 0)
-      Console.WriteLine($"Coefficients: {string.Join(", ", coefficients)}");
+      Console.WriteLine($"Coefficients: [{string.Join(", ", coefficients.Select(n => n.ToString("F4")))}]");
    
       // Plotting the results
       Scatter(X, Y, "fob"); hold = true;
@@ -48,7 +48,7 @@ Examples
    
    .. terminal::
    
-      Coefficients: 1, 0, 0
+      Coefficients: [1.0000, 0.0000, 0.0000]
    
    .. figure:: images/Polyfit_Example1.png
       :align: center
@@ -129,7 +129,7 @@ Overfitting can occur if the degree is too high, while underfitting can happen i
       double[] yp2 = [.. xp.Select(x => Polyval(fit2, x))];
       Plot(xp, yp2, "g");
       Console.WriteLine($"""
-          Linear fit : [{string.Join(",", fit2)}] 
+          Quaratic fit : [{string.Join(",", fit2)}] 
           Residual: {yp2.Zip(y, (q, m) => Pow(q-m, 2)).Sum()}
           """);
    
@@ -144,7 +144,7 @@ Overfitting can occur if the degree is too high, while underfitting can happen i
    
       Linear fit : [5.999999999999998,-1.9999999999999942] 
       Residual: 1008.4903581267214
-      Linear fit : [0.9999999999999957,2.7003933940572107E-14,4.999999999999965] 
+      Quaratic fit : [0.9999999999999957,2.7003933940572107E-14,4.999999999999965] 
       Residual: 846.555844532397
    
    .. figure:: images/Polyfit_Example_4.png

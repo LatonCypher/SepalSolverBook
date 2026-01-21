@@ -33,7 +33,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
                 double[] coefficients = Polyfit(X, Y, N);
 
                 // Output: 1, 0, 0 (representing 1x^2 + 0x + 0)
-                Console.WriteLine($"Coefficients: {string.Join(", ", coefficients)}");
+                Console.WriteLine($"Coefficients: [{string.Join(", ", coefficients.Select(n => n.ToString("F4")))}]");
 
                 // Plotting the results
                 Scatter(X, Y, "fob"); hold = true;
@@ -101,7 +101,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
                 double[] yp2 = [.. xp.Select(x => Polyval(fit2, x))];
                 Plot(xp, yp2, "g");
                 Console.WriteLine($"""
-                    Linear fit : [{string.Join(",", fit2)}] 
+                    Quaratic fit : [{string.Join(",", fit2)}] 
                     Residual: {yp2.Zip(y, (q, m) => Pow(q-m, 2)).Sum()}
                     """);
 
