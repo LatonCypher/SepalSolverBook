@@ -15,7 +15,7 @@ In this chapter, we will explore different linear algebra methods, their impleme
 
 .. toctree::
 
-   Vectors Matrices
+   Vectors and Matrices
    Matrix Slicing
    Matrix Vectors Operations Vector Spaces
    LU Facorization and FactorUpdate
