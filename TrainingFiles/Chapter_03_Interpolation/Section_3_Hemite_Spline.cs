@@ -200,14 +200,15 @@
 
                 double SineByHermite(double a)
                 {
-                    double dx = 15;
-                    int i = (int)(a/dx);
-                    double t = (a - i*dx)/dx;
+                    double da = 15;
+                    int i = (int)(a/da);
+                    double t = (a - i*da)/da;
                     if (t == 0)
                         return Sines[i];
                     else
                     {
-                        double t2 = t * t, t3 = t2 * t;
+                       
+                        double t2 = t * t, t3 = t2 * t, dx = da*pi/180;
                         double y0 = Sines[i], y1 = Sines[i+1], m0 = Cosines[i], m1 = Cosines[i+1];
                         double h00 = 2 * t3 - 3 * t2 + 1,  h10 = t3 - 2 * t2 + t,
                                h01 = -2 * t3 + 3 * t2,  h11 = t3 - t2;
@@ -215,9 +216,15 @@
                     }
                 }
 
-                double[] x = [..Rand(20).Select(a=>90*a)];
+                double[] x = [.. Rand(20).Select(a => 80*a+10)];
+                Console.WriteLine("""
+                      Angle  |  Sineapprox  |    Sine
+                    ---------+--------------+-------------
+                    """);
                 foreach (double a in x)
-                    Console.WriteLine($"Angle {a:F4}: Sineapprox :{SineByHermite(a):F4}, Sine: {Sin(a*180/pi):F4}");
+                    Console.WriteLine($"""
+                          {a:F2}  |   {SineByHermite(a):F6}   |  {Sin(a*pi/180):F6}
+                        """);
             }
             /// </code>
             /// </example 5>

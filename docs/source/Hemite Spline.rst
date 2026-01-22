@@ -257,14 +257,15 @@ Exercise: Animation of Slope Impact
    
       double SineByHermite(double a)
       {
-          double dx = 15;
-          int i = (int)(a/dx);
-          double t = (a - i*dx)/dx;
+          double da = 15;
+          int i = (int)(a/da);
+          double t = (a - i*da)/da;
           if (t == 0)
               return Sines[i];
           else
           {
-              double t2 = t * t, t3 = t2 * t;
+             
+              double t2 = t * t, t3 = t2 * t, dx = da*pi/180;
               double y0 = Sines[i], y1 = Sines[i+1], m0 = Cosines[i], m1 = Cosines[i+1];
               double h00 = 2 * t3 - 3 * t2 + 1,  h10 = t3 - 2 * t2 + t,
                      h01 = -2 * t3 + 3 * t2,  h11 = t3 - t2;
@@ -272,32 +273,40 @@ Exercise: Animation of Slope Impact
           }
       }
    
-      double[] x = [..Rand(20).Select(a=>90*a)];
+      double[] x = [.. Rand(20).Select(a => 80*a+10)];
+      Console.WriteLine("""
+            Angle  |  Sineapprox  |    Sine
+          ---------+--------------+-------------
+          """);
       foreach (double a in x)
-          Console.WriteLine($"Angle {a:F4}: Sineapprox :{SineByHermite(a):F4}, Sine: {Sin(a*180/pi):F4}");
+          Console.WriteLine($"""
+                {a:F2}  |   {SineByHermite(a):F6}   |  {Sin(a*pi/180):F6}
+              """);
    
    
    Ouput
    
    .. terminal::
    
-      Angle 83.8720: Sineapprox :1.3708, Sine: -0.9025
-      Angle 44.1931: Sineapprox :0.2301, Sine: -0.0454
-      Angle 78.7214: Sineapprox :1.5157, Sine: -0.7973
-      Angle 77.6842: Sineapprox :1.4371, Sine: 0.6119
-      Angle 17.9003: Sineapprox :1.7135, Sine: 0.9929
-      Angle 70.0204: Sineapprox :0.9172, Sine: -0.0567
-      Angle 48.9383: Sineapprox :1.8674, Sine: 0.9963
-      Angle 53.7892: Sineapprox :0.8061, Sine: 0.0058
-      Angle 17.6166: Sineapprox :1.6745, Sine: -0.7868
-      Angle 20.1237: Sineapprox :1.4716, Sine: -0.0374
-      Angle 23.1637: Sineapprox :0.2796, Sine: 0.9902
-      Angle 46.6919: Sineapprox :1.5698, Sine: -0.9829
-      Angle 6.4594: Sineapprox :0.6669, Sine: -0.5757
-      Angle 7.2358: Sineapprox :0.3161, Sine: -0.1085
-      Angle 60.6196: Sineapprox :1.1449, Sine: -0.9766
-      Angle 67.5909: Sineapprox :1.3518, Sine: 0.7904
-      Angle 42.7115: Sineapprox :-0.2117, Sine: 0.1091
-      Angle 81.0933: Sineapprox :1.5343, Sine: 0.1129
-      Angle 30.1659: Sineapprox :0.6393, Sine: 0.4821
-      Angle 14.4789: Sineapprox :-0.1936, Sine: 0.1989
+        Angle  |  Sineapprox  |    Sine
+      ---------+--------------+-------------
+        87.31  |   0.998891   |  0.998895
+        53.19  |   0.800639   |  0.800649
+        21.31  |   0.363340   |  0.363345
+        23.66  |   0.401272   |  0.401276
+        70.02  |   0.939796   |  0.939805
+        79.72  |   0.983938   |  0.983947
+        55.38  |   0.822905   |  0.822912
+        61.48  |   0.878668   |  0.878670
+        87.74  |   0.999217   |  0.999220
+        76.22  |   0.971210   |  0.971211
+        46.13  |   0.720951   |  0.720952
+        89.83  |   0.999995   |  0.999996
+        25.02  |   0.422901   |  0.422904
+        57.63  |   0.844581   |  0.844584
+        84.00  |   0.994514   |  0.994526
+        53.61  |   0.804967   |  0.804977
+        79.92  |   0.984551   |  0.984560
+        30.80  |   0.512021   |  0.512021
+        88.05  |   0.999420   |  0.999422
+        68.81  |   0.932349   |  0.932360
