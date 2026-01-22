@@ -39,7 +39,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algerba
                 Indexer j = new(2, 4);
                 Console.WriteLine($"A[1, j] = {A[1, j]}");
             }
-
+             
             {
                 //  Extract multiple elements using subscript along a col
                 Indexer i = new(0, 3);

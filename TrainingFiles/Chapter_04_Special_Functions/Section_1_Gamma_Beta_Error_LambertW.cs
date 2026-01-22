@@ -8,15 +8,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_3_Special_Functions
         public static void Run()
         {
             {
-                // BesselJ function
-                double x = 2.5;
-                double y = BesselJ(0, x); //Here, we compute the Bessel function of the first kind of order 0 at x = 5.0
-                Console.WriteLine(y); // Expected output: -0.497094102271155
-            }
-            {
                 // Gamma function
                 double x = 4.0;
-                double y = Gamma(x); //Here, we compute the Gamma function at x = 5.0
+                double y = Gamma(x); //Here, we compute the Gamma function at x = 4.0
                 Console.WriteLine(y); // Expected output: 6.0
             }
 
@@ -32,6 +26,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_3_Special_Functions
                 double error = 3*x - Pow(2, x);
                 Console.WriteLine(x);
             }
+
 
         }
     }

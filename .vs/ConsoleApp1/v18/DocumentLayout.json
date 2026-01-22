@@ -3,16 +3,68 @@
   "WorkspaceRootPath": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\trainingfiles\\chapter_02_polynomials\\section_1_polynomial_evaluation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_02_polynomials\\section_1_polynomial_evaluation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\trainingfiles\\chapter_04_special_functions\\section_1_gamma_beta_error_lambertw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_04_special_functions\\section_1_gamma_beta_error_lambertw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\trainingfiles\\chapter_04_special_functions\\section_3_bessel_hypergeometric.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_04_special_functions\\section_3_bessel_hypergeometric.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\trainingfiles\\chapter_03_interpolation\\section_3_hemite_spline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_03_interpolation\\section_3_hemite_spline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\trainingfiles\\chapter_05_linear_algebra\\section_5_solution_of_linear_systems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_05_linear_algebra\\section_5_solution_of_linear_systems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\trainingfiles\\chapter_05_linear_algebra\\section_4_lu_facorization_and_factorupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_05_linear_algebra\\section_4_lu_facorization_and_factorupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\trainingfiles\\chapter_05_linear_algebra\\section_2_matrix_slicing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_05_linear_algebra\\section_2_matrix_slicing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\trainingfiles\\chapter_05_linear_algebra\\section_1_vectors_matrices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_05_linear_algebra\\section_1_vectors_matrices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\trainingfiles\\chapter_04_special_functions\\section_2_cheby_hermite_legendre_laguerre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_04_special_functions\\section_2_cheby_hermite_legendre_laguerre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\bookwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:bookwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\trainingfiles\\chapter_02_polynomials\\section_4_polynomial_roots.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_02_polynomials\\section_4_polynomial_roots.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\trainingfiles\\chapter_02_polynomials\\section_3_polynomial_arithmetics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_02_polynomials\\section_3_polynomial_arithmetics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\trainingfiles\\chapter_02_polynomials\\section_2_polynomial_fitting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_02_polynomials\\section_2_polynomial_fitting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\consoleapp1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:consoleapp1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\trainingfiles\\chapter_02_polynomials\\section_1_polynomial_evaluation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_02_polynomials\\section_1_polynomial_evaluation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\dell\\desktop\\sepalsolverbooktraining\\sepalsolverbook\\trainingfiles\\chapter_10_partial_differential_equations\\section_2_solution_of_pde_by method_of_lines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_10_partial_differential_equations\\section_2_solution_of_pde_by method_of_lines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,8 +74,86 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1102,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Section_3_Hemite_Spline.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_03_Interpolation\\Section_3_Hemite_Spline.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_03_Interpolation\\Section_3_Hemite_Spline.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_03_Interpolation\\Section_3_Hemite_Spline.cs",
+              "RelativeToolTip": "TrainingFiles\\Chapter_03_Interpolation\\Section_3_Hemite_Spline.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-22T07:36:17.655Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Section_1_Gamma_Beta_Error_LambertW.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_04_Special_Functions\\Section_1_Gamma_Beta_Error_LambertW.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_04_Special_Functions\\Section_1_Gamma_Beta_Error_LambertW.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_04_Special_Functions\\Section_1_Gamma_Beta_Error_LambertW.cs*",
+              "RelativeToolTip": "TrainingFiles\\Chapter_04_Special_Functions\\Section_1_Gamma_Beta_Error_LambertW.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-20T16:53:47.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Section_3_Bessel_Hypergeometric.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_04_Special_Functions\\Section_3_Bessel_Hypergeometric.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_04_Special_Functions\\Section_3_Bessel_Hypergeometric.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_04_Special_Functions\\Section_3_Bessel_Hypergeometric.cs",
+              "RelativeToolTip": "TrainingFiles\\Chapter_04_Special_Functions\\Section_3_Bessel_Hypergeometric.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAswEgAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-20T16:53:37.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Section_5_Solution_of_Linear_Systems.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_05_Linear_Algebra\\Section_5_Solution_of_Linear_Systems.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_05_Linear_Algebra\\Section_5_Solution_of_Linear_Systems.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_05_Linear_Algebra\\Section_5_Solution_of_Linear_Systems.cs",
+              "RelativeToolTip": "TrainingFiles\\Chapter_05_Linear_Algebra\\Section_5_Solution_of_Linear_Systems.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABUAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-22T07:35:48.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Section_1_Vectors_Matrices.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_05_Linear_Algebra\\Section_1_Vectors_Matrices.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_05_Linear_Algebra\\Section_1_Vectors_Matrices.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_05_Linear_Algebra\\Section_1_Vectors_Matrices.cs",
+              "RelativeToolTip": "TrainingFiles\\Chapter_05_Linear_Algebra\\Section_1_Vectors_Matrices.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-22T07:35:06.938Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Section_2_Matrix_Slicing.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_05_Linear_Algebra\\Section_2_Matrix_Slicing.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_05_Linear_Algebra\\Section_2_Matrix_Slicing.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_05_Linear_Algebra\\Section_2_Matrix_Slicing.cs*",
+              "RelativeToolTip": "TrainingFiles\\Chapter_05_Linear_Algebra\\Section_2_Matrix_Slicing.cs*",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAwwCkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T16:38:41.342Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
@@ -58,41 +188,132 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Section_2_Polynomial_Fitting.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_2_Polynomial_Fitting.cs",
-              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_02_Polynomials\\Section_2_Polynomial_Fitting.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_2_Polynomial_Fitting.cs",
-              "RelativeToolTip": "TrainingFiles\\Chapter_02_Polynomials\\Section_2_Polynomial_Fitting.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAeAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Section_4_LU_Facorization_and_FactorUpdate.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_05_Linear_Algebra\\Section_4_LU_Facorization_and_FactorUpdate.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_05_Linear_Algebra\\Section_4_LU_Facorization_and_FactorUpdate.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_05_Linear_Algebra\\Section_4_LU_Facorization_and_FactorUpdate.cs",
+              "RelativeToolTip": "TrainingFiles\\Chapter_05_Linear_Algebra\\Section_4_LU_Facorization_and_FactorUpdate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T10:21:36.996Z",
+              "WhenOpened": "2026-01-20T09:56:34.007Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Section_1_Polynomial_Evaluation.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_1_Polynomial_Evaluation.cs",
-              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_02_Polynomials\\Section_1_Polynomial_Evaluation.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_1_Polynomial_Evaluation.cs",
-              "RelativeToolTip": "TrainingFiles\\Chapter_02_Polynomials\\Section_1_Polynomial_Evaluation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAdAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "Section_2_Cheby_Hermite_Legendre_Laguerre.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_04_Special_Functions\\Section_2_Cheby_Hermite_Legendre_Laguerre.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_04_Special_Functions\\Section_2_Cheby_Hermite_Legendre_Laguerre.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_04_Special_Functions\\Section_2_Cheby_Hermite_Legendre_Laguerre.cs",
+              "RelativeToolTip": "TrainingFiles\\Chapter_04_Special_Functions\\Section_2_Cheby_Hermite_Legendre_Laguerre.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T10:20:54.079Z",
+              "WhenOpened": "2026-01-20T16:54:01.516Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
+              "Title": "BookWriter.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\BookWriter.cs",
+              "RelativeDocumentMoniker": "BookWriter.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\BookWriter.cs",
+              "RelativeToolTip": "BookWriter.cs",
+              "ViewState": "AgIAAMwAAAAAAAAAAAAQwNwAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-19T12:13:45.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-08T17:12:33.874Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Section_4_Polynomial_Roots.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_4_Polynomial_Roots.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_02_Polynomials\\Section_4_Polynomial_Roots.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_4_Polynomial_Roots.cs",
+              "RelativeToolTip": "TrainingFiles\\Chapter_02_Polynomials\\Section_4_Polynomial_Roots.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-19T17:51:15.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Section_3_Polynomial_Arithmetics.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_3_Polynomial_Arithmetics.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_02_Polynomials\\Section_3_Polynomial_Arithmetics.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_3_Polynomial_Arithmetics.cs",
+              "RelativeToolTip": "TrainingFiles\\Chapter_02_Polynomials\\Section_3_Polynomial_Arithmetics.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-19T16:12:26.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Section_2_Polynomial_Fitting.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_2_Polynomial_Fitting.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_02_Polynomials\\Section_2_Polynomial_Fitting.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_2_Polynomial_Fitting.cs*",
+              "RelativeToolTip": "TrainingFiles\\Chapter_02_Polynomials\\Section_2_Polynomial_Fitting.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-19T16:11:20.842Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ConsoleApp1",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\ConsoleApp1.csproj",
+              "RelativeDocumentMoniker": "ConsoleApp1.csproj",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\ConsoleApp1.csproj*",
+              "RelativeToolTip": "ConsoleApp1.csproj*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-20T16:51:03.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Section_1_Polynomial_Evaluation.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_1_Polynomial_Evaluation.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_02_Polynomials\\Section_1_Polynomial_Evaluation.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_1_Polynomial_Evaluation.cs",
+              "RelativeToolTip": "TrainingFiles\\Chapter_02_Polynomials\\Section_1_Polynomial_Evaluation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-19T12:13:45.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Section_2_Solution_Of_PDE_by Method_of_Lines.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_2_Solution_Of_PDE_by Method_of_Lines.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_2_Solution_Of_PDE_by Method_of_Lines.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SepalSolverBookTraining\\SepalSolverBook\\TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_2_Solution_Of_PDE_by Method_of_Lines.cs",
+              "RelativeToolTip": "TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_2_Solution_Of_PDE_by Method_of_Lines.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAEBdwAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-20T09:47:23.529Z",
               "EditorCaption": ""
             }
           ]
