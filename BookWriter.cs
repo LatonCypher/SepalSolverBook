@@ -34,7 +34,11 @@ namespace ConsoleApp1
                 ------------
                 Numerical methods form the backbone of modern scientific computing, enabling the approximation of solutions to problems that are analytically intractable. This book presents a comprehensive exploration of numerical techniques, with a particular emphasis on SepalSolver, a versatile computational framework designed to bridge theory and practice. By integrating classical algorithms with contemporary solver strategies, SepalSolver provides a unified environment for tackling linear and nonlinear systems, optimization problems, differential equations, and large-scale simulations.
                 
-                The text begins with foundational principles—error analysis, convergence, and stability—before progressing to advanced topics such as iterative methods, spectral techniques, and sparse matrix computations. Each chapter demonstrates how SepalSolver can be applied to real-world problems, offering readers both theoretical insight and practical implementation guidance. Worked examples, case studies, and performance benchmarks illustrate the solver’s efficiency and adaptability across diverse domains, including engineering, physics, finance, and data science.
+                The text begins with foundational principles—Basic Operations and Syntax—before progressing to core mathematical structures such as Polynomials, Interpolation, and Special Functions. These form the building blocks for the more complex computational engines within the library.
+
+                The middle chapters delve into the heart of numerical computing: Linear Algebra, Integration, and the solution of Ordinary Differential Equations (ODEs). Each section demonstrates how SepalSolver can be applied to real-world problems, offering readers both theoretical insight and practical implementation guidance.
+
+                Finally, the book explores high-level applications in Numerical Optimization and Partial Differential Equations (PDEs). Worked examples, case studies, and performance benchmarks illustrate the solver’s efficiency and adaptability across diverse domains, including engineering, physics, and data science.
                 
                 This book is intended for students, researchers, and professionals seeking a deeper understanding of numerical methods and their computational realization. By combining rigorous mathematical exposition with hands-on solver applications, it equips readers with the tools to design, analyze, and implement robust numerical solutions. Ultimately, the integration of SepalSolver into the study of numerical methods highlights the evolving synergy between mathematical theory and computational innovation.
 
@@ -112,6 +116,7 @@ namespace ConsoleApp1
         }
         public void Run(string inputPath, string classname, string DocFolder)
         {
+            Console.WriteLine(classname);
             string outputPath = DocFolder + classname + ".rst";
             string[] Content = File.ReadAllLines(inputPath);
 
@@ -286,8 +291,8 @@ namespace ConsoleApp1
                             Codelines.Add(line);
                         Length++;
 
-                        if (line.Contains("SaveAs"))
-                        { Imagelines.AddRange(GetImageReference(line)); }
+                        if (line.Contains("SaveAs") || line.Contains("AnimationMaker"))
+                            Imagelines.AddRange(GetImageReference(line));
                     }
                     Codelines.AddRange(Writer.CodeRunner([.. Codelines.Skip(2)]));
                     Codelines.AddRange(Imagelines);
@@ -301,16 +306,10 @@ namespace ConsoleApp1
             var match = Regex.Match(line, @"\((.*?)\)");
             string content = match.Groups[1].Value.Trim('"');
             return ["",
-                    ".. figure:: images/"+content,
+                    ".. figure:: images/" +  content,
                     "   :align: center",
                     "   :alt: " + content,
                     ""];
-        }
-        static string GetFileReference(string line)
-        {
-            // Regex to capture content inside parentheses
-            var match = Regex.Match(line, @"\((.*?)\)");
-            return match.Groups[1].Value.Trim('"');
         }
         static void TreatTableBlock(List<string> bookContent)
         {
