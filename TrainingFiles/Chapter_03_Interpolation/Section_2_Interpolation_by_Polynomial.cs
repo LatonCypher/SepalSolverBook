@@ -84,6 +84,57 @@ namespace ConsoleApp1.TrainingFiles.Chapter_03_Interpolation
             ///     Console.WriteLine($"Result at 3.5: :math:`{result}`");
             /// }
             /// </code>
+            /// 
+            /// <header 3> Multivariate Application </header 3>
+            /// The idea of using polynomial fits can be extended to multiple dimensions. For example, if you have data points in 2D space (x, y) with corresponding values z, you can fit a polynomial surface to approximate z as a function of x and y. This is particularly useful in fields like geostatistics or thermodynamic property evaluation, where you want to model complex surfaces based on scattered data.
+            /// 
+            /// <example 4> Thermodynamic Property Estimation
+            /// <code>
+            {
+                double[] Temperature = [1000, 1100, 1200, 1300, 1400, 1500, 1600, 1800, 2000],
+                    Pressure = [0.01, 0.02, 0.03, 0.04, 0.05, 0.06];
+                double[,] SpecificVolume = new double[,]
+                {
+                    {58.758, 29.379, 19.586, 14.689, 11.751, 9.7927},
+                    {63.373, 31.686, 21.124, 15.843, 12.674, 10.562},
+                    {67.988, 33.994, 22.663, 16.997, 13.598, 11.331},
+                    {72.604, 36.302, 24.201, 18.151, 14.521, 12.101},
+                    {77.219, 38.61,  25.74,  19.305, 15.444, 12.87},
+                    {81.834, 40.917, 27.278, 20.459, 16.367, 13.639},
+                    {86.45,  43.225, 28.817, 21.613, 17.29,  14.409},
+                    {95.68,  47.84,  31.894, 23.92,  19.136, 15.947},
+                    {104.91, 52.455, 34.97,  26.228, 20.982, 17.485}
+                };
+
+                // Fit a 2nd degree polynomial surface
+                (Matrix Tmesh, Matrix Pmesh) = Meshgrid(Temperature, Pressure);
+                Matrix SVmesh = SpecificVolume;
+                double[] x = [.. Tmesh], y = [.. Pmesh], xy = [.. Tmesh.Times(Pmesh)], z = [.. SVmesh];
+
+                // Task: Make the Matrix A with the cross term included
+                List<ColVec> A = [Ones(x.Length), x, y, xy];
+
+                // Solve for the coefficients using Least Squares
+                var coeffs = Mldivide(A, z);
+
+                // Interpolate at T = 1350K, P = 0.0373MPa
+                double T = 1350, P = 0.0373;
+                double sv = coeffs[0] + coeffs[1] * T + coeffs[2] * P + coeffs[3] * T * P;
+                Console.WriteLine($"Specific volume at T = {T} and P = {P} is {sv} by polynomial fitting");
+
+                // Note that this is different from what we obtained from bilinear interpolation
+                sv = Interp2(Temperature, Pressure, SpecificVolume, T, P);
+                Console.WriteLine($"Specific volume at T = {T} and P = {P} is {sv} by interpolation");
+
+                // We can obtain the same result as intepolation of we select the region used by linear interpolation
+                Tmesh = Tmesh[3..5, 2..4]; Pmesh = Pmesh[3..5, 2..4]; SVmesh = SVmesh[3..5, 2..4];
+                x = [.. Tmesh]; y = [.. Pmesh]; xy = [.. Tmesh.Times(Pmesh)]; z = [.. SVmesh];
+                A = [Ones(x.Length), x, y, xy]; coeffs = Mldivide(A, z);
+                sv = coeffs[0] + coeffs[1] * T + coeffs[2] * P + coeffs[3] * T * P;
+                Console.WriteLine($"Specific volume at T = {T} and P = {P} is {sv} by narrow region polynomial fitting");
+            }
+            /// </code>
+            /// </example 4>
             /// </BookContent>
         }
     }

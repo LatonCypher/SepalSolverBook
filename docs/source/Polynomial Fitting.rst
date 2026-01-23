@@ -152,3 +152,69 @@ Overfitting can occur if the degree is too high, while underfitting can happen i
       :alt: Polyfit_Example_4.png
    
 
+
+Multivariate Polynomial Fitting
+-------------------------------
+
+In many engineering scenarios, a dependent variable :math:z is influenced by multiple independent variables (e.g., :math:`x` and :math:`y`). This is known as Multivariate Fitting or Surface Fitting. While a standard Polyfit handles a single line, a multivariate fit finds a surface that minimizes the residuals across multiple dimensions.
+
+1.The Mathematical Model
+~~~~~~~~~~~~~~~~~~~~~~~~
+For two variables :math:`x` and :math:`y`, a second-order multivariate polynomial takes the form: :math:`z(x, y) = a_0 + a_1x + a_2y + a_3x^2 + a_4xy + a_5y^2`
+The "cross term" :math: xy is vital because it accounts for the interaction between the two variables—how the influence of :math:x might change depending on the current value of :math:`y`.
+
+2.Implementation Logic
+~~~~~~~~~~~~~~~~~~~~~~
+In SepalSolver, multivariate fitting is performed by constructing an augmented matrix where each column represents a term in the polynomial expansion(1, :math:`x`, :math:`y`, :math:`x^2`, etc.) and solving the resulting linear system.
+
+
+.. code-block:: csharp
+ 
+   // Data points: (x, y) coordinates and observed z values
+   double[] x = [0, 1, 2, 0, 1, 2], y = [0, 0, 0, 1, 1, 1], z = [1.1, 2.0, 3.9, 2.2, 3.1, 5.1];
+
+   // Fitting for a plane: z = a + bx + cy
+   // We construct a matrix A where rows are [1, x_i, y_i]
+   List<ColVec> A = [Ones(x.Length), x, y];
+
+   // Solve for coefficients using the Normal Equation (Least Squares)
+   // A' * A * coeff = A' * z
+   var coeff = Mldivide(A, z);
+
+   Console.WriteLine($"Model: z = {coeff[0]} + {coeff[1]}x + {coeff[2]}y");
+
+
+Ouput
+
+.. terminal::
+
+   Model: z = 0.908333333333332 + 1.4250000000000007x + 1.133333333333334y
+
+Examples
+--------
+
+
+.. Admonition:: Example 1 :  Material Stress Analysis The stress(:math:`\sigma`) on a component might depend on both Temperature(:math:`T`) and Pressure(:math:`P`). A multivariate fit allows you to create a "Stress Surface" that can predict failure points at any combination of: math:`T` and :math:`P`. 
+
+   
+
+
+.. Admonition:: Example 2 :  Aero-Efficiency Mapping For a wing, the Lift Coefficient(:math:`C_L`) is a function of both the Angle of Attack(:math:`\alpha`) and the Mach Number(:math:`M`). Using multivariate fitting, flight computers can interpolate lift values instantly across the entire flight envelope.
+
+
+Exercise: Term Expansion
+~~~~~~~~~~~~~~~~~~~~~~~~
+Task: To fit a full quadratic surface :math:`z = a + bx + cy + dxy`, your matrix A needs four columns. Complete the column assignment for the cross-term :math:`xy`.
+
+.. code-block:: csharp
+
+   // Data points
+   double[] x = [0, 1, 2, 0, 1, 2], y = [0, 0, 0, 1, 1, 1], z = [1.1, 2.0, 3.9, 2.2, 3.1, 5.1];
+
+   // Compute the cross term for multivariate polynomial fitting
+   double[] xy = [..x.Zip(y, (xi, yi) => xi * yi)];
+
+   // Task: Make the Matrix A with the cross term included
+
+   // Solve for the coefficients using Least Squares
+
