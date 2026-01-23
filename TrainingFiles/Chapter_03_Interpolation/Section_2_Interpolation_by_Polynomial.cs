@@ -29,7 +29,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_03_Interpolation
                 double[] estimate = [.. x.Select(evaluator)];
 
                 Scatter(X, Y, "fob"); hold = true;
-                Plot(x, estimate, "r");
+                Plot(x, estimate, "r"); hold = false;
                 SaveAs("Polynomial_Interpolation_Ex1.png");
             }
             ///</code>
@@ -47,6 +47,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_03_Interpolation
                 // Interpolate at a point in the middle
                 double midVoltage = Polyval(trend, 0.25);
 
+                // Print out result
+                Console.WriteLine($" midvoltage = {midVoltage}");
             }
             ///</code>
             ///</example 1>
@@ -120,18 +122,21 @@ namespace ConsoleApp1.TrainingFiles.Chapter_03_Interpolation
                 // Interpolate at T = 1350K, P = 0.0373MPa
                 double T = 1350, P = 0.0373;
                 double sv = coeffs[0] + coeffs[1] * T + coeffs[2] * P + coeffs[3] * T * P;
-                Console.WriteLine($"Specific volume at T = {T} and P = {P} is {sv} by polynomial fitting");
+                Console.WriteLine("Interpolation by Polynomial Fitting");
+                Console.WriteLine($"Specific volume at T = {T} and P = {P} is {sv}");
 
                 // Note that this is different from what we obtained from bilinear interpolation
                 sv = Interp2(Temperature, Pressure, SpecificVolume, T, P);
-                Console.WriteLine($"Specific volume at T = {T} and P = {P} is {sv} by interpolation");
+                Console.WriteLine("Interpolation by Bilinear Interpolation");
+                Console.WriteLine($"Specific volume at T = {T} and P = {P} is {sv}");
 
                 // We can obtain the same result as intepolation of we select the region used by linear interpolation
                 Tmesh = Tmesh[3..5, 2..4]; Pmesh = Pmesh[3..5, 2..4]; SVmesh = SVmesh[3..5, 2..4];
                 x = [.. Tmesh]; y = [.. Pmesh]; xy = [.. Tmesh.Times(Pmesh)]; z = [.. SVmesh];
                 A = [Ones(x.Length), x, y, xy]; coeffs = Mldivide(A, z);
                 sv = coeffs[0] + coeffs[1] * T + coeffs[2] * P + coeffs[3] * T * P;
-                Console.WriteLine($"Specific volume at T = {T} and P = {P} is {sv} by narrow region polynomial fitting");
+                Console.WriteLine("Interpolation by Polynomial Fitting-Using Narrow Region");
+                Console.WriteLine($"Specific volume at T = {T} and P = {P} is {sv}");
             }
             /// </code>
             /// </example 4>

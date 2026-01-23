@@ -575,7 +575,7 @@
           }
         }
       },
-      "SepalSolver/0.0.64": {
+      "SepalSolver/0.0.65": {
         "type": "package",
         "dependencies": {
           "Highs.Native": "1.12.0",
@@ -594,7 +594,7 @@
           }
         }
       },
-      "SepalSolver.PlotLib/0.0.64": {
+      "SepalSolver.PlotLib/0.0.65": {
         "type": "package",
         "dependencies": {
           "CSharpMath": "0.5.1",
@@ -603,7 +603,7 @@
           "Magick.NET-Q16-AnyCPU": "14.10.0",
           "Magick.NET.Core": "14.10.0",
           "ScottPlot": "5.1.57",
-          "SepalSolver": "0.0.64"
+          "SepalSolver": "0.0.65"
         },
         "compile": {
           "lib/netstandard2.1/SepalSolver.PlotLib.dll": {}
@@ -2166,29 +2166,29 @@
         "scottplot.nuspec"
       ]
     },
-    "SepalSolver/0.0.64": {
-      "sha512": "HT42SaNcOxFTK/VTC4qp3VA4/v79M3J1KRdL2q06IUOIiYS2MenIxfjCSHZDlWUGcxs2mVs8GarqVnxPf/mVaA==",
+    "SepalSolver/0.0.65": {
+      "sha512": "Yt2ZKKXUTlYaVqXRmkpZ2Dsef9Mtt1VOhaIcG1rr+3mSSnWnRSONuJ0D3iNy4KvH3f28+zK+qGV14zq1QIK9NQ==",
       "type": "package",
-      "path": "sepalsolver/0.0.64",
+      "path": "sepalsolver/0.0.65",
       "files": [
         ".nupkg.metadata",
         "README.md",
         "lib/netstandard2.1/SepalSolver.dll",
         "lib/netstandard2.1/SepalSolver.xml",
-        "sepalsolver.0.0.64.nupkg.sha512",
+        "sepalsolver.0.0.65.nupkg.sha512",
         "sepalsolver.nuspec",
         "sepalsolver.png"
       ]
     },
-    "SepalSolver.PlotLib/0.0.64": {
-      "sha512": "IrL/ytMuaBuzxsDDDaQ9j9VRFLSqS8dCox8U73hQjaTa6pFBcHHlVCeYCxMp/Mq2Tm2g9vAyaokMXyqilA5Xkw==",
+    "SepalSolver.PlotLib/0.0.65": {
+      "sha512": "/VPM6/juG7SgzCUYocFJZGN5KnOo4bQ411SOFYIip7JH6gm8MjpaOrzizbHt8bz35kEZYoWUtt4q53D0Q3GAqA==",
       "type": "package",
-      "path": "sepalsolver.plotlib/0.0.64",
+      "path": "sepalsolver.plotlib/0.0.65",
       "files": [
         ".nupkg.metadata",
         "README.md",
         "lib/netstandard2.1/SepalSolver.PlotLib.dll",
-        "sepalsolver.plotlib.0.0.64.nupkg.sha512",
+        "sepalsolver.plotlib.0.0.65.nupkg.sha512",
         "sepalsolver.plotlib.nuspec"
       ]
     },
@@ -2560,8 +2560,8 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "SepalSolver >= 0.0.64",
-      "SepalSolver.PlotLib >= 0.0.64"
+      "SepalSolver >= 0.0.65",
+      "SepalSolver.PlotLib >= 0.0.65"
     ]
   },
   "packageFolders": {
@@ -2618,11 +2618,11 @@
         "dependencies": {
           "SepalSolver": {
             "target": "Package",
-            "version": "[0.0.64, )"
+            "version": "[0.0.65, )"
           },
           "SepalSolver.PlotLib": {
             "target": "Package",
-            "version": "[0.0.64, )"
+            "version": "[0.0.65, )"
           }
         },
         "imports": [

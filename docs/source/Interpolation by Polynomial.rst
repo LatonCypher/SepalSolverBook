@@ -28,7 +28,7 @@ While standard interpolation (like linear or Hermite) forces a curve to pass thr
    double[] estimate = [.. x.Select(evaluator)];
 
    Scatter(X, Y, "fob"); hold = true;
-   Plot(x, estimate, "r");
+   Plot(x, estimate, "r"); hold = false;
    SaveAs("Polynomial_Interpolation_Ex1.png");
 
 
@@ -54,7 +54,15 @@ Examples
       // Interpolate at a point in the middle
       double midVoltage = Polyval(trend, 0.25);
    
+      // Print out result
+      Console.WriteLine($" midvoltage = {midVoltage}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+       midvoltage = 1.0365000000000002
 
 
 .. Admonition:: Example 2 :  Structural Deformation Mapping
@@ -136,24 +144,30 @@ The idea of using polynomial fits can be extended to multiple dimensions. For ex
       // Interpolate at T = 1350K, P = 0.0373MPa
       double T = 1350, P = 0.0373;
       double sv = coeffs[0] + coeffs[1] * T + coeffs[2] * P + coeffs[3] * T * P;
-      Console.WriteLine($"Specific volume at T = {T} and P = {P} is {sv} by polynomial fitting");
+      Console.WriteLine("Interpolation by Polynomial Fitting");
+      Console.WriteLine($"Specific volume at T = {T} and P = {P} is {sv}");
    
       // Note that this is different from what we obtained from bilinear interpolation
       sv = Interp2(Temperature, Pressure, SpecificVolume, T, P);
-      Console.WriteLine($"Specific volume at T = {T} and P = {P} is {sv} by interpolation");
+      Console.WriteLine("Interpolation by Bilinear Interpolation");
+      Console.WriteLine($"Specific volume at T = {T} and P = {P} is {sv}");
    
       // We can obtain the same result as intepolation of we select the region used by linear interpolation
       Tmesh = Tmesh[3..5, 2..4]; Pmesh = Pmesh[3..5, 2..4]; SVmesh = SVmesh[3..5, 2..4];
       x = [.. Tmesh]; y = [.. Pmesh]; xy = [.. Tmesh.Times(Pmesh)]; z = [.. SVmesh];
       A = [Ones(x.Length), x, y, xy]; coeffs = Mldivide(A, z);
       sv = coeffs[0] + coeffs[1] * T + coeffs[2] * P + coeffs[3] * T * P;
-      Console.WriteLine($"Specific volume at T = {T} and P = {P} is {sv} by narrow region polynomial fitting");
+      Console.WriteLine("Interpolation by Polynomial Fitting-Using Narrow Region");
+      Console.WriteLine($"Specific volume at T = {T} and P = {P} is {sv}");
    
    
    Ouput
    
    .. terminal::
    
-      Specific volume at T = 1350 and P = 0.0373 is 98833.93854760705 by polynomial fitting
-      Specific volume at T = 1350 and P = 0.0373 is 20.413475 by interpolation
-      Specific volume at T = 1350 and P = 0.0373 is 20.413475000000012 by narrow region polynomial fitting
+      Interpolation by Polynomial Fitting
+      Specific volume at T = 1350 and P = 0.0373 is 28.053581185031383
+      Interpolation by Bilinear Interpolation
+      Specific volume at T = 1350 and P = 0.0373 is 20.413475
+      Interpolation by Polynomial Fitting-Using Narrow Region
+      Specific volume at T = 1350 and P = 0.0373 is 20.413475000000012
