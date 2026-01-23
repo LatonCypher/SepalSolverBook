@@ -168,7 +168,7 @@
                 }
 
                 // Animate the plot
-                AnimationMaker(animfun, "Impact_of_changing_slope_at x_0.gif", 30, 100);
+                AnimationMaker(animfun, "Impact_of_changing_slope_at_x_0.gif", 30, 100);
             }
 
             /// </code>

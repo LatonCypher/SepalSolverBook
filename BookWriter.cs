@@ -291,8 +291,10 @@ namespace ConsoleApp1
                             Codelines.Add(line);
                         Length++;
 
-                        if (line.Contains("SaveAs") || line.Contains("AnimationMaker"))
+                        if (line.Contains("SaveAs"))
                             Imagelines.AddRange(GetImageReference(line));
+                        if (line.Contains("AnimationMaker"))
+                            Imagelines.AddRange(GetAnimationReference(line));
                     }
                     Codelines.AddRange(Writer.CodeRunner([.. Codelines.Skip(2)]));
                     Codelines.AddRange(Imagelines);
@@ -309,6 +311,27 @@ namespace ConsoleApp1
                     ".. figure:: images/" +  content,
                     "   :align: center",
                     "   :alt: " + content,
+                    ""];
+        }
+
+        static string[] GetAnimationReference(string line)
+        {
+            // Regex to capture content inside parentheses
+            // Regex to capture everything between the first '(' and the last ')'
+            var match = Regex.Match(line, @"\(([^)]*)\)");
+            string secondArg = "";
+            if (match.Success)
+            {
+                string allArgs = match.Groups[1].Value; // "a, 15, m0, m1"
+                string[] args = allArgs.Split(',');
+
+                if (args.Length >= 2)
+                    secondArg = args[1].Trim().Trim('"', '\'');
+            }
+            return ["",
+                    ".. figure:: images/" +  secondArg,
+                    "   :align: center",
+                    "   :alt: " + secondArg,
                     ""];
         }
         static void TreatTableBlock(List<string> bookContent)
