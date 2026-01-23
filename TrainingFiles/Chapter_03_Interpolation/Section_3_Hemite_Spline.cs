@@ -156,13 +156,13 @@
                 double[] yq = HermiteFun(x, y, dy, xq);
 
                 // plot the result.
-                var plt = Plot(xq, yq);
-                Axis([0, 1, -2, 2]);
+                var plt = Plot(xq, yq, Linewidth: 2);
+                Axis([0, 1, -0.3, 0.2]);
 
                 // set up animation function
                 byte[] animfun(int i)
                 {
-                    dy[0] += 0.02;                           // increase the starting slope
+                    dy[0] = Sin(pi + i * 0.02*pi);           // increase the starting slope
                     plt.Ydata = HermiteFun(x, y, dy, xq);    // update interpolated values
                     return GetFrame();                       //  return the frame
                 }
