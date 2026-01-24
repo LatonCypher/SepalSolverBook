@@ -74,6 +74,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_01_Basic_Operations_Syntax
             /// }
             /// </code>
             /// 
+            /// Task 4: Modify the Newton Raphson algorithm in Task 3 to not exceed 10 iterations. 
+            /// Hint: Either change to ``for`` loop, or declare a iteration counter `int i = 0` and break when it equals the maximum iteration
+            ///
+            /// 
+            /// 
+            /// 
             /// </BookContent>
         }
     }

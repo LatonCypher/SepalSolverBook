@@ -58,7 +58,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_03_Interpolation
             /// <code>
             {
 
-                double[] x = Linspace(0,10, 5), y = [0, 0, 0, -0.05, -0.02];
+                double[] x = Linspace(0,10, 5), y = [0, 0, -0.03, -0.05, -0.02];
                 ColVec xc = x, yc = y;
                 double[] coeffs = Polyfit(x, y, 3); //degree2
                 ColVec xq = Linspace(0, 10);
