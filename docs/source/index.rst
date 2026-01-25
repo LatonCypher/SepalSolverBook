@@ -33,8 +33,8 @@ This video explains how to get started with a console project and install SepalS
 
 .. youtube:: v3I3McaUMfY
 
-   :width: 640
-   :height: 360
+   :width: 800
+   :height: 450
 
 
 

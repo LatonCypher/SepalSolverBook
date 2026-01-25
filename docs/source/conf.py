@@ -47,8 +47,6 @@ pygments_style = 'sphinx'
 # Custom configurations
 html_logo = '_static/SepalSolver.png'
 
-# Allow raw
-#sphinx.config.html_allow_raw = True
 
 # 1. Add the path to your custom CSS
 html_static_path = ['_static']
