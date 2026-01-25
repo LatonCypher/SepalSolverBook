@@ -32,6 +32,7 @@ Getting Started
 This video explains how to get started with a console project and install SepalSolver nuget packages
 
 .. youtube:: v3I3McaUMfY
+
    :width: 640
    :height: 360
 
@@ -40,13 +41,3 @@ This video explains how to get started with a console project and install SepalS
 .. toctree::
 
    Basic Operations and Syntax
-   Polynomials
-   Interpolation
-   Special Functions
-   Linear Algebra
-   Nonlinear System
-   Integration
-   Ordinary Differential Equations
-   Numerical Optimization
-   Partial Differential Equations
-   Conclusion

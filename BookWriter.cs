@@ -48,6 +48,7 @@ namespace ConsoleApp1
                 This video explains how to get started with a console project and install SepalSolver nuget packages
 
                 .. youtube:: v3I3McaUMfY
+
                    :width: 640
                    :height: 360
 
