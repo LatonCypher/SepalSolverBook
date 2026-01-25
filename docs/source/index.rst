@@ -50,7 +50,7 @@ Content
    Interpolation
    Special Functions
    Linear Algebra
-   Nonlinear System
+   Solution of Nonlinear System
    Integration
    Ordinary Differential Equations
    Numerical Optimization
