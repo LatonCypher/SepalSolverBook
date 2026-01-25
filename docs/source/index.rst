@@ -27,6 +27,15 @@ Finally, the book explores high-level applications in Numerical Optimization and
 This book is intended for students, researchers, and professionals seeking a deeper understanding of numerical methods and their computational realization. By combining rigorous mathematical exposition with hands-on solver applications, it equips readers with the tools to design, analyze, and implement robust numerical solutions. Ultimately, the integration of SepalSolver into the study of numerical methods highlights the evolving synergy between mathematical theory and computational innovation.
 
 
+Getting Started
+-----------------
+This video explains how to get started with a console project and install SepalSolver nuget packages
+
+.. youtube:: v3I3McaUMfY
+   :width: 640
+   :height: 360
+
+
 
 .. toctree::
 

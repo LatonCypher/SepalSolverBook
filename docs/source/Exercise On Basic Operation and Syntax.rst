@@ -70,3 +70,9 @@ Task 3: Complete Newton Raphson algorithm for computing the squareroot of a numb
    Console.WriteLine($"Square root of {number} is approximately {NewtonSqrt(number):10:4}");
 
 
+Task 4: Modify the Newton Raphson algorithm in Task 3 to not exceed 10 iterations. 
+Hint: Either change to ``for`` loop, or declare a iteration counter `int i = 0` and break when it equals the maximum iteration
+
+
+
+
