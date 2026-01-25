@@ -38,6 +38,10 @@ This video explains how to get started with a console project and install SepalS
 
 
 
+
+
+
+
 .. toctree::
 
    Basic Operations and Syntax
