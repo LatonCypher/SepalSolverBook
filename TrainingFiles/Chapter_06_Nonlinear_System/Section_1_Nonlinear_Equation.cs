@@ -1,16 +1,78 @@
-﻿namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
+﻿using CSharpMath.Atom.Atoms;
+
+namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
 {
     internal class Section_1_Nonlinear_Equation
     {
 
         public static void Run()
         {
-            //Fzero
+            /// <BookContent>
+            /// Root of a nonlinear equation near initial guess :math:`x_0` can be found using ``Fzero`` or `Fsolve`. It numerically locates a value ``x`` such that: :math:`f(x) = 0`. This is particularly useful when analytical solutions are difficult or impossible to obtain.
+            /// 
+            /// To solve the equation: :math:`x\exp(x) = 2`, start with initial guess of :math:`x_0 = 0.5`;
+            /// <code>
             {
                 //Single nonlinear equation
-                Func<double, double> f = x => x * Exp(x) - 2;
+                double f(double x) => x * Exp(x) - 2;
+
+                // solve equation using fzero
                 double x = Fzero(f, 0.5);
+                Console.WriteLine($"x = {x}");
             }
+            /// </code>
+            /// In this case, Fzero first search for an interval that brackets the root. Then uses brent's method to hone in on the root. 
+            /// If we are sure of the interval containing the root, we can save the effort spent on bracketing the root by supplying that. 
+            /// <code>
+            {
+                //Single nonlinear equation (bracketted)
+                double f(double x) => x * Exp(x) - 2;
+                double x = Fzero(f, [0.5, 1]);
+                Console.WriteLine($"x = {x}");
+            }
+            /// </code>
+            /// 
+            /// To have window into the solution process, we can using solver setting `SolverSet()` to get the solver to print out the result after each iteration. 
+            /// 
+            /// <code>
+            {
+                // Single nonlinear equation
+                double f(double x) => x * Exp(x) - 2;
+
+                // set solver behaviour
+                var opts = SolverSet(Display: true);
+
+                // solve equation using fzero
+                double x = Fzero(f, 0.5, opts);
+                Console.WriteLine($"x = {x}");
+            }
+            /// </code>
+            /// 
+            /// by setting the solver setting in the case of bracketed root, we can see how the solution process differs from the case of a single initial guess. 
+            /// 
+            /// <code>
+            {
+                // Single nonlinear equation
+                double f(double x) => x * Exp(x) - 2;
+
+                // set solver behaviour
+                var opts = SolverSet(Display: true);
+
+                // solve equation using fzero
+                double x = Fzero(f, [0.5, 1], opts);
+                Console.WriteLine($"x = {x}");
+            }
+            /// </code>
+            /// 
+
+
+
+
+
+
+
+            /// </BookContent>
+
 
             {
                 //Single nonlinear equation (bracketted
