@@ -4,3 +4,4 @@ sphinx-tabs==3.4.7
 sphinx-copybutton
 sphinxcontrib-mermaid
 sphinx-design
+sphinxcontrib-youtube
