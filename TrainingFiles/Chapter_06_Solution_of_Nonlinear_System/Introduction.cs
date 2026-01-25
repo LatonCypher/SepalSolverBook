@@ -6,11 +6,6 @@ using ScottPlot.Plottables;
 using ScottPlot.TickGenerators.Financial;
 using ScottPlot.TickGenerators.TimeUnits;
 using SepalSolver;
-using System.ComponentModel;
-using System.Drawing.Drawing2D;
-using static SepalSolver.Statistics;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
 namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
 {
     internal class Introduction
