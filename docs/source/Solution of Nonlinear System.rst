@@ -12,6 +12,7 @@ Solution of Nonlinear System
 
 **Solution Methods** Since exact solutions are often impossible to obtain analytically, numerical
 methods are widely used. Common approaches include:
+
 - **Bisection Method**: A simple, robust technique that repeatedly halves an interval to locate a root. It relies on the Intermediate Value Theorem:
 
 .. math::
@@ -49,9 +50,7 @@ method are generalized to handle multiple equations simultaneously:
 
 where: math:`J` is the Jacobian matrix of partial derivatives.
 
-Why It Matters
---------------
-Root finding and solving nonlinear systems are essential tools in computational mathematics.They allow scientists and engineers to model, simulate, and optimize systems that cannot be solved with simple algebra. From predicting weather patterns to designing stable structures, these techniques form the backbone of modern problem-solving.
+**Why It Matters ?** Root finding and solving nonlinear systems are essential tools in computational mathematics.They allow scientists and engineers to model, simulate, and optimize systems that cannot be solved with simple algebra. From predicting weather patterns to designing stable structures, these techniques form the backbone of modern problem-solving.
 
 
 
