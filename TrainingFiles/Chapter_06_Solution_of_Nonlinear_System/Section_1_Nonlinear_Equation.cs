@@ -1,4 +1,5 @@
 ﻿using CSharpMath.Atom.Atoms;
+using ScottPlot.PlotStyles;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
 {
@@ -64,29 +65,99 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             }
             /// </code>
             /// 
+            /// <header 2> Practical Application </header>
+            /// The gas compressibility factor (Z-factor) measures how much a real gas deviates from ideal gas behavior. It is defined as:
+            /// <math>
+            ///  Z = \frac{P V}{n R T}
+            ///  </math>
+            ///  
+            /// where:
+            /// 
+            /// - :math:`P` = pressure
+            /// - :math:`V` = volume
+            /// - :math:`n` = number of moles
+            /// - :math:`R` = gas constant
+            /// - :math:`T` = temperature
+            /// 
+            /// Accurate determination of Z is essential in petroleum engineering for reservoir simulation, material balance, and pipeline design.
+            /// Unlike explicit correlations, which provide Z directly as a function of pseudo-reduced pressure (:math:`P_{pr}`) and pseudo-reduced temperature (:math:`T_{pr}`), **implicit correlations** require solving an equation iteratively because Z appears on both sides of the equation.
+            /// 
+            /// The **Hall–Yarbrough correlation (1973)** is one of the most widely used implicit methods for estimating Z. It was developed based on the hard-sphere equation of state and tested against multiple reservoir gas systems.
+            /// The general form is:
+            /// <math>
+            /// \begin{cases}
+            ///     A = 0.06125 \cdot \frac{P_{pr}}{T_{pr}} \cdot \exp\left(-1.2 \cdot(1 - T_{ pr})^2\right) \\
+            ///     B = \frac{14.76 \cdot T_{pr} - 9.76 \cdot T_{pr}^2 + 4.58 \cdot T_{pr}^3}{T_{pr}} \\
+            ///     C = 90.7 \cdot T_{pr} - 242.2 \cdot T_{pr}^2 + 42.4 \cdot T_{pr}^3 \\
+            ///     D = 2.18 + 2.82 \cdot T_{pr} \\
+            ///     y = A + \frac{B \cdot y + C \cdot y^2 + D \cdot y^3}{1 + y + y^2 + y^3} \\
+            ///     Z = \frac{A \cdot P_{pr}}{y}
+            /// \end{cases}
+            /// </math>
+            /// where:
+            /// - :math:`P_{pr} = \frac{P}{P_c}` (pseudo-reduced pressure)
+            /// - :math:`T_{pr} = \frac{T}{T_c}` (pseudo-reduced temperature)
+            /// - :math:`P_c, T_c` = pseudo-critical properties of the gas mixture
+            /// 
+            /// Because Z appears on both sides of the equation, iterative numerical methods such as Newton–Raphson or successive substitution are required to solve it.
+            /// 
+            /// **Applications**
+            /// 
+            /// - Reservoir engineering: material balance calculations and reserves estimation.
+            /// - Pipeline design: predicting pressure drop and flow efficiency.
+            /// - Simulation software: incorporated into PVT packages for automated Z-factor evaluation.
+            /// 
+            /// <code>
+            {
+                //Z factor application
+                static double ZfactorHY(double Pr, double Tr)
+                {
+                    double z = 1, t, tm1, tm1e2, A, B,
+                        C, D, r, y2, y3, y4, Den;
+                    if (Pr != 0)
+                    {
+                        t = 1 / Tr;
+                        tm1 = 1 - t; tm1e2 = tm1 * tm1;
+                        A = 0.06125 * t * Exp(-1.2 * Pow(1 - t, 2));
+                        B = t * (14.76 - t * (9.76 - t * 4.58));
+                        C = t * (90.7 - t * (242.2 - t * 42.4));
+                        D = 2.18 + 2.82 * t; r = A * Pr;
+                        var yfunc = new Func<double, double>(y =>
+                        {
+                            y2 = y * y; y3 = y2 * y; y4 = y3 * y;
+                            Den = Pow(1 - y, 3);
+                            return -A * Pr + (y + y2 + y3 - y4) / Den -
+                            B * y2 + C * Pow(y, D);
+                        });
+                        double y = Fsolve(yfunc, r);
+                        z = A * Pr / y;
+                    }
+                    return z;
+                }
 
+                // set up ressure and temperature mesh
+                ColVec Pr = Linspace(0.2, 20, 501);
+                ColVec Tr = new double[] {1.05,    1.08,   1.12,   1.18,   1.26,   1.35,   1.47,
+                                          1.61,    1.75,   1.91,   2.09,   2.29,   2.62,   3.00 };
 
+                // compute z factors and plot them
+                List<string> Tlabels = [];
+                List<ColVec> ZHY = [];
+                foreach (var tr in Tr)
+                {
+                    ZHY.Add(Pr.Select(p => ZfactorHY(p, tr)).ToArray());
+                    Tlabels.Add("Tr = " + tr);
+                }
 
+                Plot(Pr, ZHY);
+                SaveAs("Zfactor-Hall-Yarborough-CCL-Math.png");
+            }
 
-
-
-
+            /// </code>
             /// </BookContent>
 
 
-            {
-                //Single nonlinear equation (bracketted
-                Func<double, double> f = x => x * Exp(x) - 2;
-                double x0 = 0.5;
-                double x = Fzero(f, [0.5, 1]);
-            }
 
-            //Fsolve
-            {
-                //Single nonlinear equation
-                Func<double, double> f = x => x * Exp(x) - 2;
-                double x = Fsolve(f, 0.5);
-            }
 
             {
                 //System nonlinear equations
@@ -188,12 +259,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                 Console.WriteLine(x);
             }
 
-            {
-                Func<double, double> f = x => x * Exp(x) - 2;
-                double x0 = 0.5;
-                var options = SolverSet(StepFactor: 0.9, Display: true);
-                double x = Fsolve(f, x0, options);
-            }
 
             {
                 //Z factor application
@@ -241,8 +306,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                 Plot(Pr, Z = ZHY);
                 SaveAs("Zfactor-Hall-Yarborough-CCL-Math.png");
             }
+
         }
 
 
     }
 }
+
