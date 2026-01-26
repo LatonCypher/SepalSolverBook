@@ -49,7 +49,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             /// <header 2> Examples </header>
             ///
             /// <example 1> : Single Equation
-            /// Solve: math:`x^2 - 4 = 0`:
+            /// Solve: :math:`x^2 - 4 = 0`:
             /// 
             /// <code>
             {
@@ -65,11 +65,11 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             /// <example 2> System of Equations
             /// Solve the system:
             /// <math>
-            /// \begin{ cases}
+            /// \begin{cases}
             ///     3x_1 - \cos(x_2 x_3) - \frac{1}{2} = 0 \\
             ///     x_1^2 - 81(x_2+0.1)^2 + \sin(x_3) + 1.06 = 0 \\ 
-            ///     e^{ x_1x_2} +20x_3 + \frac{ 10\pi-3}{ 3} = 0
-            /// \end{ cases}
+            ///     e^{x_1x_2} +20x_3 + \frac{10\pi-3}{3} = 0
+            /// \end{cases}
             /// </math>
             /// Where: :math:`x_0 = [0.1, 0.1, -0.1]^T`
             ///
