@@ -56,9 +56,6 @@ where: math:`J` is the Jacobian matrix of partial derivatives.
 
 
 
-
-
-
 .. toctree::
 
    Nonlinear Equation

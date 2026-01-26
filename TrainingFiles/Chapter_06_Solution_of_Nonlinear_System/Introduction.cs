@@ -53,10 +53,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             ///  
             /// **Why It Matters ?** Root finding and solving nonlinear systems are essential tools in computational mathematics.They allow scientists and engineers to model, simulate, and optimize systems that cannot be solved with simple algebra. From predicting weather patterns to designing stable structures, these techniques form the backbone of modern problem-solving.
 
-            /// 
-
-
-        /// </BookContent>
+            /// </BookContent>
         }
 }
 }
