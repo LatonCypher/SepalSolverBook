@@ -138,17 +138,18 @@ The general form is:
 .. math::
 
    \begin{cases}
-   A = 0.06125 \cdot \frac{P_{pr}}{T_{pr}} \cdot \exp\left(-1.2 \cdot(1 - T_{ pr})^2\right) \\
-   B = \frac{14.76 \cdot T_{pr} - 9.76 \cdot T_{pr}^2 + 4.58 \cdot T_{pr}^3}{T_{pr}} \\
-   C = 90.7 \cdot T_{pr} - 242.2 \cdot T_{pr}^2 + 42.4 \cdot T_{pr}^3 \\
-   D = 2.18 + 2.82 \cdot T_{pr} \\
-   y = A + \frac{B \cdot y + C \cdot y^2 + D \cdot y^3}{1 + y + y^2 + y^3} \\
-   Z = \frac{A \cdot P_{pr}}{y}
+   A = 0.06125t \exp\left(-1.2(1 - t)^2\right) \\
+   B = 14.76t - 9.76t^2 + 4.58t^3 \\
+   C = 90.7t - 242.2t^2 + 42.4t^3 \\
+   D = 2.18 + 2.82t \\
+   -AP_{pr} + \cfrac{y + y^2 + y^3 - y^4}{(1 - y)^3} + By + Cy^D = 0 \\
+   Z = \cfrac{A \cdot P_{pr}}{y}
    \end{cases}
 
 where:
 - :math:`P_{pr} = \frac{P}{P_c}` (pseudo-reduced pressure)
 - :math:`T_{pr} = \frac{T}{T_c}` (pseudo-reduced temperature)
+- :math:`t = \frac{1}{T_{pr}}` 
 - :math:`P_c, T_c` = pseudo-critical properties of the gas mixture
 
 Because Z appears on both sides of the equation, iterative numerical methods such as Newton–Raphson or successive substitution are required to solve it.
