@@ -145,3 +145,42 @@ Summary
 -------
 ``Fsolve`` is SelapSolver’s go-to tool for solving nonlinear systems. It is powerful and flexible, but demands careful choice of initial guesses and problem formulation to ensure convergence.
 
+Parameterized Equations
+-----------------------
+Parameterized nonlinear equations :math:`F(x, \lambda) = 0` are equations or systems of equations that depend on one or more parameters: math:`\lambda`. They are widely used in mathematics, engineering, and economics to study how solutions change as parameters vary, enabling sensitivity analysis, bifurcation studies, and optimization.
+
+This parameter(s) can be exploited to provide means to guarantee that a good initial guess can be estimated. For instance, some values of the parameter might help eliminate the nonlinearity of the system and hence, no guess is needed for the solution. Then variation of this parameter can then be used to move the solution :math:`x` gently to their values that corresponds to the orginally intended values of the parameter :math:`\lambda`.
+
+
+.. Admonition:: Example 2 : 
+
+   Consider this parameterized nonlinear system. The nonlinearity is controlled by parameter :math:`c`.
+   \begin{array}
+   2x + y - \exp(-cx) = 0 \\
+   -x + 2y - \exp(-cy) = 0
+   \end{array}
+   
+   Setting :math:`c = 0`, turns this system into a linear system with solution of :math:`[x,y] = [0.2, 0.6]`
+   Hence, we can gradually change :math:`c` from :math:`0` to :math:`20`, while solving for :math:`[x, y]`.
+   
+   .. code-block:: csharp
+   
+      // Parameterized nonlinear equations
+      double[] paramfun(ColVec x, double c)
+      {
+          return [ 2*x[0] + x[1]  - Exp(-c*x[0]),
+          -x[0] + 2*x[1]  - Exp(-c*x[1])];
+      }
+      RowVec C = Linspace(0, 20, 200);
+      ColVec x = new double[] { 0.2, 0.6 };
+      var opts = SolverSet(MaxIter: 1000);
+      Matrix X = C.Select(c => x = Fsolve(x => paramfun(x, c), x, opts)).ToList();
+      Plot(C, X, Linewidth: 2);
+      SaveAs("Parameterozed_Nonlinear_Equations.png");
+   
+   
+   .. figure:: images/Parameterozed_Nonlinear_Equations.png
+      :align: center
+      :alt: Parameterozed_Nonlinear_Equations.png
+   
+   

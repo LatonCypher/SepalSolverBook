@@ -79,8 +79,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             /// - :math:`R` = gas constant
             /// - :math:`T` = temperature
             /// 
-            /// Accurate determination of Z is essential in petroleum engineering for reservoir simulation, material balance, and pipeline design.
-            /// Unlike explicit correlations, which provide Z directly as a function of pseudo-reduced pressure (:math:`P_{pr}`) and pseudo-reduced temperature (:math:`T_{pr}`), **implicit correlations** require solving an equation iteratively because Z appears on both sides of the equation.
+            /// Accurate determination of :math:`Z` is essential in petroleum engineering for reservoir simulation, material balance, and pipeline design.
+            /// Unlike explicit correlations, which provide :math:`Z` directly as a function of pseudo-reduced pressure (:math:`P_{pr}`) and pseudo-reduced temperature (:math:`T_{pr}`), **implicit correlations** require solving an equation iteratively because :math:`Z` appears on both sides of the equation.
             /// 
             /// The **Hall–Yarbrough correlation (1973)** is one of the most widely used implicit methods for estimating Z. It was developed based on the hard-sphere equation of state and tested against multiple reservoir gas systems.
             /// The general form is:
@@ -90,8 +90,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             ///     B = 14.76t - 9.76t^2 + 4.58t^3 \\
             ///     C = 90.7t - 242.2t^2 + 42.4t^3 \\
             ///     D = 2.18 + 2.82t \\
-            ///     -AP_{pr} + \cfrac{y + y^2 + y^3 - y^4}{(1 - y)^3} + By + Cy^D = 0 \\
-            ///     Z = \cfrac{A \cdot P_{pr}}{y}
+            ///     -AP_{pr} + \cfrac{y + y^2 + y^3 - y^4}{(1 - y)^3} - By^2 + Cy^D = 0 \\
+            ///     Z = \cfrac{A P_{pr}}{y}
             /// \end{array}
             /// </math>
             /// where:
@@ -101,7 +101,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             /// - :math:`t = 1/T_{pr}` 
             /// - :math:`P_c, T_c` = pseudo-critical properties of the gas mixture
             /// 
-            /// Because Z appears on both sides of the equation, iterative numerical methods such as Newton–Raphson or successive substitution are required to solve it.
+            /// Because reduced density equation is nonlinear, iterative numerical methods such as Newton–Raphson or successive substitution are required to solve it.
             /// 
             /// **Applications**
             /// 
@@ -152,7 +152,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                 }
 
                 Plot(Pr, ZHY);
-                SaveAs("Zfactor-Hall-Yarborough-CCL-Math.png");
+                SaveAs("Zfactor_Hall_Yarborough_.png");
             }
 
             /// </code>
@@ -168,19 +168,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                 ColVec x = Fsolve(f, x0);
             }
 
-            {
-                // Parameterized nonlinear equations
-                double[] paramfun(ColVec x, double c)
-                {
-                    return [ 2*x[0] + x[1]  - Exp(-c*x[0]),
-                    -x[0] + 2*x[1]  - Exp(-c*x[1])];
-                }
-                RowVec C = Linspace(0, 20, 200);
-                ColVec x = new double[] { 0.2, 0.6 };
-                var opts = SolverSet(MaxIter: 1000);
-                Matrix X = C.Select(c => x = Fsolve(x => paramfun(x, c), x, opts)).ToList();
-                Plot(C, X, Linewidth: 2);
-            }
+            
 
             {
                 //Large Nonlinear Systems
