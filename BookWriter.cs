@@ -39,6 +39,10 @@ namespace ConsoleApp1
                     :align: center
                     :alt: Six_Link.gif
 
+                .. figure:: images/Ship_Roll.gif
+                    :align: center
+                    :alt: Ship_Roll.gif
+
                 
                 The text begins with foundational principles—Basic Operations and Syntax—before progressing to core mathematical structures such as Polynomials, Interpolation, and Special Functions. These form the building blocks for the more complex computational engines within the library.
 
