@@ -85,7 +85,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             /// The **Hall–Yarbrough correlation (1973)** is one of the most widely used implicit methods for estimating Z. It was developed based on the hard-sphere equation of state and tested against multiple reservoir gas systems.
             /// The general form is:
             /// <math>
-            /// \begin{array}
+            /// \begin{array}{c}
             ///     A = 0.06125t \exp\left(-1.2(1 - t)^2\right) \\
             ///     B = 14.76t - 9.76t^2 + 4.58t^3 \\
             ///     C = 90.7t - 242.2t^2 + 42.4t^3 \\
@@ -157,17 +157,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
 
             /// </code>
             /// </BookContent>
-
-
-
-
-            {
-                //System nonlinear equations
-                Func<ColVec, ColVec> f = x => new double[] { x[0] * Exp(x[1]) - 2, x[1] * Exp(x[0]) - 2 };
-                double[] x0 = [0.5, 0.5];
-                ColVec x = Fsolve(f, x0);
-            }
-
             
 
             {
@@ -237,17 +226,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                 var result = Fsolve(multirosenbrook, xstart, opts);
             }
 
-            {
-                // Solve Nonlinear System of Polynomials
-                Matrix A = new double[,]
-                {
-                    {1, 2},
-                    {3, 4}
-                };
-                var opts = SolverSet(Display: true);
-                Matrix x = Fsolve(x => x*x*x - A, Ones(2, 2), opts);
-                Console.WriteLine(x);
-            }
+            
 
 
             {

@@ -137,7 +137,7 @@ The general form is:
 
 .. math::
 
-   \begin{array}
+   \begin{array}{c}
    A = 0.06125t \exp\left(-1.2(1 - t)^2\right) \\
    B = 14.76t - 9.76t^2 + 4.58t^3 \\
    C = 90.7t - 242.2t^2 + 42.4t^3 \\

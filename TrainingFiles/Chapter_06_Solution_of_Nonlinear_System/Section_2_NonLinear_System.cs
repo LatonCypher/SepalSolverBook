@@ -66,7 +66,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             /// <example 2> System of Equations
             /// Solve the system:
             /// <math>
-            /// \begin{array}
+            /// \begin{array}{c}
             ///     3x_1 - \cos(x_2 x_3) - \cfrac{1}{2} = 0 \\
             ///     x_1^2 - 81(x_2+0.1)^2 + \sin(x_3) + 1.06 = 0 \\ 
             ///     e^{x_1x_2} +20x_3 + \cfrac{10\pi-3}{3} = 0
@@ -121,7 +121,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             /// 
             /// <example 2>
             /// Consider this parameterized nonlinear system. The nonlinearity is controlled by parameter :math:`c`.
-            /// \begin{array}
+            /// \begin{array}{c}
             ///     2x + y - \exp(-cx) = 0 \\
             ///    -x + 2y - \exp(-cy) = 0
             /// \end{array}
@@ -151,6 +151,27 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             }
             /// </code>
             /// 
+            /// </example>
+            /// 
+            /// <header 2> Matrix Equation </header >
+            /// The SepalSolver also allow for easy computation of matrix equations. For instance, we can easily compute the cuberoot of a matrix. :math:`x^3 = \begin{pmatrix} 1&2 \\ 3&4  \end{pmatrix}`;
+            /// <example 3>
+            /// <math>
+            ///     x^3 = \begin{pmatrix} 1&2 \\ 3&4  \end{pmatrix}
+            /// </math>
+            /// <code>
+            {
+                // Solve Nonlinear System of Polynomials
+                Matrix A = new double[,]
+                {
+                    {1, 2},
+                    {3, 4}
+                };
+                var opts = SolverSet(Display: true);
+                Matrix x = Fsolve(x => x*x*x - A, Ones(2, 2), opts);
+                Console.WriteLine(x);
+            }
+            /// </code>
             /// </example>
             /// </BookContent>
         }

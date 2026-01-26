@@ -72,7 +72,7 @@ Examples
    
    .. math::
    
-      \begin{array}
+      \begin{array}{c}
       3x_1 - \cos(x_2 x_3) - \cfrac{1}{2} = 0 \\
       x_1^2 - 81(x_2+0.1)^2 + \sin(x_3) + 1.06 = 0 \\ 
       e^{x_1x_2} +20x_3 + \cfrac{10\pi-3}{3} = 0
@@ -155,7 +155,7 @@ This parameter(s) can be exploited to provide means to guarantee that a good ini
 .. Admonition:: Example 2 : 
 
    Consider this parameterized nonlinear system. The nonlinearity is controlled by parameter :math:`c`.
-   \begin{array}
+   \begin{array}{c}
    2x + y - \exp(-cx) = 0 \\
    -x + 2y - \exp(-cy) = 0
    \end{array}
@@ -171,8 +171,14 @@ This parameter(s) can be exploited to provide means to guarantee that a good ini
           return [ 2*x[0] + x[1]  - Exp(-c*x[0]),
           -x[0] + 2*x[1]  - Exp(-c*x[1])];
       }
+   
+      // variatiob of c from 0 to 20.
       RowVec C = Linspace(0, 20, 200);
+   
+      // initial guess as solution of linear system when c = 0.
       ColVec x = new double[] { 0.2, 0.6 };
+   
+      // setting maximum iteration number
       var opts = SolverSet(MaxIter: 1000);
       Matrix X = C.Select(c => x = Fsolve(x => paramfun(x, c), x, opts)).ToList();
       Plot(C, X, Linewidth: 2);
@@ -184,3 +190,63 @@ This parameter(s) can be exploited to provide means to guarantee that a good ini
       :alt: Parameterozed_Nonlinear_Equations.png
    
    
+
+Matrix Equation
+---------------
+The SepalSolver also allow for easy computation of matrix equations. For instance, we can easily compute the cuberoot of a matrix. :math:`x^3 = \begin{pmatrix} 1&2 \\ 3&4  \end{pmatrix}`;
+
+.. Admonition:: Example 3 : 
+
+   
+   .. math::
+   
+      x^3 = \begin{pmatrix} 1&2 \\ 3&4  \end{pmatrix}
+   
+   
+   .. code-block:: csharp
+   
+      // Solve Nonlinear System of Polynomials
+      Matrix A = new double[,]
+      {
+          {1, 2},
+          {3, 4}
+      };
+      var opts = SolverSet(Display: true);
+      Matrix x = Fsolve(x => x*x*x - A, Ones(2, 2), opts);
+      Console.WriteLine(x);
+   
+   
+   Ouput
+   
+   .. terminal::
+   
+       Iteration    Func-count       f(x)      Norm of Step
+           0            1             0           Start
+           1            6          0.94293       0.61237     
+           2            7          2661543       6432.47     
+           3            8          0.45613       6432.47     
+           4            9          0.39097       0.05487     
+           5            10         0.39547       0.03847     
+           6            11         0.39690       0.00220     
+           7            12         0.39702      1.707e-004   
+           8            17         263.675       6.34237     
+           9            18         0.37461       6.33364     
+           10           19         0.37411       0.00901     
+           11           20         3.91143       1.47633     
+           12           21         0.35406       1.34996     
+           13           22         0.31481       0.11135     
+           14           23         1.75354       0.89776     
+           15           24         0.22618       0.76114     
+           16           29         0.13103       0.26771     
+           17           30         0.03317       0.09820     
+           18           31         0.00338       0.01983     
+           19           32       1.047e-004      0.00225     
+           20           33       3.140e-007     6.763e-005   
+           21           34       2.927e-011     2.022e-007   
+           22           35       1.571e-014     1.884e-011   
+           23           36       2.264e-015     7.795e-015   
+           24           41       6.661e-016     5.118e-016   
+      
+        -0.1291    0.8602
+         1.2903    1.1612
+      
