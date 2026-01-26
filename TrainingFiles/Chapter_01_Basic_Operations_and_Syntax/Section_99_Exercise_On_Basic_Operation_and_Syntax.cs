@@ -64,7 +64,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_01_Basic_Operations_Syntax
             ///     
             ///     
             ///             // check convergence
-            ///         
+            ///             
+            ///         }
             ///         return s;
             ///     }
 
