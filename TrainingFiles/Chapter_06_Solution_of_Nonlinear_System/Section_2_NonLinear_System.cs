@@ -27,6 +27,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             ///}
             /// </code>
             /// Where:
+            /// 
             ///  - ``fun`` : Function handle that returns a vector of equations.
             ///  - ``x0``  : Initial guess for the solution vector.
             ///     

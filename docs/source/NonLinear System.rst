@@ -20,6 +20,7 @@ The basic syntax is:
    x = Fsolve(fun, x0);
 
 Where:
+
 - ``fun`` : Function handle that returns a vector of equations.
 - ``x0``  : Initial guess for the solution vector.
 
