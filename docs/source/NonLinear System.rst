@@ -72,11 +72,11 @@ Examples
    
    .. math::
    
-      \begin{cases}
+      \begin{array}
       3x_1 - \cos(x_2 x_3) - \cfrac{1}{2} = 0 \\
       x_1^2 - 81(x_2+0.1)^2 + \sin(x_3) + 1.06 = 0 \\ 
       e^{x_1x_2} +20x_3 + \cfrac{10\pi-3}{3} = 0
-      \end{cases}
+      \end{array}
    
    Where: :math:`x_0 = [0.1, 0.1, -0.1]^T`
    

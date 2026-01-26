@@ -85,19 +85,20 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             /// The **Hall–Yarbrough correlation (1973)** is one of the most widely used implicit methods for estimating Z. It was developed based on the hard-sphere equation of state and tested against multiple reservoir gas systems.
             /// The general form is:
             /// <math>
-            /// \begin{cases}
+            /// \begin{array}
             ///     A = 0.06125t \exp\left(-1.2(1 - t)^2\right) \\
             ///     B = 14.76t - 9.76t^2 + 4.58t^3 \\
             ///     C = 90.7t - 242.2t^2 + 42.4t^3 \\
             ///     D = 2.18 + 2.82t \\
             ///     -AP_{pr} + \cfrac{y + y^2 + y^3 - y^4}{(1 - y)^3} + By + Cy^D = 0 \\
             ///     Z = \cfrac{A \cdot P_{pr}}{y}
-            /// \end{cases}
+            /// \end{array}
             /// </math>
             /// where:
-            /// - :math:`P_{pr} = \frac{P}{P_c}` (pseudo-reduced pressure)
-            /// - :math:`T_{pr} = \frac{T}{T_c}` (pseudo-reduced temperature)
-            /// - :math:`t = \frac{1}{T_{pr}}` 
+            /// 
+            /// - :math:`P_{pr} = P/P_c` (pseudo-reduced pressure)
+            /// - :math:`T_{pr} = T/T_c` (pseudo-reduced temperature)
+            /// - :math:`t = 1/T_{pr}` 
             /// - :math:`P_c, T_c` = pseudo-critical properties of the gas mixture
             /// 
             /// Because Z appears on both sides of the equation, iterative numerical methods such as Newton–Raphson or successive substitution are required to solve it.
