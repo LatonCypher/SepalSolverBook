@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_01_basic_operations_and_syntax\\section_99_exercise_on_basic_operation_and_syntax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_06_solution_of_nonlinear_system\\section_3_large_nonlinear_systems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_06_solution_of_nonlinear_system\\section_3_large_nonlinear_systems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_01_basic_operations_and_syntax\\section_5_algorithm_flow_control.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_01_basic_operations_and_syntax\\section_5_algorithm_flow_control.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\bookwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:bookwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_06_solution_of_nonlinear_system\\section_3_large_nonlinear_systems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_06_solution_of_nonlinear_system\\section_3_large_nonlinear_systems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_06_solution_of_nonlinear_system\\section_1_nonlinear_equation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -106,8 +106,8 @@
               "Title": "Section_99_Exercise_On_Basic_Operation_and_Syntax.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_01_Basic_Operations_and_Syntax\\Section_99_Exercise_On_Basic_Operation_and_Syntax.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_01_Basic_Operations_and_Syntax\\Section_99_Exercise_On_Basic_Operation_and_Syntax.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_01_Basic_Operations_and_Syntax\\Section_99_Exercise_On_Basic_Operation_and_Syntax.cs*",
-              "RelativeToolTip": "TrainingFiles\\Chapter_01_Basic_Operations_and_Syntax\\Section_99_Exercise_On_Basic_Operation_and_Syntax.cs*",
+              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_01_Basic_Operations_and_Syntax\\Section_99_Exercise_On_Basic_Operation_and_Syntax.cs",
+              "RelativeToolTip": "TrainingFiles\\Chapter_01_Basic_Operations_and_Syntax\\Section_99_Exercise_On_Basic_Operation_and_Syntax.cs",
               "ViewState": "AgIAAD8AAAAAAAAAAAAQwEIAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-26T14:16:45.481Z",
@@ -115,7 +115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Section_5_Algorithm_Flow_Control.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_01_Basic_Operations_and_Syntax\\Section_5_Algorithm_Flow_Control.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_01_Basic_Operations_and_Syntax\\Section_5_Algorithm_Flow_Control.cs",
@@ -123,20 +123,7 @@
               "RelativeToolTip": "TrainingFiles\\Chapter_01_Basic_Operations_and_Syntax\\Section_5_Algorithm_Flow_Control.cs",
               "ViewState": "AgIAAIsAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T14:16:25.872Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Section_3_Large_NonLinear_Systems.cs",
-              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs",
-              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs",
-              "RelativeToolTip": "TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAAAFIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T06:32:18.956Z"
+              "WhenOpened": "2026-01-26T14:16:25.872Z"
             },
             {
               "$type": "Document",
@@ -260,7 +247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "BookWriter.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\BookWriter.cs",
               "RelativeDocumentMoniker": "BookWriter.cs",
@@ -268,8 +255,7 @@
               "RelativeToolTip": "BookWriter.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAASwCkAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T12:13:45.886Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-19T12:13:45.886Z"
             },
             {
               "$type": "Document",
@@ -292,6 +278,40 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "84330292-6828-478a-bdcb-7b55d927b302",
+        "Display": 0,
+        "X": 87,
+        "Y": 152,
+        "Width": 1083,
+        "Height": 436,
+        "WindowState": 2
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Section_3_Large_NonLinear_Systems.cs",
+              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs",
+              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs",
+              "RelativeToolTip": "TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAAAHYAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-26T06:32:18.956Z",
+              "EditorCaption": ""
             }
           ]
         }
