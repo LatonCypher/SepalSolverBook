@@ -102,6 +102,19 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Section_3_Large_NonLinear_Systems.cs",
+              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs",
+              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs*",
+              "RelativeToolTip": "TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs*",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAAAJMAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-26T06:32:18.956Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Section_99_Exercise_On_Basic_Operation_and_Syntax.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_01_Basic_Operations_and_Syntax\\Section_99_Exercise_On_Basic_Operation_and_Syntax.cs",
@@ -123,7 +136,8 @@
               "RelativeToolTip": "TrainingFiles\\Chapter_01_Basic_Operations_and_Syntax\\Section_5_Algorithm_Flow_Control.cs",
               "ViewState": "AgIAAIsAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T14:16:25.872Z"
+              "WhenOpened": "2026-01-26T14:16:25.872Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -133,9 +147,10 @@
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_1_Nonlinear_Equation.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_1_Nonlinear_Equation.cs",
               "RelativeToolTip": "TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_1_Nonlinear_Equation.cs",
-              "ViewState": "AgIAAJ4AAAAAAAAAAAAAAJ4AAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAJsAAAAAAAAAAIBJwJ4AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-25T15:24:46.442Z"
+              "WhenOpened": "2026-01-25T15:24:46.442Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -145,9 +160,10 @@
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_03_Interpolation\\Section_4_Bezier_Spline.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_03_Interpolation\\Section_4_Bezier_Spline.cs",
               "RelativeToolTip": "TrainingFiles\\Chapter_03_Interpolation\\Section_4_Bezier_Spline.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAAACwAAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAIBJwCwAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T05:17:02.054Z"
+              "WhenOpened": "2026-01-24T05:17:02.054Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -157,9 +173,10 @@
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_04_Special_Functions\\Section_1_Gamma_Beta_Error_LambertW.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_04_Special_Functions\\Section_1_Gamma_Beta_Error_LambertW.cs",
               "RelativeToolTip": "TrainingFiles\\Chapter_04_Special_Functions\\Section_1_Gamma_Beta_Error_LambertW.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAABBwAgAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T05:03:52.996Z"
+              "WhenOpened": "2026-01-24T05:03:52.996Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -169,9 +186,10 @@
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_04_Special_Functions\\Introduction.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_04_Special_Functions\\Introduction.cs",
               "RelativeToolTip": "TrainingFiles\\Chapter_04_Special_Functions\\Introduction.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T05:03:46.607Z"
+              "WhenOpened": "2026-01-24T05:03:46.607Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -183,7 +201,8 @@
               "RelativeToolTip": "TrainingFiles\\Chapter_03_Interpolation\\Section_99_Exercise_On_Interpolation.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T15:23:20.451Z"
+              "WhenOpened": "2026-01-23T15:23:20.451Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -193,9 +212,10 @@
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_03_Interpolation\\Section_2_Interpolation_by_Polynomial.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_03_Interpolation\\Section_2_Interpolation_by_Polynomial.cs",
               "RelativeToolTip": "TrainingFiles\\Chapter_03_Interpolation\\Section_2_Interpolation_by_Polynomial.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAAAB4AAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAABoAAAAAAAAAAIBJwB4AAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T06:01:54.934Z"
+              "WhenOpened": "2026-01-23T06:01:54.934Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -218,9 +238,10 @@
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_02_Polynomials\\Section_2_Polynomial_Fitting.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_2_Polynomial_Fitting.cs",
               "RelativeToolTip": "TrainingFiles\\Chapter_02_Polynomials\\Section_2_Polynomial_Fitting.cs",
-              "ViewState": "AgIAAJwAAAAAAAAAAAAAAKIAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAJkAAAAAAAAAAIBJwKIAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T05:39:56.696Z"
+              "WhenOpened": "2026-01-23T05:39:56.696Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -230,7 +251,7 @@
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_03_Interpolation\\Section_3_Hemite_Spline.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_03_Interpolation\\Section_3_Hemite_Spline.cs",
               "RelativeToolTip": "TrainingFiles\\Chapter_03_Interpolation\\Section_3_Hemite_Spline.cs",
-              "ViewState": "AgIAAJkAAAAAAAAAAAAAAKQAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAJYAAAAAAAAAAIBJwKQAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-22T11:02:04.405Z",
               "EditorCaption": ""
@@ -245,7 +266,8 @@
               "RelativeToolTip": "TrainingFiles\\Chapter_03_Interpolation\\Section_1_Linear_Interpolation.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T22:17:15.873Z"
+              "WhenOpened": "2026-01-21T22:17:15.873Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -257,7 +279,8 @@
               "RelativeToolTip": "BookWriter.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAASwCkAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T12:13:45.886Z"
+              "WhenOpened": "2026-01-19T12:13:45.886Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -269,7 +292,8 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T17:12:33.874Z"
+              "WhenOpened": "2026-01-08T17:12:33.874Z",
+              "EditorCaption": ""
             }
           ]
         },
@@ -280,40 +304,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "84330292-6828-478a-bdcb-7b55d927b302",
-        "Display": 0,
-        "X": 87,
-        "Y": 152,
-        "Width": 1083,
-        "Height": 436,
-        "WindowState": 2
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Section_3_Large_NonLinear_Systems.cs",
-              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs",
-              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs",
-              "RelativeToolTip": "TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAkwGgAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T06:32:18.956Z",
-              "EditorCaption": ""
             }
           ]
         }

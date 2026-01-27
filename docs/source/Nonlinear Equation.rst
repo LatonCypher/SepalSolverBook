@@ -186,24 +186,14 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
                              1.61,    1.75,   1.91,   2.09,   2.29,   2.62,   3.00 };
 
    // compute z factors and plot them
-   List<string> Tlabels = [];
-   List<ColVec> ZHY = [];
-   foreach (var tr in Tr)
-   {
-       ZHY.Add(Pr.Select(p => ZfactorHY(p, tr)).ToArray());
-       Tlabels.Add("Tr = " + tr);
-   }
+   List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
+   Matrix ZHY = Tr.Select(tr => Arrayfun(p => ZfactorHY(p, tr), Pr)).ToList();
 
    Plot(Pr, ZHY);
+   Legend(Tr.Select(tr => "Tr = " + tr), UpperRight);
    SaveAs("Zfactor_Hall_Yarborough_.png");
 
 
-
-Ouput
-
-.. terminal::
-
-   ⚠️ Runtime Error: rows or cols of X and Y must be equal
 
 .. figure:: images/Zfactor_Hall_Yarborough_.png
    :align: center

@@ -123,34 +123,35 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             /// <code>
             {
                 // Large Nonlinear systems
-                int n = 10000;
-                Indexer odds = new(0, 2, n), evens = odds + 1;
+                int n = 1000;
                 ColVec xstart = new double[n], One = Ones(n / 2),
-                    c = -One, d = 10*One, e, F;
-                SparseMatrix C, D, E;
+                    c = -One, d = 10*One, e;
 
                 ColVec multirosenbrook(ColVec x)
                 {
                     // Evaluate the vector function
-                    F = new double[n];
-                    F[odds] = 1 - x[odds];
-                    F[evens] = 10 * (x[evens] - x[odds].Pow(2));
+
+                    ColVec F = new double[n];
+                    F[(0..n).Step(2)] = 1 - x[(0..n).Step(2)];
+                    F[(1..n).Step(2)] = 10 * (x[(1..n).Step(2)] - x[(0..n).Step(2)].Pow(2));
                     return F;
                 }
 
+                SparseMatrix C, D, E;
                 Func<ColVec, SparseMatrix> Jac = x =>
                 {
-                    C = new(odds, odds, c, n, n);
-                    D = new(evens, evens, d, n, n);
-                    e = -20 * x[odds];
-                    E = new(evens, odds, e, n, n);
+                    C = new((0..n).Step(2), (0..n).Step(2), c, n, n);
+                    D = new((1..n).Step(2), (1..n).Step(2), d, n, n);
+                    e = -20 * x[(0..n).Step(2)];
+                    E = new((1..n).Step(2), (0..n).Step(2), e, n, n);
                     return C + D + E;
                 };
-
-                var opts = SolverSet(Display: true);
-                opts.UserDefinedJacobian = Jac;
-                xstart[odds] = -1.9; xstart[evens] = 2;
-                var result = Fsolve(multirosenbrook, xstart, opts);
+                
+                xstart[(0..n).Step(2)] = -1.9; xstart[(1..n).Step(2)] = 2;
+                var opts = SolverSet(Display: true, UserDefinedJac: Jac);
+                var x = Fsolve(multirosenbrook, xstart, opts);
+                Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
+                Console.WriteLine(opts.ans.FunVal.Norm());
             }
 
             /// </code>
