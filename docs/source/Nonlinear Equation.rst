@@ -184,7 +184,8 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
                return -A * Pr + (y + y2 + y3 - y4) / Den -
                B * y2 + C * Pow(y, D);
            });
-           double y = Fsolve(yfunc, r);
+           var opts = SolverSet(StepFactor: 0.5);
+           double y = Fsolve(yfunc, r, opts);
            z = A * Pr / y;
        }
        return z;

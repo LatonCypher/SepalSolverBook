@@ -131,7 +131,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                             return -A * Pr + (y + y2 + y3 - y4) / Den -
                             B * y2 + C * Pow(y, D);
                         });
-                        double y = Fsolve(yfunc, r);
+                        var opts = SolverSet(StepFactor: 0.5);
+                        double y = Fsolve(yfunc, r, opts);
                         z = A * Pr / y;
                     }
                     return z;
