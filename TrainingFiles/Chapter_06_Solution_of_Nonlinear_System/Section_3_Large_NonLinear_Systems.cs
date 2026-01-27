@@ -1,4 +1,5 @@
 ﻿using static SepalSolver.Ode;
+using static SepalSolver.Statistics;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
 {
@@ -54,25 +55,22 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             {
                 //Large Nonlinear Systems
                 int n = 1000;
-                Indexer i = new(0, n), j = new(0, n - 1), jp1 = j + 1,
-                    l = new(1, n - 1), lp1 = l + 1, lm1 = l - 1;
 
-                ColVec a = Ones(n-1), b = Ones(n), e = -a,
-                    c = 2 * e, d, xstart, F = new double[n];
-
-                SparseMatrix C, D, E;
+                ColVec b = Ones(n), xstart;
 
                 ColVec nlsf(ColVec x)
                 {
-                    F[l] = (3 - 2 * x[l]).Times(x[l]) - x[lm1] - 2 * x[lp1] + 1;
-                    F[n - 1] = (3 - 2 * x[n - 1]) * x[n - 1] - x[n - 2] + 1;
+                    ColVec F = new double[n];
                     F[0] = (3 - 2 * x[0]) * x[0] - 2 * x[1] + 1;
+                    F[1..^1] = (3 - 2 * x[1..^1]).Times(x[1..^1]) - x[..^2] - 2 * x[2..] + 1;
+                    F[^1] = (3 - 2 * x[^1]) * x[^1] - x[^2] + 1;
                     return F;
                 }
-                
+
                 xstart = -b;
                 var opts = SolverSet(Display: true);
-                var result = Fsolve(nlsf, xstart, opts);
+                var x = Fsolve(nlsf, xstart, opts);
+                Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
                 Console.WriteLine(opts.ans.FunVal.Norm());
             }
             /// </code>
@@ -88,22 +86,21 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             {
                 //Large Nonlinear Systems
                 int n = 1000;
-                Indexer i = new(0, n), j = new(0, n - 1), jp1 = j + 1,
-                    l = new(1, n - 1), lp1 = l + 1, lm1 = l - 1;
+                Range i = 0..n, j = 0..(n-1), jp1 = 1..n;
 
                 ColVec a = Ones(n-1), b = Ones(n), e = -a,
-                    c = 2 * e, d, xstart, F = new double[n];
-
-                SparseMatrix C, D, E;
+                    c = 2 * e, d, xstart;
 
                 ColVec nlsf(ColVec x)
                 {
-                    F[l] = (3 - 2 * x[l]).Times(x[l]) - x[lm1] - 2 * x[lp1] + 1;
-                    F[n - 1] = (3 - 2 * x[n - 1]) * x[n - 1] - x[n - 2] + 1;
+                    ColVec F = new double[n];
                     F[0] = (3 - 2 * x[0]) * x[0] - 2 * x[1] + 1;
+                    F[1..^1] = (3 - 2 * x[1..^1]).Times(x[1..^1]) - x[..^2] - 2 * x[2..] + 1;
+                    F[^1] = (3 - 2 * x[^1]) * x[^1] - x[^2] + 1;
                     return F;
                 }
 
+                SparseMatrix C, D, E;
                 Func<ColVec, SparseMatrix> Jac = x =>
                 {
                     d = -4 * x + 3 * b;
@@ -115,7 +112,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
 
                 xstart = -b;
                 var opts = SolverSet(Display: true, UserDefinedJac: Jac);
-                var result = Fsolve(nlsf, xstart, opts);
+                var x = Fsolve(nlsf, xstart, opts);
+                Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
                 Console.WriteLine(opts.ans.FunVal.Norm());
             }
             /// </code>

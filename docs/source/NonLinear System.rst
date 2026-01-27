@@ -62,7 +62,7 @@ Examples
    
    .. terminal::
    
-      root = 0.7408409550954906
+      root = 1
    
 
 

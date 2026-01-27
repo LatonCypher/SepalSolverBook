@@ -19,7 +19,7 @@ Ouput
 
 .. terminal::
 
-   x = 0.8526055020137255
+   x = 0.7769942996264432
 In this case, Fzero first search for an interval that brackets the root. Then uses brent's method to hone in on the root. 
 If we are sure of the interval containing the root, we can save the effort spent on bracketing the root by supplying that. 
 
@@ -35,7 +35,7 @@ Ouput
 
 .. terminal::
 
-   x = 0.8526055020137254
+   x = 0.8103717749522766
 
 To have window into the solution process, we can using solver setting `SolverSet()` to get the solver to print out the result after each iteration. 
 
@@ -75,12 +75,7 @@ Ouput
    fun-count     x         f(x)       Procedure 
       19    9.5255e-1     4.693e-1    initial        
       20    7.7699e-1    -3.101e-1    interpolation  
-      21    8.4684e-1   -2.4938e-2    interpolation  
-      22    8.5264e-1    1.5721e-4    interpolation  
-      23    8.5261e-1   -6.9891e-7    interpolation  
-      24    8.5261e-1  -1.9465e-11    interpolation  
-      25    8.5261e-1         0e+0    interpolation  
-   x = 0.8526055020137255
+   x = 0.7769942996264432
 
 by setting the solver setting in the case of bracketed root, we can see how the solution process differs from the case of a single initial guess. 
 
@@ -105,12 +100,7 @@ Ouput
    fun-count     x         f(x)       Procedure 
        2         1e+0    7.1828e-1    initial        
        3    8.1037e-1   -1.7768e-1    interpolation  
-       4    8.4798e-1    -2.004e-2    interpolation  
-       5    8.5263e-1    9.9913e-5    interpolation  
-       6    8.5261e-1   -3.5651e-7    interpolation  
-       7    8.5261e-1  -6.3105e-12    interpolation  
-       8    8.5261e-1  -2.2204e-16    interpolation  
-   x = 0.8526055020137254
+   x = 0.8103717749522766
 
 Practical Application
 ---------------------

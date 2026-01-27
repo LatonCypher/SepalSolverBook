@@ -63,25 +63,22 @@ Examples
    
       //Large Nonlinear Systems
       int n = 1000;
-      Indexer i = new(0, n), j = new(0, n - 1), jp1 = j + 1,
-          l = new(1, n - 1), lp1 = l + 1, lm1 = l - 1;
    
-      ColVec a = Ones(n-1), b = Ones(n), e = -a,
-          c = 2 * e, d, xstart, F = new double[n];
-   
-      SparseMatrix C, D, E;
+      ColVec b = Ones(n), xstart;
    
       ColVec nlsf(ColVec x)
       {
-          F[l] = (3 - 2 * x[l]).Times(x[l]) - x[lm1] - 2 * x[lp1] + 1;
-          F[n - 1] = (3 - 2 * x[n - 1]) * x[n - 1] - x[n - 2] + 1;
+          ColVec F = new double[n];
           F[0] = (3 - 2 * x[0]) * x[0] - 2 * x[1] + 1;
+          F[1..^1] = (3 - 2 * x[1..^1]).Times(x[1..^1]) - x[..^2] - 2 * x[2..] + 1;
+          F[^1] = (3 - 2 * x[^1]) * x[^1] - x[^2] + 1;
           return F;
       }
-      
+   
       xstart = -b;
       var opts = SolverSet(Display: true);
-      var result = Fsolve(nlsf, xstart, opts);
+      var x = Fsolve(nlsf, xstart, opts);
+      Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
       Console.WriteLine(opts.ans.FunVal.Norm());
    
    
@@ -91,1006 +88,48 @@ Examples
    
        Iteration    Func-count       f(x)      Norm of Step
            0            1             0           Start
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      31.796224996062975
+           1           1002        3.98768       7.92421     
+           2           1003        0.65762       1.13502     
+           3           1004        0.02943       0.22302     
+           4           1005        0.00773       0.00828     
+           5           1006        0.00232       0.00181     
+           6           1007      4.585e-005     7.742e-004   
+           7           1008      1.117e-005     1.109e-005   
+           8           1009      1.841e-006     2.577e-006   
+           9           1010      1.071e-007     5.041e-007   
+           10          1011      2.527e-008     1.911e-008   
+           11          1012      1.380e-009     6.300e-009   
+           12          1013      3.157e-010     2.628e-010   
+           13          1014      1.982e-011     8.574e-011   
+           14          1015      4.423e-012     3.617e-012   
+           15          1016      2.757e-013     1.154e-012   
+           16          1017      6.105e-014     5.280e-014   
+           17          1018      5.150e-015     1.680e-014   
+           18          1019      2.826e-015     9.550e-016   
+      x = 
+        -0.5708
+        -0.6819
+        -0.7025
+        -0.7063
+        -0.7070
+        -0.7071
+        -0.7071
+        -0.7071
+        -0.7071
+        -0.7071
+           ... 
+        -0.7071
+        -0.7070
+        -0.7068
+        -0.7064
+        -0.7051
+        -0.7015
+        -0.6919
+        -0.6658
+        -0.5960
+        -0.4164
+      
+      2.826166425630795E-15
    
    
    While finite difference approximations are convenient, they are computationally 
@@ -1104,22 +143,21 @@ Examples
    
       //Large Nonlinear Systems
       int n = 1000;
-      Indexer i = new(0, n), j = new(0, n - 1), jp1 = j + 1,
-          l = new(1, n - 1), lp1 = l + 1, lm1 = l - 1;
+      Range i = 0..n, j = 0..(n-1), jp1 = 1..n;
    
       ColVec a = Ones(n-1), b = Ones(n), e = -a,
-          c = 2 * e, d, xstart, F = new double[n];
-   
-      SparseMatrix C, D, E;
+          c = 2 * e, d, xstart;
    
       ColVec nlsf(ColVec x)
       {
-          F[l] = (3 - 2 * x[l]).Times(x[l]) - x[lm1] - 2 * x[lp1] + 1;
-          F[n - 1] = (3 - 2 * x[n - 1]) * x[n - 1] - x[n - 2] + 1;
+          ColVec F = new double[n];
           F[0] = (3 - 2 * x[0]) * x[0] - 2 * x[1] + 1;
+          F[1..^1] = (3 - 2 * x[1..^1]).Times(x[1..^1]) - x[..^2] - 2 * x[2..] + 1;
+          F[^1] = (3 - 2 * x[^1]) * x[^1] - x[^2] + 1;
           return F;
       }
    
+      SparseMatrix C, D, E;
       Func<ColVec, SparseMatrix> Jac = x =>
       {
           d = -4 * x + 3 * b;
@@ -1131,7 +169,8 @@ Examples
    
       xstart = -b;
       var opts = SolverSet(Display: true, UserDefinedJac: Jac);
-      var result = Fsolve(nlsf, xstart, opts);
+      var x = Fsolve(nlsf, xstart, opts);
+      Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
       Console.WriteLine(opts.ans.FunVal.Norm());
    
    
@@ -1147,6 +186,29 @@ Examples
            4            5        1.065e-009     4.555e-005   
            5            6        7.448e-015     3.582e-010   
            6            7        3.063e-015     3.456e-015   
+      x = 
+        -0.5708
+        -0.6819
+        -0.7025
+        -0.7063
+        -0.7070
+        -0.7071
+        -0.7071
+        -0.7071
+        -0.7071
+        -0.7071
+           ... 
+        -0.7071
+        -0.7070
+        -0.7068
+        -0.7064
+        -0.7051
+        -0.7015
+        -0.6919
+        -0.6658
+        -0.5960
+        -0.4164
+      
       3.062686598583602E-15
    
 
