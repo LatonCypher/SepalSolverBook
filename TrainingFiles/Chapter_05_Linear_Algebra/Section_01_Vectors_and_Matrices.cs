@@ -4,10 +4,10 @@
     {
         public static void Run()
         {
-            ///<BookContent>
+            /// <BookContent>
             /// Vectors and Matrices are fundamental to Linear Algebra. SepalSolver provides three array types: RowVec, ColVec and Matrix. RowVec and ColVec are 1D arrays while Matrix is a 2D array. 
             /// 
-            /// <header 2> Creating Vectors</header>
+            /// <header 2> Creating Vectors and Matrices </header>
             /// 
             /// <code>
             {
@@ -32,7 +32,7 @@
             /// </code>
             /// 
             /// 
-            /// Vectora and Matrices can also be initialized using random. 
+            /// <header 2> Vectors and Matrices can also be initialized using random </header> 
             /// <code>
             {
                 // Row vector
@@ -49,8 +49,7 @@
             }
             /// </code>
             /// 
-            /// 
-            /// Vectors can be initialized using Zeros, Ones, Eye etc;
+            /// <header 2> Vectors can be initialized using Zeros, Ones, Eye etc </header>
             /// <code>
             {
                 // Row vector
@@ -67,7 +66,7 @@
             }
             /// </code>
             /// 
-            /// Vectors and Matrices can be concatenated
+            /// <header 2> Vectors and Matrices can be concatenated </header>
             /// <code>
             {
                 RowVec R1 = Rand(4);
@@ -91,8 +90,8 @@
             /// </code>
             /// 
             /// 
-            /// Vertical Concatenation
-            /// /// <code>
+            /// <header 2> Vertical Concatenation </header>
+            /// <code>
             {
                 RowVec R1 = Rand(4);
                 Console.WriteLine($"R1 = {R1}");
@@ -114,94 +113,46 @@
             }
             /// </code>
             /// 
-            ///</BookContent>
-
+            /// <header 2> Flipping a Matrix </header>
+            /// We can flip a Matrix vertically (flipud) or horizontally (fliplr). 
+            /// 
+            /// <code>
             {
-                var A = new double[,]
+
+                Matrix M = new double[,]
                 {
-                    { 1, 3 },
-                    { 3, 4 }
+                    {5, -2, 3, 7 },
+                    {2, 1, -7, 3 },
+                    {4, 8, 9, 1 },
+                    {0, 5, -6, -3 }
                 };
-                var (D, V) = Matrix.Eig(A);
-                Console.WriteLine($"V = {V}");
-                Console.WriteLine($"D = {D}");
+                Console.WriteLine($"M = {M}");
+                Console.WriteLine($"Flipud(M) = {Flipud(M)}");
+                Console.WriteLine($"Fliplr(M) = {Fliplr(M)}");
             }
+            /// </code>
+            /// 
+            /// <header 2> Extract a Triangular Portion of Matrix </header>
+            /// <code>
+            {
+                Matrix M = new double[,]
+                {
+                    {5, -2, 3, 7 },
+                    {2, 1, -7, 3 },
+                    {4, 8, 9, 1 },
+                    {0, 5, -6, -3 }
+                };
+
+                Console.WriteLine($"Triu(M) = {Triu(M)}");
+                Console.WriteLine($"Tril(M) = {Tril(M)}");
+
+            }
+            /// </code>
+            /// 
+            /// </BookContent>
+
             
 
-            {
-                // Vector declaration
-                ColVec C = new double[] { 1, 2, 3, 4, 5 };
-                RowVec R = new double[] { 1, 2, 3, 4, 5 };
-
-                // Matrix declaration
-                Matrix M = new double[,] {{ 1, 2, 3 },
-                                          { 4, 5, 6 },
-                                          { 7, 8, 9 }};
-
-                // Identity Matrix
-                Matrix Identity = Eye(5);
-
-                // Zero Matrix
-                Matrix Zero = Zeros(10, 10);
-
-                // One Matrix
-                Matrix One = Ones(10, 10);
-
-                // Repmat Matrix
-                Matrix Two = Repmat(2, 3, 5);
-
-                // Random Matrix
-                Matrix Random = Rand(5, 7);
-
-                // Printing Vectors and Matrix
-                Console.WriteLine($"Vector C: {C}");
-                Console.WriteLine($"Vector R: {R}");
-                Console.WriteLine($"Matrix M: {M}");
-                Console.WriteLine($"Identity Matrix = {Identity}");
-                Console.WriteLine($"Zero Matrix = {Zero}");
-                Console.WriteLine($"One Matrix = {One}");
-                Console.WriteLine($"Two Matrix = {Two}");
-                Console.WriteLine($"Random Matrix = {Random}");
-
-
-                // To extract element at index 2 and 3 from C
-                Indexer i = new(2, 4);
-                Console.WriteLine($"C = {C}");
-                Console.WriteLine($"Sub of C = {C[i]}");
-
-                // To extract element at index 1, 2, 3 and 4 from R
-                Indexer j = new(1, 5);
-                Console.WriteLine($"R = {R}");
-                Console.WriteLine($"Sub of R = {R[j]}");
-
-                // To extract the submatrix rows 2 and 3, and columns 1 to 4 from random matrix.
-                Console.WriteLine($"Random Matrix = {Random}");
-                Console.WriteLine($"Sub of Random Matrix = {Random[i, j]}");
-
-                // Modify Random
-                Random[1, 1] = 79;
-                Console.WriteLine($"Random Matrix = {Random}");
-
-                // Set all row 3 of Random to 15
-                Random[3, ""] = 15;
-                Console.WriteLine($"Random Matrix = {Random}");
-
-                // Set all column 3 of Random to 15
-                Random["", 4] = 2.3946;
-                Console.WriteLine($"Random Matrix = {Random}");
-
-
-                // Delete Column 3 of Random
-                Random[4, ""] = null;
-                Console.WriteLine($"Random Matrix = {Random}");
-
-                // Delete Row 2 of Random
-                Random["", 2] = null;
-                Console.WriteLine($"Random Matrix = {Random}");
-
-                Environment.Exit(0); // 0 indicates successful termination
-
-            }
 
             //Sparse Matrix
             {
