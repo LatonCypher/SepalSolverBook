@@ -11,6 +11,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             /// Matrix Slicing(Extracting Parts of Matrix)
             /// Matrix can be indexed to extract/set a single element, a row, a column, or a submatrix. 
             /// <header 2> Extracting/Setting part of a Vector </header>
+            /// 
             /// <code>
             {
                 // A Vector can be indexed with one index
