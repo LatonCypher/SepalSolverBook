@@ -116,9 +116,127 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             }
             /// </code>
             /// 
+            /// <header 2> Application of Matrix Slicing: Strassen Multiplication </header>
+            /// Strassen’s Matrix Multiplication
+            /// Overview
+            /// --------
+            /// 
+            /// - **Inventor**: Volker Strassen, 1969
+            /// - **Purpose**: Improve efficiency of matrix multiplication beyond the classical cubic-time algorithm.
+            /// - **Key Idea**: Replace some multiplications with additions/subtractions by reorganizing computation.
+            /// 
+            /// Standard vs. Strassen Multiplication
+            /// -----------------------------------
+            /// 
+            /// <table>
+            /// Feature              | Standard Algorithm| Strassen Algorithm 
+            /// Approach             | Direct row-by-column multiplication   | Divide-and-conquer with recursive submatrices
+            /// Multiplications for 2×2 matrices   | 8                 | 7           
+            /// Additions/Subtractions| 4                | 18            
+            /// Time Complexity      | O(n^3)            | O(n^(log2 7)) ≈  O(n^2.81)    
+            /// Best Use Case        | Small matrices    | Large matrices     
+            /// </table>
+            /// 
+            /// Algorithm Steps
+            /// ---------------
+            /// 
+            /// 1. **Divide**: Split each n×n matrix into four (n/2)×(n/2) submatrices::
+            /// 
+            /// A = [A11, A12,
+            ///      A21, A22]
+            ///      
+            /// B = [B11, B12,
+            ///      B21, B22]
+            ///      
+            /// 2. **Compute 7 products (instead of 8)**::
+            ///     M1 = (A11 + A22)(B11 + B22)
+            ///     M2 = (A21 + A22)B11
+            ///     M3 = A11(B12 - B22)
+            ///     M4 = A22(B21 - B11)
+            ///     M5 = (A11 + A12)B22
+            ///     M6 = (A21 - A11)(B11 + B12)
+            ///     M7 = (A12 - A22)(B21 + B22)
+            ///     
+            /// 3. **Combine results** to form the product matrix::
+            ///     C11 = M1 + M4 - M5 + M7
+            ///     C12 = M3 + M5
+            ///     C21 = M2 + M4
+            ///     C22 = M1 - M2 + M3 + M6
+            ///     
+            /// Advantages
+            /// ----------
+            /// 
+            /// - Fewer multiplications → faster for large matrices.
+            /// - Foundation for advanced algorithms (e.g., Coppersmith–Winograd).
+            /// - Works over any ring (addition and multiplication defined).
+            /// 
+            /// Limitations
+            /// -----------
+            /// 
+            /// - Overhead of additions makes it slower for small matrices.
+            /// - Numerical stability issues (rounding errors).
+            /// - Not optimal compared to modern optimized libraries (BLAS, GPU-based methods).
+            /// 
+            /// Applications
+            /// ------------
+            /// -Computer graphics (large matrix transformations).
+            /// -Scientific computing (linear algebra problems).
+            /// -Machine learning (deep learning frameworks).
+            /// 
+            /// <code>
+
+            {
+
+                static Matrix Strass(Matrix A, Matrix B)
+                {
+                    if (A.Cols != B.Rows)
+                        throw new Exception("Matrices are not conformable for multiplication");
+                    if (A.Cols <= 2)
+                        return A * B;
+                    else
+                    {
+                        // get matrix size
+                        int N = A.Cols / 2;
+
+                        // Step 1: Divide matrices into quadrants
+                        Matrix A11 = A[..N, ..N], A12 = A[..N, N..],
+                               A21 = A[N.., ..N], A22 = A[N.., N..],
+
+                               B11 = B[..N, ..N], B12 = B[..N, N..],
+                               B21 = B[N.., ..N], B22 = B[N.., N..],
+
+                        // Step 2: Calculate the 7 Strassen products (M1 through M7)
+                        M1 = Strass(A11 + A22, B11 + B22),
+                        M2 = Strass(A21 + A22, B11),
+                        M3 = Strass(A11, B12 - B22),
+                        M4 = Strass(A22, B21 - B11),
+                        M5 = Strass(A11 + A12, B22),
+                        M6 = Strass(A21 - A11, B11 + B12),
+                        M7 = Strass(A12 - A22, B21 + B22),
+
+                        // Step 3: Combine products into the quadrants of C
+                        C11 = M1 + M4 - M5 + M7,
+                        C12 = M3 + M5,
+                        C21 = M2 + M4,
+                        C22 = M1 - M2 + M3 + M6,
+
+                        // Step 4: Assemble the final matrix
+                        C = new Matrix[,] { { C11, C12 }, { C21, C22 } };
+                        return C;
+                    }
+                }
+
+                Matrix A = Rand(8, 8), B = Rand(8, 8), C = Strass(A, B), D = A * B;
+                Console.WriteLine($"A = \n{A}");
+                Console.WriteLine($"B = \n{B}");
+                Console.WriteLine($"C = \n{C}");
+                Console.WriteLine($"D = \n{D}");
+            }
+            /// </code>
             /// </BookContent>
             
         }
 
     }
 }
+
