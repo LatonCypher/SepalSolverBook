@@ -202,6 +202,93 @@ Examples
 .. Admonition:: Example 2 :  Aero-Efficiency Mapping For a wing, the Lift Coefficient(:math:`C_L`) is a function of both the Angle of Attack(:math:`\alpha`) and the Mach Number(:math:`M`). Using multivariate fitting, flight computers can interpolate lift values instantly across the entire flight envelope.
 
 
+
+.. Admonition:: Example 3 : 
+
+   The Antoine equation relates the vapor pressure of a substance to its temperature:
+   
+   .. math::
+   
+      \log_{10}(p) = A - \frac{B}{C + T}
+   
+   
+   Where:
+   - :math:`p` = vapor pressure
+   - :math:`T` = temperature
+   - :math:`A, B, C` = substance-specific constants
+   
+   In other to estimate the values of this constants, we express the equation in a linear form
+   
+   Step 1: Multiplying Both Sides by (C + T)
+   
+   .. math::
+   
+      (C + T)\log_{10}(p) = A(C + T) - B
+   
+   Step 2: Expanding Both Sides
+   
+   .. math::
+   
+      C\log_{10}(p) + T\log_{10}(p) = AC + AT - B
+   
+   
+   Step 3: Rearranging the terms:
+   
+   
+   .. math::
+   
+      T\log_{10}(p) = A \cdot T - C\log_{10}(p) + (AC - B)
+   
+   
+   This is a linear equation in terms of :math:`T` and :math:`log10(p)`, which can be used to estimate the constants :math:`A`, :math:`B`, and :math:`C` via multiple linear regression.
+   
+   -Slope with respect to :math:`T` → :math:`A`
+   -Slope with respect to :math:`log10(p)` → :math:`-C`
+   -Intercept → :math:`AC - B`
+   
+   
+   :math:`A`, :math:`B`, and :math:`C` can then be solved systematically from regression
+   results.
+   
+   To estimate the parameters :math:`A`, :math:`B`, and :math:`C`
+   
+   .. math::
+   
+      T\log_{10}(p) = \alpha T + \beta C\log_{10}(p) + \gamma
+   
+   
+   Hence:
+   :math:`A = \alpha`
+   :math:`C = -\beta`
+   :math:`B = AC-\gamma`
+   
+   
+   .. code-block:: csharp
+   
+      // Curve Fitting for Antoine Equation [lnP = A - B/(T + C)]
+      double[] P_Kpa = [3.18, 5.48, 9.45, 16.9, 28.2, 41.9, 66.6, 89.5, 129, 187],
+               T_C = [-18.5, -9.5, 0.2, 11.8, 23.1, 32.7, 44.4, 52.1, 63.3, 75.5];
+   
+      // Convert Temperature to Kelvin, Compute the natural logarithm of Pressure
+      ColVec T = (ColVec)T_C + 273.15, LogP = Log10((ColVec)P_Kpa);
+      ColVec TLogP = T.Times(LogP), One = Ones(T_C.Length);
+   
+      // Multilinear fit
+      List<ColVec> M = [T, LogP, One];
+      var x = Mldivide(M, TLogP);
+   
+      // Extract fitted parameters
+      double A = x[0], C = -x[1], B = A*C-x[2];
+      Console.WriteLine($"Fitted Parameters: A = {A:F4}, B = {B:F4}, C = {C:F4}");
+   
+   
+   Ouput
+   
+   .. terminal::
+   
+      Fitted Parameters: A = 6.1681, B = 1170.7321, C = -48.0075
+
+
 Exercise: Term Expansion
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Task: To fit a full quadratic surface :math:`z = a + bx + cy + dxy`, your matrix A needs four columns. Complete the column assignment for the cross-term :math:`xy`.
@@ -219,28 +306,3 @@ Task: To fit a full quadratic surface :math:`z = a + bx + cy + dxy`, your matrix
    // Solve for the coefficients using Least Squares
 
 
-
-.. code-block:: csharp
-
-   // Curve Fitting for Antoine Equation [lnP = A - B/(T + C)]
-   double[] P_Kpa = [3.18, 5.48, 9.45, 16.9, 28.2, 41.9, 66.6, 89.5, 129, 187],
-            T_C = [-18.5, -9.5, 0.2, 11.8, 23.1, 32.7, 44.4, 52.1, 63.3, 75.5];
-
-   // Convert Temperature to Kelvin, Compute the natural logarithm of Pressure
-   ColVec xdata = (ColVec)T_C + 273.15,
-          ydata = Log((ColVec)P_Kpa);
-
-   // Multilinear fit
-   List<ColVec> M = [Ones(xdata.Numel), 1.0 / xdata, ydata.Div(xdata)];
-   var x = Mldivide(M, ydata);
-
-   // Extract fitted parameters
-   double A = x[0], C = -x[2], B = A*C-x[1];
-   Console.WriteLine($"Fitted Parameters: A = {A:F4}, B = {B:F4}, C = {C:F4}");
-
-
-Ouput
-
-.. terminal::
-
-   Fitted Parameters: A = 14.2144, B = 2701.7330, C = -47.7265
