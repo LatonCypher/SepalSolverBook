@@ -131,6 +131,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                             return -A * Pr + (y + y2 + y3 - y4) / Den -
                             B * y2 + C * Pow(y, D);
                         });
+                        if (Pr < 5) r *= 2;
+                        if (Pr > 13) r *= 0.5;
                         var opts = SolverSet(StepFactor: 0.5);
                         double y = Fsolve(yfunc, r, opts);
                         z = A * Pr / y;
@@ -140,8 +142,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
 
                 // set up ressure and temperature mesh
                 ColVec Pr = Linspace(0.2, 20, 501);
-                ColVec Tr = new double[] {1.05,    1.08,   1.12,   1.18,   1.26,   1.35,   1.47,
-                                          1.61,    1.75,   1.91,   2.09,   2.29,   2.62,   3.00 };
+                ColVec Tr = new double[] {1.05,    1.08,   1.12,   1.18,   1.26,  
+                                          1.35,   1.47,   1.61,    1.75,   1.91,   
+                                          2.09,   2.29,   2.62,   3.00 };
 
                 // compute z factors and plot them
                 List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
