@@ -194,7 +194,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
             /// 
             /// - Slope with respect to :math:`T \to A`
             /// - Slope with respect to :math:`log10(p) \to -C`
-            /// - Intercept  :math:` \to AC - B`
+            /// - Intercept  :math:`\to AC - B`
             /// 
             /// 
             /// :math:`A`, :math:`B`, and :math:`C` can then be solved systematically from regression
