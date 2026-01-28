@@ -187,7 +187,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
             /// Step 3: Rearranging the terms:
             /// 
             /// <math>
-            ///     T\log_{10}(p) = A \cdot T - C\log_{10}(p) + (AC - B)
+            ///     T\log_{10}(p) = A T - C\log_{10}(p) + (AC - B)
             /// </math>
             /// 
             /// This is a linear equation in terms of :math:`T` and :math:`log10(p)`, which can be used to estimate the constants :math:`A`, :math:`B`, and :math:`C` via multiple linear regression.
@@ -206,9 +206,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
             /// </math>
             /// 
             /// Hence:
-            ///     :math:`A = \alpha`
-            ///     :math:`C = -\beta`
-            ///     :math:`B = AC-\gamma`
+            ///   -  :math:`A = \alpha`
+            ///   -  :math:`C = -\beta`
+            ///   -  :math:`B = AC-\gamma`
             /// 
             /// <code>
             {
