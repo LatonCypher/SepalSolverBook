@@ -175,7 +175,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
             /// 
             /// In other to estimate the values of this constants, we express the equation in a linear form
             /// 
-            /// Step 1: Multiplying Both Sides by (C + T)
+            /// Step 1: Multiplying Both Sides by :math:`(C + T)`
             /// <math>
             ///     (C + T)\log_{10}(p) = A(C + T) - B
             /// </math>
@@ -192,9 +192,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
             /// 
             /// This is a linear equation in terms of :math:`T` and :math:`log10(p)`, which can be used to estimate the constants :math:`A`, :math:`B`, and :math:`C` via multiple linear regression.
             /// 
-            /// -Slope with respect to :math:`T` → :math:`A`
-            /// -Slope with respect to :math:`log10(p)` → :math:`-C`
-            /// -Intercept → :math:`AC - B`
+            /// - Slope with respect to :math:`T \to A`
+            /// - Slope with respect to :math:`log10(p) \to -C`
+            /// - Intercept  :math:` \to AC - B`
             /// 
             /// 
             /// :math:`A`, :math:`B`, and :math:`C` can then be solved systematically from regression

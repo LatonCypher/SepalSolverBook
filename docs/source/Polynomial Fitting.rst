@@ -213,7 +213,7 @@ Examples
    
    
    Where:
-   - :math:`p` = vapor pressure
+   - :math:`P` = vapor pressure
    - :math:`T` = temperature
    - :math:`A, B, C` = substance-specific constants
    
@@ -242,9 +242,9 @@ Examples
    
    This is a linear equation in terms of :math:`T` and :math:`log10(p)`, which can be used to estimate the constants :math:`A`, :math:`B`, and :math:`C` via multiple linear regression.
    
-   -Slope with respect to :math:`T` → :math:`A`
-   -Slope with respect to :math:`log10(p)` → :math:`-C`
-   -Intercept → :math:`AC - B`
+   - Slope with respect to :math:`T \to A`
+   - Slope with respect to :math:`log10(p) \to -C`
+   - Intercept  :math:` \to AC - B`
    
    
    :math:`A`, :math:`B`, and :math:`C` can then be solved systematically from regression
