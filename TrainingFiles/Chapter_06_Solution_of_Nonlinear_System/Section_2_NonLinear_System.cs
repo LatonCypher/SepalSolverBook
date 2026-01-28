@@ -121,10 +121,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             /// 
             /// <example 2>
             /// Consider this parameterized nonlinear system. The nonlinearity is controlled by parameter :math:`c`.
+            /// 
+            /// <math>
             /// \begin{array}{c}
             ///     2x + y - \exp(-cx) = 0 \\
             ///    -x + 2y - \exp(-cy) = 0
             /// \end{array}
+            /// </math>
             /// 
             /// Setting :math:`c = 0`, turns this system into a linear system with solution of :math:`[x,y] = [0.2, 0.6]`
             /// Hence, we can gradually change :math:`c` from :math:`0` to :math:`20`, while solving for :math:`[x, y]`.
