@@ -258,9 +258,9 @@ Examples
    
    
    Hence:
-   -  :math:`A = \alpha`
-   -  :math:`C = -\beta`
-   -  :math:`B = AC-\gamma`
+   - :math:`A = \alpha`
+   - :math:`C = -\beta`
+   - :math:`B = AC-\gamma`
    
    
    .. code-block:: csharp
