@@ -210,3 +210,60 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
    :align: center
    :alt: Zfactor_Hall_Yarborough_.png
 
+
+
+
+.. code-block:: csharp
+
+   static double ZfactorDAK(double Ppr, double Tpr)
+   {
+       double z = 1;
+       if (Ppr != 0)
+       {
+           double Tpr2 = Tpr * Tpr, Tpr3 = Tpr2 * Tpr,
+               Tpr4 = Tpr3 * Tpr, Tpr5 = Tpr4 * Tpr,
+           A1 = 0.3265, A2 = -1.0700, A3 = -0.5339,
+           A4 = 0.01569, A5 = -0.05165, A6 = 0.5475,
+           A7 = -0.7361, A8 = 0.1844, A9 = 0.1056,
+           A10 = 0.6134, A11 = 0.7210,
+           R1 = A1 + A2 / Tpr + A3 / Tpr3 + A4 / Tpr4 + A5 / Tpr5,
+           R2 = 0.27 * Ppr / Tpr,
+           R3 = A6 + A7 / Tpr + A8 / Tpr2,
+           R4 = A9 * (A7 / Tpr + A8 / Tpr2),
+           R5 = A10 / Tpr3;
+           double yfunc(double y)
+           {
+               double y2 = y * y, y5 = y2 * y2 * y;
+               double E = (1 + A11 * y2) * Exp(-A11 * y2);
+               return R5 * y2 * E + R1 * y - R2 / y + R3 * y2 - R4 * y5 + 1;
+           }
+           ;
+           var options = SolverSet(StepFactor: 0.5);
+           double y = Fsolve(yfunc, R2, options);
+           z = R2 / y;
+       }
+       return z;
+   }
+
+   {
+       // set up ressure and temperature mesh
+       ColVec Pr = Linspace(0, 20, 501);
+       ColVec Tr = new double[] {1.05,    1.08,   1.12,   1.18,   1.26,
+                         1.35,   1.47,    1.61,    1.75,   1.91,
+                         2.09,   2.29,   2.62,   3.00 };
+
+       // compute z factors and plot them
+       List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
+       Matrix ZHY = Tr.Select(tr => Arrayfun(p => ZfactorDAK(p, tr), Pr)).ToList();
+
+       Plot(Pr, ZHY);
+       Legend(Tr.Select(tr => "Tr = " + tr));
+       SaveAs("Zfactor_DAK.png");
+   }
+
+
+
+.. figure:: images/Zfactor_DAK.png
+   :align: center
+   :alt: Zfactor_DAK.png
+
