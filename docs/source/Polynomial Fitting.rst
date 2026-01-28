@@ -213,13 +213,13 @@ Examples
    
    
    Where:
-   - :math:`P` = vapor pressure
+   - :math:`p` = vapor pressure
    - :math:`T` = temperature
    - :math:`A, B, C` = substance-specific constants
    
    In other to estimate the values of this constants, we express the equation in a linear form
    
-   Step 1: Multiplying Both Sides by (C + T)
+   Step 1: Multiplying Both Sides by :math:`(C + T)`
    
    .. math::
    
