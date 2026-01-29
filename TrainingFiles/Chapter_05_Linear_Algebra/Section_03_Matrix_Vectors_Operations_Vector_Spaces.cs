@@ -31,6 +31,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             ///    Element-wise Mult.    |      ``A.*B``     |      ``A.Times(B)``
             ///    Element-wise Div.     |      ``A./B``     |      ``A.Div(B)``
             ///    Element-wise Power    |      ``A.^B``     |      ``A.Pow(B)``
+            ///    Element-wise Mod Div  |    ``mod(A,B)``   |       ``A % B``
             /// </table>
             /// 
             /// <header 3> Examples </header>

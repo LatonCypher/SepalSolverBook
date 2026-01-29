@@ -43,6 +43,9 @@ This table provides the list of operators in Matlab and the corresponding operat
    * - Element-wise Power
      - ``A.^B``
      - ``A.Pow(B)``
+   * - Element-wise Mod Div
+     - ``mod(A,B)``
+     - ``A % B``
 
 Examples
 ~~~~~~~~
