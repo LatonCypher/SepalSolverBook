@@ -534,7 +534,7 @@
           "lib/netcoreapp2.0/_._": {}
         }
       },
-      "Microsoft.Win32.SystemEvents/10.0.1": {
+      "Microsoft.Win32.SystemEvents/10.0.2": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
@@ -575,13 +575,13 @@
           }
         }
       },
-      "SepalSolver/0.0.70": {
+      "SepalSolver/0.0.71": {
         "type": "package",
         "dependencies": {
           "Highs.Native": "1.12.0",
           "Microsoft.CSharp": "4.7.0",
           "Microsoft.CodeAnalysis.CSharp.Scripting": "5.0.0",
-          "System.Drawing.Common": "10.0.1"
+          "System.Drawing.Common": "10.0.2"
         },
         "compile": {
           "lib/netstandard2.1/SepalSolver.dll": {
@@ -594,7 +594,7 @@
           }
         }
       },
-      "SepalSolver.PlotLib/0.0.70": {
+      "SepalSolver.PlotLib/0.0.71": {
         "type": "package",
         "dependencies": {
           "CSharpMath": "0.5.1",
@@ -603,7 +603,7 @@
           "Magick.NET-Q16-AnyCPU": "14.10.0",
           "Magick.NET.Core": "14.10.0",
           "ScottPlot": "5.1.57",
-          "SepalSolver": "0.0.70"
+          "SepalSolver": "0.0.71"
         },
         "compile": {
           "lib/netstandard2.1/SepalSolver.PlotLib.dll": {}
@@ -753,10 +753,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Drawing.Common/10.0.1": {
+      "System.Drawing.Common/10.0.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Win32.SystemEvents": "10.0.1"
+          "Microsoft.Win32.SystemEvents": "10.0.2"
         },
         "compile": {
           "lib/net8.0/System.Drawing.Common.dll": {
@@ -2108,10 +2108,10 @@
         "version.txt"
       ]
     },
-    "Microsoft.Win32.SystemEvents/10.0.1": {
-      "sha512": "trU4LN2C04nj5qnl8HqoX0NJGPCFg9h2f5o+jjp3Xm8c8fQtu6Ga1/fNFMf3AapoHyLP1WlP21XnL2ij/TLKlg==",
+    "Microsoft.Win32.SystemEvents/10.0.2": {
+      "sha512": "1G4BdeFwc8E95MpwtR7pO4rEh2YCG/o5gqcOszdQRGrWX1ayHTZtho3xPuYZTbBxKb/3kQHjL3b4nQeNGvbM9g==",
       "type": "package",
-      "path": "microsoft.win32.systemevents/10.0.1",
+      "path": "microsoft.win32.systemevents/10.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2132,7 +2132,7 @@
         "lib/net9.0/Microsoft.Win32.SystemEvents.xml",
         "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
         "lib/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
-        "microsoft.win32.systemevents.10.0.1.nupkg.sha512",
+        "microsoft.win32.systemevents.10.0.2.nupkg.sha512",
         "microsoft.win32.systemevents.nuspec",
         "runtimes/win/lib/net10.0/Microsoft.Win32.SystemEvents.dll",
         "runtimes/win/lib/net10.0/Microsoft.Win32.SystemEvents.xml",
@@ -2166,29 +2166,29 @@
         "scottplot.nuspec"
       ]
     },
-    "SepalSolver/0.0.70": {
-      "sha512": "WZJiwc8Iwq7zhhBjxKvFCHP8TuJnf//ZofsomLk/RF3DSA3k3t6tDs1BliTXkJc4u8B4i0Csb+61jP+5QlgSQw==",
+    "SepalSolver/0.0.71": {
+      "sha512": "GOyGM69/KV4LMvy1Bj+SJ0IKln2qeHZKESTfysf/Pbi+oBxeT2hXHQxN5i0mkBHwOLcqX3z+fQ5oasO+JN7XzQ==",
       "type": "package",
-      "path": "sepalsolver/0.0.70",
+      "path": "sepalsolver/0.0.71",
       "files": [
         ".nupkg.metadata",
         "README.md",
         "lib/netstandard2.1/SepalSolver.dll",
         "lib/netstandard2.1/SepalSolver.xml",
-        "sepalsolver.0.0.70.nupkg.sha512",
+        "sepalsolver.0.0.71.nupkg.sha512",
         "sepalsolver.nuspec",
         "sepalsolver.png"
       ]
     },
-    "SepalSolver.PlotLib/0.0.70": {
-      "sha512": "XDVkVntIlMfugV4efXKx9DS9UJc/5FManJoJD/z+pYQRwGec0s7Eltb9vRE4pnIsSWQQAO56aePPvC1Z0lJewA==",
+    "SepalSolver.PlotLib/0.0.71": {
+      "sha512": "OE65lNTgdKE01ec/34+BRyJqS87L+/PAf5tR3lf09Mi+s2TXaIoTth76hGJdFkF0oJKMJpCXMPIu0mPvxmLJ7g==",
       "type": "package",
-      "path": "sepalsolver.plotlib/0.0.70",
+      "path": "sepalsolver.plotlib/0.0.71",
       "files": [
         ".nupkg.metadata",
         "README.md",
         "lib/netstandard2.1/SepalSolver.PlotLib.dll",
-        "sepalsolver.plotlib.0.0.70.nupkg.sha512",
+        "sepalsolver.plotlib.0.0.71.nupkg.sha512",
         "sepalsolver.plotlib.nuspec"
       ]
     },
@@ -2381,10 +2381,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Drawing.Common/10.0.1": {
-      "sha512": "cmkIduwyVPfuO8kNehu3xNcjo26nMgUoJyfso9S/zTO85YovvPPG0/AFLjanx1iVgQ80OpJVnLb1jU3aIKNLdg==",
+    "System.Drawing.Common/10.0.2": {
+      "sha512": "nCq8jeGD4vWaUjX3nGaDMKYqfFPposw2f4KCFnuY5Rt3NhK6zMZ/c0a52a3TZK/nnkCJfyQMwb+POKwAnZexZw==",
       "type": "package",
-      "path": "system.drawing.common/10.0.1",
+      "path": "system.drawing.common/10.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2429,7 +2429,7 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "system.drawing.common.10.0.1.nupkg.sha512",
+        "system.drawing.common.10.0.2.nupkg.sha512",
         "system.drawing.common.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -2560,8 +2560,8 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "SepalSolver >= 0.0.70",
-      "SepalSolver.PlotLib >= 0.0.70"
+      "SepalSolver >= 0.0.71",
+      "SepalSolver.PlotLib >= 0.0.71"
     ]
   },
   "packageFolders": {
@@ -2619,11 +2619,11 @@
         "dependencies": {
           "SepalSolver": {
             "target": "Package",
-            "version": "[0.0.70, )"
+            "version": "[0.0.71, )"
           },
           "SepalSolver.PlotLib": {
             "target": "Package",
-            "version": "[0.0.70, )"
+            "version": "[0.0.71, )"
           }
         },
         "imports": [
