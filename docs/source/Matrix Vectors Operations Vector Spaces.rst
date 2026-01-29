@@ -10,55 +10,89 @@ for matrices, conformity requires that they have exactly the same dimensions. Ve
 RowVec are treated the same way. The number of columns in the RowVec must be equal to the number of columns in the Matrix, and the RowVec is broadcasted to have the same number of rows as the Matrix. 
 This rules is also apply when carrying out termwise operations between ColVec and RowVec, ColVec and Matrix, and RowVec and Matrix.
 Aside the rules, the standard conformity rules applies. 
+This table provides the list of operators in Matlab and the corresponding operators in SepalSolver
+
+
+.. list-table:: 
+   :header-rows: 1
+
+   * - **Operation**
+     - **MATLAB Syntax**
+     - **SepalSolver Syntax**
+   * - Addition
+     - ``A+B``
+     - ``A + B``
+   * - Subtraction
+     - ``A-B``
+     - ``A - B``
+   * - Matrix Multiplication
+     - ``A*B``
+     - ``A * B``
+   * - Matrix Left Division
+     - ``A\B``
+     - ``Mldivide(A, B)``
+   * - Matrix Right Division
+     - ``A/B``
+     - ``Mrdivide(A, B)``
+   * - Element-wise Mult.
+     - ``A.*B``
+     - ``A.Times(B)``
+   * - Element-wise Div.
+     - ``A./B``
+     - ``A.Div(B)``
+   * - Element-wise Power
+     - ``A.^B``
+     - ``A.Pow(B)``
 
 Examples
 ~~~~~~~~
 
 .. code-block:: csharp
 
-   Matrix A, B, C, D, E, F, G, H, I, J, L, M, N, O;
-   ColVec U, V, W, X, Y, Z;  RowVec P, Q, R, S, T, K;
-
    // Declarations
-   A = new double[,] { { 1, 2, 3 },
-                       { 4, 5, 6 },
-                       { 7, 8, 9 } };
+   Matrix A = new double[,] { { 1, 2, 3 },
+                              { 4, 5, 6 },
+                              { 7, 8, 9 } };
 
-   B = new double[,] { { 9, 8, 7 },
-                       { 6, 5, 4 },
-                       { 3, 2, 1 } };
+   Matrix B = new double[,] { { 9, 8, 7 },
+                              { 6, 5, 4 },
+                              { 3, 2, 1 } };
 
-   U = new double[] { 1, 2, 3 };
-   P = new double[] { 4, 5, 6 };
+   ColVec U = new double[] { 1, 2, 3 };
+   RowVec P = new double[] { 4, 5, 6 };
 
 
    // Matrix-Matrix Addition
-   C = A + B;
+   Matrix C = A + B;
    Console.WriteLine($"A + B = \n{C}");
 
    // Matrix-Matrix Subtraction
-   D = A - B;
+   Matrix D = A - B;
    Console.WriteLine($"A - B = \n{D}");
 
    // Matrix-matrix Multiplication
-   E = A * B; // 
+   Matrix E = A * B; // 
    Console.WriteLine($"E = \n{E}");
-   F = B * A;
+   Matrix F = B * A;
    Console.WriteLine($"F = \n{F}");
 
    // Matrix-Matrix Division
-   G = Mldivide(A, B); // A\B
+   Matrix G = Mldivide(A, B); // A\B
    Console.WriteLine($"G = \n{G}");
-   H = Mrdivide(A, B); // A/B
+   Matrix H = Mrdivide(A, B); // A/B
    Console.WriteLine($"H = \n{H}");
 
 
-   I = A.Div(B);
+   Matrix I = A.Div(B);
    Console.WriteLine($"I = \n{I}");
 
-   // Power (A .^ B)
-   J = A.Pow(B);
+   // Power (A.^B)
+   Matrix J = A.Pow(B);
    Console.WriteLine($"J = \n{J}");
+
+   // Power (B.^A)
+   Matrix K = B.Pow(A);
+   Console.WriteLine($"B.^A = B.Pow(A) = \n{K}");
 
 
 
@@ -114,3 +148,10 @@ Ouput
       4.0960    3.1250    1.2960
       0.3430    0.0640    0.0090
    
+   B.^A = B.Pow(A) = 
+   1e3*
+      0.0090    0.0640    0.3430
+      1.2960    3.1250    4.0960
+      2.1870    0.2560    0.0010
+   
+
