@@ -15,9 +15,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             /// The SepalSolver comes with overloaded operators to allow easy arithmetic operations on Vectors and matrices. 
             /// Vector and Matrix addition and subtraction when conformable can easily be achieved by using the "+" and "-" signs respectively. 
             /// Addition and subtraction of column and row vectors invokes their broadcast in the direction of each other (I mean along their first singleton).  
-            /// for matrices, conformity requires that they have exactly the same dimensions. Vectors can be added to matrices. The dimension of the vector has to match that of the matrix. ie. for a ColVec-Matrix Operation, the number of rows must be equal and the ColVec is broadasted to have the same number of columns as the Matrix. 
-            /// RowVec are treated the same way. The number of columns in the RowVec must be equal to the number of columns in the Matrix, and the RowVec is broadcasted to have the same number of rows as the Matrix. 
-            /// This rules is also apply when carrying out termwise operations between ColVec and RowVec, ColVec and Matrix, and RowVec and Matrix.
+            /// for matrices, conformity requires that they have exactly the same dimensions. Vectors can be added to matrices. The dimension of the vector has to match that of the matrix. ie. for a ``ColVec``-``Matrix`` Operation, the number of rows must be equal and the ``ColVec`` is broadasted to have the same number of columns as the ``Matrix``. 
+            /// ``RowVec`` are treated the same way. The number of columns in the RowVec must be equal to the number of columns in the ``Matrix``, and the RowVec is broadcasted to have the same number of rows as the Matrix. 
+            /// This rules is also apply when carrying out termwise operations between ``ColVec-RowVec``, ``ColVec-Matrix``, and ``RowVec-Matrix``.
             /// Aside the rules, the standard conformity rules applies. 
             /// This table provides the list of operators in Matlab and the corresponding operators in SepalSolver
             /// 
@@ -39,60 +39,42 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             {
                 // Declarations
                 Matrix A = new double[,] { { 1, 2, 3 },
-                                           { 4, 5, 6 },
+                                           { 4, 0, 6 },
                                            { 7, 8, 9 } };
 
                 Matrix B = new double[,] { { 9, 8, 7 },
-                                           { 6, 5, 4 },
+                                           { 6, 0, 4 },
                                            { 3, 2, 1 } };
 
                 ColVec U = new double[] { 1, 2, 3 };
                 RowVec P = new double[] { 4, 5, 6 };
 
-
                 // Matrix-Matrix Addition
-                Matrix C = A + B;
-                Console.WriteLine($"A + B = \n{C}");
+                Console.WriteLine($"A + B = \n{A + B}");
 
                 // Matrix-Matrix Subtraction
-                Matrix D = A - B;
-                Console.WriteLine($"A - B = \n{D}");
+                Console.WriteLine($"A - B = \n{A - B}");
 
                 // Matrix-matrix Multiplication
-                Matrix E = A * B; // 
-                Console.WriteLine($"E = \n{E}");
-                Matrix F = B * A;
-                Console.WriteLine($"F = \n{F}");
+                Console.WriteLine($"A * B = \n{A * B}");
+                Console.WriteLine($"B * A = \n{B * A}");
+                Console.WriteLine($"B.Times(A) = \n{B.Times(A)}");
 
                 // Matrix-Matrix Division
-                Matrix G = Mldivide(A, B); // A\B
-                Console.WriteLine($"G = \n{G}");
-                Matrix H = Mrdivide(A, B); // A/B
-                Console.WriteLine($"H = \n{H}");
-
-
-                Matrix I = A.Div(B);
-                Console.WriteLine($"I = \n{I}");
+                Console.WriteLine($"Mldivide(A, B) = \n{Mldivide(A, B)}");
+                Console.WriteLine($"Mrdivide(A, B) = \n{Mrdivide(A, B)}");
+                Console.WriteLine($"A.Div(B) = \n{A.Div(B)}");
+                Console.WriteLine($"Mod(A, B) = \n{Mod(A, B)}");
 
                 // Power (A.^B)
-                Matrix J = A.Pow(B);
-                Console.WriteLine($"J = \n{J}");
-
-                // Power (B.^A)
-                Matrix K = B.Pow(A);
-                Console.WriteLine($"B.^A = B.Pow(A) = \n{K}");
+                Console.WriteLine($"A.Pow(B) = \n{A.Pow(B)}");
+                Console.WriteLine($"B.Pow(A) = \n{B.Pow(A)}");
 
             }
             /// </code>
             /// 
             /// </BookContent>
             // 
-
-
-
-
-
-            
 
 
             // Matrix transpose

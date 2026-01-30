@@ -6,9 +6,9 @@ Arithemetic Operations on Vectors and Matrices
 The SepalSolver comes with overloaded operators to allow easy arithmetic operations on Vectors and matrices. 
 Vector and Matrix addition and subtraction when conformable can easily be achieved by using the "+" and "-" signs respectively. 
 Addition and subtraction of column and row vectors invokes their broadcast in the direction of each other (I mean along their first singleton).  
-for matrices, conformity requires that they have exactly the same dimensions. Vectors can be added to matrices. The dimension of the vector has to match that of the matrix. ie. for a ColVec-Matrix Operation, the number of rows must be equal and the ColVec is broadasted to have the same number of columns as the Matrix. 
-RowVec are treated the same way. The number of columns in the RowVec must be equal to the number of columns in the Matrix, and the RowVec is broadcasted to have the same number of rows as the Matrix. 
-This rules is also apply when carrying out termwise operations between ColVec and RowVec, ColVec and Matrix, and RowVec and Matrix.
+for matrices, conformity requires that they have exactly the same dimensions. Vectors can be added to matrices. The dimension of the vector has to match that of the matrix. ie. for a ``ColVec``-``Matrix`` Operation, the number of rows must be equal and the ``ColVec`` is broadasted to have the same number of columns as the ``Matrix``. 
+``RowVec`` are treated the same way. The number of columns in the RowVec must be equal to the number of columns in the ``Matrix``, and the RowVec is broadcasted to have the same number of rows as the Matrix. 
+This rules is also apply when carrying out termwise operations between ``ColVec-RowVec``, ``ColVec-Matrix``, and ``RowVec-Matrix``.
 Aside the rules, the standard conformity rules applies. 
 This table provides the list of operators in Matlab and the corresponding operators in SepalSolver
 
@@ -54,11 +54,11 @@ Examples
 
    // Declarations
    Matrix A = new double[,] { { 1, 2, 3 },
-                              { 4, 5, 6 },
+                              { 4, 0, 6 },
                               { 7, 8, 9 } };
 
    Matrix B = new double[,] { { 9, 8, 7 },
-                              { 6, 5, 4 },
+                              { 6, 0, 4 },
                               { 3, 2, 1 } };
 
    ColVec U = new double[] { 1, 2, 3 };
@@ -66,36 +66,25 @@ Examples
 
 
    // Matrix-Matrix Addition
-   Matrix C = A + B;
-   Console.WriteLine($"A + B = \n{C}");
+   Console.WriteLine($"A + B = \n{A + B}");
 
    // Matrix-Matrix Subtraction
-   Matrix D = A - B;
-   Console.WriteLine($"A - B = \n{D}");
+   Console.WriteLine($"A - B = \n{A - B}");
 
    // Matrix-matrix Multiplication
-   Matrix E = A * B; // 
-   Console.WriteLine($"E = \n{E}");
-   Matrix F = B * A;
-   Console.WriteLine($"F = \n{F}");
+   Console.WriteLine($"A * B = \n{A * B}");
+   Console.WriteLine($"B * A = \n{B * A}");
+   Console.WriteLine($"B.Times(A) = \n{B.Times(A)}");
 
    // Matrix-Matrix Division
-   Matrix G = Mldivide(A, B); // A\B
-   Console.WriteLine($"G = \n{G}");
-   Matrix H = Mrdivide(A, B); // A/B
-   Console.WriteLine($"H = \n{H}");
-
-
-   Matrix I = A.Div(B);
-   Console.WriteLine($"I = \n{I}");
+   Console.WriteLine($"Mldivide(A, B) = \n{Mldivide(A, B)}");
+   Console.WriteLine($"Mrdivide(A, B) = \n{Mrdivide(A, B)}");
+   Console.WriteLine($"A.Div(B) = \n{A.Div(B)}");
+   Console.WriteLine($"Mod(A, B) = \n{Mod(A, B)}");
 
    // Power (A.^B)
-   Matrix J = A.Pow(B);
-   Console.WriteLine($"J = \n{J}");
-
-   // Power (B.^A)
-   Matrix K = B.Pow(A);
-   Console.WriteLine($"B.^A = B.Pow(A) = \n{K}");
+   Console.WriteLine($"A.Pow(B) = \n{A.Pow(B)}");
+   Console.WriteLine($"B.Pow(A) = \n{B.Pow(A)}");
 
 
 
@@ -106,7 +95,7 @@ Ouput
    A + B = 
    
      10.0000   10.0000   10.0000
-     10.0000   10.0000   10.0000
+     10.0000    0.0000   10.0000
      10.0000   10.0000   10.0000
    
    A - B = 
@@ -115,46 +104,58 @@ Ouput
      -2.0000    0.0000    2.0000
       4.0000    6.0000    8.0000
    
-   E = 
+   A * B = 
    
-     30.0000   24.0000   18.0000
-     84.0000   69.0000   54.0000
-    138.0000  114.0000   90.0000
+     30.0000   14.0000   18.0000
+     54.0000   44.0000   34.0000
+    138.0000   74.0000   90.0000
    
-   F = 
+   B * A = 
    
-     90.0000  114.0000  138.0000
-     54.0000   69.0000   84.0000
-     18.0000   24.0000   30.0000
+     90.0000   74.0000  138.0000
+     34.0000   44.0000   54.0000
+     18.0000   14.0000   30.0000
    
-   G = 
+   B.Times(A) = 
    
-    -25.0000  -26.0000  -19.0000
-     38.0000   41.0000   28.0000
-    -14.0000  -16.0000  -10.0000
+      9.0000   16.0000   21.0000
+     24.0000    0.0000   24.0000
+     21.0000   16.0000    9.0000
    
-   H = 
+   Mldivide(A, B) = 
    
-      0.0000    1.3333   -2.3333
-     -0.0000    2.3333   -3.3333
-     -1.0000    5.3333   -5.3333
+     -6.0000   -6.0000   -5.0000
+      0.0000    1.0000    0.0000
+      5.0000    4.0000    4.0000
    
-   I = 
+   Mrdivide(A, B) = 
+   
+      0.6667   -0.0000   -1.6667
+      0.6667    1.0000   -2.6667
+      1.6667   -0.0000   -2.6667
+   
+   A.Div(B) = 
    
       0.1111    0.2500    0.4286
-      0.6667    1.0000    1.5000
+      0.6667       NaN    1.5000
       2.3333    4.0000    9.0000
    
-   J = 
+   Mod(A, B) = 
+   
+      1.0000    2.0000    3.0000
+      4.0000       NaN    2.0000
+      1.0000    0.0000    0.0000
+   
+   A.Pow(B) = 
    1e3*
       0.0010    0.2560    2.1870
-      4.0960    3.1250    1.2960
+      4.0960    0.0010    1.2960
       0.3430    0.0640    0.0090
    
-   B.^A = B.Pow(A) = 
+   B.Pow(A) = 
    1e3*
       0.0090    0.0640    0.3430
-      1.2960    3.1250    4.0960
+      1.2960    0.0010    4.0960
       2.1870    0.2560    0.0010
    
 
