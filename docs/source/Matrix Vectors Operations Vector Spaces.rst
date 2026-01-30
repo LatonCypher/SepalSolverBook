@@ -64,7 +64,6 @@ Examples
    ColVec U = new double[] { 1, 2, 3 };
    RowVec P = new double[] { 4, 5, 6 };
 
-
    // Matrix-Matrix Addition
    Console.WriteLine($"A + B = \n{A + B}");
 

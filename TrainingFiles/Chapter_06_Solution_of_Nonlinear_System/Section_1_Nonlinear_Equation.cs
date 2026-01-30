@@ -205,6 +205,47 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
 
             }
             /// </code>
+            /// 
+            /// <code>
+            {
+                static double ZfactorDPR(double Pr, double Tr)
+                {
+                    double z = 1;
+                    if (Pr != 0)
+                    {
+                        double Tr2 = Tr * Tr, Tr3 = Tr2 * Tr, E,
+                            A1 = 0.31506237, A2 = -1.04670990, A3 = -0.57832720, A4 = 0.53530771,
+                            A5 = -0.61232032, A6 = -0.10488813, A7 = 0.68157001, A8 = 0.68446549,
+                            T1 = A1 + A2 / Tr + A3 / Tr3, T2 = A4 + A5 / Tr, T3 = A5 * A6 / Tr,
+                            T4 = A7 / Tr3, T5 = 0.27 * Pr / Tr, y2, y5, v = T5;
+                        var yfunc = new Func<double, double>(y =>
+                        {
+                            y2 = y * y; y5 = y2 * y2 * y; E = (1 + A8 * y2) * Exp(-A8 * y2);
+                            return 1 + T1 * y + T2 * y2 + T3 * y5 + T4 * y2 * E - T5 / y;
+                        });
+                        var options = SolverSet(StepFactor: 0.5);
+                        double y = Fsolve(yfunc, v, options);
+                        z = 0.27 * Pr / (Tr * y);
+                    }
+                    return z;
+                }
+
+                {
+                    // set up ressure and temperature mesh
+                    double[] Pr = Linspace(0, 20, 501);
+                    double[] Tr = [1.05,    1.08,   1.12,   1.18,   1.26,   1.35,   1.47,
+                                   1.61,    1.75,   1.91,   2.09,   2.29,   2.62,   3.00];
+
+                    // compute z factors and plot them
+                    List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
+                    Matrix ZDAK = Meshfun((p, t) => ZfactorDPR(p, t), Pr, Tr);
+
+                    Plot(Pr, ZDAK);
+                    Legend(Tr.Select(tr => "Tr = " + tr));
+                    SaveAs("Zfactor_DPR.png");
+                }
+            }
+            /// </code>
             /// </BookContent>
         }
     }
