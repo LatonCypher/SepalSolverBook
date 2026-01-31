@@ -208,14 +208,14 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
    S += 20 * SparseMatrix.Eye(S.Rows);
 
    // Visualize the sparsity pattern
-   Subplot(2, 2, 0); Spy(S); AxisEqual();
+   Subplot(2, 2, 0); Spy(S); 
    Title("Squid");
 
    // Perform cholesky factorization
    S.MakeChol();
 
    // Visualize the sparsity pattern of the cholesky factor
-   Subplot(2, 2, 1); Spy(S.L_chol); AxisEqual();
+   Subplot(2, 2, 1); Spy(S.L_chol);
    Title("Cholesky factor of Squid");
 
    // Compute RCM reordering permutation
@@ -225,14 +225,14 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
    SparseMatrix T = S[I, I];
 
    // Visualize reordered matrix
-   Subplot(2, 2, 2); Spy(T, 1e-15); AxisEqual();
+   Subplot(2, 2, 2); Spy(T, 1e-15); 
    Title("Reodered Squid");
 
    // Perform cholesky factorization of the 
    T.MakeChol();
 
    // Visualize the cholesky factor of the reordered matrix
-   Subplot(2, 2, 3); Spy(T.L_chol); AxisEqual();
+   Subplot(2, 2, 3); Spy(T.L_chol); 
    Title("Cholesky factor of reodered Squid");
 
    SaveAs("RCM_reordering_of_Squid.png");

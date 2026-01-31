@@ -575,7 +575,7 @@
           }
         }
       },
-      "SepalSolver/0.0.76": {
+      "SepalSolver/0.0.77": {
         "type": "package",
         "dependencies": {
           "Highs.Native": "1.12.0",
@@ -594,7 +594,7 @@
           }
         }
       },
-      "SepalSolver.PlotLib/0.0.76": {
+      "SepalSolver.PlotLib/0.0.77": {
         "type": "package",
         "dependencies": {
           "CSharpMath": "0.5.1",
@@ -603,7 +603,7 @@
           "Magick.NET-Q16-AnyCPU": "14.10.0",
           "Magick.NET.Core": "14.10.0",
           "ScottPlot": "5.1.57",
-          "SepalSolver": "0.0.76"
+          "SepalSolver": "0.0.77"
         },
         "compile": {
           "lib/netstandard2.1/SepalSolver.PlotLib.dll": {}
@@ -2166,29 +2166,29 @@
         "scottplot.nuspec"
       ]
     },
-    "SepalSolver/0.0.76": {
-      "sha512": "iUh+yPWA+spJMk+k64HmHxG3sjeUOuGyScAMFsDf1PmBQLF01+SlUtEllu4kRSqavIs/j+bv9wIWmgWJsOykow==",
+    "SepalSolver/0.0.77": {
+      "sha512": "/A5J0t4085j6ZcgJ6dXPN2wJL4B4FXfKRgKqj+Q6JhlbC3TTlZlC18Oclusy0uPpFIK9KqVk477Ysm1xc7jDyw==",
       "type": "package",
-      "path": "sepalsolver/0.0.76",
+      "path": "sepalsolver/0.0.77",
       "files": [
         ".nupkg.metadata",
         "README.md",
         "lib/netstandard2.1/SepalSolver.dll",
         "lib/netstandard2.1/SepalSolver.xml",
-        "sepalsolver.0.0.76.nupkg.sha512",
+        "sepalsolver.0.0.77.nupkg.sha512",
         "sepalsolver.nuspec",
         "sepalsolver.png"
       ]
     },
-    "SepalSolver.PlotLib/0.0.76": {
-      "sha512": "wB1FNSi+VrEOSvVcxkak1RispVap5mWK6pguhO5y/d2h3Y5sHkOM7muzixcljW4rXVe7QQ+ETNjjqhugVDaFHA==",
+    "SepalSolver.PlotLib/0.0.77": {
+      "sha512": "yRNR5ZhDnkaeUnCQea6jTrUaVaVj10LANVq2CD+2MeWOGgfLDE2gzpALE32odddZm2KhVC0cSbiM1unqUqjN2w==",
       "type": "package",
-      "path": "sepalsolver.plotlib/0.0.76",
+      "path": "sepalsolver.plotlib/0.0.77",
       "files": [
         ".nupkg.metadata",
         "README.md",
         "lib/netstandard2.1/SepalSolver.PlotLib.dll",
-        "sepalsolver.plotlib.0.0.76.nupkg.sha512",
+        "sepalsolver.plotlib.0.0.77.nupkg.sha512",
         "sepalsolver.plotlib.nuspec"
       ]
     },
@@ -2560,8 +2560,8 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "SepalSolver >= 0.0.76",
-      "SepalSolver.PlotLib >= 0.0.76"
+      "SepalSolver >= 0.0.77",
+      "SepalSolver.PlotLib >= 0.0.77"
     ]
   },
   "packageFolders": {
@@ -2619,11 +2619,11 @@
         "dependencies": {
           "SepalSolver": {
             "target": "Package",
-            "version": "[0.0.76, )"
+            "version": "[0.0.77, )"
           },
           "SepalSolver.PlotLib": {
             "target": "Package",
-            "version": "[0.0.76, )"
+            "version": "[0.0.77, )"
           }
         },
         "imports": [
@@ -2645,19 +2645,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://nuget.pkg.github.com/cyphercrescent/index.json."
-    },
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json."
-    }
-  ]
+  }
 }
