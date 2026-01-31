@@ -158,76 +158,110 @@ Ouput
     (4,3)            0.4817
     (4,4)            4.7094
    
+Reodering
+---------
+Matrix rearrangement (or reordering) aims to find a permutation matrix :math:`P` such that the factorization of :math:`PAP^T` minimizes **fill-in**.
+
+**Reverse Cuthill-McKee(RCM)** Reduces the **bandwidth**of the matrix by clustering non-zeros near the diagonal.Ideal for simpler, structured systems.
+
+**Minimum Degree(MD)** A greedy approach that eliminates the vertex with the lowest degree first.This is a local optimization strategy.
+
+**Nested Dissection(ND)** A "divide and conquer" approach using graph separators.
+
+..image::https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Sparse_matrix_fill-in.svg/400px-Sparse_matrix_fill-in.svg.png
+:alt: Diagram showing fill-in during factorization
+:align: center
 
 
-.. code-block:: csharp
+.. list-table:: 
+   :header-rows: 1
 
+   * - Strategy
+     - Logic
+     - Pros
+     - Cons
+   * - **RCM**
+     - Bandwidth Reduction
+     - Fast; simple memory access
+     - High total fill-in risk
+   * - **Minimum Degree**
+     - Local Greedy
+     - Great for general matrices
+     - Slow on massive systems
+   * - **Nested Diss.**
+     - Divide & Conquer
+     - Best for 3D grids/parallelism
+     - Complex implementation
 
-   {
-       SparseMatrix S = SparseMatrix.Squid(), Sc, Si, Sr, Sic, Sim1;
-       S = S + 20 * SparseMatrix.Eye(S.Rows);
-       Indexer I = new(0, 2, 40);
-       //S = S[I, I];
+..note::
 
-       Spy(S);
-       S.MakeChol();
-       Sc = S.L_chol;
-
-       Spy(Sc);
-       Sr = Sc * Sc.T;
-       Spy(Sr, 1e-15);
-
-       S.MakeiChol();
-       Sc = S.L_chol;
-
-       Spy(Sc);
-       Sr = Sc * Sc.T;
-       Spy(Sr, 1e-15);
-
-
-
-       I = SparseMatrix.Symrcm(S);
-       Si = S[I, I];
-       Spy(Si, 1e-15);
-
-       Si.MakeChol();
-       Sic = Si.L_chol;
-       Spy(Sic);
-
-       Sim1 = Sic * Sic.T;
-       Spy(Sim1, 1e-15);
-
-       Si.MakeiChol();
-       Sic = Si.L_chol;
-       Spy(Sic);
-
-       Sim1 = Sic * Sic.T;
-       Spy(Sim1, 1e-15);
-   }
+The fill-in is governed by the elimination tree of the matrix.A "bushy" tree allows for more parallel factorization.
 
 
 
 .. code-block:: csharp
 
+   // Load squid matrix 
+   SparseMatrix S = SparseMatrix.Squid();
 
-   {
-       SparseMatrix B = SparseMatrix.Bucky(), R, S;
-       B = B + 4 * SparseMatrix.Eye(60);
-       PermIndexer r = SparseMatrix.Symrcm(B), p = SparseMatrix.Symamd(B);
-       R = B[r, r]; S = B[p, p]; B.MakeChol(); R.MakeChol(); S.MakeChol();
+   // Add more weight to the diagonal
+   S += 20 * SparseMatrix.Eye(S.Rows);
 
-       Spy(B, 1e-15);
-       Spy(B.L_chol, 1e-15);
-       Spy(B.L_chol * B.L_chol.T, 1e-15);
+   // Visualize the sparsity pattern
+   Subplot(2, 2, 0); Spy(S); AxisEqual();
+   Title("Squid");
 
-       Spy(R, 1e-15);
-       Spy(R.L_chol, 1e-15);
-       Spy(R.L_chol * R.L_chol.T, 1e-15);
+   // Perform cholesky factorization
+   S.MakeChol();
 
-       Spy(S, 1e-15);
-       Spy(S.L_chol, 1e-15);
-       Spy(S.L_chol * S.L_chol.T, 1e-15);
-   }
+   // Visualize the sparsity pattern of the cholesky factor
+   Subplot(2, 2, 1); Spy(S.L_chol); AxisEqual();
+   Title("Cholesky factor of Squid");
+
+   // Compute RCM reordering permutation
+   Indexer I = SparseMatrix.Symrcm(S);
+
+   // Reorder the squid
+   SparseMatrix T = S[I, I];
+
+   // Visualize reordered matrix
+   Subplot(2, 2, 2); Spy(T, 1e-15); AxisEqual();
+   Title("Reodered Squid");
+
+   // Perform cholesky factorization of the 
+   T.MakeChol();
+
+   // Visualize the cholesky factor of the reordered matrix
+   Subplot(2, 2, 3); Spy(T.L_chol); AxisEqual();
+   Title("Cholesky factor of reodered Squid");
+
+   SaveAs("RCM_reordering_of_Squid.png");
+
+
+.. figure:: images/RCM_reordering_of_Squid.png
+   :align: center
+   :alt: RCM_reordering_of_Squid.png
+
+
+
+.. code-block:: csharp
+
+   SparseMatrix B = SparseMatrix.Bucky(), R, S;
+   B = B + 4 * SparseMatrix.Eye(60);
+   PermIndexer r = SparseMatrix.Symrcm(B), p = SparseMatrix.Symamd(B);
+   R = B[r, r]; S = B[p, p]; B.MakeChol(); R.MakeChol(); S.MakeChol();
+
+   Spy(B, 1e-15);
+   Spy(B.L_chol, 1e-15);
+   Spy(B.L_chol * B.L_chol.T, 1e-15);
+
+   Spy(R, 1e-15);
+   Spy(R.L_chol, 1e-15);
+   Spy(R.L_chol * R.L_chol.T, 1e-15);
+
+   Spy(S, 1e-15);
+   Spy(S.L_chol, 1e-15);
+   Spy(S.L_chol * S.L_chol.T, 1e-15);
 
 
 

@@ -188,21 +188,19 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                     return z;
                 }
 
-                {
-                    // set up ressure and temperature mesh
-                    double[] Pr = Linspace(0, 20, 501);
-                    double[] Tr = [1.05,    1.08,   1.12,   1.18,   1.26,   1.35,   1.47,    
+
+                // set up ressure and temperature mesh
+                double[] Pr = Linspace(0, 20, 501);
+                double[] Tr = [1.05,    1.08,   1.12,   1.18,   1.26,   1.35,   1.47,
                                    1.61,    1.75,   1.91,   2.09,   2.29,   2.62,   3.00];
 
-                    // compute z factors and plot them
-                    List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
-                    Matrix ZDAK = Meshfun((p, t) => ZfactorDAK(p, t), Pr, Tr);
+                // compute z factors and plot them
+                List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
+                Matrix ZDAK = Meshfun((p, t) => ZfactorDAK(p, t), Pr, Tr);
 
-                    Plot(Pr, ZDAK);
-                    Legend(Tr.Select(tr => "Tr = " + tr));
-                    SaveAs("Zfactor_DAK.png");
-                }
-
+                Plot(Pr, ZDAK);
+                Legend(Tr.Select(tr => "Tr = " + tr));
+                SaveAs("Zfactor_DAK.png");
             }
             /// </code>
             /// 
@@ -230,20 +228,18 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                     return z;
                 }
 
-                {
-                    // set up ressure and temperature mesh
-                    double[] Pr = Linspace(0, 20, 501);
-                    double[] Tr = [1.05,    1.08,   1.12,   1.18,   1.26,   1.35,   1.47,
+                // set up ressure and temperature mesh
+                double[] Pr = Linspace(0, 20, 501);
+                double[] Tr = [1.05,    1.08,   1.12,   1.18,   1.26,   1.35,   1.47,
                                    1.61,    1.75,   1.91,   2.09,   2.29,   2.62,   3.00];
 
-                    // compute z factors and plot them
-                    List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
-                    Matrix ZDAK = Meshfun((p, t) => ZfactorDPR(p, t), Pr, Tr);
+                // compute z factors and plot them
+                List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
+                Matrix ZDPR = Meshfun((p, t) => ZfactorDPR(p, t), Pr, Tr);
 
-                    Plot(Pr, ZDAK);
-                    Legend(Tr.Select(tr => "Tr = " + tr));
-                    SaveAs("Zfactor_DPR.png");
-                }
+                Plot(Pr, ZDPR);
+                Legend(Tr.Select(tr => "Tr = " + tr));
+                SaveAs("Zfactor_DPR.png");
             }
             /// </code>
             /// </BookContent>
