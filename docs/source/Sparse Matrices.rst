@@ -281,7 +281,7 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
    Spy(B.U_lu, 1e-15);
 
 
-   var I = SparseMatrix.Symrcm(B);
+   var I = SparseMatrix.Symamd(B);
    B = B[I, I];
    Subplot(3, 2, 1);
    Spy(B, 1e-15);
@@ -292,5 +292,13 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
 
    Subplot(3, 2, 5);
    Spy(B.U_lu, 1e-15);
+
+   SaveAs("AMD_reordering_of_Bucky.png");
+   CloseFig();
+
+
+.. figure:: images/AMD_reordering_of_Bucky.png
+   :align: center
+   :alt: AMD_reordering_of_Bucky.png
 
             

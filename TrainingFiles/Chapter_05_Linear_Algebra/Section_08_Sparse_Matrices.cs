@@ -173,7 +173,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 Spy(B.U_lu, 1e-15);
 
 
-                var I = SparseMatrix.Symrcm(B);
+                var I = SparseMatrix.Symamd(B);
                 B = B[I, I];
                 Subplot(3, 2, 1);
                 Spy(B, 1e-15);
@@ -184,6 +184,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
 
                 Subplot(3, 2, 5);
                 Spy(B.U_lu, 1e-15);
+
+                SaveAs("AMD_reordering_of_Bucky.png");
+                CloseFig();
             }
             /// </code>
             
