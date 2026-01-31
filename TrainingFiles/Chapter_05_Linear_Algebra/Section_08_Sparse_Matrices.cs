@@ -112,7 +112,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 S.MakeChol();
 
                 // Visualize the sparsity pattern of the cholesky factor
-                Subplot(2, 2, 1); Spy(S.L_chol);
+                Subplot(2, 2, 2); Spy(S.L_chol);
                 Title("Cholesky factor of Squid");
 
                 // Compute RCM reordering permutation
@@ -122,7 +122,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 SparseMatrix T = S[I, I];
 
                 // Visualize reordered matrix
-                Subplot(2, 2, 2); Spy(T, 1e-15); 
+                Subplot(2, 2, 1); Spy(T, 1e-15); 
                 Title("Reodered Squid");
 
                 // Perform cholesky factorization of the 
@@ -133,6 +133,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 Title("Cholesky factor of reodered Squid");
 
                 SaveAs("RCM_reordering_of_Squid.png");
+                CloseFig();
             }
             /// </code>
             /// 
@@ -159,20 +160,30 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             /// 
             /// <code>
             {
+                SparseMatrix B = SparseMatrix.Bucky();
 
-                {
-                    SparseMatrix B = SparseMatrix.Bucky();
-                    Spy(B, 1e-15);
+                Subplot(3, 2, 0);
+                Spy(B, 1e-15);
 
-                    B.MakeLU();
-                    var pT = B.pi.T;
-                    SparseMatrix L = B.L_lu, U = B.U_lu;
+                B.MakeLU();
+                Subplot(3, 2, 2);
+                Spy(B.L_lu, 1e-15);
 
-                    Spy(L, 1e-15);
-                    Spy(U, 1e-15);
-                    Spy(L[pT, ""] * U, 1e-15);
+                Subplot(3, 2, 4);
+                Spy(B.U_lu, 1e-15);
 
-                }
+
+                var I = SparseMatrix.Symrcm(B);
+                B = B[I, I];
+                Subplot(3, 2, 1);
+                Spy(B, 1e-15);
+
+                B.MakeLU();
+                Subplot(3, 2, 3);
+                Spy(B.L_lu, 1e-15);
+
+                Subplot(3, 2, 5);
+                Spy(B.U_lu, 1e-15);
             }
             /// </code>
             
