@@ -86,9 +86,9 @@ In this case, we have a set of measurements in a ColVec and we want to pass them
    .. terminal::
    
       Result at x = 
-         0.0000    1.0000    2.0000
+      0 1 2
        is: 
-         3.0000    6.0000   11.0000
+      3 6 11
       
    
 
