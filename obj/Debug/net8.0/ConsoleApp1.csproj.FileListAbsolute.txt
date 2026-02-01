@@ -386,3 +386,7 @@ C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net8.0\refin
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net8.0\ConsoleApp1.pdb
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net8.0\ConsoleApp1.genruntimeconfig.cache
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net8.0\ref\ConsoleApp1.dll
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\ComputationalGeometry2021.dll
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\SepalSolver.PlotLib.pdb
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\SepalSolver.pdb
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\SepalSolver.xml

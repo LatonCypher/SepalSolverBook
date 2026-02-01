@@ -139,8 +139,49 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             /// 
             /// <code>
             {
+                // Load squid matrix 
+                SparseMatrix S = SparseMatrix.Squid();
+
+                // Add more weight to the diagonal
+                S += 20 * SparseMatrix.Eye(S.Rows);
+
+                // Visualize the sparsity pattern
+                Subplot(2, 2, 0); Spy(S);
+                Title("Squid");
+
+                // Perform cholesky factorization
+                S.MakeChol();
+
+                // Visualize the sparsity pattern of the cholesky factor
+                Subplot(2, 2, 2); Spy(S.L_chol);
+                Title("Cholesky factor of Squid");
+
+                // Compute AMD reordering permutation
+                Indexer I = SparseMatrix.Symamd(S);
+
+                // Reorder the squid
+                SparseMatrix T = S[I, I];
+
+                // Visualize reordered matrix
+                Subplot(2, 2, 1); Spy(T, 1e-15);
+                Title("Reodered Squid");
+
+                // Perform cholesky factorization of the 
+                T.MakeChol();
+
+                // Visualize the cholesky factor of the reordered matrix
+                Subplot(2, 2, 3); Spy(T.L_chol);
+                Title("Cholesky factor of reodered Squid");
+
+                SaveAs("AMD_reordering_of_Squid.png");
+                CloseFig();
+            }
+            /// </code>
+            /// 
+            /// <code>
+            {
                 SparseMatrix B = SparseMatrix.Bucky(), R, S;
-                B = B + 4 * SparseMatrix.Eye(60);
+                B += 20 * SparseMatrix.Eye(B.Rows);
                 PermIndexer r = SparseMatrix.Symrcm(B), p = SparseMatrix.Symamd(B);
                 R = B[r, r]; S = B[p, p]; B.MakeChol(); R.MakeChol(); S.MakeChol();
 
@@ -161,35 +202,80 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             /// <code>
             {
                 SparseMatrix B = SparseMatrix.Bucky();
+                B += 20 * SparseMatrix.Eye(B.Rows);
 
                 Subplot(3, 2, 0);
                 Spy(B, 1e-15);
+                Title("Bucky");
 
                 B.MakeLU();
                 Subplot(3, 2, 2);
                 Spy(B.L_lu, 1e-15);
+                Title("L factor of Bucky");
 
                 Subplot(3, 2, 4);
                 Spy(B.U_lu, 1e-15);
+                Title("U factor of Bucky");
 
-
+                // AMD reordering of Bucky
                 var I = SparseMatrix.Symamd(B);
                 B = B[I, I];
                 Subplot(3, 2, 1);
                 Spy(B, 1e-15);
+                Title("Reordered Bucky");
 
                 B.MakeLU();
                 Subplot(3, 2, 3);
                 Spy(B.L_lu, 1e-15);
+                Title("L factor of Reordered Bucky");
 
                 Subplot(3, 2, 5);
                 Spy(B.U_lu, 1e-15);
+                Title("U factor of Reordered Bucky");
 
                 SaveAs("AMD_reordering_of_Bucky.png");
                 CloseFig();
             }
             /// </code>
-            
+            /// 
+            /// /// <code>
+            {
+                SparseMatrix B = SparseMatrix.Bucky();
+                B += 20 * SparseMatrix.Eye(B.Rows);
+
+                Subplot(3, 2, 0);
+                Spy(B, 1e-15);
+                Title("Bucky");
+
+                B.MakeLU();
+                Subplot(3, 2, 2);
+                Spy(B.L_lu, 1e-15);
+                Title("L factor of Bucky");
+
+                Subplot(3, 2, 4);
+                Spy(B.U_lu, 1e-15);
+                Title("U factor of Bucky");
+
+                // RCM reordering of Bucky
+                var I = SparseMatrix.Symrcm(B);
+                B = B[I, I];
+                Subplot(3, 2, 1);
+                Spy(B, 1e-15);
+                Title("Reordered Bucky");
+
+                B.MakeLU();
+                Subplot(3, 2, 3);
+                Spy(B.L_lu, 1e-15);
+                Title("L factor of Reordered Bucky");
+
+                Subplot(3, 2, 5);
+                Spy(B.U_lu, 1e-15);
+                Title("U factor of Reordered Bucky");
+
+                SaveAs("RCM_reordering_of_Bucky.png");
+                CloseFig();
+            }
+            /// </code>
             /// </BookContent>
         }
     }

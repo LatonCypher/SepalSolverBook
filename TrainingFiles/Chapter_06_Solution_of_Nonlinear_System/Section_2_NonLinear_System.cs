@@ -111,8 +111,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             ///  Output          | Scalar root  | Vector solution  
             ///  </table>
             ///  
-            /// <header 2> Summary </header>
-            ///  ``Fsolve`` is SelapSolver’s go-to tool for solving nonlinear systems. It is powerful and flexible, but demands careful choice of initial guesses and problem formulation to ensure convergence.
+            /// 
             ///  
             /// <header 2> Parameterized Equations </header>
             /// Parameterized nonlinear equations :math:`F(x, \lambda) = 0` are equations or systems of equations that depend on one or more parameters: math:`\lambda`. They are widely used in mathematics, engineering, and economics to study how solutions change as parameters vary, enabling sensitivity analysis, bifurcation studies, and optimization.
@@ -176,6 +175,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             }
             /// </code>
             /// </example>
+            /// 
+            /// <header 2> Summary </header>
+            ///  ``Fsolve`` is SelapSolver’s go-to tool for solving nonlinear systems. It is powerful and flexible, but demands careful choice of initial guesses and problem formulation to ensure convergence.
             /// </BookContent>
         }
     }

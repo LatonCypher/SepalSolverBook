@@ -512,36 +512,6 @@
           }
         }
       },
-      "SepalSolver/0.0.77": {
-        "dependencies": {
-          "Highs.Native": "1.12.0",
-          "Microsoft.CodeAnalysis.CSharp.Scripting": "5.0.0",
-          "System.Drawing.Common": "10.0.2"
-        },
-        "runtime": {
-          "lib/netstandard2.1/SepalSolver.dll": {
-            "assemblyVersion": "0.0.77.0",
-            "fileVersion": "0.0.77.0"
-          }
-        }
-      },
-      "SepalSolver.PlotLib/0.0.77": {
-        "dependencies": {
-          "CSharpMath": "0.5.1",
-          "CSharpMath.SkiaSharp": "0.5.1",
-          "FFmpeg.AutoGen": "8.0.0",
-          "Magick.NET-Q16-AnyCPU": "14.10.0",
-          "Magick.NET.Core": "14.10.0",
-          "ScottPlot": "5.1.57",
-          "SepalSolver": "0.0.77"
-        },
-        "runtime": {
-          "lib/netstandard2.1/SepalSolver.PlotLib.dll": {
-            "assemblyVersion": "0.0.77.0",
-            "fileVersion": "0.0.77.0"
-          }
-        }
-      },
       "SkiaSharp/3.119.0": {
         "dependencies": {
           "SkiaSharp.NativeAssets.Win32": "3.119.0",
@@ -690,6 +660,44 @@
             "fileVersion": "9.0.24.52809"
           }
         }
+      },
+      "SepalSolver/0.0.77": {
+        "dependencies": {
+          "Highs.Native": "1.12.0",
+          "Microsoft.CodeAnalysis.CSharp.Scripting": "5.0.0",
+          "System.Drawing.Common": "10.0.2"
+        },
+        "runtime": {
+          "SepalSolver.dll": {
+            "assemblyVersion": "0.0.77.0",
+            "fileVersion": "0.0.77.0"
+          }
+        }
+      },
+      "SepalSolver.PlotLib/0.0.77": {
+        "dependencies": {
+          "CSharpMath": "0.5.1",
+          "CSharpMath.SkiaSharp": "0.5.1",
+          "FFmpeg.AutoGen": "8.0.0",
+          "Magick.NET-Q16-AnyCPU": "14.10.0",
+          "Magick.NET.Core": "14.10.0",
+          "ScottPlot": "5.1.57",
+          "SepalSolver": "0.0.77"
+        },
+        "runtime": {
+          "SepalSolver.PlotLib.dll": {
+            "assemblyVersion": "0.0.77.0",
+            "fileVersion": "0.0.77.0"
+          }
+        }
+      },
+      "ComputationalGeometry2021/1.0.0.0": {
+        "runtime": {
+          "ComputationalGeometry2021.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -825,20 +833,6 @@
       "path": "scottplot/5.1.57",
       "hashPath": "scottplot.5.1.57.nupkg.sha512"
     },
-    "SepalSolver/0.0.77": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-/A5J0t4085j6ZcgJ6dXPN2wJL4B4FXfKRgKqj+Q6JhlbC3TTlZlC18Oclusy0uPpFIK9KqVk477Ysm1xc7jDyw==",
-      "path": "sepalsolver/0.0.77",
-      "hashPath": "sepalsolver.0.0.77.nupkg.sha512"
-    },
-    "SepalSolver.PlotLib/0.0.77": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-yRNR5ZhDnkaeUnCQea6jTrUaVaVj10LANVq2CD+2MeWOGgfLDE2gzpALE32odddZm2KhVC0cSbiM1unqUqjN2w==",
-      "path": "sepalsolver.plotlib/0.0.77",
-      "hashPath": "sepalsolver.plotlib.0.0.77.nupkg.sha512"
-    },
     "SkiaSharp/3.119.0": {
       "type": "package",
       "serviceable": true,
@@ -894,6 +888,21 @@
       "sha512": "sha512-ANiqLu3DxW9kol/hMmTWbt3414t9ftdIuiIU7j80okq2YzAueo120M442xk1kDJWtmZTqWQn7wHDvMRipVOEOQ==",
       "path": "system.reflection.metadata/9.0.0",
       "hashPath": "system.reflection.metadata.9.0.0.nupkg.sha512"
+    },
+    "SepalSolver/0.0.77": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SepalSolver.PlotLib/0.0.77": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ComputationalGeometry2021/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

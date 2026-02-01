@@ -141,9 +141,7 @@ Comparison with fzero
      - Scalar root
      - Vector solution
 
-Summary
--------
-``Fsolve`` is SelapSolver’s go-to tool for solving nonlinear systems. It is powerful and flexible, but demands careful choice of initial guesses and problem formulation to ensure convergence.
+
 
 Parameterized Equations
 -----------------------
@@ -255,3 +253,7 @@ The SepalSolver also allow for easy computation of matrix equations. For instanc
         -0.1291    0.8602
          1.2903    1.1612
       
+
+Summary
+-------
+``Fsolve`` is SelapSolver’s go-to tool for solving nonlinear systems. It is powerful and flexible, but demands careful choice of initial guesses and problem formulation to ensure convergence.

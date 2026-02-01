@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.12.35728.132
+# Visual Studio Version 18
+VisualStudioVersion = 18.2.11415.280 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1.csproj", "{B7973652-B3AC-4169-A421-6B9EC073CA8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SepalSolver", "..\sepalsolver\SepalSolver\SepalSolver.csproj", "{38444283-8F1E-3A0C-7445-848A0E849057}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SepalSolver.PlotLib", "..\sepalsolver\SepalSolver.PlotLib\SepalSolver.PlotLib.csproj", "{1AACEB31-9B3A-35AD-F134-2BF127A2FC09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +19,19 @@ Global
 		{B7973652-B3AC-4169-A421-6B9EC073CA8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7973652-B3AC-4169-A421-6B9EC073CA8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7973652-B3AC-4169-A421-6B9EC073CA8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38444283-8F1E-3A0C-7445-848A0E849057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38444283-8F1E-3A0C-7445-848A0E849057}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38444283-8F1E-3A0C-7445-848A0E849057}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38444283-8F1E-3A0C-7445-848A0E849057}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AACEB31-9B3A-35AD-F134-2BF127A2FC09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AACEB31-9B3A-35AD-F134-2BF127A2FC09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AACEB31-9B3A-35AD-F134-2BF127A2FC09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AACEB31-9B3A-35AD-F134-2BF127A2FC09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {345736CE-DC46-4E44-98D9-5F9AEFC742CD}
 	EndGlobalSection
 EndGlobal

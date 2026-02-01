@@ -37,7 +37,7 @@ Examples
       Console.WriteLine($"Coefficients: [{string.Join(", ", coefficients.Select(n => n.ToString("F4")))}]");
    
       // Plotting the results
-      Scatter(X, Y, "fob"); hold = true;
+      Scatter(X, Y, "fob", 15); hold = true;
       double[] x = Linspace(1, 4);
       double[] y = [..x.Select(x => Polyval(coefficients, x))];
       Plot(x, y, "r", Linewidth: 2); hold = false;

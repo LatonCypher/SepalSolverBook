@@ -575,43 +575,6 @@
           }
         }
       },
-      "SepalSolver/0.0.77": {
-        "type": "package",
-        "dependencies": {
-          "Highs.Native": "1.12.0",
-          "Microsoft.CSharp": "4.7.0",
-          "Microsoft.CodeAnalysis.CSharp.Scripting": "5.0.0",
-          "System.Drawing.Common": "10.0.2"
-        },
-        "compile": {
-          "lib/netstandard2.1/SepalSolver.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.1/SepalSolver.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "SepalSolver.PlotLib/0.0.77": {
-        "type": "package",
-        "dependencies": {
-          "CSharpMath": "0.5.1",
-          "CSharpMath.SkiaSharp": "0.5.1",
-          "FFmpeg.AutoGen": "8.0.0",
-          "Magick.NET-Q16-AnyCPU": "14.10.0",
-          "Magick.NET.Core": "14.10.0",
-          "ScottPlot": "5.1.57",
-          "SepalSolver": "0.0.77"
-        },
-        "compile": {
-          "lib/netstandard2.1/SepalSolver.PlotLib.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.1/SepalSolver.PlotLib.dll": {}
-        }
-      },
       "SkiaSharp/3.119.0": {
         "type": "package",
         "dependencies": {
@@ -832,6 +795,41 @@
           "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "SepalSolver/0.0.77": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "Highs.Native": "1.12.0",
+          "Microsoft.CSharp": "4.7.0",
+          "Microsoft.CodeAnalysis.CSharp.Scripting": "5.0.0",
+          "System.Drawing.Common": "10.0.2"
+        },
+        "compile": {
+          "bin/placeholder/SepalSolver.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SepalSolver.dll": {}
+        }
+      },
+      "SepalSolver.PlotLib/0.0.77": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "CSharpMath": "0.5.1",
+          "CSharpMath.SkiaSharp": "0.5.1",
+          "FFmpeg.AutoGen": "8.0.0",
+          "Magick.NET-Q16-AnyCPU": "14.10.0",
+          "Magick.NET.Core": "14.10.0",
+          "ScottPlot": "5.1.57",
+          "SepalSolver": "0.0.77"
+        },
+        "compile": {
+          "bin/placeholder/SepalSolver.PlotLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SepalSolver.PlotLib.dll": {}
         }
       }
     }
@@ -2166,32 +2164,6 @@
         "scottplot.nuspec"
       ]
     },
-    "SepalSolver/0.0.77": {
-      "sha512": "/A5J0t4085j6ZcgJ6dXPN2wJL4B4FXfKRgKqj+Q6JhlbC3TTlZlC18Oclusy0uPpFIK9KqVk477Ysm1xc7jDyw==",
-      "type": "package",
-      "path": "sepalsolver/0.0.77",
-      "files": [
-        ".nupkg.metadata",
-        "README.md",
-        "lib/netstandard2.1/SepalSolver.dll",
-        "lib/netstandard2.1/SepalSolver.xml",
-        "sepalsolver.0.0.77.nupkg.sha512",
-        "sepalsolver.nuspec",
-        "sepalsolver.png"
-      ]
-    },
-    "SepalSolver.PlotLib/0.0.77": {
-      "sha512": "yRNR5ZhDnkaeUnCQea6jTrUaVaVj10LANVq2CD+2MeWOGgfLDE2gzpALE32odddZm2KhVC0cSbiM1unqUqjN2w==",
-      "type": "package",
-      "path": "sepalsolver.plotlib/0.0.77",
-      "files": [
-        ".nupkg.metadata",
-        "README.md",
-        "lib/netstandard2.1/SepalSolver.PlotLib.dll",
-        "sepalsolver.plotlib.0.0.77.nupkg.sha512",
-        "sepalsolver.plotlib.nuspec"
-      ]
-    },
     "SkiaSharp/3.119.0": {
       "sha512": "gR9yVoOta2Mc1Rxt15LD65AckfHMfwjIs/3kkD59C9bT2nYYISsE6uz3t4aMPNHA6CgsIL0Ssn+jE5OVilZ1yw==",
       "type": "package",
@@ -2556,6 +2528,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "SepalSolver/0.0.77": {
+      "type": "project",
+      "path": "../sepalsolver/SepalSolver/SepalSolver.csproj",
+      "msbuildProject": "../sepalsolver/SepalSolver/SepalSolver.csproj"
+    },
+    "SepalSolver.PlotLib/0.0.77": {
+      "type": "project",
+      "path": "../sepalsolver/SepalSolver.PlotLib/SepalSolver.PlotLib.csproj",
+      "msbuildProject": "../sepalsolver/SepalSolver.PlotLib/SepalSolver.PlotLib.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2598,7 +2580,14 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver.PlotLib\\SepalSolver.PlotLib.csproj": {
+              "projectPath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver.PlotLib\\SepalSolver.PlotLib.csproj"
+            },
+            "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\SepalSolver.csproj": {
+              "projectPath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\SepalSolver.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -2616,16 +2605,6 @@
     "frameworks": {
       "net8.0": {
         "targetAlias": "net8.0",
-        "dependencies": {
-          "SepalSolver": {
-            "target": "Package",
-            "version": "[0.0.77, )"
-          },
-          "SepalSolver.PlotLib": {
-            "target": "Package",
-            "version": "[0.0.77, )"
-          }
-        },
         "imports": [
           "net461",
           "net462",
@@ -2645,5 +2624,19 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://nuget.pkg.github.com/cyphercrescent/index.json."
+    },
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json."
+    }
+  ]
 }

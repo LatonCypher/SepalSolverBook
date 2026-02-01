@@ -1,18 +1,4 @@
-﻿using ScottPlot;
-using ScottPlot.LegendLayouts;
-using ScottPlot.Palettes;
-using ScottPlot.PlotStyles;
-using ScottPlot.TickGenerators.TimeUnits;
-using SepalSolver;
-using System;
-using System.ComponentModel;
-using System.IO;
-using System.Net.NetworkInformation;
-using System.Numerics;
-using System.Reflection.PortableExecutable;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
 {
     public class Section_2_Polynomial_Fitting
     {
@@ -48,7 +34,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
                 Console.WriteLine($"Coefficients: [{string.Join(", ", coefficients.Select(n => n.ToString("F4")))}]");
 
                 // Plotting the results
-                Scatter(X, Y, "fob"); hold = true;
+                Scatter(X, Y, "fob", 15); hold = true;
                 double[] x = Linspace(1, 4);
                 double[] y = [..x.Select(x => Polyval(coefficients, x))];
                 Plot(x, y, "r", Linewidth: 2); hold = false;
