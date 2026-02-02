@@ -169,24 +169,24 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             ///      
             /// 2. **Compute 7 products** (instead of 8)
             /// <math>
-            ///     \begin{array}
-            ///         M_1 = \left(A_{11} + A_{22}\right)\left(B_{11} + B_{22}\right) \\
-            ///         M_2 = \left(A_{21} + A_{22}\right)B_{11} \\
-            ///         M_3 = A_{11}\left(B_{12} - B_{22}\left) \\
-            ///         M_4 = A_{22}\left(B_{21} - B_{11}\left) \\
-            ///         M_5 = \left(A_{11} + A_{12}\right)B_{22} \\
-            ///         M_6 = \left(A_{21} - A_{11}\right)\left(B_{11} + B_{12}\right) \\
-            ///         M_7 = \left(A_{12} - A_{22}\right)\left(B_{21} + B_{22}\right)
+            ///     \begin{array}{cc}
+            ///         M_1 =& \left(A_{11} + A_{22}\right)\left(B_{11} + B_{22}\right) \\
+            ///         M_2 =& \left(A_{21} + A_{22}\right)B_{11} \\
+            ///         M_3 =& A_{11}\left(B_{12} - B_{22}\left) \\
+            ///         M_4 =& A_{22}\left(B_{21} - B_{11}\left) \\
+            ///         M_5 =& \left(A_{11} + A_{12}\right)B_{22} \\
+            ///         M_6 =& \left(A_{21} - A_{11}\right)\left(B_{11} + B_{12}\right) \\
+            ///         M_7 =& \left(A_{12} - A_{22}\right)\left(B_{21} + B_{22}\right)
             ///     \end{array}
             /// </math>
             ///     
             /// 3. **Combine results** to form the product matrix::
             /// <math>
-            ///     \begin{array}
-            ///         C_{11} = M_1 + M_4 - M_5 + M_7 \\
-            ///         C_{12} = M_3 + M_5 \\
-            ///         C_{21} = M_2 + M_4 \\
-            ///         C_{22} = M_1 - M_2 + M_3 + M_6
+            ///     \begin{array}{cc}
+            ///         C_{11} =& M_1 + M_4 - M_5 + M_7 \\
+            ///         C_{12} =& M_3 + M_5 \\
+            ///         C_{21} =& M_2 + M_4 \\
+            ///         C_{22} =& M_1 - M_2 + M_3 + M_6
             ///     \end{array}
             /// </math>
             /// 
