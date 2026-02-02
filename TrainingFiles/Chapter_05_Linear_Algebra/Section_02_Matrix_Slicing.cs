@@ -154,47 +154,49 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             /// Algorithm Steps
             /// ---------------
             /// 
-            /// 1. **Divide**: Split each n×n matrix into four (n/2)×(n/2) submatrices::
-            /// 
-            /// :math:`
-            /// A = \begin{pmatrix}
-            ///       A_{11} & A_{12} \\
-            ///       A_{21} & A_{22}
-            ///     \end{pmatrix}`
-            ///     
-            /// :math:`
-            /// B = \begin{pmatrix}
-            ///       B_{11} & B_{12} \\
-            ///       B_{21} & B_{22}
-            ///     \end{pmatrix}`
+            /// 1. **Divide**: Split each n×n matrix into four (n/2)×(n/2) submatrices
+            /// <math>
+            ///     A = \begin{pmatrix}
+            ///             A_{11} & A_{12} \\
+            ///             A_{21} & A_{22}
+            ///         \end{pmatrix}
+            ///         
+            ///     B = \begin{pmatrix}
+            ///             B_{11} & B_{12} \\
+            ///             B_{21} & B_{22}
+            ///         \end{pmatrix}
+            /// </math>
             ///      
             /// 2. **Compute 7 products (instead of 8)**::
-            /// :math:`
-            /// \begin{array}
-            ///     M_1 &=& (A_{11} + A_{22})(_{B11} + B_{22}) \\
-            ///     M_2 &=& (A_{21} + A_{22})B_{11} \\
-            ///     M_3 &=& A_{11}(B_{12} - B_{22}) \\
-            ///     M_4 &=& A_{22}(B_{21} - B_{11}) \\
-            ///     M_5 &=& (A_{11} + A_{12})B_{22} \\
-            ///     M_6 &=& (A_{21} - A_{11})(B_{11} + B_{12}) \\
-            ///     M_7 &=& (A_{12} - A_{22})(B_{21} + B_{22})
-            /// \end{array}`
+            /// <math>
+            ///     \begin{array}
+            ///         M_1 &=& (A_{11} + A_{22})(_{B11} + B_{22}) \\
+            ///         M_2 &=& (A_{21} + A_{22})B_{11} \\
+            ///         M_3 &=& A_{11}(B_{12} - B_{22}) \\
+            ///         M_4 &=& A_{22}(B_{21} - B_{11}) \\
+            ///         M_5 &=& (A_{11} + A_{12})B_{22} \\
+            ///         M_6 &=& (A_{21} - A_{11})(B_{11} + B_{12}) \\
+            ///         M_7 &=& (A_{12} - A_{22})(B_{21} + B_{22})
+            ///     \end{array}
+            /// </math>
             ///     
             /// 3. **Combine results** to form the product matrix::
-            ///  :math:`
-            ///  \begin{array}
-            ///     C_{11} = M_1 + M_4 - M_5 + M_7
-            ///     C_{12} = M_3 + M_5
-            ///     C_{21} = M_2 + M_4
-            ///     C_{22} = M_1 - M_2 + M_3 + M_6
-            /// \end{array}`
+            /// <math>
+            ///     \begin{array}
+            ///         C_{11} = M_1 + M_4 - M_5 + M_7
+            ///         C_{12} = M_3 + M_5
+            ///         C_{21} = M_2 + M_4
+            ///         C_{22} = M_1 - M_2 + M_3 + M_6
+            ///     \end{array}
+            /// </math>
             /// 
             /// 4. ** Return the result
-            ///  :math:`
-            /// C = \begin{pmatrix}
-            ///       C_{11} & C_{12} \\
-            ///       C_{21} & C_{22}
-            ///     \end{pmatrix}`
+            /// <math>
+            ///     C = \begin{pmatrix}
+            ///             C_{11} & C_{12} \\
+            ///             C_{21} & C_{22}
+            ///         \end{pmatrix}
+            /// </math>
             ///     
             /// Advantages
             /// ----------
@@ -217,7 +219,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             /// -Machine learning (deep learning frameworks).
             /// 
             /// <code>
-
             {
                 static Matrix Strass(Matrix A, Matrix B)
                 {
