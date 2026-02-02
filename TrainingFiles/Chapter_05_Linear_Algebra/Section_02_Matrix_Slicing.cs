@@ -156,27 +156,27 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             /// 
             /// 1. **Divide**: Split each n×n matrix into four (n/2)×(n/2) submatrices
             /// <math>
-            ///     A = \begin{pmatrix}
+            ///     A = \begin{bmatrix}
             ///             A_{11} & A_{12} \\
             ///             A_{21} & A_{22}
-            ///         \end{pmatrix}
+            ///         \end{bmatrix}
             ///         
-            ///     B = \begin{pmatrix}
+            ///     B = \begin{bmatrix}
             ///             B_{11} & B_{12} \\
             ///             B_{21} & B_{22}
-            ///         \end{pmatrix}
+            ///         \end{bmatrix}
             /// </math>
             ///      
-            /// 2. **Compute 7 products (instead of 8)**::
+            /// 2. **Compute 7 products** (instead of 8)
             /// <math>
             ///     \begin{array}
-            ///         M_1 &=& (A_{11} + A_{22})(_{B11} + B_{22}) \\
-            ///         M_2 &=& (A_{21} + A_{22})B_{11} \\
-            ///         M_3 &=& A_{11}(B_{12} - B_{22}) \\
-            ///         M_4 &=& A_{22}(B_{21} - B_{11}) \\
-            ///         M_5 &=& (A_{11} + A_{12})B_{22} \\
-            ///         M_6 &=& (A_{21} - A_{11})(B_{11} + B_{12}) \\
-            ///         M_7 &=& (A_{12} - A_{22})(B_{21} + B_{22})
+            ///         M_1 &=& \left(A_{11} + A_{22}\right)\left(B_{11} + B_{22}\right) \\
+            ///         M_2 &=& \left(A_{21} + A_{22}\right)B_{11} \\
+            ///         M_3 &=& A_{11}\left(B_{12} - B_{22}\left) \\
+            ///         M_4 &=& A_{22}\left(B_{21} - B_{11}\left) \\
+            ///         M_5 &=& \left(A_{11} + A_{12}\right)B_{22} \\
+            ///         M_6 &=& \left(A_{21} - A_{11}\right)\left(B_{11} + B_{12}\right) \\
+            ///         M_7 &=& \left(A_{12} - A_{22}\right)\left(B_{21} + B_{22}\right)
             ///     \end{array}
             /// </math>
             ///     
@@ -192,28 +192,29 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             /// 
             /// 4. ** Return the result
             /// <math>
-            ///     C = \begin{pmatrix}
+            ///     C = \begin{bmatrix}
             ///             C_{11} & C_{12} \\
             ///             C_{21} & C_{22}
-            ///         \end{pmatrix}
+            ///         \end{bmatrix}
             /// </math>
+            /// 
             ///     
-            /// Advantages
-            /// ----------
+            /// <header 2> Advantages </header>
             /// 
             /// - Fewer multiplications → faster for large matrices.
             /// - Foundation for advanced algorithms (e.g., Coppersmith–Winograd).
             /// - Works over any ring (addition and multiplication defined).
             /// 
-            /// Limitations
-            /// -----------
+            /// 
+            /// <header 2> Limitations </header>
             /// 
             /// - Overhead of additions makes it slower for small matrices.
             /// - Numerical stability issues (rounding errors).
             /// - Not optimal compared to modern optimized libraries (BLAS, GPU-based methods).
             /// 
-            /// Applications
-            /// ------------
+            /// 
+            /// <header 2> Applications </header>
+            /// 
             /// -Computer graphics (large matrix transformations).
             /// -Scientific computing (linear algebra problems).
             /// -Machine learning (deep learning frameworks).
