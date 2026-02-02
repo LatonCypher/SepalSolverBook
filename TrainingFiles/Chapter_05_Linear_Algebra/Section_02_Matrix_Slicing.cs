@@ -121,23 +121,34 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             /// 
             /// <header 2> Application of Matrix Slicing: Strassen Multiplication </header>
             /// Strassen’s Matrix Multiplication
-            /// Overview
-            /// --------
+            /// <header 2> Overview </header>
+            /// 
             /// 
             /// - **Inventor**: Volker Strassen, 1969
             /// - **Purpose**: Improve efficiency of matrix multiplication beyond the classical cubic-time algorithm.
             /// - **Key Idea**: Replace some multiplications with additions/subtractions by reorganizing computation.
             /// 
-            /// Standard vs. Strassen Multiplication
-            /// -----------------------------------
+            /// <header 2> Standard vs. Strassen Multiplication </header>
             /// 
             /// <table>
-            /// Feature              | Standard Algorithm| Strassen Algorithm 
-            /// Approach             | Direct row-by-column multiplication   | Divide-and-conquer with recursive submatrices
-            /// Multiplications for 2×2 matrices   | 8                 | 7           
-            /// Additions/Subtractions| 4                | 18            
-            /// Time Complexity      | O(n^3)            | O(n^(log2 7)) ≈  O(n^2.81)    
-            /// Best Use Case        | Small matrices    | Large matrices     
+            /// +--------------------+----------------------+--------------------+
+            /// | Feature            | Standard Algorithm   | Strassen Algorithm | 
+            /// +--------------------+----------------------+--------------------+
+            /// | Approach           | Direct row-by-column | Divide-and-conquer |
+            /// |                    | multiplication       | with recursive     |   
+            /// |                    |                      | submatrices        |
+            /// +--------------------+----------------------+--------------------+
+            /// | Multiplications    | 8                    | 7                  |      
+            /// | for 2×2 matrices   |                      |                    | 
+            /// +--------------------+----------------------+--------------------+
+            /// | Additions/         | 4                    | 18                 |
+            /// | Subtractions       |                      |                    |
+            /// +--------------------+----------------------+--------------------+
+            /// | Time Complexity    | O(n^3)               | O(n^(log2 7))      |   
+            /// |                    |                      | ≈ O(n^2.81)        |
+            /// +--------------------+----------------------+--------------------+
+            /// | Best Use Case      | Small matrices       | Large matrices     |  
+            /// +--------------------+----------------------+--------------------+
             /// </table>
             /// 
             /// Algorithm Steps
@@ -145,26 +156,45 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             /// 
             /// 1. **Divide**: Split each n×n matrix into four (n/2)×(n/2) submatrices::
             /// 
-            /// A = [A11, A12,
-            ///      A21, A22]
-            ///      
-            /// B = [B11, B12,
-            ///      B21, B22]
+            /// :math:`
+            /// A = \begin{pmatrix}
+            ///       A_{11} & A_{12} \\
+            ///       A_{21} & A_{22}
+            ///     \end{pmatrix}`
+            ///     
+            /// :math:`
+            /// B = \begin{pmatrix}
+            ///       B_{11} & B_{12} \\
+            ///       B_{21} & B_{22}
+            ///     \end{pmatrix}`
             ///      
             /// 2. **Compute 7 products (instead of 8)**::
-            ///     M1 = (A11 + A22)(B11 + B22)
-            ///     M2 = (A21 + A22)B11
-            ///     M3 = A11(B12 - B22)
-            ///     M4 = A22(B21 - B11)
-            ///     M5 = (A11 + A12)B22
-            ///     M6 = (A21 - A11)(B11 + B12)
-            ///     M7 = (A12 - A22)(B21 + B22)
+            /// :math:`
+            /// \begin{array}
+            ///     M_1 &=& (A_{11} + A_{22})(_{B11} + B_{22}) \\
+            ///     M_2 &=& (A_{21} + A_{22})B_{11} \\
+            ///     M_3 &=& A_{11}(B_{12} - B_{22}) \\
+            ///     M_4 &=& A_{22}(B_{21} - B_{11}) \\
+            ///     M_5 &=& (A_{11} + A_{12})B_{22} \\
+            ///     M_6 &=& (A_{21} - A_{11})(B_{11} + B_{12}) \\
+            ///     M_7 &=& (A_{12} - A_{22})(B_{21} + B_{22})
+            /// \end{array}`
             ///     
             /// 3. **Combine results** to form the product matrix::
-            ///     C11 = M1 + M4 - M5 + M7
-            ///     C12 = M3 + M5
-            ///     C21 = M2 + M4
-            ///     C22 = M1 - M2 + M3 + M6
+            ///  :math:`
+            ///  \begin{array}
+            ///     C_{11} = M_1 + M_4 - M_5 + M_7
+            ///     C_{12} = M_3 + M_5
+            ///     C_{21} = M_2 + M_4
+            ///     C_{22} = M_1 - M_2 + M_3 + M_6
+            /// \end{array}`
+            /// 
+            /// 4. ** Return the result
+            ///  :math:`
+            /// C = \begin{pmatrix}
+            ///       C_{11} & C_{12} \\
+            ///       C_{21} & C_{22}
+            ///     \end{pmatrix}`
             ///     
             /// Advantages
             /// ----------
@@ -189,7 +219,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             /// <code>
 
             {
-
                 static Matrix Strass(Matrix A, Matrix B)
                 {
                     if (A.Cols != B.Rows)
@@ -224,7 +253,11 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
                         C22 = M1 - M2 + M3 + M6,
 
                         // Step 4: Assemble the final matrix
-                        C = new Matrix[,] { { C11, C12 }, { C21, C22 } };
+                        C = new Matrix[,] 
+                        {
+                            { C11, C12 }, 
+                            { C21, C22 } 
+                        };
                         return C;
                     }
                 }
