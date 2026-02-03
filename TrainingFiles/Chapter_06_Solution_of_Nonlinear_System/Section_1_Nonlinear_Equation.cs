@@ -160,6 +160,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                 Plot(Pr[Pr <= 8], ZHY[Pr <= 8, ..], "k"); hold  = true;
                 Plot(Pr[Pr >= 7] - 7, ZHY[Pr >= 7, ..] - 0.9, "k"); hold = false;
                 SaveAs("Hall_Yarborough_Chart.png");
+                CloseFig();
             }
 
             /// </code>
@@ -217,6 +218,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                 Plot(Pr[Pr <= 8], ZDAK[Pr <= 8, ..], "k"); hold  = true;
                 Plot(Pr[Pr >= 7] - 7, ZDAK[Pr >= 7, ..] - 0.9, "k"); hold = false;
                 SaveAs("Dranchuk_Abou_Kassem_Chart.png");
+                CloseFig();
             }
             /// </code>
             /// 
@@ -264,6 +266,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                 Plot(Pr[Pr <= 8], ZDPR[Pr <= 8, ..], "k"); hold  = true;
                 Plot(Pr[Pr >= 7] - 7, ZDPR[Pr >= 7, ..] - 0.9, "k"); hold = false;
                 SaveAs("Dranchuk_Abou_Kassem_Chart.png");
+                CloseFig();
             }
             /// </code>
             /// </BookContent>

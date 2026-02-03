@@ -299,15 +299,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
                 A *= 10;
                 Console.WriteLine(A);
 
-                // Extract all values greater than 0.5
-                var L = A[A > 0.5];
-                Console.WriteLine(L);
-
                 // Set all elements less than 5 to zero
                 A[A < 5] = 0;
+                Console.WriteLine(A);
 
                 // Replace specific "masquerading" integers or outliers
-                A[A == -999] = double.NaN;
+                A[A > 9] = double.NaN;
+                Console.WriteLine(A);
             }
             /// </code>
             /// 
@@ -321,6 +319,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
                 A *= 10;
                 // Set values within the range (5, 8) to a new value
                 A[(A > 5).And(A < 8)] = 6.5;
+                Console.WriteLine(A);
             }
             /// </code>
             /// <header 3> Advantages </header>

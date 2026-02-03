@@ -213,6 +213,7 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
    Plot(Pr[Pr <= 8], ZHY[Pr <= 8, ..], "k"); hold  = true;
    Plot(Pr[Pr >= 7] - 7, ZHY[Pr >= 7, ..] - 0.9, "k"); hold = false;
    SaveAs("Hall_Yarborough_Chart.png");
+   CloseFig();
 
 
 
@@ -280,6 +281,7 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
    Plot(Pr[Pr <= 8], ZDAK[Pr <= 8, ..], "k"); hold  = true;
    Plot(Pr[Pr >= 7] - 7, ZDAK[Pr >= 7, ..] - 0.9, "k"); hold = false;
    SaveAs("Dranchuk_Abou_Kassem_Chart.png");
+   CloseFig();
 
 
 .. figure:: images/Zfactor_Dranchuk_Abou_Kassem.png
@@ -337,6 +339,7 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
    Plot(Pr[Pr <= 8], ZDPR[Pr <= 8, ..], "k"); hold  = true;
    Plot(Pr[Pr >= 7] - 7, ZDPR[Pr >= 7, ..] - 0.9, "k"); hold = false;
    SaveAs("Dranchuk_Abou_Kassem_Chart.png");
+   CloseFig();
 
 
 .. figure:: images/Zfactor_Dranchuk_Purvis_Robinson.png
