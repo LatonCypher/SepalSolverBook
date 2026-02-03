@@ -629,7 +629,7 @@
              </terminal>
              </example>
         </member>
-        <member name="M:SepalSolver.Math.Triu(SepalSolver.Matrix)">
+        <member name="M:SepalSolver.Math.Triu(SepalSolver.Matrix,System.Int32)">
              <summary>
              Extracts the upper triangular part of a matrix, setting all elements below the main diagonal to zero.
              This function returns a new matrix where A[i,j] = original A[i,j] if i ≤ j, and A[i,j] = 0 if i > j.
@@ -719,7 +719,7 @@
              </terminal>
              </example>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Tril(SepalSolver.Matrix)" -->
+        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Tril(SepalSolver.Matrix,System.Int32)" -->
         <member name="M:SepalSolver.Math.Flipud(SepalSolver.Matrix)">
              <summary>
              Flips a matrix vertically (up-down), reversing the order of rows while preserving the order of columns.
@@ -6887,6 +6887,12 @@
             </summary>
             <param name="Logicals"></param>
         </member>
+        <member name="M:SepalSolver.Indexer.#ctor(System.Collections.BitArray)">
+            <summary>
+            
+            </summary>
+            <param name="Logicals"></param>
+        </member>
         <member name="M:SepalSolver.Indexer.#ctor(System.Boolean[0:,0:])">
             <summary>
             
@@ -6918,6 +6924,12 @@
             <param name="value"></param>
         </member>
         <member name="M:SepalSolver.Indexer.op_Implicit(System.Boolean[])~SepalSolver.Indexer">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:SepalSolver.Indexer.op_Implicit(System.Collections.BitArray)~SepalSolver.Indexer">
             <summary>
             
             </summary>

@@ -192,24 +192,38 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
        return z;
    }
 
+
    // set up ressure and temperature mesh
-   double[] Pr = Linspace(0, 20, 501);
-   double[] Tr = [1.05,    1.08,   1.12,   1.18,   1.26,   1.35,   1.47,
-                  1.61,    1.75,   1.91,   2.09,   2.29,   2.62,   3.00];
+   ColVec Pr = Linspace(0, 15, 501);
+   double[] Tr = [1.05,    1.10,   1.15,   1.20,   1.25,   1.30,   1.35,
+                      1.40,    1.45,   1.50,   1.60,   1.70,   1.80,   1.90,
+                      2.00,    2.20,   2.40,   2.60,   2.80,   3.00];
 
    // compute z factors and plot them
    List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
    Matrix ZHY = Meshfun((p, t) => ZfactorHY(p, t), Pr, Tr);
 
+   // Plot result.
    Plot(Pr, ZHY);
    Legend(Tr.Select(tr => "Tr = " + tr), UpperRight);
    SaveAs("Zfactor_Hall_Yarborough_.png");
+
+   // Literature style plot
+   Figure(600, 800);
+   Plot(Pr[Pr <= 8], ZHY[Pr <= 8, ..], "k"); hold  = true;
+   Plot(Pr[Pr >= 7] - 7, ZHY[Pr >= 7, ..] - 0.9, "k"); hold = false;
+   SaveAs("Hall_Yarborough_Chart.png");
 
 
 
 .. figure:: images/Zfactor_Hall_Yarborough_.png
    :align: center
    :alt: Zfactor_Hall_Yarborough_.png
+
+
+.. figure:: images/Hall_Yarborough_Chart.png
+   :align: center
+   :alt: Hall_Yarborough_Chart.png
 
 
 
@@ -246,24 +260,36 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
        return z;
    }
 
-
    // set up ressure and temperature mesh
-   double[] Pr = Linspace(0, 20, 501);
-   double[] Tr = [1.05,    1.08,   1.12,   1.18,   1.26,   1.35,   1.47,
-                      1.61,    1.75,   1.91,   2.09,   2.29,   2.62,   3.00];
+   ColVec Pr = Linspace(0, 15, 501);
+   double[] Tr = [1.05,    1.10,   1.15,   1.20,   1.25,   1.30,   1.35,
+                      1.40,    1.45,   1.50,   1.60,   1.70,   1.80,   1.90,
+                      2.00,    2.20,   2.40,   2.60,   2.80,   3.00];
 
    // compute z factors and plot them
    List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
    Matrix ZDAK = Meshfun((p, t) => ZfactorDAK(p, t), Pr, Tr);
 
+   // Plot result.
    Plot(Pr, ZDAK);
-   Legend(Tr.Select(tr => "Tr = " + tr));
-   SaveAs("Zfactor_DAK.png");
+   Legend(Tr.Select(tr => "Tr = " + tr), UpperRight);
+   SaveAs("Zfactor_Dranchuk_Abou_Kassem.png");
+
+   // Literature style plot
+   Figure(600, 800);
+   Plot(Pr[Pr <= 8], ZDAK[Pr <= 8, ..], "k"); hold  = true;
+   Plot(Pr[Pr >= 7] - 7, ZDAK[Pr >= 7, ..] - 0.9, "k"); hold = false;
+   SaveAs("Dranchuk_Abou_Kassem_Chart.png");
 
 
-.. figure:: images/Zfactor_DAK.png
+.. figure:: images/Zfactor_Dranchuk_Abou_Kassem.png
    :align: center
-   :alt: Zfactor_DAK.png
+   :alt: Zfactor_Dranchuk_Abou_Kassem.png
+
+
+.. figure:: images/Dranchuk_Abou_Kassem_Chart.png
+   :align: center
+   :alt: Dranchuk_Abou_Kassem_Chart.png
 
 
 
@@ -292,20 +318,33 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
    }
 
    // set up ressure and temperature mesh
-   double[] Pr = Linspace(0, 20, 501);
-   double[] Tr = [1.05,    1.08,   1.12,   1.18,   1.26,   1.35,   1.47,
-                      1.61,    1.75,   1.91,   2.09,   2.29,   2.62,   3.00];
+   ColVec Pr = Linspace(0, 15, 501);
+   double[] Tr = [1.05,    1.10,   1.15,   1.20,   1.25,   1.30,   1.35,
+                      1.40,    1.45,   1.50,   1.60,   1.70,   1.80,   1.90,
+                      2.00,    2.20,   2.40,   2.60,   2.80,   3.00];
 
    // compute z factors and plot them
    List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
    Matrix ZDPR = Meshfun((p, t) => ZfactorDPR(p, t), Pr, Tr);
 
+   // Plot result.
    Plot(Pr, ZDPR);
-   Legend(Tr.Select(tr => "Tr = " + tr));
-   SaveAs("Zfactor_DPR.png");
+   Legend(Tr.Select(tr => "Tr = " + tr), UpperRight);
+   SaveAs("Zfactor_Dranchuk_Purvis_Robinson.png");
+
+   // Literature style plot
+   Figure(600, 800);
+   Plot(Pr[Pr <= 8], ZDPR[Pr <= 8, ..], "k"); hold  = true;
+   Plot(Pr[Pr >= 7] - 7, ZDPR[Pr >= 7, ..] - 0.9, "k"); hold = false;
+   SaveAs("Dranchuk_Abou_Kassem_Chart.png");
 
 
-.. figure:: images/Zfactor_DPR.png
+.. figure:: images/Zfactor_Dranchuk_Purvis_Robinson.png
    :align: center
-   :alt: Zfactor_DPR.png
+   :alt: Zfactor_Dranchuk_Purvis_Robinson.png
+
+
+.. figure:: images/Dranchuk_Abou_Kassem_Chart.png
+   :align: center
+   :alt: Dranchuk_Abou_Kassem_Chart.png
 

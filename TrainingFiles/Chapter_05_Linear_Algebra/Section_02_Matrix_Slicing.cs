@@ -182,20 +182,20 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             ///     
             /// 3. **Combine results** to form the product matrix::
             /// <math>
-            ///     \begin{bmatrix}
+            ///     \begin{array}{rcl}
             ///         C_{11} &=& M_1 + M_4 - M_5 + M_7 \\
             ///         C_{12} &=& M_3 + M_5 \\
             ///         C_{21} &=& M_2 + M_4 \\
             ///         C_{22} &=& M_1 - M_2 + M_3 + M_6
-            ///     \end{bmatrix}
+            ///     \end{array}
             /// </math>
             /// 
             /// 4. ** Return the result
             /// <math>
-            ///     C = \left[\begin{array}{cc}
+            ///     C = \begin{bmatrix}
             ///             C_{11} & C_{12} \\
             ///             C_{21} & C_{22}
-            ///         \end{bmatrix} \right]
+            ///         \end{bmatrix}
             /// </math>
             /// 
             ///     
@@ -269,6 +269,83 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
                 Console.WriteLine($"B = \n{B}");
                 Console.WriteLine($"C = \n{C}");
                 Console.WriteLine($"D = \n{D}");
+            }
+            /// </code>
+            /// 
+            /// 
+            /// <header 2> Logical Indexing </header>
+            /// Logical indexing is a powerful feature in **Sepal Solver** that allows you to access or modify matrix elements based on specific conditions rather than explicit coordinates. If you are familiar with MATLAB or NumPy, this syntax will feel natural.
+            /// 
+            /// Instead of using integer coordinates (e.g., ``A[0, 5]``), you pass a **boolean condition** into the indexer. Sepal Solver evaluates this condition across the entire matrix to create a mask, then applies the operation only to the elements where the condition is ``true``.
+            /// 
+            /// To extract elements that meet a specific criterion, use relational operators directly within the brackets. This returns a vector containing all matching values.
+            /// 
+            /// <code>
+            {
+                Matrix A = Rand(5, 6);
+                Console.WriteLine(A);
+
+                // Extract all values greater than 0.5
+                var L = A[A > 0.5];
+                Console.WriteLine(L);
+            }
+            /// </code>
+            /// 
+            /// Logical indexing is most effective when performing bulk updates. You can set values for specific elements without affecting the rest of the matrix.
+            /// 
+            /// <code>
+            {
+                Matrix A = Rand(5, 6);
+                A *= 10;
+                Console.WriteLine(A);
+
+                // Extract all values greater than 0.5
+                var L = A[A > 0.5];
+                Console.WriteLine(L);
+
+                // Set all elements less than 5 to zero
+                A[A < 5] = 0;
+
+                // Replace specific "masquerading" integers or outliers
+                A[A == -999] = double.NaN;
+            }
+            /// </code>
+            /// 
+            /// <header 3> Complex Conditions </header>
+            /// You can combine multiple conditions using logical operators. This allows for precise data "clipping" or windowing.
+            /// * Use ``&`` for **AND**
+            /// * Use ``|`` for **OR**
+            /// <code>
+            {
+                Matrix A = Rand(5, 6);
+                A *= 10;
+                // Set values within the range (5, 8) to a new value
+                A[(A > 5).And(A < 8)] = 6.5;
+            }
+            /// </code>
+            /// <header 3> Advantages </header>
+            /// 
+            /// <table>
+            /// - Feature | - Benefit 
+            /// - **Declarative Syntax** | - Express *what* to filter rather than *how* to loop, making code easier to read.
+            /// - **Vectorization** | - Operations are optimized internally, providing better performance than manual C# nested loops.
+            /// - **In-place Updates** | - Modify subsets of large matrices efficiently without creating intermediate copies.
+            /// </table>
+            /// 
+            /// Example: Finding Integers in a Double Matrix
+            /// As discussed in the type-checking guidelines, you can use logical indexing to identify and manipulate whole numbers stored as doubles:
+            /// <code>
+            {
+                Matrix A = new double[,]
+                {
+                    {1.1, 2.0, 3.9, 4.2 },
+                    {1.5, 3.5, 4.0, 5.1 }
+                };
+                Console.WriteLine(A);
+                // Find all "integers" and scale them by 10
+                A[A % 1 == 0] *= 10;
+                Console.WriteLine(A);
+
             }
             /// </code>
             /// </BookContent>
