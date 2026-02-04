@@ -160,8 +160,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             ///     \begin{array}{rcl}
             ///         M_1 &=& \left(A_{11} + A_{22}\right)\left(B_{11} + B_{22}\right) \\
             ///         M_2 &=& \left(A_{21} + A_{22}\right)B_{11} \\
-            ///         M_3 &=& A_{11}\left(B_{12} - B_{22}\left) \\
-            ///         M_4 &=& A_{22}\left(B_{21} - B_{11}\left) \\
+            ///         M_3 &=& A_{11}\left(B_{12} - B_{22}\right) \\
+            ///         M_4 &=& A_{22}\left(B_{21} - B_{11}\right) \\
             ///         M_5 &=& \left(A_{11} + A_{12}\right)B_{22} \\
             ///         M_6 &=& \left(A_{21} - A_{11}\right)\left(B_{11} + B_{12}\right) \\
             ///         M_7 &=& \left(A_{12} - A_{22}\right)\left(B_{21} + B_{22}\right)
