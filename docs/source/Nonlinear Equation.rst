@@ -209,9 +209,12 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
    SaveAs("Zfactor_Hall_Yarborough_.png");
 
    // Literature style plot
-   Figure(600, 800);
-   Plot(Pr[Pr <= 8], ZHY[Pr <= 8, ..], "k"); hold  = true;
-   Plot(Pr[Pr >= 7] - 7, ZHY[Pr >= 7, ..] - 0.9, "k"); hold = false;
+   Figure(640, 880);
+   ActivateRightAxis(); ActivateTopAxis();
+   var z1 = Plot(Pr[Pr <= 8], ZHY[Pr <= 8, ..], "k"); hold  = true;
+   var z2 = Plot(Pr[Pr >= 7], ZHY[Pr >= 7, ..], "k"); hold = false;
+   SetAxis(z1, X_Axis.Top, Y_Axis.Left, 0, 8, 0, 1.1);
+   SetAxis(z2, X_Axis.Bottom, Y_Axis.Right, 7, 15, 0.9, 2.0);
    SaveAs("Hall_Yarborough_Chart.png");
    CloseFig();
 
@@ -264,8 +267,8 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
    // set up ressure and temperature mesh
    ColVec Pr = Linspace(0, 15, 501);
    double[] Tr = [1.05,    1.10,   1.15,   1.20,   1.25,   1.30,   1.35,
-                      1.40,    1.45,   1.50,   1.60,   1.70,   1.80,   1.90,
-                      2.00,    2.20,   2.40,   2.60,   2.80,   3.00];
+                  1.40,    1.45,   1.50,   1.60,   1.70,   1.80,   1.90,
+                  2.00,    2.20,   2.40,   2.60,   2.80,   3.00];
 
    // compute z factors and plot them
    List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
@@ -277,9 +280,12 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
    SaveAs("Zfactor_Dranchuk_Abou_Kassem.png");
 
    // Literature style plot
-   Figure(600, 800);
-   Plot(Pr[Pr <= 8], ZDAK[Pr <= 8, ..], "k"); hold  = true;
-   Plot(Pr[Pr >= 7] - 7, ZDAK[Pr >= 7, ..] - 0.9, "k"); hold = false;
+   Figure(640, 880);
+   ActivateRightAxis(); ActivateTopAxis();
+   var z1 = Plot(Pr[Pr <= 8], ZDAK[Pr <= 8, ..], "k"); hold  = true;
+   var z2 = Plot(Pr[Pr >= 7], ZDAK[Pr >= 7, ..], "k"); hold = false;
+   SetAxis(z1, X_Axis.Top, Y_Axis.Left, 0, 8, 0, 1.1);
+   SetAxis(z2, X_Axis.Bottom, Y_Axis.Right, 7, 15, 0.9, 2.0);
    SaveAs("Dranchuk_Abou_Kassem_Chart.png");
    CloseFig();
 
@@ -322,8 +328,8 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
    // set up ressure and temperature mesh
    ColVec Pr = Linspace(0, 15, 501);
    double[] Tr = [1.05,    1.10,   1.15,   1.20,   1.25,   1.30,   1.35,
-                      1.40,    1.45,   1.50,   1.60,   1.70,   1.80,   1.90,
-                      2.00,    2.20,   2.40,   2.60,   2.80,   3.00];
+                  1.40,    1.45,   1.50,   1.60,   1.70,   1.80,   1.90,
+                  2.00,    2.20,   2.40,   2.60,   2.80,   3.00];
 
    // compute z factors and plot them
    List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
@@ -335,10 +341,13 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
    SaveAs("Zfactor_Dranchuk_Purvis_Robinson.png");
 
    // Literature style plot
-   Figure(600, 800);
-   Plot(Pr[Pr <= 8], ZDPR[Pr <= 8, ..], "k"); hold  = true;
-   Plot(Pr[Pr >= 7] - 7, ZDPR[Pr >= 7, ..] - 0.9, "k"); hold = false;
-   SaveAs("Dranchuk_Abou_Kassem_Chart.png");
+   Figure(640, 880);
+   ActivateRightAxis(); ActivateTopAxis();
+   var z1 = Plot(Pr[Pr <= 8], ZDPR[Pr <= 8, ..], "k"); hold  = true;
+   var z2 = Plot(Pr[Pr >= 7], ZDPR[Pr >= 7, ..], "k"); hold = false;
+   SetAxis(z1, X_Axis.Top, Y_Axis.Left, 0, 8, 0, 1.1);
+   SetAxis(z2, X_Axis.Bottom, Y_Axis.Right, 7, 15, 0.9, 2.0);
+   SaveAs("Dranchuk_Purvis_Robinson_Chart.png");
    CloseFig();
 
 
@@ -347,7 +356,7 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
    :alt: Zfactor_Dranchuk_Purvis_Robinson.png
 
 
-.. figure:: images/Dranchuk_Abou_Kassem_Chart.png
+.. figure:: images/Dranchuk_Purvis_Robinson_Chart.png
    :align: center
-   :alt: Dranchuk_Abou_Kassem_Chart.png
+   :alt: Dranchuk_Purvis_Robinson_Chart.png
 

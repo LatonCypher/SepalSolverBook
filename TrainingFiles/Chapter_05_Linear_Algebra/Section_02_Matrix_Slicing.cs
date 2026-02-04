@@ -10,9 +10,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             /// <BookContent>
             /// Matrix Slicing(Extracting Parts of Matrix)
             /// Matrix can be indexed to extract/set a single element, a row, a column, or a submatrix. 
+            /// 
+            /// 
             /// <header 2> Extracting/Setting part of a Vector </header>
-            /// 
-            /// 
             /// 
             /// <code>
             {
@@ -318,7 +318,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
                 Matrix A = Rand(5, 6);
                 A *= 10;
                 // Set values within the range (5, 8) to a new value
-                A[(A > 5).And(A < 8)] = 6.5;
+                A[(A > 5) & (A < 8)] = 6.5;
                 Console.WriteLine(A);
             }
             /// </code>
