@@ -142,8 +142,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             /// 
             /// * **Row Vector**: A row vector becomes a column vector when transposed.
             ///  <math>
-            ///       \begin{ bmatrix} x & y & z \end{ bmatrix}^T =
-            ///      \begin{ bmatrix} x \\ y \\ z \end{ bmatrix}
+            ///       \begin{bmatrix} x & y & z \end{bmatrix}^T =
+            ///       \begin{bmatrix} x \\ y \\ z \end{bmatrix}
             /// </math>
             /// 
             /// * **Matrix**: Each element :math:`a_{ij}` moves to position :math:`a_{ji}`.

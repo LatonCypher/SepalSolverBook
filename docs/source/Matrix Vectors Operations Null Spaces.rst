@@ -334,8 +334,8 @@ Transpose
 
 .. math::
 
-   \begin{ bmatrix} x & y & z \end{ bmatrix}^T =
-   \begin{ bmatrix} x \\ y \\ z \end{ bmatrix}
+   \begin{bmatrix} x & y & z \end{bmatrix}^T =
+   \begin{bmatrix} x \\ y \\ z \end{bmatrix}
 
 
 * **Matrix**: Each element :math:`a_{ij}` moves to position :math:`a_{ji}`.
