@@ -39,19 +39,6 @@
           "SelectedChildIndex": 8,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": ".readthedocs.yaml",
-              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\.readthedocs.yaml",
-              "RelativeDocumentMoniker": ".readthedocs.yaml",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\.readthedocs.yaml",
-              "RelativeToolTip": ".readthedocs.yaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2026-02-04T21:34:42.204Z",
-              "EditorCaption": ""
-            },
-            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{97cd0cd6-1d77-4848-8b6e-dc82cdccc6d7}"
             },
@@ -81,13 +68,26 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": ".readthedocs.yaml",
+              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\.readthedocs.yaml",
+              "RelativeDocumentMoniker": ".readthedocs.yaml",
+              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\.readthedocs.yaml",
+              "RelativeToolTip": ".readthedocs.yaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2026-02-04T21:34:42.204Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Section_03_Matrix_Vectors_Operations_Null_Spaces.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_05_Linear_Algebra\\Section_03_Matrix_Vectors_Operations_Null_Spaces.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_05_Linear_Algebra\\Section_03_Matrix_Vectors_Operations_Null_Spaces.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_05_Linear_Algebra\\Section_03_Matrix_Vectors_Operations_Null_Spaces.cs*",
               "RelativeToolTip": "TrainingFiles\\Chapter_05_Linear_Algebra\\Section_03_Matrix_Vectors_Operations_Null_Spaces.cs*",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAAAJAAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAO8AAAAAAAAAAAAAAPAAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-04T10:27:36.032Z",
               "EditorCaption": ""

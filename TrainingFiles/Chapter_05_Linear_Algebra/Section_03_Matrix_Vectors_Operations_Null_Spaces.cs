@@ -229,7 +229,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             /// <math>
             ///     \begin{bmatrix} 5 & 10 & 0 \end{bmatrix}
             ///     \;\;\to\;\;
-            ///     \begin{ bmatrix} 1 & 0 & 0 \end{ bmatrix}
+            ///     \begin{bmatrix} 1 & 0 & 0 \end{bmatrix}
             /// </math>
             /// 
             /// * **Matrix**: RREF is used to solve systems of linear equations.
@@ -239,8 +239,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             ///     \begin{bmatrix} 1 & 0 & -1 \\ 0 & 1 & 2 \end{bmatrix}
             /// </math>
             /// <code>
-             // Matrix Rref
             {
+                // Matrix Rref
                 Matrix A = new double[,] { { 8,    1,    6,    1,  16 },
                                            { 3,    5,    6,    1,  15 },
                                            { 4,    7,    2,    1,  14 } };

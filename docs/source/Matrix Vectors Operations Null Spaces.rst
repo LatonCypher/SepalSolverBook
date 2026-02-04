@@ -466,7 +466,7 @@ RREF (Reduced Row Echelon Form)
 
    \begin{bmatrix} 5 & 10 & 0 \end{bmatrix}
    \;\;\to\;\;
-   \begin{ bmatrix} 1 & 0 & 0 \end{ bmatrix}
+   \begin{bmatrix} 1 & 0 & 0 \end{bmatrix}
 
 
 * **Matrix**: RREF is used to solve systems of linear equations.
@@ -479,24 +479,43 @@ RREF (Reduced Row Echelon Form)
 
 
 .. code-block:: csharp
-/ Matrix Rref
-            {
-  Matrix A = new double[,] { { 8,    1,    6,    1,  16 },
-                             { 3,    5,    6,    1,  15 },
-                             { 4,    7,    2,    1,  14 } };
-  (Matrix R, Indexer P, Matrix N) = A.Rref();
-  Console.WriteLine("\n A = \n" + A
-                  + "\n R = \n" + R
-                  + "\n P = \n" + P
-                  + "\n N = \n" + N);
-            }
+
+   // Matrix Rref
+   Matrix A = new double[,] { { 8,    1,    6,    1,  16 },
+                              { 3,    5,    6,    1,  15 },
+                              { 4,    7,    2,    1,  14 } };
+   (Matrix R, Indexer P, Matrix N) = A.Rref();
+   Console.WriteLine("\n A = \n" + A
+                   + "\n R = \n" + R
+                   + "\n P = \n" + P
+                   + "\n N = \n" + N);
+
 
 Ouput
 
 .. terminal::
 
-   ❌ Syntax Error in Documentation:
-   Line 1: Invalid expression term '/'
-   Line 1: ; expected
-   Line 1: ; expected
+   
+    A = 
+   
+    8   1   6   1  16 
+    3   5   6   1  15 
+    4   7   2   1  14 
+   
+    R = 
+   
+      1.0000    0.0000    0.0000    0.0690    1.0690
+      0.0000    1.0000    0.0000    0.0862    1.0862
+      0.0000    0.0000    1.0000    0.0603    1.0603
+   
+    P = 
+   0,	1,	2
+    N = 
+   
+     -0.0690   -1.0690
+     -0.0862   -1.0862
+     -0.0603   -1.0603
+      1.0000    0.0000
+      0.0000    1.0000
+   
 Rref in sepalsolver gives te rref, the row permutation indexer, and the null space basis matrix.
