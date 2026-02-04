@@ -251,7 +251,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
                                 + "\n N = \n" + N);
             }
             /// </code>
-            /// Rref in sepalsolver gives te rref, the row permutation indexer, and the null space basis matrix.
+            /// Rref in sepalsolver gives the rref, the row permutation indexer, and the null space basis matrix.
             /// </BookContent>
             // 
 

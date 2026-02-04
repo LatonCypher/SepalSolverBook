@@ -518,4 +518,4 @@ Ouput
       1.0000    0.0000
       0.0000    1.0000
    
-Rref in sepalsolver gives te rref, the row permutation indexer, and the null space basis matrix.
+Rref in sepalsolver gives the rref, the row permutation indexer, and the null space basis matrix.
