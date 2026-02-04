@@ -131,24 +131,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             /// <header 2> Standard vs. Strassen Multiplication </header>
             /// 
             /// <table>
-            /// +--------------------+----------------------+--------------------+
-            /// | Feature            | Standard Algorithm   | Strassen Algorithm | 
-            /// +--------------------+----------------------+--------------------+
-            /// | Approach           | Direct row-by-column | Divide-and-conquer |
-            /// |                    | multiplication       | with recursive     |   
-            /// |                    |                      | submatrices        |
-            /// +--------------------+----------------------+--------------------+
-            /// | Multiplications    | 8                    | 7                  |      
-            /// | for 2×2 matrices   |                      |                    | 
-            /// +--------------------+----------------------+--------------------+
-            /// | Additions/         | 4                    | 18                 |
-            /// | Subtractions       |                      |                    |
-            /// +--------------------+----------------------+--------------------+
-            /// | Time Complexity    | O(n^3)               | O(n^(log2 7))      |   
-            /// |                    |                      | ≈ O(n^2.81)        |
-            /// +--------------------+----------------------+--------------------+
-            /// | Best Use Case      | Small matrices       | Large matrices     |  
-            /// +--------------------+----------------------+--------------------+
+            /// Feature            | Standard Algorithm   | Strassen Algorithm 
+            /// Approach           | Direct row-by-column multiplication | Divide-and-conquer with recursive submatrices
+            /// Multiplications for 2×2 matrices   | 8                    | 7              
+            /// Additions/Subtractions      | 4                    | 18           
+            /// Time Complexity    | O(n^3)               | O(n^(log2 7)) ≈ O(n^2.81)  
+            /// Best Use Case      | Small matrices       | Large matrices    
             /// </table>
             /// 
             /// Algorithm Steps
