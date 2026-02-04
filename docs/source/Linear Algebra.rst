@@ -17,7 +17,7 @@ In this chapter, we will explore different linear algebra methods, their impleme
 
    Vectors and Matrices
    Matrix Slicing
-   Matrix Vectors Operations Vector Spaces
+   Matrix Vectors Operations Null Spaces
    LU Facorization and FactorUpdate
    Solution of Linear Systems
    Cholesky Factorization FactorUpdate Positive Definicy
