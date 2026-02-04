@@ -168,7 +168,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             ///     \end{array}
             /// </math>
             ///     
-            /// 3. **Combine results** to form the product matrix::
+            /// 3. **Combine results** to form the product matrix
             /// <math>
             ///     \begin{array}{rcl}
             ///         C_{11} &=& M_1 + M_4 - M_5 + M_7 \\
