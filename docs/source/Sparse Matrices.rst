@@ -1,5 +1,5 @@
 Sparse Matrices
-===============
+###############
 
 
 .. code-block:: csharp

@@ -1,5 +1,5 @@
 Solution Of PDE by Method of Lines
-==================================
+##################################
 
 The **Method of Lines (MOL)** is a powerful numerical technique used to solve partial differential equations (PDEs), particularly those that are time-dependent (evolutionary).
 

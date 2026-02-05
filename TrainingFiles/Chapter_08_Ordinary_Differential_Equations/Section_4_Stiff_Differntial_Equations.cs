@@ -8,5 +8,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 {
     internal class Section_4_Stiff_Differntial_Equations
     {
+        public static void Run()
+        {
+            /// <BookContent>
+            /// 
+            /// 
+            /// </BookContent>
+        }
     }
 }

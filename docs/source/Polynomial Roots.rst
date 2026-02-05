@@ -1,5 +1,5 @@
 Polynomial Roots
-================
+################
 
 
 Root Finding for Polynomials

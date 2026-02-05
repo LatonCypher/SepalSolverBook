@@ -1,8 +1,8 @@
 Welcome to Numerical Methods with SepalSolver!
-============================================================
+#################################################
 
 Preface
-------------
+**********
 
 Nearly all modern programming languages come equipped with user-friendly scientific computing toolboxes, providing developers with accessible libraries for numerical analysis, optimization, and simulation. However, C# has historically been an exception to this rule. While Microsoft recognized this gap and sought to address it by partnering with a Moscow university to develop the Open Solving Library for ODEs (OSLO), the project was ultimately stalled due to U.S. sanctions on Russia following the invasion of Ukraine in 2014.
 
@@ -15,7 +15,8 @@ This book introduces readers to the principles of numerical methods through the 
 Ultimately, this work highlights the evolving synergy between mathematical theory and computational innovation. SepalSolver stands as a testament to the importance of accessible scientific computing in C#, and this book seeks to empower readers to harness its capabilities for both academic exploration and professional practice.
 
 Abstract
-------------
+********
+
 Numerical methods form the backbone of modern scientific computing, enabling the approximation of solutions to problems that are analytically intractable. This book presents a comprehensive exploration of numerical techniques, with a particular emphasis on SepalSolver, a versatile computational framework designed to bridge theory and practice. By integrating classical algorithms with contemporary solver strategies, SepalSolver provides a unified environment for tackling linear and nonlinear systems, optimization problems, differential equations, and large-scale simulations.
 
 
@@ -45,7 +46,7 @@ This book is intended for students, researchers, and professionals seeking a dee
 
 
 Getting Started
------------------
+===============
 This video explains how to get started with a console project and install SepalSolver nuget packages
 
 .. youtube:: v3I3McaUMfY
@@ -58,7 +59,7 @@ This video explains how to get started with a console project and install SepalS
 
 
 Content
----------
+===========
 
 .. toctree::
 

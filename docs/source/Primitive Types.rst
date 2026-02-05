@@ -1,5 +1,5 @@
 Primitive Types
-===============
+###############
 
 Primitive Types in C#
 ---------------------
