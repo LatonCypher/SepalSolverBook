@@ -125,7 +125,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             /// Multirosenbrook function is another example
             /// 
             /// <math>
-            /// 
+            ///     \begin{array}{rcl}
+            ///         F_{2n} = 1 - x_{2n}
+            ///         F_{2n+1} = 10*(x_{2n + 1} - x_{2n})^2
+            ///     \end{array}
             /// </math>
             /// 
             /// <code>
@@ -163,6 +166,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             }
 
             /// </code>
+            /// </example>
             /// </BookContent>
         }
     }

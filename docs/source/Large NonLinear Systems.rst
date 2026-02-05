@@ -213,71 +213,86 @@ Examples
    
 
 
-.. code-block:: csharp
+.. Admonition:: Example 2 :  
 
-   // Large Nonlinear systems
-   int n = 1000;
-   ColVec xstart = new double[n], One = Ones(n / 2),
-       c = -One, d = 10*One, e;
-
-   ColVec multirosenbrook(ColVec x)
-   {
-       // Evaluate the vector function
-
-       ColVec F = new double[n];
-       F[(0..n).Step(2)] = 1 - x[(0..n).Step(2)];
-       F[(1..n).Step(2)] = 10 * (x[(1..n).Step(2)] - x[(0..n).Step(2)].Pow(2));
-       return F;
-   }
-
-   SparseMatrix C, D, E;
-   Func<ColVec, SparseMatrix> Jac = x =>
-   {
-       C = new((0..n).Step(2), (0..n).Step(2), c, n, n);
-       D = new((1..n).Step(2), (1..n).Step(2), d, n, n);
-       e = -20 * x[(0..n).Step(2)];
-       E = new((1..n).Step(2), (0..n).Step(2), e, n, n);
-       return C + D + E;
-   };
    
-   xstart[(0..n).Step(2)] = -1.9; xstart[(1..n).Step(2)] = 2;
-   var opts = SolverSet(Display: true, UserDefinedJac: Jac);
-   var x = Fsolve(multirosenbrook, xstart, opts);
-   Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
-   Console.WriteLine(opts.ans.FunVal.Norm());
-
-
-
-Ouput
-
-.. terminal::
-
-    Iteration    Func-count       f(x)      Norm of Step
-        0            1             0           Start
-        1            2          1880.53       220.179     
-        2            3             0          188.053     
-        3            4             0             0        
-   x = 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-        ... 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
+   Multirosenbrook function is another example
    
-   0
+   
+   .. math::
+   
+      \begin{array}{rcl}
+      F_{2n} = 1 - x_{2n}
+      F_{2n+1} = 10*(x_{2n + 1} - x_{2n})^2
+      \end{array}
+   
+   
+   
+   .. code-block:: csharp
+   
+      // Large Nonlinear systems
+      int n = 1000;
+      ColVec xstart = new double[n], One = Ones(n / 2),
+          c = -One, d = 10*One, e;
+   
+      ColVec multirosenbrook(ColVec x)
+      {
+          // Evaluate the vector function
+   
+          ColVec F = new double[n];
+          F[(0..n).Step(2)] = 1 - x[(0..n).Step(2)];
+          F[(1..n).Step(2)] = 10 * (x[(1..n).Step(2)] - x[(0..n).Step(2)].Pow(2));
+          return F;
+      }
+   
+      SparseMatrix C, D, E;
+      Func<ColVec, SparseMatrix> Jac = x =>
+      {
+          C = new((0..n).Step(2), (0..n).Step(2), c, n, n);
+          D = new((1..n).Step(2), (1..n).Step(2), d, n, n);
+          e = -20 * x[(0..n).Step(2)];
+          E = new((1..n).Step(2), (0..n).Step(2), e, n, n);
+          return C + D + E;
+      };
+      
+      xstart[(0..n).Step(2)] = -1.9; xstart[(1..n).Step(2)] = 2;
+      var opts = SolverSet(Display: true, UserDefinedJac: Jac);
+      var x = Fsolve(multirosenbrook, xstart, opts);
+      Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
+      Console.WriteLine(opts.ans.FunVal.Norm());
+   
+   
+   
+   Ouput
+   
+   .. terminal::
+   
+       Iteration    Func-count       f(x)      Norm of Step
+           0            1             0           Start
+           1            2          1880.53       220.179     
+           2            3             0          188.053     
+           3            4             0             0        
+      x = 
+       1 
+       1 
+       1 
+       1 
+       1 
+       1 
+       1 
+       1 
+       1 
+       1 
+           ... 
+       1 
+       1 
+       1 
+       1 
+       1 
+       1 
+       1 
+       1 
+       1 
+       1 
+      
+      0
