@@ -25,6 +25,12 @@ extensions = [
     'sphinxcontrib.youtube'
 ]
 
+latex_documents = [
+    ('index', 'project.tex', 'Project Documentation',
+     'Your Name', 'manual'),
+]
+
+
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
     'sphinx': ('https://www.sphinx-doc.org/en/master/', None),
