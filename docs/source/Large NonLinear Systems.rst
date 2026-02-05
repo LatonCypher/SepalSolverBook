@@ -223,7 +223,7 @@ Examples
    
       \begin{array}{rcl}
       F_{2n} = 1 - x_{2n} \\
-      F_{2n+1} = 10(x_{2n + 1} - x_{2n})^2
+      F_{2n+1} = 10(x_{2n + 1} - x_{2n}^2)
       \end{array}
    
    
@@ -232,13 +232,10 @@ Examples
    
       // Large Nonlinear systems
       int n = 1000;
-      ColVec xstart = new double[n], One = Ones(n / 2),
-          c = -One, d = 10*One, e;
    
       ColVec multirosenbrook(ColVec x)
       {
           // Evaluate the vector function
-   
           ColVec F = new double[n];
           F[(0..n).Step(2)] = 1 - x[(0..n).Step(2)];
           F[(1..n).Step(2)] = 10 * (x[(1..n).Step(2)] - x[(0..n).Step(2)].Pow(2));
@@ -248,13 +245,13 @@ Examples
       SparseMatrix C, D, E;
       Func<ColVec, SparseMatrix> Jac = x =>
       {
-          C = new((0..n).Step(2), (0..n).Step(2), c, n, n);
-          D = new((1..n).Step(2), (1..n).Step(2), d, n, n);
-          e = -20 * x[(0..n).Step(2)];
-          E = new((1..n).Step(2), (0..n).Step(2), e, n, n);
+          C = new((0..n).Step(2), (0..n).Step(2), Repmat(-1, n/2), n, n);
+          D = new((1..n).Step(2), (1..n).Step(2), Repmat(10, n/2), n, n);
+          E = new((1..n).Step(2), (0..n).Step(2), -20 * x[(0..n).Step(2)], n, n);
           return C + D + E;
       };
-      
+   
+      ColVec xstart = new double[n];
       xstart[(0..n).Step(2)] = -1.9; xstart[(1..n).Step(2)] = 2;
       var opts = SolverSet(Display: true, UserDefinedJac: Jac);
       var x = Fsolve(multirosenbrook, xstart, opts);
