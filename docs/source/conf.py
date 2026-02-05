@@ -27,7 +27,7 @@ extensions = [
 
 latex_documents = [
     ('index', 'project.tex', 'Project Documentation',
-     'Your Name', 'manual'),
+     'Lateef A. Kareem', 'manual'),
 ]
 
 
