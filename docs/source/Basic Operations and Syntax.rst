@@ -1,6 +1,6 @@
 
 Basic Operations and Syntax
-===========================
+###########################
 
 
 To build a powerful numerical engine like SepalSolver, we must first master the "grammar" of C#. C# is a strongly-typed, object-oriented language designed for clarity and performance. Its syntax provides a structured way to express mathematical logic, ensuring that the computer interprets our engineering formulas exactly as intended.

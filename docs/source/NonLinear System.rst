@@ -1,5 +1,5 @@
 NonLinear System
-################
+================
 
 The SepalSolver function ``Fsolve`` is used to solve **systems of nonlinear equations**. 
 It finds a vector :math:`\mathbf{x}` such that:

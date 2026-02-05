@@ -1,6 +1,6 @@
 
 Numerical Optimization
-======================
+######################
 
 
 Numerical optimization is a cornerstone of modern engineering and scientific computing. It involves finding the best solution to a problem from a set of possible solutions, often under certain constraints. In SepalSolver, we implement various optimization algorithms to tackle problems ranging from simple function minimization to complex constrained optimization tasks.

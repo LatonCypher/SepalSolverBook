@@ -1,6 +1,6 @@
 
 Solution of Nonlinear System
-============================
+############################
 
 **Root finding** refers to the process of determining the values of a variable that satisfy an equation:
 :math:`f(x) = 0`. These values, called *roots* or *zeros*, are fundamental in mathematics, engineering, and applied sciences because they often represent equilibrium points, intersections, or critical solutions in real-world problems.For example, finding the root of a polynomial can reveal where a curve crosses the x-axis, while solving transcendental equations can help model phenomena like oscillations or population growth.

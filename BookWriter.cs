@@ -100,7 +100,7 @@ namespace ConsoleApp1
                 string chaptermessage = $"""
                     
                     {relativePath}
-                    {new string('=', relativePath.Length)}
+                    {new string('#', relativePath.Length)}
 
                     """;
                 using (StreamWriter writer = new(chapterfile))
@@ -156,7 +156,7 @@ namespace ConsoleApp1
             using (StreamWriter writer = new(outputPath))
             {
                 writer.WriteLine(classname);
-                writer.WriteLine(new string('#', classname.Length));
+                writer.WriteLine(new string('=', classname.Length));
                 writer.WriteLine("");
             }
 

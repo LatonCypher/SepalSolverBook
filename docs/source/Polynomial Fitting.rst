@@ -1,5 +1,5 @@
 Polynomial Fitting
-##################
+==================
 
 Polynomial Fitting (Polyfit)
 ----------------------------

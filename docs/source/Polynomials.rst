@@ -1,6 +1,6 @@
 
 Polynomials
-===========
+###########
 
 While matrices and vectors are the core of linear algebra, many engineering problems—such as curve fitting, signal processing, and finding eigenvalues— revolve around Polynomials. 
 

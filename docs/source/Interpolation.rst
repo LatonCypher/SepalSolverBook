@@ -1,6 +1,6 @@
 
 Interpolation
-=============
+#############
 
 
 Interpolation is a fundamental technique in numerical analysis used to estimate unknown values between known data points. It plays a crucial role in various fields of engineering and science, where accurate data representation is essential for analysis and decision-making. In SepalSolver, we implement various interpolation methods to provide engineers with tools for approximating functions and datasets.

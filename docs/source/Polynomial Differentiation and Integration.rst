@@ -1,5 +1,5 @@
 Polynomial Differentiation and Integration
-##########################################
+==========================================
 
 
 Polynomial Differentiation and Integration

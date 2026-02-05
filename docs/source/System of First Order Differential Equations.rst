@@ -1,5 +1,5 @@
 System of First Order Differential Equations
-############################################
+============================================
 
 
 Introduction

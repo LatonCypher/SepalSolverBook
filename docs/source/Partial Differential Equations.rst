@@ -1,6 +1,6 @@
 
 Partial Differential Equations
-==============================
+##############################
 
 
 Partial Differential Equations (PDEs) are essential in modeling phenomena where multiple independent variables influence a dependent variable. They are widely used in engineering and science to describe processes such as heat conduction, fluid dynamics, and electromagnetic fields. In SepalSolver, we implement numerical methods to solve PDEs, enabling engineers to analyze and simulate complex systems.

@@ -1,5 +1,5 @@
 Polynomial Arithmetics
-######################
+======================
 
 Polynomial Arithmetic
 ---------------------

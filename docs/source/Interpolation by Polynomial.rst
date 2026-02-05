@@ -1,5 +1,5 @@
 Interpolation by Polynomial
-###########################
+===========================
 
 
 Interpolation via Polynomial Fitting

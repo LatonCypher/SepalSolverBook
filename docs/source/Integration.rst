@@ -1,6 +1,6 @@
 
 Integration
-===========
+###########
 
 
 Integration is a fundamental concept in calculus that plays a crucial role in various fields of engineering and science. It involves calculating the area under a curve, which can represent physical quantities such as distance, area, volume, and more. In SepalSolver, we implement numerical integration methods to approximate definite integrals, enabling engineers to solve complex problems that cannot be addressed analytically.

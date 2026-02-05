@@ -54,19 +54,6 @@
           "SelectedChildIndex": 16,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Section_4_Stiff_Differntial_Equations.cs",
-              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_4_Stiff_Differntial_Equations.cs",
-              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_4_Stiff_Differntial_Equations.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_4_Stiff_Differntial_Equations.cs*",
-              "RelativeToolTip": "TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_4_Stiff_Differntial_Equations.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T22:38:21.627Z",
-              "EditorCaption": ""
-            },
-            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{97cd0cd6-1d77-4848-8b6e-dc82cdccc6d7}"
             },
@@ -93,6 +80,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Section_4_Stiff_Differntial_Equations.cs",
+              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_4_Stiff_Differntial_Equations.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_4_Stiff_Differntial_Equations.cs",
+              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_4_Stiff_Differntial_Equations.cs",
+              "RelativeToolTip": "TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_4_Stiff_Differntial_Equations.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T22:38:21.627Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -205,7 +205,7 @@
               "RelativeDocumentMoniker": "BookWriter.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\BookWriter.cs*",
               "RelativeToolTip": "BookWriter.cs*",
-              "ViewState": "AgIAAI8AAAAAAAAAAAAQwJ4AAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAewGYAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-19T12:13:45.886Z",
               "EditorCaption": ""

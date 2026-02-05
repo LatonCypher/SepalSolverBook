@@ -1,6 +1,6 @@
 
 Special Functions
-=================
+#################
 
 
 Special functions are mathematical functions that arise frequently in engineering, physics, and applied mathematics. They include functions such as Bessel functions, Legendre polynomials, and Gamma functions, which have unique properties and applications in solving complex problems. In SepalSolver, we implement various special functions to provide engineers with tools for advanced mathematical modeling and analysis.

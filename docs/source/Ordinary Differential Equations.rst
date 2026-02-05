@@ -1,6 +1,6 @@
 
 Ordinary Differential Equations
-===============================
+###############################
 
 
 Ordinary Differential Equations (ODEs) are fundamental in modeling dynamic systems across various fields of engineering and science. They describe how a quantity changes with respect to another, typically time. In SepalSolver, we implement numerical methods to solve ODEs, enabling engineers to simulate and analyze complex systems.
