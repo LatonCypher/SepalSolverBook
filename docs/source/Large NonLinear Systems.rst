@@ -222,8 +222,8 @@ Examples
    .. math::
    
       \begin{array}{rcl}
-      F_{2n} = 1 - x_{2n} \\
-      F_{2n+1} = 10(x_{2n + 1} - x_{2n}^2)
+      F_{2n} &=& 1 - x_{2n} \\
+      F_{2n+1} &=& 10(x_{2n + 1} - x_{2n}^2)
       \end{array}
    
    
@@ -236,18 +236,22 @@ Examples
       ColVec multirosenbrook(ColVec x)
       {
           // Evaluate the vector function
-          ColVec F = new double[n];
-          F[(0..n).Step(2)] = 1 - x[(0..n).Step(2)];
-          F[(1..n).Step(2)] = 10 * (x[(1..n).Step(2)] - x[(0..n).Step(2)].Pow(2));
+          ColVec F = new double[n], 
+              x2n = x[(0..n).Step(2)], 
+              x2np1 = x[(1..n).Step(2)];
+   
+          F[(0..n).Step(2)] = 1 - x2n;
+          F[(1..n).Step(2)] = 10 * (x2np1 - x2n.Pow(2));
           return F;
       }
    
       SparseMatrix C, D, E;
       Func<ColVec, SparseMatrix> Jac = x =>
       {
-          C = new((0..n).Step(2), (0..n).Step(2), Repmat(-1, n/2), n, n);
-          D = new((1..n).Step(2), (1..n).Step(2), Repmat(10, n/2), n, n);
-          E = new((1..n).Step(2), (0..n).Step(2), -20 * x[(0..n).Step(2)], n, n);
+          ColVec one = Ones(n/2), x2n = x[(0..n).Step(2)];
+          C = new((0..n).Step(2), (0..n).Step(2), -one, n, n);
+          D = new((1..n).Step(2), (1..n).Step(2), 10*one, n, n);
+          E = new((1..n).Step(2), (0..n).Step(2), -20 * x2n, n, n);
           return C + D + E;
       };
    
