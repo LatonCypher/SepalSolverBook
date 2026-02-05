@@ -15,9 +15,9 @@ For a system of equations :math:`F(x) = 0`, with :math:`F: \mathbb{R}^n \to \mat
 
    J(x) =
    \begin{bmatrix}
-   \frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+   \cfrac{\partial f_1}{\partial x_1} & \cdots & \cfrac{\partial f_1}{\partial x_n} \\
    \vdots & \ddots & \vdots \\
-   \frac{\partial f_n}{\partial x_1} & \cdots & \frac{\partial f_n}{\partial x_n}
+   \cfrac{\partial f_n}{\partial x_1} & \cdots & \cfrac{\partial f_n}{\partial x_n}
    \end{bmatrix}.
 
 
@@ -27,7 +27,7 @@ When analytic derivatives are unavailable, the Jacobian can be approximated usin
 
 .. math::
 
-   J_{:,j}(x) \approx \frac{F(x + h e_j) - F(x)}{h},
+   J_{:,j}(x) \approx \cfrac{F(x + h e_j) - F(x)}{h},
 
 where :math:`h` is a small perturbation and :math:`e_j` is the unit vector in the :math:`j`-th direction.
 
@@ -51,7 +51,7 @@ Examples
    
    .. math::
    
-      \begin{array}{c}
+      \begin{array}{rcl
       F(1) &=& 3x_1 − 2x_1^2 - 2x_2 + 1 \\
       F(i) &=& 3x_i − 2x_i^2 - x_{i-1} - 2x_{i+1} + 1 \\
       F(n) &=& 3x_n − 2x_n^2 - x_{n-1} + 1 \\
