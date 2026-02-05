@@ -19,16 +19,16 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             /// <math>
             /// J(x) =
             /// \begin{bmatrix}
-            ///     \frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+            ///     \cfrac{\partial f_1}{\partial x_1} & \cdots & \cfrac{\partial f_1}{\partial x_n} \\
             ///     \vdots & \ddots & \vdots \\
-            ///     \frac{\partial f_n}{\partial x_1} & \cdots & \frac{\partial f_n}{\partial x_n}
+            ///     \cfrac{\partial f_n}{\partial x_1} & \cdots & \cfrac{\partial f_n}{\partial x_n}
             /// \end{bmatrix}.
             /// </math>
             /// 
             /// <header 2> Finite Difference Approximation </header>
             /// When analytic derivatives are unavailable, the Jacobian can be approximated using finite differences. For the :math:`j`-th column, this takes the form
             /// <math>
-            ///     J_{:,j}(x) \approx \frac{F(x + h e_j) - F(x)}{h},
+            ///     J_{:,j}(x) \approx \cfrac{F(x + h e_j) - F(x)}{h},
             /// </math>
             /// where :math:`h` is a small perturbation and :math:`e_j` is the unit vector in the :math:`j`-th direction.
             /// 
