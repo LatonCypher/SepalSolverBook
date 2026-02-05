@@ -51,7 +51,7 @@ Examples
    
    .. math::
    
-      \begin{array}{rcl
+      \begin{array}{rcl}
       F(1) &=& 3x_1 − 2x_1^2 - 2x_2 + 1 \\
       F(i) &=& 3x_i − 2x_i^2 - x_{i-1} - 2x_{i+1} + 1 \\
       F(n) &=& 3x_n − 2x_n^2 - x_{n-1} + 1 \\
