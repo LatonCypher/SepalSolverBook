@@ -126,8 +126,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             /// 
             /// <math>
             ///     \begin{array}{rcl}
-            ///         F_{2n} = 1 - x_{2n}
-            ///         F_{2n+1} = 10*(x_{2n + 1} - x_{2n})^2
+            ///         F_{2n} = 1 - x_{2n} \\
+            ///         F_{2n+1} = 10(x_{2n + 1} - x_{2n})^2
             ///     \end{array}
             /// </math>
             /// 
