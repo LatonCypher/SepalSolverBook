@@ -15,7 +15,5 @@ In this chapter, we will explore different special functions, their implementati
 
 .. toctree::
 
-   Gamma Beta Error LambertW
-   Cheby Hermite Legendre Laguerre
    Bessel Hypergeometric
    Exercise On Special Functions

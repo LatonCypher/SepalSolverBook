@@ -42,10 +42,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             ///  
             /// First we have to convert this to a system of first order differential equations,
             /// <math>
-            /// \begin{ array}{ rcl}
+            /// \begin{array}{rcl}
             ///     y' &=& v \\
             ///     v' &=& 10^{5}((1 - y^2)v - y)
-            /// \end{ array}
+            /// \end{array}
             /// </math>
             /// 
             /// <code>
@@ -71,15 +71,35 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// 
             /// The Reaction Network
             /// The system models the following three reactions:
-            /// :math: `y_1 \xrightarrow{ 0.04} y_2`(Slow)
-            /// :math: `y_2 + y_2 \xrightarrow{ 3 \cdot 10^7} y_3 + y_2` (Very Fast)
-            /// :math: `y_2 + y_3 \xrightarrow{ 10^4} y_1 + y_3` (Fast)
+            /// :math:`y_1 \xrightarrow{ 0.04} y_2`(Slow)
+            /// :math:`y_2 + y_2 \xrightarrow{ 3 \cdot 10^7} y_3 + y_2` (Very Fast)
+            /// :math:`y_2 + y_3 \xrightarrow{ 10^4} y_1 + y_3` (Fast)
             /// 
             /// The resulting system of differential equations is:
-            /// :math:\cfrac{dy_1}{dt} = -0.04y_1 + 10^4 y_2 y_3
-            /// :math:\frac{dy_2}{dt} = 0.04y_1 - 10^4 y_2 y_3 -3 \cdot 10^7 y_2^2
-            /// :math:\frac{dy_3}{dt} = 3 \cdot 10^7 y_2^2
+            /// :math:`\cfrac{dy_1}{dt} = -0.04y_1 + 10^4 y_2 y_3`
+            /// :math:`\frac{dy_2}{dt} = 0.04y_1 - 10^4 y_2 y_3 -3 \cdot 10^7 y_2^2`
+            /// :math:`\frac{dy_3}{dt} = 3 \cdot 10^7 y_2^2`
             /// 
+            /// <code>
+            {
+                //define ODE
+                double[] robertson(double t, double[] y) =>
+                    [-0.04 * y[0] + 1e4 * y[1]*y[2], 
+                     0.04 * y[0] - 1e4 * y[1]*y[2] - 3e7*y[1]*y[1],
+                     3e7*y[1]*y[1]];
+
+                //Solve ODE
+                // [0 4*logspace(-6,6)],y0);
+                (ColVec T, Matrix Y) = Ode45s(robertson, [1, 0, 0], [0, ..Logspace(-7,7)]);
+                // Plot the result
+                Y[.., 1] = 1e4*Y[.., 1];
+                Plot(T, Y);
+                Xlabel("Time t"); Ylabel("Soluton y");
+                Legend(["y_1", "1e4*y_2", "y_3"], UpperLeft);
+                Title("Solution of Robertson's ODE with ODE45s");
+                SaveAs("Robertson-ODE-Ode45s");
+            }
+            /// </code>
             /// </example>
             /// </BookContent>
         }

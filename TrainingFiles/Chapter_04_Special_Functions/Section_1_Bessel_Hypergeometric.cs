@@ -13,7 +13,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
 {
-    internal class Section_3_Bessel_Hypergeometric
+    internal class Section_1_Bessel_Hypergeometric
     {
         public static void Run()
         {
