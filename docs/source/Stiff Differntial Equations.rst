@@ -85,5 +85,25 @@ SepalSolver impelements ODE45s for stiff differential equation and we look at ho
    
    .. code-block:: csharp
    
+      //define ODE
+      double[] robertson(double t, double[] y) =>
+          [-0.04 * y[0] + 1e4 * y[1]*y[2], 
+           0.04 * y[0] - 1e4 * y[1]*y[2] - 3e7*y[1]*y[1],
+           3e7*y[1]*y[1]];
    
+      //Solve ODE
+      // [0 4*logspace(-6,6)],y0);
+      (ColVec T, Matrix Y) = Ode45s(robertson, [1, 0, 0], [0, ..Logspace(-7,7)]);
+      // Plot the result
+      Y[.., 1] = 1e4*Y[.., 1];
+      Plot(T, Y);
+      Xlabel("Time t"); Ylabel("Soluton y");
+      Legend(["y_1", "1e4*y_2", "y_3"], UpperLeft);
+      Title("Solution of Robertson's ODE with ODE45s");
+      SaveAs("Robertson-ODE-Ode45s");
+   
+   
+   .. figure:: images/Robertson-ODE-Ode45s
+      :align: center
+      :alt: Robertson-ODE-Ode45s
    
