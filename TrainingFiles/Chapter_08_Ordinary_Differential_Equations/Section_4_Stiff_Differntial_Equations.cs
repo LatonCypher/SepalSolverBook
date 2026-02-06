@@ -58,6 +58,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 (ColVec T, Matrix Y) = Ode45s(vdp2, [2, 0], [0, 6.3]);
                 // Plot the result
                 Plot(T, Y);
+                Axis([0, 6.3, -10, 10]);
                 Xlabel("Time t"); Ylabel("Soluton y");
                 Legend(["y_1", "y_2"], UpperLeft);
                 Title("Solution of van der Pol Equation (μ = 1e5) with ODE45s");
@@ -93,7 +94,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 (ColVec T, Matrix Y) = Ode45s(robertson, [1, 0, 0], [0, ..Logspace(-7,7)]);
                 // Plot the result
                 Y[.., 1] = 1e4*Y[.., 1];
-                Plot(T, Y);
+                SemiLogx(T, Y);
                 Xlabel("Time t"); Ylabel("Soluton y");
                 Legend(["y_1", "1e4*y_2", "y_3"], UpperLeft);
                 Title("Solution of Robertson's ODE with ODE45s");
