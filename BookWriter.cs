@@ -180,6 +180,7 @@ namespace ConsoleApp1
             TreatHeader1(bookContent);
             TreatHeader2(bookContent);
             TreatHeader3(bookContent);
+            TreatFigure(bookContent);
             TreatMathTag(bookContent);
             TreatCodeBlock(bookContent);
             TreatTableBlock(bookContent);
@@ -278,6 +279,42 @@ namespace ConsoleApp1
 
             }
         }
+
+
+        static void TreatFigure(List<string> bookContent)
+        {
+            while (bookContent.Any(line => line.Contains("<figure>")))
+            {
+                int startIndex = -1;
+                // replace code blocks with rst format
+                for (int i = 0; i < bookContent.Count; i++)
+                {
+                    if (bookContent[i].Contains("<figure>"))
+                    {
+                        startIndex = i;
+                        break;
+                    }
+                }
+                string line = bookContent[startIndex];
+                var match = Regex.Match(line, @"<figure>(.*?)</figure");
+
+                if (match.Success)
+                {
+                    string figurename = match.Groups[1].Value;
+                    figurename = figurename.TrimStart().Trim();
+                    List<string> figurelines = [
+                        $".. figure:: images/{figurename}",
+                        $"    :align: center",
+                        $"    :alt: {figurename}"
+                    ];
+                    Replace(bookContent, startIndex, 1, figurelines);
+                    
+                }
+
+            }
+        }
+
+
         static void TreatCodeBlock(List<string> bookContent)
         {
             while (bookContent.Any(line => line.Contains("<code>")))
@@ -485,5 +522,7 @@ namespace ConsoleApp1
                 Replace(bookContent, startIndex, Length + 1, Codelines);
             }
         }
+
+
     }
 }
