@@ -236,9 +236,11 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
             /// For use in material balance computation in edge drive configuration, reservoir engneering books provide plots for Wd as a function of dimensionless radius and time
             /// 
             /// For :math:`Rd \leq 4`
+            /// 
             /// <figure> Water-Influx-from-Craft-and-Hawkins_4dn.png </figure>
             ///     
             /// For :math:`5 \leq Rd \leq 10`
+            /// 
             /// <figure> Water-Influx-from-Craft-and-Hawkins_5up.png </figure>
             ///    
             /// In an edge drive configuration with the aquifer closed at its outer boundary, the governing equation gives:
