@@ -59,7 +59,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                 Plot(x, J, Linewidth: 2);
                 Axis([0, 10, -0.5, 1]);
                 Title("BesselJ Functions");
-                Legend(Z.Select(z => z.ToString()), UpperRight);
+                Legend(Z.Select(z => $"J{z}(x)"), UpperRight);
                 SaveAs("BesselJ-Functions.png");
             }
             /// </code>
@@ -73,7 +73,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                 Plot(x, Y, Linewidth: 2);
                 Title("BesselY Functions");
                 Axis([1, 10, -5, 1]);
-                Legend(Z.Select(z => z.ToString()), UpperRight);
+                Legend(Z.Select(z => $"Y{z}(x)"), UpperRight);
                 SaveAs("BesselY-Functions.png");
             }
             /// </code>
@@ -108,7 +108,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                 Matrix P = Z.Select(z => LegendreP(z, x)).ToList();
                 Plot(x, P, Linewidth: 2);
                 Title("LegendreP Functions");
-                Legend(Z.Select(z => z.ToString()), UpperCenter);
+                Legend(Z.Select(z => $"P{z}(x)"), UpperCenter);
                 SaveAs("LegendreP-Functions.png");
             }
             /// </code>
@@ -125,7 +125,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                 Matrix Q = Z.Select(z => LegendreQ(z, x)).ToList();
                 Plot(x, Q, Linewidth: 2);
                 Title("LegendreQ Functions");
-                Legend(Z.Select(z => z.ToString()), UpperCenter);
+                Legend(Z.Select(z => $"Q{z}(x)"), UpperCenter);
                 SaveAs("LegendreQ-Functions.png");
             }
             /// </code>
@@ -150,7 +150,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                 Matrix T = Z.Select(z => ChebyshevT(z, x)).ToList();
                 Plot(x, T, Linewidth: 2);
                 Title("ChebyshevT Polynomial Functions");
-                Legend(Z.Select(z => z.ToString()), UpperCenter);
+                Legend(Z.Select(z => $"T{z}(x)"), UpperCenter);
                 SaveAs("ChebyshevT-Polynomial-Functions.png");
             }
             /// </code>
@@ -170,7 +170,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                 Matrix T = Z.Select(z => ChebyshevU(z, x)).ToList();
                 Plot(x, T, Linewidth: 2);
                 Title("ChebyshevU Polynomial Functions");
-                Legend(Z.Select(z => z.ToString()), UpperCenter);
+                Legend(Z.Select(z => $"U{z}(x)"), UpperCenter);
                 SaveAs("ChebyshevU-Polynomial-Functions.png");
             }
             /// </code>
@@ -198,7 +198,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                 Plot(x, P, Linewidth: 2);
                 Title("Laguerre Polynomial Functions");
                 Axis([-2, 10, -10, 10]);
-                Legend(Z.Select(z => z.ToString()), UpperCenter);
+                Legend(Z.Select(z => $"L{z}(x)"), UpperCenter);
                 SaveAs("Laguerre-Polynomial-Functions.png");
             }
             /// </code>
@@ -225,7 +225,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                 Plot(x, T, Linewidth: 2);
                 Title("HermiteH Polynomial Functions");
                 Axis([-2, 2, -30, 30]);
-                Legend(Z.Select(z => z.ToString()), UpperCenter);
+                Legend(Z.Select(z => $"H{z}(x)"), UpperCenter);
                 SaveAs("HermiteH-Polynomial-Functions.png");
             }
             /// </code>
@@ -236,14 +236,16 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
             /// For use in material balance computation in edge drive configuration, reservoir engneering books provide plots for Wd as a function of dimensionless radius and time
             /// 
             /// For :math:`Rd \leq 4`
-            /// ..figure::images/Water-Influx-from-Craft-and-Hawkins_4dn.png
-            ///    :align: center
-            ///    :alt: Water-Influx-from-Craft-and-Hawkins_4dn.png
+            /// 
+            /// ..figure:: images/Water-Influx-from-Craft-and-Hawkins_4dn.png
+            ///     :align: center
+            ///     :alt: Water-Influx-from-Craft-and-Hawkins_4dn.png
             ///     
             /// For :math:`5 \leq Rd \leq 10`
-            /// ..figure::images/Water-Influx-from-Craft-and-Hawkins_5up.png
-            ///    :align: center
-            ///    :alt: Water-Influx-from-Craft-and-Hawkins_5up.png
+            /// 
+            /// ..figure:: images/Water-Influx-from-Craft-and-Hawkins_5up.png
+            ///     :align: center
+            ///     :alt: Water-Influx-from-Craft-and-Hawkins_5up.png
             ///    
             /// In an edge drive configuration with the aquifer closed at its outer boundary, the governing equation gives:
             /// <math>

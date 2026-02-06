@@ -48,11 +48,9 @@ SepalSolver impelements ODE45s for stiff differential equation and we look at ho
    .. code-block:: csharp
    
       //define ODE
-      double[] vdp2(double t, double[] y)
-      {
-          double[] dy;
-          return dy = [y[1], 1e5*((1 - y[0] * y[0]) * y[1] - y[0])];
-      }
+      double[] vdp2(double t, double[] y)=>
+          [y[1], 1e5*((1 - y[0] * y[0]) * y[1] - y[0])];
+   
       //Solve ODE
       (ColVec T, Matrix Y) = Ode45s(vdp2, [2, 0], [0, 6.3]);
       // Plot the result
@@ -67,9 +65,20 @@ SepalSolver impelements ODE45s for stiff differential equation and we look at ho
       :align: center
       :alt: Van-der-Pol-(μ=1e5
    
+
+
+.. Admonition:: Example 2 :  
+
+   The Robertson ODE is the classic "benchmark" problem used to test the efficiency and stability of numerical solvers for stiff differential equations. It describes a simplified chemical reaction involving three species (:math:`y_1, y_2, y_3`) with reaction rates that differ by several orders of magnitude.
    
+   The Reaction Network
+   The system models the following three reactions:
+   :math: `y_1 \xrightarrow{ 0.04} y_2`(Slow)
+   :math: `y_2 + y_2 \xrightarrow{ 3 \cdot 10^7} y_3 + y_2` (Very Fast)
+   :math: `y_2 + y_3 \xrightarrow{ 10^4} y_1 + y_3` (Fast)
    
-             
-   
-               
+   The resulting system of differential equations is:
+   :math:\cfrac{dy_1}{dt} = -0.04y_1 + 10^4 y_2 y_3
+   :math:\frac{dy_2}{dt} = 0.04y_1 - 10^4 y_2 y_3 -3 \cdot 10^7 y_2^2
+   :math:\frac{dy_3}{dt} = 3 \cdot 10^7 y_2^2
    

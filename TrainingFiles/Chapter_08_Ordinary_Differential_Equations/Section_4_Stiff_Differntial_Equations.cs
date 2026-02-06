@@ -77,10 +77,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// 
             /// The resulting system of differential equations is:
             /// :math:\cfrac{dy_1}{dt} = -0.04y_1 + 10^4 y_2 y_3
-            /// :math:\frac{ dy_2}{ dt} = 0.04y_1 - 10^4 y_2 y_3 -3 \cdot 10^7 y_2^2
-
-:math:\frac{ dy_3}
-            { dt} = 3 \cdot 10^7 y_2^2
+            /// :math:\frac{dy_2}{dt} = 0.04y_1 - 10^4 y_2 y_3 -3 \cdot 10^7 y_2^2
+            /// :math:\frac{dy_3}{dt} = 3 \cdot 10^7 y_2^2
+            /// 
             /// </example>
             /// </BookContent>
         }
