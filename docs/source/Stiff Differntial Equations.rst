@@ -59,12 +59,12 @@ SepalSolver impelements ODE45s for stiff differential equation and we look at ho
       Xlabel("Time t"); Ylabel("Soluton y");
       Legend(["y_1", "y_2"], UpperLeft);
       Title("Solution of van der Pol Equation (μ = 1e5) with ODE45s");
-      SaveAs("Van-der-Pol-(μ=1e5)-Ode45s.png");
+      SaveAs("Van-der-Pol-μ=1e5-Ode45s.png");
    
    
-   .. figure:: images/Van-der-Pol-(μ=1e5
+   .. figure:: images/Van-der-Pol-μ=1e5-Ode45s.png
       :align: center
-      :alt: Van-der-Pol-(μ=1e5
+      :alt: Van-der-Pol-μ=1e5-Ode45s.png
    
 
 

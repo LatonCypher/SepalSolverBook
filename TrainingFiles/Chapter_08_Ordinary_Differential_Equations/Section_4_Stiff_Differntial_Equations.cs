@@ -62,7 +62,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 Xlabel("Time t"); Ylabel("Soluton y");
                 Legend(["y_1", "y_2"], UpperLeft);
                 Title("Solution of van der Pol Equation (μ = 1e5) with ODE45s");
-                SaveAs("Van-der-Pol-(μ=1e5)-Ode45s.png");
+                SaveAs("Van-der-Pol-μ=1e5-Ode45s.png");
             }
             /// </code>
             /// </example>
