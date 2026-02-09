@@ -132,7 +132,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// * **Classical Mechanics:** Describing trajectories where the velocity constraint is non-linear.
             /// * **Singularities:** Just like Clairaut equations, Weissinger equations often have "envelope" solutions where the uniqueness of the solution breaks down.
             /// 
-            /// Consider :math:`F(t, y, y') = t*y^2 * yp^3 - y^3 * yp^2 + t*(t^2 + 1)*yp - t^2 * y = 0`
+            /// Consider :math:`F(t, y, y') = ty^2(y')^3 - y^3(y')^2 + t(t^2 + 1)y' - t^2y = 0`
             /// 
             /// In this case, fix the initial value :math:`y(t_0) = \sqrt{\cfrac{3}{2}}` and let decic compute a consistent initial value for the derivative :math:`y'(t_0)`, starting from an initial guess of :math:`y'(t_0) = 0`.
             /// 
