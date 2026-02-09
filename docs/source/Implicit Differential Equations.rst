@@ -108,8 +108,9 @@ In many contexts, particularly in the study of aerodynamics(where Weissinger’s
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Unlike a standard ODE, the Weissinger equation is **nonlinear in the derivative**.
 
-* **Relationship to Clairaut:**If you set :math:`n = 1` and :math:`f(y') = y'`, you essentially return to the Clairaut form.
-* **The Power of :**The :math:`x^n` term dictates how the geometry of the solution curves scales as you move away from the origin.
+* **Relationship to Clairaut:** If you set :math:`n = 1` and :math:`f(y') = y'`, you essentially return to the Clairaut form.
+* **The Power of :math:`x`:** The :math:`x^n` term dictates how the geometry of the solution curves scales as you move away from the origin.
+
 2. The Solution Strategy: Parameterization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To solve a Weissinger equation, we rarely try to isolate  algebraically.Instead, we use a parameter, where:

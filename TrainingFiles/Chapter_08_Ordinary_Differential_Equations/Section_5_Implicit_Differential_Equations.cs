@@ -103,8 +103,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// <header 3> 1. Structure and Characteristics </header>
             /// Unlike a standard ODE, the Weissinger equation is **nonlinear in the derivative**.
             /// 
-            /// * **Relationship to Clairaut:**If you set :math:`n = 1` and :math:`f(y') = y'`, you essentially return to the Clairaut form.
-            /// * **The Power of :**The :math:`x^n` term dictates how the geometry of the solution curves scales as you move away from the origin.
+            /// * **Relationship to Clairaut:** If you set :math:`n = 1` and :math:`f(y') = y'`, you essentially return to the Clairaut form.
+            /// * **The Power of :math:`x`:** The :math:`x^n` term dictates how the geometry of the solution curves scales as you move away from the origin.
+            /// 
             /// <header 3> 2. The Solution Strategy: Parameterization </header>
             /// To solve a Weissinger equation, we rarely try to isolate  algebraically.Instead, we use a parameter, where:
             /// :math:`p = y' = \frac{dy}{dx}`
