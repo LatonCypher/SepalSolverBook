@@ -74,13 +74,19 @@ SepalSolver impelements ODE45s for stiff differential equation and we look at ho
    
    The Reaction Network
    The system models the following three reactions:
-   - :math:`y_1 \xrightarrow{0.04} y_2`(Slow) 
+   
+   - :math:`y_1 \xrightarrow{0.04} y_2` (Slow) 
+   
    - :math:`y_2 + y_2 \xrightarrow{3 \cdot 10^7} y_3 + y_2` (Very Fast)
+   
    - :math:`y_2 + y_3 \xrightarrow{10^4} y_1 + y_3` (Fast)
    
    The resulting system of differential equations is:
+   
    - :math:`\cfrac{dy_1}{dt} = -0.04y_1 + 10^4 y_2 y_3`
+   
    - :math:`\frac{dy_2}{dt} = 0.04y_1 - 10^4 y_2 y_3 -3 \cdot 10^7 y_2^2`
+   
    - :math:`\frac{dy_3}{dt} = 3 \cdot 10^7 y_2^2`
    
    
