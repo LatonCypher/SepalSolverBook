@@ -85,9 +85,9 @@ SepalSolver impelements ODE45s for stiff differential equation and we look at ho
    
    - :math:`\cfrac{dy_1}{dt} = -0.04y_1 + 10^4 y_2 y_3`
    
-   - :math:`\frac{dy_2}{dt} = 0.04y_1 - 10^4 y_2 y_3 -3 \cdot 10^7 y_2^2`
+   - :math:`\cfrac{dy_2}{dt} = 0.04y_1 - 10^4 y_2 y_3 -3 \cdot 10^7 y_2^2`
    
-   - :math:`\frac{dy_3}{dt} = 3 \cdot 10^7 y_2^2`
+   - :math:`\cfrac{dy_3}{dt} = 3 \cdot 10^7 y_2^2`
    
    
    .. code-block:: csharp
