@@ -181,11 +181,15 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// <example 6> Pleiades System (Using Higher Order Solvers)
             /// The Pleiades, also known as the Seven Sisters(M45)[1], is a prominent open star cluster located in the constellation Taurus.It's one of the closest and most easily visible star clusters to Earth[2], making it a favorite target for stargazers and a subject of fascination across cultures. The system of equations describing the motion of the stars in the cluster consists of 14 nonstiff second-order differential equations, which produce a system of 28 equations when rewritten in first-order form.
             /// 
-            /// Celestial mechanics is basically an interplay between Newton's law of gravitation :math:`F_i = \sum_{i \neq j} g \cfrac{m_i m_j}{||p_j - p_i||^2}d_{ij}` and Newton's second law of motion: math:`F_i = m_i\cfrac{ d^2p_i}{ dt^2}`. 
+            /// Celestial mechanics is basically an interplay between 
+            /// 
+            /// Newton's law of gravitation: :math:`F_i = \sum_{i \neq j} g \cfrac{m_i m_j}{||p_j - p_i||^2}d_{ij}` and 
+            /// 
+            /// Newton's second law of motion: :math:`F_i = m_i\cfrac{ d^2p_i}{ dt^2}`. 
             /// 
             /// The positions determine the gravitational forces acting on the bodies, but the net force on each of the bodies determines its acceleration(i.e.changes its position from the second order).
             /// 
-            /// we examine this system in 2D, i.e. :math:`p_i = [x_i, y_i]`,  :math:`d_{ ij} = \cfrac{ (p_j - p_i)}{r_{ ij} }` and: math:`r_{ ij} = ||p_j - p_i||`
+            /// we examine this system in 2D, i.e. :math:`p_i = [x_i, y_i]`,  :math:`d_{ij} = \cfrac{(p_j - p_i)}{r_{ ij}}` and :math:`r_{ij} = ||p_j - p_i||`
             /// 
             /// The dynamics of the system can then be modelled as:
             /// 
