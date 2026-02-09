@@ -136,9 +136,9 @@ In these engineering contexts, implicit equations arise because the induced down
 
 Applications include:
 ~~~~~~~~~~~~~~~~~~~~~
-* ** Aerodynamics:** Modeling the circulation around wings with non-rectangular shapes.
+* **Aerodynamics:** Modeling the circulation around wings with non-rectangular shapes.
 * **Classical Mechanics:** Describing trajectories where the velocity constraint is non-linear.
-* ** Singularities:** Just like Clairaut equations, Weissinger equations often have "envelope" solutions where the uniqueness of the solution breaks down.
+* **Singularities:** Just like Clairaut equations, Weissinger equations often have "envelope" solutions where the uniqueness of the solution breaks down.
 
 
 
