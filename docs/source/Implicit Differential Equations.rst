@@ -97,50 +97,90 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       :alt: Clairaut.png
    
 
-</example> Solve Weissinger implicit ODE
-While Clairaut's equation is a textbook classic, **Weissinger’s Implicit Differential Equation** takes things a step further into the realm of higher-degree implicit equations. It is specifically a first-order equation where the derivative  is raised to a power, but it maintains a structure that allows for a clever substitution method.
-The general form of a Weissinger equation is:
-:math:`y = x^n f(y') + g(y')`
 
-In many contexts, particularly in the study of aerodynamics(where Weissinger’s name is prominent due to his work on lifting-line theory), you might see specialized versions of this.However, in pure mathematics, it is often treated as a generalization of d'Alembert’s equation.
+.. Admonition:: Example 2 :  Solve Weissinger implicit ODE :math:`y = x^n f(y') + g(y')`
 
-1. Structure and Characteristics
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Unlike a standard ODE, the Weissinger equation is **nonlinear in the derivative**.
-
-* **Relationship to Clairaut:** If you set :math:`n = 1` and :math:`f(y') = y'`, you essentially return to the Clairaut form.
-* **The Power of :math:`x`:** The :math:`x^n` term dictates how the geometry of the solution curves scales as you move away from the origin.
-
-2. The Solution Strategy: Parameterization
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To solve a Weissinger equation, we rarely try to isolate  algebraically.Instead, we use a parameter, where:
-:math:`p = y' = \frac{dy}{dx}`
-substituting :math:`p` into the equation gives:
-:math:`y = x^n f(p) + g(p)`
-To find the relationship between :math:`x` and :math:`p`, we differentiate the entire equation with respect to :math:`x`:
-:math:`\cfrac{dy}{dx} = nx^{n-1} f(p) + x^n f'(p) \cfrac{dp}{dx} + g'(p) \cfrac{dp}{dx}`
-
-Since :math:`\cfrac{dy}{dx} = p` , we get a **linear differential equation for  in terms of** :math:`p`:  
-
-.. math::
-
-   p  = nx^{n-1} f(p) + \left[x^n f'(p) + g'(p) \right] \cfrac{dp}{dx}
-
-
-This transformation is powerful because it turns a difficult implicit equation into a linear one(usually of the Bernoulli type or similar), which we can solve to get :math:`x(p)`. Once you have :math:`x(p)` and :math:`y(fp)`, you have a** parametric solution** to the original ODE.
-
-3. Why Weissinger Equations Matter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Weissinger's work is most famous in **fluid dynamics**, specifically the **Weissinger Area Rule** and his "L-method" for calculating lift distribution on swept wings.
-In these engineering contexts, implicit equations arise because the induced downwash(the change in airflow direction) depends on the lift, but the lift itself is a function of that downwash.
-
-Applications include:
-~~~~~~~~~~~~~~~~~~~~~
-* **Aerodynamics:** Modeling the circulation around wings with non-rectangular shapes.
-* **Classical Mechanics:** Describing trajectories where the velocity constraint is non-linear.
-* **Singularities:** Just like Clairaut equations, Weissinger equations often have "envelope" solutions where the uniqueness of the solution breaks down.
-
-
-
-</example 2> 
+   While Clairaut's equation is a textbook classic, **Weissinger’s Implicit Differential Equation** takes things a step further into the realm of higher-degree implicit equations. It is specifically a first-order equation where the derivative  is raised to a power, but it maintains a structure that allows for a clever substitution method.
+   The general form of a Weissinger equation is:
+   :math:`y = x^n f(y') + g(y')`
+   
+   In many contexts, particularly in the study of aerodynamics(where Weissinger’s name is prominent due to his work on lifting-line theory), you might see specialized versions of this.However, in pure mathematics, it is often treated as a generalization of d'Alembert’s equation.
+   
+   1. Structure and Characteristics
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   Unlike a standard ODE, the Weissinger equation is **nonlinear in the derivative**.
+   
+   * **Relationship to Clairaut:** If you set :math:`n = 1` and :math:`f(y') = y'`, you essentially return to the Clairaut form.
+   * **The Power of x:** The :math:`x^n` term dictates how the geometry of the solution curves scales as you move away from the origin.
+   
+   2. The Solution Strategy: Parameterization
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   To solve a Weissinger equation, we rarely try to isolate  algebraically.Instead, we use a parameter, where:
+   :math:`p = y' = \frac{dy}{dx}`
+   substituting :math:`p` into the equation gives:
+   :math:`y = x^n f(p) + g(p)`
+   To find the relationship between :math:`x` and :math:`p`, we differentiate the entire equation with respect to :math:`x`:
+   
+   .. math::
+   
+      \cfrac{dy}{dx} = nx^{n-1} f(p) + x^n f'(p) \cfrac{dp}{dx} + g'(p) \cfrac{dp}{dx}
+   
+   
+   Since :math:`\cfrac{dy}{dx} = p` , we get a **linear differential equation for  in terms of** :math:`p`:  
+   
+   .. math::
+   
+      p  = nx^{n-1} f(p) + \left[x^n f'(p) + g'(p) \right] \cfrac{dp}{dx}
+   
+   
+   This transformation is powerful because it turns a difficult implicit equation into a linear one(usually of the Bernoulli type or similar), which we can solve to get :math:`x(p)`. Once you have :math:`x(p)` and :math:`y(fp)`, you have a** parametric solution** to the original ODE.
+   
+   3. Why Weissinger Equations Matter
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   Weissinger's work is most famous in **fluid dynamics**, specifically the **Weissinger Area Rule** and his "L-method" for calculating lift distribution on swept wings.
+   In these engineering contexts, implicit equations arise because the induced downwash(the change in airflow direction) depends on the lift, but the lift itself is a function of that downwash.
+   
+   Applications include:
+   ~~~~~~~~~~~~~~~~~~~~~
+   * **Aerodynamics:** Modeling the circulation around wings with non-rectangular shapes.
+   * **Classical Mechanics:** Describing trajectories where the velocity constraint is non-linear.
+   * **Singularities:** Just like Clairaut equations, Weissinger equations often have "envelope" solutions where the uniqueness of the solution breaks down.
+   
+   Consider :math:`F(t, y, y') = t*y^2 * yp^3 - y^3 * yp^2 + t*(t^2 + 1)*yp - t^2 * y = 0`
+   
+   In this case, fix the initial value :math:`y(t_0) = \sqrt{\cfrac{3}{2}}` and let decic compute a consistent initial value for the derivative :math:`y'(t_0)`, starting from an initial guess of :math:`y'(t_0) = 0`.
+   
+   
+   .. code-block:: csharp
+   
+      // Define the implicit function F(t, y, yp) = 0
+      double F(double t, double y, double yp) => t*y*y*yp*yp*yp - y*y*y*yp*yp + t*(t*t + 1)*yp - t*t*y;
+      
+      // Initial conditions y(t0) = sqrt(3/2), and guess for y'(t0) = 0
+      double t0 = 1, y0 = Sqrt(3.0/2.0), yp0 = 0;
+      
+      // Compute y'(t0) using decic
+      (y0, yp0) = decic(F, t0, y0, 1, yp0, 0);
+      
+      // Now solve the implicit ODE using Ode45i
+      (ColVec T, ColVec Y) = Ode45i(F, (y0, yp0), [t0, 5]);
+      
+      // Plot the results
+      Scatter(T, Y, "fob"); HoldOn();
+   
+      // Add analytical solution for comparison 
+      Plot(T, Sqrt(T.Pow(2) + 0.5), "r"); HoldOff();
+   
+      // Axis label and legend
+      Xlabel("t"); Ylabel("y"); 
+      Legend(["Numerical Solution", "Analytical Solution"], LowerRight);
+   
+      // Save the plot
+      SaveAs("Weissinger.png");
+   
+   
+   .. figure:: images/Weissinger.png
+      :align: center
+      :alt: Weissinger.png
+   
 
