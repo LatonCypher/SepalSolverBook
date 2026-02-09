@@ -157,9 +157,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
 
                 // Literature style plot
                 Figure(640, 880);
-                ActivateRightAxis(); ActivateTopAxis();
-                var z1 = Plot(Pr[Pr <= 8], ZHY[Pr <= 8, ..], "k"); hold  = true;
-                var z2 = Plot(Pr[Pr >= 7], ZHY[Pr >= 7, ..], "k"); hold = false;
+                var z1 = Plot(Pr[Pr <= 8], ZHY[Pr <= 8, ..], "k"); HoldOn();
+                var z2 = Plot(Pr[Pr >= 7], ZHY[Pr >= 7, ..], "k"); HoldOff();
                 SetAxis(z1, X_Axis.Top, Y_Axis.Left, 0, 8, 0, 1.1);
                 SetAxis(z2, X_Axis.Bottom, Y_Axis.Right, 7, 15, 0.9, 2.0);
                 SaveAs("Hall_Yarborough_Chart.png");
@@ -218,9 +217,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
 
                 // Literature style plot
                 Figure(640, 880);
-                ActivateRightAxis(); ActivateTopAxis();
-                var z1 = Plot(Pr[Pr <= 8], ZDAK[Pr <= 8, ..], "k"); hold  = true;
-                var z2 = Plot(Pr[Pr >= 7], ZDAK[Pr >= 7, ..], "k"); hold = false;
+                var z1 = Plot(Pr[Pr <= 8], ZDAK[Pr <= 8, ..], "k"); HoldOn();
+                var z2 = Plot(Pr[Pr >= 7], ZDAK[Pr >= 7, ..], "k"); HoldOff();
                 SetAxis(z1, X_Axis.Top, Y_Axis.Left, 0, 8, 0, 1.1);
                 SetAxis(z2, X_Axis.Bottom, Y_Axis.Right, 7, 15, 0.9, 2.0);
                 SaveAs("Dranchuk_Abou_Kassem_Chart.png");
@@ -269,9 +267,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
 
                 // Literature style plot
                 Figure(640, 880);
-                ActivateRightAxis(); ActivateTopAxis();
-                var z1 = Plot(Pr[Pr <= 8], ZDPR[Pr <= 8, ..], "k"); hold  = true;
-                var z2 = Plot(Pr[Pr >= 7], ZDPR[Pr >= 7, ..], "k"); hold = false;
+                var z1 = Plot(Pr[Pr <= 8], ZDPR[Pr <= 8, ..], "k"); HoldOn();
+                var z2 = Plot(Pr[Pr >= 7], ZDPR[Pr >= 7, ..], "k"); HoldOff();
                 SetAxis(z1, X_Axis.Top, Y_Axis.Left, 0, 8, 0, 1.1);
                 SetAxis(z2, X_Axis.Bottom, Y_Axis.Right, 7, 15, 0.9, 2.0);
                 SaveAs("Dranchuk_Purvis_Robinson_Chart.png");

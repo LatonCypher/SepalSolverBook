@@ -28,8 +28,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_03_Interpolation
                 double evaluator(double x) => Polyval(model, x);
                 double[] estimate = [.. x.Select(evaluator)];
 
-                Scatter(X, Y, "fob", 12); hold = true;
-                Plot(x, estimate, "r"); hold = false;
+                Scatter(X, Y, "fob", 12); HoldOn();
+                Plot(x, estimate, "r"); HoldOff();
                 SaveAs("Polynomial_Interpolation_Ex1.png");
             }
             ///</code>
@@ -63,8 +63,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_03_Interpolation
                 double[] coeffs = Polyfit(x, y, 3); //degree2
                 ColVec xq = Linspace(0, 10);
                 ColVec yq = Arrayfun(x => Polyval(coeffs, x), xq);
-                Scatter(xc, yc, "for", 12); hold = true;
-                Plot(xq, yq, "b"); hold  = false;
+                Scatter(xc, yc, "for", 12); HoldOn();
+                Plot(xq, yq, "b"); HoldOff();
                 SaveAs("Polynomial_Interpolation_Ex3.png");
             }
             /// </code>

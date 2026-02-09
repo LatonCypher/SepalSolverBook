@@ -386,7 +386,7 @@ Lets see how to compute water influx, and generate the started water influx plot
    int end = Rd.Length - 1;
    // compute the water influx and plot
    Subplot(2, 1, 0);
-   hold = true;
+   HoldOn();
    List<string> lgd = [];
    foreach (double rD in Rd)
    {
@@ -404,7 +404,7 @@ Lets see how to compute water influx, and generate the started water influx plot
 
    // compute the water influx and plot
    Subplot(2, 1, 1);
-   hold = true;
+   HoldOn();
    lgd = [];
    foreach (double rD in Rd)
    {

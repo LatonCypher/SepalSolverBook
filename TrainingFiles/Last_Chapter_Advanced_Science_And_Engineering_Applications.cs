@@ -22,7 +22,7 @@ namespace ConsoleApp1.TrainingFiles
                     rk4((t, y) => Dynamic(y), t, y, dt);
                 double[] y0 = [1.5, 0]; ColVec y = y0;
 
-                hold = true;
+                HoldOn();
                 var rec = Rectangle([-3, -5, 0.5, 3]);
                 rec.FillColor = [0.7, 0.7, 0.7];
                 rec = Rectangle([-2.4, -5.2, 0.2, 3.4]);
@@ -50,7 +50,7 @@ namespace ConsoleApp1.TrainingFiles
                 Plot([1.5, 14], [1, 1], "k");
                 Plot([2, 2], [-1, 3], "k");
                 var plt = Plot([2], [2.5], "r", 2);
-                Axis([-5, 15, -8, 6]); hold = false;
+                Axis([-5, 15, -8, 6]); HoldOff();
                 //AxisOff();
                 SaveAs("Damping System.png");
                 Delete(body);
@@ -89,7 +89,7 @@ namespace ConsoleApp1.TrainingFiles
                     M = new double[,] { {0, vd }, {vq, vd }, {vq, 0 }, {0, -ld }, {lq, 0 } };
 
                 // Plot 1
-                Subplot(2, 2, 0); hold = true;
+                Subplot(2, 2, 0); HoldOn();
                 ArrowPlotter([0, -3], [0, 3], 1, clr3, clr3);
                 ArrowPlotter([-0.5, 0], [6.7, 0], 1, clr3, clr3);
                 var Va = Plot([0], [vα], "", 2); Va.LineColor = clr1;
@@ -97,10 +97,10 @@ namespace ConsoleApp1.TrainingFiles
                 var Ta = Text(offset, vα, @"v_{\alpha}", 25, clr1, Latex);
                 var Tb = Text(offset, vβ, @"v_{\beta}", 25, clr2, Latex);
                 Axis([-0.5, 6.7, -3, 3]);
-                AxisOff(); hold = false;
+                AxisOff(); HoldOff();
 
                 // Plot 2
-                Subplot(2, 2, 2); hold = true;
+                Subplot(2, 2, 2); HoldOn();
                 ArrowPlotter([0, -3], [0, 3], 1, clr3, clr3);
                 ArrowPlotter([-0.5, 0], [6.7, 0], 1, clr3, clr3);
                 var Vq = Plot([0], [vq], "", 2); Vq.LineColor = clr1;
@@ -108,9 +108,9 @@ namespace ConsoleApp1.TrainingFiles
                 var Tq = Text(offset, vq, @"v_q", 25, clr1, Latex);
                 var Td = Text(offset, -vd, @"v_d", 25, clr2, Latex);
                 Axis([-0.5, 6.7, -3, 3]);
-                AxisOff(); hold = false;
+                AxisOff(); HoldOff();
 
-                Subplot(2, 2, [1, 3]); hold = true;
+                Subplot(2, 2, [1, 3]); HoldOn();
                 ArrowPlotter([-2.6, 0], [2.6, 0], 1, clr3, clr1);
                 ArrowPlotter([0, -2.6], [0, 2.6], 1, clr3, clr2);
                 var Vs = ArrowPlotter([0, 0], [vq, vd], 2, clr3, clr3);
@@ -143,7 +143,7 @@ namespace ConsoleApp1.TrainingFiles
 
                 Text(0, -2.7, @"v_q - j v_d = (v_{\alpha} + j v_{\beta})e^{-j \theta}", 30, clr3, Latex);
                 Axis([-3.2, 3.2, -3.2, 3.2]);
-                AxisOff(); hold = false;
+                AxisOff(); HoldOff();
 
                 SaveAs("Parktransform2.png", 1000, 500);
                 double[] x, y;
@@ -264,7 +264,7 @@ namespace ConsoleApp1.TrainingFiles
                 clrs /= 255;
 
                 // Plot Anchors and Bars at Start Position
-                Subplot(3, 2, [0, 2, 4]); hold = true;
+                Subplot(3, 2, [0, 2, 4]); HoldOn();
                 double[] clr = [0.8, 0.8, 0.8];
                 Fill(p1[0] + c, p1[1] + s, clr);
                 Fill(p4[0] + c, p4[1] + s, clr);
@@ -281,7 +281,7 @@ namespace ConsoleApp1.TrainingFiles
                     (X, Y) = BarsTrans(sol[i], Points[i], X, Y);
                     Bars[i] = Fill(X, Y, [.. clrs[i, ""]]);
                 }
-                hold = false; Axis([-3, 12, -7, 8]);
+                HoldOff(); Axis([-3, 12, -7, 8]);
 
                 // Compute Velocities and Accelerations
                 ColVec AngPos_im1 = sol.ToArray(), 
@@ -291,26 +291,26 @@ namespace ConsoleApp1.TrainingFiles
                        Acc = 900*(AngPos_ip1 - 2*AngPos_i + AngPos_im1);
 
                 // Plot Angles, Velocities, and Accelerations
-                Subplot(3, 2, 1); hold = true; int count = 0;
+                Subplot(3, 2, 1); HoldOn(); int count = 0;
                 PlotHandle[] AngPlot = [.. AngPos_ip1.
                     Select(w => Plot([0.0], [w], Linewidth: 2))];
                 Array.ForEach(AngPlot, plt => 
                 { plt.LineColor = [.. clrs[count, ""]]; count++; });
-                Axis([0, 10, 0, 7]); hold = false;
+                Axis([0, 10, 0, 7]); HoldOff();
 
-                Subplot(3, 2, 3); hold = true; count = 0;
+                Subplot(3, 2, 3); HoldOn(); count = 0;
                 PlotHandle[] VelPlot = [.. Vel.
                     Select(w => Plot([0.0], [w], Linewidth: 2))];
                 Array.ForEach(VelPlot, plt => 
                 { plt.LineColor = [.. clrs[count, ""]]; count++; });
-                Axis([0, 10, -4, 4]); hold = false;
+                Axis([0, 10, -4, 4]); HoldOff();
 
-                Subplot(3, 2, 5); hold = true; count = 0;
+                Subplot(3, 2, 5); HoldOn(); count = 0;
                 PlotHandle[] AccPlot = [.. Acc.
                     Select(w => Plot([0.0], [w], Linewidth: 2))];
                 Array.ForEach(AccPlot, plt => 
                 { plt.LineColor = [.. clrs[count, ""]]; count++; });
-                Axis([0, 10, -20, 20]); hold = false;
+                Axis([0, 10, -20, 20]); HoldOff();
 
                 byte[] Animfun(int i)
                 {
@@ -374,12 +374,12 @@ namespace ConsoleApp1.TrainingFiles
                 }
 
                 // Diagram
-                var Ship = Plot(Xs, Ys, "k", 2); hold = true;
+                var Ship = Plot(Xs, Ys, "k", 2); HoldOn();
                 ColVec X = Linspace(-10, 10, 501); double dx = 20.0/500;
                 ColVec D = X.Select(x => -4 < x && x < 4 ? -x : 0).ToArray();
                 double[] Xw = [-10, .. X, 10], Yw = [-10, .. Wave(X, 0), -10];
                 var Water = Fill(Xw, Yw, [0.5294, 0.8078, 0.9216]);
-                hold = false; Axis([-10, 10, -6, 6]); AspectRatio(1, 1);
+                HoldOff(); Axis([-10, 10, -6, 6]); AspectRatio(1, 1);
 
                 // Water Wave Force Torque about the Ship Center of Gravity
                 double WaveForce(double t) =>
@@ -483,9 +483,9 @@ namespace ConsoleApp1.TrainingFiles
                     return (Bar1, Bar2, Pins);
                 }
 
-                hold = true;
+                HoldOn();
                 var Systems = offset.Select((_, i) => DBars(States[i][0, ""], $"{clr[i]}")).ToArray();
-                hold = false;
+                HoldOff();
                 double xmin = -1.1*(L1 + L2), ymin = xmin, xmax = -xmin, ymax = xmax;
                 Axis([xmin, xmax, ymin, ymax]); AspectRatio(1, 1);
 
@@ -513,8 +513,8 @@ namespace ConsoleApp1.TrainingFiles
                 ColVec x = Linspace(0, 5*pi, 1001),
                     y = Sign(Sin(x));
                 // Plot signal and its fourier series
-                Plot(x, y, "k",3); hold = true;
-                var Fplot = Plot(x, 0*y, "r",2); hold = false;
+                Plot(x, y, "k",3); HoldOn();
+                var Fplot = Plot(x, 0*y, "r",2); HoldOff();
                 // Initialize and fit the model
                 LinearRegression model = new();
                 List<ColVec> X = [];
@@ -538,8 +538,8 @@ namespace ConsoleApp1.TrainingFiles
                 y = Interp1(x[idx], y[idx], x);
                 y = Max(-0.5, Min(0.5, y));
                 // Plot signal and its fourier series
-                Plot(x, y, "k", 3); hold = true;
-                var Fplot = Plot(x, 0*y, "r", 2); hold = false;
+                Plot(x, y, "k", 3); HoldOn();
+                var Fplot = Plot(x, 0*y, "r", 2); HoldOff();
                 // Initialize and fit the model
                 LinearRegression model = new();
                 List<ColVec> X = [];
@@ -704,7 +704,7 @@ namespace ConsoleApp1.TrainingFiles
                 // compute z factors and plot them
                 List<string> Tlabels = [];
                 List<ColVec> ZHY = [], ZDAK = [], ZDPR = [], CHY = [];
-                hold = true;
+                HoldOn();
                 foreach (var tr in Tr)
                 {
                     ZHY.Add(Pr.Select(p => ZfactorHY(p, tr)).ToArray());
@@ -780,13 +780,13 @@ namespace ConsoleApp1.TrainingFiles
                 // compute the water influx and plot
                 Td = Logspace(-1, 2); lgd = [];
                 Rd = [2, 2.5, 3, 3.5, 4, inf];
-                Subplot(2, 1, 0); hold = true;
+                Subplot(2, 1, 0); HoldOn();
                 Plotter(Td, Rd, [0.1, 100, 1, 8]);
 
                 // compute the water influx and plot
                 Td = Logspace(0, 3); lgd = [];
                 Rd = [5, 6, 7, 8, 9, 10, inf];
-                Subplot(2, 1, 1); hold = true;
+                Subplot(2, 1, 1); HoldOn();
                 Plotter(Td, Rd, [1, 1000, 0, 70]);
                 SaveAs("Dimensionless-Water-Influx.png");
                 CloseFig();
@@ -882,13 +882,13 @@ namespace ConsoleApp1.TrainingFiles
 
                 // generator solution for M = 0 and plot
                 (ColVec T, Matrix Y) = HowarthTransform(0);
-                Plot(T, Y["", 1], "b", 2); hold = true;
+                Plot(T, Y["", 1], "b", 2); HoldOn();
                 Plot(T, Y["", 3] - 1, "r", 2);
 
                 // generator solution for M = 5 and plot
                 (T, Y) = HowarthTransform(5);
                 Plot(T, Y["", 1], "b", 2);
-                Plot(T, Y["", 3] - 1, "r", 2); hold = false;
+                Plot(T, Y["", 3] - 1, "r", 2); HoldOff();
 
                 // add legend, axis label and title
                 Legend(["f'", "h-1"], UpperRight);
@@ -953,8 +953,8 @@ namespace ConsoleApp1.TrainingFiles
                 (ColVec T, Matrix Y) = 
                     Ode45a(dudt, Mass, y0, tspan, opts);
                 ColVec X = T, U5 = Y["", 4];
-                Scatter(X, input(X), "o"); hold = true;
-                Plot(X, U5, "--r"); hold = false;
+                Scatter(X, input(X), "o"); HoldOn();
+                Plot(X, U5, "--r"); HoldOff();
                 Legend(["Input", "Output"], UpperLeft);
                 Xlabel("Time t"); Ylabel("Solution y");
                 Title("One Transistor Amplifier DAE Problem-DAE45");
@@ -1037,7 +1037,7 @@ namespace ConsoleApp1.TrainingFiles
                     rk4((t, y) => Dynamic(y), t, y, dt);
                 double[] y0 = [1.5, 0]; ColVec y = y0;
 
-                hold = true;
+                HoldOn();
                 var rec = Rectangle([-4, -7, 3, 7], 0.5); 
                 rec.FillColor = [0.2, 0.2, 0.2];
                 rec = Rectangle([-0.5, -3.5, 1, 8.5], 0.1); 
@@ -1057,7 +1057,7 @@ namespace ConsoleApp1.TrainingFiles
                 Plot([1.5, 14], [1, 1], "k"); 
                 Plot([2, 2], [-1, 3], "k");
                 var plt = Plot([2], [2.5], "r", 2);
-                Axis([-5, 15, -8, 6]); hold = false;
+                Axis([-5, 15, -8, 6]); HoldOff();
                 AxisOff();
 
                 byte[] AnimFunc(int i)
@@ -1116,21 +1116,21 @@ namespace ConsoleApp1.TrainingFiles
                     yvals = Hcart(Y, Y + L * s).T;
                 double xmin = xvals.Min()-1, ymin = yvals.Min()-1, 
                     xmax = xvals.Max()+1, ymax = yvals.Max()+1;
-                hold = true;
+                HoldOn();
                 Indexer indx = new(0, 5, 121);
                 Scatter(xvals[0, indx], yvals[0, indx], "or"); 
                 Scatter(xvals[1, indx], yvals[1, indx], "og");
                 Plot(xvals["", indx], yvals["", indx]); 
                 Axis([xmin, xmax, ymin, ymax]);
-                hold = false;
+                HoldOff();
                 SaveAs("baton_mechanics.png");
 
-                hold = true;
+                HoldOn();
                 var End1 = Scatter(xvals[0, 0], yvals[0, 0], "or"); 
                 var End2 = Scatter(xvals[1, 0], yvals[1, 0], "og"); 
                 var Cnct = Plot(xvals["", 0], yvals["", 0]); 
                 Axis([xmin, xmax, ymin, ymax]);
-                hold = false;
+                HoldOff();
 
                 byte[] Animfun(int i)
                 {
@@ -1184,21 +1184,21 @@ namespace ConsoleApp1.TrainingFiles
                     yvals = Hcart(Y, Y + L * s).T;
                 double xmin = xvals.Min()-1, ymin = yvals.Min()-1,
                     xmax = xvals.Max()+1, ymax = yvals.Max()+1;
-                hold = true;
+                HoldOn();
                 Indexer indx = new(0, 5, 121);
                 Scatter(xvals[0, indx], yvals[0, indx], "or");
                 Scatter(xvals[1, indx], yvals[1, indx], "og");
                 Plot(xvals["", indx], yvals["", indx]); 
                 Axis([xmin, xmax, ymin, ymax]);
-                hold = false;
+                HoldOff();
                 SaveAs("baton_mechanics.png");
 
-                hold = true;
+                HoldOn();
                 var End1 = Scatter(xvals[0, 0], yvals[0, 0], "or"); 
                 var End2 = Scatter(xvals[1, 0], yvals[1, 0], "og");
                 var Cnct = Plot(xvals["", 0], yvals["", 0]); 
                 Axis([xmin, xmax, ymin, ymax]);
-                hold = false;
+                HoldOff();
                 byte[] Animfun(int i)
                 {
                     End1.Xdata = xvals[0, i]; End1.Ydata = yvals[0, i];
@@ -1246,21 +1246,21 @@ namespace ConsoleApp1.TrainingFiles
                     yvals = Hcart(Y, Y + L * s).T;
                 double xmin = xvals.Min()-1, ymin = yvals.Min()-1, 
                     xmax = xvals.Max()+1, ymax = yvals.Max()+1;
-                hold = true;
+                HoldOn();
                 Indexer indx = new(0, 5, 121);
                 Scatter(xvals[0, indx], yvals[0, indx], "or"); 
                 Scatter(xvals[1, indx], yvals[1, indx], "og");
                 Plot(xvals["", indx], yvals["", indx], "k"); 
                 Axis([xmin, xmax, ymin, ymax]);
-                hold = false;
+                HoldOff();
                 SaveAs("baton_mechanics.png");
 
-                hold = true;
+                HoldOn();
                 var End1 = Scatter(xvals[0, 0], yvals[0, 0], "or"); 
                 var End2 = Scatter(xvals[1, 0], yvals[1, 0], "og");
                 var Cnct = Plot(xvals["", 0], yvals["", 0]); 
                 Axis([xmin, xmax, ymin, ymax]);
-                hold = false;
+                HoldOff();
 
                 byte[] Animfun(int i)
                 {
@@ -1341,10 +1341,10 @@ namespace ConsoleApp1.TrainingFiles
                 Matrix[] States = [..Masses.Select(M => Ode45((t, s) => 
                     derivs(s, M1, M), s0, Linspace(0, T, N)).Y)];
 
-                hold = true;
+                HoldOn();
                 var Systems = Masses.Select((M,i) =>
                     SystemDrawing(States[i][0,""], X0[i], Y0[i], clr[i])).ToList();
-                Axis([-3*L, 3*L, -1.2*L, L]); hold  = false;
+                Axis([-3*L, 3*L, -1.2*L, L]); HoldOff();
                 AspectRatio(1, 1);
                 byte[] Animfun(int i)
                 {
@@ -1396,7 +1396,7 @@ namespace ConsoleApp1.TrainingFiles
 
                 Systems = [.. Masses.Select((M, i) =>
                     SystemDrawing(States[i][0, ""], X0[i], Y0[i], clr[i]))];
-                Axis([-3*L, 3*L, -1.2*L, L]); hold  = false;
+                Axis([-3*L, 3*L, -1.2*L, L]); HoldOff();
 
                 byte[] Animfun2(int i)
                 {
@@ -1501,9 +1501,9 @@ namespace ConsoleApp1.TrainingFiles
                     return (Bar1, Bar2, Pins);
                 }
 
-                hold = true;
+                HoldOn();
                 var Systems = Enumerable.Range(0, 3).Select(i => DBars(States[i][0, ""], $"{clr[i]}")).ToList();
-                hold = false;
+                HoldOff();
                 double xmin = -1.1*(L + L), ymin = xmin, xmax = -xmin, ymax = xmax;
                 Axis([xmin, xmax, ymin, ymax]);
 
@@ -1589,9 +1589,9 @@ namespace ConsoleApp1.TrainingFiles
                 AxisEqual();
                 SaveAs("Position-of-Pleiades-Stars.png");
 
-                Plot(Y["", I], Y["", J]); hold = true;
+                Plot(Y["", I], Y["", J]); HoldOn();
                 ScatterHandle[] Stars = [..I.Select(i => Scatter(0, 0, "fo", 20))];
-                hold = false; AxisEqual();
+                HoldOff(); AxisEqual();
                 byte[] AnimFun(int i)
                 {
                     for (int j = 0; j < 7; j++)

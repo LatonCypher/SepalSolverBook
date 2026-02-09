@@ -24,10 +24,10 @@
                 ColVec h00 = 2 * t3 - 3 * t2 + 1, h10 = t3 - 2 * t2 + t,
                        h01 = -2 * t3 + 3 * t2, h11 = t3 - t2;
 
-                Plot(t, h00, "r", 3); hold = true;
+                Plot(t, h00, "r", 3); HoldOn();
                 Plot(t, h10, "g", 3);
                 Plot(t, h01, "b", 3);
-                Plot(t, h11, "k", 3); hold = false;
+                Plot(t, h11, "k", 3); HoldOff();
                 Legend(["h00", "h10", "h01", "h11"], MiddleLeft);
                 SaveAs("hermite_modes.png");
 
@@ -68,7 +68,7 @@
                 // Using linear interpolation
                 ColVec x = Linspace(0, 2*pi, 7), s = Sin(x);
                 ColVec xq = Linspace(0, 2*pi), sq = Interp1(x, s, xq);
-                Scatter(x, s, "fob", 10); hold = true;
+                Scatter(x, s, "fob", 10); HoldOn();
                 Plot(xq, sq, "g");
             
                 // using hermite interpolation
@@ -90,7 +90,7 @@
                     sh[i] = h00 * y0 + h10 * dx * m0 + h01 * y1 + h11 * dx * m1;
                 }
                 Plot(xq, sh, "r", 3);
-                Plot(xq, Sin(xq), "--k", 2); hold = false;
+                Plot(xq, Sin(xq), "--k", 2); HoldOff();
                 SaveAs("hermite_vs_linear.png");
             }
             /// </code>
@@ -262,7 +262,7 @@
                     Xsmooth.Add(X[i]); Ysmooth.Add(Y[i]);
                 }
                 ColVec xx = Xsmooth; Matrix yy = Ysmooth;
-                hold = true;
+                HoldOn();
                 Plot(xx, yy);
 
                 static List<RowVec> HermiteCubicSpline(double x0, double x1,

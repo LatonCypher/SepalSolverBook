@@ -34,10 +34,10 @@
                 Console.WriteLine($"Coefficients: [{string.Join(", ", coefficients.Select(n => n.ToString("F4")))}]");
 
                 // Plotting the results
-                Scatter(X, Y, "fob", 15); hold = true;
+                Scatter(X, Y, "fob", 15); HoldOn();
                 double[] x = Linspace(1, 4);
                 double[] y = [..x.Select(x => Polyval(coefficients, x))];
-                Plot(x, y, "r", Linewidth: 2); hold = false;
+                Plot(x, y, "r", Linewidth: 2); HoldOff();
                 SaveAs("Polyfit_Example1.png");
             }
             /// </code> 
@@ -84,7 +84,7 @@
             {
                 // Example of polynomial fitting
                 double[] x = [1, 2, 3, 4, 5], y = [6, 9, 14, 21, 30];
-                Scatter(x, y, "fob"); hold  = true;
+                Scatter(x, y, "fob"); HoldOn();
 
                 double[] xp = Linspace(1, 5);
                 double[] fit1 = Polyfit(x, y, 1);
@@ -104,7 +104,7 @@
                     """);
 
                 Legend(["Data", "Linear Fit", "Quadratic Fit"]);
-                hold = false;
+                HoldOff();
                 SaveAs("Polyfit_Example_4.png");
             }
             /// </code> 

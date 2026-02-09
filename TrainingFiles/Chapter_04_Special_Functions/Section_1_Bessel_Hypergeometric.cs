@@ -304,7 +304,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                 int end = Rd.Length - 1;
                 // compute the water influx and plot
                 Subplot(2, 1, 0);
-                hold = true;
+                HoldOn();
                 List<string> lgd = [];
                 foreach (double rD in Rd)
                 {
@@ -322,7 +322,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
 
                 // compute the water influx and plot
                 Subplot(2, 1, 1);
-                hold = true;
+                HoldOn();
                 lgd = [];
                 foreach (double rD in Rd)
                 {

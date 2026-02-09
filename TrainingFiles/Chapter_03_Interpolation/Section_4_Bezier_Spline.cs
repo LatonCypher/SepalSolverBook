@@ -40,8 +40,8 @@
                 }
                 x += xControl[L]*s.Pow(L); y += yControl[L]*s.Pow(L);
 
-                Scatter(xControl, yControl, "fob", 12); hold = true;
-                Plot(x, y); hold = false;
+                Scatter(xControl, yControl, "fob", 12); HoldOn();
+                Plot(x, y); HoldOff();
                 SaveAs("Bezier_Curve_Example.png");
             }
             /// </code> 

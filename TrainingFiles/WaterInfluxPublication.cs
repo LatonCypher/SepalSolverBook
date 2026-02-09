@@ -383,10 +383,10 @@ namespace ConsoleApp1.TrainingFiles
 
             // Polynomial
             Matrix Pd = rD.Select(r => Arrayfun(t => Pd_Finite_Approx(t, r), tD)).ToList();
-            Scatter(Log10(tD[I]), Log10(Pd[I, ""])); hold = true;
+            Scatter(Log10(tD[I]), Log10(Pd[I, ""])); HoldOn();
             //Numerical Laplace Inversion
             Pd = rD.Select(r => Arrayfun(t => Pd_Finite_Exact(t, r), tD)).ToList();
-            LogLog(tD, Pd, Linewidth: 2); hold = false;
+            LogLog(tD, Pd, Linewidth: 2); HoldOff();
             minorgrid = true;
             Xlabel("tD"); Ylabel("PD");
             Legend(legend, UpperLeft);
@@ -396,10 +396,10 @@ namespace ConsoleApp1.TrainingFiles
 
             // Polynomial
             Matrix Qd = rD.Select(r => Arrayfun(t => Qd_Finite_Approx(t, r), tD)).ToList();
-            Scatter(Log10(tD[I]), Qd[I, ""]); hold = true;
+            Scatter(Log10(tD[I]), Qd[I, ""]); HoldOn();
             //Numerical Laplace Inversion
             Qd = rD.Select(r => Arrayfun(t => Qd_Finite_Exact(t, r), tD)).ToList();
-            SemiLogx(tD, Qd, Linewidth: 2); hold = false;
+            SemiLogx(tD, Qd, Linewidth: 2); HoldOff();
             minorgrid = true;
             Xlabel("tD"); Ylabel("PD");
             Legend(legend, UpperLeft);
@@ -645,7 +645,7 @@ namespace ConsoleApp1.TrainingFiles
                 //Console.WriteLine($"x = {ans.x.T}");
 
                 //x = Linspace(xdata.First(), xdata.Last());
-                //Scatter(xdata, ydata); hold = true;
+                //Scatter(xdata, ydata); HoldOn();
                 //Plot(x, y_est = model(ans.x, x), "r", Linewidth: 2);
                 //Axis([xdata.Min()-0.01*xdata.Range(), xdata.Max()+0.01*xdata.Range(),
                 //     ydata.Min()-0.1*ydata.Range(), ydata.Max()+0.1*ydata.Range()]);
@@ -713,7 +713,7 @@ namespace ConsoleApp1.TrainingFiles
                 //void PlotFun(int i)
                 //{
                 //    Subplot(2, 2, 2*i);
-                //    Plot(xtop, 0.5*ytop, "k", Linewidth: 5); hold = true;
+                //    Plot(xtop, 0.5*ytop, "k", Linewidth: 5); HoldOn();
                 //    Fill(xtop[Gas_idx], 0.5*ytop[Gas_idx], "g");
                 //    Fill(xtop[Oil_idx], 0.5*ytop[Oil_idx], "r");
                 //    Fill(xtop[Water_idx], 0.5 * ytop[Water_idx], "b");
@@ -769,9 +769,9 @@ namespace ConsoleApp1.TrainingFiles
                 //    Y1.Add(Y1.Last() + q1);
                 //    Y2.Add(Y2.Last() + q2);
                 //    Subplot(1, 2, 1);
-                //    Plot((ColVec)X, (ColVec)Y1, "r"); hold = true;
+                //    Plot((ColVec)X, (ColVec)Y1, "r"); HoldOn();
                 //    Plot((ColVec)X, (ColVec)Y2, "r", Linewidth: 2);
-                //    Axis([0, 500, 0, 750]); hold = false;
+                //    Axis([0, 500, 0, 750]); HoldOff();
                 //    Xlabel("time(Days)"); Ylabel("CumProd(MSTB/Day)");
                 //    Legend(["No Pressure Maintenance", "With Pressure Maintenance"], Alignment.UpperLeft);
                 //    return GetImageBytes(1100, 700);
