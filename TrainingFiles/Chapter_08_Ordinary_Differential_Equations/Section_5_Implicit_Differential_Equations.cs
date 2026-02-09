@@ -1,11 +1,14 @@
 ﻿using CSharpMath.Atom.Atoms;
 using HarfBuzzSharp;
+using Microsoft.CodeAnalysis;
 using ScottPlot;
 using ScottPlot.Colormaps;
 using ScottPlot.PathStrategies;
 using ScottPlot.TickGenerators.Financial;
 using SepalSolver;
 using System.Net.NetworkInformation;
+using static SepalSolver.Math;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 {
@@ -165,6 +168,60 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             }
             /// </code>
             /// </example 2> 
+            /// 
+            /// <example 3> Robertson differential equation in implicit form
+            /// Here we reformulate the robertson ode as a pully implicit system of differential algebraic equations
+            /// <math>
+            ///     \begin{array}{rcl}
+            ///         y'_1 &=& -0.04y_1 + 10^4 y_2 y_3 \\
+            ///         y'_2 &=&  0.04y_1 - 10^4 y_2 y_3 -(3 \times 10^7) y_2^2 \\
+            ///         y'_3 &=&  (3 \times 10^7) y_2^2
+            ///     \end{array}
+            /// </math>
+            /// We previously solved this system of ODEs to steady state with the initial conditions :math:`y_1 = 1`, :math:`y_2 = 0`, and :math:`y_3 = 0`.
+            /// 
+            /// But the equations also satisfy a linear conservation law,
+            /// <math> 
+            ///     `y'_1 + y'_2 + y'_3 = 0`
+            /// </math>
+            /// In terms of the solution and initial conditions, the conservation law is
+            /// <math> 
+            ///     `y_1 + y_2 + y_3 = 1.0`
+            /// </math>
+            /// 
+            /// The problem can be rewritten as a system of DAEs by using the conservation law to determine the state of :math:`y_3`. This reformulates the problem as the implicit DAE system
+            /// <math>
+            ///     \begin{array}{rcl}
+            ///         0 &=& y'_1 + 0.04y_1 - 10^4 y_2y_3 \\ 
+            ///         0 &=& y'_2 - 0.04y_1 + 10^4 y_2y_3 + (3 \times 10^7)y_2^2\\ 
+            ///         0 &=& y_1 + y_2 + y_3 - 1.
+            ///     \end{array}
+            /// </math>
+            /// 
+            /// <code>
+            {
+                //define ODE
+                double[] robertsonimplicit(double t, double[] y, double[] yp) =>
+                    [yp[0] + 0.04 * y[0] - 1e4 * y[1]*y[2],
+                     yp[1] - 0.04 * y[0] + 1e4 * y[1]*y[2] + 3e7*y[1]*y[1],
+                     y[0] + y[1] + y[2] - 1];
+
+                double[] y0 = [1, 0, 0.001], yp0 = [0, 0, 0];
+
+                (y0, yp0) = decic(robertsonimplicit, 0, y0, [1, 1, 0], yp0, [0, 0, 1]);
+
+                //Solve ODE
+                (ColVec T, Matrix Y) = Ode45i(robertsonimplicit, (y0, yp0), [0, 4e6]);
+                // Plot the result
+                Y[.., 1] = 1e4*Y[.., 1];
+                SemiLogx(T, Y);
+                Xlabel("Time t"); Ylabel("Soluton y");
+                Legend(["y_1", "1e4*y_2", "y_3"], UpperLeft);
+                Title("Solution of implicit Robertson's ODE with ODE45i");
+                SaveAs("Implicit Robertson-ODE-Ode45s.png");
+            }
+            /// </code>
+            /// </example>
             /// 
             /// </BookContent>
         }
