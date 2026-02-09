@@ -3,13 +3,16 @@ Stiff Differntial Equations
 
 Stiff Differential Equations
 ----------------------------
+In the world of numerical simulation, Stiffness is a phenomenon where certain terms in a differential equation lead to extremely rapid changes in the solution, even if the overall behavior of the system is smooth. It is not a mathematical property of the equation itself, but rather a practical limitation of the numerical methods used to solve it.A system is generally considered "stiff" when there is a large disparity between the fastest and slowest "time scales" in the problem.
 
 1. The "Stability Trap"
 ~~~~~~~~~~~~~~~~~~~~~~~
+Standard explicit solvers (like the classic Runge-Kutta 4th Order) work by taking small steps based on the current slope. In a stiff system, if the step size $h$ is even slightly too large, the solver will "overcorrect" for a rapid transient, leading to wild oscillations and eventually a total crash (divergence).To maintain stability in a stiff system, an explicit solver is forced to take steps so infinitesimally small that the simulation may take days or years to complete, even though the physical system being modeled is barely changing.
 
 Engineering Usage Examples
 --------------------------
 Stiff equations appear whenever a system involves processes that happen at vastly different speeds simultaneously.
+
 1. Chemical Kinetics and Combustion
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In a car engine's combustion chamber, some chemical reactions occur in microseconds (the creation of free radicals), while the overall combustion process and the movement of the piston take milliseconds. To model the exhaust emissions accurately, you must solve a stiff system that captures both the "lightning-fast" chemistry and the "slow" mechanical motion.
@@ -30,7 +33,7 @@ Examples
 ~~~~~~~~
 SepalSolver impelements ODE45s for stiff differential equation and we look at how to use this function to solve stiff Van der Pol Oscillator and Robertson differential equation. 
 
-.. Admonition:: Example 1 : 
+.. Admonition:: Example 1 :  Van der Pol Oscillator (:math:`\mu = 1e5`)
 
    Solve the ODE :math:`~d^2y/dt^2 = 10^{5}((1 - y^2)y' - y)~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 6.3]`.
    
