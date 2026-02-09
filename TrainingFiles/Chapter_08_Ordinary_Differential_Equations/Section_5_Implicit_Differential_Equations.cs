@@ -1,4 +1,13 @@
-﻿namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
+﻿using CSharpMath.Atom.Atoms;
+using HarfBuzzSharp;
+using ScottPlot;
+using ScottPlot.Colormaps;
+using ScottPlot.PathStrategies;
+using ScottPlot.TickGenerators.Financial;
+using SepalSolver;
+using System.Net.NetworkInformation;
+
+namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 {
     internal class Section_5_Implicit_Differential_Equations
     {
@@ -12,11 +21,15 @@
             /// <header 2> What Makes an Equation Implicit? </header>
             /// 
             /// In a standard explicit first-order ODE, we write:
-            /// 
-            ///  :math:`\frac{dy}{dx} = f(x, y)`
+            /// <math>
+            ///     \frac{dy}{dx} = f(x, y)
+            /// </math>
             /// 
             /// In an **implicit differential equation**, the derivative is embedded within a function where it cannot be (or simply isn't) isolated:
-            /// :math:`F(x, y, \frac{dy}{dx}) = 0`
+            /// 
+            /// <math>
+            ///     F(x, y, \frac{dy}{dx}) = 0
+            /// </math>
             /// 
             /// <header 2> Why Use Them? </header>
             /// 
@@ -26,12 +39,13 @@
             /// 
             /// <header 2> Solving Strategies </header>
             /// Because you can't always "solve for :math:`y'`," the approach changes:
-            /// 1. **Implicit Differentiation:**If you have an equation like, :math:`x^2 + y^2 = 1`you differentiate every term with respect to, treating  as a function of :
-            /// :math: `2x + 2y \frac{dy}{dx} = 0`
-            /// Then, you isolate :math:`\frac{dy}{dx}` if possible.
             /// 
-            /// 2. **Direction Fields:**You can still visualize these equations! For any point, you solve the algebraic equation  for . If there are multiple solutions for , the slope field might have overlapping segments.
-            /// 3. **Numerical Solvers:**For complex IDEs or DAEs, standard solvers like Runge-Kutta might struggle.Specialized algorithms(like the Backward Differentiation Formula) are used to handle the "stiffness" of these equations.
+            /// 1. **Implicit Differentiation:** If you have an equation like, :math:`x^2 + y^2 = 1`, you differentiate every term with respect to, treating  as a function of: :math: `2x + 2y \frac{dy}{dx} = 0`
+            /// Then, you isolate :math:`\cfrac{dy}{dx}` if possible.
+            /// 
+            /// 2. **Direction Fields:** You can still visualize these equations! For any point, you solve the algebraic equation :math:`F(x,y,y') = 0` for :math:`y'`. If there are multiple solutions for :math:`y'`, the slope field might have overlapping segments.
+            /// 
+            /// 3. **Numerical Solvers:** For complex IDEs or DAEs, standard solvers like Runge-Kutta might struggle.Specialized algorithms(like the Backward Differentiation Formula, or Diagonally implicit rungekutta) are used to handle the "stiffness" of these equations.
             /// 
             /// <header 2> A Classic Example: Clairaut's Equation </header>
             /// One of the most famous IDEs is **Clairaut's Equation**: 
@@ -44,7 +58,11 @@
             /// , :math:`F(x, y, y') = y - x y' - f(y')`.
             /// 
             /// <example 1> Solving Clairaut's Equation :math:`y = x y' + \left(y'\right)^2`
-            /// :math:`F(x, y, y') = y - x y' - \left(y'\right)^2`, :math: `y(0) = 1`
+            /// 
+            /// <math>
+            ///     F(x, y, y') = y - x y' - \left(y'\right)^2, \quad y(0) = 1
+            /// </math>
+            /// 
             /// First we need to compute the :math:`y'(0)` from the initial condition using decic. 
             /// And then we can use the computed :math:`y'(0)` to solve the equation using Ode45i.
             /// <code>
@@ -70,6 +88,45 @@
             }
             /// </code>
             /// </example>
+            /// 
+            /// </example> Solve Weissinger implicit ODE
+            /// While Clairaut's equation is a textbook classic, **Weissinger’s Implicit Differential Equation** takes things a step further into the realm of higher-degree implicit equations. It is specifically a first-order equation where the derivative  is raised to a power, but it maintains a structure that allows for a clever substitution method.
+            /// The general form of a Weissinger equation is:
+            ///  :math:`y = x^n f(y') + g(y')`
+            /// 
+            /// In many contexts, particularly in the study of aerodynamics(where Weissinger’s name is prominent due to his work on lifting-line theory), you might see specialized versions of this.However, in pure mathematics, it is often treated as a generalization of d'Alembert’s equation.
+            /// 
+            /// <header 3> 1. Structure and Characteristics </header>
+            /// Unlike a standard ODE, the Weissinger equation is **nonlinear in the derivative**.
+            /// 
+            /// * **Relationship to Clairaut:**If you set :math:`n = 1` and :math:`f(y') = y'`, you essentially return to the Clairaut form.
+            /// * **The Power of :**The :math:`x^n` term dictates how the geometry of the solution curves scales as you move away from the origin.
+            /// <header 3> 2. The Solution Strategy: Parameterization </header>
+            /// To solve a Weissinger equation, we rarely try to isolate  algebraically.Instead, we use a parameter, where:
+            /// :math:`p = y' = \frac{dy}{dx}`
+            /// substituting :math:`p` into the equation gives:
+            /// :math:`y = x^n f(p) + g(p)`
+            ///  To find the relationship between :math:`x` and :math:`p`, we differentiate the entire equation with respect to :math:`x`:
+            /// :math:`\cfrac{dy}{dx} = nx^{n-1} f(p) + x^n f'(p) \cfrac{dp}{dx} + g'(p) \cfrac{dp}{dx}`
+            ///  
+            /// Since :math:`\frac{dy}{dx} = p` , we get a **linear differential equation for  in terms of** :math:`p`:  
+            /// 
+            /// :math:`p  = nx^{n-1} f(p) + \left[x^n f'(p) + g'(p)] \cfrac{dp}{dx}`
+            /// 
+            /// This transformation is powerful because it turns a difficult implicit equation into a linear one(usually of the Bernoulli type or similar), which we can solve to get :math:`x(p)`. Once you have :math:`x(p)` and :math:`y(fp)`, you have a** parametric solution** to the original ODE.
+            /// 
+            /// <header 3> 3. Why Weissinger Equations Matter </header>
+            /// Weissinger's work is most famous in **fluid dynamics**, specifically the **Weissinger Area Rule** and his "L-method" for calculating lift distribution on swept wings.
+            /// In these engineering contexts, implicit equations arise because the induced downwash(the change in airflow direction) depends on the lift, but the lift itself is a function of that downwash.
+            /// 
+            /// <header 3> Applications include: </header>
+            /// * ** Aerodynamics:** Modeling the circulation around wings with non-rectangular shapes.
+            /// * **Classical Mechanics:** Describing trajectories where the velocity constraint is non-linear.
+            /// * ** Singularities:** Just like Clairaut equations, Weissinger equations often have "envelope" solutions where the uniqueness of the solution breaks down.
+            /// 
+            /// 
+            /// 
+            /// </example 2> 
             /// 
             /// </BookContent>
         }
