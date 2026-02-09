@@ -34,8 +34,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// <header 2> Why Use Them? </header>
             /// 
             /// * **Physics & Constraints:** Many physical systems are governed by constraints (like a bead sliding on a wire) where the relationship between position and velocity is fixed by the geometry, not a direct formula.
-            /// * **Singularities:**IDEs can describe behaviors where the derivative might become undefined or "multi-valued"(where one  point has multiple possible slopes).
-            /// * **Differential-Algebraic Equations(DAEs):**These are a subset of IDEs often used in electrical circuit simulation and multi-body dynamics.
+            /// * **Singularities:** IDEs can describe behaviors where the derivative might become undefined or "multi-valued"(where one  point has multiple possible slopes).
+            /// * **Differential-Algebraic Equations(DAEs):** These are a subset of IDEs often used in electrical circuit simulation and multi-body dynamics.
             /// 
             /// <header 2> Solving Strategies </header>
             /// Because you can't always "solve for :math:`y'`," the approach changes:
@@ -48,9 +48,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// 3. **Numerical Solvers:** For complex IDEs or DAEs, standard solvers like Runge-Kutta might struggle.Specialized algorithms(like the Backward Differentiation Formula, or Diagonally implicit rungekutta) are used to handle the "stiffness" of these equations.
             /// 
             /// <header 2> A Classic Example: Clairaut's Equation </header>
-            /// One of the most famous IDEs is **Clairaut's Equation**: 
-            /// :math:`y = x \frac{dy}{dx} + f\left(\frac{dy}{dx}\right)`
-            /// This equation is unique because it often yields two types of solutions: a family of straight lines(the general solution) and a "singular solution" that acts as an envelope to those lines.
+            /// One of the most famous IDEs is **Clairaut's Equation**: :math:`y = x \frac{dy}{dx} + f\left(\cfrac{dy}{dx}\right)`. This equation is unique because it often yields two types of solutions: a family of straight lines(the general solution) and a "singular solution" that acts as an envelope to those lines.
             /// 
             /// <header 2> Numerical Solution </header>
             /// SepalSolver's Ode45i can handle implicit equations, but you need to provide the function in the form :math:`F(x, y, y') = 0`. Here's a simple example of how to set up and solve an implicit equation using SepalSolver:
@@ -84,6 +82,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 
                 // Add analytical solution for comparison
                 Plot(T, T+1, "r"); HoldOff();
+
+                // Axis label and legend
+                Xlabel("x"); Ylabel("y"); 
+                Legend(["Numerical Solution", "Analytical Solution"], LowerRight);
+
+                // Save the plot
                 SaveAs("Clairaut.png");
             }
             /// </code>

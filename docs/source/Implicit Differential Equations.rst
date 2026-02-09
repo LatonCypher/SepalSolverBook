@@ -27,8 +27,8 @@ Why Use Them?
 -------------
 
 * **Physics & Constraints:** Many physical systems are governed by constraints (like a bead sliding on a wire) where the relationship between position and velocity is fixed by the geometry, not a direct formula.
-* **Singularities:**IDEs can describe behaviors where the derivative might become undefined or "multi-valued"(where one  point has multiple possible slopes).
-* **Differential-Algebraic Equations(DAEs):**These are a subset of IDEs often used in electrical circuit simulation and multi-body dynamics.
+* **Singularities:** IDEs can describe behaviors where the derivative might become undefined or "multi-valued"(where one  point has multiple possible slopes).
+* **Differential-Algebraic Equations(DAEs):** These are a subset of IDEs often used in electrical circuit simulation and multi-body dynamics.
 
 Solving Strategies
 ------------------
@@ -43,9 +43,7 @@ Then, you isolate :math:`\cfrac{dy}{dx}` if possible.
 
 A Classic Example: Clairaut's Equation
 --------------------------------------
-One of the most famous IDEs is **Clairaut's Equation**: 
-:math:`y = x \frac{dy}{dx} + f\left(\frac{dy}{dx}\right)`
-This equation is unique because it often yields two types of solutions: a family of straight lines(the general solution) and a "singular solution" that acts as an envelope to those lines.
+One of the most famous IDEs is **Clairaut's Equation**: :math:`y = x \frac{dy}{dx} + f\left(\cfrac{dy}{dx}\right)`. This equation is unique because it often yields two types of solutions: a family of straight lines(the general solution) and a "singular solution" that acts as an envelope to those lines.
 
 Numerical Solution
 ------------------
@@ -85,6 +83,12 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    
       // Add analytical solution for comparison
       Plot(T, T+1, "r"); HoldOff();
+   
+      // Axis label and legend
+      Xlabel("x"); Ylabel("y"); 
+      Legend(["Numerical Solution", "Analytical Solution"], LowerRight);
+   
+      // Save the plot
       SaveAs("Clairaut.png");
    
    
