@@ -114,9 +114,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             ///  To find the relationship between :math:`x` and :math:`p`, we differentiate the entire equation with respect to :math:`x`:
             /// :math:`\cfrac{dy}{dx} = nx^{n-1} f(p) + x^n f'(p) \cfrac{dp}{dx} + g'(p) \cfrac{dp}{dx}`
             ///  
-            /// Since :math:`\frac{dy}{dx} = p` , we get a **linear differential equation for  in terms of** :math:`p`:  
-            /// 
-            /// :math:`p  = nx^{n-1} f(p) + \left[x^n f'(p) + g'(p)] \cfrac{dp}{dx}`
+            /// Since :math:`\cfrac{dy}{dx} = p` , we get a **linear differential equation for  in terms of** :math:`p`:  
+            /// <math>
+            ///     p  = nx^{n-1} f(p) + \left[x^n f'(p) + g'(p) \right] \cfrac{dp}{dx}
+            /// </math>
             /// 
             /// This transformation is powerful because it turns a difficult implicit equation into a linear one(usually of the Bernoulli type or similar), which we can solve to get :math:`x(p)`. Once you have :math:`x(p)` and :math:`y(fp)`, you have a** parametric solution** to the original ODE.
             /// 
@@ -125,9 +126,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// In these engineering contexts, implicit equations arise because the induced downwash(the change in airflow direction) depends on the lift, but the lift itself is a function of that downwash.
             /// 
             /// <header 3> Applications include: </header>
-            /// * ** Aerodynamics:** Modeling the circulation around wings with non-rectangular shapes.
+            /// * **Aerodynamics:** Modeling the circulation around wings with non-rectangular shapes.
             /// * **Classical Mechanics:** Describing trajectories where the velocity constraint is non-linear.
-            /// * ** Singularities:** Just like Clairaut equations, Weissinger equations often have "envelope" solutions where the uniqueness of the solution breaks down.
+            /// * **Singularities:** Just like Clairaut equations, Weissinger equations often have "envelope" solutions where the uniqueness of the solution breaks down.
             /// 
             /// 
             /// 

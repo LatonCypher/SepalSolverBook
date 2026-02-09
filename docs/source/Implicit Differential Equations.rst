@@ -120,9 +120,12 @@ substituting :math:`p` into the equation gives:
 To find the relationship between :math:`x` and :math:`p`, we differentiate the entire equation with respect to :math:`x`:
 :math:`\cfrac{dy}{dx} = nx^{n-1} f(p) + x^n f'(p) \cfrac{dp}{dx} + g'(p) \cfrac{dp}{dx}`
 
-Since :math:`\frac{dy}{dx} = p` , we get a **linear differential equation for  in terms of** :math:`p`:  
+Since :math:`\cfrac{dy}{dx} = p` , we get a **linear differential equation for  in terms of** :math:`p`:  
 
-:math:`p  = nx^{n-1} f(p) + \left[x^n f'(p) + g'(p)] \cfrac{dp}{dx}`
+.. math::
+
+   p  = nx^{n-1} f(p) + \left[x^n f'(p) + g'(p) \right] \cfrac{dp}{dx}
+
 
 This transformation is powerful because it turns a difficult implicit equation into a linear one(usually of the Bernoulli type or similar), which we can solve to get :math:`x(p)`. Once you have :math:`x(p)` and :math:`y(fp)`, you have a** parametric solution** to the original ODE.
 
