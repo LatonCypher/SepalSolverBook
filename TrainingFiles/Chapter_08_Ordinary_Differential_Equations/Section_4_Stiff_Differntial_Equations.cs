@@ -40,7 +40,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// 
             /// <header 3> Examples </header 3>
             /// SepalSolver impelements ODE45s for stiff differential equation and we look at how to use this function to solve stiff Van der Pol Oscillator and Robertson differential equation. 
-            /// <example 1> Van der Pol Oscillator (:math:`\mu = 1e5`)
+            /// <example 1> Van der Pol Oscillator (:math:`\mu = 1 \times 10^5`)
             ///  Solve the ODE :math:`~d^2y/dt^2 = 10^{5}((1 - y^2)y' - y)~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 6.3]`.
             ///  
             /// First we have to convert this to a system of first order differential equations,

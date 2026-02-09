@@ -217,3 +217,99 @@ Here are examples of converting and solving various higher‑order ODEs using Se
       :alt: HigherOrder_Third.png
    
 
+
+.. Admonition:: Example 6 :  Pleiades System (Using Higher Order Solvers)
+
+   The Pleiades, also known as the Seven Sisters(M45)[1], is a prominent open star cluster located in the constellation Taurus.It's one of the closest and most easily visible star clusters to Earth[2], making it a favorite target for stargazers and a subject of fascination across cultures. The system of equations describing the motion of the stars in the cluster consists of 14 nonstiff second-order differential equations, which produce a system of 28 equations when rewritten in first-order form.
+   
+   Celestial mechanics is basically an interplay between Newton's law of gravitation :math:`F_i = \sum_{i \neq j} g \cfrac{m_i m_j}{||p_j - p_i||^2}d_{ij}` and Newton's second law of motion: math:`F_i = m_i\cfrac{ d^2p_i}{ dt^2}`. 
+   
+   The positions determine the gravitational forces acting on the bodies, but the net force on each of the bodies determines its acceleration(i.e.changes its position from the second order).
+   
+   we examine this system in 2D, i.e. :math:`p_i = [x_i, y_i]`,  :math:`d_{ ij} = \cfrac{ (p_j - p_i)}{r_{ ij} }` and: math:`r_{ ij} = ||p_j - p_i||`
+   
+   The dynamics of the system can then be modelled as:
+   
+   
+   .. math::
+   
+      \cfrac{ d^2p_i}{ dt^2} = \sum_{ i \neq j}g \cfrac{ m_j(p_j - p_i)}{ r_{ ij} ^3}
+      
+   
+   
+   
+   .. code-block:: csharp
+   
+      // define masses
+      double[] m = [1, 2, 3, 4, 5, 6, 7];
+   
+      // define function
+      double[] pleiades(double t, double[] q)
+      {
+          double[] dqdt = new double[28];
+          double x1, x2, y1, y2, dx, dy, r3;
+          for (int i = 0; i < 7; i++)
+          {
+              // x- velocity of star i
+              dqdt[i + 0] = q[i + 14];
+              // y- velocity of star j
+              dqdt[i + 7] = q[i + 21];
+              x1 = q[i]; y1 = q[i + 7];
+              for (int j = 0; j < 7; j++)
+              {
+                  x2 = q[j]; y2 = q[j + 7];
+                  if (j != i)// The star does not attract itself
+                  {
+                      dx = x2 - x1; dy = y2 - y1;
+                      r3 = Pow(dx * dx + dy * dy, 1.5);
+                      //impact of star j on x-acceleration of star i
+                      dqdt[i + 14] += m[j] * dx / r3;
+                      //impact of star j on y-acceleration of star i
+                      dqdt[i + 21] += m[j] * dy / r3;
+                  }
+              }
+          }
+          return dqdt;
+      }
+   
+      double[] init = [3, 3,-1, -3, 2, -2, 2,
+                       3, -3, 2, 0, 0, -4, 4,
+                       0, 0, 0, 0, 0, 1.75, -1.5,
+                       0, 0, 0, -1.25, 1, 0, 0];
+   
+      double[] tspan = Linspace(1, 15, 200);
+      var opts = Odeset(AbsTol: 1e-15, RelTol: 1e-13);
+      Figure(700, 700);
+      (ColVec T, Matrix Y) = Ode89(pleiades, init, tspan, opts);
+      Plot(Y[.., 0..7], Y[.., 7..14], "--");
+      Title("Position of Pleiades Stars, Solved by ODE89");
+      Xlabel("X Position"); Ylabel("y Position");
+      SaveAs("Position-of-Pleiades-Stars-Ode89.png");
+   
+      HoldOn();
+      ScatterHandle[] Stars = [..Enumerable.Range(0,7).Select(j => 
+                                  Scatter(Y[0, j], Y[0, j + 7], "fo", 20))];
+      HoldOff();
+   
+   
+      byte[] Animfun(int i)
+      {
+          for (int j = 0; j < 7; j++)
+          {
+              Stars[j].Xdata = Y[i, j];
+              Stars[j].Ydata = Y[i, j + 7];
+          }
+          return GetFrame(700, 700);
+      }
+      AnimationMaker(Animfun, "Position-of-Pleiades-Stars-CCL-Math-Ode89.gif", 10, 200);
+   
+   
+   .. figure:: images/Position-of-Pleiades-Stars-Ode89.png
+      :align: center
+      :alt: Position-of-Pleiades-Stars-Ode89.png
+   
+   
+   .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-Ode89.gif
+      :align: center
+      :alt: Position-of-Pleiades-Stars-CCL-Math-Ode89.gif
+   
