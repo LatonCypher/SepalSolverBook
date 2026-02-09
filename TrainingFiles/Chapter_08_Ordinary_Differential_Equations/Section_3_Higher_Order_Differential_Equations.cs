@@ -239,9 +239,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 
                 double[] tspan = Linspace(1, 15, 200);
                 var opts = Odeset(AbsTol: 1e-15, RelTol: 1e-13);
-                Figure(700, 700);
+                Figure(600, 350);
                 (ColVec T, Matrix Y) = Ode89(pleiades, init, tspan, opts);
-                Plot(Y[.., 0..7], Y[.., 7..14], "--");
+                Plot(Y[.., 0..7], Y[.., 7..14], ":");
                 Title("Position of Pleiades Stars, Solved by ODE89");
                 Xlabel("X Position"); Ylabel("y Position");
                 SaveAs("Position-of-Pleiades-Stars-Ode89.png");
@@ -259,7 +259,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                         Stars[j].Xdata = Y[i, j];
                         Stars[j].Ydata = Y[i, j + 7];
                     }
-                    return GetFrame(700, 700);
+                    return GetFrame(600, 350);
                 }
                 AnimationMaker(Animfun, "Position-of-Pleiades-Stars-CCL-Math-Ode89.gif", 10, 200);
             }
