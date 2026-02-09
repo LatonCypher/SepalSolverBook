@@ -186,7 +186,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// </math>
             /// In terms of the solution and initial conditions, the conservation law is
             /// <math> 
-            ///     `y_1 + y_2 + y_3 = 1.0`
+            ///     y_1 + y_2 + y_3 = 1.0
             /// </math>
             /// 
             /// The problem can be rewritten as a system of DAEs by using the conservation law to determine the state of :math:`y_3`. This reformulates the problem as the implicit DAE system
@@ -218,7 +218,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 Xlabel("Time t"); Ylabel("Soluton y");
                 Legend(["y_1", "1e4*y_2", "y_3"], UpperLeft);
                 Title("Solution of implicit Robertson's ODE with ODE45i");
-                SaveAs("Implicit Robertson-ODE-Ode45s.png");
+                SaveAs("Implicit-Robertson-ODE-Ode45i.png");
             }
             /// </code>
             /// </example>

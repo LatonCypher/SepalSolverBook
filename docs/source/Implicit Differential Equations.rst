@@ -209,7 +209,7 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    
    .. math::
    
-      `y_1 + y_2 + y_3 = 1.0`
+      y_1 + y_2 + y_3 = 1.0
    
    
    The problem can be rewritten as a system of DAEs by using the conservation law to determine the state of :math:`y_3`. This reformulates the problem as the implicit DAE system
@@ -244,11 +244,11 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       Xlabel("Time t"); Ylabel("Soluton y");
       Legend(["y_1", "1e4*y_2", "y_3"], UpperLeft);
       Title("Solution of implicit Robertson's ODE with ODE45i");
-      SaveAs("Implicit Robertson-ODE-Ode45s.png");
+      SaveAs("Implicit-Robertson-ODE-Ode45s.png");
    
    
-   .. figure:: images/Implicit Robertson-ODE-Ode45s.png
+   .. figure:: images/Implicit-Robertson-ODE-Ode45s.png
       :align: center
-      :alt: Implicit Robertson-ODE-Ode45s.png
+      :alt: Implicit-Robertson-ODE-Ode45s.png
    
 
