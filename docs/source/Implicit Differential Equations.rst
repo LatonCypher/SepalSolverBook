@@ -230,11 +230,13 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       double[] robertsonimplicit(double t, double[] y, double[] yp) =>
           [yp[0] + 0.04 * y[0] - 1e4 * y[1]*y[2],
            yp[1] - 0.04 * y[0] + 1e4 * y[1]*y[2] + 3e7*y[1]*y[1],
-           y[0] + y[1] + y[2] - 1];
+           yp[0] + yp[1] + yp[2]];
    
+      // Set intial conditions for y0 and guess values for yp0
       double[] y0 = [1, 0, 0.001], yp0 = [0, 0, 0];
    
-      (y0, yp0) = decic(robertsonimplicit, 0, y0, [1, 1, 0], yp0, [0, 0, 1]);
+      // Solve for yp0, Truth array for y0 = [1,1,1] but for yp0 it is [0,0,0]. 
+      (y0, yp0) = decic(robertsonimplicit, 0, y0, [1, 1, 1], yp0, [0, 0, 0]);
    
       //Solve ODE
       (ColVec T, Matrix Y) = Ode45i(robertsonimplicit, (y0, yp0), [0, 4e6]);
@@ -242,7 +244,7 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       Y[.., 1] = 1e4*Y[.., 1];
       SemiLogx(T, Y);
       Xlabel("Time t"); Ylabel("Soluton y");
-      Legend(["y_1", "1e4*y_2", "y_3"], UpperLeft);
+      Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
       Title("Solution of implicit Robertson's ODE with ODE45i");
       SaveAs("Implicit-Robertson-ODE-Ode45i.png");
    
@@ -250,5 +252,23 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    .. figure:: images/Implicit-Robertson-ODE-Ode45i.png
       :align: center
       :alt: Implicit-Robertson-ODE-Ode45i.png
+   
+   
+   As an exercise, the reader is encouraged to solve this same problem but using this constraint
+   
+   .. math::
+   
+      y'_1 + y'_2 + y'_3 = 0
+   
+   
+   that is:
+   
+   .. math::
+   
+      \begin{array}{rcl}
+      0 &=& y'_1 + 0.04y_1 - 10^4 y_2y_3 \\ 
+      0 &=& y'_2 - 0.04y_1 + 10^4 y_2y_3 + (3 \times 10^7)y_2^2\\ 
+      0 &=& y'_1 + y'_2 + y'_3.
+      \end{array}
    
 

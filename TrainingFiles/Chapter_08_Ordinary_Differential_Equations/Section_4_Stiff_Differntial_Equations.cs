@@ -104,7 +104,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 Y[.., 1] = 1e4*Y[.., 1];
                 SemiLogx(T, Y);
                 Xlabel("Time t"); Ylabel("Soluton y");
-                Legend(["y_1", "1e4*y_2", "y_3"], UpperLeft);
+                Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
                 Title("Solution of Robertson's ODE with ODE45s");
                 SaveAs("Robertson-ODE-Ode45s.png");
             }
