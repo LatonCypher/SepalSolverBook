@@ -230,7 +230,7 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       double[] robertsonimplicit(double t, double[] y, double[] yp) =>
           [yp[0] + 0.04 * y[0] - 1e4 * y[1]*y[2],
            yp[1] - 0.04 * y[0] + 1e4 * y[1]*y[2] + 3e7*y[1]*y[1],
-           yp[0] + yp[1] + yp[2]];
+           y[0] + y[1] + y[2] - 1];
    
       // Set intial conditions for y0 and guess values for yp0
       double[] y0 = [1, 0, 0.001], yp0 = [0, 0, 0];
