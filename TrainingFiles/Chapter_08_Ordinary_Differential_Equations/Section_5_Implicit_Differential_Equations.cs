@@ -182,7 +182,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// 
             /// But the equations also satisfy a linear conservation law,
             /// <math> 
-            ///     `y'_1 + y'_2 + y'_3 = 0`
+            ///     y'_1 + y'_2 + y'_3 = 0
             /// </math>
             /// In terms of the solution and initial conditions, the conservation law is
             /// <math> 

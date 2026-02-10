@@ -203,7 +203,7 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    
    .. math::
    
-      `y'_1 + y'_2 + y'_3 = 0`
+      y'_1 + y'_2 + y'_3 = 0
    
    In terms of the solution and initial conditions, the conservation law is
    
@@ -244,11 +244,11 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       Xlabel("Time t"); Ylabel("Soluton y");
       Legend(["y_1", "1e4*y_2", "y_3"], UpperLeft);
       Title("Solution of implicit Robertson's ODE with ODE45i");
-      SaveAs("Implicit-Robertson-ODE-Ode45s.png");
+      SaveAs("Implicit-Robertson-ODE-Ode45i.png");
    
    
-   .. figure:: images/Implicit-Robertson-ODE-Ode45s.png
+   .. figure:: images/Implicit-Robertson-ODE-Ode45i.png
       :align: center
-      :alt: Implicit-Robertson-ODE-Ode45s.png
+      :alt: Implicit-Robertson-ODE-Ode45i.png
    
 
