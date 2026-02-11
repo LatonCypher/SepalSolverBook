@@ -84,9 +84,9 @@ Here are some simulation performed with the sepal solver.
 5. **Park Transformation**
     In electrical engineering, Park transformation (also called the direct-quadrature-zero (d-q-0) transformation) is a mathematical technique used to simplify the analysis and control of three-phase AC circuits, especially in rotating machines like motors and generators.
 
-.. figure:: images/Parktransformation.gif
+.. figure:: images/Parktransform.gif
     :align: center
-    :alt: Parktransformation.gif
+    :alt: Parktransform.gif
 
 
 The text begins with foundational principles—Basic Operations and Syntax—before progressing to core mathematical structures such as Polynomials, Interpolation, and Special Functions. These form the building blocks for the more complex computational engines within the library.
