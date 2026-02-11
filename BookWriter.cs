@@ -309,8 +309,6 @@ namespace ConsoleApp1
 
             }
         }
-
-
         static void TreatFigure(List<string> bookContent)
         {
             while (bookContent.Any(line => line.Contains("<figure>")))
@@ -343,7 +341,6 @@ namespace ConsoleApp1
 
             }
         }
-
 
         static void TreatCodeBlock(List<string> bookContent)
         {

@@ -182,10 +182,10 @@ Just like the case of Solvers for nonlinear system, OdeSolvers also has Odeset, 
    
       //Solve ODE
       var opts = Odeset(Stats: true);
-      Console.WriteLine("Computational Cost Using Default Tolerance Setting");
+      Console.WriteLine("Computational Cost Using Default Tolerance Setting:");
       Ode45s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
-      Console.WriteLine("======================================================");
-      opts = Odeset(RelTol: 1e-4, AbsTol: 1e-7);
+      Console.WriteLine("\n\n");
+      opts = Odeset(Stats: true, RelTol: 1e-4, AbsTol: 1e-7);
       Console.WriteLine("Computational Cost Using Custom Tolerance Setting");
       Ode45s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
    
@@ -194,7 +194,7 @@ Just like the case of Solvers for nonlinear system, OdeSolvers also has Odeset, 
    
    .. terminal::
    
-      Computational Cost Using Default Tolerance Setting
+      Computational Cost Using Default Tolerance Setting:
       Summary of statistics by Ode45s
               142 successful steps
               0 failed attempts
@@ -203,5 +203,15 @@ Just like the case of Solvers for nonlinear system, OdeSolvers also has Odeset, 
               568 LU decompositions
               1855 solutions of linear systems
       
-      ======================================================
+      
+      
+      
       Computational Cost Using Custom Tolerance Setting
+      Summary of statistics by Ode45s
+              210 successful steps
+              0 failed attempts
+              6554 function evaluations
+              840 partial derivatives
+              840 LU decompositions
+              3193 solutions of linear systems
+      
