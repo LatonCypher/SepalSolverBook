@@ -73,28 +73,9 @@ namespace ConsoleApp1
                     ### Nature of Roll Motion
                     - **Axis of Rotation**: Longitudinal axis (X-axis).  
                     - **Cause**: Primarily induced by waves striking the ship’s sides, wind forces, or uneven loading.  
-                    - **Frequency & Amplitude**: Determined by the ship’s design (beam, draft, metacentric height), sea state, and loading condition.  
-
-                    ### Influencing Factors
-                    - **Metacentric Height (GM)**:  
-                      - Large GM → stiff ship → quick, jerky roll with small amplitude.  
-                      - Small GM → tender ship → slow, wide roll with large amplitude.  
-                    - **Hull Form**: Wider beams increase resistance to rolling but can make motion abrupt.  
-                    - **Damping Mechanisms**: Bilge keels, stabilizer fins, or anti-roll tanks reduce roll amplitude.  
-                    - **Sea Conditions**: Wave height, period, and direction relative to the ship’s heading strongly affect roll behavior.  
-
-                    ### Consequences of Roll
-                    - **Operational Impact**: Reduces crew comfort, affects cargo safety, and can impair weapon accuracy on naval ships.  
-                    - **Structural Stress**: Repeated rolling induces fatigue loads on hull and superstructure.  
-                    - **Safety Risks**: Excessive roll angles can lead to capsizing if stability margins are exceeded.  
-
-                    ### Control & Mitigation
-                    - **Design Solutions**: Optimized hull geometry, bilge keels, stabilizers.  
-                    - **Operational Measures**: Adjusting course and speed relative to waves, ballast management.  
-                    - **Active Systems**: Gyroscopic stabilizers or computer-controlled fins for modern vessels.  
+                    - **Frequency & Amplitude**: Determined by the ship’s design (beam, draft, metacentric height), sea state, and loading condition.    
 
                     In essence, roll is the most critical ship motion to manage because it directly ties to **stability and survivability** at sea. Engineers and naval architects devote significant effort to predicting and controlling roll through both design and operational strategies.   
-                
                 
                 .. figure:: images/Ship_Roll.gif
                     :align: center

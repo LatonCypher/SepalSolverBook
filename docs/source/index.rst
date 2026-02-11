@@ -22,26 +22,29 @@ Numerical methods form the backbone of modern scientific computing, enabling the
 Here are some simulation performed with the sepal solver. 
 1. **Six Linked Bar Mechanism**
     A six-linked bar mechanism is a type of kinematic chain used in mechanical engineering to achieve complex motion paths and force transmission. It consists of six rigid bars (links) connected by joints, typically revolute (hinge) or prismatic (sliding), forming a closed-loop system. These mechanisms are extensions of four-bar and five-bar linkages, offering greater flexibility and control over motion.
-Structure
-- Links: Six rigid bodies connected end-to-end.
-- Joints: Usually revolute joints that allow rotation, though prismatic joints can be included.
-- Degrees of Freedom (DOF): Determined by Gruebler’s equation, depending on the number of links and joints.
-- Input/Output: One or more links are driven (input), while others deliver the desired motion (output).
-Characteristics
-- Complex Motion: Can generate intricate paths not possible with simpler linkages.
-- Multiple Configurations: Depending on link lengths and joint placement, the mechanism can act as a coupler, amplifier, or motion converter.
-- Redundancy: Extra links provide more design freedom but also increase complexity in analysis.
-- Applications: Robotics, suspension systems, industrial machinery, and precision instruments.
-Examples of Use
-- Robotics: Six-bar linkages are used in robotic arms for extended reach and dexterity.
-- Automotive Engineering: Suspension systems sometimes employ multi-link setups for better handling and ride comfort.
-- Manufacturing: Mechanisms for stamping, folding, or packaging often rely on six-bar linkages to achieve synchronized motion.
-Analysis
-- Kinematics: Position, velocity, and acceleration analysis using vector loop equations.
-- Dynamics: Forces and torques calculated through Newton–Euler or Lagrangian methods.
-- Simulation: CAD and multibody dynamics software are often used to visualize and optimize performance.
-In essence, a six-linked bar mechanism is a versatile extension of classical linkage theory, enabling engineers to design systems with greater motion complexity and adaptability.
-Would you like me to illustrate the different types of six-bar linkages (like Watt’s and Stephenson’s six-bar mechanisms) so you can see how they differ in structure and application?
+
+    Structure
+    - Links: Six rigid bodies connected end-to-end.
+    - Joints: Usually revolute joints that allow rotation, though prismatic joints can be included.
+    - Degrees of Freedom (DOF): Determined by Gruebler’s equation, depending on the number of links and joints.
+    - Input/Output: One or more links are driven (input), while others deliver the desired motion (output).
+
+    Characteristics
+    - Complex Motion: Can generate intricate paths not possible with simpler linkages.
+    - Multiple Configurations: Depending on link lengths and joint placement, the mechanism can act as a coupler, amplifier, or motion converter.
+    - Redundancy: Extra links provide more design freedom but also increase complexity in analysis.
+    - Applications: Robotics, suspension systems, industrial machinery, and precision instruments.
+    
+    Examples of Use
+    - Robotics: Six-bar linkages are used in robotic arms for extended reach and dexterity.
+    - Automotive Engineering: Suspension systems sometimes employ multi-link setups for better handling and ride comfort.
+    - Manufacturing: Mechanisms for stamping, folding, or packaging often rely on six-bar linkages to achieve synchronized motion.
+
+    Analysis
+    - Kinematics: Position, velocity, and acceleration analysis using vector loop equations.
+    - Dynamics: Forces and torques calculated through Newton–Euler or Lagrangian methods.
+    - Simulation: CAD and multibody dynamics software are often used to visualize and optimize performance.
+    In essence, a six-linked bar mechanism is a versatile extension of classical linkage theory, enabling engineers to design systems with greater motion complexity and adaptability.
 
 .. figure:: images/Six_Link.gif
     :align: center
@@ -49,7 +52,14 @@ Would you like me to illustrate the different types of six-bar linkages (like Wa
 
 
 2. **Ship Roll at Sea**
-    Ship roll characteristics describe the side-to-side tilting motion of a vessel around its longitudinal axis (running bow to stern). This is one of the six fundamental ship motions (heave, sway, surge, yaw, pitch, and roll) and is particularly important because it directly affects stability, comfort, and safety at sea
+    **Ship roll characteristics** describe the side-to-side tilting motion of a vessel around its longitudinal axis (running bow to stern). This is one of the six fundamental ship motions (heave, sway, surge, yaw, pitch, and roll) and is particularly important because it directly affects stability, comfort, and safety at sea.  
+
+    ### Nature of Roll Motion
+    - **Axis of Rotation**: Longitudinal axis (X-axis).  
+    - **Cause**: Primarily induced by waves striking the ship’s sides, wind forces, or uneven loading.  
+    - **Frequency & Amplitude**: Determined by the ship’s design (beam, draft, metacentric height), sea state, and loading condition.    
+
+    In essence, roll is the most critical ship motion to manage because it directly ties to **stability and survivability** at sea. Engineers and naval architects devote significant effort to predicting and controlling roll through both design and operational strategies.   
 
 .. figure:: images/Ship_Roll.gif
     :align: center
