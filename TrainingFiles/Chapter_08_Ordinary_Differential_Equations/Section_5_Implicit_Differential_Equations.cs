@@ -1,16 +1,4 @@
-﻿using CSharpMath.Atom.Atoms;
-using HarfBuzzSharp;
-using Microsoft.CodeAnalysis;
-using ScottPlot;
-using ScottPlot.Colormaps;
-using ScottPlot.PathStrategies;
-using ScottPlot.TickGenerators.Financial;
-using SepalSolver;
-using System.Net.NetworkInformation;
-using static SepalSolver.Math;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 {
     internal class Section_5_Implicit_Differential_Equations
     {
@@ -210,7 +198,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double[] y0 = [1, 0, 0.001], yp0 = [0, 0, 0];
 
                 // Solve for yp0, Truth array for y0 = [1,1,1] but for yp0 it is [0,0,0]. 
-                (y0, yp0) = decic(robertsonimplicit, 0, y0, [1, 1, 1], yp0, [0, 0, 0]);
+                (y0, yp0) = decic(robertsonimplicit, 0, y0, [1, 1, 0], yp0, [0, 0, 0]);
 
                 //Solve ODE
                 (ColVec T, Matrix Y) = Ode45i(robertsonimplicit, (y0, yp0), [0, 4e6]);

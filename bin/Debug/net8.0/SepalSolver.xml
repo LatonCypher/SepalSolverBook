@@ -6905,12 +6905,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SepalSolver.Indexer.op_Implicit(System.Int32)~SepalSolver.Indexer">
-            <summary>
-            
-            </summary>
-            <param name="value"></param>
-        </member>
         <member name="M:SepalSolver.Indexer.op_Implicit(System.Int32[])~SepalSolver.Indexer">
             <summary>
             
@@ -7258,29 +7252,9 @@
             Returns the number of rows in A11 Matrix
             </summary>
         </member>
-        <member name="P:SepalSolver.Matrix.LastRow">
-            <summary>
-            Returns the last row of the matrix
-            </summary>
-        </member>
-        <member name="P:SepalSolver.Matrix.FirstRow">
-            <summary>
-            Returns the first row of the matrix
-            </summary>
-        </member>
         <member name="P:SepalSolver.Matrix.Cols">
             <summary>
             Returns the number of columns in A11 Matrix
-            </summary>
-        </member>
-        <member name="P:SepalSolver.Matrix.LastCol">
-            <summary>
-            Returns the last column of the matrix
-            </summary>
-        </member>
-        <member name="P:SepalSolver.Matrix.FirstCol">
-            <summary>
-            Returns the first column of the matrix
             </summary>
         </member>
         <member name="P:SepalSolver.Matrix.Numel">
@@ -7695,14 +7669,6 @@
             <returns></returns>
         </member>
         <member name="P:SepalSolver.Matrix.Item(System.String,System.Int32)">
-            <summary>
-            Access this matrix as A11 2D array
-            </summary>
-            <param name="iRow"></param>
-            <param name="iCol"></param>
-            <returns></returns>
-        </member>
-        <member name="P:SepalSolver.Matrix.Item(SepalSolver.Indexer,System.Int32)">
             <summary>
             Access this matrix as A11 2D array
             </summary>

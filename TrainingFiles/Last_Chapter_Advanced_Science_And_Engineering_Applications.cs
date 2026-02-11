@@ -804,7 +804,7 @@ namespace ConsoleApp1.TrainingFiles
                 double fun(double y3_0)
                 {
                     (T, Y) = Ode45(dydt, [0, 0, y3_0], [0, 6]);
-                    return Y.LastRow[1] - 1;
+                    return Y[^1, 1] - 1;
                 }
 
                 // solve for unknown initial condition
@@ -872,7 +872,7 @@ namespace ConsoleApp1.TrainingFiles
                     {
                         y0 = [0, 0, y35_0[0], 2, y35_0[1]];
                         (T, Y) = Ode45(dydt, y0, tspan);
-                        return Y.LastRow[I].T - 1;
+                        return Y[^1, [1,3]].T - 1;
                     }
 
                     // solve for the unknown initial conditions

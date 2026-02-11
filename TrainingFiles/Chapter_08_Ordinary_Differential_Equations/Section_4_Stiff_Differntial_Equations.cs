@@ -1,16 +1,4 @@
-﻿using ScottPlot;
-using SepalSolver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using static CSharpMath.Rendering.Text.TextAtom;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 {
     internal class Section_4_Stiff_Differntial_Equations
     {

@@ -128,6 +128,44 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             }
             /// </code>
             /// 
+            /// We can take advantage of this broadcasting to easily make animation as shown below
+            /// <code>
+            {
+                // 1 unit circle about origin
+                RowVec t = Linspace(0, 2*pi), c = Cos(t), s = Sin(t);
+
+                // mesh of centers
+                (Matrix x, Matrix y) = Meshgrid(Linspace(0, 30, 21));
+                ColVec X = x.ToArray(), Y = y.ToArray(), T = 0.1*pi*(X-Y);
+                double r = 1.35; 
+
+                // Broadcasting circles of radius r
+                Matrix xm = X + r * c, ym = Y + r * s;
+                Figure(400, 400);
+                Plot(xm.T, ym.T, "k"); 
+                
+                // Add scatter points to circles
+                HoldOn();
+                double[] scx = [], scy = [];
+                var sc = Scatter(scx, scy, "kof");
+                HoldOff(); 
+                
+                // Bound axis [0,30];
+                Axis([0, 30, 0, 30]);
+
+                // animate scatter point movement around the circles.
+                double dt = 0.02*pi;
+                byte[] Animfun(int i)
+                {
+                    T -= dt;
+                    sc.Xdata = X + r*Cos(T);
+                    sc.Ydata = Y + r*Sin(T);
+                    return GetFrame();
+                }
+                AnimationMaker(Animfun, "Illusion.gif", 30, 100);
+            }
+            /// </code>
+            /// 
             /// <header 2> Transpose, Inverse, Determinant, Rref </header>
             /// 
             /// <header 3> Transpose </header>

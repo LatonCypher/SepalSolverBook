@@ -64,13 +64,3 @@ Content
 .. toctree::
 
    Basic Operations and Syntax
-   Polynomials
-   Interpolation
-   Special Functions
-   Linear Algebra
-   Solution of Nonlinear System
-   Integration
-   Ordinary Differential Equations
-   Numerical Optimization
-   Partial Differential Equations
-   Conclusion
