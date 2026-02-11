@@ -84,6 +84,9 @@ namespace ConsoleApp1
                     :alt: Parktransform.gif
 
                 
+
+                **Structure of the Book**
+
                 The text begins with foundational principles—Basic Operations and Syntax—before progressing to core mathematical structures such as Polynomials, Interpolation, and Special Functions. These form the building blocks for the more complex computational engines within the library.
 
                 The middle chapters delve into the heart of numerical computing: Linear Algebra, Integration, and the solution of Ordinary Differential Equations (ODEs). Each section demonstrates how SepalSolver can be applied to real-world problems, offering readers both theoretical insight and practical implementation guidance.

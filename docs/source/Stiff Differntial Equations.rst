@@ -7,7 +7,7 @@ In the world of numerical simulation, Stiffness is a phenomenon where certain te
 
 1. The "Stability Trap"
 ~~~~~~~~~~~~~~~~~~~~~~~
-Standard explicit solvers (like the classic Runge-Kutta 4th Order) work by taking small steps based on the current slope. In a stiff system, if the step size $h$ is even slightly too large, the solver will "overcorrect" for a rapid transient, leading to wild oscillations and eventually a total crash (divergence).To maintain stability in a stiff system, an explicit solver is forced to take steps so infinitesimally small that the simulation may take days or years to complete, even though the physical system being modeled is barely changing.
+Standard explicit solvers (like the classic Runge-Kutta 4th Order) work by taking small steps based on the current slope. In a stiff system, if the step size :math:`\Delta t` is even slightly too large, the solver will "overcorrect" for a rapid transient, leading to wild oscillations and eventually a total crash (divergence).To maintain stability in a stiff system, an explicit solver is forced to take steps so infinitesimally small that the simulation may take days or years to complete, even though the physical system being modeled is barely changing.
 
 Engineering Usage Examples
 --------------------------
@@ -31,7 +31,7 @@ The cure for stiffness is the use of Implicit Methods (such as Backward Euler or
 
 Examples
 ~~~~~~~~
-SepalSolver impelements ODE45s for stiff differential equation and we look at how to use this function to solve stiff Van der Pol Oscillator and Robertson differential equation. 
+SepalSolver impelements ODE45s for stiff differential equation. This is an embeded diagonally implicit solver which is capable of error estimate and hence enable adpative time stepping.  Here we look at how to use this function to solve stiff Van der Pol Oscillator and Robertson differential equation. 
 
 .. Admonition:: Example 1 :  Van der Pol Oscillator (:math:`\mu = 1 \times 10^5`)
 
