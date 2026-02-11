@@ -33,11 +33,6 @@ Here are some simulation performed with the sepal solver.
 2. **Ship Roll at Sea**
     **Ship roll characteristics** describe the side-to-side tilting motion of a vessel around its longitudinal axis (running bow to stern). This is one of the six fundamental ship motions (heave, sway, surge, yaw, pitch, and roll) and is particularly important because it directly affects stability, comfort, and safety at sea.  
 
-    ### Nature of Roll Motion
-    - **Axis of Rotation**: Longitudinal axis (X-axis).  
-    - **Cause**: Primarily induced by waves striking the ship’s sides, wind forces, or uneven loading.  
-    - **Frequency & Amplitude**: Determined by the ship’s design (beam, draft, metacentric height), sea state, and loading condition.    
-
     In essence, roll is the most critical ship motion to manage because it directly ties to **stability and survivability** at sea. Engineers and naval architects devote significant effort to predicting and controlling roll through both design and operational strategies.   
 
 .. figure:: images/Ship_Roll.gif
