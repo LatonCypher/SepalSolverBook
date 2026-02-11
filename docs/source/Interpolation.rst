@@ -18,5 +18,3 @@ In this chapter, we will explore different interpolation methods, their implemen
    Linear Interpolation
    Interpolation by Polynomial
    Hemite Spline
-   Bezier Spline
-   Exercise On Interpolation
