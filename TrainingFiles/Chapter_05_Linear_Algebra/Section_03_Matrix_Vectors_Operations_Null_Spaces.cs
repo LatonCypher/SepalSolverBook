@@ -128,6 +128,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             }
             /// </code>
             /// 
+            /// <header 2> Exploiting Broadcasting (Example) </header> 
             /// We can take advantage of this broadcasting to easily make animation as shown below
             /// <code>
             {
@@ -141,7 +142,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
 
                 // Broadcasting circles of radius r
                 Matrix xm = X + r * c, ym = Y + r * s;
-                Figure(400, 400);
+                Figure(700, 700);
                 Plot(xm.T, ym.T, "k"); 
                 
                 // Add scatter points to circles
