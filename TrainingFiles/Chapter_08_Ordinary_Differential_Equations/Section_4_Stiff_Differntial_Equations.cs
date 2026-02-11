@@ -97,6 +97,73 @@
                 SaveAs("Robertson-ODE-Ode45s.png");
             }
             /// </code>
+            /// 
+            /// </example>
+            /// 
+            /// :note::
+            /// 
+            ///     We are allowed to set the points in time we want the solver to compute the solutions. SepalSolver computes this solutions directly during integration, not by interpolation after flying past them. For direct computation and by interpolation in other solvers, integrators take adaptive steps as dictated by the stiffness of the problem being solved. But in the case of sepalsolver, the steps is also adjusted to ensure that the solution is computed as the points supplied by the used. 
+            /// 
+            /// <code>
+            {
+                //define ODE
+                double[] robertson(double t, double[] y) =>
+                    [-0.04 * y[0] + 1e4 * y[1]*y[2],
+                      0.04 * y[0] - 1e4 * y[1]*y[2] - 3e7*y[1]*y[1],
+                      3e7*y[1]*y[1]];
+
+                //Solve ODE
+                //Now we want the results to be computed at
+                //logarithmically evenly spaced points from 1e-6 to 4e6
+                (ColVec T, Matrix Y) = Ode45s(robertson, [1, 0, 0], [0, ..Logspace(-6, 6.6)]);
+                // Plot the result
+                Y[.., 1] = 1e4*Y[.., 1];
+                SemiLogx(T, Y);
+                Xlabel("Time t"); Ylabel("Soluton y");
+                Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
+                Title("Solution of Robertson's ODE with ODE45s");
+                SaveAs("Robertson-ODE-given-points-Ode45s.png");
+            }
+            /// </code>
+            /// 
+            /// Just like the case of Solvers for nonlinear system, OdeSolvers also has Odeset, that can be used to guide process of the solution or request aditional information from the solution. We can request the statistics be printed so we can see how the problem was solved. We can change the RelTol or absolute tolerance. Note that the absolute tolerance can be scale ( single number to apply to all variables being integrated) or a vector, one for each of the variables. 
+            ///     
+            /// <example 4> Using OdeSet
+            /// Here we look at the use of odeset
+            /// <code>
+            {
+                //define ODE
+                double[] robertson(double t, double[] y) =>
+                    [-0.04 * y[0] + 1e4 * y[1]*y[2],
+                      0.04 * y[0] - 1e4 * y[1]*y[2] - 3e7*y[1]*y[1],
+                      3e7*y[1]*y[1]];
+
+                //Solve ODE
+                // Here we chose reltol = 1e-4(defult is 1e-3), abstol = 1e-7(default is 1e-6)
+                var opts = Odeset(RelTol: 1e-4, AbsTol: 1e-7);
+                (ColVec T, Matrix Y) = Ode45s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
+            }
+            /// </code>
+            /// We can request the statistics of the solution process by setting Stats: true. We use this to understand the impact of tolerance setting on computational cost of the solution.
+            /// 
+            /// <code>
+            {
+                //define ODE
+                double[] robertson(double t, double[] y) =>
+                    [-0.04 * y[0] + 1e4 * y[1]*y[2],
+                      0.04 * y[0] - 1e4 * y[1]*y[2] - 3e7*y[1]*y[1],
+                      3e7*y[1]*y[1]];
+
+                //Solve ODE
+                var opts = Odeset(Stats: true);
+                Console.WriteLine("Computational Cost Using Default Tolerance Setting");
+                Ode45s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
+                Console.WriteLine("======================================================");
+                opts = Odeset(RelTol: 1e-4, AbsTol: 1e-7);
+                Console.WriteLine("Computational Cost Using Custom Tolerance Setting");
+                Ode45s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
+            }
+            /// </code>
             /// </example>
             /// </BookContent>
         }

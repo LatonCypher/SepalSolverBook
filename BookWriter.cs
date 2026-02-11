@@ -35,22 +35,94 @@ namespace ConsoleApp1
 
                 Numerical methods form the backbone of modern scientific computing, enabling the approximation of solutions to problems that are analytically intractable. This book presents a comprehensive exploration of numerical techniques, with a particular emphasis on SepalSolver, a versatile computational framework designed to bridge theory and practice. By integrating classical algorithms with contemporary solver strategies, SepalSolver provides a unified environment for tackling linear and nonlinear systems, optimization problems, differential equations, and large-scale simulations.
 
+                Here are some simulation performed with the sepal solver. 
+                1. **Six Linked Bar Mechanism**
+                    A six-linked bar mechanism is a type of kinematic chain used in mechanical engineering to achieve complex motion paths and force transmission. It consists of six rigid bars (links) connected by joints, typically revolute (hinge) or prismatic (sliding), forming a closed-loop system. These mechanisms are extensions of four-bar and five-bar linkages, offering greater flexibility and control over motion.
 
+                    Structure
+                    - Links: Six rigid bodies connected end-to-end.
+                    - Joints: Usually revolute joints that allow rotation, though prismatic joints can be included.
+                    - Degrees of Freedom (DOF): Determined by Gruebler’s equation, depending on the number of links and joints.
+                    - Input/Output: One or more links are driven (input), while others deliver the desired motion (output).
+
+                    Characteristics
+                    - Complex Motion: Can generate intricate paths not possible with simpler linkages.
+                    - Multiple Configurations: Depending on link lengths and joint placement, the mechanism can act as a coupler, amplifier, or motion converter.
+                    - Redundancy: Extra links provide more design freedom but also increase complexity in analysis.
+                    - Applications: Robotics, suspension systems, industrial machinery, and precision instruments.
+                    
+                    Examples of Use
+                    - Robotics: Six-bar linkages are used in robotic arms for extended reach and dexterity.
+                    - Automotive Engineering: Suspension systems sometimes employ multi-link setups for better handling and ride comfort.
+                    - Manufacturing: Mechanisms for stamping, folding, or packaging often rely on six-bar linkages to achieve synchronized motion.
+
+                    Analysis
+                    - Kinematics: Position, velocity, and acceleration analysis using vector loop equations.
+                    - Dynamics: Forces and torques calculated through Newton–Euler or Lagrangian methods.
+                    - Simulation: CAD and multibody dynamics software are often used to visualize and optimize performance.
+                    In essence, a six-linked bar mechanism is a versatile extension of classical linkage theory, enabling engineers to design systems with greater motion complexity and adaptability.
+                
                 .. figure:: images/Six_Link.gif
                     :align: center
                     :alt: Six_Link.gif
 
+
+                2. **Ship Roll at Sea**
+                    **Ship roll characteristics** describe the side-to-side tilting motion of a vessel around its longitudinal axis (running bow to stern). This is one of the six fundamental ship motions (heave, sway, surge, yaw, pitch, and roll) and is particularly important because it directly affects stability, comfort, and safety at sea.  
+
+                    ### Nature of Roll Motion
+                    - **Axis of Rotation**: Longitudinal axis (X-axis).  
+                    - **Cause**: Primarily induced by waves striking the ship’s sides, wind forces, or uneven loading.  
+                    - **Frequency & Amplitude**: Determined by the ship’s design (beam, draft, metacentric height), sea state, and loading condition.  
+
+                    ### Influencing Factors
+                    - **Metacentric Height (GM)**:  
+                      - Large GM → stiff ship → quick, jerky roll with small amplitude.  
+                      - Small GM → tender ship → slow, wide roll with large amplitude.  
+                    - **Hull Form**: Wider beams increase resistance to rolling but can make motion abrupt.  
+                    - **Damping Mechanisms**: Bilge keels, stabilizer fins, or anti-roll tanks reduce roll amplitude.  
+                    - **Sea Conditions**: Wave height, period, and direction relative to the ship’s heading strongly affect roll behavior.  
+
+                    ### Consequences of Roll
+                    - **Operational Impact**: Reduces crew comfort, affects cargo safety, and can impair weapon accuracy on naval ships.  
+                    - **Structural Stress**: Repeated rolling induces fatigue loads on hull and superstructure.  
+                    - **Safety Risks**: Excessive roll angles can lead to capsizing if stability margins are exceeded.  
+
+                    ### Control & Mitigation
+                    - **Design Solutions**: Optimized hull geometry, bilge keels, stabilizers.  
+                    - **Operational Measures**: Adjusting course and speed relative to waves, ballast management.  
+                    - **Active Systems**: Gyroscopic stabilizers or computer-controlled fins for modern vessels.  
+
+                    In essence, roll is the most critical ship motion to manage because it directly ties to **stability and survivability** at sea. Engineers and naval architects devote significant effort to predicting and controlling roll through both design and operational strategies.   
+                
+                
                 .. figure:: images/Ship_Roll.gif
                     :align: center
                     :alt: Ship_Roll.gif
+
+                3. **Chaos of Double Compund Pendulum**
+                    A double compound pendulum is a classic example of a chaotic system in physics. It consists of two pendulums attached end-to-end, where the motion of the second pendulum depends on the first. Despite its simple construction, the system exhibits highly complex and unpredictable behavior.
 
                 .. figure:: images/Chaos.gif
                     :align: center
                     :alt: Chaos.gif
 
+                4. **Three Double Pendulums with Different Masses**
+                    Simulating three double pendulums with different masses is a powerful way to explore how mass distribution influences chaotic dynamics. Even though the governing equations are deterministic, the outcomes vary dramatically depending on the parameters.
+                
+                
                 .. figure:: images/Three_Double_Pendulums.gif
                     :align: center
                     :alt: Three_Double_Pendulums.gif
+
+
+                5. **Park Transformation**
+                    In electrical engineering, Park transformation (also called the direct-quadrature-zero (d-q-0) transformation) is a mathematical technique used to simplify the analysis and control of three-phase AC circuits, especially in rotating machines like motors and generators.
+
+                .. figure:: images/Parktransformation.gif
+                    :align: center
+                    :alt: Parktransformation.gif
+
                 
                 The text begins with foundational principles—Basic Operations and Syntax—before progressing to core mathematical structures such as Polynomials, Interpolation, and Special Functions. These form the building blocks for the more complex computational engines within the library.
 
