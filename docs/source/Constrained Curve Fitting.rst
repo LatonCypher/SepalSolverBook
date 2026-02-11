@@ -1,3 +1,0 @@
-Constrained Curve Fitting
-=========================
-

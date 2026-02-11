@@ -1,3 +1,0 @@
-Mixed Integer Linear Programming
-================================
-

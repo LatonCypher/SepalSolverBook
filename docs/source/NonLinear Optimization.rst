@@ -1,3 +1,0 @@
-NonLinear Optimization
-======================
-

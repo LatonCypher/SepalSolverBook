@@ -1,4 +1,0 @@
-Differential Algebraic Equations
-================================
-
-

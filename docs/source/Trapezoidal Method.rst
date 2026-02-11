@@ -1,3 +1,0 @@
-Trapezoidal Method
-==================
-

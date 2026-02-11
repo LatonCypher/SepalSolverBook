@@ -1,3 +1,0 @@
-Cheby Hermite Legendre Laguerre
-===============================
-

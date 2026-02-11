@@ -1,3 +1,0 @@
-Exercise On Integration
-=======================
-

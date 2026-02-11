@@ -1,3 +1,0 @@
-Polynomial Integration
-======================
-

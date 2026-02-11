@@ -1,3 +1,0 @@
-Solution of Linear Systems
-==========================
-
