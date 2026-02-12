@@ -1,7 +1,11 @@
-﻿using ScottPlot;
+﻿using CSharpMath.Atom.Atoms;
+using ScottPlot;
+using ScottPlot.Colormaps;
+using ScottPlot.PlotStyles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using static SepalSolver.Ode;
@@ -50,12 +54,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                      (0.04 * y[0] - 1e4 * y[1] * y[2] - 3e7 * y[1]*y[1]),
                      y[0] + y[1] + y[2] - 1.0];
 
-                double[,] mass_f(double t, double[] y) => new double[,] 
-                {
-                    { 1.0, 0.0, 0.0 },
-                    { 0.0, 1.0, 0.0 },
-                    { 0.0, 0.0, 0.0 }
-                };
+                double[,] mass_f(double t, double[] y) => Diag([1, 1, 0]);
 
                 double[] y0 = [1.0, 0.0, 0.0];
                 (ColVec T, Matrix Y) = Ode45a(robertson_f, mass_f, y0, [0, 1e7]);
@@ -73,52 +72,110 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// <example 1> The Simple Pendulum (Index-1)
             /// A pendulum in Cartesian coordinates is naturally an Index-3 DAE. We solve the stabilized Index-1 version by including velocity constraints.
             ///
+            /// The position of the pendulum :math:`(x, y) must satisfy the rigid rod constraint:
+            /// :math:`x^2 + y^2 - 1 = 0`
+            ///
+            /// **The Index-1 Formulation**
+            /// To reduce the index, we differentiate the constraint twice. The second derivative introduces the accelerations :math:`x''` and :math:`y''`, allowing us to solve for the Lagrange multiplier :math:`\lambda` (tension).
+            ///
+            /// The resulting Index-1 system is:
+            /// <math> 
+            /// \begin{arra}{rcl}
+            ///     x' &=& u \\
+            ///     y' &=& v \\
+            ///     u' &=& -\lambda x \\
+            ///     v' &=& -\lambda  y - g \\
+            ///     0 &=& u^2 + v^2 - y g - \lambda
+            /// \end{array}    
+            /// </math>
+            ///
             ///
             /// <code>
             {
                 double g = 9.81;
-            
-                // State vector y = [x, y, u, v, lambda]
+
+                // State vector y = [x, y, u, v, λ]
                 double[] pendulum_f(double t, double[] y) =>
                     [y[2],
                      y[3],
                      -y[0] * y[4],
                      -y[1] * y[4] - g,
                      y[2]*y[2] + y[3]*y[3] - y[1] * g - y[4]];
-            
-                double[,] mass_f(double t, double[] y) => new double[,]
-                {
-                    { 1, 0, 0, 0, 0 },
-                    { 0, 1, 0, 0, 0 },
-                    { 0, 0, 1, 0, 0 },
-                    { 0, 0, 0, 1, 0 },
-                    { 0, 0, 0, 0, 0 }
-                };
 
-                double[] y0 = [0, 1, 1, 0, -1];
-                (ColVec T, Matrix Y) = Ode45a(pendulum_f, mass_f, y0, [0, 10.2]);
-                Plot(T, Y);
-                Xlabel("x"); Ylabel("y");
+                double[,] mass_f(double t, double[] y) => Diag([1, 1, 1, 1, 0]);
+
+                double[] y0 = [0, 1, 1, 0, 1 - g];
+                var opts = Odeset(Stats: true, RelTol: 1e-6);
+                (ColVec T, Matrix Y) = Ode45a(pendulum_f, mass_f, y0, [0, 6], opts);
+                Plot(T, Y, Linewidth: 2); Xlabel("x"); Ylabel("y");
+                Legend(["x", "y", "u", "v", "λ"]);
                 Title("Pendulum Trajectory (DAE)");
                 SaveAs("Index_1-Pendulum-Problem-Ode45a.png");
             }
             /// </code>
             /// </example>
+            /// 
+            /// As an exercise, the reader is encouraged to solve the problem using 
+            /// this initial condition y0 = [1, 0, 0, 1, 1];
+            /// 
             ///
             /// <example 2> Semi-Explicit DAE (The Transistor Amplifier)**
             /// This example mimics the "hbdae" problem from MathWorks, representing an electrical circuit with nonlinear components.
+            /// 
+            /// The transistor amplifier circuit contains six resistors, three capacitors, and a transistor.
+            /// <figure> Transistor.png </figure>
+            /// 
+            /// - The initial voltage signal is :math:`U_e(t) = 0.4\sin(200\pi t)`.
+            /// - The operating voltage is :math:`U_b = 6`.
+            /// - The voltages at the nodes are given by: math:`U_i(t)(i = 1, 2, 3, 4, 5)`.
+            /// - The values of the resistors  :math:`R_i(t)(i = 1, 2, 3, 4, 5)`. are constant, and the current through each resistor satisfies :math:`I = U/R`.
+            /// - The values of the capacitors :math:`C_i(i = 1, 2, 3)` are constant, and the current through each capacitor satisfies :math:`I=C⋅dU/dt`.
+            /// 
+            /// The goal is to solve for the output voltage through node 5, :math:`U_5(t)`.
+            /// Using Kirchoff's law to equalize the current through each node (1 through 5), you can obtain a system of five equations describing the circuit:
+            /// 
+            /// Node 1: :math:`C_1(U'_2 - U'_1) = (U_1 - U_e(t))/R_0`
+            /// 
+            /// Node 2: :math:`C_1(U'_1 - U'_2) = (U_2 - U_b)/R_1 + U_2/R_1 + 0.01f(U_2 - U_3)`
+            /// 
+            /// Node 3: :math:`-C_2U'_3 = U_3/R_3 - f(U_2 - U_3)`
+            /// 
+            /// Node 4: :math:`C_3(U'_5 - U'_4) = (U_4 - U_b)/R_4 + 0.99f(U_2 - U_3)`
+            /// 
+            /// Node 5: :math:`C_3(U'_4 - U'_5) = U_5/R_5`
+            /// 
+            /// By extracting the coeeficients of the derivatives into a matrix, we have:
+            /// <math>
+            ///     \begin{pmatrix}
+            ///         -c_{1} &  c_{1} &     0    &    0     &     0    \\
+            ///          c_{1} & -c_{1} &     0    &    0     &     0    \\
+            ///           0    &   0    & -c_{ 2}  &    0     &     0    \\
+            ///           0    &   0    &    0     & -c_{ 3}  &  c_{ 3}  \\
+            ///           0    &   0    &    0     &  c_{ 3}  & -c_{ 3}
+            ///     \end{ pmatrix}
+            ///     \begin{ pmatrix}
+            ///         U'_1 \\  U'_2 \\ U'_3 \\ U'_4 \\ U'_5 
+            ///     \end{pmatrix} = 
+            ///     \begin{ pmatrix}
+            ///         (U_1 - U_e(t))/R_0 \\  
+            ///         (U_2 - U_b)/R_1 + U_2/R_1 + 0.01f(U_2 - U_3) \\ 
+            ///         U_3/R_3 - f(U_2 - U_3) \\ 
+            ///         (U_4 - U_b)/R_4 + 0.99f(U_2 - U_3) \\ 
+            ///         U_5/R_5
+            ///     \end{ pmatrix}
+            /// </math>
             ///
             /// <code>
             {
                 double Ub = 6, R0 = 1000, R15 = 9000, alpha = 0.99,
                     beta = 1e-6, Uf = 0.026, c1 = 1e-6, c2 = 2e-6, c3 = 3e-6;
-                double[,] Mass(double t, double[] y) => new double[,] 
+                double[,] Mass(double t, double[] y) => new double[,]
                 {
                     {-c1,  c1,  0,   0,   0 },
                     { c1, -c1,  0,   0,   0 },
                     { 0,   0,  -c2,  0,   0 },
                     { 0,   0,   0,  -c3,  c3},
-                    { 0,   0,   0,   c3, -c3} 
+                    { 0,   0,   0,   c3, -c3}
                 };
 
                 double[] dudt(double t, double[] u)
@@ -134,8 +191,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double[] tspan = [0, 0.1];
                 double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
 
-                var opts = Odeset(RelTol: 1e-3, MassType: Ode.MassType.Constant);
-
+                var opts = Odeset(RelTol: 1e-5);
                 (ColVec T, Matrix Y) = Ode45a(dudt, Mass, y0, tspan, opts);
                 ColVec X = T, U5 = Y["", 4];
                 Scatter(X, 0.4 * Sin(200 * pi * X), "o"); HoldOn();
@@ -192,8 +248,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double r3(double[] y) => (k2 / K) * y[0] * y[4];
                 double r4(double[] y) => k3 * y[0] * Pow(y[3], 2);
                 double r5(double[] y) => k4 * Pow(y[5], 2) * Pow(y[1], 0.5);
-                var M = Zeros(8, 8);
-                for (int i = 0; i < 6; i++) M[i, i] = 1.0;
 
                 double[] akzo_f(double t, double[] y) =>
                     [
@@ -206,14 +260,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                         y[0] * y[2] - y[6],
                         y[3] * y[4] - y[7]
                     ];
-                
-            
-                double[,] mass_f(double t, double[] y) => M;
-                
-            
+
+                double[,] mass_f(double t, double[] y) => Diag([1, 1, 1, 1, 1, 1, 0, 0]);
                 double[] y0 = [0.444, 0.0012, 0.0, 0.0037, 0.0, 0.0, 0.0, 0.0];
                 (ColVec T, Matrix Y) = Ode45a(akzo_f, mass_f, y0, [0, 180]);
-            
                 Plot(T, Y);
                 Xlabel("Time"); Ylabel("Concentration");
                 Title("Akzo Nobel Chemical Kinetics (DAE)");
@@ -222,8 +272,74 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// </code>
             /// </example>
             /// 
+            /// <header 2> Index-2 DAE </header>
+            /// Most DAE solvers usually avoid solving DAEs in index 2 form. But SepalSolver is able to handle most index 2 DAEs to a relative tolerance of :math:`10^{-4}`.
+
+            /// Now we look at examples of index 2 DAEs
+            /// 
+            /// <example 4> 
+            /// Usnig the example from "On the numerical solution of differential–algebraic equations with index-2" by Ercan Celık
+            /// <math>
+            ///     \begin{aligned}
+            ///         x'_1 &= \left(\alpha - \cfrac{1}{2 - t}\right)x_1 + (2 - t)\alpha z + \cfrac{3 - t}{2 - t}x_2 \\
+            ///         x'_2 &= \cfrac{1 - \alpha}{t - 2} x_1 - x_2 + (\alpha - 1)z + 2e^t \\
+            ///         0 &= (t + 2)x_1 + (t^2 - 4)x_2 - (t^2 + t - 2)e^t
+            ///     \end{ aligned}
+            /// </math>
+            /// 
+            /// Intial condition: :math:`x_1(0) = 1, x_2(0) = 1`;
+            ///  
+            /// SepalSolver has the ability to compute consistent initial conditions for index 2 DAEs, so we can solve this problem without manually differentiating the algebraic constraint.
+            /// 
+            /// <code>
+            {
+                // define the DAE
+                double alpha = 10;
+                double[] Ercan(double t, double[] x) =>
+                    [ (alpha - 1/(2-t))*x[0] + (2-t)*alpha*x[2] + (3-t)/(2-t)*x[1],
+                      (1-alpha)/(t-2)*x[0] - x[1] + (alpha-1)*x[2] + 2*Exp(t),
+                      (t+2)*x[0] + (t*t-4)*x[1] - (t*t+t-2)*Exp(t) ];
+
+                double[,] mass_f(double t, double[] x) => Diag([1, 1, 0]);
+                double[] y0 = [1, 1, 0]; // only the differential variables need initial conditions
+                var opts = Odeset(Stats: true);
+                (ColVec T, Matrix Y) = Ode45a(Ercan, mass_f, y0, [0, 1], opts);
+                Scatter(T, Hcart(Exp(T), Exp(T), -Exp(T).Div(2-T)), "o"); HoldOn();
+                Plot(T, Y); HoldOff();
+                Xlabel("Time t"); Ylabel("Solution x");
+                Legend(["x_1_Exact", "x_2_Exact", "z_Exact", "x_1_NumSol", "x_2_NumSol", "z_NumSol"]);
+                Title("Index-2 DAE Example (Ercan Celık)");
+                SaveAs("Index-2-DAE-Ercan-Celik.png");
+
+                // We can actually print out the result to compare with the analytical solution
+                Console.WriteLine("""
+                        t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_1_NumSol(t)  |  x_1_Exact(t)
+                    --------++-----------------+----------------++-----------------+----------------++-----------------+---------------
+                    """);
+                for (int i = 0; i < T.Numel; i++)
+                {
+                    Console.WriteLine($"""
+                          {T[i]:F2}  ||     {Y[i, 0]:F6}    |    {Exp(T[i]):F6}    ||     {Y[i, 1]:F6}    |    {Exp(T[i]):F6}    ||     {Y[i, 2]:F6}   |  {-Exp(T[i])/(2-T[i]):F6}
+                        """);
+                }
+
+                // We can compute the solution to a higher accuracy 
+                var opts2 = Odeset(Stats: true, RelTol: 1e-6);
+                (ColVec T2, Matrix Y2) = Ode45a(Ercan, mass_f, y0, [0, 1], opts2);
+                Console.WriteLine(""" t || x_1_NumSol(t) | x_1_Exact(t) || x_1_NumSol(t) | x_1_Exact(t) || x_1_NumSol(t) | x_1_Exact(t) --------++-----------------+----------------++-----------------+----------------++-----------------+--------------- """);
+                for (int i = 0; i < T2.Numel; i++)
+                {
+                    Console.WriteLine($""" {T2[i]:F2} || {Y2[i, 0]:F6} | {Exp(T2[i]):F6} || {Y2[i, 1]:F6} | {Exp(T2[i]):F6} || {Y2[i, 2]:F6} | {-Exp(T2[i])/(2-T2[i]):F6} """);
+                }
+            }
+            /// </code>
+            /// 
+            /// 
+            /// </example>
+            /// 
             /// 
             /// </BookContent>
         }
     }
 }
+

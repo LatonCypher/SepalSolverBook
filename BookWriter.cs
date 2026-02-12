@@ -229,7 +229,6 @@ namespace ConsoleApp1
             content.InsertRange(start, replacement);
 
         }
-
         static void TreatHeader1(List<string> bookContent)
         {
             while (bookContent.Any(line => line.Contains("<header 1>")))
@@ -342,7 +341,6 @@ namespace ConsoleApp1
 
             }
         }
-
         static void TreatCodeBlock(List<string> bookContent)
         {
             while (bookContent.Any(line => line.Contains("<code>")))
