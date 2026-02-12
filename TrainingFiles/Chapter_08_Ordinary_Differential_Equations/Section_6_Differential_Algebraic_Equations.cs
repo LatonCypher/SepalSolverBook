@@ -123,11 +123,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// This example mimics the "hbdae" problem from MathWorks, representing an electrical circuit with nonlinear components.
             /// 
             /// The transistor amplifier circuit contains six resistors, three capacitors, and a transistor.
+            /// 
             /// <figure> Transistor.png </figure>
             /// 
             /// - The initial voltage signal is :math:`U_e(t) = 0.4\sin(200\pi t)`.
             /// - The operating voltage is :math:`U_b = 6`.
-            /// - The voltages at the nodes are given by: math:`U_i(t)(i = 1, 2, 3, 4, 5)`.
+            /// - The voltages at the nodes are given by: :math:`U_i(t)(i = 1, 2, 3, 4, 5)`.
             /// - The values of the resistors  :math:`R_i(t)(i = 1, 2, 3, 4, 5)`. are constant, and the current through each resistor satisfies :math:`I = U/R`.
             /// - The values of the capacitors :math:`C_i(i = 1, 2, 3)` are constant, and the current through each capacitor satisfies :math:`I=C⋅dU/dt`.
             /// 
@@ -177,12 +178,11 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                     { 0,   0,   0,  -c3,  c3},
                     { 0,   0,   0,   c3, -c3}
                 };
-
+                double Ue(double t) => 0.4 * Sin(200 * pi * t);
                 double[] dudt(double t, double[] u)
                 {
-                    double Ue = 0.4 * Sin(200 * pi * t),
-                           f23 = beta * (Exp((u[1] - u[2]) / Uf) - 1);
-                    return [ -(Ue - u[0])/R0,
+                    double f23 = beta * (Exp((u[1] - u[2]) / Uf) - 1);
+                    return [ -(Ue(t) - u[0])/R0,
                              -(Ub/R15 - u[1]*2/R15 - (1-alpha)*f23),
                              -(f23 - u[2]/R15),
                              -((Ub - u[3])/R15 - alpha*f23),
@@ -193,9 +193,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 
                 var opts = Odeset(RelTol: 1e-5);
                 (ColVec T, Matrix Y) = Ode45a(dudt, Mass, y0, tspan, opts);
-                ColVec X = T, U5 = Y["", 4];
-                Scatter(X, 0.4 * Sin(200 * pi * X), "o"); HoldOn();
-                Plot(X, U5, "--r"); HoldOff();
+                Scatter(T, Arrayfun(Ue, T), "o"); HoldOn();
+                Plot(T, Y[.., 4], "--r"); HoldOff();
                 Legend(["Input", "Output"], UpperLeft);
                 Xlabel("Time t"); Ylabel("Solution y");
                 Title("One Transistor Amplifier DAE Problem-Ode45a");
