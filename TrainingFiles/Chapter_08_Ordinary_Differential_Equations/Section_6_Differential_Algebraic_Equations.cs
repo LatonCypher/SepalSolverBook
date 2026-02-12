@@ -153,17 +153,17 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             ///           0    &   0    & -c_{ 2}  &    0     &     0    \\
             ///           0    &   0    &    0     & -c_{ 3}  &  c_{ 3}  \\
             ///           0    &   0    &    0     &  c_{ 3}  & -c_{ 3}
-            ///     \end{ pmatrix}
-            ///     \begin{ pmatrix}
+            ///     \end{pmatrix}
+            ///     \begin{pmatrix}
             ///         U'_1 \\  U'_2 \\ U'_3 \\ U'_4 \\ U'_5 
             ///     \end{pmatrix} = 
-            ///     \begin{ pmatrix}
+            ///     \begin{pmatrix}
             ///         (U_1 - U_e(t))/R_0 \\  
             ///         (U_2 - U_b)/R_1 + U_2/R_1 + 0.01f(U_2 - U_3) \\ 
             ///         U_3/R_3 - f(U_2 - U_3) \\ 
             ///         (U_4 - U_b)/R_4 + 0.99f(U_2 - U_3) \\ 
             ///         U_5/R_5
-            ///     \end{ pmatrix}
+            ///     \end{pmatrix}
             /// </math>
             ///
             /// <code>
@@ -347,13 +347,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             ///
             /// The resulting Index-1 system is:
             /// <math> 
-            /// \begin{array}{rcl}
-            ///     x' &=& u \\
-            ///     y' &=& v \\
-            ///     u' &=& -\lambda x \\
-            ///     v' &=& -\lambda  y - g \\
-            ///     0 &=& x u + y v
-            /// \end{array}    
+            ///     \begin{array}{rcl}
+            ///         x' &=& u \\
+            ///         y' &=& v \\
+            ///         u' &=& -\lambda x \\
+            ///         v' &=& -\lambda  y - g \\
+            ///         0 &=& x u + y v
+            ///     \end{array}    
             /// </math>
             ///
             ///
