@@ -246,13 +246,14 @@
                     return Y[^1, 1] - 1;
                 }
                 //Use a root finding method to find the value of alp that satisfies the boundary condition at t = 6
-                double alp = Fzero(err, 0.5);
+                double alp = Fsolve(err, 0.5);
                 //Compare with the solution of the BVP using a direct method
                 Console.WriteLine($"Solution is {alp}");
                 //Plot the solution
                 Plot(T, Y, Linewidth: 2);
                 Legend(["f", "f'", "f''"]);
                 Title("Blasius Equation With Estimated f''(0)");
+                SaveAs("Blasius-bounary-layer.png");
             }
             /// </code> 
             /// </example 6>
