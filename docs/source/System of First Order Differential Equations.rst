@@ -302,6 +302,8 @@ These are examples of how to use SepalSolver to solve various systems of first-o
       //Plot the solution
       Plot(T, Y, Linewidth: 2);
       Legend(["f", "f'", "f''"]);
+      Axis([0, 6, 0, 1.5]); 
+      Xlabel("t"); Ylabel("f and its derivatives");
       Title("Blasius Equation With Estimated f''(0)");
       SaveAs("Blasius-bounary-layer.png");
    
