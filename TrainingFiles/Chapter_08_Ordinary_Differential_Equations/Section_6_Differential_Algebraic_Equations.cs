@@ -72,7 +72,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// <example 1> The Simple Pendulum (Index-1)
             /// A pendulum in Cartesian coordinates is naturally an Index-3 DAE. We solve the stabilized Index-1 version by including velocity constraints.
             ///
-            /// The position of the pendulum :math:`(x, y) must satisfy the rigid rod constraint:
+            /// The position of the pendulum :math:`(x, y)` must satisfy the rigid rod constraint: 
             /// :math:`x^2 + y^2 - 1 = 0`
             ///
             /// **The Index-1 Formulation**
@@ -80,7 +80,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             ///
             /// The resulting Index-1 system is:
             /// <math> 
-            /// \begin{arra}{rcl}
+            /// \begin{array}{rcl}
             ///     x' &=& u \\
             ///     y' &=& v \\
             ///     u' &=& -\lambda x \\
@@ -340,6 +340,53 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             }
             /// </code>
             /// 
+            /// 
+            /// </example>
+            /// 
+            /// <example 5> Pendulum position constraint (Index-2)
+            /// To reduce the index, if we differentiated the constraint once instead of twice, we end up with index 2 problem. 
+            ///
+            /// The resulting Index-1 system is:
+            /// <math> 
+            /// \begin{arra}{rcl}
+            ///     x' &=& u \\
+            ///     y' &=& v \\
+            ///     u' &=& -\lambda x \\
+            ///     v' &=& -\lambda  y - g \\
+            ///     0 &=& x u + y v
+            /// \end{array}    
+            /// </math>
+            ///
+            ///
+            /// <code>
+            {
+                double g = 9.81;
+
+                // State vector y = [x, y, u, v, λ]
+                double[] pendulum_f(double t, double[] y) =>
+                    [y[2],
+                     y[3],
+                     -y[0] * y[4],
+                     -y[1] * y[4] - g,
+                     y[0]*y[2] + y[1]*y[3]];
+
+                double[,] mass_f(double t, double[] y) => Diag([1, 1, 1, 1, 0]);
+
+                double[] y0 = [0, 1, 1, 0, -1];
+                var opts = Odeset(Stats: true);
+                (ColVec T, Matrix Y) = Ode45a(pendulum_f, mass_f, y0, [0, 6], opts);
+                Plot(T, Y, Linewidth: 2); Xlabel("x"); Ylabel("y");
+                Legend(["x", "y", "u", "v", "λ"]);
+                Title("Pendulum Trajectory (DAE)");
+                SaveAs("Index_2-Pendulum-Problem-Ode45a.png");
+
+                Console.WriteLine("\n\n");
+                Console.WriteLine(Hcart(T, Y));
+
+            }
+            /// </code>
+            /// Observe that the initial condition supplied for :math:`/lambda` was :math:`-1`; but the result returned shown that the correct initial condition for the algebraic variable :math:`/lambda` is :math:`-8.81`.
+            /// Sending in a wrong initial condition was done on purpose, to test the ability of sepalsolver to compute the initial condition of the algebraic variable. 
             /// 
             /// </example>
             /// 
