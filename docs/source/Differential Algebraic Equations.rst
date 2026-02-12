@@ -321,11 +321,11 @@ Now we look at examples of index 2 DAEs
    
    .. math::
    
-      \begin{aligned}
+      \begin{align}
       x'_1 &= \left(\alpha - \cfrac{1}{2 - t}\right)x_1 + (2 - t)\alpha z + \cfrac{3 - t}{2 - t}x_2 \\
       x'_2 &= \cfrac{1 - \alpha}{t - 2} x_1 - x_2 + (\alpha - 1)z + 2e^t \\
       0 &= (t + 2)x_1 + (t^2 - 4)x_2 - (t^2 + t - 2)e^t
-      \end{ aligned}
+      \end{ align}
    
    
    Intial condition: :math:`x_1(0) = 1, x_2(0) = 1`;

@@ -204,6 +204,58 @@
             }
             /// </code>
             /// </example 5>
+            /// 
+            /// <example 6> Blasius Boundary Layer 
+            /// The Blasius Boundary Layer refers to a boundary layer of fluid in the vicinity of a flat plate that moves steadily in its own plane.This concept was first introduced by German mathematician Heinrich Blasius. This solution is important in the field of fluid dynamics, particularly in the area of laminar flow.In this solution, the flow velocity outside the boundary layer is assumed to be uniform. Inside the boundary layer, the fluid's velocity changes from zero at the plate surface to the free stream velocity at the edge of the boundary layer. This concept plays a significant role in understanding and predicting the behavior of fluid flow in various engineering and scientific applications.
+            /// The solutions to the Blasius equation provide valuable insights into the behavior of fluid flow near a boundary. For instance, it demonstrates that the boundary layer thickness grows as the square root of the distance along the plate. Also, it reveals that the shear stress at the plate surface is proportional to the square root of the free stream velocity, among other observations.
+            /// The Blasius Boundary Layer solution, despite its simplifications, offers a good approximation for real-life engineering problems involving fluid flow over flat surfaces.This understanding is crucial in designing and optimizing various engineering systems, ranging from airfoils in aeronautics to heat exchangers in thermal power plants and thermal shield design on reusable rockets.
+            /// <math>
+            ///     2f''' + f''f = 0
+            /// </math>
+            /// 
+            /// This equation can be solved by transforming it into a system of 1st order differential equations.
+            /// Let: :math:`y_1 = f, y_2 = f', y_3 = f''`
+            /// hence
+            /// 
+            /// <math>
+            ///     \begin{array}{rcl}
+            ///         y'_1&=&f' = y_2, \\
+            ///         y'_2&=&f'' = y_3, \\
+            ///         y'_3&=&f''' = -0.5f''f = -0.5y_3y_1
+            ///    \end{array}
+            /// </math>
+            /// 
+            /// So, the system of first order differential equation is thus:
+            /// <math>
+            ///     \begin{array}{rcl}
+            ///         y'_1&=& y_2, \\
+            ///         y'_2&=& y_3, \\
+            ///         y'_3&=& -0.5y_3y_1
+            ///    \end{array}
+            /// </math>
+            /// 
+            /// Subject to the following initial and terminal conditions. 
+            /// :math:`y_1(0) = 0, y_2(0) = 0, y_2(\infty) = 1`
+            /// To solve system of ordinary differential equation, you need the initial conditions, but when one of the initial conditions is missing, and we have a terminal condition instead, we can solve for the initial condition we do not have using the terminal condition we have, just like finding the root of a nonlinear function.But to evaluate the value of the function that you want to be zero, you have to perform the integration of the ode, using the guess given by the nonlinear solver and then return the function value which is the difference between the terminal value you obtained from the integration and the desired value.In this case the unknown value is :math:`y_3(0)`, and the function value is :math:`y_2(\infty) - 1`.
+            /// <code>
+            {
+                ColVec T = null; Matrix Y = null;
+                double err(double alp)
+                {
+                    (T, Y) = Ode45((t, y) => [y[1], y[2], -0.5*y[0]*y[2]], [0, 0, alp], [0, 6]);
+                    return Y[^1, 1] - 1;
+                }
+                //Use a root finding method to find the value of alp that satisfies the boundary condition at t = 6
+                double alp = Fzero(err, 0.5);
+                //Compare with the solution of the BVP using a direct method
+                Console.WriteLine($"Solution is {alp}");
+                //Plot the solution
+                Plot(T, Y, Linewidth: 2);
+                Legend(["f", "f'", "f''"]);
+                Title("Blasius Equation With Estimated f''(0)");
+            }
+            /// </code> 
+            /// </example 6>
             /// </BookContent>
         }
     }
