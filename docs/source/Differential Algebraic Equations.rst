@@ -493,7 +493,7 @@ Now we look at examples of index 2 DAEs
    
    .. math::
    
-      \begin{arra}{rcl}
+      \begin{array}{rcl}
       x' &=& u \\
       y' &=& v \\
       u' &=& -\lambda x \\
@@ -794,7 +794,7 @@ Now we look at examples of index 2 DAEs
       :align: center
       :alt: Index_2-Pendulum-Problem-Ode45a.png
    
-   Observe that the initial condition supplied for :math:`/lambda` was :math:`-1`; but the result returned shown that the correct initial condition for the algebraic variable :math:`/lambda` is :math:`-8.81`.
+   Observe that the initial condition supplied for :math:`\lambda` was :math:`-1`; but the result returned shown that the correct initial condition for the algebraic variable :math:`\lambda` is :math:`-8.81`.
    Sending in a wrong initial condition was done on purpose, to test the ability of sepalsolver to compute the initial condition of the algebraic variable. 
    
 
