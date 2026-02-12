@@ -324,9 +324,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 }
 
                 // We can compute the solution to a higher accuracy 
-                Console.WriteLine("\n\nNow we compute the solution to a higher accuracy (RelTol = 1e-6):\n");
-                var opts2 = Odeset(Stats: true, RelTol: 1e-5);
-                (ColVec T2, Matrix Y2) = Ode45a(Ercan, mass_f, y0, [0, 1], opts2);
+                Console.WriteLine("\n\nNow we compute the solution to a higher accuracy (RelTol = 1e-5):\n");
+                opts = Odeset(Stats: true, RelTol: 1e-5);
+                (T, Y) = Ode45a(Ercan, mass_f, y0, [0, 1], opts);
                 Console.WriteLine("""
                         t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
                     --------++-----------------+----------------++-----------------+----------------++-----------------+---------------
