@@ -313,7 +313,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 
                 // We can actually print out the result to compare with the analytical solution
                 Console.WriteLine("""
-                        t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_1_NumSol(t)  |  x_1_Exact(t)
+                        t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
                     --------++-----------------+----------------++-----------------+----------------++-----------------+---------------
                     """);
                 for (int i = 0; i < T.Numel; i++)
@@ -324,12 +324,18 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 }
 
                 // We can compute the solution to a higher accuracy 
-                var opts2 = Odeset(Stats: true, RelTol: 1e-6);
+                Console.WriteLine("\n\nNow we compute the solution to a higher accuracy (RelTol = 1e-6):\n");
+                var opts2 = Odeset(Stats: true, RelTol: 1e-5);
                 (ColVec T2, Matrix Y2) = Ode45a(Ercan, mass_f, y0, [0, 1], opts2);
-                Console.WriteLine(""" t || x_1_NumSol(t) | x_1_Exact(t) || x_1_NumSol(t) | x_1_Exact(t) || x_1_NumSol(t) | x_1_Exact(t) --------++-----------------+----------------++-----------------+----------------++-----------------+--------------- """);
-                for (int i = 0; i < T2.Numel; i++)
+                Console.WriteLine("""
+                        t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
+                    --------++-----------------+----------------++-----------------+----------------++-----------------+---------------
+                    """);
+                for (int i = 0; i < T.Numel; i++)
                 {
-                    Console.WriteLine($""" {T2[i]:F2} || {Y2[i, 0]:F6} | {Exp(T2[i]):F6} || {Y2[i, 1]:F6} | {Exp(T2[i]):F6} || {Y2[i, 2]:F6} | {-Exp(T2[i])/(2-T2[i]):F6} """);
+                    Console.WriteLine($"""
+                          {T[i]:F2}  ||     {Y[i, 0]:F6}    |    {Exp(T[i]):F6}    ||     {Y[i, 1]:F6}    |    {Exp(T[i]):F6}    ||     {Y[i, 2]:F6}   |  {-Exp(T[i])/(2-T[i]):F6}
+                        """);
                 }
             }
             /// </code>
