@@ -118,9 +118,11 @@ SepalSolver impelements ODE45s for stiff differential equation. This is an embed
    
    
 
-:note::
 
-We are allowed to set the points in time we want the solver to compute the solutions. SepalSolver computes this solutions directly during integration, not by interpolation after flying past them. For direct computation and by interpolation in other solvers, integrators take adaptive steps as dictated by the stiffness of the problem being solved. But in the case of sepalsolver, the steps is also adjusted to ensure that the solution is computed as the points supplied by the used. 
+.. note::
+
+   We are allowed to set the points in time we want the solver to compute the solutions. SepalSolver computes this solutions directly during integration, not by interpolation after flying past them. For direct computation and by interpolation in other solvers, integrators take adaptive steps as dictated by the stiffness of the problem being solved. But in the case of sepalsolver, the steps is also adjusted to ensure that the solution is computed as the points supplied by the used. 
+
 
 
 .. code-block:: csharp
@@ -149,7 +151,11 @@ We are allowed to set the points in time we want the solver to compute the solut
    :alt: Robertson-ODE-given-points-Ode45s.png
 
 
-Just like the case of Solvers for nonlinear system, OdeSolvers also has Odeset, that can be used to guide process of the solution or request aditional information from the solution. We can request the statistics be printed so we can see how the problem was solved. We can change the RelTol or absolute tolerance. Note that the absolute tolerance can be scale ( single number to apply to all variables being integrated) or a vector, one for each of the variables. 
+
+.. note::
+
+   Just like the case of Solvers for nonlinear system, OdeSolvers also has Odeset, that can be used to guide process of the solution or request aditional information from the solution. We can request the statistics be printed so we can see how the problem was solved. We can change the RelTol or absolute tolerance. Note that the absolute tolerance can be scale ( single number to apply to all variables being integrated) or a vector, one for each of the variables. 
+
 
 
 .. Admonition:: Example 4 :  Using OdeSet
@@ -169,7 +175,12 @@ Just like the case of Solvers for nonlinear system, OdeSolvers also has Odeset, 
       var opts = Odeset(RelTol: 1e-4, AbsTol: 1e-7);
       (ColVec T, Matrix Y) = Ode45s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
    
-   We can request the statistics of the solution process by setting Stats: true. We use this to understand the impact of tolerance setting on computational cost of the solution.
+   
+   
+   .. note::
+   
+      We can request the statistics of the solution process by setting Stats: true. We use this to understand the impact of tolerance setting on computational cost of the solution.
+   
    
    
    .. code-block:: csharp

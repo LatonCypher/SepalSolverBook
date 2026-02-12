@@ -100,9 +100,9 @@
             /// 
             /// </example>
             /// 
-            /// :note::
-            /// 
-            ///     We are allowed to set the points in time we want the solver to compute the solutions. SepalSolver computes this solutions directly during integration, not by interpolation after flying past them. For direct computation and by interpolation in other solvers, integrators take adaptive steps as dictated by the stiffness of the problem being solved. But in the case of sepalsolver, the steps is also adjusted to ensure that the solution is computed as the points supplied by the used. 
+            /// <note>
+            /// We are allowed to set the points in time we want the solver to compute the solutions. SepalSolver computes this solutions directly during integration, not by interpolation after flying past them. For direct computation and by interpolation in other solvers, integrators take adaptive steps as dictated by the stiffness of the problem being solved. But in the case of sepalsolver, the steps is also adjusted to ensure that the solution is computed as the points supplied by the used. 
+            /// </note>
             /// 
             /// <code>
             {
@@ -126,7 +126,9 @@
             }
             /// </code>
             /// 
+            /// <note>
             /// Just like the case of Solvers for nonlinear system, OdeSolvers also has Odeset, that can be used to guide process of the solution or request aditional information from the solution. We can request the statistics be printed so we can see how the problem was solved. We can change the RelTol or absolute tolerance. Note that the absolute tolerance can be scale ( single number to apply to all variables being integrated) or a vector, one for each of the variables. 
+            /// </note>
             ///     
             /// <example 4> Using OdeSet
             /// Here we look at the use of odeset
@@ -144,7 +146,10 @@
                 (ColVec T, Matrix Y) = Ode45s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
             }
             /// </code>
+            /// 
+            /// <note>
             /// We can request the statistics of the solution process by setting Stats: true. We use this to understand the impact of tolerance setting on computational cost of the solution.
+            /// </note>
             /// 
             /// <code>
             {

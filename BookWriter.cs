@@ -212,6 +212,7 @@ namespace ConsoleApp1
             TreatHeader3(bookContent);
             TreatFigure(bookContent);
             TreatMathTag(bookContent);
+            TreatNoteTag(bookContent);
             TreatCodeBlock(bookContent);
             TreatTableBlock(bookContent);
             TreatExampleBlock(bookContent);
@@ -410,7 +411,6 @@ namespace ConsoleApp1
                     "   :alt: " + content,
                     ""];
         }
-
         static string[] GetAnimationReference(string line)
         {
             // Regex to capture content inside parentheses
@@ -549,7 +549,35 @@ namespace ConsoleApp1
                 Replace(bookContent, startIndex, Length + 1, Codelines);
             }
         }
-
+        static void TreatNoteTag(List<string> bookContent)
+        {
+            while (bookContent.Any(line => line.Contains("<note>")))
+            {
+                int startIndex = -1;
+                // replace code blocks with rst format
+                for (int i = 0; i < bookContent.Count; i++)
+                {
+                    if (bookContent[i].Contains("<note>"))
+                    {
+                        startIndex = i;
+                        break;
+                    }
+                }
+                int Length = 1;
+                List<string> Codelines = ["", ".. note::", ""];
+                string line = bookContent[startIndex + Length];
+                int space = line.TakeWhile(c => c == ' ').Count()+1;
+                while (!bookContent[startIndex + Length].Contains("</note>"))
+                {
+                    line = bookContent[startIndex + Length];
+                    if (line.Contains("///"))
+                        Codelines.Add("   " + line.TrimStart(' ', '\t', '/'));
+                    Length++;
+                }
+                Codelines.Add("");
+                Replace(bookContent, startIndex, Length + 1, Codelines);
+            }
+        }
 
     }
 }
