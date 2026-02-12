@@ -192,6 +192,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double r3(double[] y) => (k2 / K) * y[0] * y[4];
                 double r4(double[] y) => k3 * y[0] * Pow(y[3], 2);
                 double r5(double[] y) => k4 * Pow(y[5], 2) * Pow(y[1], 0.5);
+                var M = Zeros(8, 8);
+                for (int i = 0; i < 6; i++) M[i, i] = 1.0;
+
                 double[] akzo_f(double t, double[] y) =>
                     [
                         -2*r1(y) + r2(y) - r3(y) - r4(y),
@@ -205,12 +208,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                     ];
                 
             
-                double[,] mass_f(double t, double[] y)
-                {
-                    var M = Zeros(8, 8);
-                    for(int i = 0; i < 6; i++) M[i, i] = 1.0;
-                    return M;
-                }
+                double[,] mass_f(double t, double[] y) => M;
+                
             
                 double[] y0 = [0.444, 0.0012, 0.0, 0.0037, 0.0, 0.0, 0.0, 0.0];
                 (ColVec T, Matrix Y) = Ode45a(akzo_f, mass_f, y0, [0, 180]);

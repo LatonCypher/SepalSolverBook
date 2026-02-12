@@ -206,31 +206,29 @@ Where :math:`M` is a singular matrix.
    .. code-block:: csharp
    
       double k1 = 18.7, k2 = 0.58, k3 = 0.09, k4 = 0.42, K = 34.4, Fin = 0.012;
-      double[] akzo_f(double t, double[] y) {
-          double r1 = k1 * Pow(y[0], 4) * Pow(y[1], 0.5);
-          double r2 = k2 * y[2] * y[3];
-          double r3 = (k2 / K) * y[0] * y[4];
-          double r4 = k3 * y[0] * Pow(y[3], 2);
-          double r5 = k4 * Pow(y[5], 2) * Pow(y[1], 0.5);
-               
-          return [
-              -2*r1 + r2 - r3 - r4,
-              -0.5*r1 - r5 + 0.5*Fin,
-              r1 - r2 + r3,
-              -r2 + r3 - 2*r4,
-              r2 - r3 + r4,
-              -r5,
+      double r1(double[] y) => k1 * Pow(y[0], 4) * Pow(y[1], 0.5);
+      double r2(double[] y) => k2 * y[2] * y[3];
+      double r3(double[] y) => (k2 / K) * y[0] * y[4];
+      double r4(double[] y) => k3 * y[0] * Pow(y[3], 2);
+      double r5(double[] y) => k4 * Pow(y[5], 2) * Pow(y[1], 0.5);
+      var M = Zeros(8, 8);
+      for (int i = 0; i < 6; i++) M[i, i] = 1.0;
+   
+      double[] akzo_f(double t, double[] y) =>
+          [
+              -2*r1(y) + r2(y) - r3(y) - r4(y),
+              -0.5*r1(y) - r5(y) + 0.5*Fin,
+              r1(y) - r2(y) + r3(y),
+              -r2(y) + r3(y) - 2*r4(y),
+              r2(y) - r3(y) + r4(y),
+              -r5(y),
               y[0] * y[2] - y[6],
               y[3] * y[4] - y[7]
           ];
-      }
+      
                
-      double[,] mass_f(double t, double[] y)
-      {
-          var M = Zeros(8, 8);
-          for(int i = 0; i < 6; i++) M[i, i] = 1.0;
-          return M;
-      }
+      double[,] mass_f(double t, double[] y) => M;
+      
                
       double[] y0 = [0.444, 0.0012, 0.0, 0.0037, 0.0, 0.0, 0.0, 0.0];
       (ColVec T, Matrix Y) = Ode45a(akzo_f, mass_f, y0, [0, 180]);
