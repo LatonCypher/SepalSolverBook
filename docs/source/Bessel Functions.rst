@@ -39,9 +39,9 @@ Types of Bessel Functions
    SaveAs("BesselJ-Functions.png");
 
 
-.. figure:: images/BesselJ-Functions.png
+.. figure:: images/
    :align: center
-   :alt: BesselJ-Functions.png
+   :alt: 
 
 
 #. **Bessel Functions of the Second  Kind** :math:`(Y_n(x))` These functions are denoted by :math:`(Y_n(x))`,  are also solutions to Bessel's differential equation but have a singularity at the origin. They are often used in conjunction with :math:`(J_n(x))`  to form a complete set of solutions.
@@ -66,9 +66,9 @@ Types of Bessel Functions
    SaveAs("BesselY-Functions.png");
 
 
-.. figure:: images/BesselY-Functions.png
+.. figure:: images/
    :align: center
-   :alt: BesselY-Functions.png
+   :alt: 
 
 
 #. **Modified Bessel Functions (** :math:`I_n(x)` **and** :math:`K_n(x)` **)**: These functions are solutions to the modified Bessel's differential equation, which is obtained by replacing  :math:`x` with :math:`ix` in the original equation. They are used in problems involving heat conduction and diffusion.
@@ -92,9 +92,9 @@ Types of Bessel Functions
    SaveAs("BesselI-Functions.png");
 
 
-.. figure:: images/BesselI-Functions.png
+.. figure:: images/
    :align: center
-   :alt: BesselI-Functions.png
+   :alt: 
 
 
 
@@ -116,9 +116,9 @@ Types of Bessel Functions
    SaveAs("BesselK-Functions.png");
 
 
-.. figure:: images/BesselK-Functions.png
+.. figure:: images/
    :align: center
-   :alt: BesselK-Functions.png
+   :alt: 
 
 
 
@@ -222,7 +222,7 @@ Lets see how to compute water influx, and generate the started water influx plot
    ColVec Td = Logspace(-1, 2), Wd;
    int end = Rd.Length - 1;
    // compute the water influx and plot
-   Subplot(2, 2, [0,1]);
+   Subplot(2, 1, 0);
    HoldOn();
    List<string> lgd = [];
    foreach (double rD in Rd)
@@ -236,11 +236,11 @@ Lets see how to compute water influx, and generate the started water influx plot
    Title("Dimensionless Water Influx Rd <= 4");
 
    // define the time and radial mesh
-   Rd = [5, 6, 7, 8, 9, 10, 50];
+   Rd = [5, 6, 7, 8, 9, 10, double.PositiveInfinity];
    Td = Logspace(0, 3); end = Rd.Length - 1;
 
    // compute the water influx and plot
-   Subplot(2, 2, [2,3]);
+   Subplot(2, 1, 1);
    HoldOn();
    lgd = [];
    foreach (double rD in Rd)
@@ -252,7 +252,7 @@ Lets see how to compute water influx, and generate the started water influx plot
    Legend(lgd, UpperLeft);
    Axis([1, 1000, 0, 70]);
    Title("Dimensionless Water Influx Rd >= 5");
-   SaveAs("Dimensionless-Water-Influx.png");
+   SaveAs("Dimensionless-Water-Influx.png", 600, 900);
    CloseFig();
 
 

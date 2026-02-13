@@ -50,9 +50,9 @@ Examples
    
       Coefficients: [1.0000, 0.0000, 0.0000]
    
-   .. figure:: images/Polyfit_Example1.png
+   .. figure:: images/
       :align: center
-      :alt: Polyfit_Example1.png
+      :alt: 
    
 
 
@@ -147,9 +147,9 @@ Overfitting can occur if the degree is too high, while underfitting can happen i
       Quaratic fit : [0.9999999999999957,2.7003933940572107E-14,4.999999999999965] 
       Residual: 846.555844532397
    
-   .. figure:: images/Polyfit_Example_4.png
+   .. figure:: images/
       :align: center
-      :alt: Polyfit_Example_4.png
+      :alt: 
    
 
 

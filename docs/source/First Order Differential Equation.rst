@@ -67,9 +67,9 @@ Examples
       SaveAs("Exponential_Growth.png");
    
    
-   .. figure:: images/Exponential_Growth.png
+   .. figure:: images/
       :align: center
-      :alt: Exponential_Growth.png
+      :alt: 
    
 
 
@@ -97,9 +97,9 @@ Examples
       SaveAs("Linear_Decay_with_Forcing.png");
    
    
-   .. figure:: images/Linear_Decay_with_Forcing.png
+   .. figure:: images/
       :align: center
-      :alt: Linear_Decay_with_Forcing.png
+      :alt: 
    
 
 
@@ -128,9 +128,9 @@ Examples
       SaveAs("Logistic_Growth.png");
    
    
-   .. figure:: images/Logistic_Growth.png
+   .. figure:: images/
       :align: center
-      :alt: Logistic_Growth.png
+      :alt: 
    
 
 
@@ -159,9 +159,9 @@ Examples
       SaveAs("Michaelis_Menten_Type_ODE.png");
    
    
-   .. figure:: images/Michaelis_Menten_Type_ODE.png
+   .. figure:: images/
       :align: center
-      :alt: Michaelis_Menten_Type_ODE.png
+      :alt: 
    
 
 
@@ -190,8 +190,8 @@ Examples
       SaveAs("Non_Linear_Damping.png");
    
    
-   .. figure:: images/Non_Linear_Damping.png
+   .. figure:: images/
       :align: center
-      :alt: Non_Linear_Damping.png
+      :alt: 
    
 

@@ -50,14 +50,14 @@ Ouput
      -2.0000    0.8000    0.0000   -2.0000    5.0000
    
 
-.. figure:: images/L_from_Incomplete_LU_Factorization_of_B.png
+.. figure:: images/
    :align: center
-   :alt: L_from_Incomplete_LU_Factorization_of_B.png
+   :alt: 
 
 
-.. figure:: images/U_from_Incomplete_LU_Factorization_of _B.png
+.. figure:: images/
    :align: center
-   :alt: U_from_Incomplete_LU_Factorization_of _B.png
+   :alt: 
 
 
 
@@ -121,9 +121,9 @@ Ouput
     (4,4)            5.0000
    
 
-.. figure:: images/L_from_Incomplete_Cholesky_Factorization_of_B.png
+.. figure:: images/
    :align: center
-   :alt: L_from_Incomplete_Cholesky_Factorization_of_B.png
+   :alt: 
 
 
 
@@ -239,9 +239,9 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
    CloseFig();
 
 
-.. figure:: images/RCM_reordering_of_Squid.png
+.. figure:: images/
    :align: center
-   :alt: RCM_reordering_of_Squid.png
+   :alt: 
 
 
 
@@ -285,9 +285,9 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
    CloseFig();
 
 
-.. figure:: images/AMD_reordering_of_Squid.png
+.. figure:: images/
    :align: center
-   :alt: AMD_reordering_of_Squid.png
+   :alt: 
 
 
 
@@ -350,9 +350,9 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
    CloseFig();
 
 
-.. figure:: images/AMD_reordering_of_Bucky.png
+.. figure:: images/
    :align: center
-   :alt: AMD_reordering_of_Bucky.png
+   :alt: 
 
 
 
@@ -394,7 +394,7 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
    CloseFig();
 
 
-.. figure:: images/RCM_reordering_of_Bucky.png
+.. figure:: images/
    :align: center
-   :alt: RCM_reordering_of_Bucky.png
+   :alt: 
 

@@ -74,9 +74,9 @@ These are examples of how to use SepalSolver to solve various systems of first-o
       SaveAs("Simple_Harmonic_Oscillator.png");
    
    
-   .. figure:: images/Simple_Harmonic_Oscillator.png
+   .. figure:: images/
       :align: center
-      :alt: Simple_Harmonic_Oscillator.png
+      :alt: 
    
 
 
@@ -114,9 +114,9 @@ These are examples of how to use SepalSolver to solve various systems of first-o
       SaveAs("Lotka_Volterra_Predator_Prey_System.png");
    
    
-   .. figure:: images/Lotka_Volterra_Predator_Prey_System.png
+   .. figure:: images/
       :align: center
-      :alt: Lotka_Volterra_Predator_Prey_System.png
+      :alt: 
    
 
 
@@ -157,9 +157,9 @@ These are examples of how to use SepalSolver to solve various systems of first-o
       SaveAs("Lorenz_System.png");
    
    
-   .. figure:: images/Lorenz_System.png
+   .. figure:: images/
       :align: center
-      :alt: Lorenz_System.png
+      :alt: 
    
 
 
@@ -199,9 +199,9 @@ These are examples of how to use SepalSolver to solve various systems of first-o
       SaveAs("SIR_Epidemic_Model.png");
    
    
-   .. figure:: images/SIR_Epidemic_Model.png
+   .. figure:: images/
       :align: center
-      :alt: SIR_Epidemic_Model.png
+      :alt: 
    
 
 
@@ -241,9 +241,9 @@ These are examples of how to use SepalSolver to solve various systems of first-o
       SaveAs("Brusselator_Model.png");
    
    
-   .. figure:: images/Brusselator_Model.png
+   .. figure:: images/
       :align: center
-      :alt: Brusselator_Model.png
+      :alt: 
    
 
 
@@ -314,7 +314,7 @@ These are examples of how to use SepalSolver to solve various systems of first-o
    
       Solution is 0.3325656266595466
    
-   .. figure:: images/Blasius-bounary-layer.png
+   .. figure:: images/
       :align: center
-      :alt: Blasius-bounary-layer.png
+      :alt: 
    

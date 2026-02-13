@@ -178,7 +178,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                 ColVec Td = Logspace(-1, 2), Wd;
                 int end = Rd.Length - 1;
                 // compute the water influx and plot
-                Subplot(2, 2, [0,1]);
+                Subplot(2, 1, 0);
                 HoldOn();
                 List<string> lgd = [];
                 foreach (double rD in Rd)
@@ -192,11 +192,11 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                 Title("Dimensionless Water Influx Rd <= 4");
 
                 // define the time and radial mesh
-                Rd = [5, 6, 7, 8, 9, 10, 50];
+                Rd = [5, 6, 7, 8, 9, 10, double.PositiveInfinity];
                 Td = Logspace(0, 3); end = Rd.Length - 1;
 
                 // compute the water influx and plot
-                Subplot(2, 2, [2,3]);
+                Subplot(2, 1, 1);
                 HoldOn();
                 lgd = [];
                 foreach (double rD in Rd)
@@ -208,7 +208,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                 Legend(lgd, UpperLeft);
                 Axis([1, 1000, 0, 70]);
                 Title("Dimensionless Water Influx Rd >= 5");
-                SaveAs("Dimensionless-Water-Influx.png");
+                SaveAs("Dimensionless-Water-Influx.png", 600, 900);
                 CloseFig();
             }
             /// </code>

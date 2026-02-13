@@ -12,8 +12,7 @@ represents the integral of the Gaussian (Normal) distribution.
 * **Definition:** :math:`\text{erf}(x) = \cfrac{2}{\sqrt{\pi}} \int_0^x e^{-t^2} dt`
 * **Asymptotes:** The function approaches :math:`1` as :math:`x \to \infty` and
 :math:`-1` as :math:`x \to -\infty`.
-* **Physics:** It is the primary solution for heat diffusion problems in
-infinite or semi-infinite media where an initial temperature step exists.
+* **Physics:** It is the primary solution for heat diffusion problems in infinite or semi-infinite media where an initial temperature step exists.
 
 
 .. code-block:: csharp
@@ -26,9 +25,9 @@ infinite or semi-infinite media where an initial temperature step exists.
    SaveAs("Error.png");
 
 
-.. figure:: images/Error.png
+.. figure:: images/
    :align: center
-   :alt: Error.png
+   :alt: 
 
 
 Gamma Function :math:`\Gamma(z)`
@@ -38,9 +37,7 @@ The Gamma function generalizes the factorial to real and complex numbers.
 For any positive integer :math:`n`, :math:`\Gamma(n) = (n-1)!`.
 
 * **Functional Equation:** :math:`\Gamma(z+1) = z\Gamma(z)`.
-* **LnGamma:** Because :math:`\Gamma(z)` grows extremely fast, the natural
-logarithm of Gamma (:math:`\text{Log-Gamma}`) is used in computation
-to prevent floating-point overflow.
+* **LnGamma:** Because :math:`\Gamma(z)` grows extremely fast, the natural logarithm of Gamma (:math:`\text{Log-Gamma}`) is used in computation to prevent floating-point overflow.
 
 
 
@@ -57,9 +54,9 @@ to prevent floating-point overflow.
    SaveAs("Gamma.png");
 
 
-.. figure:: images/Gamma.png
+.. figure:: images/
    :align: center
-   :alt: Gamma.png
+   :alt: 
 
 
 Regularized Incomplete Gamma (P and Q)
@@ -84,9 +81,9 @@ the output stays within the range :math:`[0, 1]`.
    SaveAs("IncGamma.png");
 
 
-.. figure:: images/IncGamma.png
+.. figure:: images/
    :align: center
-   :alt: IncGamma.png
+   :alt: 
 
 
 LnGamma :math:`\text{LnGamma}`
@@ -94,19 +91,10 @@ LnGamma :math:`\text{LnGamma}`
 
 Definition and Purpose
 ~~~~~~~~~~~~~~~~~~~~~~
-The :math:\text{LnGamma} function, denoted as :math:`\ln\Gamma(z)`, is
-the natural logarithm of the Gamma function. While it might seem
-redundant to have a separate function for the log of an existing
-function, it is essential for numerical computing.
+The :math:\text{LnGamma} function, denoted as :math:`\ln\Gamma(z)`, is the natural logarithm of the Gamma function. While it might seem redundant to have a separate function for the log of an existing function, it is essential for numerical computing.
 
-* The Overflow Problem: The Gamma function :math:`\Gamma(z)` grows
-at a "factorial" rate. For example, :math:`\Gamma(172)` is
-approximately :math:`1.24 \times 10^{307}`, which is the limit of
-double-precision floating-point numbers. Any value larger than 171
-will result in an Inf (overflow) error.
-* The Solution: By working in "log-space," we can handle
-calculations involving massive factorials without crashing the
-program.
+* The Overflow Problem: The Gamma function :math:`\Gamma(z)` grows at a "factorial" rate. For example, :math:`\Gamma(172)` is approximately :math:`1.24 \times 10^{307}`, which is the limit of double-precision floating-point numbers. Any value larger than 171 will result in an Inf (overflow) error.
+* The Solution: By working in "log-space," we can handle  calculations involving massive factorials without crashing the program.
 
 
 
@@ -164,9 +152,9 @@ The Beta function, also known as the Euler integral of the first kind, is closel
    SaveAs("Beta.png");
 
 
-.. figure:: images/Beta.png
+.. figure:: images/
    :align: center
-   :alt: Beta.png
+   :alt: 
 
 
 Generalized Hypergeometric Function :math:`{}_pF_q`
@@ -187,8 +175,8 @@ and Laguerre functions.
    SaveAs("Hypergeomtric.png");
 
 
-.. figure:: images/Hypergeomtric.png
+.. figure:: images/
    :align: center
-   :alt: Hypergeomtric.png
+   :alt: 
 
 

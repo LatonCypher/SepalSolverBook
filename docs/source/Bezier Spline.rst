@@ -45,9 +45,9 @@ In SepalSolver, the BezierCurve method generates a series of points along a spli
    SaveAs("Bezier_Curve_Example.png");
 
 
-.. figure:: images/Bezier_Curve_Example.png
+.. figure:: images/
    :align: center
-   :alt: Bezier_Curve_Example.png
+   :alt: 
 
 Examples
 --------

@@ -32,9 +32,9 @@ While standard interpolation (like linear or Hermite) forces a curve to pass thr
    SaveAs("Polynomial_Interpolation_Ex1.png");
 
 
-.. figure:: images/Polynomial_Interpolation_Ex1.png
+.. figure:: images/
    :align: center
-   :alt: Polynomial_Interpolation_Ex1.png
+   :alt: 
 
 
 Examples
@@ -82,9 +82,9 @@ Examples
       SaveAs("Polynomial_Interpolation_Ex3.png");
    
    
-   .. figure:: images/Polynomial_Interpolation_Ex3.png
+   .. figure:: images/
       :align: center
-      :alt: Polynomial_Interpolation_Ex3.png
+      :alt: 
    
 
 Exercise: Choosing the Degree

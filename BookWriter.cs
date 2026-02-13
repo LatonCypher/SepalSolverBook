@@ -407,15 +407,24 @@ namespace ConsoleApp1
         static string[] GetImageReference(string line)
         {
             // Regex to capture content inside parentheses
-            var match = Regex.Match(line, @"\((.*?)\)");
-            string content = match.Groups[1].Value.Trim('"');
+            // Regex to capture everything between the first '(' and the last ')'
+            var match = Regex.Match(line, @"\(([^)]*)\)");
+            string firstArg = "";
+            if (match.Success)
+            {
+                string allArgs = match.Groups[1].Value; // "a, 15, m0, m1"
+                string[] args = allArgs.Split(',');
+
+                if (args.Length >= 2)
+                    firstArg = args[0].Trim().Trim('"', '\'');
+            }
             return ["",
-                    ".. figure:: images/" +  content,
+                    ".. figure:: images/" +  firstArg,
                     "   :align: center",
-                    "   :alt: " + content,
+                    "   :alt: " + firstArg,
                     ""];
         }
-        static string[] GetAnimationReference(string line)
+            static string[] GetAnimationReference(string line)
         {
             // Regex to capture content inside parentheses
             // Regex to capture everything between the first '(' and the last ')'

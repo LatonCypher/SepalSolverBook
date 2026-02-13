@@ -85,9 +85,9 @@ Here are examples of converting and solving various higher‑order ODEs using Se
        SaveAs("HigherOrder_SHO.png");
    
    
-   .. figure:: images/HigherOrder_SHO.png
+   .. figure:: images/
       :align: center
-      :alt: HigherOrder_SHO.png
+      :alt: 
    
 
 
@@ -117,9 +117,9 @@ Here are examples of converting and solving various higher‑order ODEs using Se
        SaveAs("HigherOrder_Damped.png");
    
    
-   .. figure:: images/HigherOrder_Damped.png
+   .. figure:: images/
       :align: center
-      :alt: HigherOrder_Damped.png
+      :alt: 
    
 
 
@@ -148,9 +148,9 @@ Here are examples of converting and solving various higher‑order ODEs using Se
        SaveAs("HigherOrder_Forced.png");
    
    
-   .. figure:: images/HigherOrder_Forced.png
+   .. figure:: images/
       :align: center
-      :alt: HigherOrder_Forced.png
+      :alt: 
    
 
 
@@ -180,9 +180,9 @@ Here are examples of converting and solving various higher‑order ODEs using Se
        SaveAs("HigherOrder_RLC.png");
    
    
-   .. figure:: images/HigherOrder_RLC.png
+   .. figure:: images/
       :align: center
-      :alt: HigherOrder_RLC.png
+      :alt: 
    
 
 
@@ -212,9 +212,9 @@ Here are examples of converting and solving various higher‑order ODEs using Se
        SaveAs("HigherOrder_Third.png");
    
    
-   .. figure:: images/HigherOrder_Third.png
+   .. figure:: images/
       :align: center
-      :alt: HigherOrder_Third.png
+      :alt: 
    
 
 
@@ -309,9 +309,9 @@ Here are examples of converting and solving various higher‑order ODEs using Se
       CloseFig();
    
    
-   .. figure:: images/Position-of-Pleiades-Stars-Ode89.png
+   .. figure:: images/
       :align: center
-      :alt: Position-of-Pleiades-Stars-Ode89.png
+      :alt: 
    
    
    .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-Ode89.gif

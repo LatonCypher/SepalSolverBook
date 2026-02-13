@@ -15,8 +15,7 @@
             /// * **Definition:** :math:`\text{erf}(x) = \cfrac{2}{\sqrt{\pi}} \int_0^x e^{-t^2} dt`
             /// * **Asymptotes:** The function approaches :math:`1` as :math:`x \to \infty` and
             ///   :math:`-1` as :math:`x \to -\infty`.
-            /// * **Physics:** It is the primary solution for heat diffusion problems in
-            ///   infinite or semi-infinite media where an initial temperature step exists.
+            /// * **Physics:** It is the primary solution for heat diffusion problems in infinite or semi-infinite media where an initial temperature step exists.
             ///
             /// <code>
             {
@@ -35,9 +34,7 @@
             /// For any positive integer :math:`n`, :math:`\Gamma(n) = (n-1)!`.
             ///
             /// * **Functional Equation:** :math:`\Gamma(z+1) = z\Gamma(z)`.
-            /// * **LnGamma:** Because :math:`\Gamma(z)` grows extremely fast, the natural
-            ///   logarithm of Gamma (:math:`\text{Log-Gamma}`) is used in computation
-            ///   to prevent floating-point overflow.
+            /// * **LnGamma:** Because :math:`\Gamma(z)` grows extremely fast, the natural logarithm of Gamma (:math:`\text{Log-Gamma}`) is used in computation to prevent floating-point overflow.
             ///
             ///
             /// <code>
@@ -78,19 +75,10 @@
             /// <header 2> LnGamma :math:`\text{LnGamma}`</header>
             ///
             /// <header 3> Definition and Purpose </header>
-            /// The :math:\text{LnGamma} function, denoted as :math:`\ln\Gamma(z)`, is
-            /// the natural logarithm of the Gamma function. While it might seem
-            /// redundant to have a separate function for the log of an existing
-            /// function, it is essential for numerical computing.
+            /// The :math:\text{LnGamma} function, denoted as :math:`\ln\Gamma(z)`, is the natural logarithm of the Gamma function. While it might seem redundant to have a separate function for the log of an existing function, it is essential for numerical computing.
             ///
-            /// * The Overflow Problem: The Gamma function :math:`\Gamma(z)` grows
-            ///   at a "factorial" rate. For example, :math:`\Gamma(172)` is
-            ///   approximately :math:`1.24 \times 10^{307}`, which is the limit of
-            ///   double-precision floating-point numbers. Any value larger than 171
-            ///   will result in an Inf (overflow) error.
-            /// * The Solution: By working in "log-space," we can handle
-            ///   calculations involving massive factorials without crashing the
-            ///   program.
+            /// * The Overflow Problem: The Gamma function :math:`\Gamma(z)` grows at a "factorial" rate. For example, :math:`\Gamma(172)` is approximately :math:`1.24 \times 10^{307}`, which is the limit of double-precision floating-point numbers. Any value larger than 171 will result in an Inf (overflow) error.
+            /// * The Solution: By working in "log-space," we can handle  calculations involving massive factorials without crashing the program.
             ///
             ///
             ///

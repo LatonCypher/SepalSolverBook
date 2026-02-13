@@ -64,9 +64,9 @@ SepalSolver impelements ODE45s for stiff differential equation. This is an embed
       SaveAs("Van-der-Pol-μ=1e5-Ode45s.png");
    
    
-   .. figure:: images/Van-der-Pol-μ=1e5-Ode45s.png
+   .. figure:: images/
       :align: center
-      :alt: Van-der-Pol-μ=1e5-Ode45s.png
+      :alt: 
    
 
 
@@ -111,9 +111,9 @@ SepalSolver impelements ODE45s for stiff differential equation. This is an embed
       SaveAs("Robertson-ODE-Ode45s.png");
    
    
-   .. figure:: images/Robertson-ODE-Ode45s.png
+   .. figure:: images/
       :align: center
-      :alt: Robertson-ODE-Ode45s.png
+      :alt: 
    
    
 
@@ -145,9 +145,9 @@ SepalSolver impelements ODE45s for stiff differential equation. This is an embed
    SaveAs("Robertson-ODE-given-points-Ode45s.png");
 
 
-.. figure:: images/Robertson-ODE-given-points-Ode45s.png
+.. figure:: images/
    :align: center
-   :alt: Robertson-ODE-given-points-Ode45s.png
+   :alt: 
 
 
 

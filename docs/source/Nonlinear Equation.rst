@@ -219,14 +219,14 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
 
 
 
-.. figure:: images/Zfactor_Hall_Yarborough_.png
+.. figure:: images/
    :align: center
-   :alt: Zfactor_Hall_Yarborough_.png
+   :alt: 
 
 
-.. figure:: images/Hall_Yarborough_Chart.png
+.. figure:: images/
    :align: center
-   :alt: Hall_Yarborough_Chart.png
+   :alt: 
 
 
 
@@ -288,14 +288,14 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
    CloseFig();
 
 
-.. figure:: images/Zfactor_Dranchuk_Abou_Kassem.png
+.. figure:: images/
    :align: center
-   :alt: Zfactor_Dranchuk_Abou_Kassem.png
+   :alt: 
 
 
-.. figure:: images/Dranchuk_Abou_Kassem_Chart.png
+.. figure:: images/
    :align: center
-   :alt: Dranchuk_Abou_Kassem_Chart.png
+   :alt: 
 
 
 
@@ -348,12 +348,12 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
    CloseFig();
 
 
-.. figure:: images/Zfactor_Dranchuk_Purvis_Robinson.png
+.. figure:: images/
    :align: center
-   :alt: Zfactor_Dranchuk_Purvis_Robinson.png
+   :alt: 
 
 
-.. figure:: images/Dranchuk_Purvis_Robinson_Chart.png
+.. figure:: images/
    :align: center
-   :alt: Dranchuk_Purvis_Robinson_Chart.png
+   :alt: 
 
