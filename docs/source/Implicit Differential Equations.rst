@@ -34,7 +34,7 @@ Solving Strategies
 ------------------
 Because you can't always "solve for :math:`y'`," the approach changes:
 
-1. **Implicit Differentiation:** If you have an equation like, :math:`x^2 + y^2 = 1`, you differentiate every term with respect to, treating  as a function of: :math: `2x + 2y \frac{dy}{dx} = 0`
+1. **Implicit Differentiation:** If you have an equation like, :math:`x^2 + y^2 = 1`, you differentiate every term with respect to, treating  as a function of: :math:`2x + 2y \cfrac{dy}{dx} = 0`
 Then, you isolate :math:`\cfrac{dy}{dx}` if possible.
 
 2. **Direction Fields:** You can still visualize these equations! For any point, you solve the algebraic equation :math:`F(x,y,y') = 0` for :math:`y'`. If there are multiple solutions for :math:`y'`, the slope field might have overlapping segments.
@@ -43,7 +43,7 @@ Then, you isolate :math:`\cfrac{dy}{dx}` if possible.
 
 A Classic Example: Clairaut's Equation
 --------------------------------------
-One of the most famous IDEs is **Clairaut's Equation**: :math:`y = x \frac{dy}{dx} + f\left(\cfrac{dy}{dx}\right)`. This equation is unique because it often yields two types of solutions: a family of straight lines(the general solution) and a "singular solution" that acts as an envelope to those lines.
+One of the most famous IDEs is **Clairaut's Equation**: :math:`y = x \cfrac{dy}{dx} + f\left(\cfrac{dy}{dx}\right)`. This equation is unique because it often yields two types of solutions: a family of straight lines(the general solution) and a "singular solution" that acts as an envelope to those lines.
 
 Numerical Solution
 ------------------
@@ -116,7 +116,7 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    2. The Solution Strategy: Parameterization
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    To solve a Weissinger equation, we rarely try to isolate  algebraically.Instead, we use a parameter, where:
-   :math:`p = y' = \frac{dy}{dx}`
+   :math:`p = y' = \cfrac{dy}{dx}`
    substituting :math:`p` into the equation gives:
    :math:`y = x^n f(p) + g(p)`
    To find the relationship between :math:`x` and :math:`p`, we differentiate the entire equation with respect to :math:`x`:

@@ -31,7 +31,7 @@
             /// <header 2> Solving Strategies </header>
             /// Because you can't always "solve for :math:`y'`," the approach changes:
             /// 
-            /// 1. **Implicit Differentiation:** If you have an equation like, :math:`x^2 + y^2 = 1`, you differentiate every term with respect to, treating  as a function of: :math: `2x + 2y \frac{dy}{dx} = 0`
+            /// 1. **Implicit Differentiation:** If you have an equation like, :math:`x^2 + y^2 = 1`, you differentiate every term with respect to, treating  as a function of: :math:`2x + 2y \cfrac{dy}{dx} = 0`
             /// Then, you isolate :math:`\cfrac{dy}{dx}` if possible.
             /// 
             /// 2. **Direction Fields:** You can still visualize these equations! For any point, you solve the algebraic equation :math:`F(x,y,y') = 0` for :math:`y'`. If there are multiple solutions for :math:`y'`, the slope field might have overlapping segments.
@@ -39,7 +39,7 @@
             /// 3. **Numerical Solvers:** For complex IDEs or DAEs, standard solvers like Runge-Kutta might struggle.Specialized algorithms(like the Backward Differentiation Formula, or Diagonally implicit rungekutta) are used to handle the "stiffness" of these equations.
             /// 
             /// <header 2> A Classic Example: Clairaut's Equation </header>
-            /// One of the most famous IDEs is **Clairaut's Equation**: :math:`y = x \frac{dy}{dx} + f\left(\cfrac{dy}{dx}\right)`. This equation is unique because it often yields two types of solutions: a family of straight lines(the general solution) and a "singular solution" that acts as an envelope to those lines.
+            /// One of the most famous IDEs is **Clairaut's Equation**: :math:`y = x \cfrac{dy}{dx} + f\left(\cfrac{dy}{dx}\right)`. This equation is unique because it often yields two types of solutions: a family of straight lines(the general solution) and a "singular solution" that acts as an envelope to those lines.
             /// 
             /// <header 2> Numerical Solution </header>
             /// SepalSolver's Ode45i can handle implicit equations, but you need to provide the function in the form :math:`F(x, y, y') = 0`. Here's a simple example of how to set up and solve an implicit equation using SepalSolver:
@@ -99,7 +99,7 @@
             /// 
             /// <header 3> 2. The Solution Strategy: Parameterization </header>
             /// To solve a Weissinger equation, we rarely try to isolate  algebraically.Instead, we use a parameter, where:
-            /// :math:`p = y' = \frac{dy}{dx}`
+            /// :math:`p = y' = \cfrac{dy}{dx}`
             /// substituting :math:`p` into the equation gives:
             /// :math:`y = x^n f(p) + g(p)`
             ///  To find the relationship between :math:`x` and :math:`p`, we differentiate the entire equation with respect to :math:`x`:

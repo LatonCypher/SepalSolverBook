@@ -253,7 +253,7 @@
                 Plot(T, Y, Linewidth: 2);
                 Legend(["f", "f'", "f''"]);
                 Axis([0, 6, 0, 1.5]); 
-                Xlabel("t"); Ylabel("f and its derivatives");
+                Xlabel("$\\eta$", interpreter: Latex ); Ylabel("f and its derivatives");
                 Title("Blasius Equation With Estimated f''(0)");
                 SaveAs("Blasius-bounary-layer.png");
             }

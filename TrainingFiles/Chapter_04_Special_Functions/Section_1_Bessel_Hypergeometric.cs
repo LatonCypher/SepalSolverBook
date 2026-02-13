@@ -1,13 +1,20 @@
 ﻿using CSharpMath.Atom;
+using CSharpMath.Atom.Atoms;
+using FFmpeg.AutoGen;
 using HarfBuzzSharp;
 using Microsoft.CodeAnalysis;
 using Microsoft.VisualBasic;
 using ScottPlot;
 using ScottPlot.Colormaps;
+using ScottPlot.Palettes;
 using ScottPlot.PlotStyles;
+using ScottPlot.Statistics;
 using ScottPlot.Triangulation;
+using SepalSolver;
 using SepalSolver.PlotLib;
 using System.Net.NetworkInformation;
+using System.Runtime.Intrinsics.X86;
+using static SepalSolver.Statistics;
 using static System.Reflection.Metadata.BlobBuilder;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -19,10 +26,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
         {
             /// <BookContent>
             /// 
-            /// <header 1> Bessel Functions </header>
+            /// <header 2> Bessel Functions </header>
             /// Bessel functions are a family of solutions to Bessel's differential equation, which appears in many physical problems involving cylindrical or spherical symmetry. They are named after the German mathematician Friedrich Wilhelm Bessel, who first studied them in the early 19th century.
             /// 
-            /// <header 2>  Bessel's Differential Equation </header>
+            /// <header 3>  Bessel's Differential Equation </header>
             /// The general form of Bessel's differential equation is: 
             /// 
             /// <math>
@@ -30,7 +37,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
             /// </math>
             /// where: math:`n`  is a parameter that determines the order of the Bessel function.
             /// 
-            /// <header 2> Types of Bessel Functions </header>
+            /// <header 3> Types of Bessel Functions </header>
             /// #  **Bessel Functions of the First Kind** :math:`(J_n(x))` These functions are denoted by :math:`(J_n(x))` and are solutions to Bessel's differential equation that are finite at the origin (for non-negative integer orders). They are commonly used in problems involving wave propagation, static potentials and flow in porous media.
             /// <math>    
             ///     J_n(x) = \sum_{m = 0}^{\infty} \frac{(-1)^m}{m!\Gamma(m+n+1)}\left(\frac{x}{2}\right)^{2m + n}
@@ -78,7 +85,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
             }
             /// </code>
             /// 
-            /// <header 1> Legendre Functions </header> 
+            /// <header 2> Legendre Functions </header> 
             /// Legendre polynomials are a set of orthogonal polynomials that arise in solving certain types of differential equations, particularly in physics and engineering. They are named after the French mathematician Adrien-Marie Legendre.
             /// 
             /// The Legendre polynomials :math:`P_n(x)` are solutions to Legendre's differential equation:
@@ -96,7 +103,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
             ///     (n+1)P_{n+1}(x) = (2n + 1)xP_{n}(x) - nP_{n-1}(x)
             /// </math>
             /// 
-            /// <header 2> Types of Legendre polynomials </header>
+            /// <header 3> Types of Legendre polynomials </header>
             /// **Legendre polynomials of the First Kind** :math:`(P_n(x))`
             /// <math>
             ///     P_n(z) =  \frac{1}{2^n}\sum_{k=0}^{\lfloor \frac{n}{2} \rfloor} \frac{(-1)^k(2n-2k)!}{k!(n-k)!(n - 2k)!}x^{n-2k}
@@ -130,11 +137,11 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
             }
             /// </code>
             /// 
-            /// <header 1> Chebyshev polynomials </header>
+            /// <header 2> Chebyshev polynomials </header>
             /// Chebyshev polynomials are a sequence of orthogonal polynomials that are widely used in numerical analysis, approximation theory, and other areas of mathematics. 
             /// There are two main types of Chebyshev polynomials: those of the first kind, denoted as :math:`T_n(x)` and those of the second kind, denoted as :math:`U_n(x)`.
             /// 
-            /// <header 2> Types of Chebyshev polynomials </header>
+            /// <header 3> Types of Chebyshev polynomials </header>
             /// **ChebyshevT polynomials of the First Kind** :math:`(T_n(x))`
             /// <math>
             /// \begin{array}{rcl}
@@ -174,7 +181,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                 SaveAs("ChebyshevU-Polynomial-Functions.png");
             }
             /// </code>
-            /// <header 1> Laguerre Polynomial </header>
+            /// <header 2> Laguerre Polynomial </header>
             /// Laguerre polynomials are a sequence of orthogonal polynomials named after the French mathematician Edmond Laguerre. These polynomials are solutions to the Laguerre differential equation:
             /// <math>
             ///     x \cfrac{d^2y}{dx^2} + (1 - x)\cfrac{dy}{dx} + ny = 0
@@ -203,7 +210,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
             }
             /// </code>
             /// 
-            /// <header 1> Hermite Polynomials </header>
+            /// <header 2> Hermite Polynomials </header>
             /// Hermite polynomials are a classical sequence of orthogonal polynomials that arise in various fields of mathematics and physics. Named after the French mathematician Charles Hermite, these polynomials are particularly significant in probability theory, combinatorics, and quantum mechanics.
             /// <math> 
             ///     x \cfrac{d^2y}{dx^2} - 2x\cfrac{dy}{dx} + 2ny = 0
@@ -230,7 +237,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
             }
             /// </code>
             /// 
-            /// <header 1> Application of Special Function </header>
+            /// <header 2> Application of some Special Functions </header>
+            /// There are several applications of special functions: from function approximation using chebysheve polynomial, to quadrature using Legendre and Laguerre Polynomials, and solution of laplace equation in cylindrical coordinate using Bessel functions.
+            /// 
+            /// <header 3> Water Influx Estimation </header>
             /// One example of application of special functions in the use of bessel function in the estimation of water influx in cylindrical coordinates. 
             /// Water influx in an oil reservoir is the migration of water from an aquifer into the pore spaces of the reservoir rock containing oil.  This water movement is primarily driven by pressure differences between the aquifer and the reservoir as the oil is produced and reservoir pressure declines.  The water influx can provide pressure support, helping to maintain reservoir pressure and sustain oil production. Hence, understanding and accurate estimation of water influx is crucial for optimizing oil recovery strategies and the long-term economic viability of an oil field.
             /// For use in material balance computation in edge drive configuration, reservoir engneering books provide plots for Wd as a function of dimensionless radius and time
@@ -337,6 +347,30 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                 CloseFig();
             }
             /// </code>
+            /// 
+            /// <header 3> Cooling a Nuclear Fuel Rod </header>
+            /// Imagine a long, solid cylindrical fuel rod of radius :math:`R`. Initially, the rod is at a uniform temperature :math:`T_0`. At :math:`t = 0`, the rod is plunged into a cooling bath that keeps the outer surface at exactly :math:`0\circ C`. We want to find the temperature :math:`T(r, t)` at any radial distance r and any time :math:`t`.
+            /// * **1.The Governing Equation** The heat conduction in the rod(assuming no variation along the length) is governed by: 
+            /// <math>
+            ///     \cfrac{\partial T}{\partial t} = \alpha \left(\cfrac{\partial^2 T}{\partial r^2}  + \cfrac{1}{r} \cfrac{\partial T}{\partial t} \right)
+            /// </math>
+            /// Where :math:`\alpha` is the thermal diffusivity.
+            /// 
+            /// * **2.The Need for Special Functions** When we use Separation of Variables by assuming :math:`T(r, t) = R(r)\theta(t)`, the radial part of the equation becomes:
+            /// <math>
+            /// r^2 R'' + r R' + \lambda^2 r^2 R = 0
+            /// 
+            /// </math>
+            /// This is a specific form of Bessel's Differential Equation of order zero. The solution cannot be expressed in terms of elementary functions (like polynomials or logs). Instead, we must use:
+            /// * :math:`J_0(x)`: The Bessel function of the first kind of order zero.
+            /// 
+            /// * **3.The Solution**
+            /// The general solution for the temperature profile involves an infinite series of these Bessel functions:
+            /// <math>
+            /// T(r,t) = \sum_{n = 1}^{\infty}c_n J_0\left(\cfrac{x_n r}{R} \right) e^{-\alpha (x_n/R)^2 t}
+            /// </math>
+            /// 
+            /// In this formula: :math:`x_n`  are the roots(zeros) of the Bessel function m:math:`J_0`, :math:`c_n` are constants determined by the initial temperature :math:`T_0` using the Orthogonality Property of Bessel functions.
             /// </BookContent>
         }
     }

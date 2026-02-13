@@ -3,7 +3,7 @@ Differential Algebraic Equations
 
 
 1. Introduction to DAEs
-=======================
+-----------------------
 Differential-Algebraic Equations are a class of functional equations that contain both differential equations (describing the evolution of the system) and algebraic constraints (restricting the state space). Unlike standard Ordinary Differential Equations (ODEs), DAEs are not explicitly solved for all derivatives.
 
 A general DAE system is expressed in the implicit form: :math:`F(t, y, y') = 0`
