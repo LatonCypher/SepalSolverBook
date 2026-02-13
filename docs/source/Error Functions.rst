@@ -68,10 +68,9 @@ Regularized Incomplete Gamma (P and Q)
 These are the normalized versions of the incomplete Gamma integral, ensuring
 the output stays within the range :math:`[0, 1]`.
 
-* **Lower Regularized (P):** :math:`P(a, x) = \frac{1}{\Gamma(a)} \int_0^x t^{a-1} e^{-t} dt`
-* **Upper Regularized (Q):** :math:`Q(a, x) = \frac{1}{\Gamma(a)} \int_x^\infty t^{a-1} e^{-t} dt`
-* **Relationship:** :math:`P(a, x) + Q(a, x) = 1`. These are the CDF and
-Survival functions of the Gamma distribution.
+* **Lower Regularized (P):** :math:`P(a, x) = \cfrac{1}{\Gamma(a)} \int_0^x t^{a-1} e^{-t} dt`
+* **Upper Regularized (Q):** :math:`Q(a, x) = \cfrac{1}{\Gamma(a)} \int_x^\infty t^{a-1} e^{-t} dt`
+* **Relationship:** :math:`P(a, x) + Q(a, x) = 1`. These are the CDF and Survival functions of the Gamma distribution.
 
 
 
@@ -114,8 +113,7 @@ program.
 Mathematical Properties
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-* Stirling's Approximation: For large :math:`z`, :math:`\text{LnGamma}`
-is often approximated as:
+* Stirling's Approximation: For large :math:`z`, :math:`\text{LnGamma}` is often approximated as:
 
 
 .. math::
@@ -123,18 +121,13 @@ is often approximated as:
    \ln\Gamma(z) \approx (z - \frac{1}{2})\ln z - z + \frac{1}{2}\ln(2\pi)
 
 
-* Derivatives: The first derivative of :math:`\ln\Gamma(z)` is
-called the Digamma function (:math:`\psi`), and the second
-derivative is the Trigamma function.
+* Derivatives: The first derivative of :math:`\ln\Gamma(z)` is called the Digamma function (:math:`\psi`), and the second  derivative is the Trigamma function. The general derivative of order n is the Polygamma function. 
 
 Application: Bayesian Statistics
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In Bayesian inference and likelihood calculations, we often multiply
-many probabilities together, many of which involve Gamma functions
-(like in the Beta or Gamma distributions). Multiplying many tiny numbers
-leads to "underflow." Instead, we sum the :math:\text{LnGamma}
-values to stay within a safe numerical range.
+In Bayesian inference and likelihood calculations, we often multiply many probabilities together, many of which involve Gamma functions (like in the Beta or Gamma distributions). Multiplying many tiny numbers
+leads to "underflow." Instead, we sum the :math:`\text{LnGamma}` values to stay within a safe numerical range.
 
 
 .. code-block:: csharp
@@ -157,12 +150,10 @@ values to stay within a safe numerical range.
 
 Beta Function :math:`B(x, y)`
 -----------------------------
-The Beta function, also known as the Euler integral of the first kind,
-is closely related to the Gamma function and binomial coefficients.
+The Beta function, also known as the Euler integral of the first kind, is closely related to the Gamma function and binomial coefficients.
 
 * **Identity:** :math:`B(x, y) = \frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}`
-* **Application:** Used extensively in Bayesian inference as the
-conjugate prior for Bernoulli and Binomial distributions.
+* **Application:** Used extensively in Bayesian inference as the conjugate prior for Bernoulli and Binomial distributions.
 
 
 .. code-block:: csharp
@@ -180,9 +171,7 @@ conjugate prior for Bernoulli and Binomial distributions.
 
 Generalized Hypergeometric Function :math:`{}_pF_q`
 ---------------------------------------------------
-This series provides a unified framework for almost all special functions.
-By varying the number and values of numerator (:math:`p`) and
-denominator (:math:`q`) parameters, one can derive Bessel, Legendre,
+This series provides a unified framework for almost all special functions. By varying the number and values of numerator (:math:`p`) and denominator (:math:`q`) parameters, one can derive Bessel, Legendre,
 and Laguerre functions.
 
 * **Pochhammer Symbol:** The series uses rising factorials :math:`(a)_n`.
