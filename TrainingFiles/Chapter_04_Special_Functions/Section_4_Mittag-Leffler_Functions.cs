@@ -27,10 +27,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
             ///    E_{\alpha, \beta}(z) = \sum_{k=0}^{\infty} \frac{z^k}{\Gamma(\alpha k + \beta)}
             /// </math>
             /// 
-            /// * When :math:`\alpha = 1, \beta = 1`, it becomes the standard exponential:
-            ///   :math:`E_{1,1}(z) = e^z`.
-            /// * When :math:`\alpha = 2, \beta = 1`, it describes hyperbolic cosines:
-            ///   :math:`E_{2,1}(z^2) = \cosh(z)`.
+            /// * When :math:`\alpha = 1, \beta = 1`, it becomes the standard exponential: :math:`E_{1,1}(z) = e^z`.
+            /// 
+            /// * When :math:`\alpha = 2, \beta = 1`, it describes hyperbolic cosines: :math:`E_{2,1}(z^2) = \cosh(z)`.
             ///
             ///
             ///
@@ -40,18 +39,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
             /// (like a cooling cup of coffee), the Mittag-Leffler function describes
             /// "anomalous" relaxation.
             ///
-            /// * Viscoelasticity: Used to model materials that are halfway between
-            ///   a liquid and a solid (like polymers or human tissue).
-            /// * Fractional Diffusion: Describes how particles move in crowded
-            ///   environments (like proteins moving inside a biological cell).
+            /// * Viscoelasticity: Used to model materials that are halfway between a liquid and a solid (like polymers or human tissue).
+            /// * Fractional Diffusion: Describes how particles move in crowded environments (like proteins moving inside a biological cell).
             ///
-            /// 3. Implementation in MATLAB
-            /// ---------------------------
+            /// <header 2> 3. Implementation in SepalSolver </header>
             ///
-            /// Unlike the Gamma or Bessel functions, the Mittag-Leffler function is
-            /// not part of the standard MATLAB library. It is usually found in the
-            /// Fractional Calculus Toolbox or implemented via custom scripts
-            /// using the Garrappa algorithm for high accuracy.
+            /// Unlike other scientific computing tools like matlab, in sepalsolver, the Mittag-Leffler function is
+            /// not part of the sepcial function library. And it is exposed in the SepalSolver.Math class. 
             ///
             /// <code></code>
             {
@@ -64,13 +58,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                 Title("Mittag-Leffler Function E_{\alpha, 1}(z)");
             }
             /// </code>
-            /// <header 3> Key Properties </header>
+            /// <header 2> Key Properties </header>
             ///
-            /// * Interpolation: It interpolates between a pure exponential and a
-            ///   power-law function.
-            /// * Laplace Transform: The Laplace transform of :math:E_{\alpha}( -at^\alpha )
-            ///   is :math:\frac{s^{\alpha-1}}{s^\alpha + a}, which is vital for solving
-            ///   fractional differential equations.
+            /// * Interpolation: It interpolates between a pure exponential and a power-law function.
+            /// * Laplace Transform: The Laplace transform of :math:E_{\alpha}( -at^\alpha ) is :math:`\frac{s^{\alpha-1}}{s^\alpha + a}`, which is vital for solving fractional differential equations.
             ///
             ///
             /// </BookContent>
