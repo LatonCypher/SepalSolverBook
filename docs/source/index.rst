@@ -22,6 +22,7 @@ Numerical methods form the backbone of modern scientific computing, enabling the
 Here are some simulation performed with the sepal solver. 
 
 1. **Six Linked Bar Mechanism**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     A six-linked bar mechanism is a type of kinematic chain used in mechanical engineering to achieve complex motion paths and force transmission. It consists of six rigid bars (links) connected by joints, typically revolute (hinge) or prismatic (sliding), forming a closed-loop system. These mechanisms are extensions of four-bar and five-bar linkages, offering greater flexibility and control over motion.
     In essence, a six-linked bar mechanism is a versatile extension of classical linkage theory, enabling engineers to design systems with greater motion complexity and adaptability.
 
@@ -31,6 +32,7 @@ Here are some simulation performed with the sepal solver.
 
 
 2. **Ship Roll at Sea**
+~~~~~~~~~~~~~~~~~~~~~~~
     **Ship roll characteristics** describe the side-to-side tilting motion of a vessel around its longitudinal axis (running bow to stern). This is one of the six fundamental ship motions (heave, sway, surge, yaw, pitch, and roll) and is particularly important because it directly affects stability, comfort, and safety at sea.  
 
     In essence, roll is the most critical ship motion to manage because it directly ties to **stability and survivability** at sea. Engineers and naval architects devote significant effort to predicting and controlling roll through both design and operational strategies.   
@@ -40,6 +42,7 @@ Here are some simulation performed with the sepal solver.
     :alt: Ship_Roll.gif
 
 3. **Chaos of Double Compund Pendulum**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     A double compound pendulum is a classic example of a chaotic system in physics. It consists of two pendulums attached end-to-end, where the motion of the second pendulum depends on the first. Despite its simple construction, the system exhibits highly complex and unpredictable behavior.
 
 .. figure:: images/Chaos.gif
@@ -47,6 +50,7 @@ Here are some simulation performed with the sepal solver.
     :alt: Chaos.gif
 
 4. **Three Double Pendulums with Different Masses**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     Simulating three double pendulums with different masses is a powerful way to explore how mass distribution influences chaotic dynamics. Even though the governing equations are deterministic, the outcomes vary dramatically depending on the parameters.
 
 
@@ -56,6 +60,7 @@ Here are some simulation performed with the sepal solver.
 
 
 5. **Park Transformation**
+~~~~~~~~~~~~~~~~~~~~~~~~~~
     In electrical engineering, Park transformation (also called the direct-quadrature-zero (d-q-0) transformation) is a mathematical technique used to simplify the analysis and control of three-phase AC circuits, especially in rotating machines like motors and generators.
 
 .. figure:: images/Parktransform.gif
@@ -64,7 +69,8 @@ Here are some simulation performed with the sepal solver.
 
 
 
-**Structure of the Book**
+Structure of the Book
+*********************
 
 The text begins with foundational principles—Basic Operations and Syntax—before progressing to core mathematical structures such as Polynomials, Interpolation, and Special Functions. These form the building blocks for the more complex computational engines within the library.
 
