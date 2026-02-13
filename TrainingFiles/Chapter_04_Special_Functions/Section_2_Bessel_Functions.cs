@@ -29,22 +29,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
             ///     J_n(x) = \sum_{m = 0}^{\infty} \frac{(-1)^m}{m!\Gamma(m+n+1)}\left(\frac{x}{2}\right)^{2m + n}
             /// </math>
             /// 
-            /// #. **Bessel Functions of the Second  Kind** :math:`(Y_n(x))` These functions are denoted by :math:`(Y_n(x))`,  are also solutions to Bessel's differential equation but have a singularity at the origin. They are often used in conjunction with :math:`(J_n(x))`  to form a complete set of solutions.
-            /// 
-            /// <math>
-            ///     Y_n(x) = \frac{J_n(x)\cos(n\pi) - J_{-n}(x)}{\sin(n\pi)}
-            /// </math>
-            /// 
-            /// #. **Modified Bessel Functions (** :math:`I_n(x)` **and** :math:`K_n(x)` **)**: These functions are solutions to the modified Bessel's differential equation, which is obtained by replacing  :math:`x` with :math:`ix` in the original equation. They are used in problems involving heat conduction and diffusion.
-            /// <math>
-            ///     I_n(x) = \sum_{m = 0}^{\infty} \frac{1}{m!\Gamma(m+n+1)}\left(\frac{x}{2}\right)^{2m + n}
-            /// </math>
-            /// 
-            /// <math>
-            ///      K_n(x) = \frac{\pi}{2}\frac{I_{-n}(x) - I_n(x)}{\sin(n\pi)}
-            /// </math>
-            /// 
-            /// <code>
+            /// /// <code>
             {
                 ColVec x = Linspace(0, 10);
                 Indexer Z = new(0, 8);
@@ -57,21 +42,65 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
             }
             /// </code>
             /// 
+            /// #. **Bessel Functions of the Second  Kind** :math:`(Y_n(x))` These functions are denoted by :math:`(Y_n(x))`,  are also solutions to Bessel's differential equation but have a singularity at the origin. They are often used in conjunction with :math:`(J_n(x))`  to form a complete set of solutions.
+            /// 
+            /// <math>
+            ///     Y_n(x) = \frac{J_n(x)\cos(n\pi) - J_{-n}(x)}{\sin(n\pi)}
+            /// </math>
+            /// 
             /// 
             /// <code>
             {
-                ColVec x = Linspace(1, 10);
+                ColVec x = Linspace(0, 10);
                 Indexer Z = new(0, 8);
                 Matrix Y = Z.Select(z => BesselY(z, x)).ToList();
                 Plot(x, Y, Linewidth: 2);
                 Title("BesselY Functions");
-                Axis([1, 10, -5, 1]);
-                Legend(Z.Select(z => $"Y{z}(x)"), UpperRight);
+                Axis([0, 10, -0.8, 0.6]);
+                Legend(Z.Select(z => $"Y{z}(x)"), LowerRight);
                 SaveAs("BesselY-Functions.png");
             }
             /// </code>
             /// 
-            
+            /// #. **Modified Bessel Functions (** :math:`I_n(x)` **and** :math:`K_n(x)` **)**: These functions are solutions to the modified Bessel's differential equation, which is obtained by replacing  :math:`x` with :math:`ix` in the original equation. They are used in problems involving heat conduction and diffusion.
+            /// <math>
+            ///     I_n(x) = \sum_{m = 0}^{\infty} \frac{1}{m!\Gamma(m+n+1)}\left(\frac{x}{2}\right)^{2m + n}
+            /// </math>
+            /// 
+            /// 
+            /// <code>
+            {
+                ColVec x = Linspace(0, 6);
+                Indexer Z = new(0, 8);
+                Matrix I = Z.Select(z => BesselI(z, x)).ToList();
+                Plot(x, I, Linewidth: 2);
+                Title("BesselI Functions");
+                Axis([0, 6, -0.1, 2]);
+                Legend(Z.Select(z => $"I{z}(x)"), UpperLeft);
+                SaveAs("BesselI-Functions.png");
+            }
+            /// </code>
+            /// 
+            /// <math>
+            ///      K_n(x) = \frac{\pi}{2}\frac{I_{-n}(x) - I_n(x)}{\sin(n\pi)}
+            /// </math>
+            /// 
+            /// <code>
+            {
+                ColVec x = Linspace(0, 10);
+                Indexer Z = new(0, 8);
+                Matrix K = Z.Select(z => BesselK(z, x)).ToList();
+                Plot(x, K, Linewidth: 2);
+                Title("BesselK Functions");
+                Axis([0, 7, 0, 2]);
+                Legend(Z.Select(z => $"K{z}(x)"), UpperRight);
+                SaveAs("BesselK-Functions.png");
+            }
+            /// </code>
+            /// 
+            /// 
+            /// 
+
             /// 
             /// <header 2> Application of some Special Functions </header>
             /// There are several applications of special functions: from function approximation using chebysheve polynomial, to quadrature using Legendre and Laguerre Polynomials, and solution of laplace equation in cylindrical coordinate using Bessel functions.
@@ -149,7 +178,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                 ColVec Td = Logspace(-1, 2), Wd;
                 int end = Rd.Length - 1;
                 // compute the water influx and plot
-                Subplot(2, 1, 0);
+                Subplot(2, 2, [0,1]);
                 HoldOn();
                 List<string> lgd = [];
                 foreach (double rD in Rd)
@@ -167,7 +196,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                 Td = Logspace(0, 3); end = Rd.Length - 1;
 
                 // compute the water influx and plot
-                Subplot(2, 1, 1);
+                Subplot(2, 2, [2,3]);
                 HoldOn();
                 lgd = [];
                 foreach (double rD in Rd)

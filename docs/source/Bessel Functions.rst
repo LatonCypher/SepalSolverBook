@@ -26,27 +26,6 @@ Types of Bessel Functions
    J_n(x) = \sum_{m = 0}^{\infty} \frac{(-1)^m}{m!\Gamma(m+n+1)}\left(\frac{x}{2}\right)^{2m + n}
 
 
-#. **Bessel Functions of the Second  Kind** :math:`(Y_n(x))` These functions are denoted by :math:`(Y_n(x))`,  are also solutions to Bessel's differential equation but have a singularity at the origin. They are often used in conjunction with :math:`(J_n(x))`  to form a complete set of solutions.
-
-
-.. math::
-
-   Y_n(x) = \frac{J_n(x)\cos(n\pi) - J_{-n}(x)}{\sin(n\pi)}
-
-
-#. **Modified Bessel Functions (** :math:`I_n(x)` **and** :math:`K_n(x)` **)**: These functions are solutions to the modified Bessel's differential equation, which is obtained by replacing  :math:`x` with :math:`ix` in the original equation. They are used in problems involving heat conduction and diffusion.
-
-.. math::
-
-   I_n(x) = \sum_{m = 0}^{\infty} \frac{1}{m!\Gamma(m+n+1)}\left(\frac{x}{2}\right)^{2m + n}
-
-
-
-.. math::
-
-   K_n(x) = \frac{\pi}{2}\frac{I_{-n}(x) - I_n(x)}{\sin(n\pi)}
-
-
 
 .. code-block:: csharp
 
@@ -65,17 +44,25 @@ Types of Bessel Functions
    :alt: BesselJ-Functions.png
 
 
+#. **Bessel Functions of the Second  Kind** :math:`(Y_n(x))` These functions are denoted by :math:`(Y_n(x))`,  are also solutions to Bessel's differential equation but have a singularity at the origin. They are often used in conjunction with :math:`(J_n(x))`  to form a complete set of solutions.
+
+
+.. math::
+
+   Y_n(x) = \frac{J_n(x)\cos(n\pi) - J_{-n}(x)}{\sin(n\pi)}
+
+
 
 
 .. code-block:: csharp
 
-   ColVec x = Linspace(1, 10);
+   ColVec x = Linspace(0, 10);
    Indexer Z = new(0, 8);
    Matrix Y = Z.Select(z => BesselY(z, x)).ToList();
    Plot(x, Y, Linewidth: 2);
    Title("BesselY Functions");
-   Axis([1, 10, -5, 1]);
-   Legend(Z.Select(z => $"Y{z}(x)"), UpperRight);
+   Axis([0, 10, -0.8, 0.6]);
+   Legend(Z.Select(z => $"Y{z}(x)"), LowerRight);
    SaveAs("BesselY-Functions.png");
 
 
@@ -84,7 +71,59 @@ Types of Bessel Functions
    :alt: BesselY-Functions.png
 
 
-            
+#. **Modified Bessel Functions (** :math:`I_n(x)` **and** :math:`K_n(x)` **)**: These functions are solutions to the modified Bessel's differential equation, which is obtained by replacing  :math:`x` with :math:`ix` in the original equation. They are used in problems involving heat conduction and diffusion.
+
+.. math::
+
+   I_n(x) = \sum_{m = 0}^{\infty} \frac{1}{m!\Gamma(m+n+1)}\left(\frac{x}{2}\right)^{2m + n}
+
+
+
+
+.. code-block:: csharp
+
+   ColVec x = Linspace(0, 6);
+   Indexer Z = new(0, 8);
+   Matrix I = Z.Select(z => BesselI(z, x)).ToList();
+   Plot(x, I, Linewidth: 2);
+   Title("BesselI Functions");
+   Axis([0, 6, -0.1, 2]);
+   Legend(Z.Select(z => $"I{z}(x)"), UpperLeft);
+   SaveAs("BesselI-Functions.png");
+
+
+.. figure:: images/BesselI-Functions.png
+   :align: center
+   :alt: BesselI-Functions.png
+
+
+
+.. math::
+
+   K_n(x) = \frac{\pi}{2}\frac{I_{-n}(x) - I_n(x)}{\sin(n\pi)}
+
+
+
+.. code-block:: csharp
+
+   ColVec x = Linspace(0, 10);
+   Indexer Z = new(0, 8);
+   Matrix K = Z.Select(z => BesselK(z, x)).ToList();
+   Plot(x, K, Linewidth: 2);
+   Title("BesselK Functions");
+   Axis([0, 7, 0, 2]);
+   Legend(Z.Select(z => $"K{z}(x)"), UpperRight);
+   SaveAs("BesselK-Functions.png");
+
+
+.. figure:: images/BesselK-Functions.png
+   :align: center
+   :alt: BesselK-Functions.png
+
+
+
+
+
 
 Application of some Special Functions
 -------------------------------------
@@ -183,7 +222,7 @@ Lets see how to compute water influx, and generate the started water influx plot
    ColVec Td = Logspace(-1, 2), Wd;
    int end = Rd.Length - 1;
    // compute the water influx and plot
-   Subplot(2, 1, 0);
+   Subplot(2, 2, [0,1]);
    HoldOn();
    List<string> lgd = [];
    foreach (double rD in Rd)
@@ -201,7 +240,7 @@ Lets see how to compute water influx, and generate the started water influx plot
    Td = Logspace(0, 3); end = Rd.Length - 1;
 
    // compute the water influx and plot
-   Subplot(2, 1, 1);
+   Subplot(2, 2, [2,3]);
    HoldOn();
    lgd = [];
    foreach (double rD in Rd)
