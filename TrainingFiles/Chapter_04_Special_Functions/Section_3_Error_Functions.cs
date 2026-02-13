@@ -56,9 +56,20 @@
             /// These are the normalized versions of the incomplete Gamma integral, ensuring
             /// the output stays within the range :math:`[0, 1]`.
             ///
-            /// * **Lower Regularized (P):** :math:`P(a, x) = \cfrac{1}{\Gamma(a)} \int_0^x t^{a-1} e^{-t} dt`
-            /// * **Upper Regularized (Q):** :math:`Q(a, x) = \cfrac{1}{\Gamma(a)} \int_x^\infty t^{a-1} e^{-t} dt`
-            /// * **Relationship:** :math:`P(a, x) + Q(a, x) = 1`. These are the CDF and Survival functions of the Gamma distribution.
+            /// * **Lower Regularized (P):** 
+            /// <math>
+            ///     P(a, x) = \cfrac{1}{\Gamma(a)} \int_0^x t^{a-1} e^{-t} dt
+            /// </math>
+            /// * **Upper Regularized (Q):** 
+            /// <math>
+            ///     Q(a, x) = \cfrac{1}{\Gamma(a)} \int_x^\infty t^{a-1} e^{-t} dt
+            /// </math>
+            /// * **Relationship:** 
+            /// <math>
+            ///     P(a, x) + Q(a, x) = 1`. 
+            /// </math>
+            /// 
+            /// These are the CDF and Survival functions of the Gamma distribution.
             ///
             /// 
             /// <code>
@@ -110,7 +121,7 @@
                 ColVec y_gammaln = LnGamma(x);
                 
                 Plot(x, Hcart(y_gammaln, y_log_gamma), Linewidth: 2);
-                Title("LnGamma Function in MATLAB");
+                Title("LnGamma Function");
                 Xlabel("x"); Ylabel("Ln(Gamma(x))");
                 Legend(["gammaln(x)", "log(gamma(x)) - Note the break at x=171"]);
             }
@@ -119,7 +130,7 @@
             /// <header 2> Beta Function :math:`B(x, y)` </header>
             /// The Beta function, also known as the Euler integral of the first kind, is closely related to the Gamma function and binomial coefficients.
             ///
-            /// * **Identity:** :math:`B(x, y) = \frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}`
+            /// * **Identity:** :math:`B(x, y) = \cfrac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}`
             /// * **Application:** Used extensively in Bayesian inference as the conjugate prior for Bernoulli and Binomial distributions.
             ///
             /// <code>

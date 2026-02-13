@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace ConsoleApp1
 {
-    internal class BookWriter (string ProjectFolder, string BookFolder)
+    internal class BookWriter(string ProjectFolder, string BookFolder)
     {
         string bookfolder = BookFolder;
         string projectfolder = ProjectFolder;
@@ -150,7 +150,7 @@ namespace ConsoleApp1
                 string[] Content = File.ReadAllLines(ChapterSections[0]);
                 List<string> bookContent = [..Content.SkipWhile(line=> !line.Contains("/// <BookContent>")).
                                               TakeWhile(line=>!line.Contains("/// </BookContent>"))];
-                if(bookContent.Count > 0)
+                if (bookContent.Count > 0)
                     bookContent = processBookContent(bookContent[1..]);
                 using (StreamWriter writer = new(chapterfile, true))
                 {
@@ -196,8 +196,8 @@ namespace ConsoleApp1
                 writer.WriteLine("");
             }
 
-                // Extract BookContent block
-                List<string> bookContent = [..Content.SkipWhile(line=> !line.Contains("/// <BookContent>")).
+            // Extract BookContent block
+            List<string> bookContent = [..Content.SkipWhile(line=> !line.Contains("/// <BookContent>")).
                                               TakeWhile(line=>!line.Contains("/// </BookContent>"))];
             if (bookContent.Count == 0) return;
 
@@ -342,7 +342,7 @@ namespace ConsoleApp1
                         $"    :alt: {figurename}"
                     ];
                     Replace(bookContent, startIndex, 1, figurelines);
-                    
+
                 }
 
             }
@@ -412,7 +412,7 @@ namespace ConsoleApp1
             string firstArg = "";
             if (match.Success)
             {
-                string allArgs = match.Groups[1].Value; // "a, 15, m0, m1"
+                string allArgs = match.Groups[1].Value; // "a, m0, m1"
                 string[] args = allArgs.Split(',');
 
                 if (args.Length >= 2)
@@ -424,7 +424,7 @@ namespace ConsoleApp1
                     "   :alt: " + firstArg,
                     ""];
         }
-            static string[] GetAnimationReference(string line)
+        static string[] GetAnimationReference(string line)
         {
             // Regex to capture content inside parentheses
             // Regex to capture everything between the first '(' and the last ')'
@@ -469,7 +469,7 @@ namespace ConsoleApp1
                 }
                 Codelines.Add("   :header-rows: 1");
                 Codelines.Add("");
-                while(!bookContent[startIndex + Length].Contains("</table>"))
+                while (!bookContent[startIndex + Length].Contains("</table>"))
                 {
                     string tableline = bookContent[startIndex + Length];
                     // Remove leading "///"
@@ -516,7 +516,7 @@ namespace ConsoleApp1
                 while (!bookContent[startIndex + Length].Contains("</example"))
                 {
                     line = bookContent[startIndex + Length];
-                    if(line.Contains("///"))
+                    if (line.Contains("///"))
                         Codelines.Add("   " + line.TrimStart(' ', '\t', '/'));
                     else
                         Codelines.Add("   " + line);
