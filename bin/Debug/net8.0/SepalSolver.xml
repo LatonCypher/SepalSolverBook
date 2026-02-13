@@ -4308,6 +4308,16 @@
              </terminal>
              </example>
         </member>
+        <member name="M:SepalSolver.Math.Beta(System.Double,System.Double)">
+            <summary>
+            Computes the beta function for the specified values.
+            </summary>
+            <remarks>The beta function is defined as B(a, b) = Γ(a)Γ(b)/Γ(a + b), where Γ denotes the
+            gamma function. This method returns positive values for valid positive arguments.</remarks>
+            <param name="a">The first parameter of the beta function. Must be greater than 0.</param>
+            <param name="b">The second parameter of the beta function. Must be greater than 0.</param>
+            <returns>The value of the beta function evaluated at the specified parameters.</returns>
+        </member>
         <member name="M:SepalSolver.Math.Erf(System.Double)">
              <summary>
              Computes the error function erf(x), which is defined as the integral (2/√π) ∫₀ˣ e^(-t²) dt.

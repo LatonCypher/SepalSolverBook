@@ -15,5 +15,8 @@ In this chapter, we will explore different special functions, their implementati
 
 .. toctree::
 
-   Bessel Hypergeometric
+   Orthogonal Polynomials
+   Bessel Functions
+   Error Functions
+   Mittag-Leffler Functions
    Exercise On Special Functions
