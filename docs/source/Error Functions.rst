@@ -81,7 +81,7 @@ the output stays within the range :math:`[0, 1]`.
 
 .. math::
 
-   P(a, x) + Q(a, x) = 1`. 
+   P(a, x) + Q(a, x) = 1. 
 
 
 These are the CDF and Survival functions of the Gamma distribution.

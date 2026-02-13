@@ -66,7 +66,7 @@
             /// </math>
             /// * **Relationship:** 
             /// <math>
-            ///     P(a, x) + Q(a, x) = 1`. 
+            ///     P(a, x) + Q(a, x) = 1. 
             /// </math>
             /// 
             /// These are the CDF and Survival functions of the Gamma distribution.
