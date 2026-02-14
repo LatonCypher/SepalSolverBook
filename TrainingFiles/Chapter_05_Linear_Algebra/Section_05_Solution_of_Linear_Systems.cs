@@ -50,6 +50,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
                 };
                 ColVec b = new double[] { 10, 5, 8, 20 };
                 ColVec x = Mldivide(A, b);
+                Console.WriteLine($"A = \n{A}");
+                Console.WriteLine($"b = \n{b}");
                 Console.WriteLine($"x = \n{x}");
             }
             /// </code>
@@ -70,7 +72,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             /// </math>
             /// 
             /// <code>
-            /// 
             {
                 // Data
                 double[] T = [10, 20, 30, 40, 50];

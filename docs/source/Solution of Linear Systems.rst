@@ -34,6 +34,8 @@ matrices that are symmetric and positive-definite.
    };
    ColVec b = new double[] { 10, 5, 8, 20 };
    ColVec x = Mldivide(A, b);
+   Console.WriteLine($"A = \n{A}");
+   Console.WriteLine($"b = \n{b}");
    Console.WriteLine($"x = \n{x}");
 
 
@@ -41,6 +43,20 @@ Ouput
 
 .. terminal::
 
+   A = 
+   
+    1   1   1   1 
+    2  -1   3  -1 
+   -1   4  -1   2 
+    3   2   2  -1 
+   
+   b = 
+   
+   10 
+    5 
+    8 
+   20 
+   
    x = 
    
       6.9130
@@ -70,23 +86,33 @@ Consider a phenomenon in which temperature and pressure are linearly related. i.
 
 .. code-block:: csharp
 
+   // Data
+   double[] T = [10, 20, 30, 40, 50];
+   double[] P = [15, 23, 31, 38, 48];
 
-/ Data
-ouble[] T = [10, 20, 30, 40, 50];
-ouble[] P = [15, 23, 31, 38, 48];
+   // Construct least square problem
+   Matrix A = T.Select(t => new RowVec([t, 1])).ToList();
+   ColVec b = P;
 
-/ Construct least square problem
-atrix A = T.Select(t => new RowVec([t, 1])).ToList();
-olVec b = P;
+   // Compute m and e
+   var x = Mldivide(A, b);
+   Console.WriteLine($"m = {x[0]}, e = {x[1]}");
 
-/ Compute m and e
-ar x = Mldivide(A, b);
-onsole.WriteLine($"m = {x[0]}, e = {x[1]}");
+   Scatter(T, P, "fob"); HoldOn();
+   Plot(T, A*x); HoldOff();
 
-catter(T, P, "fob"); HoldOn();
-lot(T, A*x); HoldOff();
+   SaveAs("LeastSquare-Solution.png");
 
-aveAs("LeastSquare-Solution.png");
+
+Ouput
+
+.. terminal::
+
+   m = 0.8099999999999999, e = 6.700000000000002
+
+.. figure:: images/
+   :align: center
+   :alt: 
 
 
 
