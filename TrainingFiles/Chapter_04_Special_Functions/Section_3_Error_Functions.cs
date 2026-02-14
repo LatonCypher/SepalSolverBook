@@ -21,7 +21,7 @@
             {
                 ColVec x = Linspace(-3, 3, 200);
                 Plot(x, Erf(x), "b", 2);
-                Hline(1); Hline(-1);
+                //Hline(1); Hline(-1);
                 Title("Error Function erf(x)");
                 Xlabel("x"); Ylabel("erf(x)");
                 SaveAs("Error.png");
