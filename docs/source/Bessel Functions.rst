@@ -222,7 +222,8 @@ Lets see how to compute water influx, and generate the started water influx plot
    // compute the water influx and plot
    Wd = Rd.Select(rd => Arrayfun(tD => EdgeClosedBoundaryRadial_Wd(tD, rd), Td)).ToList();
    lgd = [.. Rd.Select(rd => $"rD = {rd}")];
-   SemiLogx(Td, Wd, Linewidth: 2); Xlabel("tD"); Ylabel("WD");
+   SemiLogx(Td, Wd, Linewidth: 2); 
+   Xlabel("tD"); Ylabel("WD"); GridOn();
    Legend(lgd, UpperLeft); Axis([0.1, 100, 1, 8]);
    Title("Dimensionless Water Influx Rd <= 4");
 
@@ -233,7 +234,8 @@ Lets see how to compute water influx, and generate the started water influx plot
    // compute the water influx and plot
    Wd = Rd.Select(rd => Arrayfun(tD => EdgeClosedBoundaryRadial_Wd(tD, rd), Td)).ToList();
    lgd = [.. Rd.Select(rd => $"rD = {rd}")];
-   SemiLogx(Td, Wd, Linewidth: 2); Xlabel("tD"); Ylabel("WD");
+   SemiLogx(Td, Wd, Linewidth: 2); 
+   Xlabel("tD"); Ylabel("WD"); GridOn();
    Legend(lgd, UpperLeft); Axis([1, 1000, 0, 70]);
    Title("Dimensionless Water Influx Rd >= 5");
 

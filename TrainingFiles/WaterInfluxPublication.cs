@@ -387,7 +387,6 @@ namespace ConsoleApp1.TrainingFiles
             //Numerical Laplace Inversion
             Pd = rD.Select(r => Arrayfun(t => Pd_Finite_Exact(t, r), tD)).ToList();
             LogLog(tD, Pd, Linewidth: 2); HoldOff();
-            minorgrid = true;
             Xlabel("tD"); Ylabel("PD");
             Legend(legend, UpperLeft);
             Axis([0.01, 1000, 0.1, 1000]);
@@ -400,7 +399,6 @@ namespace ConsoleApp1.TrainingFiles
             //Numerical Laplace Inversion
             Qd = rD.Select(r => Arrayfun(t => Qd_Finite_Exact(t, r), tD)).ToList();
             SemiLogx(tD, Qd, Linewidth: 2); HoldOff();
-            minorgrid = true;
             Xlabel("tD"); Ylabel("PD");
             Legend(legend, UpperLeft);
             Axis([0.01, 1000, 0, 35]);
