@@ -150,10 +150,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
             /// Lets see how to compute water influx, and generate the started water influx plot as shown above
             /// <code>
             {
-                double I0(double x) => BesselI(0, x);
-                double I1(double x) => BesselI(1, x);
-                double K0(double x) => BesselK(0, x);
-                double K1(double x) => BesselK(1, x);
+                double I0(double x) => BesselI(0, x); double I1(double x) => BesselI(1, x);
+                double K0(double x) => BesselK(0, x); double K1(double x) => BesselK(1, x);
                 // define Wd function in time space.
                 double EdgeClosedBoundaryRadial_Wd(double tD, double rD)
                 {
@@ -172,44 +170,31 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                     }
                     return tD == 0 ? 0 : NiLaplace(LapW, tD);
                 }
+                double[] Rd; ColVec Td; string[] lgd; Matrix Wd;
 
-                // define the time and radial mesh
-                double[] Rd = [2, 2.5, 3, 3.5, 4, double.PositiveInfinity];
-                ColVec Td = Logspace(-1, 2), Wd;
-                int end = Rd.Length - 1;
-                // compute the water influx and plot
                 Subplot(2, 1, 0);
-                HoldOn();
-                List<string> lgd = [];
-                foreach (double rD in Rd)
-                {
-                    Wd = Arrayfun(tD => EdgeClosedBoundaryRadial_Wd(tD, rD), Td);
-                    SemiLogx(Td, Wd, Linewidth: 2); lgd.Add("rD = " + rD);
-                }
-                Xlabel("tD"); Ylabel("WD");
-                Legend(lgd, UpperLeft);
-                Axis([0.1, 100, 1, 8]);
+                // define the time and radial mesh
+                Rd = [2, 2.5, 3, 3.5, 4, double.PositiveInfinity]; Td = Logspace(-1, 2);
+                // compute the water influx and plot
+                Wd = Rd.Select(rd => Arrayfun(tD => EdgeClosedBoundaryRadial_Wd(tD, rd), Td)).ToList();
+                lgd = [.. Rd.Select(rd => $"rD = {rd}")];
+                SemiLogx(Td, Wd, Linewidth: 2); Xlabel("tD"); Ylabel("WD");
+                Legend(lgd, UpperLeft); Axis([0.1, 100, 1, 8]);
                 Title("Dimensionless Water Influx Rd <= 4");
 
-                // define the time and radial mesh
-                Rd = [5, 6, 7, 8, 9, 10, double.PositiveInfinity];
-                Td = Logspace(0, 3); end = Rd.Length - 1;
 
-                // compute the water influx and plot
                 Subplot(2, 1, 1);
-                HoldOn();
-                lgd = [];
-                foreach (double rD in Rd)
-                {
-                    Wd = Arrayfun(tD => EdgeClosedBoundaryRadial_Wd(tD, rD), Td);
-                    SemiLogx(Td, Wd, Linewidth: 2); lgd.Add("rD = " + rD);
-                }
-                Xlabel("tD"); Ylabel("WD");
-                Legend(lgd, UpperLeft);
-                Axis([1, 1000, 0, 70]);
+                // define the time and radial mesh
+                Rd = [5, 6, 7, 8, 9, 10, double.PositiveInfinity]; Td = Logspace(0, 3);
+                // compute the water influx and plot
+                Wd = Rd.Select(rd => Arrayfun(tD => EdgeClosedBoundaryRadial_Wd(tD, rd), Td)).ToList();
+                lgd = [.. Rd.Select(rd => $"rD = {rd}")];
+                SemiLogx(Td, Wd, Linewidth: 2); Xlabel("tD"); Ylabel("WD");
+                Legend(lgd, UpperLeft); Axis([1, 1000, 0, 70]);
                 Title("Dimensionless Water Influx Rd >= 5");
-                SaveAs("Dimensionless-Water-Influx.png", 600, 900);
-                CloseFig();
+
+                //Save Figure
+                SaveAs("Dimensionless-Water-Influx.png", 600, 900); CloseFig();
             }
             /// </code>
             /// 
