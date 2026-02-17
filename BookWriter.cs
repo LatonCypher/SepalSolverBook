@@ -414,9 +414,7 @@ namespace ConsoleApp1
             {
                 string allArgs = match.Groups[1].Value; // "a, m0, m1"
                 string[] args = allArgs.Split(',');
-
-                if (args.Length >= 2)
-                    firstArg = args[0].Trim().Trim('"', '\'');
+                firstArg = args[0].Trim().Trim('"', '\'');
             }
             return ["",
                     ".. figure:: images/" +  firstArg,

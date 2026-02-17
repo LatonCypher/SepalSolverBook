@@ -188,9 +188,9 @@ This parameter(s) can be exploited to provide means to guarantee that a good ini
       SaveAs("Parameterozed_Nonlinear_Equations.png");
    
    
-   .. figure:: images/
+   .. figure:: images/Parameterozed_Nonlinear_Equations.png
       :align: center
-      :alt: 
+      :alt: Parameterozed_Nonlinear_Equations.png
    
    
 

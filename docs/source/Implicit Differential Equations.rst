@@ -92,9 +92,9 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       SaveAs("Clairaut.png");
    
    
-   .. figure:: images/
+   .. figure:: images/Clairaut.png
       :align: center
-      :alt: 
+      :alt: Clairaut.png
    
 
 
@@ -179,9 +179,9 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       SaveAs("Weissinger.png");
    
    
-   .. figure:: images/
+   .. figure:: images/Weissinger.png
       :align: center
-      :alt: 
+      :alt: Weissinger.png
    
 
 
@@ -249,9 +249,9 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       SaveAs("Implicit-Robertson-ODE-Ode45i.png");
    
    
-   .. figure:: images/
+   .. figure:: images/Implicit-Robertson-ODE-Ode45i.png
       :align: center
-      :alt: 
+      :alt: Implicit-Robertson-ODE-Ode45i.png
    
    
    As an exercise, the reader is encouraged to solve this same problem but using this constraint

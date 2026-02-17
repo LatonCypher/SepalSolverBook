@@ -7259,22 +7259,22 @@
         </member>
         <member name="P:SepalSolver.Matrix.Rows">
             <summary>
-            Returns the number of rows in A11 Matrix
+            Returns the number of rows in a Matrix
             </summary>
         </member>
         <member name="P:SepalSolver.Matrix.Cols">
             <summary>
-            Returns the number of columns in A11 Matrix
+            Returns the number of columns in a Matrix
             </summary>
         </member>
         <member name="P:SepalSolver.Matrix.Numel">
             <summary>
-            Returns the number of elements in A11 Matrix
+            Returns the number of elements in a Matrix
             </summary>
         </member>
         <member name="P:SepalSolver.Matrix.NumLUDecomposition">
             <summary>
-            Returns the number of times A11 Matrix object is decomposed into its LU factors
+            Returns the number of times a Matrix object is decomposed into its LU factors
             </summary>
         </member>
         <member name="P:SepalSolver.Matrix.NumLinSysSolved">
@@ -8084,7 +8084,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SepalSolver.Matrix.Gmres(SepalSolver.Matrix,SepalSolver.ColVec,System.Int32,System.Double,System.Int32,SepalSolver.Matrix,SepalSolver.Matrix,SepalSolver.ColVec)">
+        <member name="M:SepalSolver.Matrix.Gmres(SepalSolver.Matrix,SepalSolver.ColVec,System.Double,System.Int32,SepalSolver.Matrix,SepalSolver.Matrix,System.Nullable{System.Int32},SepalSolver.ColVec)">
             <summary>
             
             </summary>
@@ -8095,7 +8095,7 @@
             <param name="maxit"></param>
             <param name="M1"></param>
             <param name="M2"></param>
-            <param name="x"></param>
+            <param name="x0"></param>
             <returns></returns>
         </member>
         <member name="M:SepalSolver.Matrix.CG(SepalSolver.Matrix,SepalSolver.ColVec,System.Double,System.Int32,SepalSolver.ColVec)">
@@ -11923,14 +11923,6 @@
             <param name="B">Matrix B</param>
             <returns>Matrix</returns>
         </member>
-        <member name="P:SepalSolver.SparseMatrix.Item(System.Int32,System.Int32)">
-            <summary>
-            Access this matrix as a 2D array
-            </summary>
-            <param name="iRow"></param>
-            <param name="iCol"></param>
-            <returns></returns>
-        </member>
         <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.Indexer,SepalSolver.Indexer)">
             <summary>
             Access this matrix as a 2D array
@@ -11953,6 +11945,13 @@
             <param name="I"></param>
             <returns></returns>
         </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.StepRange)">
+            <summary>
+            Access this matrix as a 2D array
+            </summary>
+            <param name="I"></param>
+            <returns></returns>
+        </member>
         <member name="P:SepalSolver.SparseMatrix.Item(System.Boolean[])">
             <summary>
             Access this matrix as a 2D array
@@ -11963,61 +11962,6 @@
         <member name="P:SepalSolver.SparseMatrix.Item(System.Boolean[0:,0:])">
             <summary>
             Access this matrix as a 2D array
-            </summary>
-            <param name="I"></param>
-            <returns></returns>
-        </member>
-        <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.Indexer,System.Int32)">
-            <summary>
-            Access this matrix as a 2D array
-            </summary>
-            <param name="iRow"></param>
-            <param name="iCol"></param>
-            <returns></returns>
-        </member>
-        <member name="P:SepalSolver.SparseMatrix.Item(System.String,System.Int32)">
-            <summary>
-            Access this matrix as a 2D array
-            </summary>
-            <param name="iRow"></param>
-            <param name="iCol"></param>
-            <returns></returns>
-        </member>
-        <member name="P:SepalSolver.SparseMatrix.Item(System.Int32,SepalSolver.Indexer)">
-            <summary>
-            Access this matrix as a 2D array
-            </summary>
-            <param name="iRow"></param>
-            <param name="iCol"></param>
-            <returns></returns>
-        </member>
-        <member name="P:SepalSolver.SparseMatrix.Item(System.Int32,System.String)">
-            <summary>
-            Access this matrix as a 2D array
-            </summary>
-            <param name="iRow"></param>
-            <param name="iCol"></param>
-            <returns></returns>
-        </member>
-        <member name="P:SepalSolver.SparseMatrix.Item(System.String,SepalSolver.Indexer)">
-            <summary>
-            Access this matrix as a 2D array
-            </summary>
-            <param name="iRow"></param>
-            <param name="iCol"></param>
-            <returns></returns>
-        </member>
-        <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.Indexer,System.String)">
-            <summary>
-            Access this matrix as a 2D array
-            </summary>
-            <param name="iRow"></param>
-            <param name="iCol"></param>
-            <returns></returns>
-        </member>
-        <member name="P:SepalSolver.SparseMatrix.Item(System.String)">
-            <summary>
-            
             </summary>
             <param name="I"></param>
             <returns></returns>
@@ -12363,6 +12307,21 @@
             <param name="U"></param>
             <param name="b"></param>
             <returns></returns>
+        </member>
+        <member name="M:SepalSolver.SparseMatrix.Gmres(SepalSolver.SparseMatrix,SepalSolver.ColVec,System.Double,System.Int32,SepalSolver.SparseMatrix,SepalSolver.SparseMatrix,System.Nullable{System.Int32},SepalSolver.ColVec)">
+            <summary>
+            
+            </summary>
+            <param name="A"></param>
+            <param name="b"></param>
+            <param name="tol"></param>
+            <param name="maxit"></param>
+            <param name="M1"></param>
+            <param name="M2"></param>
+            <param name="rstart"></param>
+            <param name="x0"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
         </member>
         <member name="M:SepalSolver.SparseMatrix.Wilkinson(System.Int32)">
             <summary>

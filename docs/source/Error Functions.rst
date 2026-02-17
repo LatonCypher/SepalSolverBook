@@ -25,9 +25,9 @@ represents the integral of the Gaussian (Normal) distribution.
    SaveAs("Error.png");
 
 
-.. figure:: images/
+.. figure:: images/Error.png
    :align: center
-   :alt: 
+   :alt: Error.png
 
 
 Gamma Function :math:`\Gamma(z)`
@@ -54,9 +54,9 @@ For any positive integer :math:`n`, :math:`\Gamma(n) = (n-1)!`.
    SaveAs("Gamma.png");
 
 
-.. figure:: images/
+.. figure:: images/Gamma.png
    :align: center
-   :alt: 
+   :alt: Gamma.png
 
 
 Regularized Incomplete Gamma (P and Q)
@@ -98,9 +98,9 @@ These are the CDF and Survival functions of the Gamma distribution.
    SaveAs("IncGamma.png");
 
 
-.. figure:: images/
+.. figure:: images/IncGamma.png
    :align: center
-   :alt: 
+   :alt: IncGamma.png
 
 
 LnGamma :math:`\text{LnGamma}`
@@ -169,9 +169,9 @@ The Beta function, also known as the Euler integral of the first kind, is closel
    SaveAs("Beta.png");
 
 
-.. figure:: images/
+.. figure:: images/Beta.png
    :align: center
-   :alt: 
+   :alt: Beta.png
 
 
 Generalized Hypergeometric Function :math:`{}_pF_q`
@@ -192,8 +192,8 @@ and Laguerre functions.
    SaveAs("Hypergeomtric.png");
 
 
-.. figure:: images/
+.. figure:: images/Hypergeomtric.png
    :align: center
-   :alt: 
+   :alt: Hypergeomtric.png
 
 

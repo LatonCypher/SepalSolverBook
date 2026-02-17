@@ -1,4 +1,5 @@
-﻿using ScottPlot.Interactivity.UserActions;
+﻿using ScottPlot.Colormaps;
+using ScottPlot.Interactivity.UserActions;
 using SepalSolver;
 using SkiaSharp;
 using System;
@@ -55,9 +56,46 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
                 Console.WriteLine($"x = \n{x}");
             }
             /// </code>
+            /// <header 2>. 2. Iterative Method </header>
+            /// SepalSolver provides two major iterative solvers. Conjugate Gradient (`ConjGrad`) for large sparse symmetric matrices and the Generalized Minimum Residual (`GenMinRes`) for large sparse nonsymmetric matrices. 
             /// 
+            /// <example 1> Generalized Minimum Residual 
+            /// This eaxample shows how to use generalized minimum residutal method. Pay attention to how the Matrix was made. 
+            /// <code>
+            {
+                int n = 1000;
+                ColVec a = Ones(n-1), b = Ones(n), e = -a, c = 2 * e;
+                ColVec d = -20 + 3 * b;
+                Matrix A = Diag([e, d, c], [-1, 0, 1]);
+                var (x_iter, flag, res, iter, resvec) = GenMinRes(A, b, 1e-6, 20);
+                Console.WriteLine($"x = {x_iter[..10].T}...{x_iter[^10..].T}");
+                Console.WriteLine($"flag = {flag}");
+                Console.WriteLine($"iter = {iter}");
+                Console.WriteLine($"res = {res}");
+                Console.WriteLine($"resvec = {resvec}");
+            }
+            /// </code>
+            /// </example>
             /// 
-            /// <header 2>. Overdetermined Systems (Least Squares) </header>
+            /// /// <example 2> Conjugate Gradient
+            /// This eaxample shows how to use conjugate gradient.
+            /// <code>
+            {
+                int n = 1000;
+                ColVec a = Ones(n-1), b = Ones(n);
+                ColVec d = -20 + 3 * b;
+                Matrix A = Diag([a, d, a], [-1, 0, 1]);
+                var (x_iter, flag, res, iter, resvec) = GenMinRes(A, b, 1e-6, 20);
+                Console.WriteLine($"x = {x_iter[..10].T}...{x_iter[^10..].T}");
+                Console.WriteLine($"flag = {flag}");
+                Console.WriteLine($"iter = {iter}");
+                Console.WriteLine($"res = {res}");
+                Console.WriteLine($"resvec = {resvec}");
+            }
+            /// </code>
+            /// </example>
+            /// 
+            /// <header 2>. 3. Overdetermined Systems (Least Squares) </header>
             ///SepalSolver also perform compute least square solution when the number of rows exceed number of columns. .i.e, where there are more equations than variables being solved. Sepalsolver would compute a least square solution to the problem by transforming :math:`Ax = b` into :math:`A^TAx = A^Tb`, which now has equal number of equations and variable. 
             /// When there are more equations than unknowns (common in data fitting), there is often no "perfect" solution. We instead find the :math:`x` that minimizes the error :math:`||Ax - b||^2`.
             ///

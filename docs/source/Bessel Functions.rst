@@ -39,9 +39,9 @@ Types of Bessel Functions
    SaveAs("BesselJ-Functions.png");
 
 
-.. figure:: images/
+.. figure:: images/BesselJ-Functions.png
    :align: center
-   :alt: 
+   :alt: BesselJ-Functions.png
 
 
 #. **Bessel Functions of the Second  Kind** :math:`(Y_n(x))` These functions are denoted by :math:`(Y_n(x))`,  are also solutions to Bessel's differential equation but have a singularity at the origin. They are often used in conjunction with :math:`(J_n(x))`  to form a complete set of solutions.
@@ -66,9 +66,9 @@ Types of Bessel Functions
    SaveAs("BesselY-Functions.png");
 
 
-.. figure:: images/
+.. figure:: images/BesselY-Functions.png
    :align: center
-   :alt: 
+   :alt: BesselY-Functions.png
 
 
 #. **Modified Bessel Functions (** :math:`I_n(x)` **and** :math:`K_n(x)` **)**: These functions are solutions to the modified Bessel's differential equation, which is obtained by replacing  :math:`x` with :math:`ix` in the original equation. They are used in problems involving heat conduction and diffusion.
@@ -92,9 +92,9 @@ Types of Bessel Functions
    SaveAs("BesselI-Functions.png");
 
 
-.. figure:: images/
+.. figure:: images/BesselI-Functions.png
    :align: center
-   :alt: 
+   :alt: BesselI-Functions.png
 
 
 
@@ -116,9 +116,9 @@ Types of Bessel Functions
    SaveAs("BesselK-Functions.png");
 
 
-.. figure:: images/
+.. figure:: images/BesselK-Functions.png
    :align: center
-   :alt: 
+   :alt: BesselK-Functions.png
 
 
 

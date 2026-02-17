@@ -58,9 +58,9 @@ Where :math:`M` is a singular matrix.
       SaveAs("Robertson-ODE-given-points-Ode45a.png");
    
    
-   .. figure:: images/
+   .. figure:: images/Robertson-ODE-given-points-Ode45a.png
       :align: center
-      :alt: 
+      :alt: Robertson-ODE-given-points-Ode45a.png
    
 
 
@@ -125,9 +125,9 @@ Where :math:`M` is a singular matrix.
               24845 solutions of linear systems
       
    
-   .. figure:: images/
+   .. figure:: images/Index_1-Pendulum-Problem-Ode45a.png
       :align: center
-      :alt: 
+      :alt: Index_1-Pendulum-Problem-Ode45a.png
    
 
 As an exercise, the reader is encouraged to solve the problem using 
@@ -223,9 +223,9 @@ this initial condition y0 = [1, 0, 0, 1, 1];
       SaveAs("One-Transistor-Amplifier-DAE-Problem-Ode45a.png");
    
    
-   .. figure:: images/
+   .. figure:: images/One-Transistor-Amplifier-DAE-Problem-Ode45a.png
       :align: center
-      :alt: 
+      :alt: One-Transistor-Amplifier-DAE-Problem-Ode45a.png
    
 
 
@@ -303,9 +303,9 @@ this initial condition y0 = [1, 0, 0, 1, 1];
       SaveAs("Akzo-Nobel-Ode45a.png");
    
    
-   .. figure:: images/
+   .. figure:: images/Akzo-Nobel-Ode45a.png
       :align: center
-      :alt: 
+      :alt: Akzo-Nobel-Ode45a.png
    
 
 Index-2 DAE
@@ -477,9 +477,9 @@ Now we look at examples of index 2 DAEs
         0.98  ||     2.654994    |    2.654996    ||     2.654994    |    2.654996    ||     -2.593902   |  -2.593891
         1.00  ||     2.718281    |    2.718282    ||     2.718281    |    2.718282    ||     -2.718279   |  -2.718282
    
-   .. figure:: images/
+   .. figure:: images/Index-2-DAE-Ercan-Celik.png
       :align: center
-      :alt: 
+      :alt: Index-2-DAE-Ercan-Celik.png
    
    
    
@@ -790,9 +790,9 @@ Now we look at examples of index 2 DAEs
          6.0000   -0.1469    0.9891    1.0905    0.1619   -8.4861
       
    
-   .. figure:: images/
+   .. figure:: images/Index_2-Pendulum-Problem-Ode45a.png
       :align: center
-      :alt: 
+      :alt: Index_2-Pendulum-Problem-Ode45a.png
    
    Observe that the initial condition supplied for :math:`\lambda` was :math:`-1`; but the result returned shown that the correct initial condition for the algebraic variable :math:`\lambda` is :math:`-8.81`.
    Sending in a wrong initial condition was done on purpose, to test the ability of sepalsolver to compute the initial condition of the algebraic variable. 

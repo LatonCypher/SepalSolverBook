@@ -37,7 +37,7 @@
 
                 B.MakeLU();
                 L = B.L_lu; U = B.U_lu;
-                Spy(L[B.pi.T, ""], 1e-15);
+                Spy(L[B.pi.T, ..], 1e-15);
 
 
                 Spy(U, 1e-15);
@@ -45,7 +45,7 @@
                 Spy(pT * L * U, 1e-15);
 
 
-                Spy(L[pT, ""] * U, 1e-15);
+                Spy(L[pT, ..] * U, 1e-15);
                 Spy(L, 1e-15);
                 Spy(U, 1e-15);
             }
