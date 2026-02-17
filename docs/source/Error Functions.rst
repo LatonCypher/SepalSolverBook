@@ -163,9 +163,12 @@ The Beta function, also known as the Euler integral of the first kind, is closel
 
 .. code-block:: csharp
 
+   Indexer b = 1..7;
    ColVec x = Linspace(0.1, 4, 100);
-   Plot(x, Hcart(Beta(x, 2), Beta(2, x)));
+   Matrix y = b.Select(b => Beta(b, x)).ToList();
+   SemiLogy(x, y, Linewidth: 2);
    Title("Beta Function B(x, y)");
+   Legend(b.Select(b => $"beta({b}, x)"));
    SaveAs("Beta.png");
 
 
@@ -185,9 +188,10 @@ and Laguerre functions.
 
 .. code-block:: csharp
 
-   ColVec x = Linspace(-0.9, 0.9, 200);
+   ColVec x = Linspace(-0.7, 0.7, 200);
    ColVec y = HyperGeom([1, 1], [2], x); // This specific case equals -log(1-x)/x
-   Plot(x, y);
+   Plot(x, y, "r", Linewidth: 2); 
+   Axis([-0.7, 0.7, 0.5, 2]);
    Title("Hypergeometric Function 2F1(1, 1; 2; x)");
    SaveAs("Hypergeomtric.png");
 
