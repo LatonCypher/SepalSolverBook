@@ -72,7 +72,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
                 Console.WriteLine($"flag = {flag}");
                 Console.WriteLine($"iter = {iter}");
                 Console.WriteLine($"res = {res}");
-                Console.WriteLine($"resvec = {resvec}");
             }
             /// </code>
             /// </example>
@@ -90,7 +89,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
                 Console.WriteLine($"flag = {flag}");
                 Console.WriteLine($"iter = {iter}");
                 Console.WriteLine($"res = {res}");
-                Console.WriteLine($"resvec = {resvec}");
             }
             /// </code>
             /// </example>
