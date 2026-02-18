@@ -65,7 +65,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             {
                 int n = 1000;
                 ColVec a = Ones(n-1), b = Ones(n), e = -a, c = 2 * e;
-                ColVec d = -20 + 3 * b;
+                ColVec d = -10 + 3 * b;
                 Matrix A = Diag([e, d, c], [-1, 0, 1]);
                 var (x_iter, flag, res, iter, resvec) = GenMinRes(A, b, 1e-6, 20);
                 Console.WriteLine($"x = {x_iter[..10].T}...{x_iter[^10..].T}");
@@ -83,9 +83,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             {
                 int n = 1000;
                 ColVec a = Ones(n-1), b = Ones(n);
-                ColVec d = -20 + 3 * b;
+                ColVec d = -5 +  b;
                 Matrix A = Diag([a, d, a], [-1, 0, 1]);
-                var (x_iter, flag, res, iter, resvec) = GenMinRes(A, b, 1e-6, 20);
+                var (x_iter, flag, res, iter, resvec) = ConjGrad(A, b, 1e-6, 20);
                 Console.WriteLine($"x = {x_iter[..10].T}...{x_iter[^10..].T}");
                 Console.WriteLine($"flag = {flag}");
                 Console.WriteLine($"iter = {iter}");
