@@ -214,30 +214,28 @@ Lets see how to compute water influx, and generate the started water influx plot
        }
        return tD == 0 ? 0 : NiLaplace(LapW, tD);
    }
-   double[] Rd; ColVec Td; string[] lgd; Matrix Wd;
+   void PlotFunction(ColVec Rd, ColVec Td)
+   {
+       Matrix Wd = Rd.Select(rd => Arrayfun(tD => 
+           EdgeClosedBoundaryRadial_Wd(tD, rd), Td)).ToList();
+       SemiLogx(Td, Wd, Linewidth: 2);
+       Xlabel("tD"); Ylabel("WD"); GridOn();
+       Legend(Rd.Select(rd => $"rD = {rd}"), UpperLeft);
+   }
+   
 
    Subplot(2, 1, 0);
    // define the time and radial mesh
-   Rd = [2, 2.5, 3, 3.5, 4, double.PositiveInfinity]; Td = Logspace(-1, 2);
-   // compute the water influx and plot
-   Wd = Rd.Select(rd => Arrayfun(tD => EdgeClosedBoundaryRadial_Wd(tD, rd), Td)).ToList();
-   lgd = [.. Rd.Select(rd => $"rD = {rd}")];
-   SemiLogx(Td, Wd, Linewidth: 2); 
-   Xlabel("tD"); Ylabel("WD"); GridOn();
-   Legend(lgd, UpperLeft); Axis([0.1, 100, 1, 8]);
-   Title("Dimensionless Water Influx Rd <= 4");
+   double[] Rd = [2, 2.5, 3, 3.5, 4, double.PositiveInfinity]; 
+   double[] Td = Logspace(-1, 2);
+   PlotFunction(Rd, Td); Title("Dimensionless Water Influx Rd <= 4");
 
 
    Subplot(2, 1, 1);
    // define the time and radial mesh
-   Rd = [5, 6, 7, 8, 9, 10, double.PositiveInfinity]; Td = Logspace(0, 3);
-   // compute the water influx and plot
-   Wd = Rd.Select(rd => Arrayfun(tD => EdgeClosedBoundaryRadial_Wd(tD, rd), Td)).ToList();
-   lgd = [.. Rd.Select(rd => $"rD = {rd}")];
-   SemiLogx(Td, Wd, Linewidth: 2); 
-   Xlabel("tD"); Ylabel("WD"); GridOn();
-   Legend(lgd, UpperLeft); Axis([1, 1000, 0, 70]);
-   Title("Dimensionless Water Influx Rd >= 5");
+   Rd = [5, 6, 7, 8, 9, 10, double.PositiveInfinity]; 
+   Td = Logspace(0, 3);
+   PlotFunction(Rd, Td); Title("Dimensionless Water Influx Rd >= 4");
 
    //Save Figure
    SaveAs("Dimensionless-Water-Influx.png", 600, 900); CloseFig();

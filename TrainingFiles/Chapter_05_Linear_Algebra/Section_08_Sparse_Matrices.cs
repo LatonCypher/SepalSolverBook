@@ -30,7 +30,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             /// <header 3> Why Sparse Matrices Matter </header>
             /// - **Memory Efficiency**: Storing only non-zero elements saves space.
             /// - **Computational Speed**: Operations can skip zeros, reducing processing time.
-            /// - **Applications**:
+            /// 
+            /// <header 3> Applications </header>
             ///     * Graph algorithms (adjacency matrices often sparse).
             ///     * Machine learning (e.g., text data represented as word-frequency matrices).
             ///     * Finite element analysis in engineering.
@@ -51,6 +52,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             ///     Dictionary<(int, int), double> sparseMatrix;
             /// </code>
             /// -Keys: A tuple ``(i, j)`` representing the row and column indices.
+            /// 
             /// -Values: The non-zero entry at that position.
             /// 
             /// This dictionary-based approach makes construction and updates simple,while providing fast element lookups.
@@ -58,35 +60,37 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             /// <header 3> Dynamic Conversion </header>
             /// Although the dictionary form is flexible, SepalSolver transforms the
             /// matrix into specialized formats during computation for efficiency:
+            /// 
             /// - **CSR (Compressed Sparse Row)**:
-            ///     * Used when traversing rows.
-            ///     * Ideal for matrix-vector multiplication and row slicing.
-            ///     * Example: In multiplication ``A * B``, matrix ``A`` is converted to CSR.
+            /// |   * Used when traversing rows.
+            /// |   * Ideal for matrix-vector multiplication and row slicing.
+            /// |   * Example: In multiplication ``A * B``, matrix ``A`` is converted to CSR.
+            ///     
             /// - **CSC (Compressed Sparse Column)**:
-            /// * Used when traversing columns.
-            /// * Ideal for column slicing and dot products.
-            /// * Example: In multiplication ``A * B``, matrix ``B`` is converted to CSC.
+            /// |   * Used when traversing columns.
+            /// |    * Ideal for column slicing and dot products.
+            /// |   * Example: In multiplication ``A * B``, matrix ``B`` is converted to CSC.
             /// 
             /// <header 3> Hybrid Approach </header>
             /// This design combines the strengths of both representations:
-            /// - **Flexibility**: Dictionary form is intuitive for construction and updates.
-            /// - **Performance**: CSR and CSC conversions ensure efficient heavy operations.
-            /// - **Consistency**: Results are returned in dictionary form, keeping the API uniform.
+            /// | **Flexibility**: Dictionary form is intuitive for construction and updates.
+            /// | **Performance**: CSR and CSC conversions ensure efficient heavy operations.
+            /// | **Consistency**: Results are returned in dictionary form, keeping the API uniform.
             /// 
             /// Example Workflow
             /// Matrix multiplication ``C = A * B`` proceeds as follows:
-            /// 1. ``A`` stored as dictionary → converted to CSR.
-            /// 2. ``B`` stored as dictionary → converted to CSC.
-            /// 3. Multiplication performed by traversing rows of ``A`` (CSR) and columns of ``B`` (CSC).
-            /// 4. Result ``C`` stored back as dictionary ``Dictionary<(int, int), double>``.
+            /// | 1. ``A`` stored as dictionary → converted to CSR.
+            /// | 2. ``B`` stored as dictionary → converted to CSC.
+            /// | 3. Multiplication performed by traversing rows of ``A`` (CSR) and columns of ``B`` (CSC).
+            /// | 4. Result ``C`` stored back as dictionary ``Dictionary<(int, int), double>``.
             /// 
             /// SepalSolver’s sparse matrix implementation achieves a balance betwee ease of use and computational efficiency. By starting with a dictionary and dynamically converting to CSR or CSC when needed, it provides both developer-friendly construction and high-performance operations.
             /// 
             /// <header 2> Making a ``SparseMatrix`` </header>
             /// A SparseMatrix can be made in 2 ways. 
-            /// 1. Converting an existing dense matrix into sparse matrix.
-            /// 2. From Arrays of row indices, column indices and values.  
-            /// 3. For a small matrix, you can declare and empty sparse matrix using the number of rows and columns, and then asigne each element into the matrix. 
+            /// | 1. Converting an existing dense matrix into sparse matrix.
+            /// | 2. From Arrays of row indices, column indices and values.  
+            /// | 3. For a small matrix, you can declare and empty sparse matrix using the number of rows and columns, and then asigne each element into the matrix. 
             /// 
             /// <header 3> Matrix to SpraseMatrix </header>
             /// 
@@ -149,6 +153,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             /// Just like Matrix class, LU, iLU, Cholesky and iCholesky factorization can be performed using 
             /// ``MakeLU()``, ``MakeiLU()``, ``MakeChol()``, ``MakeiChol()`` rspectively. 
             /// 
+            /// Here we look at the incomplete LU and Cholesky, since the complete form as been dealt with in dense matrices and that model carries over into sparse matrices.
             /// <code>
             {
 
