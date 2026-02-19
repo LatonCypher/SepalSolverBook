@@ -62,37 +62,37 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             /// matrix into specialized formats during computation for efficiency:
             /// 
             /// - **CSR (Compressed Sparse Row)**:
-            /// |   * Used when traversing rows.
-            /// |   * Ideal for matrix-vector multiplication and row slicing.
-            /// |   * Example: In multiplication ``A * B``, matrix ``A`` is converted to CSR.
+            ///  * Used when traversing rows.
+            ///  * Ideal for matrix-vector multiplication and row slicing.
+            ///  * Example: In multiplication ``A * B``, matrix ``A`` is converted to CSR.
             ///     
             /// - **CSC (Compressed Sparse Column)**:
-            /// |   * Used when traversing columns.
-            /// |    * Ideal for column slicing and dot products.
-            /// |   * Example: In multiplication ``A * B``, matrix ``B`` is converted to CSC.
+            ///  * Used when traversing columns.
+            ///  * Ideal for column slicing and dot products.
+            ///  * Example: In multiplication ``A * B``, matrix ``B`` is converted to CSC.
             /// 
             /// <header 3> Hybrid Approach </header>
             /// This design combines the strengths of both representations:
-            /// | **Flexibility**: Dictionary form is intuitive for construction and updates.
-            /// | **Performance**: CSR and CSC conversions ensure efficient heavy operations.
-            /// | **Consistency**: Results are returned in dictionary form, keeping the API uniform.
+            ///  **Flexibility**: Dictionary form is intuitive for construction and updates.
+            ///  **Performance**: CSR and CSC conversions ensure efficient heavy operations.
+            ///  **Consistency**: Results are returned in dictionary form, keeping the API uniform.
             /// 
             /// Example Workflow
             /// Matrix multiplication ``C = A * B`` proceeds as follows:
-            /// | 1. ``A`` stored as dictionary → converted to CSR.
-            /// | 2. ``B`` stored as dictionary → converted to CSC.
-            /// | 3. Multiplication performed by traversing rows of ``A`` (CSR) and columns of ``B`` (CSC).
-            /// | 4. Result ``C`` stored back as dictionary ``Dictionary<(int, int), double>``.
+            ///  1. ``A`` stored as dictionary → converted to CSR.
+            ///  2. ``B`` stored as dictionary → converted to CSC.
+            ///  3. Multiplication performed by traversing rows of ``A`` (CSR) and columns of ``B`` (CSC).
+            ///  4. Result ``C`` stored back as dictionary ``Dictionary<(int, int), double>``.
             /// 
             /// SepalSolver’s sparse matrix implementation achieves a balance betwee ease of use and computational efficiency. By starting with a dictionary and dynamically converting to CSR or CSC when needed, it provides both developer-friendly construction and high-performance operations.
             /// 
             /// <header 2> Making a ``SparseMatrix`` </header>
             /// A SparseMatrix can be made in 2 ways. 
-            /// | 1. Converting an existing dense matrix into sparse matrix.
-            /// | 2. From Arrays of row indices, column indices and values.  
-            /// | 3. For a small matrix, you can declare and empty sparse matrix using the number of rows and columns, and then asigne each element into the matrix. 
+            /// 1. Converting an existing dense matrix into sparse matrix.
+            /// 2. From Arrays of row indices, column indices and values.  
+            /// 3. For a small matrix, you can declare and empty sparse matrix using the number of rows and columns, and then asigne each element into the matrix. 
             /// 
-            /// <header 3> Matrix to SpraseMatrix </header>
+            /// **Matrix to SpraseMatrix**
             /// 
             /// <code>
             {
@@ -111,18 +111,18 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             }
             /// </code>
             /// 
-            /// <header 3> Rows, Columns and Values </header>
+            /// **Rows, Columns and Values**
             /// <code>
             {
                 int[] I = [0, 1, 3], J = [0, 1, 2]; double[] V = [5, 8, 3];
-                var Asparse = new SparseMatrix(I, J, V);
+                var Asparse = new SparseMatrix(I, J, V, 4, 4);
                 Console.WriteLine($" Total elements = {Asparse.Numel}");
                 Console.WriteLine($" Non-zero elements  = {Asparse.Nnz}");
                 Console.WriteLine($" Sparsity = {Asparse.sparsity}");
             }
             /// </code>
             /// 
-            /// <header 3> Assigning Values </header>
+            /// **Assigning Values**
             /// <code>
             {
                 var Asparse = SparseMatrix.Zeros(4, 4);

@@ -199,7 +199,6 @@ Lets see how to compute water influx, and generate the started water influx plot
    // define Wd function in time space.
    double EdgeClosedBoundaryRadial_Wd(double tD, double rD)
    {
-       // define the embedded laplace space solution
        double LapW(double s)
        {
            double sqrts = Sqrt(s), sqrts3 = s * sqrts;
@@ -214,6 +213,7 @@ Lets see how to compute water influx, and generate the started water influx plot
        }
        return tD == 0 ? 0 : NiLaplace(LapW, tD);
    }
+   // plotfunction 
    void PlotFunction(ColVec Rd, ColVec Td)
    {
        Matrix Wd = Rd.Select(rd => Arrayfun(tD => 
@@ -222,20 +222,20 @@ Lets see how to compute water influx, and generate the started water influx plot
        Xlabel("tD"); Ylabel("WD"); GridOn();
        Legend(Rd.Select(rd => $"rD = {rd}"), UpperLeft);
    }
-   
 
-   Subplot(2, 1, 0);
-   // define the time and radial mesh
-   double[] Rd = [2, 2.5, 3, 3.5, 4, double.PositiveInfinity]; 
-   double[] Td = Logspace(-1, 2);
-   PlotFunction(Rd, Td); Title("Dimensionless Water Influx Rd <= 4");
+   {// Compute and Plot Wd for Rd <= 4
+       Subplot(2, 1, 0);
+       double[] Rd = [2, 2.5, 3, 3.5, 4, double.PositiveInfinity];
+       double[] Td = Logspace(-1, 2);
+       PlotFunction(Rd, Td); Title("Dimensionless Water Influx Rd <= 4");
+   }
 
-
-   Subplot(2, 1, 1);
-   // define the time and radial mesh
-   Rd = [5, 6, 7, 8, 9, 10, double.PositiveInfinity]; 
-   Td = Logspace(0, 3);
-   PlotFunction(Rd, Td); Title("Dimensionless Water Influx Rd >= 4");
+   {// Compute and Plot Wd for Rd >= 5
+       Subplot(2, 1, 1);
+       double[] Rd = [5, 6, 7, 8, 9, 10, double.PositiveInfinity];
+       double[] Td = Logspace(0, 3);
+       PlotFunction(Rd, Td); Title("Dimensionless Water Influx Rd >= 5");
+   }
 
    //Save Figure
    SaveAs("Dimensionless-Water-Influx.png", 600, 900); CloseFig();
