@@ -201,7 +201,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
             /// </code>
             /// 
             /// <header 3> Cooling a Nuclear Fuel Rod </header>
-            /// Imagine a long, solid cylindrical fuel rod of radius :math:`R`. Initially, the rod is at a uniform temperature :math:`T_0`. At :math:`t = 0`, the rod is plunged into a cooling bath that keeps the outer surface at exactly :math:`0\circ C`. We want to find the temperature :math:`T(r, t)` at any radial distance r and any time :math:`t`.
+            /// Imagine a long, solid cylindrical fuel rod of radius :math:`R`. Initially, the rod is at a uniform temperature :math:`T_0`. At :math:`t = 0`, the rod is plunged into a cooling bath that keeps the outer surface at exactly :math:`0^\circ C`. We want to find the temperature :math:`T(r, t)` at any radial distance r and any time :math:`t`.
+            /// 
             /// * **1.The Governing Equation** The heat conduction in the rod(assuming no variation along the length) is governed by: 
             /// <math>
             ///     \cfrac{\partial T}{\partial t} = \alpha \left(\cfrac{\partial^2 T}{\partial r^2}  + \cfrac{1}{r} \cfrac{\partial T}{\partial t} \right)

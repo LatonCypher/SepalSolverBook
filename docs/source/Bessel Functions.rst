@@ -250,7 +250,8 @@ Lets see how to compute water influx, and generate the started water influx plot
 
 Cooling a Nuclear Fuel Rod
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-Imagine a long, solid cylindrical fuel rod of radius :math:`R`. Initially, the rod is at a uniform temperature :math:`T_0`. At :math:`t = 0`, the rod is plunged into a cooling bath that keeps the outer surface at exactly :math:`0\circ C`. We want to find the temperature :math:`T(r, t)` at any radial distance r and any time :math:`t`.
+Imagine a long, solid cylindrical fuel rod of radius :math:`R`. Initially, the rod is at a uniform temperature :math:`T_0`. At :math:`t = 0`, the rod is plunged into a cooling bath that keeps the outer surface at exactly :math:`0^\circ C`. We want to find the temperature :math:`T(r, t)` at any radial distance r and any time :math:`t`.
+
 * **1.The Governing Equation** The heat conduction in the rod(assuming no variation along the length) is governed by: 
 
 .. math::

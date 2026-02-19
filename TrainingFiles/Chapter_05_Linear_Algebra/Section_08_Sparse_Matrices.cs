@@ -7,6 +7,7 @@ using ScottPlot.TickGenerators.TimeUnits;
 using ScottPlot.Triangulation;
 using SepalSolver;
 using System.Runtime.Intrinsics.Arm;
+using System.Xml.Linq;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
 {
@@ -15,8 +16,142 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
         public static void Run()
         {
             /// <BookContent>
+            /// A **sparse matrix** is a type of matrix in which most of the elements are zero.
+            /// This contrasts with a **dense matrix**, where most elements are non-zero.
+            /// Sparse matrices are common in scientific computing, data science, and machine 
+            /// learning because many real-world problems naturally produce matrices with lots
+            /// of zeros.
+            /// 
+            /// <header 3> Key Characteristics </header>
+            /// - **Definition**: A matrix with significantly more zero elements than non-zero ones.
+            /// - **Sparsity**: The proportion of zero elements in the matrix.
+            /// - **Density**: The proportion of non-zero elements. For example, a matrix with 74% zeros has 26% density.
+            /// 
+            /// <header 3> Why Sparse Matrices Matter </header>
+            /// - **Memory Efficiency**: Storing only non-zero elements saves space.
+            /// - **Computational Speed**: Operations can skip zeros, reducing processing time.
+            /// - **Applications**:
+            ///     * Graph algorithms (adjacency matrices often sparse).
+            ///     * Machine learning (e.g., text data represented as word-frequency matrices).
+            ///     * Finite element analysis in engineering.
+            ///     
+            /// 
+            /// <header 3> Common Representations </header>
+            /// Instead of storing all elements, sparse matrices are represented using specialized data structures:
+            /// <table>
+            /// Representation                 | Description                                                      | Example Use Case          
+            /// Coordinate List (COO)          | Stores row, column, and value of non-zero entries.               | Quick construction of sparse matrices 
+            /// Compressed Sparse Row (CSR)    | Stores non-zero values with row pointers.                        | Efficient row slicing and matrix-vector multiplication.
+            /// Compressed Sparse Column (CSC) | Similar to CSR but column-based.                                 | Useful for column operations.        
+            /// Linked List Representation     | Each non-zero element stored as a node with row/column indices.  | Flexible but less efficient.
+            /// </table>
+            /// 
+            /// SepalSolver represents sparse matrices using a **Dictionary**:
+            /// <code>
+            ///     Dictionary<(int, int), double> sparseMatrix;
+            /// </code>
+            /// -Keys: A tuple ``(i, j)`` representing the row and column indices.
+            /// -Values: The non-zero entry at that position.
+            /// 
+            /// This dictionary-based approach makes construction and updates simple,while providing fast element lookups.
+            /// 
+            /// <header 3> Dynamic Conversion </header>
+            /// Although the dictionary form is flexible, SepalSolver transforms the
+            /// matrix into specialized formats during computation for efficiency:
+            /// - **CSR (Compressed Sparse Row)**:
+            ///     * Used when traversing rows.
+            ///     * Ideal for matrix-vector multiplication and row slicing.
+            ///     * Example: In multiplication ``A * B``, matrix ``A`` is converted to CSR.
+            /// - **CSC (Compressed Sparse Column)**:
+            /// * Used when traversing columns.
+            /// * Ideal for column slicing and dot products.
+            /// * Example: In multiplication ``A * B``, matrix ``B`` is converted to CSC.
+            /// 
+            /// <header 3> Hybrid Approach </header>
+            /// This design combines the strengths of both representations:
+            /// - **Flexibility**: Dictionary form is intuitive for construction and updates.
+            /// - **Performance**: CSR and CSC conversions ensure efficient heavy operations.
+            /// - **Consistency**: Results are returned in dictionary form, keeping the API uniform.
+            /// 
+            /// Example Workflow
+            /// Matrix multiplication ``C = A * B`` proceeds as follows:
+            /// 1. ``A`` stored as dictionary → converted to CSR.
+            /// 2. ``B`` stored as dictionary → converted to CSC.
+            /// 3. Multiplication performed by traversing rows of ``A`` (CSR) and columns of ``B`` (CSC).
+            /// 4. Result ``C`` stored back as dictionary ``Dictionary<(int, int), double>``.
+            /// 
+            /// SepalSolver’s sparse matrix implementation achieves a balance betwee ease of use and computational efficiency. By starting with a dictionary and dynamically converting to CSR or CSC when needed, it provides both developer-friendly construction and high-performance operations.
+            /// 
+            /// <header 2> Making a ``SparseMatrix`` </header>
+            /// A SparseMatrix can be made in 2 ways. 
+            /// 1. Converting an existing dense matrix into sparse matrix.
+            /// 2. From Arrays of row indices, column indices and values.  
+            /// 3. For a small matrix, you can declare and empty sparse matrix using the number of rows and columns, and then asigne each element into the matrix. 
+            /// 
+            /// <header 3> Matrix to SpraseMatrix </header>
+            /// 
             /// <code>
             {
+                Matrix A = new double[,]
+                {
+                    { 5,  0,  0,  0 },
+                    { 0,  8,  0,  0 },
+                    { 0,  0,  0,  0 },
+                    { 0,  0,  3,  0 }
+                };
+
+                var Asparse = Sparse(A);
+                Console.WriteLine($" Total elements = {Asparse.Numel}");
+                Console.WriteLine($" Non-zero elements  = {Asparse.Nnz}");
+                Console.WriteLine($" Sparsity = {Asparse.sparsity}");
+            }
+            /// </code>
+            /// 
+            /// <header 3> Rows, Columns and Values </header>
+            /// <code>
+            {
+                int[] I = [0, 1, 3], J = [0, 1, 2]; double[] V = [5, 8, 3];
+                var Asparse = new SparseMatrix(I, J, V);
+                Console.WriteLine($" Total elements = {Asparse.Numel}");
+                Console.WriteLine($" Non-zero elements  = {Asparse.Nnz}");
+                Console.WriteLine($" Sparsity = {Asparse.sparsity}");
+            }
+            /// </code>
+            /// 
+            /// <header 3> Assigning Values </header>
+            /// <code>
+            {
+                var Asparse = SparseMatrix.Zeros(4, 4);
+                Asparse[0, 0] = 5;
+                Asparse[1, 1] = 8;
+                Asparse[3, 2] = 3;
+                Console.WriteLine($" Total elements = {Asparse.Numel}");
+                Console.WriteLine($" Non-zero elements  = {Asparse.Nnz}");
+                Console.WriteLine($" Sparsity = {Asparse.sparsity}");
+            }
+            /// </code>
+            /// SepalSolver also has inbuilt Sparsematrices that can be loaded without manually creating them as started above.
+            /// examples of these are : Squid and Bucky
+            /// 
+            /// <header 2> Visualisation </header>
+            /// SparseMatrices sparsity partterns can be visualized using Spy in the Plotlibrary. 
+            /// <code>
+            {
+                var A = SparseMatrix.Squid();
+                Spy(A);
+                SaveAs("Squid-Pattern.png");
+            }
+            /// </code>
+            /// <header 2> Arithmetic Operation </header>
+            /// All Operations supported by the Matrix class is also supported by the SparseMatrix Class. In addition to the standard matrix operation, sparse matrices can be reordered. Reordering is done to reduce fillin during matrix factorization.
+            /// 
+            /// <header 3> LU, iLU, Cholesky and iCholesky Factorization </header>
+            /// Just like Matrix class, LU, iLU, Cholesky and iCholesky factorization can be performed using 
+            /// ``MakeLU()``, ``MakeiLU()``, ``MakeChol()``, ``MakeiChol()`` rspectively. 
+            /// 
+            /// <code>
+            {
+
                 // Incomplete LU Factorization of a Sparse Matrix
                 Matrix A = new double[,] { {  5, -2,  0, -2, -2},
                                            { -2,  5, -2,  0,  0},
@@ -280,3 +415,5 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
         }
     }
 }
+
+
