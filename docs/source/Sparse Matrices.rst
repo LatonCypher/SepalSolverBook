@@ -76,11 +76,12 @@ matrix into specialized formats during computation for efficiency:
 Hybrid Approach
 ~~~~~~~~~~~~~~~
 This design combines the strengths of both representations:
-**Flexibility**: Dictionary form is intuitive for construction and updates.
-**Performance**: CSR and CSC conversions ensure efficient heavy operations.
-**Consistency**: Results are returned in dictionary form, keeping the API uniform.
+* **Flexibility**: Dictionary form is intuitive for construction and updates.
+* **Performance**: CSR and CSC conversions ensure efficient heavy operations.
+* **Consistency**: Results are returned in dictionary form, keeping the API uniform.
 
 Example Workflow
+
 Matrix multiplication ``C = A * B`` proceeds as follows:
 1. ``A`` stored as dictionary → converted to CSR.
 2. ``B`` stored as dictionary → converted to CSC.
@@ -91,7 +92,7 @@ SepalSolver’s sparse matrix implementation achieves a balance betwee ease of u
 
 Making a ``SparseMatrix``
 -------------------------
-A SparseMatrix can be made in 2 ways. 
+A SparseMatrix can be made in the following ways: 
 1. Converting an existing dense matrix into sparse matrix.
 2. From Arrays of row indices, column indices and values.  
 3. For a small matrix, you can declare and empty sparse matrix using the number of rows and columns, and then asigne each element into the matrix. 
@@ -195,11 +196,14 @@ Here we look at the incomplete LU and Cholesky, since the complete form as been 
 
 
    // Incomplete LU Factorization of a Sparse Matrix
-   Matrix A = new double[,] { {  5, -2,  0, -2, -2},
-                              { -2,  5, -2,  0,  0},
-                              {  0, -2,  5, -2,  0},
-                              { -2,  0, -2,  5, -2},
-                              { -2,  0,  0, -2,  5} };
+   Matrix A = new double[,]
+   {
+       {  5,  0,  0,  0,  0},
+       { -2,  5,  0,  0,  0},
+       {  0, -2,  5,  0,  0},
+       { -2,  0, -2,  5,  0},
+       { -2,  0,  0, -2,  5}
+   };
 
    SparseMatrix B = new(A);
    B.MakeiLU();
@@ -221,23 +225,23 @@ Ouput
    L = 
       1.0000    0.0000    0.0000    0.0000    0.0000
      -0.4000    1.0000    0.0000    0.0000    0.0000
-      0.0000   -0.4762    1.0000    0.0000    0.0000
-     -0.4000    0.0000   -0.4941    1.0000    0.0000
-     -0.4000    0.0000    0.0000   -0.8718    1.0000
+      0.0000   -0.4000    1.0000    0.0000    0.0000
+     -0.4000    0.0000   -0.4000    1.0000    0.0000
+     -0.4000    0.0000    0.0000   -0.4000    1.0000
    
    U = 
-      5.0000   -2.0000    0.0000   -2.0000   -2.0000
-      0.0000    4.2000   -2.0000    0.0000    0.0000
-      0.0000    0.0000    4.0476   -2.0000    0.0000
-      0.0000    0.0000    0.0000    3.2118   -2.8000
-      0.0000    0.0000    0.0000    0.0000    1.7590
+    5   0   0   0   0 
+    0   5   0   0   0 
+    0   0   5   0   0 
+    0   0   0   5   0 
+    0   0   0   0   5 
    
    L * U = 
-      5.0000   -2.0000    0.0000   -2.0000   -2.0000
-     -2.0000    5.0000   -2.0000    0.8000    0.8000
-      0.0000   -2.0000    5.0000   -2.0000    0.0000
-     -2.0000    0.8000   -2.0000    5.0000   -2.0000
-     -2.0000    0.8000    0.0000   -2.0000    5.0000
+    5   0   0   0   0 
+   -2   5   0   0   0 
+    0  -2   5   0   0 
+   -2   0  -2   5   0 
+   -2   0   0  -2   5 
    
 
 .. figure:: images/L_from_Incomplete_LU_Factorization_of_B.png
@@ -254,11 +258,14 @@ Ouput
 .. code-block:: csharp
 
    // Incomplete Cholesky Factorization of a Sparse Matrix
-   Matrix A = new double[,] { {  5,  0,  0,  0,  0},
-                              { -2,  5,  0,  0,  0},
-                              {  0, -2,  5,  0,  0},
-                              { -2,  0, -2,  5,  0},
-                              { -2,  0,  0, -2,  5}};
+   Matrix A = new double[,]
+   {
+       {  5,  0,  0,  0,  0},
+       { -2,  5,  0,  0,  0},
+       {  0, -2,  5,  0,  0},
+       { -2,  0, -2,  5,  0},
+       { -2,  0,  0, -2,  5}
+   };
 
    SparseMatrix B = new(A);
    B.MakeiChol();
@@ -319,11 +326,14 @@ Ouput
 
 .. code-block:: csharp
 
-   Matrix A = new double[,] { { 22.7345,    1.8859,         0,         0,    1.3000 },
-                              {  1.8859,   22.2340,    2.0461,         0,         0 },
-                              {       0,     2.0461,   22.7591,    2.4606,         0 },
-                              {       0,          0,    2.4606,   22.5848,    2.2768 },
-                              {  1.3000,          0,         0,    2.2768,   22.4853 } };
+   Matrix A = new double[,] 
+   { 
+       { 22.7345,    1.8859,         0,         0,    1.3000 },
+       {  1.8859,   22.2340,    2.0461,         0,         0 },
+       {       0,    2.0461,   22.7591,    2.4606,         0 },
+       {       0,         0,    2.4606,   22.5848,    2.2768 },
+       {  1.3000,         0,         0,    2.2768,   22.4853 } 
+   };
 
    SparseMatrix B = new (A);
    B.MakeChol();

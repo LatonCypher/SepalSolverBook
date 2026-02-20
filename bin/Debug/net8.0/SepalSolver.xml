@@ -8007,7 +8007,7 @@
             <param name="_y"></param>
             <param name="_z"></param>
         </member>
-        <member name="M:SepalSolver.Matrix.Chol_Rank1Update(SepalSolver.Matrix)">
+        <member name="M:SepalSolver.Matrix.Chol_Rank1Update(SepalSolver.Matrix,System.Char)">
             <summary>
             
             </summary>

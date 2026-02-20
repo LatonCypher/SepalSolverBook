@@ -73,24 +73,25 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             /// 
             /// <header 3> Hybrid Approach </header>
             /// This design combines the strengths of both representations:
-            ///  **Flexibility**: Dictionary form is intuitive for construction and updates.
-            ///  **Performance**: CSR and CSC conversions ensure efficient heavy operations.
-            ///  **Consistency**: Results are returned in dictionary form, keeping the API uniform.
+            ///  * **Flexibility**: Dictionary form is intuitive for construction and updates.
+            ///  * **Performance**: CSR and CSC conversions ensure efficient heavy operations.
+            ///  * **Consistency**: Results are returned in dictionary form, keeping the API uniform.
             /// 
             /// Example Workflow
+            /// 
             /// Matrix multiplication ``C = A * B`` proceeds as follows:
-            ///  1. ``A`` stored as dictionary → converted to CSR.
-            ///  2. ``B`` stored as dictionary → converted to CSC.
-            ///  3. Multiplication performed by traversing rows of ``A`` (CSR) and columns of ``B`` (CSC).
-            ///  4. Result ``C`` stored back as dictionary ``Dictionary<(int, int), double>``.
+            ///     1. ``A`` stored as dictionary → converted to CSR.
+            ///     2. ``B`` stored as dictionary → converted to CSC.
+            ///     3. Multiplication performed by traversing rows of ``A`` (CSR) and columns of ``B`` (CSC).
+            ///     4. Result ``C`` stored back as dictionary ``Dictionary<(int, int), double>``.
             /// 
             /// SepalSolver’s sparse matrix implementation achieves a balance betwee ease of use and computational efficiency. By starting with a dictionary and dynamically converting to CSR or CSC when needed, it provides both developer-friendly construction and high-performance operations.
             /// 
             /// <header 2> Making a ``SparseMatrix`` </header>
-            /// A SparseMatrix can be made in 2 ways. 
-            /// 1. Converting an existing dense matrix into sparse matrix.
-            /// 2. From Arrays of row indices, column indices and values.  
-            /// 3. For a small matrix, you can declare and empty sparse matrix using the number of rows and columns, and then asigne each element into the matrix. 
+            /// A SparseMatrix can be made in the following ways: 
+            ///     1. Converting an existing dense matrix into sparse matrix.
+            ///     2. From Arrays of row indices, column indices and values.  
+            ///     3. For a small matrix, you can declare and empty sparse matrix using the number of rows and columns, and then asigne each element into the matrix. 
             /// 
             /// **Matrix to SpraseMatrix**
             /// 
@@ -158,11 +159,14 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             {
 
                 // Incomplete LU Factorization of a Sparse Matrix
-                Matrix A = new double[,] { {  5, -2,  0, -2, -2},
-                                           { -2,  5, -2,  0,  0},
-                                           {  0, -2,  5, -2,  0},
-                                           { -2,  0, -2,  5, -2},
-                                           { -2,  0,  0, -2,  5} };
+                Matrix A = new double[,]
+                {
+                    {  5,  0,  0,  0,  0},
+                    { -2,  5,  0,  0,  0},
+                    {  0, -2,  5,  0,  0},
+                    { -2,  0, -2,  5,  0},
+                    { -2,  0,  0, -2,  5}
+                };
 
                 SparseMatrix B = new(A);
                 B.MakeiLU();
@@ -181,11 +185,14 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             /// <code>
             {
                 // Incomplete Cholesky Factorization of a Sparse Matrix
-                Matrix A = new double[,] { {  5,  0,  0,  0,  0},
-                                           { -2,  5,  0,  0,  0},
-                                           {  0, -2,  5,  0,  0},
-                                           { -2,  0, -2,  5,  0},
-                                           { -2,  0,  0, -2,  5}};
+                Matrix A = new double[,]
+                {
+                    {  5,  0,  0,  0,  0},
+                    { -2,  5,  0,  0,  0},
+                    {  0, -2,  5,  0,  0},
+                    { -2,  0, -2,  5,  0},
+                    { -2,  0,  0, -2,  5}
+                };
 
                 SparseMatrix B = new(A);
                 B.MakeiChol();
@@ -200,11 +207,14 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             /// 
             /// <code>
             {
-                Matrix A = new double[,] { { 22.7345,    1.8859,         0,         0,    1.3000 },
-                                           {  1.8859,   22.2340,    2.0461,         0,         0 },
-                                           {       0,     2.0461,   22.7591,    2.4606,         0 },
-                                           {       0,          0,    2.4606,   22.5848,    2.2768 },
-                                           {  1.3000,          0,         0,    2.2768,   22.4853 } };
+                Matrix A = new double[,] 
+                { 
+                    { 22.7345,    1.8859,         0,         0,    1.3000 },
+                    {  1.8859,   22.2340,    2.0461,         0,         0 },
+                    {       0,    2.0461,   22.7591,    2.4606,         0 },
+                    {       0,         0,    2.4606,   22.5848,    2.2768 },
+                    {  1.3000,         0,         0,    2.2768,   22.4853 } 
+                };
 
                 SparseMatrix B = new (A);
                 B.MakeChol();
