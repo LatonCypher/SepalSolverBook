@@ -67,7 +67,7 @@ Using SepalSolver, we call Chol on an instance of the matrix.
           {  1.3000,         0,         0,    2.2768,   22.4853 }
       };
       Matrix L = Chol(A);
-      Console.WriteLine(L);
+      Console.WriteLine($"Cholesky Factor L = {L}");
       if(A.IsPosDef)
           Console.WriteLine("A is positive definite");
    
@@ -76,6 +76,12 @@ Using SepalSolver, we call Chol on an instance of the matrix.
    
    .. terminal::
    
+      Cholesky Factor L = 
+         4.7681    0.0000    0.0000    0.0000    0.0000
+         0.3955    4.6987    0.0000    0.0000    0.0000
+         0.0000    0.4355    4.7507    0.0000    0.0000
+         0.0000    0.0000    0.5179    4.7240    0.0000
+         0.2726   -0.0230    0.0021    0.4817    4.7094
       
       A is positive definite
 

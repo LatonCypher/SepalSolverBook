@@ -62,7 +62,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
                     {  1.3000,         0,         0,    2.2768,   22.4853 }
                 };
                 Matrix L = Chol(A);
-                Console.WriteLine(L);
+                Console.WriteLine($"Cholesky Factor L = {L}");
                 if(A.IsPosDef)
                     Console.WriteLine("A is positive definite");
             }
