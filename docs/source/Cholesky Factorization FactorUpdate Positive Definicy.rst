@@ -33,22 +33,22 @@ Properties
    
    .. math::
    
-      A = \begin{ bmatrix}
+      A = \begin{bmatrix}
       4 & 12 & -16  \\
       12 & 37 & -43 \\
       -16 & -43 & 98
-      \end{ bmatrix}
+      \end{bmatrix}
    
    
    Its Cholesky factorization is:
    
    .. math::
    
-      L = \begin{ bmatrix}
+      L = \begin{bmatrix}
       2 & 0 & 0 \\
       6 & 1 & 0 \\
       -8 & 5 & 3
-      \end{ bmatrix}
+      \end{bmatrix}
    
 
 Using SepalSolver, we call Chol on an instance of the matrix. 
@@ -66,8 +66,10 @@ Using SepalSolver, we call Chol on an instance of the matrix.
           {       0,         0,    2.4606,   22.5848,    2.2768 },
           {  1.3000,         0,         0,    2.2768,   22.4853 }
       };
-      Matrix R = Chol(A);
-      Console.WriteLine(R);
+      Matrix L = Chol(A);
+      Console.WriteLine(L);
+      if(A.IsPosDef)
+          Console.WriteLine("A is positive definite");
    
    
    Ouput
@@ -75,6 +77,7 @@ Using SepalSolver, we call Chol on an instance of the matrix.
    .. terminal::
    
       
+      A is positive definite
 
 Like LU factors, Cholesky factors can be updated too, when the Matrix undergoes rank1 update. 
 
