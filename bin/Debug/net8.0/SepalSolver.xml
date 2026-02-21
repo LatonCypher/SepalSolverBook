@@ -8013,7 +8013,7 @@
             </summary>
             <param name="DelA"></param>
         </member>
-        <member name="M:SepalSolver.Matrix.Chol_Rank1Update(System.Double,SepalSolver.ColVec)">
+        <member name="M:SepalSolver.Matrix.Chol_Rank1Update(System.Double,SepalSolver.ColVec,System.Char)">
             <summary>
             
             </summary>
@@ -12147,6 +12147,19 @@
             <summary>
             Cholesky Decomposition
             </summary>
+        </member>
+        <member name="M:SepalSolver.SparseMatrix.Chol_Rank1Update(SepalSolver.Matrix,System.Char)">
+            <summary>
+            
+            </summary>
+            <param name="DelA"></param>
+        </member>
+        <member name="M:SepalSolver.SparseMatrix.Chol_Rank1Update(System.Double,SepalSolver.ColVec,System.Char)">
+            <summary>
+            
+            </summary>
+            <param name="alpha"></param>
+            <param name="_y"></param>
         </member>
         <member name="M:SepalSolver.SparseMatrix.MakeiChol">
             <summary>
