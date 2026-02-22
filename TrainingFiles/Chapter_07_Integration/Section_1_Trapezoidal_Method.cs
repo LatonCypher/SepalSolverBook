@@ -47,12 +47,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             ///     
             /// where :math:`\xi` is some number in the interval :math:`[a, b]`. This indicates that the method is :math: `O(h^2)`, meaning that halving the step size :math:`h` will approximately reduce the error by a factor of four.
             /// 
-            /// Comparison of Numerical Integration Methods
+            /// 
+            /// <table> Comparison of Numerical Integration Methods
             /// Method         | Accuracy Order        | Weighting Logic  
             /// Left Riemann   | :math:`O(h)`          | Uses :math:`f(x_{ i-1})` 
             /// Trapezoidal    | :math:`O(h^2)`        | Average of endpoints 
             /// Simpson's      | :math:`O(h^4)`        | Parabolic fit (1-4-1) 
-            /// 
+            /// </table>
             /// <note>
             /// When using discrete data where the spacing :math: h is not constant, the manual summation above must be adjusted, or you should use SepalSolver's `Trapz(x, y)` function, which handles non-uniform spacing automatically.
             /// </note>
@@ -62,12 +63,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
 
                 // Define the function to be integrated
                 Func<double, double> f = x => Sin(x);
-                // Define the limits of integration
-                double a = 0, b = pi;
                 // Perform the integration using the trapezoidal rule
-                double result = Trapz(f, a, b);
+                double result = Trapz(f, 0, pi);
                 // Print the result
-                Console.WriteLine($"The integral of sin(x) from {a} to {b} is approximately {result}");
+                Console.WriteLine($"The integral of sin(x) from {0} to pi is approximately {result}");
             }
             /// </code>
             /// </BookContent>       
