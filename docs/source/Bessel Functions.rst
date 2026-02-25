@@ -219,7 +219,7 @@ Lets see how to compute water influx, and generate the started water influx plot
        Matrix Wd = Rd.Select(rd => Arrayfun(tD => 
            EdgeClosedBoundaryRadial_Wd(tD, rd), Td)).ToList();
        SemiLogx(Td, Wd, Linewidth: 2);
-       Xlabel("tD"); Ylabel("WD"); GridOn();
+       Xlabel("tD"); Ylabel("WD"); GridOn(); MinorGridOn();
        Legend(Rd.Select(rd => $"rD = {rd}"), UpperLeft);
    }
 

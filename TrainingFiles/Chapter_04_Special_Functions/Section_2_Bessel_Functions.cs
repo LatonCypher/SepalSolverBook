@@ -175,7 +175,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                     Matrix Wd = Rd.Select(rd => Arrayfun(tD => 
                         EdgeClosedBoundaryRadial_Wd(tD, rd), Td)).ToList();
                     SemiLogx(Td, Wd, Linewidth: 2);
-                    Xlabel("tD"); Ylabel("WD"); GridOn();
+                    Xlabel("tD"); Ylabel("WD"); GridOn(); MinorGridOn();
                     Legend(Rd.Select(rd => $"rD = {rd}"), UpperLeft);
                 }
 

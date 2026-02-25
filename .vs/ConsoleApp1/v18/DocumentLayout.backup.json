@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_04_special_functions\\section_2_bessel_functions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_04_special_functions\\section_2_bessel_functions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DDD32B16-435B-4381-AAFD-BCA31F6F8B73}|..\\SPE_Faculty_Industry\\SPE_Faculty_Industry.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\spe_faculty_industry\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_04_special_functions\\section_2_bessel_functions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_04_special_functions\\section_2_bessel_functions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DDD32B16-435B-4381-AAFD-BCA31F6F8B73}|..\\SPE_Faculty_Industry\\SPE_Faculty_Industry.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\spe_faculty_industry\\spe_faculty_industry.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
@@ -53,19 +57,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\Program.cs*",
+              "RelativeToolTip": "Program.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T11:41:47.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Section_2_Bessel_Functions.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_04_Special_Functions\\Section_2_Bessel_Functions.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_04_Special_Functions\\Section_2_Bessel_Functions.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_04_Special_Functions\\Section_2_Bessel_Functions.cs",
               "RelativeToolTip": "TrainingFiles\\Chapter_04_Special_Functions\\Section_2_Bessel_Functions.cs",
-              "ViewState": "AgIAAK4AAAAAAAAAAAAAAMEAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAALAAAAAAAAAAAAAAALEAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-25T11:04:47.902Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "SPE_Faculty_Industry",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SPE_Faculty_Industry\\SPE_Faculty_Industry.csproj",
               "RelativeDocumentMoniker": "..\\SPE_Faculty_Industry\\SPE_Faculty_Industry.csproj",
@@ -84,7 +101,7 @@
               "RelativeDocumentMoniker": "..\\SPE_Faculty_Industry\\Program.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SPE_Faculty_Industry\\Program.cs",
               "RelativeToolTip": "..\\SPE_Faculty_Industry\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAAB8AAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-25T09:04:00.817Z",
               "EditorCaption": ""
