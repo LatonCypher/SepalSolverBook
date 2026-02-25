@@ -13,7 +13,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             /// The Trapezoidal Rule is a numerical method used to approximate the definiintegral of a function. It works by approximating the region under the graph of the function :math: f(x) as a trapezoid and calculating its area.
             /// 
             /// <header 3> Mathematical Definition </header>
-            /// To compute the integral over the interval :math:`[a, b]`, we partition the interval into :math:`n` sub-intervals, each of width :math:`h = \frac{b-a}{n}`. The composite trapezoidal rule is defined as:
+            /// To compute the integral over the interval :math:`[a, b]`, we partition the interval into :math:`n` sub-intervals, each of width :math:`h = \cfrac{b-a}{n}`. The composite trapezoidal rule is defined as:
             /// <math>
             ///     \int_{a}^{b}f(x) , dx \approx \cfrac{h}{2} \left[f(x_0) + 2 \sum_{i=1}^{n-1} f(x_i) + f(x_n) \right]
             /// </math>

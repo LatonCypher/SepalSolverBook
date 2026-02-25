@@ -183,14 +183,16 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                     Subplot(2, 1, 0);
                     double[] Rd = [2, 2.5, 3, 3.5, 4, double.PositiveInfinity];
                     double[] Td = Logspace(-1, 2);
-                    PlotFunction(Rd, Td); Title("Dimensionless Water Influx Rd <= 4");
+                    PlotFunction(Rd, Td); Axis([0.1, 100, 1, 8]);
+                    Title("Dimensionless Water Influx Rd <= 4");
                 }
 
                 {// Compute and Plot Wd for Rd >= 5
                     Subplot(2, 1, 1);
                     double[] Rd = [5, 6, 7, 8, 9, 10, double.PositiveInfinity];
                     double[] Td = Logspace(0, 3);
-                    PlotFunction(Rd, Td); Title("Dimensionless Water Influx Rd >= 5");
+                    PlotFunction(Rd, Td); Axis([1, 1000, 0, 70]);
+                    Title("Dimensionless Water Influx Rd >= 5");
                 }
 
                 //Save Figure

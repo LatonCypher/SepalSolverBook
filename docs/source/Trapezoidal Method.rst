@@ -7,7 +7,7 @@ The Trapezoidal Rule is a numerical method used to approximate the definiintegra
 
 Mathematical Definition
 ~~~~~~~~~~~~~~~~~~~~~~~
-To compute the integral over the interval :math:`[a, b]`, we partition the interval into :math:`n` sub-intervals, each of width :math:`h = \frac{b-a}{n}`. The composite trapezoidal rule is defined as:
+To compute the integral over the interval :math:`[a, b]`, we partition the interval into :math:`n` sub-intervals, each of width :math:`h = \cfrac{b-a}{n}`. The composite trapezoidal rule is defined as:
 
 .. math::
 

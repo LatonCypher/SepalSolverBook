@@ -4442,6 +4442,15 @@
              </terminal>
              </example>
         </member>
+        <member name="M:SepalSolver.Math.Ei(System.Double)">
+            <summary>
+            Calculates the exponential integral of a specified positive value.
+            </summary>
+            <remarks>The exponential integral is defined only for positive values of x. This function is
+            commonly used in mathematical, physical, and engineering applications.</remarks>
+            <param name="x">The value for which to compute the exponential integral. Must be greater than zero.</param>
+            <returns>The value of the exponential integral evaluated at the specified input.</returns>
+        </member>
         <member name="M:SepalSolver.Math.Zeta(System.Double)">
              <summary>
              Computes the Riemann zeta function ζ(x), which is defined as the infinite series ζ(x) = Σ(n=1 to ∞) 1/n^x for x > 1.
@@ -5821,13 +5830,6 @@
              </terminal>
              </example>
         </member>
-        <member name="M:SepalSolver.Complex.op_Implicit(System.Double)~SepalSolver.Complex">
-            <summary>
-            Implicit operator for conversion from double to complex
-            </summary>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
         <member name="M:SepalSolver.Complex.CompareTo(SepalSolver.Complex)">
             <summary>
             Compares the current complex number to another complex number.
@@ -6453,22 +6455,6 @@
             <param name="c2"></param>
             <returns></returns>
         </member>
-        <member name="M:SepalSolver.Complex.op_Addition(SepalSolver.Complex,System.Double)">
-            <summary>
-            
-            </summary>
-            <param name="c1"></param>
-            <param name="d"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Complex.op_Addition(System.Double,SepalSolver.Complex)">
-            <summary>
-            
-            </summary>
-            <param name="d"></param>
-            <param name="c"></param>
-            <returns></returns>
-        </member>
         <member name="M:SepalSolver.Complex.op_UnaryNegation(SepalSolver.Complex)">
             <summary>
             
@@ -6484,44 +6470,12 @@
             <param name="c2"></param>
             <returns></returns>
         </member>
-        <member name="M:SepalSolver.Complex.op_Subtraction(SepalSolver.Complex,System.Double)">
-            <summary>
-            
-            </summary>
-            <param name="c"></param>
-            <param name="d"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Complex.op_Subtraction(System.Double,SepalSolver.Complex)">
-            <summary>
-            
-            </summary>
-            <param name="d"></param>
-            <param name="c"></param>
-            <returns></returns>
-        </member>
         <member name="M:SepalSolver.Complex.op_Multiply(SepalSolver.Complex,SepalSolver.Complex)">
             <summary>
             
             </summary>
             <param name="c1"></param>
             <param name="c2"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Complex.op_Multiply(System.Double,SepalSolver.Complex)">
-            <summary>
-            
-            </summary>
-            <param name="d"></param>
-            <param name="c1"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Complex.op_Multiply(SepalSolver.Complex,System.Double)">
-            <summary>
-            
-            </summary>
-            <param name="c"></param>
-            <param name="d"></param>
             <returns></returns>
         </member>
         <member name="M:SepalSolver.Complex.op_Division(SepalSolver.Complex,SepalSolver.Complex)">
@@ -6532,42 +6486,10 @@
             <param name="c2"></param>
             <returns></returns>
         </member>
-        <member name="M:SepalSolver.Complex.op_Division(System.Double,SepalSolver.Complex)">
-            <summary>
-            
-            </summary>
-            <param name="d"></param>
-            <param name="c"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Complex.op_Division(SepalSolver.Complex,System.Double)">
-            <summary>
-            
-            </summary>
-            <param name="c1"></param>
-            <param name="d"></param>
-            <returns></returns>
-        </member>
         <member name="M:SepalSolver.Complex.op_OnesComplement(SepalSolver.Complex)">
             <summary>
             
             </summary>
-            <param name="c1"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Complex.op_ExclusiveOr(SepalSolver.Complex,System.Double)">
-            <summary>
-            
-            </summary>
-            <param name="c1"></param>
-            <param name="N"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Complex.op_ExclusiveOr(System.Double,SepalSolver.Complex)">
-            <summary>
-            
-            </summary>
-            <param name="N"></param>
             <param name="c1"></param>
             <returns></returns>
         </member>
@@ -11628,16 +11550,6 @@
             
             </summary>
             <param name="value"></param>
-        </member>
-        <member name="M:SepalSolver.SparseMatrix.#ctor(System.Int32[],System.Int32[],System.Double[],System.Nullable{System.Int32},System.Nullable{System.Int32})">
-            <summary>
-            
-            </summary>
-            <param name="_rows"></param>
-            <param name="_cols"></param>
-            <param name="entry"></param>
-            <param name="nrows"></param>
-            <param name="ncols"></param>
         </member>
         <member name="M:SepalSolver.SparseMatrix.#ctor(SepalSolver.Indexer,SepalSolver.Indexer,SepalSolver.ColVec,System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
