@@ -28,9 +28,9 @@
             /// 
             /// **Numerical Example:**
             /// Given:
-            /// - :math:`J = 2 \, \text{STB/day/psi}`
-            /// - :math:`p_r = 3000 \, \text{psi}`
-            /// - :math:`p_{wf} = 2500 \, \text{psi}`
+            /// -:math:`J = 2 \, \text{STB/day/psi}`
+            /// -:math:`p_r = 3000 \, \text{psi}`
+            /// -:math:`p_{wf} = 2500 \, \text{psi}`
             /// 
             /// <math>
             ///     q = 2 \cdot (3000 - 2500) = 1000 \, \text{STB/day}
@@ -53,7 +53,7 @@
             /// </math>
             /// 
             /// Where:
-            /// - :math:`q_{max}` = maximum flow rate at :math:`p_{wf} = 0`
+            /// -:math:`q_{max}` = maximum flow rate at :math:`p_{wf} = 0`
             /// 
             /// **Numerical Example:**
             /// Given:
@@ -64,9 +64,8 @@
             /// - :math:`p_{wf} = 1000 \, \text{psi}`
             /// 
             /// <math>
-            ///      \frac{q}{2000} = 1 - 0.2 \cdot \frac{1000}{2500} - 0.8 \cdot \left(\frac{1000}{2500}\right)^2
-            ///      \frac{q}{2000} = 1 - 0.2 \cdot \frac{1000}{2500} - 0.8 \cdot \left(\frac{1000}{2500}\right)^2
-            ///      \frac{q}{2000} = 1 - 0.08 - 0.128 = 0.792
+            ///      \frac{q}{2000} = 1 - 0.2 \cdot \frac{1000}{2500} - 0.8 \cdot \left(\frac{1000}{2500}\right)^2\\
+            ///      \frac{q}{2000} = 1 - 0.08 - 0.128 = 0.792\\
             ///      q = 2000 \cdot 0.792 = 1584 \, \text{STB/day}
             /// </math>
             /// 
