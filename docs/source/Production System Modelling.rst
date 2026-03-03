@@ -49,33 +49,30 @@ Vital for thermal modelling, particularly in heavy oil production or High-Pressu
 
 Classification of Models
 ------------------------
-
 Mathematical models vary in complexity based on the required accuracy and available computational power:
 
-..list-table:: Model Types and Applications
-:widths: 25 50 25
-:header-rows: 1
+.. list-table:: 
+   :header-rows: 1
 
-*- Model Type
--Description
--Primary Use
-*- **Analytical**
--Exact solutions to simplified physical equations.
--Nodal Analysis (IPR/VLP).
-*- **Numerical**
--Uses finite difference/element methods for complex PDEs.
--Full-field reservoir simulation.
-*- **Empirical**
--Based on observed data and regression correlations.
--Multiphase flow in tubing.
-*- **Stochastic**
--Incorporates uncertainty and probability distributions.
--Risk assessment.
+   * - Model Type
+     - Description
+     - Primary Use
+   * - **Analytical**
+     - Exact solutions to simplified physical equations
+     - Nodal Analysis (IPR/VLP).
+   * - **Numerical**
+     - Uses finite difference/element methods for complex PDEs
+     - Full-field reservoir simulation.
+   * - **Empirical**
+     - Based on observed data and regression correlations
+     - Multiphase flow in tubing.
+   * - **Stochastic**
+     - Incorporates uncertainty and probability distributions
+     - Risk assessment.
 
 
 Applications in Industry
 ------------------------
-
 In the current era of "Digital Oilfields," mathematical modelling enables key engineering tasks:
 
 Nodal Analysis
