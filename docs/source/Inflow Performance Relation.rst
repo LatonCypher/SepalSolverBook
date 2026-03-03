@@ -2,8 +2,6 @@ Inflow Performance Relation
 ===========================
 
 
-Inflow Performance Relationship (IPR)
--------------------------------------
 **Definition:**
 The Inflow Performance Relationship (IPR) describes the relationship between 
 the bottom-hole flowing pressure (p_wf) and the production rate (q) of a well. 

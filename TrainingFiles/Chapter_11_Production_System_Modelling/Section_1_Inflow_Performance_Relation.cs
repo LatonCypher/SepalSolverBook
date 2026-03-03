@@ -5,8 +5,6 @@
         public static void Run()
         {
             /// <BookContent>
-            /// 
-            /// <header 2> Inflow Performance Relationship (IPR) </header>
             /// **Definition:**
             /// The Inflow Performance Relationship (IPR) describes the relationship between 
             /// the bottom-hole flowing pressure (p_wf) and the production rate (q) of a well. 
