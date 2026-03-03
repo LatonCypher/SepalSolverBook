@@ -101,17 +101,19 @@
             ///      FE = \frac{q_{actual}}{q_{ideal}}
             /// </math>
             /// 
+            /// <code>
             {
                 double q_ideal = 1584; // STB/day (from previous example)
                 double q_act = 1200; // STB/day (maximum flow rate)
                 double FE = q_act / q_ideal; // Flow Efficiency
                 Console.WriteLine($"Flow Efficiency (FE) = {FE:P2}");
             }
+            /// </code>
             /// 
             /// **Skin Factor (s):**
             /// Skin represents additional pressure drop caused by near-wellbore damage or stimulation. The productivity index with skin is:
             /// <math>
-            ///      J_s = \frac{J}{1 + \frac{s}{\ln(r_e/r_w)}}
+            ///      J_s = \frac{J \ln(r_e/r_w)}{\ln(r_e/r_w) + s}
             /// </math>
             /// 
             /// Where:
@@ -140,7 +142,7 @@
 
             /// Case 1: **Above Bubble Point** (:math:`p_{wf} = 2800 \, \text{psi}`)
             /// <math>
-            ///      J_s = \frac{2}{1 + \frac{3}{\ln(1000)}} \approx \frac{2}{1 + 0.4343} = 1.3944
+            ///      J_s = \cfrac{2 \ln(1000)}{\ln(1000) + 3} \approx  1.3944
             ///      q = 1.3944 \cdot(3000 - 2800) = 278.9 \, \text{ STB/day}
             /// </math>
             /// 
@@ -186,6 +188,14 @@
             ///      q = q_{max} = 2000 \, \text{STB/day}
             /// </math>
             /// Adjusted for skin: q_actual = 2000 \cdot \frac{1.3944}{2} = 1394.4 \, \text{STB/day}
+            /// 
+            /// <code> 
+            {
+                double q_max = 2000;
+                double q_act = q_max * 1.3944/2;
+                Console.WriteLine($"Actual AFP = {q_act} STB/day");
+            }
+            /// </code>
             /// 
             /// 
             /// </BookContent>
