@@ -21,6 +21,7 @@
             ///     q = J \cdot (p_r - p_{wf})
             /// </math>
             /// Where:
+            /// 
             /// - :math:`q` = production rate (STB/day) 
             /// 
             /// - :math:`J` = productivity index (STB/day/psi)
@@ -30,7 +31,9 @@
             /// - :math:`p_{wf}` = bottom-hole flowing pressure (psi)
             /// 
             /// **Numerical Example:**
+            /// 
             /// Given:
+            /// 
             /// - :math:`J = 2 \, \text{STB/day/psi}`
             /// 
             /// - :math:`p_r = 3000 \, \text{psi}`
@@ -60,14 +63,17 @@
             /// </math>
             /// 
             /// Where:
+            /// 
             /// -:math:`q_{max}` = maximum flow rate at :math:`p_{wf} = 0`
             /// 
             /// **Numerical Example:**
+            /// 
             /// Given:
-            /// \frac{q}{q_{max}} = 1 - 0.2 \cdot \frac{p_{wf}}{p_r} - 0.8 \cdot \left(\frac{p_{wf}}{p_r}\right)^2
             /// 
             /// - :math:`q_{max} = 2000 \, \text{STB/day}`
+            /// 
             /// - :math:`p_r = 2500 \, \text{psi}`
+            /// 
             /// - :math:`p_{wf} = 1000 \, \text{psi}`
             /// 
             /// <math>
@@ -90,6 +96,7 @@
             /// **Flow Efficiency (FE):**
             /// Flow efficiency is a measure of how effectively a well produces compared to an 
             /// ideal, undamaged well. It is defined as:
+            /// 
             /// <math>
             ///      FE = \frac{q_{actual}}{q_{ideal}}
             /// </math>
@@ -108,18 +115,27 @@
             /// </math>
             /// 
             /// Where:
+            /// 
             /// - :math:`r_e` = drainage radius
+            /// 
             /// - :math:`r_w` = wellbore radius
+            /// 
             /// - :math:`s` = skin factor
             /// 
             /// A positive skin reduces productivity, while a negative skin (stimulation) increases productivity.
             /// Numerical Example with Pressure Drop
             /// Consider a reservoir with:
+            /// 
             /// - :math:`p_r = 3000 \, \text{psi}`
-            /// -Bubble point pressure :math:`p_b = 2500 \, \text{psi}`
+            /// 
+            /// - Bubble point pressure :math:`p_b = 2500 \, \text{psi}`
+            /// 
             /// - :math:`q_{max} = 2000 \, \text{STB/day}`
+            /// 
             /// - :math:`J = 2 \, \text{STB/day/psi}`
+            /// 
             /// - :math:`r_e/r_w = 1000`
+            /// 
             /// - :math:`s = +3`
 
             /// Case 1: **Above Bubble Point** (:math:`p_{wf} = 2800 \, \text{psi}`)
