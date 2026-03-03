@@ -36,6 +36,7 @@
             ///     q = 2 \cdot (3000 - 2500) = 1000 \, \text{STB/day}
             /// </math>
             /// 
+            /// <code>
             {
                 double J = 2; // STB/day/psi    
                 double p_r = 3000; // psi
@@ -43,6 +44,7 @@
                 double q = J * (p_r - p_wf); // STB/day
                 Console.WriteLine($"Production Rate (q) = {q} STB/day");
             }
+            /// </code>
             /// 
             /// <header 3> IPR Below Bubble Point </header>
             /// When the reservoir pressure falls below the bubble point, gas evolves from 
@@ -69,6 +71,7 @@
             ///      q = 2000 \cdot 0.792 = 1584 \, \text{STB/day}
             /// </math>
             /// 
+            /// <code>
             {
                 double q_max = 2000; // STB/day
                 double p_r = 2500; // psi
@@ -76,8 +79,9 @@
                 double q = q_max * (1 - 0.2 * (p_wf / p_r) - 0.8 * Pow(p_wf / p_r, 2)); // STB/day
                 Console.WriteLine($"Production Rate (q) = {q} STB/day");
             }
+            /// </code>
             /// 
-            /// Flow Efficiency and Skin
+            /// <header 3> Flow Efficiency and Skin </header>
             /// **Flow Efficiency (FE):**
             /// Flow efficiency is a measure of how effectively a well produces compared to an 
             /// ideal, undamaged well. It is defined as:
@@ -119,6 +123,7 @@
             ///      q = 1.3944 \cdot(3000 - 2800) = 278.9 \, \text{ STB/day}
             /// </math>
             /// 
+            /// <code>
             {
                 double q_max = 2000; // STB/day
                 double p_r = 3000; // psi
@@ -130,6 +135,8 @@
                 double q = J_s * (p_r - p_wf); // STB/day
                 Console.WriteLine($"Adjusted Productivity Index (J_s) = {J_s:F4} STB/day/psi");
             }
+            /// </code>
+            /// 
             /// 
             /// Case 2: **Below Bubble Point** (:math:`p_{wf} = 2000 \, \text{psi}`)
             /// <math>
@@ -139,6 +146,8 @@
             /// </math>
             /// 
             /// Adjusted for skin: q_actual = 1022 \cdot \frac{J_s}{J} = 1022 \cdot \frac{1.3944}{2} = 712.5 \, \text{STB/day}
+            /// 
+            /// <code>
             {
                 double q_max = 2000; // STB/day
                 double p_wf = 1000; // psi
@@ -149,7 +158,7 @@
                 double J_s = J / (1 + s / Log(r_e_r_w)); // STB/day/psi
                 double q_ideal = q_max * (1 - 0.2 * (p_wf / p_r) - 0.8 * Pow(p_wf / p_r, 2)); // STB/day
             }
-            /// 
+            /// </code>
             /// 
             /// Case 3: **At Zero Bottom-Hole Pressure** (:math:`p_{wf} = 0`)
             /// <math>

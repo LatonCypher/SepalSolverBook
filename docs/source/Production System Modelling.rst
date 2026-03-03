@@ -29,9 +29,9 @@ Where:
 
 **Numerical Example:**
 Given:
-- :math:`J = 2 \, \text{STB/day/psi}`
-- :math:`p_r = 3000 \, \text{psi}`
-- :math:`p_{wf} = 2500 \, \text{psi}`
+-:math:`J = 2 \, \text{STB/day/psi}`
+-:math:`p_r = 3000 \, \text{psi}`
+-:math:`p_{wf} = 2500 \, \text{psi}`
 
 
 .. math::
@@ -39,13 +39,21 @@ Given:
    q = 2 \cdot (3000 - 2500) = 1000 \, \text{STB/day}
 
 
-            {
-                double J = 2; // STB/day/psi    
-                double p_r = 3000; // psi
-                double p_wf = 2500; // psi
-                double q = J * (p_r - p_wf); // STB/day
-                Console.WriteLine($"Production Rate (q) = {q} STB/day");
-            }
+
+.. code-block:: csharp
+
+   double J = 2; // STB/day/psi    
+   double p_r = 3000; // psi
+   double p_wf = 2500; // psi
+   double q = J * (p_r - p_wf); // STB/day
+   Console.WriteLine($"Production Rate (q) = {q} STB/day");
+
+
+Ouput
+
+.. terminal::
+
+   Production Rate (q) = 1000 STB/day
 
 IPR Below Bubble Point
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -59,7 +67,7 @@ is commonly used:
 
 
 Where:
-- :math:`q_{max}` = maximum flow rate at :math:`p_{wf} = 0`
+-:math:`q_{max}` = maximum flow rate at :math:`p_{wf} = 0`
 
 **Numerical Example:**
 Given:
@@ -72,21 +80,29 @@ Given:
 
 .. math::
 
-   \frac{q}{2000} = 1 - 0.2 \cdot \frac{1000}{2500} - 0.8 \cdot \left(\frac{1000}{2500}\right)^2
-   \frac{q}{2000} = 1 - 0.2 \cdot \frac{1000}{2500} - 0.8 \cdot \left(\frac{1000}{2500}\right)^2
-   \frac{q}{2000} = 1 - 0.08 - 0.128 = 0.792
+   \frac{q}{2000} = 1 - 0.2 \cdot \frac{1000}{2500} - 0.8 \cdot \left(\frac{1000}{2500}\right)^2\\
+   \frac{q}{2000} = 1 - 0.08 - 0.128 = 0.792\\
    q = 2000 \cdot 0.792 = 1584 \, \text{STB/day}
 
 
-            {
-                double q_max = 2000; // STB/day
-                double p_r = 2500; // psi
-                double p_wf = 1000; // psi
-                double q = q_max * (1 - 0.2 * (p_wf / p_r) - 0.8 * Pow(p_wf / p_r, 2)); // STB/day
-                Console.WriteLine($"Production Rate (q) = {q} STB/day");
-            }
+
+.. code-block:: csharp
+
+   double q_max = 2000; // STB/day
+   double p_r = 2500; // psi
+   double p_wf = 1000; // psi
+   double q = q_max * (1 - 0.2 * (p_wf / p_r) - 0.8 * Pow(p_wf / p_r, 2)); // STB/day
+   Console.WriteLine($"Production Rate (q) = {q} STB/day");
+
+
+Ouput
+
+.. terminal::
+
+   Production Rate (q) = 1583.9999999999998 STB/day
 
 Flow Efficiency and Skin
+~~~~~~~~~~~~~~~~~~~~~~~~
 **Flow Efficiency (FE):**
 Flow efficiency is a measure of how effectively a well produces compared to an 
 ideal, undamaged well. It is defined as:
@@ -134,17 +150,26 @@ Case 1: **Above Bubble Point** (:math:`p_{wf} = 2800 \, \text{psi}`)
    q = 1.3944 \cdot(3000 - 2800) = 278.9 \, \text{ STB/day}
 
 
-            {
-                double q_max = 2000; // STB/day
-                double p_r = 3000; // psi
-                double p_wf = 2800; // psi
-                double J = 2; // STB/day/psi
-                double r_e_r_w = 1000; // dimensionless
-                double s = 3; // dimensionless
-                double J_s = J / (1 + s / Log(r_e_r_w)); // STB/day/psi
-                double q = J_s * (p_r - p_wf); // STB/day
-                Console.WriteLine($"Adjusted Productivity Index (J_s) = {J_s:F4} STB/day/psi");
-            }
+
+.. code-block:: csharp
+
+   double q_max = 2000; // STB/day
+   double p_r = 3000; // psi
+   double p_wf = 2800; // psi
+   double J = 2; // STB/day/psi
+   double r_e_r_w = 1000; // dimensionless
+   double s = 3; // dimensionless
+   double J_s = J / (1 + s / Log(r_e_r_w)); // STB/day/psi
+   double q = J_s * (p_r - p_wf); // STB/day
+   Console.WriteLine($"Adjusted Productivity Index (J_s) = {J_s:F4} STB/day/psi");
+
+
+Ouput
+
+.. terminal::
+
+   Adjusted Productivity Index (J_s) = 1.3944 STB/day/psi
+
 
 Case 2: **Below Bubble Point** (:math:`p_{wf} = 2000 \, \text{psi}`)
 
@@ -156,16 +181,18 @@ Case 2: **Below Bubble Point** (:math:`p_{wf} = 2000 \, \text{psi}`)
 
 
 Adjusted for skin: q_actual = 1022 \cdot \frac{J_s}{J} = 1022 \cdot \frac{1.3944}{2} = 712.5 \, \text{STB/day}
-            {
-                double q_max = 2000; // STB/day
-                double p_wf = 1000; // psi
-                double p_r = 2500; // psi
-                double J = 2;
-                double r_e_r_w = 1000;
-                double s = 3;
-                double J_s = J / (1 + s / Log(r_e_r_w)); // STB/day/psi
-                double q_ideal = q_max * (1 - 0.2 * (p_wf / p_r) - 0.8 * Pow(p_wf / p_r, 2)); // STB/day
-            }
+
+
+.. code-block:: csharp
+
+   double q_max = 2000; // STB/day
+   double p_wf = 1000; // psi
+   double p_r = 2500; // psi
+   double J = 2;
+   double r_e_r_w = 1000;
+   double s = 3;
+   double J_s = J / (1 + s / Log(r_e_r_w)); // STB/day/psi
+   double q_ideal = q_max * (1 - 0.2 * (p_wf / p_r) - 0.8 * Pow(p_wf / p_r, 2)); // STB/day
 
 
 Case 3: **At Zero Bottom-Hole Pressure** (:math:`p_{wf} = 0`)
