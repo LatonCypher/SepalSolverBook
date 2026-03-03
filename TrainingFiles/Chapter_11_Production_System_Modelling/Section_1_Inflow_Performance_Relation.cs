@@ -21,16 +21,21 @@
             ///     q = J \cdot (p_r - p_{wf})
             /// </math>
             /// Where:
-            /// -:math:`q` = production rate (STB/day) 
-            /// -:math:`J` = productivity index (STB/day/psi)
-            /// -:math:`p_r` = average reservoir pressure (psi)
-            /// -:math:`p_{wf}` = bottom-hole flowing pressure (psi)
+            /// - :math:`q` = production rate (STB/day) 
+            /// 
+            /// - :math:`J` = productivity index (STB/day/psi)
+            /// 
+            /// - :math:`p_r` = average reservoir pressure (psi)
+            /// 
+            /// - :math:`p_{wf}` = bottom-hole flowing pressure (psi)
             /// 
             /// **Numerical Example:**
             /// Given:
-            /// -:math:`J = 2 \, \text{STB/day/psi}`
-            /// -:math:`p_r = 3000 \, \text{psi}`
-            /// -:math:`p_{wf} = 2500 \, \text{psi}`
+            /// - :math:`J = 2 \, \text{STB/day/psi}`
+            /// 
+            /// - :math:`p_r = 3000 \, \text{psi}`
+            /// 
+            /// - :math:`p_{wf} = 2500 \, \text{psi}`
             /// 
             /// <math>
             ///     q = 2 \cdot (3000 - 2500) = 1000 \, \text{STB/day}

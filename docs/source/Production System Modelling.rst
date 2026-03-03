@@ -3,206 +3,93 @@ Production System Modelling
 ###########################
 
 
-Inflow Performance Relationship (IPR)
--------------------------------------
-**Definition:**
-The Inflow Performance Relationship (IPR) describes the relationship between 
-the bottom-hole flowing pressure (p_wf) and the production rate (q) of a well. 
-It is a fundamental tool in reservoir engineering used to evaluate well 
-productivity and forecast performance under different operating conditions.
+Introduction
+------------
 
-IPR Above Bubble Point
-~~~~~~~~~~~~~~~~~~~~~~
-the reservoir pressure is above the bubble point pressure, the fluid 
-remains single-phase (oil only). The relationship is linear and can be 
-expressed as:
+Mathematical modelling serves as the backbone of modern petroleum engineering, acting as the bridge between raw physical data and strategic decision-making. In a petroleum production system, a model is a mathematical representation of the flow of fluids—oil, gas, and water—from the deep subsurface reservoir, through the wellbore, and into surface processing facilities.
 
-.. math::
+The primary goal of these models is to:
 
-   q = J \cdot (p_r - p_{wf})
+*Predict system behavior under various operating conditions.
+* Optimize production rates to meet economic targets.
+*Maximize the ultimate recovery of hydrocarbons.
+*Ensure operational safety and flow assurance.
 
-Where:
--:math:`q` = production rate (STB/day) 
--:math:`J` = productivity index (STB/day/psi)
--:math:`p_r` = average reservoir pressure (psi)
--:math:`p_{wf}` = bottom-hole flowing pressure (psi)
 
-**Numerical Example:**
-Given:
--:math:`J = 2 \, \text{STB/day/psi}`
--:math:`p_r = 3000 \, \text{psi}`
--:math:`p_{wf} = 2500 \, \text{psi}`
 
+The Integrated Production System
+--------------------------------
 
-.. math::
+A petroleum production system is typically modeled as a series of interconnected components. Mathematical modelling treats this as a **Network Flow** problem where pressure and flow rate are the primary variables.
 
-   q = 2 \cdot (3000 - 2500) = 1000 \, \text{STB/day}
+Reservoir Subsystem
+Models fluid flow through porous media, primarily governed by Darcy’s Law.
 
+Wellbore Subsystem
+Models vertical, horizontal, or deviated multi-phase flow, accounting for gravity, friction, and acceleration losses.
 
+Surface Facilities
+Models flow through chokes, separators, and transport pipelines.
 
-.. code-block:: csharp
+Core Mathematical Principles
+----------------------------
 
-   double J = 2; // STB/day/psi    
-   double p_r = 3000; // psi
-   double p_wf = 2500; // psi
-   double q = J * (p_r - p_wf); // STB/day
-   Console.WriteLine($"Production Rate (q) = {q} STB/day");
+To build these models, engineers rely on three fundamental conservation laws:
 
+1. **Conservation of Mass**: 
+Expressed through the **Continuity Equation**, ensuring that the mass flux remains accounted for throughout the system.
 
-Ouput
+2. **Conservation of Momentum**: 
+Used to determine pressure drops. In pipe flow, this is often represented by the mechanical energy balance equation.
 
-.. terminal::
+3. **Conservation of Energy**: 
+Vital for thermal modelling, particularly in heavy oil production or High-Pressure, High-Temperature (HPHT) wells.
 
-   Production Rate (q) = 1000 STB/day
 
-IPR Below Bubble Point
-~~~~~~~~~~~~~~~~~~~~~~
-When the reservoir pressure falls below the bubble point, gas evolves from 
-solution, and the relationship becomes non-linear. Vogel’s empirical equation 
-is commonly used:
 
-.. math::
+Classification of Models
+------------------------
 
-   \frac{q}{q_{max}} = 1 - 0.2 \cdot \frac{p_{wf}}{p_r} - 0.8 \cdot \left(\frac{p_{wf}}{p_r}\right)^2
+Mathematical models vary in complexity based on the required accuracy and available computational power:
 
+..list-table:: Model Types and Applications
+:widths: 25 50 25
+:header-rows: 1
 
-Where:
--:math:`q_{max}` = maximum flow rate at :math:`p_{wf} = 0`
+*- Model Type
+-Description
+-Primary Use
+*- **Analytical**
+-Exact solutions to simplified physical equations.
+-Nodal Analysis (IPR/VLP).
+*- **Numerical**
+-Uses finite difference/element methods for complex PDEs.
+-Full-field reservoir simulation.
+*- **Empirical**
+-Based on observed data and regression correlations.
+-Multiphase flow in tubing.
+*- **Stochastic**
+-Incorporates uncertainty and probability distributions.
+-Risk assessment.
 
-**Numerical Example:**
-Given:
-\frac{q}{q_{max}} = 1 - 0.2 \cdot \frac{p_{wf}}{p_r} - 0.8 \cdot \left(\frac{p_{wf}}{p_r}\right)^2
 
-- :math:`q_{max} = 2000 \, \text{STB/day}`
-- :math:`p_r = 2500 \, \text{psi}`
-- :math:`p_{wf} = 1000 \, \text{psi}`
+Applications in Industry
+------------------------
 
+In the current era of "Digital Oilfields," mathematical modelling enables key engineering tasks:
 
-.. math::
+Nodal Analysis
+Determining the "Operating Point" where the reservoir's ability to deliver fluid matches the well's ability to intake it.
 
-   \frac{q}{2000} = 1 - 0.2 \cdot \frac{1000}{2500} - 0.8 \cdot \left(\frac{1000}{2500}\right)^2\\
-   \frac{q}{2000} = 1 - 0.08 - 0.128 = 0.792\\
-   q = 2000 \cdot 0.792 = 1584 \, \text{STB/day}
+Artificial Lift Design
+Optimizing the performance of Electrical Submersible Pumps (ESP) or Gas Lift systems.
 
+Flow Assurance
+Predicting and preventing the formation of hydrates, wax, or scale that can restrict flow.
 
-
-.. code-block:: csharp
-
-   double q_max = 2000; // STB/day
-   double p_r = 2500; // psi
-   double p_wf = 1000; // psi
-   double q = q_max * (1 - 0.2 * (p_wf / p_r) - 0.8 * Pow(p_wf / p_r, 2)); // STB/day
-   Console.WriteLine($"Production Rate (q) = {q} STB/day");
-
-
-Ouput
-
-.. terminal::
-
-   Production Rate (q) = 1583.9999999999998 STB/day
-
-Flow Efficiency and Skin
-~~~~~~~~~~~~~~~~~~~~~~~~
-**Flow Efficiency (FE):**
-Flow efficiency is a measure of how effectively a well produces compared to an 
-ideal, undamaged well. It is defined as:
-
-.. math::
-
-   FE = \frac{q_{actual}}{q_{ideal}}
-
-
-            {
-                double q_ideal = 1584; // STB/day (from previous example)
-                double q_act = 1200; // STB/day (maximum flow rate)
-                double FE = q_act / q_ideal; // Flow Efficiency
-                Console.WriteLine($"Flow Efficiency (FE) = {FE:P2}");
-            }
-
-**Skin Factor (s):**
-Skin represents additional pressure drop caused by near-wellbore damage or stimulation. The productivity index with skin is:
-
-.. math::
-
-   J_s = \frac{J}{1 + \frac{s}{\ln(r_e/r_w)}}
-
-
-Where:
-- :math:`r_e` = drainage radius
-- :math:`r_w` = wellbore radius
-- :math:`s` = skin factor
-
-A positive skin reduces productivity, while a negative skin (stimulation) increases productivity.
-Numerical Example with Pressure Drop
-Consider a reservoir with:
-- :math:`p_r = 3000 \, \text{psi}`
--Bubble point pressure :math:`p_b = 2500 \, \text{psi}`
-- :math:`q_{max} = 2000 \, \text{STB/day}`
-- :math:`J = 2 \, \text{STB/day/psi}`
-- :math:`r_e/r_w = 1000`
-- :math:`s = +3`
-
-Case 1: **Above Bubble Point** (:math:`p_{wf} = 2800 \, \text{psi}`)
-
-.. math::
-
-   J_s = \frac{2}{1 + \frac{3}{\ln(1000)}} \approx \frac{2}{1 + 0.4343} = 1.3944
-   q = 1.3944 \cdot(3000 - 2800) = 278.9 \, \text{ STB/day}
-
-
-
-.. code-block:: csharp
-
-   double q_max = 2000; // STB/day
-   double p_r = 3000; // psi
-   double p_wf = 2800; // psi
-   double J = 2; // STB/day/psi
-   double r_e_r_w = 1000; // dimensionless
-   double s = 3; // dimensionless
-   double J_s = J / (1 + s / Log(r_e_r_w)); // STB/day/psi
-   double q = J_s * (p_r - p_wf); // STB/day
-   Console.WriteLine($"Adjusted Productivity Index (J_s) = {J_s:F4} STB/day/psi");
-
-
-Ouput
-
-.. terminal::
-
-   Adjusted Productivity Index (J_s) = 1.3944 STB/day/psi
-
-
-Case 2: **Below Bubble Point** (:math:`p_{wf} = 2000 \, \text{psi}`)
-
-.. math::
-
-   \frac{q}{2000} = 1 - 0.2 \cdot \frac{2000}{3000} - 0.8 \cdot \left(\frac{2000}{3000}\right)^2
-   \frac{q}{ 2000} = 1 - 0.133 - 0.356 = 0.511
-   q = 2000 \cdot 0.511 = 1022 \, \text{ STB/day}
-
-
-Adjusted for skin: q_actual = 1022 \cdot \frac{J_s}{J} = 1022 \cdot \frac{1.3944}{2} = 712.5 \, \text{STB/day}
-
-
-.. code-block:: csharp
-
-   double q_max = 2000; // STB/day
-   double p_wf = 1000; // psi
-   double p_r = 2500; // psi
-   double J = 2;
-   double r_e_r_w = 1000;
-   double s = 3;
-   double J_s = J / (1 + s / Log(r_e_r_w)); // STB/day/psi
-   double q_ideal = q_max * (1 - 0.2 * (p_wf / p_r) - 0.8 * Pow(p_wf / p_r, 2)); // STB/day
-
-
-Case 3: **At Zero Bottom-Hole Pressure** (:math:`p_{wf} = 0`)
-
-.. math::
-
-   q = q_{max} = 2000 \, \text{STB/day}
-
-Adjusted for skin: q_actual = 2000 \cdot \frac{1.3944}{2} = 1394.4 \, \text{STB/day}
-
+Summary
+-------
+Mathematical modelling in petroleum production is not just about solving equations; it is about creating a "digital twin" of the physical system to navigate the high-stakes environment of energy extraction.
 
 
 
@@ -210,6 +97,7 @@ Adjusted for skin: q_actual = 2000 \cdot \frac{1.3944}{2} = 1394.4 \, \text{STB/
 
 .. toctree::
 
+   Inflow Performance Relation
    Vertical Lift Performance
    Nodal Analysis
    Gas Reservoir Material Balance
