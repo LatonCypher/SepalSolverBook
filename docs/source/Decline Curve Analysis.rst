@@ -21,10 +21,10 @@ expressed as:
    q = J \cdot (p_r - p_{wf})
 
 Where:
-- :math:`q` = production rate (STB/day)
-- :math:`J` = productivity index (STB/day/psi)
-- :math:`p_r` = average reservoir pressure (psi)
-- :math:`p_{wf}` = bottom-hole flowing pressure (psi)
+-:math:`q` = production rate (STB/day)
+-:math:`J` = productivity index (STB/day/psi)
+-:math:`p_r` = average reservoir pressure (psi)
+-:math:`p_{wf}` = bottom-hole flowing pressure (psi)
 
 **Numerical Example:**
 Given:
