@@ -156,7 +156,7 @@
 
             /// Case 1: **Above Bubble Point** (:math:`p_{wf} = 2800 \, \text{psi}`)
             /// <math>
-            ///      J_s = \cfrac{2 \ln(1000)}{\ln(1000) + 3} \approx  1.3944
+            ///      J_s = \cfrac{2 \ln(1000)}{\ln(1000) + 3} \approx  1.3944 \\
             ///      q = 1.3944 \cdot(3000 - 2800) = 278.9 \, \text{ STB/day}
             /// </math>
             /// 
