@@ -117,16 +117,75 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             {
                 double gas_g = 0.8;
                 double res_T = 550; //Rankine
-                double[] P = [300, 600, 900,  1200,  1500, 1800, 2100, 2400, 2700]; //psia
-                double[] G = [52.86, 49.76, 45.69, 40.43, 33.95, 26.60, 19.05, 11.94, 5.58];
+                ColVec P = new double[] { 300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700 }; //psia
+                ColVec G = new double[] { 52.86, 49.76, 45.69, 40.43, 33.95, 26.60, 19.05, 11.94, 5.58 };
+            }
+            /// </code>
+            /// 
+            /// - 1. Use Sutton correlation to compute, PseudoCritical Temperature and Pressure
+            /// 
+            /// - 2. Implement a function to compute Z factor based on Hall and Yaborough or Dranchuk Abou Kassem
+            /// 
+            /// - 3. Compute p/z
+            /// 
+            /// - 4. Determine of it is linear. 
+            /// 
+            /// - 5. Classify the drive mechanism
+            /// <code>
+            {
+                double gas_g = 0.8;
+                double res_T = 550; //Rankine
+                ColVec P = new double[] { 300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700 }; //psia
+                ColVec G = new double[] { 52.86, 49.76, 45.69, 40.43, 33.95, 26.60, 19.05, 11.94, 5.58 };
+
+
+                //Z factor application
+                static double ZfactorHY(double Pr, double Tr)
+                {
+                    double z = 1, t, tm1, tm1e2, A, B,
+                        C, D, r, y2, y3, y4, Den;
+                    if (Pr != 0)
+                    {
+                        t = 1 / Tr;
+                        tm1 = 1 - t; tm1e2 = tm1 * tm1;
+                        A = 0.06125 * t * Exp(-1.2 * Pow(1 - t, 2));
+                        B = t * (14.76 - t * (9.76 - t * 4.58));
+                        C = t * (90.7 - t * (242.2 - t * 42.4));
+                        D = 2.18 + 2.82 * t; r = A * Pr;
+                        var yfunc = new Func<double, double>(y =>
+                        {
+                            y2 = y * y; y3 = y2 * y; y4 = y3 * y;
+                            Den = Pow(1 - y, 3);
+                            return -A * Pr + (y + y2 + y3 - y4) / Den -
+                            B * y2 + C * Pow(y, D);
+                        });
+                        r *= Pr < 5 ? 2 : 1;
+                        r /= Pr > 13 ? 2 : 1;
+                        double y = Fsolve(yfunc, r);
+                        z = A * Pr / y;
+                    }
+                    return z;
+                }
+
+                double s = gas_g;
+                // Sutton's Correlation for Tpc
+                double T_pc = 169.2 + 349.5 * s - 74.0 * Pow(s, 2);
+
+                // Sutton's Correlation for ppc
+                double P_pc = 756.8 - 131.0 * s - 3.6 * Pow(s, 2);
+
+                double T = res_T, Tr = T/T_pc;
+                ColVec Z = Arrayfun(p => ZfactorHY(p/P_pc, Tr), P);
+                ColVec PZ = P.Div(Z);
+                double m = (PZ[^2] - PZ[^1])/(G[^2] - G[^1]);
+                ColVec Pl = new double[] { PZ[^1], 0 }, Gl = new double[] { G[^1], G[^1] -m*PZ[^1] };
+
+                Plot(G, PZ, "b"); HoldOn();
+                Plot(Gl, Pl, "r"); HoldOff();
+                SaveAs($"Gas_Reservoir_MB.png");
             }
             /// 
             /// </code>
-            /// 1. Use Sutton correlation to compute, PseudoCritical Temperature and Pressure
-            /// 2. Implement a function to compute Z factor based on Hall and Yaborough or Dranchuk Abou Kassem
-            /// 3. Compute p/z
-            /// 4. Determine of it is linear. 
-            /// 5. Classify the drive mechanism
             /// 
             /// </BookContent>
 

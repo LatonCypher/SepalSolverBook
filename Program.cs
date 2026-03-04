@@ -1,7 +1,6 @@
 ﻿using ConsoleApp1;
 Writer.Run();
 
-
 //{
 //    //Z factor application
 //    static double ZfactorHY(double Pr, double Tr)

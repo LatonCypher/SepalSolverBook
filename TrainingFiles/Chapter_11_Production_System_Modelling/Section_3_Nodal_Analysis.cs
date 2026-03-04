@@ -8,7 +8,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
     {
         public static void Run()
         {
-            ///
+            /// <BookContent>
+            /// 
             /// Definition:
             /// Nodal Analysis is a method used to evaluate a complete producing system by
             /// isolating a single point (the Node) and ensuring the pressure and flow rate
@@ -102,7 +103,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             /// Increase Tubing Diameter | VLP(Shifts Down) | Increase in :math: q, decrease in :math: p_{ wf}. 
             /// Increase Water Cut | VLP(Shifts Up) | Decrease in :math: q(due to heavier fluid). |
             /// </table>
-            ///
+            /// 
+            /// </BookContent>
+
+
         }
     }
 }
