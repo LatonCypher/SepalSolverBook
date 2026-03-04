@@ -105,6 +105,7 @@ Drive Mechanisms and p/z Signatures
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The shape of the :math:`p/z` curve is a diagnostic tool for identifying reservoir behavior:
 
+
 .. list-table:: 
    :header-rows: 1
 
@@ -120,7 +121,6 @@ The shape of the :math:`p/z` curve is a diagnostic tool for identifying reservoi
    * - **Concave Down**
      - Geopressured
      - Rock/water expansion significant at high :math:`P`.
-     - 
 
 Advanced Problem
 ~~~~~~~~~~~~~~~~

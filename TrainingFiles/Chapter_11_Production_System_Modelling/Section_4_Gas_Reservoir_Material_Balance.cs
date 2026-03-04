@@ -104,11 +104,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             ///
             /// <header 3> Drive Mechanisms and p/z Signatures </header>
             /// The shape of the :math:`p/z` curve is a diagnostic tool for identifying reservoir behavior:
+            /// 
             /// <table>
             /// Curve Shape | Drive Mechanism | Interpretation 
             /// **Straight Line** | Volumetric | No water influx; depletion drive only. 
             /// **Concave Up** | Water Drive | Aquifer is providing pressure support. 
-            /// **Concave Down** | Geopressured | Rock/water expansion significant at high :math:`P`. |
+            /// **Concave Down** | Geopressured | Rock/water expansion significant at high :math:`P`.
             /// </table>
             /// 
             /// <header 3> Advanced Problem </header>
