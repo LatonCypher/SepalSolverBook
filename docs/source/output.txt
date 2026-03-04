@@ -1,1 +1,1 @@
-Actual AFP = 1394.4 STB/day
+Pseudo-pressure Gas Rate = 4600.00 Mscf/day

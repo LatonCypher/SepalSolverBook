@@ -1,14 +1,16 @@
 Inflow Performance Relation
 ===========================
 
+
+
 **Definition:**
 The Inflow Performance Relationship (IPR) describes the relationship between 
-the bottom-hole flowing pressure (p_wf) and the production rate (q) of a well. 
+the bottom-hole flowing pressure (:math:`p_{wf}`) and the production rate ('math:`q`) of a well. 
 It is a fundamental tool in reservoir engineering used to evaluate well 
 productivity and forecast performance under different operating conditions.
 
-IPR Above Bubble Point
-~~~~~~~~~~~~~~~~~~~~~~
+Oil Well IPR Above Bubble Point
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 the reservoir pressure is above the bubble point pressure, the fluid 
 remains single-phase (oil only). The relationship is linear and can be 
 expressed as:
@@ -52,6 +54,10 @@ Given:
    double q = J * (p_r - p_wf); // STB/day
    Console.WriteLine($"Production Rate (q) = {q} STB/day");
 
+   // Full Range
+   double qfun(double p) => J * (p_r - p_wf);
+   ColVec Prange = Linspace(0, p_r);
+
 
 Ouput
 
@@ -59,8 +65,16 @@ Ouput
 
    Production Rate (q) = 1000 STB/day
 
-IPR Below Bubble Point
-~~~~~~~~~~~~~~~~~~~~~~
+            {
+                double J = 2; // STB/day/psi    
+                double p_r = 3000; // psi
+                double p_wf = 2500; // psi
+                double q = J * (p_r - p_wf); // STB/day
+                Console.WriteLine($"Production Rate (q) = {q} STB/day");
+            }
+
+Oil Well IPR Below Bubble Point
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 When the reservoir pressure falls below the bubble point, gas evolves from 
 solution, and the relationship becomes non-linear. Vogel’s empirical equation 
 is commonly used:
@@ -216,7 +230,8 @@ Adjusted for skin: q_actual = 1022 \cdot \frac{J_s}{J} = 1022 \cdot \frac{1.3944
    double J = 2;
    double r_e_r_w = 1000;
    double s = 3;
-   double J_s = J / (1 + s / Log(r_e_r_w)); // STB/day/psi
+   double lnre_rw = Log(r_e_r_w);
+   double J_s = J * lnre_rw/ (lnre_rw + s ); // STB/day/psi
    double q_ideal = q_max * (1 - 0.2 * (p_wf / p_r) - 0.8 * Pow(p_wf / p_r, 2)); // STB/day
 
 
@@ -233,13 +248,165 @@ Adjusted for skin: q_actual = 2000 \cdot \frac{1.3944}{2} = 1394.4 \, \text{STB/
 
    double q_max = 2000;
    double q_act = q_max * 1.3944/2;
-   Console.WriteLine($"Actual AFP = {q_act} STB/day");
+   Console.WriteLine($"Actual AOF = {q_act} STB/day");
 
 
 Ouput
 
 .. terminal::
 
-   Actual AFP = 1394.4 STB/day
+   Actual AOF = 1394.4 STB/day
 
 
+
+**Gas Well Inflow Performance Relation (IPR)**
+Definition:
+Gas Inflow Performance Relationship (IPR) describes the relationship between the gas flow rate (:math:`q_g`) and the bottom-hole flowing  pressure (:math:`p_{wf}`). Unlike oil, gas productivity is highly non-linear due to the pressure-dependent properties of gas (viscosity :math:`mu_g` and compressibility factor: math:`z`).
+The Simplified Back-Pressure Equation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+For most engineering applications, the Rawlins and Schellhardt empirical "Back-Pressure" equation is used to describe gas well performance:
+
+.. math::
+
+   q_g = C \cdot (p_r^2 - p_{wf}^2)^n
+
+
+Where:
+
+- :math:`q_g` = gas flow rate (Mscf/day)
+
+- :math:`C` = performance coefficient (Mscf/day/psi²)
+
+- :math:`p_r` = average reservoir pressure (psia)
+
+- :math:`p_{wf}` = bottom-hole flowing pressure (psia)
+
+- :math:`n` = turbulence factor (typically 0.5 to 1.0)
+
+
+**Numerical Example:**
+
+Given:
+
+- :math:`C = 0.01 \, \text{Mscf/day/psi}^2`
+
+- :math:`n = 0.85` (indicates some non-Darcy flow/turbulence)
+
+- :math:`p_r = 3000 \, \text{psia}`
+
+- :math:`p_{wf} = 2000 \, \text{psia}`
+
+
+.. math::
+
+   q_g = 0.01 \cdot (3000^2 - 2000^2)^{0.85} \\
+   q_g = 0.01 \cdot (5,000,000)^{0.85} \approx 4,874 , \text{Mscf/day}
+
+
+
+.. code-block:: csharp
+
+   double C = 0.01, n = 0.85;
+   double p_r = 3000; // psia
+   double p_wf = 2000; // psia
+   double q_g = C * Pow(Pow(p_r, 2) - Pow(p_wf, 2), n);
+   Console.WriteLine($"Gas Flow Rate (q_g) = {q_g:F2} Mscf/day");
+
+
+Ouput
+
+.. terminal::
+
+   Gas Flow Rate (q_g) = 4944.52 Mscf/day
+
+Absolute Open Flow (AOF)
+~~~~~~~~~~~~~~~~~~~~~~~~
+The Absolute Open Flow potential is the maximum rate a well could theoretically 
+deliver if the flowing pressure (:math:`p\_{wf}`) were reduced to zero. It is a common 
+benchmark for gas well productivity.
+
+.. math::
+
+   AOF = C \cdot (p_r^2)^n
+
+
+**Numerical Example:**
+
+Using the same parameters as above:
+
+
+.. math::
+
+   AOF = 0.01 \cdot (3000^2)^{0.85} \\
+   AOF = 0.01 \cdot (9,000,000)^{0.85} \approx 8,021 \, \text{Mscf/day}
+
+
+
+.. code-block:: csharp
+
+   double C = 0.01;
+   double n = 0.85;
+   double p_r = 3000;
+   double AOF = C * Pow(Pow(p_r, 2), n);
+   Console.WriteLine($"Absolute Open Flow (AOF) = {AOF:F2} Mscf/day");
+}
+
+Ouput
+
+.. terminal::
+
+   ❌ Syntax Error in Documentation:
+   Line 7: Member definition, statement, or end-of-file expected
+
+High Pressure Gas IPR (Pseudo-Pressure)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The :math:`m(p)` approach:/// When reservoir pressure exceeds 2000–3000 psi, the :math:`p^2` method becomes inaccurate.
+Engineers use the Real Gas Pseudo-Pressure, :math:`m(p)`, to linearize the flow equation:
+
+
+.. math::
+
+   q_g = C' \cdot [m(p_r) - m(p_{wf})]
+
+
+Where:
+
+.. math::
+
+   m(p) = 2 \int_{p_{base}}^{p} \frac{p}{\mu_g z} dp
+
+
+
+.. code-block:: csharp
+
+   // Simplified Linear Pseudo-Pressure Example
+   double m_pr = 6.5e8; // psi^2/cp
+   double m_pwf = 4.2e8; // psi^2/cp
+   double C_prime = 0.00002; // performance coefficient
+   double q_g = C_prime * (m_pr - m_pwf);
+   Console.WriteLine($"Pseudo-pressure Gas Rate = {q_g:F2} Mscf/day");
+
+
+Ouput
+
+.. terminal::
+
+   Pseudo-pressure Gas Rate = 4600.00 Mscf/day
+
+Summary of n-values:
+
+.. list-table:: 
+   :header-rows: 1
+
+   * - n Value
+     - Flow Regime
+     - Description
+   * - n = 1.0
+     - Fully Laminar
+     - Darcy flow, no turbulence near wellbore.
+   * - 0.5 < n < 1.0
+     - Transitional
+     - Common in most commercial gas wells.
+   * - n = 0.5
+     - Fully Turbulent
+     - High velocity flow, typical in high-rate wells.
