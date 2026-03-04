@@ -7,8 +7,8 @@ Decline Curve Analysis involves fitting a mathematical function to historical
 production rate data over time. The three standard models defined by Arps
 are Exponential, Hyperbolic, and Harmonic decline.
 
-The Arps General Equation
-~~~~~~~~~~~~~~~~~~~~~~~~~
+The General Equation
+~~~~~~~~~~~~~~~~~~~~
 All three decline types are derived from the general equation:
 
 .. math::
@@ -67,6 +67,49 @@ Ouput
 
    Rate after 12 months = 548.81 STB/day
 
+Linearization for Exponential Decline
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The exponential equation :math:`q = q_i e^{-Dt}` can be linearized by taking
+the natural logarithm of both sides:
+
+.. math::
+
+   \ln(q) = \ln(q_i) - D \cdot t
+
+By plotting :math:`\ln(q)` vs. :math:`t`, the slope is :math:`-D` and the
+intercept is :math:`\ln(q_i)`.
+
+Practical Example:
+
+.. code-block:: csharp
+
+   // Data: t (months), q (STB/day)
+   double[] t = [ 1, 2, 3, 4, 5 ];
+   double[] q = [ 950, 905, 860, 820, 780 ];
+
+
+
+Linearization for Harmonic Decline (:math:b=1)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The harmonic equation :math:`q = q_i / (1 + D_i t)` is linearized by taking
+the reciprocal of the rate:
+
+.. math::
+
+   \frac{1}{q} = \frac{1}{q_i} + \left(\frac{D_i}{q_i}\right) \cdot t
+
+By plotting :math:`1/q` vs. :math:`t`, the slope is :math:`D_i/q_i` and the
+intercept is :math:`1/q_i`.
+
+Practical Example:
+
+.. code-block:: csharp
+
+   double[] t = { 1, 2, 3, 4, 5 };
+   double[] q = { 1000, 909, 833, 769, 714 };
+
+
+
 Hyperbolic Decline (:math:`0 < b < 1`)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The most common decline type. The decline rate itself decreases over time.
@@ -104,6 +147,29 @@ Ouput
 
    Hyperbolic Rate = 585.94 Mscf/day
 
+
+Linearization for Hyperbolic Decline
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hyperbolic decline (:math:0 < b < 1) cannot be fully linearized with simple
+variables because of the :math:b exponent. Instead, we linearize the
+Loss Ratio (:math:1/D), defined as :math:a = q / (dq/dt):
+
+.. math::
+
+   \frac{q}{dq/dt} = \frac{1}{D_i} + b \cdot t
+
+To solve this, we compute the derivative of production over time, plot the
+loss ratio vs. :math:t, and find :math:b (slope) and :math:1/D_i (intercept).
+
+Practical Example:
+
+.. code-block:: csharp
+
+   // Loss Ratio (a) calculated from historical data
+   double[] t = { 1, 2, 3, 4, 5 };
+   double[] loss_ratio = { 10.5, 11.0, 11.5, 12.0, 12.5 };
+
+
 Cumulative Production and EUR
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To calculate the Estimated Ultimate Recovery (EUR), we integrate the rate
@@ -131,4 +197,52 @@ Ouput
 .. terminal::
 
    EUR (Exponential) = 19000.00 STB
+
+Computing the Exponential Model Decline Rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Using the given data
+
+.. code-block:: csharp
+
+   double[] t = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90];
+   double[] qt = [double.NaN, 990.05, 980.20, 970.45, 960.78, 951.23, 941.76, 932.39, 923.12, 913.93];
+
+
+**Solution**
+- 1. Compute the commulative production Np
+- 2. Plot qt versus Np and measure the slope and intercept
+- 3. intercept is the :math:`q_i` and slope is the :math:`D`
+
+.. code-block:: csharp
+
+   double[] t = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90];
+   double[] qt = [double.NaN, 990.05, 980.20, 970.45, 960.78, 951.23, 941.76, 932.39, 923.12, 913.93];
+   // Compute Cumulative
+   double[] Np = Zeros(t.Length);
+   for (int i = 1; i < t.Length; i++)
+       Np[i] = Np[i-1] + qt[i]*(t[i] - t[i-1]);
+   // Compute Slope and Intercept
+   double[] coeffs = Polyfit(Np[1..], qt[1..], 1);
+
+   // Plot
+   Scatter(Np[1..], qt[1..], "fob", 15); HoldOn();
+   Plot(Np, [.. Np.Select(np => Polyval(coeffs, np))]); HoldOff();
+   Legend(["Measured Data", "Line of Best Fit"]);
+   SaveAs("Decline_Curve_Fitting.png");
+
+   // Print Result
+   Console.WriteLine($"D = {coeffs[0]}");
+   Console.WriteLine($"q_i = {coeffs[1]}");
+
+
+Ouput
+
+.. terminal::
+
+   D = -0.0010050369357366175
+   q_i = 999.9999607852839
+
+.. figure:: images/Decline_Curve_Fitting.png
+   :align: center
+   :alt: Decline_Curve_Fitting.png
 
