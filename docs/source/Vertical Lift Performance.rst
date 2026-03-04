@@ -1,4 +1,3 @@
 Vertical Lift Performance
 =========================
 
-

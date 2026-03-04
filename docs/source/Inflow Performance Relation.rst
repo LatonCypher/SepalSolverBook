@@ -55,8 +55,11 @@ Given:
    Console.WriteLine($"Production Rate (q) = {q} STB/day");
 
    // Full Range
-   double qfun(double p) => J * (p_r - p_wf);
+   double qfun(double pwf) => J * (p_r - pwf);
    ColVec Prange = Linspace(0, p_r);
+   ColVec Qrange = Arrayfun(qfun, Prange);
+   Plot(Prange, Qrange, "b");
+   SaveAs("OilIPR_Above_Pb.png");
 
 
 Ouput
@@ -65,13 +68,10 @@ Ouput
 
    Production Rate (q) = 1000 STB/day
 
-            {
-                double J = 2; // STB/day/psi    
-                double p_r = 3000; // psi
-                double p_wf = 2500; // psi
-                double q = J * (p_r - p_wf); // STB/day
-                Console.WriteLine($"Production Rate (q) = {q} STB/day");
-            }
+.. figure:: images/OilIPR_Above_Pb.png
+   :align: center
+   :alt: OilIPR_Above_Pb.png
+
 
 Oil Well IPR Below Bubble Point
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -115,12 +115,24 @@ Given:
    double q = q_max * (1 - 0.2 * (p_wf / p_r) - 0.8 * Pow(p_wf / p_r, 2)); // STB/day
    Console.WriteLine($"Production Rate (q) = {q} STB/day");
 
+   // Full Range
+   double qfun(double pwf) => q_max * (1 - 0.2 * (pwf / p_r) - 0.8 * Pow(pwf / p_r, 2));
+   ColVec Prange = Linspace(0, p_r);
+   ColVec Qrange = Arrayfun(qfun, Prange);
+   Plot(Prange, Qrange, "b");
+   SaveAs("OilIPR_Below_Pb.png");
+
 
 Ouput
 
 .. terminal::
 
    Production Rate (q) = 1583.9999999999998 STB/day
+
+.. figure:: images/OilIPR_Below_Pb.png
+   :align: center
+   :alt: OilIPR_Below_Pb.png
+
 
 Flow Efficiency and Skin
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -231,7 +243,8 @@ Adjusted for skin: q_actual = 1022 \cdot \frac{J_s}{J} = 1022 \cdot \frac{1.3944
    double r_e_r_w = 1000;
    double s = 3;
    double lnre_rw = Log(r_e_r_w);
-   double J_s = J * lnre_rw/ (lnre_rw + s ); // STB/day/psi
+   double FE = lnre_rw/ (lnre_rw + s);
+   double J_s = J * FE; // STB/day/psi
    double q_ideal = q_max * (1 - 0.2 * (p_wf / p_r) - 0.8 * Pow(p_wf / p_r, 2)); // STB/day
 
 
@@ -313,11 +326,24 @@ Given:
    Console.WriteLine($"Gas Flow Rate (q_g) = {q_g:F2} Mscf/day");
 
 
+   // Full Range
+   double qfun(double pwf) => C * Pow(Pow(p_r, 2) - Pow(pwf, 2), n);
+   ColVec Prange = Linspace(0, p_r);
+   ColVec Qrange = Arrayfun(qfun, Prange);
+   Plot(Prange, Qrange, "b");
+   SaveAs("GasIPR.png");
+
+
 Ouput
 
 .. terminal::
 
    Gas Flow Rate (q_g) = 4944.52 Mscf/day
+
+.. figure:: images/GasIPR.png
+   :align: center
+   :alt: GasIPR.png
+
 
 Absolute Open Flow (AOF)
 ~~~~~~~~~~~~~~~~~~~~~~~~

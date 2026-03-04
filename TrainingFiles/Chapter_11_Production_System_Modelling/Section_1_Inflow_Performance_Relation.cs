@@ -193,7 +193,8 @@
                 double r_e_r_w = 1000;
                 double s = 3;
                 double lnre_rw = Log(r_e_r_w);
-                double J_s = J * lnre_rw/ (lnre_rw + s ); // STB/day/psi
+                double FE = lnre_rw/ (lnre_rw + s);
+                double J_s = J * FE; // STB/day/psi
                 double q_ideal = q_max * (1 - 0.2 * (p_wf / p_r) - 0.8 * Pow(p_wf / p_r, 2)); // STB/day
             }
             /// </code>
@@ -260,6 +261,14 @@
                 double p_wf = 2000; // psia
                 double q_g = C * Pow(Pow(p_r, 2) - Pow(p_wf, 2), n);
                 Console.WriteLine($"Gas Flow Rate (q_g) = {q_g:F2} Mscf/day");
+
+
+                // Full Range
+                double qfun(double pwf) => C * Pow(Pow(p_r, 2) - Pow(pwf, 2), n);
+                ColVec Prange = Linspace(0, p_r);
+                ColVec Qrange = Arrayfun(qfun, Prange);
+                Plot(Prange, Qrange, "b");
+                SaveAs("GasIPR.png");
             }
             /// </code>
             /// 
