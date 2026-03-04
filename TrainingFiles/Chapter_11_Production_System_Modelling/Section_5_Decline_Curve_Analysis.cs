@@ -19,7 +19,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
     {
         public static void Run()
         {
-
+            /// <BookContent>
             ///
             /// **Definition:**
             /// Decline Curve Analysis involves fitting a mathematical function to historical
@@ -118,7 +118,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                 Console.WriteLine($"EUR (Exponential) = {EUR:F2} STB");
             }
             /// </code>
-            ///
+            /// 
+            /// </BookContent>
 
         }
     }
