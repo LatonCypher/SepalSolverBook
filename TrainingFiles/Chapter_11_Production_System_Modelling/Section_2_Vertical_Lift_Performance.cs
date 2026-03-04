@@ -12,6 +12,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
     {
         public static void Run()
         {
+            /// <BookContent>
             ///
             /// **Definition:**
             /// The Vertical Lift Performance (VLP) describes the relationship between the bottom-hole flowing pressure (:math:`p_{wf}`) and the production rate (:math:`q`). It represents the pressure required to lift fluids from the bottom-hole to the surface against gravity, friction, and acceleration.
@@ -55,7 +56,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
 
 
                 // To compute for a range of flowrates
-                
             }
             /// </code>
             /// 
@@ -99,6 +99,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             }
             /// </code>
             /// 
+            /// </BookContent>
 }
     }
 }

@@ -182,8 +182,11 @@
             ///      q = 2000 \cdot 0.511 = 1022 \, \text{ STB/day}
             /// </math>
             /// 
-            /// Adjusted for skin: q_actual = 1022 \cdot \frac{J_s}{J} = 1022 \cdot \frac{1.3944}{2} = 712.5 \, \text{STB/day}
+            /// Adjusted for skin: 
             /// 
+            /// <math>
+            ///     q_actual = 1022 \cdot \frac{J_s}{J} = 1022 \cdot \frac{1.3944}{2} = 712.5 \, \text{STB/day}
+            /// </math>
             /// <code>
             {
                 double q_max = 2000; // STB/day
@@ -216,6 +219,7 @@
             /// 
             /// 
             /// **Gas Well Inflow Performance Relation (IPR)**
+            /// 
             /// Definition:
             /// Gas Inflow Performance Relationship (IPR) describes the relationship between the gas flow rate (:math:`q_g`) and the bottom-hole flowing  pressure (:math:`p_{wf}`). Unlike oil, gas productivity is highly non-linear due to the pressure-dependent properties of gas (viscosity :math:`mu_g` and compressibility factor: math:`z`).
             /// <header 3> The Simplified Back-Pressure Equation </header>

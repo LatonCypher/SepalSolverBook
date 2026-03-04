@@ -6,8 +6,7 @@
         {
             /// <BookContent> 
             /// 
-            /// Introduction
-            /// ~~~~~~~~~~~~~
+            /// **Introduction**
 
             /// Mathematical modelling serves as the backbone of modern petroleum engineering, acting as the bridge between raw physical data and strategic decision-making. In a petroleum production system, a model is a mathematical representation of the flow of fluids—oil, gas, and water—from the deep subsurface reservoir, through the wellbore, and into surface processing facilities.
 
@@ -20,8 +19,7 @@
 
 
 
-            /// The Integrated Production System
-            /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            /// **The Integrated Production System**
 
             /// A petroleum production system is typically modeled as a series of interconnected components. Mathematical modelling treats this as a **Network Flow** problem where pressure and flow rate are the primary variables.
 
@@ -34,8 +32,7 @@
             /// Surface Facilities
             /// Models flow through chokes, separators, and transport pipelines.
 
-            /// Core Mathematical Principles
-            /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            /// **Core Mathematical Principles**
 
             /// To build these models, engineers rely on three fundamental conservation laws:
 
@@ -50,8 +47,7 @@
 
 
 
-            /// Classification of Models
-            /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            /// **Classification of Models**
             /// 
             /// Mathematical models vary in complexity based on the required accuracy and available computational power:
             /// <table>
@@ -63,8 +59,7 @@
             /// </table>
 
 
-            /// Applications in Industry
-            /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            /// **Applications in Industry**
             /// 
             /// In the current era of "Digital Oilfields," mathematical modelling enables key engineering tasks:
 
@@ -77,8 +72,7 @@
             /// Flow Assurance
             /// Predicting and preventing the formation of hydrates, wax, or scale that can restrict flow.
             /// 
-            /// Summary
-            /// ~~~~~~~~~~~
+            /// **Summary**
             /// Mathematical modelling in petroleum production is not just about solving equations; it is about creating a "digital twin" of the physical system to navigate the high-stakes environment of energy extraction.
 
             /// </BookContent>
