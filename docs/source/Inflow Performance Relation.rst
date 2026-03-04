@@ -231,9 +231,9 @@ Case 1: **Above Bubble Point** (:math:`p_{wf} = 2800 \, \text{psi}`)
    ColVec Prange = Linspace(0, p_r);
    ColVec Qrange = Arrayfun(qfun, Prange);
 
-   Plot(Prange, Qrange, "b", 2); HoldOn(); 
-   Plot(Prange, FE_damage * Qrange, "r", 2);
-   Plot(Prange, FE_stimulated * Qrange, "g", 2); HoldOff();
+   Plot(Qrange, Prange, "b", 2); HoldOn();
+   Plot(FE_damage * Qrange, Prange, "r", 2);
+   Plot(FE_stimulated * Qrange, Prange, "g", 2); HoldOff();
    Xlabel("Flowrate Q (STB/day)");
    Ylabel("Pressure P (psia)");
    Title("OilIPR_Above_Pb_Damaged_Stimulated_Skin");

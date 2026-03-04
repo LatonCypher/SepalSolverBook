@@ -1,6 +1,59 @@
 ﻿using ConsoleApp1;
 Writer.Run();
 
+
+//{
+//    //Z factor application
+//    static double ZfactorHY(double Pr, double Tr)
+//    {
+//        double z = 1, t, tm1, tm1e2, A, B,
+//            C, D, r, y2, y3, y4, Den;
+//        if (Pr != 0)
+//        {
+//            t = 1 / Tr;
+//            tm1 = 1 - t; tm1e2 = tm1 * tm1;
+//            A = 0.06125 * t * Exp(-1.2 * Pow(1 - t, 2));
+//            B = t * (14.76 - t * (9.76 - t * 4.58));
+//            C = t * (90.7 - t * (242.2 - t * 42.4));
+//            D = 2.18 + 2.82 * t; r = A * Pr;
+//            var yfunc = new Func<double, double>(y =>
+//            {
+//                y2 = y * y; y3 = y2 * y; y4 = y3 * y;
+//                Den = Pow(1 - y, 3);
+//                return -A * Pr + (y + y2 + y3 - y4) / Den -
+//                B * y2 + C * Pow(y, D);
+//            });
+//            r *= Pr < 5 ? 2 : 1;
+//            r /= Pr > 13 ? 2 : 1;
+//            double y = Fsolve(yfunc, r);
+//            z = A * Pr / y;
+//        }
+//        return z;
+//    }
+
+//    double s = 0.8;
+//    // Sutton's Correlation for Tpc
+//    double T_pc = 169.2 + 349.5 * s - 74.0 * Pow(s, 2);
+
+//    // Sutton's Correlation for ppc
+//    double P_pc = 756.8 - 131.0 * s - 3.6 * Pow(s, 2);
+
+//    double T = 550, Tr = T/T_pc;
+//    ColVec P = Linspace(0, 3000, 11);
+//    ColVec Z = Arrayfun(p => ZfactorHY(p/P_pc, Tr), P);
+//    ColVec PZ = P.Div(Z);
+//    double pzmax = PZ.Max();
+//    ColVec G = 0.02*(pzmax - PZ);
+
+//    Plot(G, PZ); HoldOn();
+//    Plot(G + G.Pow(2)/250, PZ);
+//    Plot(G - G.Pow(2)/250, PZ); HoldOff();
+
+//    Console.WriteLine($"P = {P.T}");
+//    Console.WriteLine($"G = {(G - G.Pow(2)/250).T}");
+
+
+//}
 //{
 //    Matrix A = new double[,]
 //    {
