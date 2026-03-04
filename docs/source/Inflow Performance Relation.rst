@@ -58,7 +58,7 @@ Given:
    double qfun(double pwf) => J * (p_r - pwf);
    ColVec Prange = Linspace(0, p_r);
    ColVec Qrange = Arrayfun(qfun, Prange);
-   Plot(Prange, Qrange, "b");
+   Plot(Prange, Qrange, "b", 2);
    SaveAs("OilIPR_Above_Pb.png");
 
 
@@ -119,7 +119,7 @@ Given:
    double qfun(double pwf) => q_max * (1 - 0.2 * (pwf / p_r) - 0.8 * Pow(pwf / p_r, 2));
    ColVec Prange = Linspace(0, p_r);
    ColVec Qrange = Arrayfun(qfun, Prange);
-   Plot(Prange, Qrange, "b");
+   Plot(Prange, Qrange, "b", 2);
    SaveAs("OilIPR_Below_Pb.png");
 
 
@@ -210,9 +210,26 @@ Case 1: **Above Bubble Point** (:math:`p_{wf} = 2800 \, \text{psi}`)
    double J = 2; // STB/day/psi
    double r_e_r_w = 1000; // dimensionless
    double s = 3; // dimensionless
-   double J_s = J / (1 + s / Log(r_e_r_w)); // STB/day/psi
+   double lnre_rw = Log(r_e_r_w);
+   double FE = lnre_rw/(lnre_rw + s);
+   double J_s = J * FE; // STB/day/psi
    double q = J_s * (p_r - p_wf); // STB/day
    Console.WriteLine($"Adjusted Productivity Index (J_s) = {J_s:F4} STB/day/psi");
+
+   // Full Range
+   double damageskin = 3;
+   double stimulatedskin = -3;
+   double FE_damage = lnre_rw/(lnre_rw + damageskin);
+   double FE_stimulated = lnre_rw/(lnre_rw + stimulatedskin);
+   double qfun(double pwf) => J * (p_r - pwf);
+   ColVec Prange = Linspace(0, p_r);
+   ColVec Qrange = Arrayfun(qfun, Prange);
+
+   Plot(Prange, Qrange, "b", 2); HoldOn(); 
+   Plot(Prange, FE_damage * Qrange, "r", 2);
+   Plot(Prange, FE_stimulated * Qrange, "g", 2); HoldOff();
+   SaveAs("OilIPR_Above_Pb_Damaged_Stimulated_Skin.png");
+
 
 
 Ouput
@@ -221,13 +238,18 @@ Ouput
 
    Adjusted Productivity Index (J_s) = 1.3944 STB/day/psi
 
+.. figure:: images/OilIPR_Above_Pb_Damaged_Stimulated_Skin.png
+   :align: center
+   :alt: OilIPR_Above_Pb_Damaged_Stimulated_Skin.png
+
+
 
 Case 2: **Below Bubble Point** (:math:`p_{wf} = 2000 \, \text{psi}`)
 
 .. math::
 
-   \frac{q}{2000} = 1 - 0.2 \cdot \frac{2000}{3000} - 0.8 \cdot \left(\frac{2000}{3000}\right)^2
-   \frac{q}{ 2000} = 1 - 0.133 - 0.356 = 0.511
+   \frac{q}{2000} = 1 - 0.2 \cdot \frac{2000}{3000} - 0.8 \cdot \left(\frac{2000}{3000}\right)^2 \\
+   \frac{q}{ 2000} = 1 - 0.133 - 0.356 = 0.511 \\
    q = 2000 \cdot 0.511 = 1022 \, \text{ STB/day}
 
 
@@ -252,6 +274,26 @@ Adjusted for skin:
    double J_s = J * FE; // STB/day/psi
    double q_ideal = q_max * (1 - 0.2 * (p_wf / p_r) - 0.8 * Pow(p_wf / p_r, 2)); // STB/day
 
+   // Full Range
+   double damageskin = 3;
+   double stimulatedskin = -3;
+   double FE_damage = lnre_rw/(lnre_rw + damageskin);
+   double FE_stimulated = lnre_rw/(lnre_rw + stimulatedskin);
+   double qfun(double pwf) => q_max * (1 - 0.2 * (pwf / p_r) - 0.8 * Pow(pwf / p_r, 2));
+   ColVec Prange = Linspace(0, p_r);
+   ColVec Qrange = Arrayfun(qfun, Prange);
+
+   Plot(Prange, Qrange, "b", 2); HoldOn();
+   Plot(Prange, FE_damage * Qrange, "r", 2);
+   Plot(Prange, FE_stimulated * Qrange, "g", 2); HoldOff();
+   SaveAs("OilIPR_Below_Pb_Damaged_Stimulated_Skin.png");
+
+
+
+.. figure:: images/OilIPR_Below_Pb_Damaged_Stimulated_Skin.png
+   :align: center
+   :alt: OilIPR_Below_Pb_Damaged_Stimulated_Skin.png
+
 
 Case 3: **At Zero Bottom-Hole Pressure** (:math:`p_{wf} = 0`)
 
@@ -259,7 +301,13 @@ Case 3: **At Zero Bottom-Hole Pressure** (:math:`p_{wf} = 0`)
 
    q = q_{max} = 2000 \, \text{STB/day}
 
-Adjusted for skin: q_actual = 2000 \cdot \frac{1.3944}{2} = 1394.4 \, \text{STB/day}
+
+Adjusted for skin: 
+
+.. math::
+
+   q_actual = 2000 \cdot \frac{1.3944}{2} = 1394.4 \, \text{STB/day}
+
 
 
 .. code-block:: csharp
