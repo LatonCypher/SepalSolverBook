@@ -91,7 +91,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             }
             /// </code>
             /// 
-            /// <header 3> Linearization for Harmonic Decline (:math:b=1) </header>
+            /// <header 3> Linearization for Harmonic Decline (:math:`b=1`) </header>
             /// The harmonic equation :math:`q = q_i / (1 + D_i t)` is linearized by taking
             /// the reciprocal of the rate:
             /// <math>

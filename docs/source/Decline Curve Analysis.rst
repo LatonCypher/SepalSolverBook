@@ -89,7 +89,7 @@ Practical Example:
 
 
 
-Linearization for Harmonic Decline (:math:b=1)
+Linearization for Harmonic Decline (:math:`b=1`)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The harmonic equation :math:`q = q_i / (1 + D_i t)` is linearized by taking
 the reciprocal of the rate:
