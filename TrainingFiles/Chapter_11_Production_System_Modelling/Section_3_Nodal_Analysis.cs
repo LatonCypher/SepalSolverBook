@@ -25,9 +25,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             ///
             /// The Node Equations:
             ///
-            /// - Inflow (Supply): :math:p_{node} = p_r - \Delta p_{reservoir}
+            /// - Inflow (Supply): :math:`p_{node} = p_r - \Delta p_{reservoir}`
             ///
-            /// - Outflow (Demand): :math:p_{node} = p_{surf} + \Delta p_{tubing} + \Delta p_{choke}
+            /// - Outflow (Demand): :math:`p_{node} = p_{surf} + \Delta p_{tubing} + \Delta p_{choke}`
             ///
             /// <header 3> Determining the Operating Point </header>
             /// The intersection of the IPR curve and the VLP curve represents the
@@ -38,15 +38,15 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             ///
             /// Consider a well with:
             ///
-            /// - Reservoir Pressure (:math:p_r) = 3500 psi
+            /// - Reservoir Pressure (:math:`p_r`) = 3500 psi
             ///
-            /// - Productivity Index (:math:J) = 1.2 STB/day/psi
+            /// - Productivity Index (:math:`J`) = 1.2 STB/day/psi
             ///
-            /// - Surface Pressure (:math:p_{surf}) = 250 psi
+            /// - Surface Pressure (:math:`p_{surf}`) = 250 psi
             ///
-            /// - VLP is simplified as: :math:p_{wf} = p_{surf} + 0.001 \cdot q^{1.5} + 0.4 \cdot \text{Depth}/144
+            /// - VLP is simplified as: :math:`p_{wf} = p_{surf} + 0.001 \cdot q^{1.5} + 0.4 \cdot \text{Depth}/144`
             ///
-            /// To find the operating point, we solve for :math:q where :math:p_{wf, IPR} = p_{wf, VLP}.
+            /// To find the operating point, we solve for :math:`q where :math:p_{wf, IPR} = p_{wf, VLP}`.
             ///
             /// <code>
             {
@@ -98,10 +98,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             /// shifting the curves, engineers can predict the impact of changes:
             ///<table>
             /// Change | Curve Affected | Result on Operating Point 
-            /// Increase Reservoir Pressure | IPR(Shifts Up) | Increase in :math: q and :math: p_{ wf}. 
+            /// Increase Reservoir Pressure | IPR(Shifts Up) | Increase in :math:`q` and :math:`p_{ wf}`. 
             /// Wellbore Stimulation(Skin < 0) | IPR(Gets Steeper) | Increase in :math: q. 
-            /// Increase Tubing Diameter | VLP(Shifts Down) | Increase in :math: q, decrease in :math: p_{ wf}. 
-            /// Increase Water Cut | VLP(Shifts Up) | Decrease in :math: q(due to heavier fluid). |
+            /// Increase Tubing Diameter | VLP(Shifts Down) | Increase in :math:`q`, decrease in :math:`p_{ wf}`. 
+            /// Increase Water Cut | VLP(Shifts Up) | Decrease in :math:`q`(due to heavier fluid). |
             /// </table>
             /// 
             /// </BookContent>

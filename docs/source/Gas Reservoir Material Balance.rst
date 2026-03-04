@@ -191,16 +191,16 @@ Given the following data
    ColVec Z = Arrayfun(p => ZfactorHY(p/P_pc, Tr), P);
    ColVec PZ = P.Div(Z);
    double m = (PZ[^2] - PZ[^1])/(G[^2] - G[^1]);
-   ColVec Pl = new double[] { PZ[^1], 0 }, Gl = new double[] { G[^1], G[^1] -m*PZ[^1] };
+   ColVec Pl = new double[] { PZ[^1], 0 }, Gl = new double[] { G[^1], G[^1] -PZ[^1]/m };
 
    Plot(G, PZ, "b"); HoldOn();
    Plot(Gl, Pl, "r"); HoldOff();
-   SaveAs($"Gas_Reservoir_MB.png");
+   SaveAs("Gas_Reservoir_MB.png");
 
 // 
 
-.. figure:: images/$"Gas_Reservoir_MB.png
+.. figure:: images/Gas_Reservoir_MB.png
    :align: center
-   :alt: $"Gas_Reservoir_MB.png
+   :alt: Gas_Reservoir_MB.png
 
 
