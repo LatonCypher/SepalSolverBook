@@ -150,16 +150,16 @@ Ouput
 
 Linearization for Hyperbolic Decline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Hyperbolic decline (:math:0 < b < 1) cannot be fully linearized with simple
-variables because of the :math:b exponent. Instead, we linearize the
-Loss Ratio (:math:1/D), defined as :math:a = q / (dq/dt):
+Hyperbolic decline (:math:`0 < b < 1`) cannot be fully linearized with simple
+variables because of the :math:`b` exponent. Instead, we linearize the
+Loss Ratio (:math:`1/D`), defined as :math:`a = q / (dq/dt)`:
 
 .. math::
 
    \frac{q}{dq/dt} = \frac{1}{D_i} + b \cdot t
 
 To solve this, we compute the derivative of production over time, plot the
-loss ratio vs. :math:t, and find :math:b (slope) and :math:1/D_i (intercept).
+loss ratio vs. :math:`t`, and find :math:`b` (slope) and :math:`1/D_i` (intercept).
 
 Practical Example:
 
