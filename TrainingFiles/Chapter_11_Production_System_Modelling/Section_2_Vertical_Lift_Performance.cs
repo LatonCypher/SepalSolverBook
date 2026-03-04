@@ -47,11 +47,11 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                     double friction_grad = 0.00002 * Pow(q, 1.8); // Simplified friction term
                     double hydro_grad = density / 144.0; // psi/ft
                     return hydro_grad + friction_grad;
-                };
+                }
                 // Solve using SepalSolver Ode45
                 // Integrate from z=0 (surface) to z=8000 (bottom-hole)
                 var (Z, P) = Ode45(pressureGradient, p_surf, [0, depth]);
-                double p_wf = P[^1];
+                double p_wf = P[^1]; // extract the pressure at the bottom
                 Console.WriteLine($"Bottom-hole Flowing Pressure (Pwf) = {p_wf:F2} psi");
 
 
@@ -90,11 +90,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                     double friction_grad = 1.5e-9 * (Pow(q_g, 2) / p); // Simplified gas friction
                     return hydro_grad + friction_grad;
                 }
-                ;
                 // Solve using SepalSolver Ode45
                 // Integrate from z=0 (surface) to z=8000 (bottom-hole)
                 var (Z, P) = Ode45(pressureGradient, p_surf, [0, depth]);
-                double p_wf = P[^1];
+                double p_wf = P[^1]; // extract the pressure at the bottom
                 Console.WriteLine($"Bottom-hole Flowing Pressure (Pwf) = {p_wf:F2} psi");
             }
             /// </code>
