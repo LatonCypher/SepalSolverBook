@@ -59,6 +59,9 @@ Given:
    ColVec Prange = Linspace(0, p_r);
    ColVec Qrange = Arrayfun(qfun, Prange);
    Plot(Prange, Qrange, "b", 2);
+   Xlabel("Flowrate Q (STB/day)");
+   Ylabel("Pressure P (psia)");
+   Title("OilIPR_Above_Pb");
    SaveAs("OilIPR_Above_Pb.png");
 
 
@@ -119,7 +122,10 @@ Given:
    double qfun(double pwf) => q_max * (1 - 0.2 * (pwf / p_r) - 0.8 * Pow(pwf / p_r, 2));
    ColVec Prange = Linspace(0, p_r);
    ColVec Qrange = Arrayfun(qfun, Prange);
-   Plot(Prange, Qrange, "b", 2);
+   Plot(Qrange, Prange, "b", 2);
+   Xlabel("Flowrate Q (STB/day)");
+   Ylabel("Pressure P (psia)");
+   Title("OilIPR_Below_Pb");
    SaveAs("OilIPR_Below_Pb.png");
 
 
@@ -228,6 +234,10 @@ Case 1: **Above Bubble Point** (:math:`p_{wf} = 2800 \, \text{psi}`)
    Plot(Prange, Qrange, "b", 2); HoldOn(); 
    Plot(Prange, FE_damage * Qrange, "r", 2);
    Plot(Prange, FE_stimulated * Qrange, "g", 2); HoldOff();
+   Xlabel("Flowrate Q (STB/day)");
+   Ylabel("Pressure P (psia)");
+   Title("OilIPR_Above_Pb_Damaged_Stimulated_Skin");
+   Legend(["Ideal", "Damaged", "Stimulated"]);
    SaveAs("OilIPR_Above_Pb_Damaged_Stimulated_Skin.png");
 
 
@@ -283,9 +293,13 @@ Adjusted for skin:
    ColVec Prange = Linspace(0, p_r);
    ColVec Qrange = Arrayfun(qfun, Prange);
 
-   Plot(Prange, Qrange, "b", 2); HoldOn();
-   Plot(Prange, FE_damage * Qrange, "r", 2);
-   Plot(Prange, FE_stimulated * Qrange, "g", 2); HoldOff();
+   Plot(Qrange, Prange, "b", 2); HoldOn();
+   Plot(FE_damage * Qrange, Prange, "r", 2);
+   Plot(FE_stimulated * Qrange, Prange, "g", 2); HoldOff();
+   Xlabel("Flowrate Q (STB/day)");
+   Ylabel("Pressure P (psia)");
+   Title("OilIPR_Below_Pb_Damaged_Stimulated_Skin");
+   Legend(["Ideal", "Damaged", "Stimulated"]);
    SaveAs("OilIPR_Below_Pb_Damaged_Stimulated_Skin.png");
 
 
@@ -328,9 +342,10 @@ Gas Well Inflow Performance Relation (IPR)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Definition:
-Gas Inflow Performance Relationship (IPR) describes the relationship between the gas flow rate (:math:`q_g`) and the bottom-hole flowing  pressure (:math:`p_{wf}`). Unlike oil, gas productivity is highly non-linear due to the pressure-dependent properties of gas (viscosity :math:`mu_g` and compressibility factor: math:`z`).
-The Simplified Back-Pressure Equation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Gas Inflow Performance Relationship (IPR) describes the relationship between the gas flow rate (:math:`q_g`) and the bottom-hole flowing  pressure (:math:`p_{wf}`). Unlike oil, gas productivity is highly non-linear due to the pressure-dependent properties of gas (viscosity :math:`mu_g` and compressibility factor :math:`z`).
+
+**The Simplified Back-Pressure Equation**
+
 For most engineering applications, the Rawlins and Schellhardt empirical "Back-Pressure" equation is used to describe gas well performance:
 
 .. math::
@@ -384,7 +399,10 @@ Given:
    double qfun(double pwf) => C * Pow(Pow(p_r, 2) - Pow(pwf, 2), n);
    ColVec Prange = Linspace(0, p_r);
    ColVec Qrange = Arrayfun(qfun, Prange);
-   Plot(Prange, Qrange, "b");
+   Plot(Qrange, Prange, "b", 2);
+   Xlabel("Flowrate Q (Mscf/day)");
+   Ylabel("Pressure P (psia)");
+   Title("GasIPR");
    SaveAs("GasIPR.png");
 
 

@@ -38,10 +38,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             {
                 // Inputs
                 double p_surf = 200; // psi (Wellhead Pressure)
-                double depth = 8000; // ft
-                double q = 1000; // STB/day
+                double depth = 2000; // ft
+                double q_o = 500; // STB/day
                                  // ODE Definition: dp/dz = gradient
-                double pressureGradient(double z, double p)
+                double pressureGradient(double z, double p, double q)
                 {
                     double density = 55.0; // lb/ft3 (Oil)
                     double friction_grad = 0.00002 * Pow(q, 1.8); // Simplified friction term
@@ -50,12 +50,26 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                 }
                 // Solve using SepalSolver Ode45
                 // Integrate from z=0 (surface) to z=8000 (bottom-hole)
-                var (Z, P) = Ode45(pressureGradient, p_surf, [0, depth]);
+                var (Z, P) = Ode45((z, p)=>pressureGradient(z, p, q_o), p_surf, [0, depth]);
                 double p_wf = P[^1]; // extract the pressure at the bottom
                 Console.WriteLine($"Bottom-hole Flowing Pressure (Pwf) = {p_wf:F2} psi");
 
 
-                // To compute for a range of flowrates
+
+                //FullRange
+                double pfun(double q_g)
+                {
+                    var (Z, P) = Ode45((z, p) => pressureGradient(z, p, q_g), p_surf, [0, depth]);
+                    double p_wf = P[^1]; // extract the pressure at the bottom
+                    return p_wf;
+                }
+                ColVec Qrange = Linspace(0, 8000);
+                ColVec Prange = Arrayfun(pfun, Qrange);
+                Plot(Qrange, Prange, "b", 2);
+                Xlabel("Flowrate Q (STB/day)");
+                Ylabel("Pressure P (psia)");
+                Title("OilVLP");
+                SaveAs("OilVLP.png");
             }
             /// </code>
             /// 
@@ -76,7 +90,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                 double depth = 10000; // ft
                 double q_g = 5000; // Mscf/day
                 // ODE Definition for Gas
-                double pressureGradient(double z, double p)
+                double pressureGradient(double z, double p, double q)
                 {
                     double MW = 20.0; // Gas molecular weight
                     double T = 540 + (0.015 * z); // Temp profile in Rankine
@@ -87,14 +101,30 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                     double rho_g = (p * MW) / (Z * R * T);
 
                     double hydro_grad = rho_g / 144.0;
-                    double friction_grad = 1.5e-9 * (Pow(q_g, 2) / p); // Simplified gas friction
+                    double friction_grad = 1.5e-9 * (Pow(q, 2) / p); // Simplified gas friction
                     return hydro_grad + friction_grad;
                 }
                 // Solve using SepalSolver Ode45
                 // Integrate from z=0 (surface) to z=8000 (bottom-hole)
-                var (Z, P) = Ode45(pressureGradient, p_surf, [0, depth]);
+                var (Z, P) = Ode45((z, p)=>pressureGradient(z, p, q_g), p_surf, [0, depth]);
                 double p_wf = P[^1]; // extract the pressure at the bottom
                 Console.WriteLine($"Bottom-hole Flowing Pressure (Pwf) = {p_wf:F2} psi");
+
+
+                //FullRange
+                double pfun(double q_g)
+                {
+                    var (Z, P) = Ode45((z, p) => pressureGradient(z, p, q_g), p_surf, [0, depth]);
+                    double p_wf = P[^1]; // extract the pressure at the bottom
+                    return p_wf;
+                }
+                ColVec Qrange = Linspace(0, 8000);
+                ColVec Prange = Arrayfun(pfun, Qrange);
+                Plot(Qrange, Prange, "b", 2);
+                Xlabel("Flowrate Q (Mscf/day)");
+                Ylabel("Pressure P (psia)");
+                Title("GasVLP");
+                SaveAs("GasVLP.png");
             }
             /// </code>
             /// 
