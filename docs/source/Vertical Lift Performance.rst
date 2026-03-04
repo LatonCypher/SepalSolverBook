@@ -55,7 +55,7 @@ total depth (:math:`H`).
        double p_wf = P[^1]; // extract the pressure at the bottom
        return p_wf;
    }
-   ColVec Qrange = Linspace(0, 8000);
+   ColVec Qrange = Linspace(0, 800);
    ColVec Prange = Arrayfun(pfun, Qrange);
    Plot(Qrange, Prange, "b", 2);
    Xlabel("Flowrate Q (STB/day)");
