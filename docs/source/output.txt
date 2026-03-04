@@ -1,1 +1,2 @@
-Pseudo-pressure Gas Rate = 4600.00 Mscf/day
+❌ Syntax Error in Documentation:
+Line 20: Semicolon after method or accessor block is not valid
