@@ -188,8 +188,17 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             /// 
             /// </code>
             /// 
-            /// 
-            /// 
+            /// <header 3> Exercise </header>
+            /// Given the production history of Gas Reservoir below
+            /// <code>
+            {
+                double[] P = [2500, 2100, 1700, 1300, 900, 500];
+                double[] G = [14.2314, 24.9498, 37.6355, 51.0163, 63.4889, 74.2625];
+                double[] Z = [0.7027, 0.6949, 0.7120, 0.7564, 0.8219, 0.8988];
+            }
+            /// </code>
+            /// 1. Determine the type of the reservoir
+            /// 2. Estimate the Initial Gas In-place
             /// 
             /// </BookContent>
 

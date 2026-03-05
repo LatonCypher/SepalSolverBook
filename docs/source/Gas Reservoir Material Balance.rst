@@ -204,6 +204,16 @@ Given the following data
    :alt: Gas_Reservoir_MB.png
 
 
+Exercise
+~~~~~~~~
+Given the production history of Gas Reservoir below
 
+.. code-block:: csharp
 
+   double[] P = [2500, 2100, 1700, 1300, 900, 500];
+   double[] G = [14.2314, 24.9498, 37.6355, 51.0163, 63.4889, 74.2625];
+   double[] Z = [0.7027, 0.6949, 0.7120, 0.7564, 0.8219, 0.8988];
+
+1. Determine the type of the reservoir
+2. Estimate the Initial Gas In-place
 
