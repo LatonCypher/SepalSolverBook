@@ -45,12 +45,12 @@ Ouput
 
 .. math::
 
-   B_o = 0.9759 + 0.00012 \cdot \left[R_s \left( \frac{\gamma_g}{\gamma_o} \right)^{0.5} +1.25 T \right]^{1.2}
+   B_o = 0.9759 + 0.00012\left[R_s \left( \frac{\gamma_g}{\gamma_o} \right)^{0.5} + 1.25 T \right]^{1.2}
 
 
 Numerical Example:
 
-- :math:`\gamma_o = 0.85(Typical for 35 API)` 
+- :math:`\gamma_o = 0.85`(Typical for 35 API)
 Using: math: `R_s`, 
 - :math:`\gamma_g`, and
 - :math:`T` from above:
@@ -70,7 +70,7 @@ Ouput
 
    Bo at Bubble Point = 1.280 RB/STB
 
-3.Gas Compressibility Factor(:math: Z)
+3.Gas Compressibility Factor(:math:`z`)
 For gas modeling, the Ideal Gas Law fails at high pressure. We use the $Z$-factor to correct it. The Hall-Yarborough or Dranchuk-Abu-Kassam methods are standard for coding this.
 
 Linearization for Gas Density:
@@ -88,8 +88,8 @@ Above the bubble point (undersaturated), the oil volume changes only slightly du
    c_o = \frac{-1}{ V} \left( \frac{\partial V}{\partial P} \right)_T
 
 
-Code Implementation for Undersaturated $B_o$:If: math: P > P_b, 
-we adjust the :math: B_{ ob}(at bubble point) using compressibility:
+Code Implementation for Undersaturated :math:`B_o`: If: math:`P > P_b`, 
+we adjust the :math:`B_{ ob}`(at bubble point) using compressibility:
 
 .. code-block:: csharp
 

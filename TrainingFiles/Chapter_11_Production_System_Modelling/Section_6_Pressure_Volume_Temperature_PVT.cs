@@ -50,12 +50,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             ///
             /// 2. Oil Formation Volume Factor(:math:B_o)Since oil shrinks as gas escapes, :math:B_o is almost always greater than 1.0.For pressures below the bubble point, we use the Standing correlation:
             /// <math>
-            ///     B_o = 0.9759 + 0.00012 \cdot \left[R_s \left( \frac{\gamma_g}{\gamma_o} \right)^{0.5} +1.25 T \right]^{1.2}
+            ///     B_o = 0.9759 + 0.00012\left[R_s \left( \frac{\gamma_g}{\gamma_o} \right)^{0.5} + 1.25 T \right]^{1.2}
             /// </math>
             /// 
             /// Numerical Example:
             /// 
-            /// - :math:`\gamma_o = 0.85(Typical for 35 API)` 
+            /// - :math:`\gamma_o = 0.85`(Typical for 35 API)
             /// Using: math: `R_s`, 
             /// - :math:`\gamma_g`, and
             /// - :math:`T` from above:
@@ -69,7 +69,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             }
             /// </code>
             /// 
-            /// 3.Gas Compressibility Factor(:math: Z)
+            /// 3.Gas Compressibility Factor(:math:`z`)
             /// For gas modeling, the Ideal Gas Law fails at high pressure. We use the $Z$-factor to correct it. The Hall-Yarborough or Dranchuk-Abu-Kassam methods are standard for coding this.
             /// 
             /// Linearization for Gas Density:
@@ -83,8 +83,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             ///     c_o = \frac{-1}{ V} \left( \frac{\partial V}{\partial P} \right)_T
             /// </math>
             /// 
-            /// Code Implementation for Undersaturated $B_o$:If: math: P > P_b, 
-            /// we adjust the :math: B_{ ob}(at bubble point) using compressibility:
+            /// Code Implementation for Undersaturated :math:`B_o`: If: math:`P > P_b`, 
+            /// we adjust the :math:`B_{ ob}`(at bubble point) using compressibility:
             /// <code>
             {
                 double Bob = 1.32; // Bo at bubble point
