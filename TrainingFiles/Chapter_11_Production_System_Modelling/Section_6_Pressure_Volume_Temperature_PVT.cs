@@ -17,7 +17,16 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
         {
             /// <BookContent>
             /// **Definition:**
-            /// PVT modeling describes the changes in hydrocarbon fluid properties (volume, density, and phase) as a function of pressure and temperature. It is essential for converting surface volumes (STB) to reservoir volumes (RB).Key Properties & Symbols :math:`B_o`: Oil Formation Volume Factor (RB/STB) :math:`R_s`: Solution Gas-Oil Ratio (scf/STB) :math:`\mu_o`: Oil Viscosity (cP) :math:`\gamma_o, \gamma_g`: Specific gravities of oil and gas. The Bubble Point Pressure (:math:`P_b`) The pressure at which the first bubble of gas comes out of solution. Below this pressure, the fluid is "saturated." A common correlation used is Standing’s method.
+            /// PVT modeling describes the changes in hydrocarbon fluid properties (volume, density, and phase) as a function of pressure and temperature. It is essential for converting surface volumes (STB) to reservoir volumes (RB).
+            /// 
+            /// Key Properties & Symbols 
+            /// 
+            /// - :math:`B_o`: Oil Formation Volume Factor (RB/STB) 
+            /// - :math:`R_s`: Solution Gas-Oil Ratio (scf/STB) 
+            /// - :math:`\mu_o`: Oil Viscosity (cP)
+            /// - :math:`\gamma_o, \gamma_g`: Specific gravities of oil and gas. 
+            /// 
+            /// The Bubble Point Pressure (:math:`P_b`) The pressure at which the first bubble of gas comes out of solution. Below this pressure, the fluid is "saturated." A common correlation used is Standing’s method.
             /// 
             /// <math>
             ///     P_b = 18.2 \left[ \left( \frac{R_s}{\gamma_g} \right)^{0.83} \times 10^{(0.00091 T - 0.0125 API)} - 1.4 \right]
