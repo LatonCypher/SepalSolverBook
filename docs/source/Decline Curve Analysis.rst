@@ -84,8 +84,8 @@ Practical Example:
 .. code-block:: csharp
 
    // Data: t (months), q (STB/day)
-   double[] t = [ 1, 2, 3, 4, 5 ];
-   double[] q = [ 950, 905, 860, 820, 780 ];
+   double[] t = [1, 2, 3, 4, 5];
+   double[] q = [950, 905, 860, 820, 780];
 
 
 
@@ -105,8 +105,8 @@ Practical Example:
 
 .. code-block:: csharp
 
-   double[] t = [ 1, 2, 3, 4, 5 ];
-   double[] q = [ 1000, 909, 833, 769, 714 ];
+   double[] t = [1, 2, 3, 4, 5];
+   double[] q = [1000, 909, 833, 769, 714];
 
 
 
@@ -245,4 +245,27 @@ Ouput
 .. figure:: images/Decline_Curve_Fitting.png
    :align: center
    :alt: Decline_Curve_Fitting.png
+
+
+
+Data with Shutdown
+~~~~~~~~~~~~~~~~~~
+Given this production history with shutdown
+
+.. code-block:: csharp
+
+   double[] qt = [990, 0, 980, 970, 0, 961, 951, 942, 0, 0, 932, 923, 914, 905];
+   double[] t = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140];
+
+
+Assuming an exponential decline model
+1. Plot the t vs Q
+2. delete the zeros and the corresponding times and adjust the time to delete the shutdown time
+3. using exponential fit, estimate the intial rate and the decline rate.
+
+Using the second approach of cumulative versus rate
+4. Compute Cummulative production
+5. Plot the production rate versus cumulative production
+6. Delete the zero rates and the corresponding cumulative production
+7. using linear fit. estimete the initial rate and the decline rate. 
 
