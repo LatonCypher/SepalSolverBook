@@ -214,6 +214,19 @@ Given the production history of Gas Reservoir below
    double[] G = [14.2314, 24.9498, 37.6355, 51.0163, 63.4889, 74.2625];
    double[] Z = [0.7027, 0.6949, 0.7120, 0.7564, 0.8219, 0.8988];
 
+   double[] PZ = [.. P.Zip(Z, (p, z) => p/z)];
+
+   var p = Polyfit(G, PZ, 1);
+   double GIIP = -p[1]/p[0];
+   Scatter(G, PZ, "fob"); HoldOn();
+   Plot([0, GIIP], [p[1], 0], "k"); HoldOff();
+   SaveAs("Gas_Reserve_Exercise.png");
+
+
+.. figure:: images/Gas_Reserve_Exercise.png
+   :align: center
+   :alt: Gas_Reserve_Exercise.png
+
 1. Determine the type of the reservoir
 2. Estimate the Initial Gas In-place
 
