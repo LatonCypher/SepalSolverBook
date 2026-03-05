@@ -84,3 +84,4 @@ Mathematical modelling in petroleum production is not just about solving equatio
    Nodal Analysis
    Gas Reservoir Material Balance
    Decline Curve Analysis
+   Pressure Volume Temperature PVT
