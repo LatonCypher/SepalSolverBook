@@ -218,10 +218,19 @@ Given the production history of Gas Reservoir below
 
    var p = Polyfit(G, PZ, 1);
    double GIIP = -p[1]/p[0];
+   Console.WriteLine($"Initial P/z = {p[1]}");
+   Console.WriteLine($"GIIP = {GIIP}");
    Scatter(G, PZ, "fob"); HoldOn();
    Plot([0, GIIP], [p[1], 0], "k"); HoldOff();
    SaveAs("Gas_Reserve_Exercise.png");
 
+
+Ouput
+
+.. terminal::
+
+   Initial P/z = 4269.359990640229
+   GIIP = 85.38985191375376
 
 .. figure:: images/Gas_Reserve_Exercise.png
    :align: center

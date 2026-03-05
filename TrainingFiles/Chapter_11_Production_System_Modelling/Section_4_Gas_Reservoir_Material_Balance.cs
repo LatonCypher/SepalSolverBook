@@ -200,6 +200,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
 
                 var p = Polyfit(G, PZ, 1);
                 double GIIP = -p[1]/p[0];
+                Console.WriteLine($"Initial P/z = {p[1]}");
+                Console.WriteLine($"GIIP = {GIIP}");
                 Scatter(G, PZ, "fob"); HoldOn();
                 Plot([0, GIIP], [p[1], 0], "k"); HoldOff();
                 SaveAs("Gas_Reserve_Exercise.png");
