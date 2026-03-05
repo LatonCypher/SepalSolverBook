@@ -251,19 +251,45 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             {
                 double[] qt = [990, 0, 980, 970, 0, 961, 951, 942, 0, 0, 932, 923, 914, 905];
                 double[] t = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140];
+
+                
+
+                double[] Np = Zeros(t.Length);
+                for (int i = 1; i < t.Length; i++)
+                    Np[i] = Np[i-1] + qt[i]*(t[i] - t[i-1]);
+
+                //filter
+                Np = [.. Np.Where((np, i) => qt[i] > 0)];
+                qt = [.. qt.Where((q, i) => qt[i] > 0)];
+                t = [.. t.Where((t, i) => qt[i] > 0)];
+
+                var p = Polyfit(Np, qt, 1);
+
+                // Plot
+                Scatter(Np[1..], qt[1..], "fob", 15); HoldOn();
+                Plot(Np, [.. Np.Select(np => Polyval(p, np))]); HoldOff();
+                Legend(["Measured Data", "Line of Best Fit"]);
+                SaveAs("Decline_Curve_Fitting.png");
+
+                // Print Result
+                Console.WriteLine($"D = {p[0]}");
+                Console.WriteLine($"q_i = {p[1]}");
+
             }
             /// </code>
             /// 
             /// Assuming an exponential decline model
-            /// 1. Plot the t vs Q
-            /// 2. delete the zeros and the corresponding times and adjust the time to delete the shutdown time
-            /// 3. using exponential fit, estimate the intial rate and the decline rate.
+            /// 
+            /// - 1. Plot the t vs Q
+            /// - 2. delete the zeros and the corresponding times and adjust the time to delete the shutdown time
+            /// - 3. using exponential fit, estimate the intial rate and the decline rate.
             /// 
             /// Using the second approach of cumulative versus rate
-            /// 4. Compute Cummulative production
-            /// 5. Plot the production rate versus cumulative production
-            /// 6. Delete the zero rates and the corresponding cumulative production
-            /// 7. using linear fit. estimete the initial rate and the decline rate. 
+            /// 
+            /// - 4. Compute Cummulative production
+            /// - 5. Plot the production rate versus cumulative production
+            /// - 6. Delete the zero rates and the corresponding cumulative production
+            /// - 7. using linear fit. estimete the initial rate and the decline rate. 
             /// 
             /// </BookContent>
 

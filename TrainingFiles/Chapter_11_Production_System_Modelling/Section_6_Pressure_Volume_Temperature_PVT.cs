@@ -24,10 +24,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             /// </math>
             /// 
             /// Numerical Example:
-            /// :math:R_s = 500 \, \text{scf/STB}
-            /// :math:\gamma_g = 0.65
-            /// :math:T = 200 \, ^\circ\text{F}:
-            /// math:\text{API} = 35
+            /// - :math:`R_s = 500 \, \text{scf/STB}`
+            /// - :math:`\gamma_g = 0.65`
+            /// - :math:`T = 200 \, ^\circ\text{F}`:
+            /// - math:`\text{API} = 35`
             /// <code>
             {
                 double Rs = 500, gamma_g = 0.65, T = 200,  API = 35, a = Pow(Rs / gamma_g, 0.83);
@@ -43,10 +43,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             /// </math>
             /// 
             /// Numerical Example:
-            /// :math:\gamma_o = 0.85(Typical for 35 API) 
-            /// Using: math: R_s, 
-            /// :math:\gamma_g, and
-            /// :math: T from above:
+            /// :math:`\gamma_o = 0.85(Typical for 35 API)` 
+            /// Using: math: `R_s`, 
+            /// :math:`\gamma_g`, and
+            /// :math:`T` from above:
             /// <code>
             {
                 double Rs = 500, gamma_g = 0.65, gamma_o = 0.85, T = 200;
