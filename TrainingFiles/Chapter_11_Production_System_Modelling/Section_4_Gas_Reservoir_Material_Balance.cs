@@ -203,7 +203,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                 Console.WriteLine($"Initial P/z = {p[1]}");
                 Console.WriteLine($"GIIP = {GIIP}");
                 Scatter(G, PZ, "fob"); HoldOn();
-                Plot([0, GIIP], [p[1], 0], "k"); HoldOff();
+                Plot([0, GIIP], [p[1], 0], "k");
+                Hline(0); Vline(0);
+                HoldOff();
                 SaveAs("Gas_Reserve_Exercise.png");
             }
             /// </code>

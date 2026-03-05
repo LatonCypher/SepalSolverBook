@@ -88,6 +88,11 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                 double[] t = [1, 2, 3, 4, 5];
                 double[] q = [950, 905, 860, 820, 780];
 
+                double[] Lnq = [..q.Select(Log)];
+
+                var p = Polyfit(t, Lnq, 1);
+                Console.WriteLine($"D = {-p[0]}");
+                Console.WriteLine($"q_i = {Exp(p[1])}");
             }
             /// </code>
             /// 
@@ -106,6 +111,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                 double[] t = [1, 2, 3, 4, 5];
                 double[] q = [1000, 909, 833, 769, 714];
 
+
+                double[] iq = [.. q.Select(q=>1/q)];
+
+                var p = Polyfit(t, iq, 1);
+                Console.WriteLine($"D = {p[0]/p[1]}");
+                Console.WriteLine($"q_i = {1/p[1]}");
             }
             /// </code>
             /// 

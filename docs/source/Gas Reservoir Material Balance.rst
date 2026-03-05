@@ -221,7 +221,9 @@ Given the production history of Gas Reservoir below
    Console.WriteLine($"Initial P/z = {p[1]}");
    Console.WriteLine($"GIIP = {GIIP}");
    Scatter(G, PZ, "fob"); HoldOn();
-   Plot([0, GIIP], [p[1], 0], "k"); HoldOff();
+   Plot([0, GIIP], [p[1], 0], "k");
+   Hline(0); Vline(0);
+   HoldOff();
    SaveAs("Gas_Reserve_Exercise.png");
 
 
