@@ -234,14 +234,14 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
 
                 // VLP Inputs
                 double p_surf = 200; // psi (Wellhead Pressure)
-                double depth = 4000; // ft
+                double depth = 3500; // ft
 
 
                 // VLP
                 double pressureGradient(double z, double p, double q)
                 {
-                    double density = 52.0; // lb/ft3 (Oil)
-                    double friction_grad = 1e-5 * Pow(q, 1.8); // Simplified friction term
+                    double density = 48.0; // lb/ft3 (Oil)
+                    double friction_grad = 5e-6 * Pow(q, 1.8); // Simplified friction term
                     double hydro_grad = density / 144.0; // psi/ft
                     return hydro_grad + friction_grad;
                 }
@@ -255,9 +255,20 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                 ColVec Q_vlp = Linspace(0, 1600);
                 ColVec P_vlp = Arrayfun(pfun, Q_vlp);
 
+
                 var (current_q, current_p) = Intersection(Q_ipr_Damaged, P_ipr, Q_vlp, P_vlp);
                 var (stimulatedA_q, stimulatedA_p) = Intersection(Q_ipr_Stimulated_A, P_ipr, Q_vlp, P_vlp);
                 var (stimulatedB_q, stimulatedB_p) = Intersection(Q_ipr_Stimulated_B, P_ipr, Q_vlp, P_vlp);
+
+                Plot(Q_ipr_Damaged, P_ipr, "r", 2); HoldOn();
+                Plot(Q_ipr_Stimulated_A, P_ipr, "b", 2);
+                Plot(Q_ipr_Stimulated_B, P_ipr, "g", 2);
+                Plot(Q_vlp, P_vlp, "y", 2);
+                Scatter([current_q, stimulatedA_q, stimulatedB_q],
+                    [current_p, stimulatedA_p, stimulatedB_p], "fok"); HoldOff();
+                Axis([0, 3500, 0, 3500]);
+                Legend(["Damaged", "Stimulated_A", "Stimulated_B", "VLP"]);
+                SaveAs("Nodal_Analysis_Stimulation_Economics_Case_Study.png");
             }
             /// </code>
             /// 
