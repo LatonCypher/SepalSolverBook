@@ -91,8 +91,19 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                 double[] Lnq = [..q.Select(Log)];
 
                 var p = Polyfit(t, Lnq, 1);
-                Console.WriteLine($"D = {-p[0]}");
-                Console.WriteLine($"q_i = {Exp(p[1])}");
+
+
+                double D = -p[0];
+                double q_i = Exp(p[1]);
+                Console.WriteLine($"D = {D} per month");
+                Console.WriteLine($"q_i = {q_i} STB/day");
+
+                double[] T = Linspace(t[0], t[^1]);
+                double[] Q = [.. T.Select(t => q_i * Exp(-D*t))];
+
+                Scatter(t, q, "fob"); HoldOn();
+                Plot(T, Q, "r"); HoldOff();
+                SaveAs("Exponential_Fit.png");
             }
             /// </code>
             /// 
@@ -115,8 +126,18 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                 double[] iq = [.. q.Select(q=>1/q)];
 
                 var p = Polyfit(t, iq, 1);
-                Console.WriteLine($"D = {p[0]/p[1]}");
-                Console.WriteLine($"q_i = {1/p[1]}");
+
+                double D = p[0]/p[1];
+                double q_i = 1/p[1];
+                Console.WriteLine($"D = {D} per month");
+                Console.WriteLine($"q_i = {q_i} STB/day");
+
+                double[] T = Linspace(t[0], t[^1]);
+                double[] Q = [.. T.Select(t => q_i /(1 + D*t))];
+
+                Scatter(t, q, "fob"); HoldOn();
+                Plot(T, Q, "r"); HoldOff();
+                SaveAs("Harmonic_Fit.png");
             }
             /// </code>
             /// 

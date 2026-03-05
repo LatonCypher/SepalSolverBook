@@ -87,6 +87,34 @@ Practical Example:
    double[] t = [1, 2, 3, 4, 5];
    double[] q = [950, 905, 860, 820, 780];
 
+   double[] Lnq = [..q.Select(Log)];
+
+   var p = Polyfit(t, Lnq, 1);
+
+
+   double D = -p[0];
+   double q_i = Exp(p[1]);
+   Console.WriteLine($"D = {D} per month");
+   Console.WriteLine($"q_i = {q_i} STB/day");
+
+   double[] T = Linspace(t[0], t[^1]);
+   double[] Q = [.. T.Select(t => q_i * Exp(-D*t))];
+
+   Scatter(t, q, "fob"); HoldOn();
+   Plot(T, Q, "r"); HoldOff();
+   SaveAs("Exponential_Fit.png");
+
+
+Ouput
+
+.. terminal::
+
+   D = 0.049296673326352236 per month
+   q_i = 998.1220221050729 STB/day
+
+.. figure:: images/Exponential_Fit.png
+   :align: center
+   :alt: Exponential_Fit.png
 
 
 Linearization for Harmonic Decline (:math:`b=1`)
@@ -108,6 +136,34 @@ Practical Example:
    double[] t = [1, 2, 3, 4, 5];
    double[] q = [1000, 909, 833, 769, 714];
 
+
+   double[] iq = [.. q.Select(q=>1/q)];
+
+   var p = Polyfit(t, iq, 1);
+
+   double D = p[0]/p[1];
+   double q_i = 1/p[1];
+   Console.WriteLine($"D = {D} per month");
+   Console.WriteLine($"q_i = {q_i} STB/day");
+
+   double[] T = Linspace(t[0], t[^1]);
+   double[] Q = [.. T.Select(t => q_i /(1 + D*t))];
+
+   Scatter(t, q, "fob"); HoldOn();
+   Plot(T, Q, "r"); HoldOff();
+   SaveAs("Harmonic_Fit.png");
+
+
+Ouput
+
+.. terminal::
+
+   D = 0.11128058359645096 per month
+   q_i = 1111.2494708361232 STB/day
+
+.. figure:: images/Harmonic_Fit.png
+   :align: center
+   :alt: Harmonic_Fit.png
 
 
 Hyperbolic Decline (:math:`0 < b < 1`)
