@@ -20,14 +20,16 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             /// PVT modeling describes the changes in hydrocarbon fluid properties (volume, density, and phase) as a function of pressure and temperature. It is essential for converting surface volumes (STB) to reservoir volumes (RB).Key Properties & Symbols :math:`B_o`: Oil Formation Volume Factor (RB/STB) :math:`R_s`: Solution Gas-Oil Ratio (scf/STB) :math:`\mu_o`: Oil Viscosity (cP) :math:`\gamma_o, \gamma_g`: Specific gravities of oil and gas. The Bubble Point Pressure (:math:`P_b`) The pressure at which the first bubble of gas comes out of solution. Below this pressure, the fluid is "saturated." A common correlation used is Standing’s method.
             /// 
             /// <math>
-            ///     P_b = 18.2 \cdot \left[ \left( \frac{R_s}{\gamma_g} \right)^{0.83} \cdot 10^{(0.00091 \cdot T - 0.0125 \cdot API)} - 1.4 \right]
+            ///     P_b = 18.2 \left[ \left( \frac{R_s}{\gamma_g} \right)^{0.83} \times 10^{(0.00091 T - 0.0125 API)} - 1.4 \right]
             /// </math>
             /// 
             /// Numerical Example:
+            /// 
             /// - :math:`R_s = 500 \, \text{scf/STB}`
             /// - :math:`\gamma_g = 0.65`
             /// - :math:`T = 200 \, ^\circ\text{F}`:
-            /// - math:`\text{API} = 35`
+            /// - :math:`\text{API} = 35`
+            /// 
             /// <code>
             {
                 double Rs = 500, gamma_g = 0.65, T = 200,  API = 35, a = Pow(Rs / gamma_g, 0.83);
@@ -43,10 +45,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             /// </math>
             /// 
             /// Numerical Example:
-            /// :math:`\gamma_o = 0.85(Typical for 35 API)` 
+            /// 
+            /// - :math:`\gamma_o = 0.85(Typical for 35 API)` 
             /// Using: math: `R_s`, 
-            /// :math:`\gamma_g`, and
-            /// :math:`T` from above:
+            /// - :math:`\gamma_g`, and
+            /// - :math:`T` from above:
+            /// 
             /// <code>
             {
                 double Rs = 500, gamma_g = 0.65, gamma_o = 0.85, T = 200;

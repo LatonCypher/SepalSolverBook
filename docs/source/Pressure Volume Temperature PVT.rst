@@ -7,14 +7,16 @@ PVT modeling describes the changes in hydrocarbon fluid properties (volume, dens
 
 .. math::
 
-   P_b = 18.2 \cdot \left[ \left( \frac{R_s}{\gamma_g} \right)^{0.83} \cdot 10^{(0.00091 \cdot T - 0.0125 \cdot API)} - 1.4 \right]
+   P_b = 18.2 \left[ \left( \frac{R_s}{\gamma_g} \right)^{0.83} \times 10^{(0.00091 T - 0.0125 API)} - 1.4 \right]
 
 
 Numerical Example:
+
 - :math:`R_s = 500 \, \text{scf/STB}`
 - :math:`\gamma_g = 0.65`
 - :math:`T = 200 \, ^\circ\text{F}`:
-- math:`\text{API} = 35`
+- :math:`\text{API} = 35`
+
 
 .. code-block:: csharp
 
@@ -38,10 +40,12 @@ Ouput
 
 
 Numerical Example:
-:math:`\gamma_o = 0.85(Typical for 35 API)` 
+
+- :math:`\gamma_o = 0.85(Typical for 35 API)` 
 Using: math: `R_s`, 
-:math:`\gamma_g`, and
-:math:`T` from above:
+- :math:`\gamma_g`, and
+- :math:`T` from above:
+
 
 .. code-block:: csharp
 
