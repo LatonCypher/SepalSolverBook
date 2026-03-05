@@ -90,7 +90,7 @@ Practical Example:
 
 
 Linearization for Harmonic Decline (:math:`b=1`)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The harmonic equation :math:`q = q_i / (1 + D_i t)` is linearized by taking
 the reciprocal of the rate:
 
@@ -105,8 +105,8 @@ Practical Example:
 
 .. code-block:: csharp
 
-   double[] t = { 1, 2, 3, 4, 5 };
-   double[] q = { 1000, 909, 833, 769, 714 };
+   double[] t = [ 1, 2, 3, 4, 5 ];
+   double[] q = [ 1000, 909, 833, 769, 714 ];
 
 
 

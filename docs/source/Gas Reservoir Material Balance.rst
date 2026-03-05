@@ -129,8 +129,8 @@ Given the following data
 .. code-block:: csharp
 
    double gas_g = 0.8;
-   double res_T = 550; //Rankine
-   ColVec P = new double[] { 300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700 }; //psia
+   double res_T = 550; // Rankine
+   ColVec P = new double[] { 300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700 }; // psia
    ColVec G = new double[] { 52.86, 49.76, 45.69, 40.43, 33.95, 26.60, 19.05, 11.94, 5.58 };
 
 
@@ -147,12 +147,12 @@ Given the following data
 .. code-block:: csharp
 
    double gas_g = 0.8;
-   double res_T = 550; //Rankine
-   ColVec P = new double[] { 300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700 }; //psia
+   double res_T = 550; // Rankine
+   ColVec P = new double[] { 300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700 }; // psia
    ColVec G = new double[] { 52.86, 49.76, 45.69, 40.43, 33.95, 26.60, 19.05, 11.94, 5.58 };
 
 
-   //Z factor application
+   // Z factor application
    static double ZfactorHY(double Pr, double Tr)
    {
        double z = 1, t, tm1, tm1e2, A, B,
@@ -202,5 +202,8 @@ Given the following data
 .. figure:: images/Gas_Reservoir_MB.png
    :align: center
    :alt: Gas_Reservoir_MB.png
+
+
+
 
 

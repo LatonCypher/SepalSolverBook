@@ -38,9 +38,9 @@ Consider a well with:
 
 - Surface Pressure (:math:`p_{surf}`) = 250 psi
 
-- VLP is simplified as: :math:`p_{wf} = p_{surf} + 0.001 \cdot q^{1.5} + 0.4 \cdot \text{Depth}/144`
+- VLP is simplified as: :math:`p_{wf} = p_{surf} + 0.00002 q^{1.8}; + \rho/144`
 
-To find the operating point, we solve for :math:`q where :math:p_{wf, IPR} = p_{wf, VLP}`.
+To find the operating point, we solve for :math:`q` where :math:`p_{wf, IPR} = p_{wf, VLP}`.
 
 
 .. code-block:: csharp
@@ -116,4 +116,249 @@ shifting the curves, engineers can predict the impact of changes:
      - VLP(Shifts Up)
      - Decrease in :math:`q`(due to heavier fluid).
      - 
+
+Stimulation Economics: A Nodal Analysis Case Study
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Problem Statement:**
+An oil company is evaluating two competing stimulation proposals to improve the
+productivity of a damaged well. The well is currently performing poorly due to
+a high skin factor (:math:`s = +5`). The goal is to determine which intervention
+provides the best return on investment by calculating the production gain
+per million USD spent.
+
+Reservoir and Well Data
+
+.. list-table:: 
+   :header-rows: 1
+
+   * - Parameter
+     - Value
+     - Unit
+   * - Reservoir Pressure(:math:`p_r`)
+     - 2800
+     - psia
+   * - Bubble Point(:math:`p_b`)
+     - 3000
+     - psia
+   * - Current Skin Factor(:math:`s_{ current}`)
+     - +5
+     - dimensionless
+   * - Max Flow Rate(Ideal :math:`q_{ max}`)
+     - 2000
+     - STB/day
+   * - Reservoir Radius / Wellbore Radius(:math:`r_e/r_w`)
+     - 1000
+     - dimensionless
+   * - Well Depth
+     - 4000
+     - ft
+   * - Oil Density
+     - 55.0
+     - :math:`lb/ft^3`
+   * - Surface Pressure(:math:`p_{ surf}`)
+     - 200
+     - psia
+
+**Stimulation Offers:**
+
+***Company A(Hydraulic Frac):**Reduces skin to :math:`-3`. Cost: **$10M**.
+* **Company B(Acid Wash):**Reduces skin to :math:`+1`. Cost: **$5M**.
+
+Solution
+- 1. Compute IPR and Flow Efficiency
+Since the reservoir pressure(:math:`p_r = 2800`) is below the bubble point(:math:`p_b = 3000`), the well follows Vogel's non-linear behavior. We first determine the Flow Efficiency (:math:`FE`) for each skin scenario.
+The relationship between skin and productivity adjustment is: :math:`J_{ ratio} = \frac{\ln(r_e/r_w)}{\ln(r_e/r_w) + s}`
+
+
+.. code-block:: csharp
+
+   //IPR Input
+   double q_max = 2000; // STB/day
+   double p_r = 2800; // psi
+
+   //IPR
+   double qfun(double pwf) => q_max * (1 - 0.2 * (pwf / p_r) - 0.8 * Pow(pwf / p_r, 2));
+   ColVec P_ipr = Linspace(0, p_r);
+   ColVec Q_ipr = Arrayfun(qfun, P_ipr);
+
+   // Adjusting for Damage and Stimulation
+   double r_e_r_w = 1000;
+   double FE_Damaged = Log(r_e_r_w)/(Log(r_e_r_w) + 5);
+   double FE_Stimulation_A = Log(r_e_r_w)/(Log(r_e_r_w) + -3);
+   double FE_Stimulation_B = Log(r_e_r_w)/(Log(r_e_r_w) + 1);
+   ColVec Q_ipr_Damaged = Q_ipr * FE_Damaged;
+   ColVec Q_ipr_Stimulated_A = Q_ipr * FE_Stimulation_A;
+   ColVec Q_ipr_Stimulated_B = Q_ipr * FE_Stimulation_B;
+
+   Plot(Q_ipr_Damaged, P_ipr, "r", 2); HoldOn();
+   Plot(Q_ipr_Stimulated_A, P_ipr, "b", 2); 
+   Plot(Q_ipr_Stimulated_B, P_ipr, "g", 2); HoldOff();
+   Legend(["Damaged", "Stimulated_A", "Stimulated_B"]);
+   SaveAs("IPR_Stimulation_Economics_Case_Study.png");
+
+
+.. figure:: images/IPR_Stimulation_Economics_Case_Study.png
+   :align: center
+   :alt: IPR_Stimulation_Economics_Case_Study.png
+
+
+- 2. Compute the VLP
+The Vertical Lift Performance is calculated by integrating the hydrostatic and frictional pressure drops from the surface to the bottom-hole.
+
+
+.. code-block:: csharp
+
+   // VLP Inputs
+   double p_surf = 200; // psi (Wellhead Pressure)
+   double depth = 4000; // ft
+
+
+   // VLP
+   double pressureGradient(double z, double p, double q)
+   {
+       double density = 52.0; // lb/ft3 (Oil)
+       double friction_grad = 1e-5 * Pow(q, 1.8); // Simplified friction term
+       double hydro_grad = density / 144.0; // psi/ft
+       return hydro_grad + friction_grad;
+   }
+   double pfun(double q_o)
+   {
+       var (Z, P) = Ode45((z, p) => pressureGradient(z, p, q_o), p_surf, [0, depth]);
+       double p_wf = P[^1]; // extract the pressure at the bottom
+       return p_wf;
+   }
+
+   ColVec Q_vlp = Linspace(0, 1600);
+   ColVec P_vlp = Arrayfun(pfun, Q_vlp);
+
+   Plot(Q_vlp, P_vlp, "k", 2); 
+   SaveAs("VLP_Stimulation_Economics_Case_Study.png");
+
+
+.. figure:: images/VLP_Stimulation_Economics_Case_Study.png
+   :align: center
+   :alt: VLP_Stimulation_Economics_Case_Study.png
+
+
+- 3. Nodal Analysis and Operating Points
+We find the intersection where: math:`p_{ wf, IPR} = p_{ wf, VLP}` for each case using ** SepalSolver**.
+
+
+.. code-block:: csharp
+
+   //IPR Input
+   double q_max = 2000; // STB/day
+   double p_r = 2800; // psi
+
+   //IPR
+   double qfun(double pwf) => q_max * (1 - 0.2 * (pwf / p_r) - 0.8 * Pow(pwf / p_r, 2));
+   ColVec P_ipr = Linspace(0, p_r);
+   ColVec Q_ipr = Arrayfun(qfun, P_ipr);
+
+   // Adjusting for Damage and Stimulation
+   double r_e_r_w = 1000;
+   double FE_Damaged = Log(r_e_r_w)/(Log(r_e_r_w) + 5);
+   double FE_Stimulation_A = Log(r_e_r_w)/(Log(r_e_r_w) + -3);
+   double FE_Stimulation_B = Log(r_e_r_w)/(Log(r_e_r_w) + 1);
+   ColVec Q_ipr_Damaged = Q_ipr * FE_Damaged;
+   ColVec Q_ipr_Stimulated_A = Q_ipr * FE_Stimulation_A;
+   ColVec Q_ipr_Stimulated_B = Q_ipr * FE_Stimulation_B;
+
+
+
+   // VLP Inputs
+   double p_surf = 200; // psi (Wellhead Pressure)
+   double depth = 4000; // ft
+
+
+   // VLP
+   double pressureGradient(double z, double p, double q)
+   {
+       double density = 52.0; // lb/ft3 (Oil)
+       double friction_grad = 1e-5 * Pow(q, 1.8); // Simplified friction term
+       double hydro_grad = density / 144.0; // psi/ft
+       return hydro_grad + friction_grad;
+   }
+   double pfun(double q_o)
+   {
+       var (Z, P) = Ode45((z, p) => pressureGradient(z, p, q_o), p_surf, [0, depth]);
+       double p_wf = P[^1]; // extract the pressure at the bottom
+       return p_wf;
+   }
+
+   ColVec Q_vlp = Linspace(0, 1600);
+   ColVec P_vlp = Arrayfun(pfun, Q_vlp);
+
+   var (current_q, current_p) = Intersection(Q_ipr_Damaged, P_ipr, Q_vlp, P_vlp);
+   var (stimulatedA_q, stimulatedA_p) = Intersection(Q_ipr_Stimulated_A, P_ipr, Q_vlp, P_vlp);
+   var (stimulatedB_q, stimulatedB_p) = Intersection(Q_ipr_Stimulated_B, P_ipr, Q_vlp, P_vlp);
+
+
+- 4. Production Improvement and Economics
+
+.. code-block:: csharp
+
+
+   //IPR Input
+   double q_max = 2000; // STB/day
+   double p_r = 2800; // psi
+
+   //IPR
+   double qfun(double pwf) => q_max * (1 - 0.2 * (pwf / p_r) - 0.8 * Pow(pwf / p_r, 2));
+   ColVec P_ipr = Linspace(0, p_r);
+   ColVec Q_ipr = Arrayfun(qfun, P_ipr);
+
+   // Adjusting for Damage and Stimulation
+   double r_e_r_w = 1000;
+   double FE_Damaged = Log(r_e_r_w)/(Log(r_e_r_w) + 5);
+   double FE_Stimulation_A = Log(r_e_r_w)/(Log(r_e_r_w) + -3);
+   double FE_Stimulation_B = Log(r_e_r_w)/(Log(r_e_r_w) + 1);
+   ColVec Q_ipr_Damaged = Q_ipr * FE_Damaged;
+   ColVec Q_ipr_Stimulated_A = Q_ipr * FE_Stimulation_A;
+   ColVec Q_ipr_Stimulated_B = Q_ipr * FE_Stimulation_B;
+
+
+
+   // VLP Inputs
+   double p_surf = 200; // psi (Wellhead Pressure)
+   double depth = 4000; // ft
+
+
+   // VLP
+   double pressureGradient(double z, double p, double q)
+   {
+       double density = 52.0; // lb/ft3 (Oil)
+       double friction_grad = 1e-5 * Pow(q, 1.8); // Simplified friction term
+       double hydro_grad = density / 144.0; // psi/ft
+       return hydro_grad + friction_grad;
+   }
+   double pfun(double q_o)
+   {
+       var (Z, P) = Ode45((z, p) => pressureGradient(z, p, q_o), p_surf, [0, depth]);
+       double p_wf = P[^1]; // extract the pressure at the bottom
+       return p_wf;
+   }
+
+   ColVec Q_vlp = Linspace(0, 1600);
+   ColVec P_vlp = Arrayfun(pfun, Q_vlp);
+
+   var (current_q, current_p) = Intersection(Q_ipr_Damaged, P_ipr, Q_vlp, P_vlp);
+   var (stimulatedA_q, stimulatedA_p) = Intersection(Q_ipr_Stimulated_A, P_ipr, Q_vlp, P_vlp);
+   var (stimulatedB_q, stimulatedB_p) = Intersection(Q_ipr_Stimulated_B, P_ipr, Q_vlp, P_vlp);
+
+   double BarrelPerDollar_A = (stimulatedA_q - current_q)/10;
+   double BarrelPerDollar_B = (stimulatedB_q - current_q)/5;
+
+   Console.WriteLine($"Barrel Per Dollar for Quote A: {BarrelPerDollar_A}");
+   Console.WriteLine($"Barrel Per Dollar for Quote B: {BarrelPerDollar_B}");
+
+
+Ouput
+
+.. terminal::
+
+   Barrel Per Dollar for Quote A: 3.5733706107198175
+   Barrel Per Dollar for Quote B: 3.4741949196266146
+
 
