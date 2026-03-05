@@ -50,8 +50,8 @@ Ouput
 
 Numerical Example:
 
-- :math:`\gamma_o = 0.85`(Typical for 35 API)
-Using: math: `R_s`, 
+- :math:`\gamma_o = 0.85` (Typical for 35 API)
+Using: math:`R_s`, 
 - :math:`\gamma_g`, and
 - :math:`T` from above:
 
