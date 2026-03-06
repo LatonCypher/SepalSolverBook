@@ -80,7 +80,32 @@ Linearization for Gas Density:
    \rho_g = \frac{P \cdot MW_g}{ Z \cdot R \cdot T}
 
 
-4.Isothermal Oil Compressibility(:math: c_o)
+4. Gas Formation Volume Factor( :math:B_g) is the ratio of the volume of gas at reservoir conditions to the
+volume of the same mass of gas at standard conditions. Because gas is highly
+compressible, :math:B_g is always a very small number (typically :math:< 0.01).
+
+Mathematical Expression:
+Derived from the Real Gas Law (:math:pV = nZRT):
+
+.. math::
+
+   B_g = 0.02827 \frac{Z T}{p} \quad [\text{rcf/scf}]
+
+Or in field units (res bbl/scf):
+
+.. math::
+
+   B_g = 0.005035 \frac{Z T}{p} \quad [\text{rb/scf}]
+
+Where:
+
+- :math:p = Reservoir pressure (psia)
+
+- :math:T = Reservoir temperature (:math:^\circ R)
+
+- :math:Z = Gas deviation factor at :math:p and :math:T
+
+5.Isothermal Oil Compressibility(:math: c_o)
 Above the bubble point (undersaturated), the oil volume changes only slightly due to pressure.
 
 .. math::
