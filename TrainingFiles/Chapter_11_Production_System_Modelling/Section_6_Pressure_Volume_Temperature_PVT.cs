@@ -77,12 +77,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             ///     \rho_g = \frac{P \cdot MW_g}{ Z \cdot R \cdot T}
             /// </math>
             /// 
-            /// 4. Gas Formation Volume Factor( :math:B_g) is the ratio of the volume of gas at reservoir conditions to the
+            /// 4. Gas Formation Volume Factor( :math:`B_g`) is the ratio of the volume of gas at reservoir conditions to the
             /// volume of the same mass of gas at standard conditions. Because gas is highly
-            /// compressible, :math:B_g is always a very small number (typically :math:< 0.01).
+            /// compressible, :math:`B_g` is always a very small number (typically :math:`< 0.01`).
 
             /// Mathematical Expression:
-            /// Derived from the Real Gas Law (:math:pV = nZRT):
+            /// Derived from the Real Gas Law (:math:`pV = nzRT`):
             /// <math>
             ///     B_g = 0.02827 \frac{Z T}{p} \quad [\text{rcf/scf}]
             /// </math>
@@ -92,13 +92,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             /// </math>
             /// Where:
             ///
-            /// - :math:p = Reservoir pressure (psia)
+            /// - :math:`p` = Reservoir pressure (psia)
             ///
-            /// - :math:T = Reservoir temperature (:math:^\circ R)
+            /// - :math:`T` = Reservoir temperature (:math:`^\circ R`)
             ///
-            /// - :math:Z = Gas deviation factor at :math:p and :math:T
+            /// - :math:`Z` = Gas deviation factor at :math:`p` and :math:`T`
             /// 
-            /// 5.Isothermal Oil Compressibility(:math: c_o)
+            /// 5.Isothermal Oil Compressibility(:math:`c_o`)
             /// Above the bubble point (undersaturated), the oil volume changes only slightly due to pressure.
             /// <math>
             ///     c_o = \frac{-1}{ V} \left( \frac{\partial V}{\partial P} \right)_T
