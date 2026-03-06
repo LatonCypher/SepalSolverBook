@@ -88,8 +88,8 @@ Above the bubble point (undersaturated), the oil volume changes only slightly du
    c_o = \frac{-1}{ V} \left( \frac{\partial V}{\partial P} \right)_T
 
 
-Code Implementation for Undersaturated :math:`B_o`: If: math:`P > P_b`, 
-we adjust the :math:`B_{ ob}`(at bubble point) using compressibility:
+Code Implementation for Undersaturated :math:`B_o`.
+If: math:`P > P_b`, we adjust the :math:`B_{ ob}` (at bubble point) using compressibility:
 
 .. code-block:: csharp
 
