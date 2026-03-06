@@ -71,7 +71,7 @@ Ouput
    Bo at Bubble Point = 1.280 RB/STB
 
 3.Gas Compressibility Factor(:math:`z`)
-For gas modeling, the Ideal Gas Law fails at high pressure. We use the $Z$-factor to correct it. The Hall-Yarborough or Dranchuk-Abu-Kassam methods are standard for coding this.
+For gas modeling, the Ideal Gas Law fails at high pressure. We use the :math:`Z`-factor to correct it. The Hall-Yarborough or Dranchuk-Abu-Kassam methods are standard for coding this.
 
 Linearization for Gas Density:
 
