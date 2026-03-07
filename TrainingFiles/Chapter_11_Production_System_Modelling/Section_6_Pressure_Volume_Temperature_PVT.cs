@@ -105,7 +105,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             /// </math>
             /// 
             /// Code Implementation for Undersaturated :math:`B_o`.
-            /// If: math:`P > P_b`, we adjust the :math:`B_{ ob}` (at bubble point) using compressibility:
+            /// If :math:`P > P_b`, we adjust the :math:`B_{ ob}` (at bubble point) using compressibility:
             /// <code>
             {
                 double Bob = 1.32; // Bo at bubble point

@@ -114,7 +114,7 @@ Above the bubble point (undersaturated), the oil volume changes only slightly du
 
 
 Code Implementation for Undersaturated :math:`B_o`.
-If: math:`P > P_b`, we adjust the :math:`B_{ ob}` (at bubble point) using compressibility:
+If :math:`P > P_b`, we adjust the :math:`B_{ ob}` (at bubble point) using compressibility:
 
 .. code-block:: csharp
 
