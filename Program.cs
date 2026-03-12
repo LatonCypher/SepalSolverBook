@@ -1,82 +1,97 @@
 ﻿using ConsoleApp1;
+{
+    double[] dydt(double t, double[] y) => [y[1], -y[0]];
+    var (T, Y) = Ode45(dydt, [0, 1], [0, 4*pi]);
+    Plot(T, Y, "-o"); 
+    GridOn();
+}
+
+{
+    // 1. Define the Stiff System (Van der Pol equation)
+    // y'' - mu * (1 - y^2) * y' + y = 0
+    // Let y[0] = position, y[1] = velocity
+
+    double mu = 1000.0; // The stiffness parameter
+    double[] vdp_stiff(double t, double[] y) => [y[1], mu * (1 - Pow(y[0], 2)) * y[1] - y[0]];
+
+    // 2. Solve using Ode45s (The Stiff Solver)
+    // Arguments: (Gradient, Initial State [2, 0], Time Span [0, 3000])
+    var (T, Y) = Ode45s(vdp_stiff, [2.0, 0.0], [0, 3000]);
+
+    // 3. Visualize the results
+    // Since Y is a matrix, Y[.., 0] is the position over time
+    Plot(T, Y[.., 0]);
+    Xlabel("Time"); Ylabel("Position"); GridOn();
+    Title("Stiff Van der Pol Solution (mu = 1000)");
+    SaveAs("Stiff.png");
+}
+
+//FormatLong();
+{
+    Matrix A = new double[,]
+    {
+        { 0.1419,    0.6557,         0,         0,         0 },
+        { 0.4218,    0.0357,    0.7431,         0,         0 },
+        { 0,         0.8491,    0.3922,    0.2769,         0 },
+        { 0,              0,    0.6555,    0.0462,    0.9502 },
+        { 0,              0,         0,    0.0971,    0.0344 }
+    };
+    //A = A.T;
+    Console.WriteLine($"Matrix A = {A}");
+    var (U, S, V) = Svd(A, 5);
+    //Console.WriteLine($"Matrix U = {U}");
+    //Console.WriteLine($"Matrix S = {S}");
+    //Console.WriteLine($"Matrix V = {V}");
+
+    var A_recon = U*S*V.T;
+    Console.WriteLine($"Reconstructed A = {A_recon}");
+    //Console.WriteLine($"Reconstructed A = {A_recon.Full()}");
+ }
+
+ {
+    SparseMatrix A = new double[,]
+    {
+        { 0.1419,    0.6557,         0,         0,         0 },
+        { 0.4218,    0.0357,    0.7431,         0,         0 },
+        { 0,         0.8491,    0.3922,    0.2769,         0 },
+        { 0,              0,    0.6555,    0.0462,    0.9502 },
+        { 0,              0,         0,    0.0971,    0.0344 }
+    };
+    //A = A.T;
+    Console.WriteLine($"Matrix A = {A.Full()}");
+    var (U, S, V) = Svd(A, 5);
+    //Console.WriteLine($"Matrix U = {U.Full()}");
+    //Console.WriteLine($"Matrix S = {S.Full()}");
+    //Console.WriteLine($"Matrix V = {V.Full()}");
+
+    var A_recon = U*S*V.T;
+    Console.WriteLine($"Reconstructed A = {A_recon.Full()}");
+    //Console.WriteLine($"Reconstructed A = {A_recon.Full()}");
+}
+
+{
+    Matrix A = new double[,]
+    {
+        { 0.8147,    0.9134,    0.2785,    0.9649,    0.9572 },
+        { 0.9058,    0.6324,    0.5469,    0.1576,    0.4854 },
+        { 0.1270,    0.0975,    0.9575,    0.9706,    0.8003 }
+    };
+
+    Console.WriteLine($"Matrix A = {A}");
+    var (U, S, V) = Svd(A);
+    Console.WriteLine($"Matrix U = {U}");
+    Console.WriteLine($"Matrix S = {S}");
+    Console.WriteLine($"Matrix V = {V}");
+
+    Console.WriteLine($"Matrix UTU = {U.T*U}");
+    Console.WriteLine($"Matrix UUT = {U*U.T}");
+    Console.WriteLine($"Matrix VTV = {V.T*V}");
+    Console.WriteLine($"Matrix VVT = {V*V.T}");
+}
 Writer.Run();
 
-//{
-//    //Z factor application
-//    static double ZfactorHY(double Pr, double Tr)
-//    {
-//        double z = 1, t, tm1, tm1e2, A, B,
-//            C, D, r, y2, y3, y4, Den;
-//        if (Pr != 0)
-//        {
-//            t = 1 / Tr;
-//            tm1 = 1 - t; tm1e2 = tm1 * tm1;
-//            A = 0.06125 * t * Exp(-1.2 * Pow(1 - t, 2));
-//            B = t * (14.76 - t * (9.76 - t * 4.58));
-//            C = t * (90.7 - t * (242.2 - t * 42.4));
-//            D = 2.18 + 2.82 * t; r = A * Pr;
-//            var yfunc = new Func<double, double>(y =>
-//            {
-//                y2 = y * y; y3 = y2 * y; y4 = y3 * y;
-//                Den = Pow(1 - y, 3);
-//                return -A * Pr + (y + y2 + y3 - y4) / Den -
-//                B * y2 + C * Pow(y, D);
-//            });
-//            r *= Pr < 5 ? 2 : 1;
-//            r /= Pr > 13 ? 2 : 1;
-//            double y = Fsolve(yfunc, r);
-//            z = A * Pr / y;
-//        }
-//        return z;
-//    }
-
-//    double s = 0.8;
-//    // Sutton's Correlation for Tpc
-//    double T_pc = 169.2 + 349.5 * s - 74.0 * Pow(s, 2);
-
-//    // Sutton's Correlation for ppc
-//    double P_pc = 756.8 - 131.0 * s - 3.6 * Pow(s, 2);
-
-//    double T = 550, Tr = T/T_pc;
-//    ColVec P = Linspace(0, 3000, 11);
-//    ColVec Z = Arrayfun(p => ZfactorHY(p/P_pc, Tr), P);
-//    ColVec PZ = P.Div(Z);
-//    double pzmax = PZ.Max();
-//    ColVec G = 0.02*(pzmax - PZ);
-
-//    Plot(G, PZ); HoldOn();
-//    Plot(G + G.Pow(2)/250, PZ);
-//    Plot(G - G.Pow(2)/250, PZ); HoldOff();
-
-//    Console.WriteLine($"P = {P.T}");
-//    Console.WriteLine($"G = {(G - G.Pow(2)/250).T}");
 
 
-//}
-//{
-//    Matrix A = new double[,]
-//    {
-//        { 0.3395,    0.1766,    0.3638,    0.4100 },
-//        { 0.7745,    0.4092,    0.8882,    0.6063 }
-//    };
-//    Console.WriteLine($"Matrix A = {A}");
-
-
-//    A.MakeSVD();
-//    Console.WriteLine($"Matrix S = {A.S_svd}");
-//    Console.WriteLine($"Matrix U = {A.U_svd}");
-//    Console.WriteLine($"Matrix V = {A.V_svd}");
-
-//    A.MakeSVD2();
-//    Console.WriteLine($"Matrix S = {A.S_svd}");
-//    Console.WriteLine($"Matrix U = {A.U_svd}");
-//    Console.WriteLine($"Matrix V = {A.V_svd}");
-
-//    A.MakeSVD3();
-//    Console.WriteLine($"Matrix S = {A.S_svd}");
-//    Console.WriteLine($"Matrix U = {A.U_svd}");
-//    Console.WriteLine($"Matrix V = {A.V_svd}");
-//}
 
 //static (double x1, double x2) bracket_minimum(Func<double, double> f, double x= 0, double s=1e-2, double k=2.0)
 //{

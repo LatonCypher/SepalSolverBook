@@ -1,15 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using ScottPlot.PlotStyles;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using static CSharpMath.Rendering.Text.TextAtom;
-using static SepalSolver.Statistics;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
 {
     internal class Section_6_Pressure_Volume_Temperature_PVT
     {

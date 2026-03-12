@@ -1,17 +1,4 @@
-﻿using ScottPlot.Colormaps;
-using ScottPlot.Interactivity.UserActions;
-using SepalSolver;
-using SkiaSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static CSharpMath.Rendering.Text.TextAtom;
-using static SepalSolver.Math;
-using static SepalSolver.Statistics;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
 {
     public class Section_05_Solution_of_Linear_Systems
     {
