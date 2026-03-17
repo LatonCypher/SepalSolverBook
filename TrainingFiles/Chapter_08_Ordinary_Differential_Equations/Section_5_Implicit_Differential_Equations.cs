@@ -66,7 +66,7 @@
                 (y0, yp0) = decic(F, 0, y0, 1, yp0, 0);
 
                 // Now solve the implicit ODE using Ode45i
-                (ColVec T, ColVec Y) = Ode45i(F, (y0, yp0), [0, 5]);
+                var (T, Y, Yp) = Ode45i(F, (y0, yp0), [0, 5]);
 
                 // Plot the results
                 Scatter(T, Y, "fob"); HoldOn();
@@ -139,7 +139,7 @@
                 (y0, yp0) = decic(F, t0, y0, 1, yp0, 0);
                 
                 // Now solve the implicit ODE using Ode45i
-                (ColVec T, ColVec Y) = Ode45i(F, (y0, yp0), [t0, 5]);
+                var (T, Y, Yp) = Ode45i(F, (y0, yp0), [t0, 5]);
                 
                 // Plot the results
                 Scatter(T, Y, "fob"); HoldOn();

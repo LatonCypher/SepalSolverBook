@@ -1,29 +1,25 @@
 ﻿using ConsoleApp1;
-{
-    double[] dydt(double t, double[] y) => [y[1], -y[0]];
-    var (T, Y) = Ode45(dydt, [0, 1], [0, 4*pi]);
-    Plot(T, Y, "-o"); 
-    GridOn();
-}
+
 
 {
-    // 1. Define the Stiff System (Van der Pol equation)
-    // y'' - mu * (1 - y^2) * y' + y = 0
-    // Let y[0] = position, y[1] = velocity
+    // Define the implicit system f(t, y, yp) = 0
+    double implicit_func(double t, double y, double yp) => Sin(yp) + yp - (y + Cos(t));
 
-    double mu = 1000.0; // The stiffness parameter
-    double[] vdp_stiff(double t, double[] y) => [y[1], mu * (1 - Pow(y[0], 2)) * y[1] - y[0]];
+    // Define initial conditions as a tuple (State, DerivativeGuess)
+    double y0 = 1.0, yp0 = 0.5;
 
-    // 2. Solve using Ode45s (The Stiff Solver)
-    // Arguments: (Gradient, Initial State [2, 0], Time Span [0, 3000])
-    var (T, Y) = Ode45s(vdp_stiff, [2.0, 0.0], [0, 3000]);
+    //(y0, yp0) = decic(implicit_func, 0.0, y0, 1, yp0, 0);
 
-    // 3. Visualize the results
-    // Since Y is a matrix, Y[.., 0] is the position over time
-    Plot(T, Y[.., 0]);
-    Xlabel("Time"); Ylabel("Position"); GridOn();
-    Title("Stiff Van der Pol Solution (mu = 1000)");
-    SaveAs("Stiff.png");
+    // Pass the tuple into the solver
+    var (T, Y, Yp) = Ode45i(implicit_func, (y0, yp0), [0, 10]);
+
+    // Visualize
+    Plot(T, Y, "-o");
+    Title("Solving with Tuple Initial Conditions"); 
+    SaveAs("Implicit.png"); CloseFig();
+
+    for (int i = 0; i < T.Numel; i++)
+        Console.WriteLine($"{T[i]}, {Y[i]}, {Yp[i]}, {implicit_func(T[i], Y[i], Yp[i])}");
 }
 
 //FormatLong();

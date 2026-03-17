@@ -100,3 +100,5 @@ Content
 .. toctree::
 
    Basic Operations and Syntax
+   Polynomials
+   Interpolation

@@ -8343,6 +8343,11 @@
             Contain result of calls to Ordinary Differential Equation and Differential Algebraic Equation Solvers
             </summary>
         </member>
+        <member name="P:SepalSolver.Ode.Result.Odefun">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:SepalSolver.Ode.Result.SolverName">
             <summary>
             
@@ -8361,6 +8366,11 @@
         <member name="P:SepalSolver.Ode.Result.Y">
             <summary>
             ColVec or Matrix of dependent variable-each row correspond to a value of the independent variable
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Ode.Result.Yp">
+            <summary>
+            ColVec or Matrix of derivative of dependent variable-each row correspond to a value of the independent variable
             </summary>
         </member>
         <member name="P:SepalSolver.Ode.Result.IsComplete">
