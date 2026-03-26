@@ -201,7 +201,7 @@
                 (y0, yp0) = decic(robertsonimplicit, 0, y0, [1, 1, 0], yp0, [0, 0, 0]);
 
                 //Solve ODE
-                (ColVec T, Matrix Y) = Ode45i(robertsonimplicit, (y0, yp0), [0, 4e6]);
+                (ColVec T, Matrix Y, Matrix Yp) = Ode45i(robertsonimplicit, (y0, yp0), [0, 4e6]);
                 // Plot the result
                 Y[.., 1] = 1e4*Y[.., 1];
                 SemiLogx(T, Y);
