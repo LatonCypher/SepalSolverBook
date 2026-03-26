@@ -20,5 +20,3 @@ In this chapter, we will explore different numerical methods for solving ODEs, t
    Higher Order Differential Equations
    Stiff Differntial Equations
    Implicit Differential Equations
-   Differential Algebraic Equations
-   Exercise On Ordinary Differential Equations

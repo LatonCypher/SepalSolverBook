@@ -18,3 +18,11 @@ In this chapter, we will explore different linear algebra methods, their impleme
    Vectors and Matrices
    Matrix Slicing
    Matrix Vectors Operations Null Spaces
+   LU Facorization and FactorUpdate
+   Solution of Linear Systems
+   Cholesky Factorization FactorUpdate Positive Definicy
+   Generalized Cholesky Factorization and FactorUpdate
+   Singular Value Decomposition
+   Sparse Matrices
+   Solution Of Sparse Linear System
+   Exercise On Linear Algebra

@@ -62,7 +62,7 @@
             /// **:math:`U`** | :math:`U^TU = I` | Rotation/Reflection in :math:`\mathbb{R}^m` 
             /// **:math:`\Sigma`** | Diagonal | Scaling(Expansion/Contraction) 
             /// **:math:`$V^T`** | :math:`V^T V = I` | Rotation/Reflection in :math:`\mathbb{R}^n` 
-            /// <\table>
+            /// </table>
             /// </BookContent>
         }
     }

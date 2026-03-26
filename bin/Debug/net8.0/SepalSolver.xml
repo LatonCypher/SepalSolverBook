@@ -9319,17 +9319,17 @@
             <example>
             $$ ynp1'_1 =  y_1y_3 - y_2 $$
             $$ ynp1'_2 = y_1 - 1 $$
-            $$ 0    = y_1 + y_2 + y_3 $$
+            $$ 0       = y_1 + y_2 + y_3 $$
             <code>
                 using SepalSolver;
                 using static MathChart.Chart;
                 
                     ColVec dydt(double t, ColVec ynp1) => new double[] { ynp1[0] * ynp1[2] - ynp1[1], 
-                                                                      ynp1[0] - 1, 
-                                                                      ynp1[0] + ynp1[1] + ynp1[2] };
+                                                                         ynp1[0] - 1, 
+                                                                         ynp1[0] + ynp1[1] + ynp1[2] };
                     Matrix Mass(double t, ColVec ynp1) => new double[,]{ {1,   0,   0},
-                                                                      {0, 1,   0},
-                                                                      {0,   0,   0} };
+                                                                         {0,   1,   0},
+                                                                         {0,   0,   0} };
                     Ode.Result TY = Ode.Dae10(dydt, Mass, [ 1, 1, -2 ], [ 0, 10 ]);
                     var chart = Plot(TY.X, TY.Y, "-o");
                     chart.Title = "Solution of a DAE (mu = 1) with DAE10t";
