@@ -4,6 +4,31 @@
     double[] robertsonimplicit(double t, double[] y, double[] yp) =>
         [yp[0] + 0.04 * y[0] - 1e4 * y[1]*y[2],
                          yp[1] - 0.04 * y[0] + 1e4 * y[1]*y[2] + 3e7*y[1]*y[1],
+                         y[0] + y[1] + y[2] - 1];
+
+    // Set intial conditions for y0 and guess values for yp0
+    double[] y0 = [1, 0, 0.001], yp0 = [0, 0, 0];
+
+    // Solve for yp0, Truth array for y0 = [1,1,1] but for yp0 it is [0,0,0]. 
+    (y0, yp0) = decic(robertsonimplicit, 0, y0, [1, 1, 0], yp0, [0, 0, 0]);
+
+    //Solve ODE
+    (ColVec T, Matrix Y, Matrix Yp) = Ode45i(robertsonimplicit, (y0, yp0), [0, 4e6]);
+    // Plot the result
+    Y[.., 1] *= 1e4;
+    SemiLogx(T, Y);
+    Xlabel("Time t"); Ylabel("Soluton y");
+    Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
+    Title("Solution of implicit Robertson's ODE with ODE45i");
+    SaveAs("Implicit-Robertson-ODE-Ode45i.png");
+    CloseFig();
+}
+
+{
+    //define ODE
+    double[] robertsonimplicit(double t, double[] y, double[] yp) =>
+        [yp[0] + 0.04 * y[0] - 1e4 * y[1]*y[2],
+                         yp[1] - 0.04 * y[0] + 1e4 * y[1]*y[2] + 3e7*y[1]*y[1],
                          yp[0] + yp[1] + yp[2]];
 
     // Set intial conditions for y0 and guess values for yp0
@@ -15,12 +40,13 @@
     //Solve ODE
     (ColVec T, Matrix Y, Matrix Yp) = Ode45i(robertsonimplicit, (y0, yp0), [0, 4e6]);
     // Plot the result
-    Y[.., 1] = 1e4*Y[.., 1];
+    Y[.., 1] *= 1e4;
     SemiLogx(T, Y);
     Xlabel("Time t"); Ylabel("Soluton y");
     Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
     Title("Solution of implicit Robertson's ODE with ODE45i");
     SaveAs("Implicit-Robertson-ODE-Ode45i.png");
+    CloseFig();
 }
 
 
