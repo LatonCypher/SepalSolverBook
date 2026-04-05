@@ -268,8 +268,6 @@ C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\Micro
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\Microsoft.CodeAnalysis.Scripting.dll
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\ScottPlot.dll
-C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\SepalSolver.dll
-C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\SepalSolver.PlotLib.dll
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\SkiaSharp.dll
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\SkiaSharp.HarfBuzz.dll
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\System.Collections.Immutable.dll
@@ -374,6 +372,14 @@ C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\runti
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\runtimes\win-arm64\native\libSkiaSharp.dll
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\runtimes\win-x64\native\libSkiaSharp.dll
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\runtimes\win-x86\native\libSkiaSharp.dll
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\DeclineCurveAnalysis.dll
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\SepalSolver.dll
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\SepalSolver.PlotLib.dll
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\ComputationalGeometry2021.dll
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\DeclineCurveAnalysis.pdb
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\SepalSolver.PlotLib.pdb
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\SepalSolver.pdb
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\SepalSolver.xml
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net8.0\ConsoleApp1.csproj.AssemblyReference.cache
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net8.0\ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net8.0\ConsoleApp1.AssemblyInfoInputs.cache
@@ -386,7 +392,3 @@ C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net8.0\refin
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net8.0\ConsoleApp1.pdb
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net8.0\ConsoleApp1.genruntimeconfig.cache
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net8.0\ref\ConsoleApp1.dll
-C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\ComputationalGeometry2021.dll
-C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\SepalSolver.PlotLib.pdb
-C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\SepalSolver.pdb
-C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net8.0\SepalSolver.xml

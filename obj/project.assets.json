@@ -797,6 +797,20 @@
           }
         }
       },
+      "DeclineCurveAnalysis/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "SepalSolver": "0.0.77",
+          "SepalSolver.PlotLib": "0.0.77"
+        },
+        "compile": {
+          "bin/placeholder/DeclineCurveAnalysis.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DeclineCurveAnalysis.dll": {}
+        }
+      },
       "SepalSolver/0.0.77": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
@@ -2529,6 +2543,11 @@
         "version.txt"
       ]
     },
+    "DeclineCurveAnalysis/1.0.0": {
+      "type": "project",
+      "path": "../Cyphercrescent.DCA/DeclineCurveAnalysis.csproj",
+      "msbuildProject": "../Cyphercrescent.DCA/DeclineCurveAnalysis.csproj"
+    },
     "SepalSolver/0.0.77": {
       "type": "project",
       "path": "../sepalsolver/SepalSolver/SepalSolver.csproj",
@@ -2542,6 +2561,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "DeclineCurveAnalysis >= 1.0.0",
       "SepalSolver >= 0.0.77",
       "SepalSolver.PlotLib >= 0.0.77"
     ]
@@ -2581,6 +2601,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+            "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\DeclineCurveAnalysis.csproj": {
+              "projectPath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\DeclineCurveAnalysis.csproj"
+            },
             "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver.PlotLib\\SepalSolver.PlotLib.csproj": {
               "projectPath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver.PlotLib\\SepalSolver.PlotLib.csproj"
             },
@@ -2624,19 +2647,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://nuget.pkg.github.com/cyphercrescent/index.json."
-    },
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Error occurred while getting package vulnerability data: The ServicePointManager does not support proxies with the https scheme."
-    }
-  ]
+  }
 }

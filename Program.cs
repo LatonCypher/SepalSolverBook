@@ -1,4 +1,32 @@
-﻿using ConsoleApp1;
+﻿using DeclineCurveAnalysis;
+using ConsoleApp1;
+{
+    Matrix data = ReadMatrix("C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\Data.txt");
+    var Np = data[.., 0]; var Wc = data[.., 1];
+    WaterCutModel model = new ([..Wc], [..Np]);
+    var NpAbandonment = model.EURFromAbandonment(95);
+    foreach(var np in Np) Console.WriteLine(model.Compute(np));
+}
+
+{
+    //define ODE
+    double[] robertson(double t, double[] y) =>
+        [-0.04 * y[0] + 1e4 * y[1]*y[2],
+          0.04 * y[0] - 1e4 * y[1]*y[2] - 3e7*y[1]*y[1],
+          3e7*y[1]*y[1]];
+    // Set intial conditions
+    double[] y0 = [1, 0, 0.001];
+    //Solve ODE
+    (ColVec T, Matrix Y) = Ode45s(robertson, y0, [0, 4e6]);
+    // Plot the result
+    Y[.., 1] *= 1e4;
+    SemiLogx(T, Y);
+    Xlabel("Time t"); Ylabel("Soluton y");
+    Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
+    Title("Solution of Robertson's ODE with ODE45");
+    SaveAs("Robertson-ODE-Ode45.png");
+    CloseFig();
+}
 {
     //define ODE
     double[] robertsonimplicit(double t, double[] y, double[] yp) =>

@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Cyphercrescent.DCA\DeclineCurveAnalysis.csproj" />
     <ProjectReference Include="..\sepalsolver\SepalSolver.PlotLib\SepalSolver.PlotLib.csproj" />
     <ProjectReference Include="..\sepalsolver\SepalSolver\SepalSolver.csproj" />
   </ItemGroup>

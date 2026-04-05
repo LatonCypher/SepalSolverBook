@@ -1,0 +1,6 @@
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.csproj.AssemblyReference.cache
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.AssemblyInfoInputs.cache
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.AssemblyInfo.cs
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.sourcelink.json
