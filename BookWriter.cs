@@ -125,7 +125,7 @@ namespace ConsoleApp1
             string[] BookChapters = Directory.GetDirectories(projectfolder);
             foreach (string BookChapter in BookChapters)
             {
-                string relativePath = string.Join(' ', [.. BookChapter.Split(['_']).Skip(2)]);
+                string relativePath = string.Join(' ', BookChapter.Split(['_']).Skip(2));
                 using (StreamWriter writer = new(indexfile, append: true))
                 {
                     writer.WriteLine("   " + relativePath);
@@ -145,7 +145,7 @@ namespace ConsoleApp1
                 }
                 string[] ChapterSections = Directory.GetFiles(BookChapter, "*.cs");
                 relativePath = Path.GetRelativePath(BookChapter, ChapterSections[0]);
-                var sectionname = string.Join(' ', [.. relativePath.Split(['_']).Skip(2)]);
+                var sectionname = string.Join(' ', relativePath.Split(['_']).Skip(2));
                 string outputPath = bookfolder + sectionname + ".rst";
                 string[] Content = File.ReadAllLines(ChapterSections[0]);
                 List<string> bookContent = [..Content.SkipWhile(line=> !line.Contains("/// <BookContent>")).
@@ -173,7 +173,7 @@ namespace ConsoleApp1
                 foreach (string ChapterSection in ChapterSections)
                 {
                     relativePath = Path.GetRelativePath(BookChapter, ChapterSection);
-                    sectionname = string.Join(' ', [.. relativePath.Split(['_']).Skip(2)]);
+                    sectionname = string.Join(' ', relativePath.Split(['_']).Skip(2));
                     sectionname = sectionname.Split('.')[0];
                     using (StreamWriter writer = new(chapterfile, append: true))
                     {
