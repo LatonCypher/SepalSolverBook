@@ -195,7 +195,7 @@
                      y[0] + y[1] + y[2] - 1];
 
                 // Set intial conditions for y0 and guess values for yp0
-                double[] y0 = [1, 0, 0.001], yp0 = [0, 0, 0];
+                double[] y0 = [1, 0, 0], yp0 = [0, 0, 0];
 
                 // Solve for yp0, Truth array for y0 = [1,1,1] but for yp0 it is [0,0,0]. 
                 (y0, yp0) = decic(robertsonimplicit, 0, y0, [1, 1, 0], yp0, [0, 0, 0]);
