@@ -1,69 +1,72 @@
 ﻿using ConsoleApp1;
-//FormatLong();
 {
-    Matrix A = new double[,]
+    Writer.Run();
+
+    //FormatLong();
     {
+        Matrix A = new double[,]
+        {
         { 0.1419,    0.6557,         0,         0,         0 },
         { 0.4218,    0.0357,    0.7431,         0,         0 },
         { 0,         0.8491,    0.3922,    0.2769,         0 },
         { 0,              0,    0.6555,    0.0462,    0.9502 },
         { 0,              0,         0,    0.0971,    0.0344 }
-    };
+        };
 
-    //A = A.T;
-    Console.WriteLine($"Matrix A = {A}");
-    var (U, S, V) = Svd(A, 5);
-    //Console.WriteLine($"Matrix U = {U}");
-    //Console.WriteLine($"Matrix S = {S}");
-    //Console.WriteLine($"Matrix V = {V}");
+        //A = A.T;
+        Console.WriteLine($"Matrix A = {A}");
+        var (U, S, V) = Svd(A, 5);
+        //Console.WriteLine($"Matrix U = {U}");
+        //Console.WriteLine($"Matrix S = {S}");
+        //Console.WriteLine($"Matrix V = {V}");
 
-    var A_recon = U*S*V.T;
-    Console.WriteLine($"Reconstructed A = {A_recon}");
-    //Console.WriteLine($"Reconstructed A = {A_recon.Full()}");
- }
+        var A_recon = U*S*V.T;
+        Console.WriteLine($"Reconstructed A = {A_recon}");
+        //Console.WriteLine($"Reconstructed A = {A_recon.Full()}");
+    }
 
- {
-    SparseMatrix A = new double[,]
     {
+        SparseMatrix A = new double[,]
+        {
         { 0.1419,    0.6557,         0,         0,         0 },
         { 0.4218,    0.0357,    0.7431,         0,         0 },
         { 0,         0.8491,    0.3922,    0.2769,         0 },
         { 0,              0,    0.6555,    0.0462,    0.9502 },
         { 0,              0,         0,    0.0971,    0.0344 }
-    };
+        };
 
-    //A = A.T;
-    Console.WriteLine($"Matrix A = {A.Full()}");
-    var (U, S, V) = Svd(A, 5);
-    //Console.WriteLine($"Matrix U = {U.Full()}");
-    //Console.WriteLine($"Matrix S = {S.Full()}");
-    //Console.WriteLine($"Matrix V = {V.Full()}");
+        //A = A.T;
+        Console.WriteLine($"Matrix A = {A.Full()}");
+        var (U, S, V) = Svd(A, 5);
+        //Console.WriteLine($"Matrix U = {U.Full()}");
+        //Console.WriteLine($"Matrix S = {S.Full()}");
+        //Console.WriteLine($"Matrix V = {V.Full()}");
 
-    var A_recon = U*S*V.T;
-    Console.WriteLine($"Reconstructed A = {A_recon.Full()}");
-    //Console.WriteLine($"Reconstructed A = {A_recon.Full()}");
-}
+        var A_recon = U*S*V.T;
+        Console.WriteLine($"Reconstructed A = {A_recon.Full()}");
+        //Console.WriteLine($"Reconstructed A = {A_recon.Full()}");
+    }
 
-{
-    Matrix A = new double[,]
     {
+        Matrix A = new double[,]
+        {
         { 0.8147,    0.9134,    0.2785,    0.9649,    0.9572 },
         { 0.9058,    0.6324,    0.5469,    0.1576,    0.4854 },
         { 0.1270,    0.0975,    0.9575,    0.9706,    0.8003 }
-    };
+        };
 
-    Console.WriteLine($"Matrix A = {A}");
-    var (U, S, V) = Svd(A);
-    Console.WriteLine($"Matrix U = {U}");
-    Console.WriteLine($"Matrix S = {S}");
-    Console.WriteLine($"Matrix V = {V}");
+        Console.WriteLine($"Matrix A = {A}");
+        var (U, S, V) = Svd(A);
+        Console.WriteLine($"Matrix U = {U}");
+        Console.WriteLine($"Matrix S = {S}");
+        Console.WriteLine($"Matrix V = {V}");
 
-    Console.WriteLine($"Matrix UTU = {U.T*U}");
-    Console.WriteLine($"Matrix UUT = {U*U.T}");
-    Console.WriteLine($"Matrix VTV = {V.T*V}");
-    Console.WriteLine($"Matrix VVT = {V*V.T}");
+        Console.WriteLine($"Matrix UTU = {U.T*U}");
+        Console.WriteLine($"Matrix UUT = {U*U.T}");
+        Console.WriteLine($"Matrix VTV = {V.T*V}");
+        Console.WriteLine($"Matrix VVT = {V*V.T}");
+    }
 }
-Writer.Run();
 
 
 
