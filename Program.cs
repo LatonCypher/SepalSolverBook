@@ -69,9 +69,7 @@
 }
 
 
-
-
-//static (double x1, double x2) bracket_minimum(Func<double, double> f, double x= 0, double s=1e-2, double k=2.0)
+//static (double x1, double x2) bracket_minimum(Func<double, double> f, double x = 0, double s = 0.01, double k = 2.0)
 //{
 //    var (a, ya) = (x, f(x));
 //    var (b, yb) = (a + s, f(a + s));
