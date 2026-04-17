@@ -1,16 +1,6 @@
 ﻿using DeclineCurveAnalysis;
 using ConsoleApp1;
 {
-    {
-        folderpath = "C:\\Users\\lateef.a.kareem\\Desktop\\";
-        var Data = ReadMatrix("Data2.txt");
-        var q = Data[.., 0];
-        var Np = Data[.., 1];
-
-        var model = new HarmonicModel([DateTime.Parse("6/1/1973"), DateTime.Parse("7/1/1978")], [..q], [..Np]);
-        DateTime tEUR = model.PotentialEURDate(10e6);
-
-    }
     Writer.Run();
 
     //FormatLong();

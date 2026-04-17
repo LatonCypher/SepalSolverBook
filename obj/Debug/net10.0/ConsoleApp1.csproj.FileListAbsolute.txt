@@ -1,9 +1,3 @@
-C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.csproj.AssemblyReference.cache
-C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.AssemblyInfoInputs.cache
-C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.AssemblyInfo.cs
-C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.csproj.CoreCompileInputs.cache
-C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.sourcelink.json
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net10.0\ConsoleApp1.exe
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net10.0\ConsoleApp1.deps.json
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net10.0\ConsoleApp1.runtimeconfig.json
@@ -134,6 +128,12 @@ C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net10.0\Decl
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net10.0\SepalSolver.PlotLib.pdb
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net10.0\SepalSolver.pdb
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net10.0\SepalSolver.xml
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.csproj.AssemblyReference.cache
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.AssemblyInfoInputs.cache
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.AssemblyInfo.cs
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.sourcelink.json
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleA.CB28C8CC.Up2Date
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\ConsoleApp1.dll
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\obj\Debug\net10.0\refint\ConsoleApp1.dll

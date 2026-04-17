@@ -3,32 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1C2AF03F-546E-525A-DAF3-EDDC97C09731}|..\\Cyphercrescent.DCA\\DeclineCurveAnalysis.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\cyphercrescent.dca\\hyperbolicmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C2AF03F-546E-525A-DAF3-EDDC97C09731}|..\\Cyphercrescent.DCA\\DeclineCurveAnalysis.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\cyphercrescent.dca\\exponentialmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C2AF03F-546E-525A-DAF3-EDDC97C09731}|..\\Cyphercrescent.DCA\\DeclineCurveAnalysis.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\cyphercrescent.dca\\harmonicmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\bookwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:bookwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1C2AF03F-546E-525A-DAF3-EDDC97C09731}|..\\Cyphercrescent.DCA\\DeclineCurveAnalysis.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\cyphercrescent.dca\\wateroilratiomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C2AF03F-546E-525A-DAF3-EDDC97C09731}|..\\Cyphercrescent.DCA\\DeclineCurveAnalysis.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\cyphercrescent.dca\\watergasratiomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C2AF03F-546E-525A-DAF3-EDDC97C09731}|..\\Cyphercrescent.DCA\\DeclineCurveAnalysis.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\cyphercrescent.dca\\watercutmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C2AF03F-546E-525A-DAF3-EDDC97C09731}|..\\Cyphercrescent.DCA\\DeclineCurveAnalysis.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\cyphercrescent.dca\\oilcutmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C2AF03F-546E-525A-DAF3-EDDC97C09731}|..\\Cyphercrescent.DCA\\DeclineCurveAnalysis.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\cyphercrescent.dca\\gasoilratiomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1C2AF03F-546E-525A-DAF3-EDDC97C09731}|..\\Cyphercrescent.DCA\\DeclineCurveAnalysis.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\cyphercrescent.dca\\condensategasratiomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -41,10 +24,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{38444283-8F1E-3A0C-7445-848A0E849057}|..\\sepalsolver\\SepalSolver\\SepalSolver.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolver\\sepalsolver\\math.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\bookwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:bookwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,17 +33,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1102,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-25T11:41:47.712Z",
               "IsPinned": true,
@@ -101,84 +80,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "HarmonicModel.cs",
-              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\HarmonicModel.cs",
-              "RelativeDocumentMoniker": "..\\Cyphercrescent.DCA\\HarmonicModel.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\HarmonicModel.cs",
-              "RelativeToolTip": "..\\Cyphercrescent.DCA\\HarmonicModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T09:44:19.89Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "WaterCutModel.cs",
-              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\WaterCutModel.cs",
-              "RelativeDocumentMoniker": "..\\Cyphercrescent.DCA\\WaterCutModel.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\WaterCutModel.cs",
-              "RelativeToolTip": "..\\Cyphercrescent.DCA\\WaterCutModel.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAA7wDQAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T01:27:31.165Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "OilCutModel.cs",
-              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\OilCutModel.cs",
-              "RelativeDocumentMoniker": "..\\Cyphercrescent.DCA\\OilCutModel.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\OilCutModel.cs",
-              "RelativeToolTip": "..\\Cyphercrescent.DCA\\OilCutModel.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAkwBgAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T01:27:18.714Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HyperbolicModel.cs",
-              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\HyperbolicModel.cs",
-              "RelativeDocumentMoniker": "..\\Cyphercrescent.DCA\\HyperbolicModel.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\HyperbolicModel.cs",
-              "RelativeToolTip": "..\\Cyphercrescent.DCA\\HyperbolicModel.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAAACAAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-09T16:29:33.348Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ExponentialModel.cs",
-              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\ExponentialModel.cs",
-              "RelativeDocumentMoniker": "..\\Cyphercrescent.DCA\\ExponentialModel.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\ExponentialModel.cs",
-              "RelativeToolTip": "..\\Cyphercrescent.DCA\\ExponentialModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T01:28:54.05Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "WaterGasRatioModel.cs",
-              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\WaterGasRatioModel.cs",
-              "RelativeDocumentMoniker": "..\\Cyphercrescent.DCA\\WaterGasRatioModel.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\WaterGasRatioModel.cs",
-              "RelativeToolTip": "..\\Cyphercrescent.DCA\\WaterGasRatioModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAcwA8AAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T01:28:09.178Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "WaterOilRatioModel.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\WaterOilRatioModel.cs",
               "RelativeDocumentMoniker": "..\\Cyphercrescent.DCA\\WaterOilRatioModel.cs",
@@ -186,12 +87,11 @@
               "RelativeToolTip": "..\\Cyphercrescent.DCA\\WaterOilRatioModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAcwA8AAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T01:28:19.441Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-10T01:28:19.441Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 3,
               "Title": "CondensateGasRatioModel.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\CondensateGasRatioModel.cs",
               "RelativeDocumentMoniker": "..\\Cyphercrescent.DCA\\CondensateGasRatioModel.cs",
@@ -199,25 +99,11 @@
               "RelativeToolTip": "..\\Cyphercrescent.DCA\\CondensateGasRatioModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAcwA8AAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T01:27:02.325Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-10T01:27:02.325Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "GasOilRatioModel.cs",
-              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\GasOilRatioModel.cs",
-              "RelativeDocumentMoniker": "..\\Cyphercrescent.DCA\\GasOilRatioModel.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\GasOilRatioModel.cs",
-              "RelativeToolTip": "..\\Cyphercrescent.DCA\\GasOilRatioModel.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAAAA8AAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T01:26:48.288Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 4,
               "Title": "Common.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\Common.cs",
               "RelativeDocumentMoniker": "..\\Cyphercrescent.DCA\\Common.cs",
@@ -225,24 +111,23 @@
               "RelativeToolTip": "..\\Cyphercrescent.DCA\\Common.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T01:21:07.025Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-10T01:21:07.025Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 1,
               "Title": "BookWriter.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\BookWriter.cs",
               "RelativeDocumentMoniker": "BookWriter.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\BookWriter.cs",
               "RelativeToolTip": "BookWriter.cs",
-              "ViewState": "AgIAADsBAAAAAAAAAAAAAEMBAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAAAIoAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-26T18:39:09.294Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 6,
               "Title": "Math.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\Math.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\Math.cs",
@@ -254,7 +139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 5,
               "Title": "Ode.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\Ode.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\Ode.cs",
@@ -262,8 +147,7 @@
               "RelativeToolTip": "..\\sepalsolver\\SepalSolver\\Ode.cs",
               "ViewState": "AgIAAPcGAAAAAAAAAAAAABIAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T19:57:40.012Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-26T19:57:40.012Z"
             }
           ]
         },
