@@ -553,6 +553,42 @@
           }
         }
       },
+      "SepalSolver/0.0.80": {
+        "type": "package",
+        "dependencies": {
+          "Highs.Native": "1.12.0",
+          "Microsoft.CodeAnalysis.CSharp.Scripting": "5.0.0",
+          "System.Drawing.Common": "10.0.2"
+        },
+        "compile": {
+          "lib/net10.0/SepalSolver.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/SepalSolver.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SepalSolver.PlotLib/0.0.80": {
+        "type": "package",
+        "dependencies": {
+          "CSharpMath": "0.5.1",
+          "CSharpMath.SkiaSharp": "0.5.1",
+          "FFmpeg.AutoGen": "8.0.0",
+          "Magick.NET-Q16-AnyCPU": "14.10.0",
+          "Magick.NET.Core": "14.10.0",
+          "ScottPlot": "5.1.57",
+          "SepalSolver": "0.0.80"
+        },
+        "compile": {
+          "lib/net10.0/SepalSolver.PlotLib.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SepalSolver.PlotLib.dll": {}
+        }
+      },
       "SkiaSharp/3.119.0": {
         "type": "package",
         "dependencies": {
@@ -707,54 +743,6 @@
         },
         "build": {
           "buildTransitive/net8.0/_._": {}
-        }
-      },
-      "DeclineCurveAnalysis/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v10.0",
-        "dependencies": {
-          "SepalSolver": "0.0.77",
-          "SepalSolver.PlotLib": "0.0.77"
-        },
-        "compile": {
-          "bin/placeholder/DeclineCurveAnalysis.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/DeclineCurveAnalysis.dll": {}
-        }
-      },
-      "SepalSolver/0.0.77": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v10.0",
-        "dependencies": {
-          "Highs.Native": "1.12.0",
-          "Microsoft.CodeAnalysis.CSharp.Scripting": "5.0.0",
-          "System.Drawing.Common": "10.0.2"
-        },
-        "compile": {
-          "bin/placeholder/SepalSolver.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SepalSolver.dll": {}
-        }
-      },
-      "SepalSolver.PlotLib/0.0.77": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v10.0",
-        "dependencies": {
-          "CSharpMath": "0.5.1",
-          "CSharpMath.SkiaSharp": "0.5.1",
-          "FFmpeg.AutoGen": "8.0.0",
-          "Magick.NET-Q16-AnyCPU": "14.10.0",
-          "Magick.NET.Core": "14.10.0",
-          "ScottPlot": "5.1.57",
-          "SepalSolver": "0.0.77"
-        },
-        "compile": {
-          "bin/placeholder/SepalSolver.PlotLib.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SepalSolver.PlotLib.dll": {}
         }
       }
     }
@@ -2020,6 +2008,32 @@
         "scottplot.nuspec"
       ]
     },
+    "SepalSolver/0.0.80": {
+      "sha512": "U7IgllCHFfIlVXUeLjtyo2xsqyHNXBPsad+KJWhDyIHEEbI95F6+rSekrmM7nuE06OzZfpXxZKOcw5p1JIwuEg==",
+      "type": "package",
+      "path": "sepalsolver/0.0.80",
+      "files": [
+        ".nupkg.metadata",
+        "README.md",
+        "lib/net10.0/SepalSolver.dll",
+        "lib/net10.0/SepalSolver.xml",
+        "sepalsolver.0.0.80.nupkg.sha512",
+        "sepalsolver.nuspec",
+        "sepalsolver.png"
+      ]
+    },
+    "SepalSolver.PlotLib/0.0.80": {
+      "sha512": "Gbi2Ch+hR+jtd7YTjgU9d+FNB+pqO4Dw1/LTKCS9JDFForgNsg3gUS8C9pNBBTCaSOb4h7/zzeMDu1GG/3deUQ==",
+      "type": "package",
+      "path": "sepalsolver.plotlib/0.0.80",
+      "files": [
+        ".nupkg.metadata",
+        "README.md",
+        "lib/net10.0/SepalSolver.PlotLib.dll",
+        "sepalsolver.plotlib.0.0.80.nupkg.sha512",
+        "sepalsolver.plotlib.nuspec"
+      ]
+    },
     "SkiaSharp/3.119.0": {
       "sha512": "gR9yVoOta2Mc1Rxt15LD65AckfHMfwjIs/3kkD59C9bT2nYYISsE6uz3t4aMPNHA6CgsIL0Ssn+jE5OVilZ1yw==",
       "type": "package",
@@ -2233,28 +2247,12 @@
         "system.drawing.common.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "DeclineCurveAnalysis/1.0.0": {
-      "type": "project",
-      "path": "../Cyphercrescent.DCA/DeclineCurveAnalysis.csproj",
-      "msbuildProject": "../Cyphercrescent.DCA/DeclineCurveAnalysis.csproj"
-    },
-    "SepalSolver/0.0.77": {
-      "type": "project",
-      "path": "../sepalsolver/SepalSolver/SepalSolver.csproj",
-      "msbuildProject": "../sepalsolver/SepalSolver/SepalSolver.csproj"
-    },
-    "SepalSolver.PlotLib/0.0.77": {
-      "type": "project",
-      "path": "../sepalsolver/SepalSolver.PlotLib/SepalSolver.PlotLib.csproj",
-      "msbuildProject": "../sepalsolver/SepalSolver.PlotLib/SepalSolver.PlotLib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "DeclineCurveAnalysis >= 1.0.0",
-      "SepalSolver >= 0.0.77",
-      "SepalSolver.PlotLib >= 0.0.77"
+      "SepalSolver >= 0.0.80",
+      "SepalSolver.PlotLib >= 0.0.80"
     ]
   },
   "packageFolders": {
@@ -2291,17 +2289,7 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {
-            "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\DeclineCurveAnalysis.csproj": {
-              "projectPath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Cyphercrescent.DCA\\DeclineCurveAnalysis.csproj"
-            },
-            "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver.PlotLib\\SepalSolver.PlotLib.csproj": {
-              "projectPath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver.PlotLib\\SepalSolver.PlotLib.csproj"
-            },
-            "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\SepalSolver.csproj": {
-              "projectPath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\SepalSolver.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -2319,6 +2307,16 @@
     "frameworks": {
       "net10.0": {
         "targetAlias": "net10.0",
+        "dependencies": {
+          "SepalSolver": {
+            "target": "Package",
+            "version": "[0.0.80, )"
+          },
+          "SepalSolver.PlotLib": {
+            "target": "Package",
+            "version": "[0.0.80, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

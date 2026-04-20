@@ -1,16 +1,4 @@
-﻿using CSharpMath.Atom.Atoms;
-using ScottPlot;
-using ScottPlot.Colormaps;
-using ScottPlot.PlotStyles;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
-using static SepalSolver.Ode;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 {
     internal class Section_6_Differential_Algebraic_Equations
     {

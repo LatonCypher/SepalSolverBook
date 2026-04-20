@@ -8,9 +8,8 @@
     ".NETCoreApp,Version=v10.0": {
       "ConsoleApp1/1.0.0": {
         "dependencies": {
-          "DeclineCurveAnalysis": "1.0.0",
-          "SepalSolver": "0.0.77",
-          "SepalSolver.PlotLib": "0.0.77"
+          "SepalSolver": "0.0.80",
+          "SepalSolver.PlotLib": "0.0.80"
         },
         "runtime": {
           "ConsoleApp1.dll": {}
@@ -503,6 +502,36 @@
           }
         }
       },
+      "SepalSolver/0.0.80": {
+        "dependencies": {
+          "Highs.Native": "1.12.0",
+          "Microsoft.CodeAnalysis.CSharp.Scripting": "5.0.0",
+          "System.Drawing.Common": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/SepalSolver.dll": {
+            "assemblyVersion": "0.0.80.0",
+            "fileVersion": "0.0.80.0"
+          }
+        }
+      },
+      "SepalSolver.PlotLib/0.0.80": {
+        "dependencies": {
+          "CSharpMath": "0.5.1",
+          "CSharpMath.SkiaSharp": "0.5.1",
+          "FFmpeg.AutoGen": "8.0.0",
+          "Magick.NET-Q16-AnyCPU": "14.10.0",
+          "Magick.NET.Core": "14.10.0",
+          "ScottPlot": "5.1.57",
+          "SepalSolver": "0.0.80"
+        },
+        "runtime": {
+          "lib/net10.0/SepalSolver.PlotLib.dll": {
+            "assemblyVersion": "0.0.80.0",
+            "fileVersion": "0.0.80.0"
+          }
+        }
+      },
       "SkiaSharp/3.119.0": {
         "dependencies": {
           "SkiaSharp.NativeAssets.Win32": "3.119.0",
@@ -630,56 +659,6 @@
           "lib/net10.0/System.Private.Windows.GdiPlus.dll": {
             "assemblyVersion": "10.0.0.0",
             "fileVersion": "10.0.225.61305"
-          }
-        }
-      },
-      "DeclineCurveAnalysis/1.0.0": {
-        "dependencies": {
-          "SepalSolver": "0.0.77",
-          "SepalSolver.PlotLib": "0.0.77"
-        },
-        "runtime": {
-          "DeclineCurveAnalysis.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "SepalSolver/0.0.77": {
-        "dependencies": {
-          "Highs.Native": "1.12.0",
-          "Microsoft.CodeAnalysis.CSharp.Scripting": "5.0.0",
-          "System.Drawing.Common": "10.0.2"
-        },
-        "runtime": {
-          "SepalSolver.dll": {
-            "assemblyVersion": "0.0.77.0",
-            "fileVersion": "0.0.77.0"
-          }
-        }
-      },
-      "SepalSolver.PlotLib/0.0.77": {
-        "dependencies": {
-          "CSharpMath": "0.5.1",
-          "CSharpMath.SkiaSharp": "0.5.1",
-          "FFmpeg.AutoGen": "8.0.0",
-          "Magick.NET-Q16-AnyCPU": "14.10.0",
-          "Magick.NET.Core": "14.10.0",
-          "ScottPlot": "5.1.57",
-          "SepalSolver": "0.0.77"
-        },
-        "runtime": {
-          "SepalSolver.PlotLib.dll": {
-            "assemblyVersion": "0.0.77.0",
-            "fileVersion": "0.0.77.0"
-          }
-        }
-      },
-      "ComputationalGeometry2021/1.0.0.0": {
-        "runtime": {
-          "ComputationalGeometry2021.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
           }
         }
       }
@@ -817,6 +796,20 @@
       "path": "scottplot/5.1.57",
       "hashPath": "scottplot.5.1.57.nupkg.sha512"
     },
+    "SepalSolver/0.0.80": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-U7IgllCHFfIlVXUeLjtyo2xsqyHNXBPsad+KJWhDyIHEEbI95F6+rSekrmM7nuE06OzZfpXxZKOcw5p1JIwuEg==",
+      "path": "sepalsolver/0.0.80",
+      "hashPath": "sepalsolver.0.0.80.nupkg.sha512"
+    },
+    "SepalSolver.PlotLib/0.0.80": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Gbi2Ch+hR+jtd7YTjgU9d+FNB+pqO4Dw1/LTKCS9JDFForgNsg3gUS8C9pNBBTCaSOb4h7/zzeMDu1GG/3deUQ==",
+      "path": "sepalsolver.plotlib/0.0.80",
+      "hashPath": "sepalsolver.plotlib.0.0.80.nupkg.sha512"
+    },
     "SkiaSharp/3.119.0": {
       "type": "package",
       "serviceable": true,
@@ -858,26 +851,6 @@
       "sha512": "sha512-nCq8jeGD4vWaUjX3nGaDMKYqfFPposw2f4KCFnuY5Rt3NhK6zMZ/c0a52a3TZK/nnkCJfyQMwb+POKwAnZexZw==",
       "path": "system.drawing.common/10.0.2",
       "hashPath": "system.drawing.common.10.0.2.nupkg.sha512"
-    },
-    "DeclineCurveAnalysis/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "SepalSolver/0.0.77": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "SepalSolver.PlotLib/0.0.77": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "ComputationalGeometry2021/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }

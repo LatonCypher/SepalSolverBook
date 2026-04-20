@@ -1,5 +1,4 @@
-﻿using DeclineCurveAnalysis;
-using ConsoleApp1;
+﻿using ConsoleApp1;
 {
     Writer.Run();
 
