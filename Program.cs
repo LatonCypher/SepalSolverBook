@@ -50,9 +50,13 @@ using Microsoft.VisualBasic;
         Matrix NTGPoro = ReadMatrix("PetroPhysics.txt");
         var (NTGmean, NTGstd) = ComputeStatistics(NTGPoro[.., 0]);
         var (Poromean, Porostd) = ComputeStatistics(NTGPoro[.., 1]);
+        var NTGP90 = NTGmean - 1.282*NTGstd;
+        var PoroP90 = Poromean - 1.282*Porostd;
+        var NTGP10 = NTGmean + 1.282*NTGstd;
+        var PoroP10 = Poromean + 1.282*Porostd;
 
-
-
+        // From PVT (P = 300bars, T = 363K)
+        var z = 0.95; var Bgi = 0.002827*0.95*363/300;
 
         // Production Data fro Merlin
         Matrix ProductionData = ReadMatrix("Merlin Production History.txt");
