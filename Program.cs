@@ -42,33 +42,61 @@ using Microsoft.VisualBasic;
         double BaseVolume = 0.5*(BaseAreas[0] + 2*BaseAreas[1..^1].Sum() + BaseAreas[^1])*(baselevels[1]-baselevels[0]);
         HoldOff(); SaveAs("Base3100.png"); CloseFig();
 
+        // Top minus base
+        double[] alllevels = [.. toplevels.Union(baselevels)];
+        double[] allareas = [.. alllevels.Select(level => toplevels.Contains(level)?Area(Top, level):0 - (baselevels.Contains(level)?Area(Base, level):0))];
+        CloseFig();
+
         // RockVolume
         double GrossRockVolume = TopVolume - BaseVolume;
 
         // PretroPhysics Data
         Matrix CapPress = ReadMatrix("CapPressure.txt");
         Matrix NTGPoro = ReadMatrix("PetroPhysics.txt");
-        var (NTGmean, NTGstd) = ComputeStatistics(NTGPoro[.., 0]);
-        var (Poromean, Porostd) = ComputeStatistics(NTGPoro[.., 1]);
-        var NTGP90 = NTGmean - 1.282*NTGstd;
-        var PoroP90 = Poromean - 1.282*Porostd;
-        var NTGP10 = NTGmean + 1.282*NTGstd;
-        var PoroP10 = Poromean + 1.282*Porostd;
+        var (NTG_P50, NTGstd) = ComputeStatistics(NTGPoro[.., 0]);
+        var (Poro_P50, Porostd) = ComputeStatistics(NTGPoro[.., 1]);
 
         // From PVT (P = 300bars, T = 363K)
-        var z = 0.95; var Bgi = 0.002827*0.95*363/300;
+        double Pi = 300; // Initial reservoir pressure (psi)
+        var z = 0.95; var Bgi = 0.00336*0.95*363/Pi;
+        var rhog = 1.293*298*300/(363*0.95);
+
+        ColVec cPress = CapPress[.., 0], sPress = CapPress[.., 1];
+        double[] Sw = [..alllevels.Select(level => Interp1(cPress, sPress, (alllevels.Last() - level)*(1000 - rhog)*1e-5))];
+        double Swavg = Sw.Zip(allareas, (sw, area) => sw * area).Sum() / allareas.Sum();
+
+        var NTG_P90 = NTG_P50 - 1.282*NTGstd;
+        var NTG_P10 = NTG_P50 + 1.282*NTGstd;
+        var Poro_P90 = Poro_P50 - 1.282*Porostd;
+        var Poro_P10 = Poro_P50 + 1.282*Porostd;
+
+        var GIIP_P50 = GrossRockVolume*NTG_P50*Poro_P50*(1-Swavg)/Bgi;
+        var GIIP_P10 = GrossRockVolume*NTG_P10*Poro_P10*(1-Swavg)/Bgi;
+        var GIIP_P90 = GrossRockVolume*NTG_P90*Poro_P90*(1-Swavg)/Bgi;
+
 
         // Production Data fro Merlin
         Matrix ProductionData = ReadMatrix("Merlin Production History.txt");
         ColVec Time = ProductionData[.., 0], CumGasProd = ProductionData[.., 1], Pressure = ProductionData[.., 2];
-        double Po = Pressure[0]; // Initial reservoir pressure (psi)
-        ColVec AveProdRate = 0.5*(CumGasProd[1..] - CumGasProd[..^1]).Div(Time[1..] - Time[..^1]);
+        
+        ColVec AveProdRate = (CumGasProd[1..] - CumGasProd[..^1]).Div(Time[1..] - Time[..^1]);
+        ColVec AvegCumGasProd = 0.5*(CumGasProd[..^1] + CumGasProd[1..]);
         ColVec AvegPressure = 0.5*(Pressure[..^1] + Pressure[1..]);
 
-        // Use Regression to estimate C and n in PressureSquared IPR
-        var lnQ = Log(AveProdRate);
-        var lnP2 = Log(Pow(AvegPressure, 2));
 
+        // Well Test Data from Merlin
+        Matrix TestData = ReadMatrix("Well Test.txt");
+        ColVec Q = TestData[.., 0], P = TestData[.., 1];
+        var LnQ = Log(Q);
+        var DelP2 = Pi*Pi - P.Pow(2);
+        var LnDelP2 = Log(DelP2);
+        // Use Regression to estimate C and n in PressureSquared IPR
+        var par = Polyfit([.. LnDelP2], [.. LnQ], 1);
+        var n = par[0]; var C = Exp(par[1]);
+        HoldOn();
+        Scatter(Q, P, "fob");
+        Plot(C*DelP2.Pow(n), P, "r", 2); HoldOff();
+        CloseFig();
 
     }
 
