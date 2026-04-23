@@ -1,0 +1,53 @@
+% Processing colorbar
+cbar1 = imread("cbar1.png");
+sz = size(cbar1);
+m = int16(sz(2)/2);
+slice1 = double(cbar1(:, m, :));
+flatslice = sum(slice1, 3);
+dflatslice = diff(flatslice);
+indx = find(dflatslice);
+indx = int16(0.5*(indx(1:end-1) + indx(2:end)));
+indx = [indx; 2*indx(end) - indx(end-1)];
+% Processing computing  
+N = numel(indx);
+minz = 2800; maxz = 3400;
+z = linspace(minz, maxz, N+1);
+Z = 0.5*(z(1:end-1) + z(2:end))';
+% 
+pixels = cbar1(indx, m, :);
+
+tmap = double([pixels(:,:,1),pixels(:,:,2),pixels(:,:,3)]);
+tmap = tmap/255;
+
+% fault
+fault = imread("fault.png");
+sz = size(fault);
+pixels = [pixels; fault(sz(1)/2, sz(2)/2, :)];
+Z = [Z; nan];
+
+% black line
+pixels = [pixels; uint8(cat(3,0,0,0))];
+Z = [Z; 0];
+
+% white
+pixels = [pixels; uint8(cat(3,255,255,255))];
+Z = [Z; 1];
+
+% Process the map
+pixels = double(pixels);
+map = imread("map1.png");
+sz  = size(map);
+mapz = zeros(sz(1), sz(2));
+for i = 1:sz(1)
+    for j = 1:sz(2)
+        pic = double(map(i, j,:));
+        d = sqrt((pic(1) - pixels(:,:,1)).^2 + ...
+                 (pic(2) - pixels(:,:,2)).^2 + ...
+                 (pic(3) - pixels(:,:,3)).^2);
+        [z, indxmin]  = min(d);
+        mapz(i, j) = Z(indxmin);
+    end
+end
+contourf(flipud(mapz))
+colormap(tmap);
+

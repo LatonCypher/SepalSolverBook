@@ -3,7 +3,7 @@ using Microsoft.VisualBasic;
 {
     { 
         // Morgana Field Development Plan
-        folderpath = @"C:\Users\lateef.a.kareem\Downloads\Morgana Data\";
+        folderpath = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\Morgana Data\";
         Matrix Top = ReadMatrix("Top.txt"), Base = ReadMatrix("Base.txt");
         
         double Area(Matrix Data, double level)
@@ -14,6 +14,7 @@ using Microsoft.VisualBasic;
             Plot(x, y, "k");
             return 0.5*Abs((x[..^1].Times(y[1..]) - y[..^1].Times(x[1..])).Sum());
         }
+
         (double Mean, double StdDev) ComputeStatistics(ColVec data, bool isSample = true)
         {
             // 1. Compute Mean
@@ -49,6 +50,7 @@ using Microsoft.VisualBasic;
         Matrix NTGPoro = ReadMatrix("PetroPhysics.txt");
         var (NTGmean, NTGstd) = ComputeStatistics(NTGPoro[.., 0]);
         var (Poromean, Porostd) = ComputeStatistics(NTGPoro[.., 1]);
+
 
 
 
