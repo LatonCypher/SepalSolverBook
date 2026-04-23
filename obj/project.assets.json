@@ -553,7 +553,7 @@
           }
         }
       },
-      "SepalSolver/0.0.80": {
+      "SepalSolver/1.1.7": {
         "type": "package",
         "dependencies": {
           "Highs.Native": "1.12.0",
@@ -571,7 +571,7 @@
           }
         }
       },
-      "SepalSolver.PlotLib/0.0.80": {
+      "SepalSolver.PlotLib/1.1.7": {
         "type": "package",
         "dependencies": {
           "CSharpMath": "0.5.1",
@@ -580,7 +580,7 @@
           "Magick.NET-Q16-AnyCPU": "14.10.0",
           "Magick.NET.Core": "14.10.0",
           "ScottPlot": "5.1.57",
-          "SepalSolver": "0.0.80"
+          "SepalSolver": "1.1.7"
         },
         "compile": {
           "lib/net10.0/SepalSolver.PlotLib.dll": {}
@@ -2008,29 +2008,31 @@
         "scottplot.nuspec"
       ]
     },
-    "SepalSolver/0.0.80": {
-      "sha512": "U7IgllCHFfIlVXUeLjtyo2xsqyHNXBPsad+KJWhDyIHEEbI95F6+rSekrmM7nuE06OzZfpXxZKOcw5p1JIwuEg==",
+    "SepalSolver/1.1.7": {
+      "sha512": "dT0FxqUa8ERjqqEBmZxy9RY/xN5lLr+BSVqQZWxhmpv5/eorL1a8bfo6+HKSNmNprGDegwwz1WRQJZvmJP610g==",
       "type": "package",
-      "path": "sepalsolver/0.0.80",
+      "path": "sepalsolver/1.1.7",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "README.md",
         "lib/net10.0/SepalSolver.dll",
         "lib/net10.0/SepalSolver.xml",
-        "sepalsolver.0.0.80.nupkg.sha512",
+        "sepalsolver.1.1.7.nupkg.sha512",
         "sepalsolver.nuspec",
         "sepalsolver.png"
       ]
     },
-    "SepalSolver.PlotLib/0.0.80": {
-      "sha512": "Gbi2Ch+hR+jtd7YTjgU9d+FNB+pqO4Dw1/LTKCS9JDFForgNsg3gUS8C9pNBBTCaSOb4h7/zzeMDu1GG/3deUQ==",
+    "SepalSolver.PlotLib/1.1.7": {
+      "sha512": "nuLbqHoPlcYeVi6tzXrCaVwtIDUS8nacfv3t2J6k5omB5KPZ/zAeZrV8bet7mYY6jZf/309qI9GxKG3jsDj5Pg==",
       "type": "package",
-      "path": "sepalsolver.plotlib/0.0.80",
+      "path": "sepalsolver.plotlib/1.1.7",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "README.md",
         "lib/net10.0/SepalSolver.PlotLib.dll",
-        "sepalsolver.plotlib.0.0.80.nupkg.sha512",
+        "sepalsolver.plotlib.1.1.7.nupkg.sha512",
         "sepalsolver.plotlib.nuspec"
       ]
     },
@@ -2251,8 +2253,8 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "SepalSolver >= 0.0.80",
-      "SepalSolver.PlotLib >= 0.0.80"
+      "SepalSolver >= 1.1.7",
+      "SepalSolver.PlotLib >= 1.1.7"
     ]
   },
   "packageFolders": {
@@ -2282,12 +2284,12 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Packages": {},
-        "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Packages - Copy": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://nuget.pkg.github.com/cyphercrescent/index.json": {}
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {}
         }
@@ -2306,15 +2308,16 @@
     },
     "frameworks": {
       "net10.0": {
+        "framework": "net10.0",
         "targetAlias": "net10.0",
         "dependencies": {
           "SepalSolver": {
             "target": "Package",
-            "version": "[0.0.80, )"
+            "version": "[1.1.7, )"
           },
           "SepalSolver.PlotLib": {
             "target": "Package",
-            "version": "[0.0.80, )"
+            "version": "[1.1.7, )"
           }
         },
         "imports": [
@@ -2333,7 +2336,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

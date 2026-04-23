@@ -1,5 +1,71 @@
 ﻿using ConsoleApp1;
+using Microsoft.VisualBasic;
 {
+    { 
+        // Morgana Field Development Plan
+        folderpath = @"C:\Users\lateef.a.kareem\Downloads\Morgana Data\";
+        Matrix Top = ReadMatrix("Top.txt"), Base = ReadMatrix("Base.txt");
+        
+        double Area(Matrix Data, double level)
+        {
+            var id = Data[.., 2] == level;
+            ColVec x = Data[id, 0], y = Data[id, 1];
+            x = Vcart(x, x[0]); y = Vcart(y, y[0]);
+            Plot(x, y, "k");
+            return 0.5*Abs((x[..^1].Times(y[1..]) - y[..^1].Times(x[1..])).Sum());
+        }
+        (double Mean, double StdDev) ComputeStatistics(ColVec data, bool isSample = true)
+        {
+            // 1. Compute Mean
+            double mean = data.Average();
+
+            // 2. Compute Sum of Squares of Differences
+            double sumOfSquares = (data - mean).SumSq();
+
+            // 3. Compute Standard Deviation
+            double divisor = isSample ? data.Numel - 1 : data.Numel;
+
+            if (divisor <= 0) return (mean, 0.0); // Guard against single-element sample sets
+            return (mean, Sqrt(sumOfSquares / divisor));
+        }
+
+        // processing top
+        double[] toplevels = [..Top[.., 2].Distinct()]; HoldOn();
+        ColVec TopAreas = toplevels.Select(level => Area(Top, level)).ToArray();
+        double TopVolume = 0.5*(TopAreas[0] + 2*TopAreas[1..^1].Sum() + TopAreas[^1])*(toplevels[1]-toplevels[0]);
+        HoldOff(); SaveAs("Top3100.png"); CloseFig();
+
+        // processing base
+        double[] baselevels = [..Base[.., 2].Distinct()]; HoldOn();
+        ColVec BaseAreas = baselevels.Select(level => Area(Base, level)).ToArray();
+        double BaseVolume = 0.5*(BaseAreas[0] + 2*BaseAreas[1..^1].Sum() + BaseAreas[^1])*(baselevels[1]-baselevels[0]);
+        HoldOff(); SaveAs("Base3100.png"); CloseFig();
+
+        // RockVolume
+        double GrossRockVolume = TopVolume - BaseVolume;
+
+        // PretroPhysics Data
+        Matrix CapPress = ReadMatrix("CapPressure.txt");
+        Matrix NTGPoro = ReadMatrix("PetroPhysics.txt");
+        var (NTGmean, NTGstd) = ComputeStatistics(NTGPoro[.., 0]);
+        var (Poromean, Porostd) = ComputeStatistics(NTGPoro[.., 1]);
+
+
+
+        // Production Data fro Merlin
+        Matrix ProductionData = ReadMatrix("Merlin Production History.txt");
+        ColVec Time = ProductionData[.., 0], CumGasProd = ProductionData[.., 1], Pressure = ProductionData[.., 2];
+        double Po = Pressure[0]; // Initial reservoir pressure (psi)
+        ColVec AveProdRate = 0.5*(CumGasProd[1..] - CumGasProd[..^1]).Div(Time[1..] - Time[..^1]);
+        ColVec AvegPressure = 0.5*(Pressure[..^1] + Pressure[1..]);
+
+        // Use Regression to estimate C and n in PressureSquared IPR
+        var lnQ = Log(AveProdRate);
+        var lnP2 = Log(Pow(AvegPressure, 2));
+
+
+    }
+
     Writer.Run();
 
     //FormatLong();

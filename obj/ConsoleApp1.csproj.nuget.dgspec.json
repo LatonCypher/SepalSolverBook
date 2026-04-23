@@ -27,12 +27,12 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Packages": {},
-          "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Packages - Copy": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://nuget.pkg.github.com/cyphercrescent/index.json": {}
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -51,15 +51,16 @@
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "SepalSolver": {
               "target": "Package",
-              "version": "[0.0.80, )"
+              "version": "[1.1.7, )"
             },
             "SepalSolver.PlotLib": {
               "target": "Package",
-              "version": "[0.0.80, )"
+              "version": "[1.1.7, )"
             }
           },
           "imports": [
@@ -78,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
