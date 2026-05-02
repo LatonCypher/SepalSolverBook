@@ -1,19 +1,43 @@
 ﻿using ConsoleApp1;
-using Microsoft.VisualBasic;
 {
-    { 
+    Writer.Run();
+
+    {
+        // Reservoir Simulation
+        folderpath = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\Morgana Data\";
+        Matrix Base = ReadMatrix("Base.txt");
+        var id = Base[.., 2] == 3075;
+        ColVec x = Base[id, 0], y = Base[id, 1];
+        Plot(x, y, "k");
+        var rx = x.Range(); var ry = y.Range();
+    }
+    {
+        var time = DateTime.Now.AddHours((0.66 - 0.1)*15.36/0.75);
+
         // Morgana Field Development Plan
         folderpath = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\Morgana Data\";
         Matrix Top = ReadMatrix("Top.txt"), Base = ReadMatrix("Base.txt");
-        
         double Area(Matrix Data, double level)
         {
             var id = Data[.., 2] == level;
             ColVec x = Data[id, 0], y = Data[id, 1];
             x = Vcart(x, x[0]); y = Vcart(y, y[0]);
-            Plot(x, y, "k");
             return 0.5*Abs((x[..^1].Times(y[1..]) - y[..^1].Times(x[1..])).Sum());
         }
+
+        // processing top
+        double[] toplevels = [..Top[.., 2].Distinct()], 
+            baselevels = [..Base[.., 2].Distinct()], 
+            alllevels = [.. toplevels.Union(baselevels)];
+
+        double[] allareas = [.. alllevels.Select(level => (toplevels.Contains(level)?Area(Top, level):0) - (baselevels.Contains(level)?Area(Base, level):0))];
+
+        for (int i = 0; i < alllevels.Length; i++) Console.WriteLine($"Level = {alllevels[i]}, Area = {allareas[i]}");
+
+        // RockVolume
+        double GrossRockVolume = 0.5*(allareas[0] + 2*allareas[1..^1].Sum() + allareas[^1])*(alllevels[1]-alllevels[0]);
+
+        // PretroPhysics Data
 
         (double Mean, double StdDev) ComputeStatistics(ColVec data, bool isSample = true)
         {
@@ -30,39 +54,21 @@ using Microsoft.VisualBasic;
             return (mean, Sqrt(sumOfSquares / divisor));
         }
 
-        // processing top
-        double[] toplevels = [..Top[.., 2].Distinct()]; HoldOn();
-        ColVec TopAreas = toplevels.Select(level => Area(Top, level)).ToArray();
-        double TopVolume = 0.5*(TopAreas[0] + 2*TopAreas[1..^1].Sum() + TopAreas[^1])*(toplevels[1]-toplevels[0]);
-        HoldOff(); SaveAs("Top3100.png"); CloseFig();
-
-        // processing base
-        double[] baselevels = [..Base[.., 2].Distinct()]; HoldOn();
-        ColVec BaseAreas = baselevels.Select(level => Area(Base, level)).ToArray();
-        double BaseVolume = 0.5*(BaseAreas[0] + 2*BaseAreas[1..^1].Sum() + BaseAreas[^1])*(baselevels[1]-baselevels[0]);
-        HoldOff(); SaveAs("Base3100.png"); CloseFig();
-
-        // Top minus base
-        double[] alllevels = [.. toplevels.Union(baselevels)];
-        double[] allareas = [.. alllevels.Select(level => toplevels.Contains(level)?Area(Top, level):0 - (baselevels.Contains(level)?Area(Base, level):0))];
-        CloseFig();
-
-        // RockVolume
-        double GrossRockVolume = TopVolume - BaseVolume;
-
-        // PretroPhysics Data
-        Matrix CapPress = ReadMatrix("CapPressure.txt");
-        Matrix NTGPoro = ReadMatrix("PetroPhysics.txt");
+        Matrix CapPress = ReadMatrix("CapPressure.txt"), NTGPoro = ReadMatrix("PetroPhysics.txt");
         var (NTG_P50, NTGstd) = ComputeStatistics(NTGPoro[.., 0]);
         var (Poro_P50, Porostd) = ComputeStatistics(NTGPoro[.., 1]);
 
         // From PVT (P = 300bars, T = 363K)
+        Matrix PVT = ReadMatrix("PVT.txt");
+        ColVec P_pvt = PVT[.., 0], Z_pvt = PVT[.., 1], mu_pvt = PVT[.., 2],
+            cgr_pvt = PVT[.., 3], Shrinkage = PVT[.., 4], P_Z_pvt = P_pvt.Div(Z_pvt);
         double Pi = 300; // Initial reservoir pressure (psi)
         var z = 0.95; var Bgi = 0.00336*0.95*363/Pi;
-        var rhog = 1.293*298*300/(363*0.95);
+        var rhog = 0.65*1.293*288*300/(363*0.95);
 
         ColVec cPress = CapPress[.., 0], sPress = CapPress[.., 1];
-        double[] Sw = [..alllevels.Select(level => Interp1(cPress, sPress, (alllevels.Last() - level)*(1000 - rhog)*1e-5))];
+        double[] Sw = [..alllevels.Select(level => Interp1(cPress, sPress, Min(cPress.Max(), 9.8*(alllevels.Last() - level)*(1000 - rhog)*1e-5)))];
+        for (int i = 0; i < alllevels.Length; i++) Console.WriteLine($"Level = {alllevels[i]}, Saturation = {Sw[i]}");
         double Swavg = Sw.Zip(allareas, (sw, area) => sw * area).Sum() / allareas.Sum();
 
         var NTG_P90 = NTG_P50 - 1.282*NTGstd;
@@ -75,32 +81,228 @@ using Microsoft.VisualBasic;
         var GIIP_P90 = GrossRockVolume*NTG_P90*Poro_P90*(1-Swavg)/Bgi;
 
 
-        // Production Data fro Merlin
+        // Production Data fro Merlin  
         Matrix ProductionData = ReadMatrix("Merlin Production History.txt");
         ColVec Time = ProductionData[.., 0], CumGasProd = ProductionData[.., 1], Pressure = ProductionData[.., 2];
-        
-        ColVec AveProdRate = (CumGasProd[1..] - CumGasProd[..^1]).Div(Time[1..] - Time[..^1]);
-        ColVec AvegCumGasProd = 0.5*(CumGasProd[..^1] + CumGasProd[1..]);
-        ColVec AvegPressure = 0.5*(Pressure[..^1] + Pressure[1..]);
+        ColVec P_Z = Pressure.Select(p => p/Interp1(P_pvt, Z_pvt, p)).ToArray();
+        // Use Regression to estimate the slope of P/Z vs CumGasProd, which is related to the initial gas in place.
+        var parMerlin = Polyfit([.. CumGasProd], [.. P_Z], 1);
+        var GIIP_Merlin = -parMerlin[1]/parMerlin[0];
+        var RF_Merlin = CumGasProd.Last()/GIIP_Merlin;
+        Figure(1000, 500);
+        Scatter(CumGasProd, P_Z, "fob"); HoldOn();
+        Plot([0, GIIP_Merlin], [parMerlin[1], 0], "k", 3);
+        Scatter(GIIP_Merlin, 0, "fog", 20);
+        Title("MerlinProdData"); Xlabel("CumGasProd"); Ylabel("P/Z");
+        HoldOff(); SaveAs("MerlinProdData.png"); CloseFig();
 
-
-        // Well Test Data from Merlin
+        // Well Test Data
         Matrix TestData = ReadMatrix("Well Test.txt");
-        ColVec Q = TestData[.., 0], P = TestData[.., 1];
-        var LnQ = Log(Q);
-        var DelP2 = Pi*Pi - P.Pow(2);
-        var LnDelP2 = Log(DelP2);
+        ColVec Qipr = TestData[.., 0], Pipr = TestData[.., 1], Qipr_estimate;
+        ColVec LnQ = Log(Qipr), DelP2 = Pi*Pi - Pipr.Pow(2), LnDelP2 = Log(DelP2);
         // Use Regression to estimate C and n in PressureSquared IPR
         var par = Polyfit([.. LnDelP2], [.. LnQ], 1);
         var n = par[0]; var C = Exp(par[1]);
         HoldOn();
-        Scatter(Q, P, "fob");
-        Plot(C*DelP2.Pow(n), P, "r", 2); HoldOff();
-        CloseFig();
+        Scatter(Qipr, Pipr, "fob");
+        Plot(Qipr_estimate = C*DelP2.Pow(n), Pipr, "r", 2);
+        Xlabel("Q(m^3/day)"); Ylabel("P(bar)");
+        Title($"C = {C}, and n = {n}");
+        SaveAs("WellTest.png");
 
+        // VFP data
+        Matrix VFP = ReadMatrix("VFP.txt");
+        ColVec Qvfp = VFP[.., 0], Pvfp20 = VFP[.., 1], Pvfp40 = VFP[.., 2], Pvfp60 = VFP[.., 3], Pvfp80 = VFP[.., 4], Pvfp100 = VFP[.., 5];
+        Plot(Qvfp, VFP[.., 1..]);
+        Legend(["", "IPR", "VFP_20", "VFP_40", "VFP_60", "VFP_80", "VFP_100"], LowerRight);
+        
+
+        var (nodq1, nodp1) = Intersection(Qipr_estimate, Pipr, Qvfp, Pvfp100); Scatter(nodq1, nodp1, "fog");
+        var (nodq2, nodp2) = Intersection(Qipr_estimate, Pipr, Qvfp, Pvfp80); Scatter(nodq2, nodp2, "fog");
+        var (nodq3, nodp3) = Intersection(Qipr_estimate, Pipr, Qvfp, Pvfp60); Scatter(nodq3, nodp3, "fog");
+        var (nodq4, nodp4) = Intersection(Qipr_estimate, Pipr, Qvfp, Pvfp40); Scatter(nodq4, nodp4, "fog");
+        var (nodq5, nodp5) = Intersection(Qipr_estimate, Pipr, Qvfp, Pvfp20); Scatter(nodq5, nodp5, "fog");
+        SaveAs("Nodal.png"); CloseFig();
+
+
+        Plot(Qipr_estimate = 2*C*DelP2.Pow(n), Pipr, "r", 2);
+        Xlabel("Q(m^3/day)"); Ylabel("P(bar)");
+        Title($"C = {C}, and n = {n}");
+        HoldOn();
+
+        // VFP data
+        Plot(Qvfp, VFP[.., 1..]);
+        Legend(["", "IPR", "VFP_20", "VFP_40", "VFP_60", "VFP_80", "VFP_100"], LowerRight);
+
+
+        var (nodq1e, nodp1e) = Intersection(Qipr_estimate, Pipr, Qvfp, Pvfp100); Scatter(nodq1e, nodp1e, "fog");
+        var (nodq2e, nodp2e) = Intersection(Qipr_estimate, Pipr, Qvfp, Pvfp80); Scatter(nodq2e, nodp2e, "fog");
+        var (nodq3e, nodp3e) = Intersection(Qipr_estimate, Pipr, Qvfp, Pvfp60); Scatter(nodq3e, nodp3e, "fog");
+        var (nodq4e, nodp4e) = Intersection(Qipr_estimate, Pipr, Qvfp, Pvfp40); Scatter(nodq4e, nodp4e, "fog");
+        var (nodq5e, nodp5e) = Intersection(Qipr_estimate, Pipr, Qvfp, Pvfp20); Scatter(nodq5e, nodp5e, "fog");
+        SaveAs("Nodal2Wells.png"); CloseFig();
+
+        // Comparing with Merlin
+        double Pabn = 75, Zabn = Interp1(P_pvt, Z_pvt, Pabn), 
+            Zi = Interp1(P_pvt, Z_pvt, Pi), pz_i = Pi / Zi;
+        double RF = 1 - Pabn / Zabn / pz_i;
+
+        double pwf_abandonment = Interp1(Qvfp, Pvfp20, 0.2e6);
+        double pr_abandonment = Sqrt(Pow(0.2e6/C, 1/n) + pwf_abandonment*pwf_abandonment);
+
+        // assuming tha tlike Merlin, Morgana will also undergoing volumentric depletion
+        double RF2 = 1 - pr_abandonment / Interp1(P_pvt, Z_pvt, pr_abandonment) / pz_i;
+        double EUR_P10 = GIIP_P10*RF, EUR_P50 = GIIP_P50*RF, EUR_P90 = GIIP_P90*RF;
+        
+
+        (ColVec Q, ColVec Pu, ColVec Pd, ColVec Thp, ColVec Cum, ColVec CumCond) 
+            ProductionProfile(double EUR, double GIIP, double Nyears, double factor, int Nwells)
+        {
+            double Qplt = Min(1e6, factor * EUR/((Nyears)*365));
+            double pr = Pi, cumprod = 0, pu, pd;
+            double initcond = Interp1(P_pvt, cgr_pvt, pr)*GIIP/1e6;
+            List<ColVec> PVFP = [Pvfp100, Pvfp60, Pvfp20];
+            List<double> THP = [100, 60, 20];
+            int pindx = 0; ColVec pwf;
+            List<double> Q = [], Pu = [], Pd = [], Thp = [], Cum = [], CumCond = [];
+            for (int i = 0; i <= Nyears; i++)
+            {
+                pwf = Linspace(pr, 0, 10);
+                DelP2 = pr*pr - pwf.Pow(2);
+                Qipr_estimate = Nwells * C*DelP2.Pow(n);
+                pu = Interp1(Qipr_estimate, pwf, Qplt);
+                pd = Interp1(Qvfp, PVFP[pindx], Qplt);
+                if(pu < pd)
+                {
+                    if (pindx < 2)
+                    {
+                        pindx++;
+                        pd = Interp1(Qvfp, PVFP[pindx], Qplt);
+                    }
+                    else
+                    {
+                        (Qplt, pu) = Intersection(Qipr_estimate, pwf, Qvfp, PVFP[pindx]);
+                        pd = pu;
+                    }
+                }
+                Q.Add(Qplt); Pu.Add(pu); Pd.Add(pd); Thp.Add(THP[pindx]); Cum.Add(cumprod); 
+                CumCond.Add(initcond - (GIIP - cumprod)*Interp1(P_pvt, cgr_pvt, pr)/1e6);
+                cumprod += Qplt*365;
+                pr = Interp1(P_Z_pvt, P_pvt, pz_i*(GIIP - cumprod)/GIIP);
+            }
+            while(Qplt > 0.2e6)
+            {
+                cumprod += Qplt*365;
+                pr = Interp1(P_Z_pvt, P_pvt, pz_i*(GIIP - cumprod)/GIIP); 
+                pwf = Linspace(pr, 0, 10);
+                DelP2 = pr*pr - pwf.Pow(2);
+                Qipr_estimate = Nwells * C*DelP2.Pow(n);
+                (Qplt, pu) = Intersection(Qipr_estimate, pwf, Qvfp, PVFP[pindx]);
+                pd = pu;
+                Q.Add(Qplt); Pu.Add(pu); Pd.Add(pd); Thp.Add(THP[pindx]); Cum.Add(cumprod);
+                CumCond.Add(initcond - (GIIP - cumprod)*Interp1(P_pvt, cgr_pvt, pr)/1e6);
+            }
+            return (Q, Pu, Pd, Thp, Cum, CumCond);
+        }
+
+        (ColVec Q, ColVec Pu, ColVec Pd, ColVec Thp, ColVec Cum, ColVec CumCond) 
+            EnforcePlateauDeclineCondition(double EUR, double GIIP, int Nyears, int Nwells, double maxD)
+        {
+            double f = 1;
+            var (Q, Pu, Pd, Thp, Cum, CumCond) = ProductionProfile(EUR, GIIP, Nyears, f, Nwells);
+            ColVec Ratio = Q[1..].Div(Q[..^1]);
+            while (Q[Nyears] < Q[0] || Ratio.Any(r => r < (1 - maxD)))
+            {
+                f -= 0.01;
+                (Q, Pu, Pd, Thp, Cum, CumCond) = ProductionProfile(EUR, GIIP, Nyears, f, Nwells);
+                Ratio = Q[1..].Div(Q[..^1]);
+            }
+            return (Q, Pu, Pd, Thp, Cum, CumCond);
+        }
+
+        // High P90
+        double  maxDeclineRate = 0.3; int Nwells = 2, NplatYears = 10; ColVec index;
+        var (Q10, Pu10, Pd10, Thp10, Cum10, Cond10) = EnforcePlateauDeclineCondition(EUR_P10, GIIP_P10, NplatYears, Nwells, maxDeclineRate);
+        var (Q50, Pu50, Pd50, Thp50, Cum50, Cond50) = EnforcePlateauDeclineCondition(EUR_P50, GIIP_P50, NplatYears, Nwells, maxDeclineRate);
+        var (Q90, Pu90, Pd90, Thp90, Cum90, Cond90) = EnforcePlateauDeclineCondition(EUR_P90, GIIP_P90, NplatYears, Nwells, maxDeclineRate);
+
+        for (int i = 0; i < Q10.Numel; i++)
+            Console.WriteLine($"{i}, {Q10[i]/1e6:F4}, {Thp10[i]:F4}, {Cum10[i]/1e6:F4}, {Cond10[i]/1e6:F4}");
+        Console.WriteLine("#################################################################################");
+        for (int i = 0; i < Q50.Numel; i++)
+            Console.WriteLine($"{i}, {Q50[i]/1e6:F4}, {Thp50[i]:F4}, {Cum50[i]/1e6:F4}, {Cond50[i]/1e6:F4}");
+        Console.WriteLine("#################################################################################");
+        for (int i = 0; i < Q90.Numel; i++)
+            Console.WriteLine($"{i}, {Q90[i]/1e6:F4}, {Thp90[i]:F4}, {Cum90[i]/1e6:F4}, {Cond90[i]/1e6:F4}");
+        Console.WriteLine("#################################################################################");
+
+
+        Figure(1000, 500);
+        index = Linspace(0, Q10.Numel, Q10.Numel);
+        Plot(index, Q10, "b", 3); HoldOn();
+        index = Linspace(0, Q50.Numel, Q50.Numel);
+        Plot(index, Q50, "g", 3);
+        index = Linspace(0, Q90.Numel, Q90.Numel);
+        Plot(index, Q90, "r", 3);
+        Xlabel("Time(years)"); 
+        Ylabel("Production Rate(m^3/Day)");
+        Title("Production Profile");
+        Legend(["P10", "P50", "P90"]);
+        SaveAs("Profile.png"); CloseFig();
+
+        Figure(1000, 500);
+        index = Linspace(0, Q10.Numel, Q10.Numel);
+        Plot(index, Cum10, "b", 3); HoldOn();
+        index = Linspace(0, Q50.Numel, Q50.Numel);
+        Plot(index, Cum50, "g", 3);
+        index = Linspace(0, Q90.Numel, Q90.Numel);
+        Plot(index, Cum90, "r", 3);
+        Xlabel("Time(years)");
+        Ylabel("Cumulative Production (m^3)");
+        Title("Cumulative Production Profile");
+        Legend(["P10", "P50", "P90"]);
+        SaveAs("CumulativeProductionProfile.png"); CloseFig();
+
+        Figure(1000, 500);
+        index = Linspace(0, Q10.Numel, Q10.Numel);
+        Plot(index, Cond10, "b", 3); HoldOn();
+        index = Linspace(0, Q50.Numel, Q50.Numel);
+        Plot(index, Cond50, "g", 3);
+        index = Linspace(0, Q90.Numel, Q90.Numel);
+        Plot(index, Cond90, "r", 3);
+        Xlabel("Time(years)");
+        Ylabel("Cumulative Condensate Production (m^3)");
+        Title("Cumulative Condensate Production Profile");
+        Legend(["P10", "P50", "P90"]);
+        SaveAs("CumulativeCondensateProductionProfile.png"); CloseFig();
+
+        Figure(1000, 500);
+        index = Linspace(0, Q10.Numel, Q10.Numel);
+        Plot(index, Pu10-Pd10, "b", 3); HoldOn();
+        index = Linspace(0, Q50.Numel, Q50.Numel);
+        Plot(index, Pu50-Pd50, "g", 3);
+        index = Linspace(0, Q90.Numel, Q90.Numel);
+        Plot(index, Pu90-Pd90, "r", 3);
+        Xlabel("Time(years)");
+        Ylabel("Choke Pressure Drop (bar)");
+        Title("Choke Pressure Drop ");
+        Legend(["P10", "P50", "P90"]);
+        SaveAs("ChokePressureDrop.png"); CloseFig();
+
+        Figure(1000, 500);
+        index = Linspace(0, Q10.Numel, Q10.Numel);
+        Plot(index, Thp10, "b", 3); HoldOn();
+        index = Linspace(0, Q50.Numel, Q50.Numel);
+        Plot(index, Thp50, "g", 3);
+        index = Linspace(0, Q90.Numel, Q90.Numel);
+        Plot(index, Thp90, "r", 3);
+        Xlabel("Time(years)");
+        Ylabel("Tubing Head Pressure (bar)");
+        Title("Tubing Head Pressure");
+        Legend(["P10", "P50", "P90"]);
+        SaveAs("TubingHeadPressure.png"); CloseFig();
     }
 
-    Writer.Run();
 
     //FormatLong();
     {
