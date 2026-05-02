@@ -8,15 +8,15 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling.Chapt
     {
         public static void Run()
         {
-            ///<BookContent>
-            ///============================================================
+            /// <BookContent>
+            /// ============================================================
             /// Averaging Rock and Fluid Properties
-            ///============================================================
+            /// ============================================================
             ///
-            ///Introduction
-            ///============
+            /// Introduction
+            /// ============
             ///
-            ///In reservoir simulation, we must "upscale" geological data into grid blocks. Because reservoirs are heterogeneous, a single grid block represents multiple geological layers. To maintain physical accuracy, we use specific averaging techniques derived from fundamental physical laws.
+            /// In reservoir simulation, we must "upscale" geological data into grid blocks. Because reservoirs are heterogeneous, a single grid block represents multiple geological layers. To maintain physical accuracy, we use specific averaging techniques derived from fundamental physical laws.
             ///
             /// 1. Porosity Averaging (Arithmetic)
             /// ==================================
@@ -127,19 +127,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling.Chapt
             ///         
             /// Summary Table
             /// =============
-            ///
-            /// +-------------------+-----------------+----------------------------------------+
-            /// | Property          | Configuration   | Averaging Method                       |
-            /// +===================+=================+========================================+
-            /// | **Porosity**      | Any             | **Arithmetic** (Volume Weighted)       |
-            /// +-------------------+-----------------+----------------------------------------+
-            /// | **Permeability**  | Parallel Flow   | **Arithmetic** (Thickness Weighted)    |
-            /// +-------------------+-----------------+----------------------------------------+
-            /// | **Permeability**  | Series Flow     | **Harmonic** (Length Weighted)         |
-            /// +-------------------+-----------------+----------------------------------------+
-            /// | **Saturation**    | Any             | **Arithmetic** (Pore-Volume Weighted)  |
-            /// +-------------------+-----------------+----------------------------------------+
-            /// 
+            /// <table>
+            ///  Property          | Configuration   | Averaging Method                       
+            ///  **Porosity**      | Any             | **Arithmetic** (Volume Weighted)       
+            ///  **Permeability**  | Parallel Flow   | **Arithmetic** (Thickness Weighted)    
+            ///  **Permeability**  | Series Flow     | **Harmonic** (Length Weighted)        
+            ///  **Saturation**    | Any             | **Arithmetic** (Pore-Volume Weighted)  
+            /// </table>
             /// </BookContent>
         }
     }
