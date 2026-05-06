@@ -106,6 +106,43 @@ Examples
         -0.5236
       
    
+   Just like the case of single variable nonlinear equation, nonlinear system can also be solved using automatic differentiation class
+   
+   
+   .. code-block:: csharp
+   
+   
+      AutoDiff[] fun(AutoDiff[] x) => [3 * x[0] - Cos(x[1] * x[2]) - 0.5,
+                           x[0] * x[0] - 81*Pow(x[1] + 0.1, 2) + Sin(x[2]) + 1.06,
+                           Exp(-x[0] * x[1]) + 20 * x[2] + (10 * pi - 3) / 3];
+      // set initial guess
+      double[] x0 = [0.1, 0.1, -0.1];
+   
+      // call the solver
+      var opts = SolverSet(Display: true);
+      var x = Fsolve(fun, x0, opts);
+   
+      // display the result
+      Console.WriteLine(x);
+   
+   
+   Ouput
+   
+   .. terminal::
+   
+       Iteration    Func-count       f(x)      Norm of Step
+           0            1             0           Start
+           1            2          0.34586       0.58656     
+           2            3          0.02588       0.01799     
+           3            4        2.012e-004      0.00157     
+           4            5        1.254e-008     1.245e-005   
+           5            6        1.776e-015     7.761e-010   
+           6            7        1.790e-015     1.111e-016   
+      
+         0.5000
+         0.0000
+        -0.5236
+      
 
 Applications
 ------------

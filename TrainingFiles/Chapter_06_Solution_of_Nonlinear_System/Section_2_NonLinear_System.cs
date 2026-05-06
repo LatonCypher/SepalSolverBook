@@ -90,6 +90,25 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             }
             /// </code>
             /// 
+            /// Just like the case of single variable nonlinear equation, nonlinear system can also be solved using automatic differentiation class
+            /// 
+            /// <code>
+            {
+
+                AutoDiff[] fun(AutoDiff[] x) => [3 * x[0] - Cos(x[1] * x[2]) - 0.5,
+                                     x[0] * x[0] - 81*Pow(x[1] + 0.1, 2) + Sin(x[2]) + 1.06,
+                                     Exp(-x[0] * x[1]) + 20 * x[2] + (10 * pi - 3) / 3];
+                // set initial guess
+                double[] x0 = [0.1, 0.1, -0.1];
+
+                // call the solver
+                var opts = SolverSet(Display: true);
+                var x = Fsolve(fun, x0, opts);
+
+                // display the result
+                Console.WriteLine(x);
+            }
+            /// </code>
             /// </example>
             /// 
             /// <header 2> Applications </header>

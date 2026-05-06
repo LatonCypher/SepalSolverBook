@@ -48,6 +48,65 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                 Console.WriteLine($"x = {x}");
             }
             /// </code>
+
+            /// SepalSolver also has gradient based "Fsolve", which can use finite difference, user defined functions, or automatic differentiation methods to evaluate the gradient. How to do this is demonstrated in the following example. 
+            /// 
+            /// 1. Using finite difference
+            /// <code>
+            {
+                // define the function
+                double fun(double x) => 3 * x - Cos(x * x) - 0.5;
+
+                // set initial guess
+                double x0 = 0.1;
+
+                // call the solver
+                var opts = SolverSet(Display: true);
+                var x = Fsolve(fun, x0, opts);
+
+                // display the result
+                Console.WriteLine($"x = {x}");
+
+            }
+            /// </code>
+            /// 
+            /// 2. Using user defined function example
+            /// <code>
+            {
+                // define the function
+                double fun(double x) => 3 * x - Cos(x * x) - 0.5;
+
+                // set initial guess
+                double x0 = 0.1;
+
+                // call the solver
+                Func<double, double> userJacobian = x => 3 - 2 * x * Sin(x * x);
+                var opts = SolverSet(Display: true, UserDefinedJac: userJacobian);
+                var x = Fsolve(fun, x0, opts);
+
+                // display the result
+                Console.WriteLine($"x = {x}");
+
+            }
+            /// </code>
+            /// 
+            /// 3. Using automatic differentiation example
+            /// <code>
+            {
+                // define the function (the variable must be of the type AUTODIFF)
+                AutoDiff fun(AutoDiff x) => 3 * x - Cos(x * x) - 0.5;
+
+                // set initial guess
+                double x0 = 0.1;
+
+                // call the solver
+                var opts = SolverSet(Display: true);
+                var x = Fsolve(fun, x0, opts);
+
+                // display the result
+                Console.WriteLine($"x = {x}");
+            }
+            /// </code>
             /// 
             /// by setting the solver setting in the case of bracketed root, we can see how the solution process differs from the case of a single initial guess. 
             /// 
@@ -148,7 +207,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
 
                 // compute z factors and plot them
                 List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
-                Matrix ZHY = Meshfun((p, t) => ZfactorHY(p, t), Pr, Tr);
+                Matrix ZHY = Meshfun(ZfactorHY, Pr, Tr);
 
                 // Plot result.
                 Plot(Pr, ZHY);
@@ -208,7 +267,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
 
                 // compute z factors and plot them
                 List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
-                Matrix ZDAK = Meshfun((p, t) => ZfactorDAK(p, t), Pr, Tr);
+                Matrix ZDAK = Meshfun(ZfactorDAK, Pr, Tr);
 
                 // Plot result.
                 Plot(Pr, ZDAK);
@@ -258,7 +317,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
 
                 // compute z factors and plot them
                 List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
-                Matrix ZDPR = Meshfun((p, t) => ZfactorDPR(p, t), Pr, Tr);
+                Matrix ZDPR = Meshfun(ZfactorDPR, Pr, Tr);
 
                 // Plot result.
                 Plot(Pr, ZDPR);

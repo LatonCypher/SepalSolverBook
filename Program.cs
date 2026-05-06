@@ -12,8 +12,6 @@
         var rx = x.Range(); var ry = y.Range();
     }
     {
-        var time = DateTime.Now.AddHours((0.66 - 0.1)*15.36/0.75);
-
         // Morgana Field Development Plan
         folderpath = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\Morgana Data\";
         Matrix Top = ReadMatrix("Top.txt"), Base = ReadMatrix("Base.txt");
