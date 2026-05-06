@@ -48,7 +48,24 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                 Console.WriteLine($"x = {x}");
             }
             /// </code>
+            
+            /// by setting the solver setting in the case of bracketed root, we can see how the solution process differs from the case of a single initial guess. 
+            /// 
+            /// <code>
+            {
+                // Single nonlinear equation
+                double f(double x) => x * Exp(x) - 2;
 
+                // set solver behaviour
+                var opts = SolverSet(Display: true);
+
+                // solve equation using fzero
+                double x = Fzero(f, [0.5, 1], opts);
+                Console.WriteLine($"x = {x}");
+            }
+            /// </code>
+            /// 
+            /// ///
             /// SepalSolver also has gradient based "Fsolve", which can use finite difference, user defined functions, or automatic differentiation methods to evaluate the gradient. How to do this is demonstrated in the following example. 
             /// 
             /// 1. Using finite difference
@@ -80,7 +97,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                 double x0 = 0.1;
 
                 // call the solver
-                Func<double, double> userJacobian = x => 3 - 2 * x * Sin(x * x);
+                Func<double, double> userJacobian = x => 3 + 2 * x * Sin(x * x);
                 var opts = SolverSet(Display: true, UserDefinedJac: userJacobian);
                 var x = Fsolve(fun, x0, opts);
 
@@ -104,22 +121,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                 var x = Fsolve(fun, x0, opts);
 
                 // display the result
-                Console.WriteLine($"x = {x}");
-            }
-            /// </code>
-            /// 
-            /// by setting the solver setting in the case of bracketed root, we can see how the solution process differs from the case of a single initial guess. 
-            /// 
-            /// <code>
-            {
-                // Single nonlinear equation
-                double f(double x) => x * Exp(x) - 2;
-
-                // set solver behaviour
-                var opts = SolverSet(Display: true);
-
-                // solve equation using fzero
-                double x = Fzero(f, [0.5, 1], opts);
                 Console.WriteLine($"x = {x}");
             }
             /// </code>
@@ -202,8 +203,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                 // set up ressure and temperature mesh
                 ColVec Pr = Linspace(0, 15, 501);
                 double[] Tr = [1.05,    1.10,   1.15,   1.20,   1.25,   1.30,   1.35,
-                                   1.40,    1.45,   1.50,   1.60,   1.70,   1.80,   1.90,
-                                   2.00,    2.20,   2.40,   2.60,   2.80,   3.00];
+                               1.40,    1.45,   1.50,   1.60,   1.70,   1.80,   1.90,
+                               2.00,    2.20,   2.40,   2.60,   2.80,   3.00];
 
                 // compute z factors and plot them
                 List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];

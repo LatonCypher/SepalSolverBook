@@ -81,6 +81,37 @@ Ouput
       24    8.5261e-1  -1.9465e-11    interpolation  
       25    8.5261e-1         0e+0    interpolation  
    x = 0.8526055020137255
+            
+by setting the solver setting in the case of bracketed root, we can see how the solution process differs from the case of a single initial guess. 
+
+
+.. code-block:: csharp
+
+   // Single nonlinear equation
+   double f(double x) => x * Exp(x) - 2;
+
+   // set solver behaviour
+   var opts = SolverSet(Display: true);
+
+   // solve equation using fzero
+   double x = Fzero(f, [0.5, 1], opts);
+   Console.WriteLine($"x = {x}");
+
+
+Ouput
+
+.. terminal::
+
+   fun-count     x         f(x)       Procedure 
+       2         1e+0    7.1828e-1    initial        
+       3    8.1037e-1   -1.7768e-1    interpolation  
+       4    8.4798e-1    -2.004e-2    interpolation  
+       5    8.5263e-1    9.9913e-5    interpolation  
+       6    8.5261e-1   -3.5651e-7    interpolation  
+       7    8.5261e-1  -6.3105e-12    interpolation  
+       8    8.5261e-1  -2.2204e-16    interpolation  
+   x = 0.8526055020137254
+
 
 SepalSolver also has gradient based "Fsolve", which can use finite difference, user defined functions, or automatic differentiation methods to evaluate the gradient. How to do this is demonstrated in the following example. 
 
@@ -127,7 +158,7 @@ Ouput
    double x0 = 0.1;
 
    // call the solver
-   Func<double, double> userJacobian = x => 3 - 2 * x * Sin(x * x);
+   Func<double, double> userJacobian = x => 3 + 2 * x * Sin(x * x);
    var opts = SolverSet(Display: true, UserDefinedJac: userJacobian);
    var x = Fsolve(fun, x0, opts);
 
@@ -142,27 +173,12 @@ Ouput
 
    Func-count      x               f(x) 
         1      1.00000E-1     -1.19995E+0
-        2      5.00250E-1      3.19000E-2
-        3      4.88660E-1     -5.64664E-3
-        4      4.90699E-1      9.45758E-4
-        5      4.90357E-1     -1.59959E-4
-        6      4.90415E-1      2.70102E-5
-        7      4.90405E-1     -4.56212E-6
-        8      4.90407E-1      7.70522E-7
-        9      4.90406E-1     -1.30139E-7
-       10      4.90406E-1      2.19800E-8
-       11      4.90406E-1     -3.71236E-9
-       12      4.90406E-1     6.27006E-10
-       13      4.90406E-1    -1.05899E-10
-       14      4.90406E-1     1.78858E-11
-       15      4.90406E-1    -3.02058E-12
-       16      4.90406E-1     5.10036E-13
-       17      4.90406E-1    -8.58202E-14
-       18      4.90406E-1     1.44329E-14
-       19      4.90406E-1    -2.55351E-15
-       20      4.90406E-1     5.55112E-16
-       21      4.90406E-1    -2.22045E-16
-   x = 0.49040645392576704
+        2      4.99717E-1      3.01682E-2
+        3      4.90426E-1      6.23684E-5
+        4      4.90406E-1     2.62401E-10
+        5      4.90406E-1      0.00000E+0
+        6      4.90406E-1      0.00000E+0
+   x = 0.4904064539257671
 
 3. Using automatic differentiation example
 
@@ -194,36 +210,6 @@ Ouput
         5      4.90406E-1      0.00000E+0
         6      4.90406E-1      0.00000E+0
    x = 0.4904064539257671
-
-by setting the solver setting in the case of bracketed root, we can see how the solution process differs from the case of a single initial guess. 
-
-
-.. code-block:: csharp
-
-   // Single nonlinear equation
-   double f(double x) => x * Exp(x) - 2;
-
-   // set solver behaviour
-   var opts = SolverSet(Display: true);
-
-   // solve equation using fzero
-   double x = Fzero(f, [0.5, 1], opts);
-   Console.WriteLine($"x = {x}");
-
-
-Ouput
-
-.. terminal::
-
-   fun-count     x         f(x)       Procedure 
-       2         1e+0    7.1828e-1    initial        
-       3    8.1037e-1   -1.7768e-1    interpolation  
-       4    8.4798e-1    -2.004e-2    interpolation  
-       5    8.5263e-1    9.9913e-5    interpolation  
-       6    8.5261e-1   -3.5651e-7    interpolation  
-       7    8.5261e-1  -6.3105e-12    interpolation  
-       8    8.5261e-1  -2.2204e-16    interpolation  
-   x = 0.8526055020137254
 
 Practical Application
 ---------------------
@@ -309,8 +295,8 @@ Because reduced density equation is nonlinear, iterative numerical methods such 
    // set up ressure and temperature mesh
    ColVec Pr = Linspace(0, 15, 501);
    double[] Tr = [1.05,    1.10,   1.15,   1.20,   1.25,   1.30,   1.35,
-                      1.40,    1.45,   1.50,   1.60,   1.70,   1.80,   1.90,
-                      2.00,    2.20,   2.40,   2.60,   2.80,   3.00];
+                  1.40,    1.45,   1.50,   1.60,   1.70,   1.80,   1.90,
+                  2.00,    2.20,   2.40,   2.60,   2.80,   3.00];
 
    // compute z factors and plot them
    List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
