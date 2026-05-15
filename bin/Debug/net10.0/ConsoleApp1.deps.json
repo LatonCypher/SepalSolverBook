@@ -8,8 +8,8 @@
     ".NETCoreApp,Version=v10.0": {
       "ConsoleApp1/1.0.0": {
         "dependencies": {
-          "SepalSolver": "1.1.8.1",
-          "SepalSolver.PlotLib": "1.1.8.1"
+          "SepalSolver": "1.1.8.2",
+          "SepalSolver.PlotLib": "1.1.8.2"
         },
         "runtime": {
           "ConsoleApp1.dll": {}
@@ -164,11 +164,11 @@
           }
         }
       },
-      "Highs.Native/1.12.0": {
+      "Highs.Native/1.14.0": {
         "runtime": {
           "lib/netstandard2.0/Highs.Native.dll": {
-            "assemblyVersion": "1.12.0.0",
-            "fileVersion": "1.12.0.0"
+            "assemblyVersion": "1.14.0.0",
+            "fileVersion": "1.14.0.0"
           }
         },
         "runtimeTargets": {
@@ -195,12 +195,12 @@
           "runtimes/win-x32/native/highs.dll": {
             "rid": "win-x32",
             "assetType": "native",
-            "fileVersion": "1.12.0.0"
+            "fileVersion": "1.14.0.0"
           },
           "runtimes/win-x64/native/highs.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "1.12.0.0"
+            "fileVersion": "1.14.0.0"
           }
         }
       },
@@ -265,218 +265,218 @@
           }
         }
       },
-      "Microsoft.CodeAnalysis.Common/5.0.0": {
+      "Microsoft.CodeAnalysis.Common/5.3.0": {
         "runtime": {
-          "lib/net9.0/Microsoft.CodeAnalysis.dll": {
-            "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.0.25.56712"
+          "lib/net10.0/Microsoft.CodeAnalysis.dll": {
+            "assemblyVersion": "5.3.0.0",
+            "fileVersion": "5.300.26.7805"
           }
         },
         "resources": {
-          "lib/net9.0/cs/Microsoft.CodeAnalysis.resources.dll": {
+          "lib/net10.0/cs/Microsoft.CodeAnalysis.resources.dll": {
             "locale": "cs"
           },
-          "lib/net9.0/de/Microsoft.CodeAnalysis.resources.dll": {
+          "lib/net10.0/de/Microsoft.CodeAnalysis.resources.dll": {
             "locale": "de"
           },
-          "lib/net9.0/es/Microsoft.CodeAnalysis.resources.dll": {
+          "lib/net10.0/es/Microsoft.CodeAnalysis.resources.dll": {
             "locale": "es"
           },
-          "lib/net9.0/fr/Microsoft.CodeAnalysis.resources.dll": {
+          "lib/net10.0/fr/Microsoft.CodeAnalysis.resources.dll": {
             "locale": "fr"
           },
-          "lib/net9.0/it/Microsoft.CodeAnalysis.resources.dll": {
+          "lib/net10.0/it/Microsoft.CodeAnalysis.resources.dll": {
             "locale": "it"
           },
-          "lib/net9.0/ja/Microsoft.CodeAnalysis.resources.dll": {
+          "lib/net10.0/ja/Microsoft.CodeAnalysis.resources.dll": {
             "locale": "ja"
           },
-          "lib/net9.0/ko/Microsoft.CodeAnalysis.resources.dll": {
+          "lib/net10.0/ko/Microsoft.CodeAnalysis.resources.dll": {
             "locale": "ko"
           },
-          "lib/net9.0/pl/Microsoft.CodeAnalysis.resources.dll": {
+          "lib/net10.0/pl/Microsoft.CodeAnalysis.resources.dll": {
             "locale": "pl"
           },
-          "lib/net9.0/pt-BR/Microsoft.CodeAnalysis.resources.dll": {
+          "lib/net10.0/pt-BR/Microsoft.CodeAnalysis.resources.dll": {
             "locale": "pt-BR"
           },
-          "lib/net9.0/ru/Microsoft.CodeAnalysis.resources.dll": {
+          "lib/net10.0/ru/Microsoft.CodeAnalysis.resources.dll": {
             "locale": "ru"
           },
-          "lib/net9.0/tr/Microsoft.CodeAnalysis.resources.dll": {
+          "lib/net10.0/tr/Microsoft.CodeAnalysis.resources.dll": {
             "locale": "tr"
           },
-          "lib/net9.0/zh-Hans/Microsoft.CodeAnalysis.resources.dll": {
+          "lib/net10.0/zh-Hans/Microsoft.CodeAnalysis.resources.dll": {
             "locale": "zh-Hans"
           },
-          "lib/net9.0/zh-Hant/Microsoft.CodeAnalysis.resources.dll": {
+          "lib/net10.0/zh-Hant/Microsoft.CodeAnalysis.resources.dll": {
             "locale": "zh-Hant"
           }
         }
       },
-      "Microsoft.CodeAnalysis.CSharp/5.0.0": {
+      "Microsoft.CodeAnalysis.CSharp/5.3.0": {
         "dependencies": {
-          "Microsoft.CodeAnalysis.Common": "5.0.0"
+          "Microsoft.CodeAnalysis.Common": "5.3.0"
         },
         "runtime": {
-          "lib/net9.0/Microsoft.CodeAnalysis.CSharp.dll": {
-            "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.0.25.56712"
+          "lib/net10.0/Microsoft.CodeAnalysis.CSharp.dll": {
+            "assemblyVersion": "5.3.0.0",
+            "fileVersion": "5.300.26.7805"
           }
         },
         "resources": {
-          "lib/net9.0/cs/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+          "lib/net10.0/cs/Microsoft.CodeAnalysis.CSharp.resources.dll": {
             "locale": "cs"
           },
-          "lib/net9.0/de/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+          "lib/net10.0/de/Microsoft.CodeAnalysis.CSharp.resources.dll": {
             "locale": "de"
           },
-          "lib/net9.0/es/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+          "lib/net10.0/es/Microsoft.CodeAnalysis.CSharp.resources.dll": {
             "locale": "es"
           },
-          "lib/net9.0/fr/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+          "lib/net10.0/fr/Microsoft.CodeAnalysis.CSharp.resources.dll": {
             "locale": "fr"
           },
-          "lib/net9.0/it/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+          "lib/net10.0/it/Microsoft.CodeAnalysis.CSharp.resources.dll": {
             "locale": "it"
           },
-          "lib/net9.0/ja/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+          "lib/net10.0/ja/Microsoft.CodeAnalysis.CSharp.resources.dll": {
             "locale": "ja"
           },
-          "lib/net9.0/ko/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+          "lib/net10.0/ko/Microsoft.CodeAnalysis.CSharp.resources.dll": {
             "locale": "ko"
           },
-          "lib/net9.0/pl/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+          "lib/net10.0/pl/Microsoft.CodeAnalysis.CSharp.resources.dll": {
             "locale": "pl"
           },
-          "lib/net9.0/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+          "lib/net10.0/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll": {
             "locale": "pt-BR"
           },
-          "lib/net9.0/ru/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+          "lib/net10.0/ru/Microsoft.CodeAnalysis.CSharp.resources.dll": {
             "locale": "ru"
           },
-          "lib/net9.0/tr/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+          "lib/net10.0/tr/Microsoft.CodeAnalysis.CSharp.resources.dll": {
             "locale": "tr"
           },
-          "lib/net9.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+          "lib/net10.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll": {
             "locale": "zh-Hans"
           },
-          "lib/net9.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+          "lib/net10.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll": {
             "locale": "zh-Hant"
           }
         }
       },
-      "Microsoft.CodeAnalysis.CSharp.Scripting/5.0.0": {
+      "Microsoft.CodeAnalysis.CSharp.Scripting/5.3.0": {
         "dependencies": {
-          "Microsoft.CodeAnalysis.CSharp": "5.0.0",
-          "Microsoft.CodeAnalysis.Common": "5.0.0",
-          "Microsoft.CodeAnalysis.Scripting.Common": "5.0.0"
+          "Microsoft.CodeAnalysis.CSharp": "5.3.0",
+          "Microsoft.CodeAnalysis.Common": "5.3.0",
+          "Microsoft.CodeAnalysis.Scripting.Common": "5.3.0"
         },
         "runtime": {
-          "lib/net9.0/Microsoft.CodeAnalysis.CSharp.Scripting.dll": {
-            "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.0.25.56712"
+          "lib/net10.0/Microsoft.CodeAnalysis.CSharp.Scripting.dll": {
+            "assemblyVersion": "5.3.0.0",
+            "fileVersion": "5.300.26.7805"
           }
         },
         "resources": {
-          "lib/net9.0/cs/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
+          "lib/net10.0/cs/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
             "locale": "cs"
           },
-          "lib/net9.0/de/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
+          "lib/net10.0/de/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
             "locale": "de"
           },
-          "lib/net9.0/es/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
+          "lib/net10.0/es/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
             "locale": "es"
           },
-          "lib/net9.0/fr/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
+          "lib/net10.0/fr/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
             "locale": "fr"
           },
-          "lib/net9.0/it/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
+          "lib/net10.0/it/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
             "locale": "it"
           },
-          "lib/net9.0/ja/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
+          "lib/net10.0/ja/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
             "locale": "ja"
           },
-          "lib/net9.0/ko/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
+          "lib/net10.0/ko/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
             "locale": "ko"
           },
-          "lib/net9.0/pl/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
+          "lib/net10.0/pl/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
             "locale": "pl"
           },
-          "lib/net9.0/pt-BR/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
+          "lib/net10.0/pt-BR/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
             "locale": "pt-BR"
           },
-          "lib/net9.0/ru/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
+          "lib/net10.0/ru/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
             "locale": "ru"
           },
-          "lib/net9.0/tr/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
+          "lib/net10.0/tr/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
             "locale": "tr"
           },
-          "lib/net9.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
+          "lib/net10.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
             "locale": "zh-Hans"
           },
-          "lib/net9.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
+          "lib/net10.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll": {
             "locale": "zh-Hant"
           }
         }
       },
-      "Microsoft.CodeAnalysis.Scripting.Common/5.0.0": {
+      "Microsoft.CodeAnalysis.Scripting.Common/5.3.0": {
         "dependencies": {
-          "Microsoft.CodeAnalysis.Common": "5.0.0"
+          "Microsoft.CodeAnalysis.Common": "5.3.0"
         },
         "runtime": {
-          "lib/net9.0/Microsoft.CodeAnalysis.Scripting.dll": {
-            "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.0.25.56712"
+          "lib/net10.0/Microsoft.CodeAnalysis.Scripting.dll": {
+            "assemblyVersion": "5.3.0.0",
+            "fileVersion": "5.300.26.7805"
           }
         },
         "resources": {
-          "lib/net9.0/cs/Microsoft.CodeAnalysis.Scripting.resources.dll": {
+          "lib/net10.0/cs/Microsoft.CodeAnalysis.Scripting.resources.dll": {
             "locale": "cs"
           },
-          "lib/net9.0/de/Microsoft.CodeAnalysis.Scripting.resources.dll": {
+          "lib/net10.0/de/Microsoft.CodeAnalysis.Scripting.resources.dll": {
             "locale": "de"
           },
-          "lib/net9.0/es/Microsoft.CodeAnalysis.Scripting.resources.dll": {
+          "lib/net10.0/es/Microsoft.CodeAnalysis.Scripting.resources.dll": {
             "locale": "es"
           },
-          "lib/net9.0/fr/Microsoft.CodeAnalysis.Scripting.resources.dll": {
+          "lib/net10.0/fr/Microsoft.CodeAnalysis.Scripting.resources.dll": {
             "locale": "fr"
           },
-          "lib/net9.0/it/Microsoft.CodeAnalysis.Scripting.resources.dll": {
+          "lib/net10.0/it/Microsoft.CodeAnalysis.Scripting.resources.dll": {
             "locale": "it"
           },
-          "lib/net9.0/ja/Microsoft.CodeAnalysis.Scripting.resources.dll": {
+          "lib/net10.0/ja/Microsoft.CodeAnalysis.Scripting.resources.dll": {
             "locale": "ja"
           },
-          "lib/net9.0/ko/Microsoft.CodeAnalysis.Scripting.resources.dll": {
+          "lib/net10.0/ko/Microsoft.CodeAnalysis.Scripting.resources.dll": {
             "locale": "ko"
           },
-          "lib/net9.0/pl/Microsoft.CodeAnalysis.Scripting.resources.dll": {
+          "lib/net10.0/pl/Microsoft.CodeAnalysis.Scripting.resources.dll": {
             "locale": "pl"
           },
-          "lib/net9.0/pt-BR/Microsoft.CodeAnalysis.Scripting.resources.dll": {
+          "lib/net10.0/pt-BR/Microsoft.CodeAnalysis.Scripting.resources.dll": {
             "locale": "pt-BR"
           },
-          "lib/net9.0/ru/Microsoft.CodeAnalysis.Scripting.resources.dll": {
+          "lib/net10.0/ru/Microsoft.CodeAnalysis.Scripting.resources.dll": {
             "locale": "ru"
           },
-          "lib/net9.0/tr/Microsoft.CodeAnalysis.Scripting.resources.dll": {
+          "lib/net10.0/tr/Microsoft.CodeAnalysis.Scripting.resources.dll": {
             "locale": "tr"
           },
-          "lib/net9.0/zh-Hans/Microsoft.CodeAnalysis.Scripting.resources.dll": {
+          "lib/net10.0/zh-Hans/Microsoft.CodeAnalysis.Scripting.resources.dll": {
             "locale": "zh-Hans"
           },
-          "lib/net9.0/zh-Hant/Microsoft.CodeAnalysis.Scripting.resources.dll": {
+          "lib/net10.0/zh-Hant/Microsoft.CodeAnalysis.Scripting.resources.dll": {
             "locale": "zh-Hant"
           }
         }
       },
-      "Microsoft.Win32.SystemEvents/10.0.2": {
+      "Microsoft.Win32.SystemEvents/10.0.8": {
         "runtime": {
           "lib/net10.0/Microsoft.Win32.SystemEvents.dll": {
             "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.225.61305"
+            "fileVersion": "10.0.826.23019"
           }
         },
         "runtimeTargets": {
@@ -484,7 +484,188 @@
             "rid": "win",
             "assetType": "runtime",
             "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.225.61305"
+            "fileVersion": "10.0.826.23019"
+          }
+        }
+      },
+      "MKL.NET/1.6.0": {
+        "runtimeTargets": {
+          "runtimes/linux-x64/lib/netstandard2.0/MKL.NET.dll": {
+            "rid": "linux-x64",
+            "assetType": "runtime",
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
+          },
+          "runtimes/osx-x64/lib/netstandard2.0/MKL.NET.dll": {
+            "rid": "osx-x64",
+            "assetType": "runtime",
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
+          },
+          "runtimes/win-x64/lib/netstandard2.0/MKL.NET.dll": {
+            "rid": "win-x64",
+            "assetType": "runtime",
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
+          },
+          "runtimes/linux-x64/native/MKL.NET.Native.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/MKL.NET.Native.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/MKL.NET.Native.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "MKL.NET.win-x64/2022.0.0.115": {
+        "runtimeTargets": {
+          "runtimes/win-x64/native/libimalloc.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/libiomp5md.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "5.0.2021.1013"
+          },
+          "runtimes/win-x64/native/libiompstubs5md.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "5.0.2021.1013"
+          },
+          "runtimes/win-x64/native/mkl_avx.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_avx2.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_avx512.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_core.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_def.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_intel_thread.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_mc.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_mc3.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_rt.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_sequential.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_tbb_thread.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_vml_avx.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_vml_avx2.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_vml_avx512.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_vml_cmpt.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_vml_def.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_vml_mc.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_vml_mc2.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/mkl_vml_mc3.2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.0.1.0"
+          },
+          "runtimes/win-x64/native/tbb12.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/tbbbind.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/tbbbind_2_0.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/tbbbind_2_5.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/tbbmalloc.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/tbbmalloc_proxy.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -499,36 +680,6 @@
           "lib/net9.0/ScottPlot.dll": {
             "assemblyVersion": "5.1.57.0",
             "fileVersion": "5.1.57.0"
-          }
-        }
-      },
-      "SepalSolver/1.1.8.1": {
-        "dependencies": {
-          "Highs.Native": "1.12.0",
-          "Microsoft.CodeAnalysis.CSharp.Scripting": "5.0.0",
-          "System.Drawing.Common": "10.0.2"
-        },
-        "runtime": {
-          "lib/net10.0/SepalSolver.dll": {
-            "assemblyVersion": "1.1.8.1",
-            "fileVersion": "1.1.8.1"
-          }
-        }
-      },
-      "SepalSolver.PlotLib/1.1.8.1": {
-        "dependencies": {
-          "CSharpMath": "0.5.1",
-          "CSharpMath.SkiaSharp": "0.5.1",
-          "FFmpeg.AutoGen": "8.0.0",
-          "Magick.NET-Q16-AnyCPU": "14.10.0",
-          "Magick.NET.Core": "14.10.0",
-          "ScottPlot": "5.1.57",
-          "SepalSolver": "1.1.8.1"
-        },
-        "runtime": {
-          "lib/net10.0/SepalSolver.PlotLib.dll": {
-            "assemblyVersion": "1.1.8.1",
-            "fileVersion": "1.1.8.1"
           }
         }
       },
@@ -643,22 +794,62 @@
           }
         }
       },
-      "System.Drawing.Common/10.0.2": {
+      "System.Drawing.Common/10.0.8": {
         "dependencies": {
-          "Microsoft.Win32.SystemEvents": "10.0.2"
+          "Microsoft.Win32.SystemEvents": "10.0.8"
         },
         "runtime": {
           "lib/net10.0/System.Drawing.Common.dll": {
             "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.225.61305"
+            "fileVersion": "10.0.826.23019"
           },
           "lib/net10.0/System.Private.Windows.Core.dll": {
             "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.225.61305"
+            "fileVersion": "10.0.826.23019"
           },
           "lib/net10.0/System.Private.Windows.GdiPlus.dll": {
             "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.225.61305"
+            "fileVersion": "10.0.826.23019"
+          }
+        }
+      },
+      "SepalSolver/1.1.8.2": {
+        "dependencies": {
+          "Highs.Native": "1.14.0",
+          "MKL.NET": "1.6.0",
+          "MKL.NET.win-x64": "2022.0.0.115",
+          "Microsoft.CodeAnalysis.CSharp.Scripting": "5.3.0",
+          "System.Drawing.Common": "10.0.8"
+        },
+        "runtime": {
+          "SepalSolver.dll": {
+            "assemblyVersion": "1.1.8.2",
+            "fileVersion": "1.1.8.2"
+          }
+        }
+      },
+      "SepalSolver.PlotLib/1.1.8.2": {
+        "dependencies": {
+          "CSharpMath": "0.5.1",
+          "CSharpMath.SkiaSharp": "0.5.1",
+          "FFmpeg.AutoGen": "8.0.0",
+          "Magick.NET-Q16-AnyCPU": "14.10.0",
+          "Magick.NET.Core": "14.10.0",
+          "ScottPlot": "5.1.57",
+          "SepalSolver": "1.1.8.2"
+        },
+        "runtime": {
+          "SepalSolver.PlotLib.dll": {
+            "assemblyVersion": "1.1.8.2",
+            "fileVersion": "1.1.8.2"
+          }
+        }
+      },
+      "ComputationalGeometry2021/1.0.0.0": {
+        "runtime": {
+          "ComputationalGeometry2021.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       }
@@ -733,12 +924,12 @@
       "path": "harfbuzzsharp.nativeassets.win32/8.3.1.1",
       "hashPath": "harfbuzzsharp.nativeassets.win32.8.3.1.1.nupkg.sha512"
     },
-    "Highs.Native/1.12.0": {
+    "Highs.Native/1.14.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-6IsMXDwkgtVZQHllNYllWeO9foK/ka8+emFjZ9+5730TMszKPbymf8VIboNwbTk69xrqG1Tu7EWB6EZBuyvfyQ==",
-      "path": "highs.native/1.12.0",
-      "hashPath": "highs.native.1.12.0.nupkg.sha512"
+      "sha512": "sha512-6MqHvP4vR/Uqtn06RNiJwYeAacncm/YQpytl4RqBZbAyaJbK5zEqVi4acR2ZQsOWeZTRcXaNa0FjauRnpuOgOA==",
+      "path": "highs.native/1.14.0",
+      "hashPath": "highs.native.1.14.0.nupkg.sha512"
     },
     "Magick.NET-Q16-AnyCPU/14.10.0": {
       "type": "package",
@@ -754,40 +945,54 @@
       "path": "magick.net.core/14.10.0",
       "hashPath": "magick.net.core.14.10.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.Common/5.0.0": {
+    "Microsoft.CodeAnalysis.Common/5.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ZXRAdvH6GiDeHRyd3q/km8Z44RoM6FBWHd+gen/la81mVnAdHTEsEkO5J0TCNXBymAcx5UYKt5TvgKBhaLJEow==",
-      "path": "microsoft.codeanalysis.common/5.0.0",
-      "hashPath": "microsoft.codeanalysis.common.5.0.0.nupkg.sha512"
+      "sha512": "sha512-uC0qk3jzTQY7i90ehfnCqaOZpBUGJyPMiHJ3c0jOb8yaPBjWzIhVdNxPbeVzI74DB0C+YgBKPLqUkgFZzua5Mg==",
+      "path": "microsoft.codeanalysis.common/5.3.0",
+      "hashPath": "microsoft.codeanalysis.common.5.3.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.CSharp/5.0.0": {
+    "Microsoft.CodeAnalysis.CSharp/5.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-5DSyJ9bk+ATuDy7fp2Zt0mJStDVKbBoiz1DyfAwSa+k4H4IwykAUcV3URelw5b8/iVbfSaOwkwmPUZH6opZKCw==",
-      "path": "microsoft.codeanalysis.csharp/5.0.0",
-      "hashPath": "microsoft.codeanalysis.csharp.5.0.0.nupkg.sha512"
+      "sha512": "sha512-SQFNGQF4f7UfDXKxMzzGNMr3fjrPDIjLfmRvvVgDCw+dyvEHDaRfHuKA5q0Pr0/JW0Gcw89TxrxrS/MjwBvluQ==",
+      "path": "microsoft.codeanalysis.csharp/5.3.0",
+      "hashPath": "microsoft.codeanalysis.csharp.5.3.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.CSharp.Scripting/5.0.0": {
+    "Microsoft.CodeAnalysis.CSharp.Scripting/5.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-1sGloRYbG3743ut/+vuXy9/WaRQTm7mDtp71rBaVSmKpFntvo5Hcro1ubg6/3SeeLtiFYJl7V3Dk0Fo3CGlnHA==",
-      "path": "microsoft.codeanalysis.csharp.scripting/5.0.0",
-      "hashPath": "microsoft.codeanalysis.csharp.scripting.5.0.0.nupkg.sha512"
+      "sha512": "sha512-dKZE07CR6DMf1YxUmzV4+kXUn7lFPkT+Q84fvv75cAi4sx/tdl3gIxfBMp8ZnY9GYQK4Z+CIylVNfznaPSo2wQ==",
+      "path": "microsoft.codeanalysis.csharp.scripting/5.3.0",
+      "hashPath": "microsoft.codeanalysis.csharp.scripting.5.3.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.Scripting.Common/5.0.0": {
+    "Microsoft.CodeAnalysis.Scripting.Common/5.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-XTulByMNxqXGCgMeODUoG2h4oK4/nLv1BcawRVcjv+UZHMpoaymtdaq3cJqlNrEvYEcbU48g5swJ3RhY1m3fBg==",
-      "path": "microsoft.codeanalysis.scripting.common/5.0.0",
-      "hashPath": "microsoft.codeanalysis.scripting.common.5.0.0.nupkg.sha512"
+      "sha512": "sha512-Enl1poxX+fnMij0xp+b5iWovtWlXa0QBawtajIEdnv8NJNqo+fGwtoNAIDDVoIRcNUHIykUIgzYMmZEwHFD5xQ==",
+      "path": "microsoft.codeanalysis.scripting.common/5.3.0",
+      "hashPath": "microsoft.codeanalysis.scripting.common.5.3.0.nupkg.sha512"
     },
-    "Microsoft.Win32.SystemEvents/10.0.2": {
+    "Microsoft.Win32.SystemEvents/10.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-1G4BdeFwc8E95MpwtR7pO4rEh2YCG/o5gqcOszdQRGrWX1ayHTZtho3xPuYZTbBxKb/3kQHjL3b4nQeNGvbM9g==",
-      "path": "microsoft.win32.systemevents/10.0.2",
-      "hashPath": "microsoft.win32.systemevents.10.0.2.nupkg.sha512"
+      "sha512": "sha512-J9+VT0lkrA7wW38CGxO2sZd+iH9C0qzioMi/2ztpT32WOVr+04uNqFIrxisTRf+mvtXLtdqcio1AoS0vfAVLLQ==",
+      "path": "microsoft.win32.systemevents/10.0.8",
+      "hashPath": "microsoft.win32.systemevents.10.0.8.nupkg.sha512"
+    },
+    "MKL.NET/1.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NRdzsfu+dObbSWL4OqjWusWmBwo0Ch9t4CIKU+CEbSneG/qci7tqKchxiS0Ft0UrWcKE1Kh4cvEySl0vOHa48w==",
+      "path": "mkl.net/1.6.0",
+      "hashPath": "mkl.net.1.6.0.nupkg.sha512"
+    },
+    "MKL.NET.win-x64/2022.0.0.115": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+ahaS9cvbUlIfYxPBhk3XOGOy4xXGsrEThGX5OfQ4bu4yYh3UgiKnP6L9LUIvdZgyNskidpU8KT4D/33VbWV9Q==",
+      "path": "mkl.net.win-x64/2022.0.0.115",
+      "hashPath": "mkl.net.win-x64.2022.0.0.115.nupkg.sha512"
     },
     "ScottPlot/5.1.57": {
       "type": "package",
@@ -795,20 +1000,6 @@
       "sha512": "sha512-x/4nH1T6ILZyVhCsJDd3GYE3DW4xnXk1q1KOHDBOXld8+BooNtjUlE3wPI6Un82/VYQ2h1J6E4wGC8GdN62B+w==",
       "path": "scottplot/5.1.57",
       "hashPath": "scottplot.5.1.57.nupkg.sha512"
-    },
-    "SepalSolver/1.1.8.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-IyHtPdecLkbZ7uNgHFSYyWP91ls1JMrM3eiI3OjsFaZdODHp9NxoD++mh9gCz5WSxaqo8l5p0KVWr1wnEhIOQA==",
-      "path": "sepalsolver/1.1.8.1",
-      "hashPath": "sepalsolver.1.1.8.1.nupkg.sha512"
-    },
-    "SepalSolver.PlotLib/1.1.8.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-VpmH/Q8bh+bKzBYNGDJvmyggZCakGxygURjyCc3HF3/TIT/MgGKxGVKMimeVPxe79xgTPCDVxale9HatuogS4g==",
-      "path": "sepalsolver.plotlib/1.1.8.1",
-      "hashPath": "sepalsolver.plotlib.1.1.8.1.nupkg.sha512"
     },
     "SkiaSharp/3.119.0": {
       "type": "package",
@@ -845,12 +1036,27 @@
       "path": "skiasharp.nativeassets.win32/3.119.0",
       "hashPath": "skiasharp.nativeassets.win32.3.119.0.nupkg.sha512"
     },
-    "System.Drawing.Common/10.0.2": {
+    "System.Drawing.Common/10.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-nCq8jeGD4vWaUjX3nGaDMKYqfFPposw2f4KCFnuY5Rt3NhK6zMZ/c0a52a3TZK/nnkCJfyQMwb+POKwAnZexZw==",
-      "path": "system.drawing.common/10.0.2",
-      "hashPath": "system.drawing.common.10.0.2.nupkg.sha512"
+      "sha512": "sha512-LCISd6JAF80vsy9L6wuetZeOMR3FH+SwKovw5Zl0Nov9pB9ZOiCSqvOfMzooypPItQLv0mGfEePjJ1nCCQztNw==",
+      "path": "system.drawing.common/10.0.8",
+      "hashPath": "system.drawing.common.10.0.8.nupkg.sha512"
+    },
+    "SepalSolver/1.1.8.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SepalSolver.PlotLib/1.1.8.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ComputationalGeometry2021/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

@@ -201,9 +201,9 @@ Ouput
    
    2/A = 
    1e16*
-     -0.9007    1.8014   -0.9007
-      1.8014   -3.6029    1.8014
-     -0.9007    1.8014   -0.9007
+      0.6305   -1.2610    0.6305
+     -1.2610    2.5220   -1.2610
+      0.6305   -1.2610    0.6305
    
 
 Operation with row and column vectors
@@ -435,9 +435,9 @@ Ouput
 
    A^-1 = 
    1e16*
-     -0.4504    0.9007   -0.4504
-      0.9007   -1.8014    0.9007
-     -0.4504    0.9007   -0.4504
+      0.3153   -0.6305    0.3153
+     -0.6305    1.2610   -0.6305
+      0.3153   -0.6305    0.3153
    
 
 Determinant
@@ -466,7 +466,7 @@ Ouput
 
 .. terminal::
 
-   det(A) = -2
+   det(A) = 2
 
 
 .. code-block:: csharp
@@ -484,7 +484,7 @@ Ouput
 
 .. terminal::
 
-   det(A) = 6.661338147750939E-16
+   det(A) = -9.516197353929915E-16
 
 For larger matrices, determinants are computed using expansion or row-reduction methods.
 

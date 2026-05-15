@@ -97,7 +97,7 @@ Examples
    
    .. terminal::
    
-      Quadratic term (should be small): -0.04285714285714347
+      Quadratic term (should be small): -0.04285714285714366
 
 Usage Warning
 ~~~~~~~~~~~~~
@@ -144,8 +144,8 @@ Overfitting can occur if the degree is too high, while underfitting can happen i
    
       Linear fit : [5.999999999999998,-1.9999999999999942] 
       Residual: 1008.4903581267214
-      Quaratic fit : [0.9999999999999957,2.7003933940572107E-14,4.999999999999965] 
-      Residual: 846.555844532397
+      Quaratic fit : [1.0000000000000193,-1.2151770273257475E-13,5.000000000000152] 
+      Residual: 846.5558445323921
    
    .. figure:: images/Polyfit_Example_4.png
       :align: center

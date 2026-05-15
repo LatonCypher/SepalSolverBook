@@ -22,8 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="SepalSolver" Version="1.1.8.1" />
-    <PackageReference Include="SepalSolver.PlotLib" Version="1.1.8.1" />
+    <ProjectReference Include="..\sepalsolver\SepalSolver.PlotLib\SepalSolver.PlotLib.csproj" />
+    <ProjectReference Include="..\sepalsolver\SepalSolver\SepalSolver.csproj" />
   </ItemGroup>
 
 </Project>

@@ -415,7 +415,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
 
                     // Package the initial state vector and configure the nonlinear solver options
                     double[] xs = Pack(Po_n, Sw_n, Pwells_n, Qwells_n), xn;
-                    var opts = SolverSet(Display: true, MaxIter: 10, AbsTol: 1e-6, UseParallel: true);
+                    var opts = SolverSet(MaxIter: 10, AbsTol: 1e-6, UseParallel: true);
 
                     // =========================================================================
                     // STAGE 6: CORE TIME-STEPPING INTERACTION LOOP (NEWTON RAPHSON + CONTROLS)

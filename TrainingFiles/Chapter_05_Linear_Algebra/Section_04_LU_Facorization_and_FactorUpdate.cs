@@ -88,7 +88,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
 
                 // Vectors for Rank-1 Update
                 ColVec U = new double[] { 1, 0, 2 };
-                RowVec V = new double[] { 2, 1, 0 };
+                RowVec V = new double[] { 2, -1, 0 };
 
                 // Outer product (Rank-1 matrix)
                 Matrix UV = U*V;
