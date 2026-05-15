@@ -14,3 +14,4 @@ Here we look at fundamental concepts of reservoir simulation, including rock and
 .. toctree::
 
    Rock and Fluid Properties Averaging
+   Reservoir Simulator 1D 2 Phases
