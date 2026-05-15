@@ -17,7 +17,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
             /// 
             /// Governing Flow Equations
             /// ~~~~~~~~~~~~~~~~~~~~~~~~
-            /// The core of the simulator is governed by mass conservation equations for each fluid phase: water (:math:`w`) and oil(:math:`o`). In a 1D horizontal system, assuming Darcy flow, the partial differential equations(PDEs) are expressed as:
+            /// The core of the simulator is governed by mass conservation equations for each fluid phase: water (:math:`w`) and oil (:math:`o`). In a 1D horizontal system, assuming Darcy flow, the partial differential equations(PDEs) are expressed as:
             /// Water Phase Mass Conservation:
             /// <math>
             /// \frac{\partial }{\partial x} \left[ \alpha \frac{k \cdot k_ { rw }}{\mu_w B_w} \frac{\partial P_w}{\partial x} \right] \pm q_w = \frac{1}{\beta} \frac{\partial}{\partial t} \left( \frac{\phi S_w}{ B_w} \right)
@@ -35,7 +35,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
             /// 
             /// :math:`k` is the absolute rock permeability(:math:`\text{md}`), and :math:`\phi` is the rock porosity.
             /// 
-            /// :math:`\alpha`(:math:`1.127 \times 10^{ -3}`) and :math:`\beta`(:math:`5.615\ \text{ ft}^3/\text{bbl}`) are conversion constants matching standard field units.
+            /// :math:`\alpha` (:math:`1.127 \times 10^{ -3}`) and :math:`\beta` (:math:`5.615\ \text{ ft}^3/\text{bbl}`) are conversion constants matching standard field units.
             /// 
             /// :math:`q_w, q_o` represent volumetric source/sink well terms (:math:`\text{STB/day}`).
             /// 
@@ -87,16 +87,16 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
             /// The continuous governing equations are discretized in space using a block-centered finite volume formulation.For fluid flow between block :math:`i` and block :math:`i+1`, the inter-block absolute permeability is resolved using a harmonic mean:
             /// 
             /// <math>
-            /// k_{i+1/2} = \text{Harmmean}(k_i, k_{ i+1}) = \cfrac{2}{\frac{ 1}{ k_i} + \frac{ 1} { k_{ i+1} } }
+            /// k_{i+1/2} = \text{Harmmean}(k_i, k_{i+1}) = \cfrac{2}{\frac{1}{k_i} + \frac{1}{k_{i+1}}}
             /// </math> 
             /// 
-            /// To ensure numerical stability and avoid unphysical oscillations across displacement fronts, the phase fluid mobilities (:math:`\frac{k_{r}}{\mu B}`) are evaluated using Single-Point Upstream Weighting. The properties are chosen entirely from the cell possessing the higher phase pressure:
+            /// To ensure numerical stability and avoid unphysical oscillations across displacement fronts, the phase fluid mobilities (:math:`k_{r}/(\mu B)`) are evaluated using Single-Point Upstream Weighting. The properties are chosen entirely from the cell possessing the higher phase pressure:
             /// 
             /// <math>
-            /// \left( \frac{ k_{ rw} }
-            /// {\mu_w B_w} \right){i+1/2} = \begin{cases} \left( \frac{ k{ rw} }
-            /// {\mu_w B_w} \right)i & \text{if } P{w, i} > P_{ w,i+1} \ \left( \frac{ k_{ rw} }
-            /// {\mu_w B_w} \right){i+1} & \text{if } P{w, i+1} > P_{ w,i} \end{cases}
+            /// \left(\cfrac{k_{rw}}{\mu_w B_w} \right)_{i+1/2} = \begin{cases} 
+            ///     \left(\cfrac{k_{rw}}{\mu_w B_w} \right)_i & \text{if} P{w, i} > P_{w,i+1} \\
+            ///     \left(\cfrac{k_{rw}}{\mu_w B_w} \right)_{i+1} & \text{if} P{w, i+1} > P_{ w,i} 
+            /// \end{cases}
             /// </math>
             /// 
             /// 
@@ -125,7 +125,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
             /// 
             /// Wells operate on dual-modifier switching scripts. They enforce target surface volume constraints as long as the system remains within safe pressure limits:
             /// 
-            /// Producer: Operates at a target production rate :math:`Q_{ target}`. If the calculated :math:`P_{ wf}` drops below the mechanical limit :math:`P_{ min}` (: math:`1500\ \text{psi}`), the control loop automatically switches to variable-rate, fixed-BHP mode (:math:`P_{ wf} = P_{ min}`).
+            /// Producer: Operates at a target production rate :math:`Q_{ target}`. If the calculated :math:`P_{ wf}` drops below the mechanical limit :math:`P_{ min}` (:math:`1500\ \text{psi}`), the control loop automatically switches to variable-rate, fixed-BHP mode (:math:`P_{ wf} = P_{ min}`).
 
             /// Injector: Operates at a target injection rate :math:`Q_{ target}`. If the injection pressure exceeds a formation fracturing threshold :math:`P_{ max}` (:math:`4500\ \text{psi}`), the solver seamlessly overrides the control variables to fixed-pressure boundaries (:math:`P_{wf} = P_{max}`).
             /// 
@@ -145,7 +145,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                 // =========================================================================
 
                 // Set root project repository path for exporting tracking diagnostics/GIFs
-                folderpath = "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\ReservoirSimulation\\";
+                //folderpath = "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\ReservoirSimulation\\";
 
                 // Nblocks: Spatial discretization grid cells
                 // L: Maximum block boundary index for flow limits
