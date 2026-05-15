@@ -87,15 +87,15 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
             /// The continuous governing equations are discretized in space using a block-centered finite volume formulation.For fluid flow between block :math:`i` and block :math:`i+1`, the inter-block absolute permeability is resolved using a harmonic mean:
             /// 
             /// <math>
-            /// k_{i+1/2} = \text{Harmmean}(k_i, k_{i+1}) = \cfrac{2}{\frac{1}{k_i} + \frac{1}{k_{i+1}}}
+            /// k_{i+1/2} = \text{Harmmean}(k_i, k_{i+1}) = \cfrac{2}{\cfrac{1}{k_i} + \cfrac{1}{k_{i+1}}}
             /// </math> 
             /// 
             /// To ensure numerical stability and avoid unphysical oscillations across displacement fronts, the phase fluid mobilities (:math:`k_{r}/(\mu B)`) are evaluated using Single-Point Upstream Weighting. The properties are chosen entirely from the cell possessing the higher phase pressure:
             /// 
             /// <math>
             /// \left(\cfrac{k_{rw}}{\mu_w B_w} \right)_{i+1/2} = \begin{cases} 
-            ///     \left(\cfrac{k_{rw}}{\mu_w B_w} \right)_i & \text{if} P{w, i} > P_{w,i+1} \\
-            ///     \left(\cfrac{k_{rw}}{\mu_w B_w} \right)_{i+1} & \text{if} P{w, i+1} > P_{ w,i} 
+            ///     \left(\cfrac{k_{rw}}{\mu_w B_w} \right)_i & \text{if} P_{w, i} > P_{w,i+1} \\
+            ///     \left(\cfrac{k_{rw}}{\mu_w B_w} \right)_{i+1} & \text{if} P_{w, i+1} > P_{ w,i} 
             /// \end{cases}
             /// </math>
             /// 
