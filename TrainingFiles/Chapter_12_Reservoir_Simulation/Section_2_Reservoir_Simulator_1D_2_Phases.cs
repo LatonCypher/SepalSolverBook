@@ -17,7 +17,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
             /// 
             /// Governing Flow Equations
             /// ~~~~~~~~~~~~~~~~~~~~~~~~
-            /// The core of the simulator is governed by mass conservation equations for each fluid phase: water (:math:w) and oil(:math:o). In a 1D horizontal system, assuming Darcy flow, the partial differential equations(PDEs) are expressed as:
+            /// The core of the simulator is governed by mass conservation equations for each fluid phase: water (:math:`w`) and oil(:math:`o`). In a 1D horizontal system, assuming Darcy flow, the partial differential equations(PDEs) are expressed as:
             /// Water Phase Mass Conservation:
             /// <math>
             /// \frac{\partial }{\partial x} \left[ \alpha \frac{k \cdot k_ { rw }}{\mu_w B_w} \frac{\partial P_w}{\partial x} \right] \pm q_w = \frac{1}{\beta} \frac{\partial}{\partial t} \left( \frac{\phi S_w}{ B_w} \right)
@@ -29,36 +29,36 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
             /// </math>
             /// 
             /// Where:
-            /// :math: P_o and :math: P_w are the oil and water phase pressures respectively (:math:\text{psi}).
+            /// :math:`P_o` and :math:`P_w` are the oil and water phase pressures respectively (:math:`\text{psi}`).
             /// 
-            /// :math: S_o and :math: S_w are the oil and water phase saturations, satisfying the algebraic constraint: :math: S_o + S_w = 1.0.
+            /// :math:`S_o` and :math:`S_w` are the oil and water phase saturations, satisfying the algebraic constraint: :math:`S_o + S_w = 1.0`.
             /// 
-            /// :math: k is the absolute rock permeability(:math:\text{md}), and: math:\phi is the rock porosity.
+            /// :math:`k` is the absolute rock permeability(:math:`\text{md}`), and :math:`\phi` is the rock porosity.
             /// 
-            /// :math:\alpha(:math: 1.127 \times 10^{ -3}) and: math:\beta(:math: 5.615\ \text{ ft}^3/\text{bbl}) are conversion constants matching standard field units.
+            /// :math:`\alpha`(:math:`1.127 \times 10^{ -3}`) and :math:`\beta`(:math:`5.615\ \text{ ft}^3/\text{bbl}`) are conversion constants matching standard field units.
             /// 
-            /// :math: q_w, q_o represent volumetric source/sink well terms (:math:\text{STB/day}).
+            /// :math:`q_w, q_o` represent volumetric source/sink well terms (:math:`\text{STB/day}`).
             /// 
             /// Constitutive and Petrophysical Relationships
             /// 
-            /// To close the system of equations, several empirical and thermodynamic relationships are explicitly modeled as functions of the primary state variables (:math: P_o and :math: S_w):
+            /// To close the system of equations, several empirical and thermodynamic relationships are explicitly modeled as functions of the primary state variables (:math:`P_o` and :math:`S_w`):
             /// 
             /// Phase Pressure Coupling (Capillary Pressure)
-            /// The water phase pressure is dynamically linked to the oil phase pressure via the laboratory-measured imbibition capillary pressure function (:math: P_{ cI}$):
+            /// The water phase pressure is dynamically linked to the oil phase pressure via the laboratory-measured imbibition capillary pressure function (:math:`P_{ cI}`):
             /// <math>
             /// P_w = P_o - P_{ cI} (S_w)
             /// </math>
             /// 
-            /// The capillary pressure curve is scaled using an effective saturation profile(:math: S_{ we}$):
+            /// The capillary pressure curve is scaled using an effective saturation profile(:math:`S_{ we}`):
             /// <math>
             /// S_{ we} = \frac{ S_w - S_{ wr} }  { 1 - S_{ wr} -S_{ or} }
             /// </math>
             /// 
             /// <math>
-            /// P_{ cI}(S_w) = P_e \cdot \left[ (S_{we})^{ -0.5}-1 \right
+            /// P_{ cI}(S_w) = P_e \cdot \left[ (S_{we})^{ -0.5}-1 \right]
             /// </math>
             /// 
-            /// where: math: P_e is the entry capillary pressure, :math: S_{ wr} is the residual water saturation, and :math: S_{ or} is the residual oil saturation.
+            /// where :math:`P_e` is the entry capillary pressure, :math:`S_{ wr}` is the residual water saturation, and :math:`S_{ or}` is the residual oil saturation.
             /// 
             /// Relative Permeability(Modified Corey-Brooks Model)
             /// Multiphase fluid interference inside the pore throat structure is dictated by power-law relative permeability functions:
@@ -84,13 +84,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
             /// 
             /// Spatial Discretization &Transmissibilities
             /// 
-            /// The continuous governing equations are discretized in space using a block-centered finite volume formulation.For fluid flow between block :math: i and block: math: i+1, the inter-block absolute permeability is resolved using a harmonic mean:
+            /// The continuous governing equations are discretized in space using a block-centered finite volume formulation.For fluid flow between block :math:`i` and block :math:`i+1`, the inter-block absolute permeability is resolved using a harmonic mean:
             /// 
             /// <math>
-            /// k_{ i+1/2} = \text{Harmmean}(k_i, k_{ i+1}) = \frac{2}{\frac{ 1} { k_i} + \frac{ 1} { k_{ i+1} } }
+            /// k_{i+1/2} = \text{Harmmean}(k_i, k_{ i+1}) = \cfrac{2}{\frac{ 1}{ k_i} + \frac{ 1} { k_{ i+1} } }
             /// </math> 
             /// 
-            /// To ensure numerical stability and avoid unphysical oscillations across displacement fronts, the phase fluid mobilities (:math:\frac{k_{r}}{\mu B}) are evaluated using Single-Point Upstream Weighting. The properties are chosen entirely from the cell possessing the higher phase pressure:
+            /// To ensure numerical stability and avoid unphysical oscillations across displacement fronts, the phase fluid mobilities (:math:`\frac{k_{r}}{\mu B}`) are evaluated using Single-Point Upstream Weighting. The properties are chosen entirely from the cell possessing the higher phase pressure:
             /// 
             /// <math>
             /// \left( \frac{ k_{ rw} }
@@ -101,7 +101,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
             /// 
             /// 
             /// Wellbore Boundary Equations and Operational Controls
-            /// Wells represent external localized source/sink boundary constraints modeled via a radial inflow Peaceman formulation. The equivalent well block radius (:math: r_e) and baseline Well Index (:math: WI) are evaluated as:
+            /// Wells represent external localized source/sink boundary constraints modeled via a radial inflow Peaceman formulation. The equivalent well block radius (:math:`r_e`) and baseline Well Index (:math:`WI`) are evaluated as:
 
             /// <math>
             /// r_e = 0.14\sqrt{\Delta x^2 + \Delta y^2}
@@ -111,7 +111,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
             /// WI = \frac{2\pi \alpha \cdot k \cdot \Delta z}{\ln(r_e / r_w)}
             /// </math>
             /// 
-            /// The individual phase flow rates produced or injected in a grid block are functions of the drawdown between the cell pressure and the wellbore's bottomhole flowing pressure (:math:P_{wf}):
+            /// The individual phase flow rates produced or injected in a grid block are functions of the drawdown between the cell pressure and the wellbore's bottomhole flowing pressure (:math:`P_{wf}`):
             /// 
             /// <math>
             /// Q_w = WI \cdot \frac{k_{rw}}{\mu_w B_w} \cdot(P_{ wf} - P_w)
@@ -125,17 +125,16 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
             /// 
             /// Wells operate on dual-modifier switching scripts. They enforce target surface volume constraints as long as the system remains within safe pressure limits:
             /// 
-            /// Producer: Operates at a target production rate :math: Q_{ target}. If the calculated :math: P_{ wf} drops below the mechanical limit :math: P_{ min} (: math:1500\ \text{psi}), the control loop automatically switches to variable-rate, fixed-BHP mode (:math: P_{ wf} = P_{ min}).
+            /// Producer: Operates at a target production rate :math:`Q_{ target}`. If the calculated :math:`P_{ wf}` drops below the mechanical limit :math:`P_{ min}` (: math:`1500\ \text{psi}`), the control loop automatically switches to variable-rate, fixed-BHP mode (:math:`P_{ wf} = P_{ min}`).
 
-            /// Injector: Operates at a target injection rate :math: Q_{ target}. If the injection pressure exceeds a formation fracturing threshold :math: P_{ max}
-            /// (: math:4500\ \text{psi}), the solver seamlessly overrides the control variables to fixed-pressure boundaries (:math:P_{wf} = P_{max}).
+            /// Injector: Operates at a target injection rate :math:`Q_{ target}`. If the injection pressure exceeds a formation fracturing threshold :math:`P_{ max}` (:math:`4500\ \text{psi}`), the solver seamlessly overrides the control variables to fixed-pressure boundaries (:math:`P_{wf} = P_{max}`).
             /// 
             /// Numerical Solution and Post-Processing
-            /// Applying backward Euler finite differences in time yields a highly non-linear algebraic system of discrete residual equations at each time level (:math:n+1). The total mathematical system vector is assembled explicitly via a custom packing scheme:
+            /// Applying backward Euler finite differences (Full_Implicit) in time yields a highly non-linear algebraic system of discrete residual equations at each time level (:math:`n+1`). The total mathematical system vector is assembled explicitly via a custom packing scheme:
             /// <math>
             /// \vec{R}(\vec{x}) = \begin{bmatrix} \vec{R}{oil} \ \vec{R}{water} \ \vec{R}{wellbore_balance} \ \vec{R}{operational_controls} \end{bmatrix} = \vec{0}
             /// </math>
-            /// This combined system is solved iteratively using the high-performance Fsolve method, which is part of the Solver class inside SepalSolver—a proprietary scientific computing and mathematical library developed by CypherCrescent. To maximize computational throughput, the simulator pairs SepalSolver's root-finding capabilities with an automated adaptive time-stepping loop. If the non-linear solver encounters a convergence failure or an operational constraint violation, the engine automatically cuts the time step size (:math:\Delta t) by :math:75\% and retries the step. Conversely, when convergence is achieved rapidly (:math:\text{Iterations} < 4), the engine safely scales up :math:\Delta t by :math:25\% for subsequent steps.
+            /// This combined system is solved iteratively using the high-performance Fsolve method, which is part of the Solver class inside SepalSolver—a proprietary scientific computing and mathematical library developed by CypherCrescent. To maximize computational throughput, the simulator pairs SepalSolver's root-finding capabilities with an automated adaptive time-stepping loop. If the non-linear solver encounters a convergence failure or an operational constraint violation, the engine automatically cuts the time step size (:math:`\Delta t`) by :math:`75\%` and retries the step. Conversely, when convergence is achieved rapidly (:math:`\text{Iterations} < 4`), the engine safely scales up :math:`\Delta t` by :math:`25\%` for subsequent steps.
             /// Finally, the localized state data histories collected are processed dynamically to output diagnostic performance graphs (tracking fractional water cuts, bottomhole pressures, and overall volumetric sweep efficiency) while compiling a high-speed animated GIF visualizing the propagation of the transient water saturation shock front over time.
             /// 
             /// 
