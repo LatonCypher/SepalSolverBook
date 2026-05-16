@@ -19,6 +19,7 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.EntryPointFilePath = 
 build_property.RootNamespace = ConsoleApp1
 build_property.ProjectDir = C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\
 build_property.EnableComHosting = 
