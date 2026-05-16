@@ -6,12 +6,12 @@ Averaging Rock and Fluid Properties
 ============================================================
 
 Introduction
-============
+------------
 
 In reservoir simulation, we must "upscale" geological data into grid blocks. Because reservoirs are heterogeneous, a single grid block represents multiple geological layers. To maintain physical accuracy, we use specific averaging techniques derived from fundamental physical laws.
 
 1. Porosity Averaging (Arithmetic)
-==================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Physical Principle:** Conservation of Mass (Volume).
 
@@ -49,13 +49,12 @@ Derivation
 
 
 2. Permeability Averaging (Parallel Flow)
-=========================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **Physical Principle:** Conservation of Flow (Total flow is the sum of layer flows).
 
 This applies to horizontal flow along bedding planes.
 Derivation
 ----------
-
 1. In a parallel system, the pressure drop (:math:`\Delta P`) and length (:math:`L`) are identical for all layers. The total flow rate (:math:`q_t`) is the sum of individual rates:
 
 
@@ -94,7 +93,7 @@ Derivation
 **Conclusion:** Parallel flow uses the **Arithmetic Mean**, dominated by high-permeability "thief zones."
 
 3. Permeability Averaging (Series Flow)
-=======================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Physical Principle:** Summation of Potential (Total pressure drop is the sum of layer drops).
 
@@ -140,7 +139,7 @@ Derivation
 **Conclusion:** Series flow uses the **Harmonic Mean**, dominated by the lowest permeability (bottlenecks).
 
 4. Fluid Property Averaging (Saturation)
-========================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Fluid saturations (:math:`S_w, S_o, S_g`) are fractions of the pore volume.
 
@@ -166,7 +165,7 @@ Derivation
 
 
 Summary Table
-=============
+~~~~~~~~~~~~~
 
 .. list-table:: 
    :header-rows: 1

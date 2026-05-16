@@ -9,14 +9,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
         public static void Run()
         {
             /// <BookContent>
-            /// Technical Overview and Mathematical Framework
-            /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            /// <header 2> Technical Overview and Mathematical Framework </header 2>
             /// In this section, we develop a comprehensive, fully implicit 1D two-phase reservoir simulator that models the transient, coupled flow of immiscible oil and water through a heterogeneous porous medium. The simulator is designed to capture the complex fluid-fluid and fluid-rock interactions that occur during waterflooding performance.
             /// 
             /// The mathematical framework couples the physics of multiphase porous media flow with operational engineering constraints.It incorporates highly nonlinear constitutive relationships—including fluid compressibilities, pressure-dependent viscosities, relative permeability curves, and capillary pressure effects—along with dynamic well control logic and an automated adaptive time-stepping engine.
             /// 
-            /// Governing Flow Equations
-            /// ~~~~~~~~~~~~~~~~~~~~~~~~
+            /// <header 3> Governing Flow Equations </header 3>
             /// The core of the simulator is governed by mass conservation equations for each fluid phase: water (:math:`w`) and oil (:math:`o`). In a 1D horizontal system, assuming Darcy flow, the partial differential equations(PDEs) are expressed as:
             /// Water Phase Mass Conservation:
             /// <math>
@@ -145,30 +143,39 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                 // =========================================================================
 
                 // Set root project repository path for exporting tracking diagnostics/GIFs
-                //folderpath = "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\ReservoirSimulation\\";
+                // folderpath = "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\ReservoirSimulation\\";
 
                 // Nblocks: Spatial discretization grid cells
                 // L: Maximum block boundary index for flow limits
-                // M: Total number of discrete primary variables tracking the porous media blocks (2 variables * 25 blocks)
+                // M: Total number of discrete primary variables tracking
+                // the porous media blocks (2 variables * 25 blocks)
                 // Nwells: Count of source/sink boundaries active in the system
                 int Nblocks = 25, L = Nblocks - 1, M = 2*Nblocks, Nwells = 2;
 
-                // Thermodynamic properties, initial pressures (psi), initial fluid saturation baselines,
-                // residual saturation limits (Sw_r, So_r), and baseline phase viscosities (cp)
+                // Thermodynamic properties, initial pressures (psi),
+                // initial fluid saturation baselines,
+                // residual saturation limits (Sw_r, So_r),
+                // and baseline phase viscosities (cp)
                 double Pinit = 3000, Sinit = 0.2, Sw_r = 0.10, So_r = 0.15,
                        μw0 = 5.005, μo0 = 2, kro0 = 1.0, krw0 = 0.30, Pe = 2,
                        co = 2e-5, cw = 4e-6, cr = 1e-5, bo = 2e-5, bw = 4e-10,
                        Bw0 = 1.005, Bo0 = 1.4, no = 2.5, nw = 3;
 
-                // Well operational specifications using named tuples: constraints, metrics, and grid block locations
-                var Producer = (MinPressure: 1500.0, ProdRate: 0.0, OilRate: 0.0, WaterRate: 0.0, Index: 0);
-                var Injector = (MaxPressure: 4500.0, InjRate: 0.0, OilRate: 0.0, WaterRate: 0.0, Index: 24);
+                // Well operational specifications using named tuples:
+                // constraints, metrics, and grid block locations
+                var Producer =
+                    (MinPressure: 1500.0, ProdRate: 0.0,
+                    OilRate: 0.0, WaterRate: 0.0, Index: 0);
+                var Injector =
+                    (MaxPressure: 4500.0, InjRate: 0.0,
+                    OilRate: 0.0, WaterRate: 0.0, Index: 24);
 
                 // =========================================================================
                 // STAGE 2: DATA STRUCTURE PACKING & UNPACKING (VECTOR TO PHYSICAL FIELDS)
                 // =========================================================================
 
-                // Unpacks a monolithic 1D solver array back into distinct, physically meaningful array fields
+                // Unpacks a monolithic 1D solver array back into distinct,
+                // physically meaningful array fields
                 (double[], double[], double[], double[]) Unpack(double[] x)
                 {
                     int indx = 0;
@@ -178,21 +185,26 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                     // Extract interleaved cell variables: [Po_0, Sw_0, Po_1, Sw_1, ...]
                     for (int i = 0; i < Nblocks; i++)
                     {
-                        Po[i] = x[indx++]; // Extract Oil Pressure
-                        Sw[i] = x[indx++]; // Extract Water Saturation
+                        // Extract Oil Pressure
+                        Po[i] = x[indx++];
+                        // Extract Water Saturation
+                        Sw[i] = x[indx++];
                     }
 
                     // Extract interleaved well variables: [Pwf_0, Q_0, Pwf_1, Q_1, ...]
                     for (int i = 0; i < Nwells; i++)
                     {
-                        Pwells[i] = x[indx++]; // Extract Well Bottomhole Pressure (BHP)
-                        Qwells[i] = x[indx++]; // Extract Total Well Volumetric Flow Rate
+                        // Extract Well Bottomhole Pressure (BHP)
+                        Pwells[i] = x[indx++];
+                        // Extract Total Well Volumetric Flow Rate
+                        Qwells[i] = x[indx++];
                     }
                     return (Po, Sw, Pwells, Qwells);
                 }
 
-                // Packs separate grid-block and well residuals into a single consolidated vector for Fsolve
-                double[] Pack(double[] Ro, double[] Rw, double[] Rwells, double[] Rdecision)
+                // Packs separate grid-block and well residuals into a single
+                // consolidated vector for Fsolve
+                double[] Pack(double[] Ro, double[] Rw, double[] Rwells, double[] Rcontrol)
                 {
                     int indx = 0;
                     double[] R_total = Zeros(M + 2*Nwells);
@@ -200,13 +212,17 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                     // Map conservation equations sequentially to match variable indexing
                     for (int i = 0; i < Nblocks; i++)
                     {
-                        R_total[indx++] = Ro[i]; // Oil mass conservation residual
-                        R_total[indx++] = Rw[i]; // Water mass conservation residual
+                        // Oil mass conservation residual
+                        R_total[indx++] = Ro[i];
+                        // Water mass conservation residual
+                        R_total[indx++] = Rw[i];
                     }
                     for (int i = 0; i < Nwells; i++)
                     {
-                        R_total[indx++] = Rwells[i];    // Wellbore mass balance residual
-                        R_total[indx++] = Rdecision[i]; // Well operating constraint/control residual
+                        // Wellbore mass balance residual
+                        R_total[indx++] = Rwells[i];
+                        // Well operating constraint/control residual
+                        R_total[indx++] = Rcontrol[i];
                     }
                     return R_total;
                 }
@@ -215,7 +231,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                 // STAGE 3: CONSTITUTIVE EQUATIONS & PETROPHYSICAL RELATIONS
                 // =========================================================================
 
-                // Normalized and effective water saturations used to calculate relative permeabilities
+                // Normalized and effective water saturations used to
+                // calculate relative permeabilities and capillary pressures
                 double Sws(double Sw) => (Sw - Sw_r)/(1 - Sw_r);
                 double Swe(double Sw) => (Sw - Sw_r)/(1 - Sw_r - So_r);
 
@@ -224,48 +241,60 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                 double Pc_I(double Sw) => Pe * (Pow(Swe(Sw), -0.5) - 1);
 
                 // Formation Volume Factors (B-factors) modeling fluid compressibility
-                double Bo(double Po) => Bo0*Exp(co*(2000 - Po));
-                double Bw(double Pw) => Bw0*Exp(cw*(2500 - Pw));
+                double Bo(double Po) => Bo0 * Exp(co*(1500 - Po));
+                double Bw(double Pw) => Bw0 * Exp(cw*(2500 - Pw));
 
                 // Pressure-dependent dynamic fluid viscosities
-                double μo(double Po) => μo0*Exp(bo*(Po - 2000));
-                double μw(double Pw) => μw0*Exp(bw*(Pw - 2500));
+                double μo(double Po) => μo0 * Exp(bo*(Po - 1500));
+                double μw(double Pw) => μw0 * Exp(bw*(Pw - 2500));
 
                 // Modified Corey Brooks models evaluating relative permeability curves
                 double Krw(double Sw) => krw0 * Pow(Swe(Sw), nw);
                 double Kro(double So) => kro0 * Pow(1 - Swe(1 - So), no);
 
-                // Inter-block transmissibility calculation using the harmonic mean of raw cell permeabilities
+                // Inter-block transmissibility calculation using the
+                // harmonic mean of raw cell permeabilities
                 double Harmmean(double x1, double x2) => 2/(1/x1 + 1/x2);
 
                 // Unit conversion coefficients for oilfield standard parameters
-                double alpha = 1.127e-3;        // Transmissibility conversion factor (Darcy to Field Units)
-                double alpha_well = alpha*2*pi; // Geometric productivity factor conversion for radial well inflows
-                double beta = 5.615;            // Reservoir volume factor (Cubic feet to Stock Tank Barrels)
+                // =================================================================
+                // Transmissibility conversion factor (Darcy to Field Units)
+                double alpha = 1.127e-3;
+                // Geometric productivity factor conversion for radial well inflows
+                double alpha_well = alpha*2*pi;
+                // Reservoir volume factor (Cubic feet to Stock Tank Barrels)
+                double beta = 5.615;
 
-                // Spatial dimensions (ft), block pore volume (STB), and well radius parameters
+                // Spatial dimensions (ft), block pore volume (STB),
+                // and well radius parameters
                 double dt, Dx = 200, Dy = 1000, Dz = 20, Ax = Dy*Dz,
                        V = Dx*Dy*Dz/beta, rw = 0.5, re, WI, WIw, WIo;
 
-                // Heterogeneous field instantiation using a normal distribution for porosity and permeability
-                double[] Phi = Randn(Nblocks, 0.2, 0.01);     // Localized Porosity array
-                double[] K = Randn(Nblocks, 900.0, 300.0);     // Localized Permeability array (md)
+                // Heterogeneous field instantiation using a
+                // normal distribution for porosity and permeability
+                // Localized Porosity array
+                double[] Phi = Randn(Nblocks, 0.2, 0.01);
+                // Localized Permeability array (md)
+                double[] K = Randn(Nblocks, 900.0, 300.0);
 
                 // Arrays storing baseline values at historical time level (n)
                 double[] Po_n, Sw_n, Pwells_n, Qwells_n, Pw_n, So_n;
-                bool[] RateControl = [true, true]; // Tracks operational control mode for each well (True = Rate, False = Pressure)
+                // Tracks operational control mode for each well
+                // (True = Rate, False = Pressure)
+                bool[] RateControl = [true, true];
 
                 // =========================================================================
                 // STAGE 4: NONLINEAR RESIDUAL FORMULATION (MASS CONSERVATION & WELL EQUATIONS)
                 // =========================================================================
                 double[] Residual(double[] xnp1)
                 {
-                    double Po_up, Pw_up, So_up, Sw_up, Tw, To;
+                    double Po_up, Pw_up, So_up, Sw_up, Tr, Tw, To;
 
                     // Unpack current iteration guess variables for evaluation
                     var (Po_np1, Sw_np1, Pwells_np1, Qwells_np1) = Unpack(xnp1);
 
-                    // Calculate dependent properties using capillary pressure and saturation definitions
+                    // Calculate dependent properties using
+                    // capillary pressure and saturation definitions
                     double[] Pw_np1 = [.. Po_np1.Zip(Sw_np1, (po, sw) => po - Pc_I(sw))],
                              So_np1 = [.. Sw_np1.Select(sw => 1 - sw)];
 
@@ -275,74 +304,92 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                     // Grid block mass balance accumulation loop
                     for (int i = 0; i < Nblocks; i++)
                     {
-                        // Time accumulation terms (implicit backward Euler method)
-                        Rw[i] -= V*Phi[i]*(Sw_np1[i]/Bw(Pw_np1[i]) - Sw_n[i]/Bw(Pw_n[i]))/dt;
-                        Ro[i] -= V*Phi[i]*(So_np1[i]/Bo(Po_np1[i]) - So_n[i]/Bo(Po_n[i]))/dt;
-
                         // Inter-block inter-flux flux logic (Left neighbor interaction)
                         if (i > 0)
                         {
+                            Tr = alpha*Ax*Harmmean(K[i-1], K[i]);
+
                             // Single-point upstream weighting for water phase stability
-                            (Pw_up, Sw_up) = Pw_np1[i-1] > Pw_np1[i] ? (Pw_np1[i-1], Sw_np1[i-1]) : (Pw_np1[i], Sw_np1[i]);
-                            Tw = alpha*Ax*Harmmean(K[i-1], K[i])*Krw(Sw_up)/(μw(Pw_up)*Bw(Pw_up));
+                            (Pw_up, Sw_up) = Pw_np1[i-1] > Pw_np1[i] ?
+                                (Pw_np1[i-1], Sw_np1[i-1]) : (Pw_np1[i], Sw_np1[i]);
+                            Tw = Tr*Krw(Sw_up)/(μw(Pw_up)*Bw(Pw_up));
                             Rw[i] += Tw*(Pw_np1[i-1] - Pw_np1[i])/Dx;
 
                             // Single-point upstream weighting for oil phase stability
-                            (Po_up, So_up) = Po_np1[i-1] > Po_np1[i] ? (Po_np1[i-1], So_np1[i-1]) : (Po_np1[i], So_np1[i]);
-                            To = alpha*Ax*Harmmean(K[i-1], K[i])*Kro(So_up)/(μo(Po_up)*Bo(Po_up));
+                            (Po_up, So_up) = Po_np1[i-1] > Po_np1[i] ?
+                                (Po_np1[i-1], So_np1[i-1]) : (Po_np1[i], So_np1[i]);
+                            To = Tr*Kro(So_up)/(μo(Po_up)*Bo(Po_up));
                             Ro[i] += To*(Po_np1[i-1] - Po_np1[i])/Dx;
                         }
+
                         // Inter-block inter-flux flux logic (Right neighbor interaction)
                         if (i < L)
                         {
+                            Tr = alpha*Ax*Harmmean(K[i], K[i+1]);
+
                             // Single-point upstream weighting for water phase stability
-                            (Pw_up, Sw_up) = Pw_np1[i+1] > Pw_np1[i] ? (Pw_np1[i+1], Sw_np1[i+1]) : (Pw_np1[i], Sw_np1[i]);
-                            Tw = alpha*Ax*Harmmean(K[i], K[i+1])*Krw(Sw_up)/(μw(Pw_up)*Bw(Pw_up));
+                            (Pw_up, Sw_up) = Pw_np1[i+1] > Pw_np1[i] ?
+                                (Pw_np1[i+1], Sw_np1[i+1]) : (Pw_np1[i], Sw_np1[i]);
+                            Tw = Tr*Krw(Sw_up)/(μw(Pw_up)*Bw(Pw_up));
                             Rw[i] += Tw*(Pw_np1[i+1] - Pw_np1[i])/Dx;
 
                             // Single-point upstream weighting for oil phase stability
-                            (Po_up, So_up) = Po_np1[i+1] > Po_np1[i] ? (Po_np1[i+1], So_np1[i+1]) : (Po_np1[i], So_np1[i]);
-                            To = alpha*Ax*Harmmean(K[i], K[i+1])*Kro(So_up)/(μo(Po_up)*Bo(Po_up));
+                            (Po_up, So_up) = Po_np1[i+1] > Po_np1[i] ?
+                                (Po_np1[i+1], So_np1[i+1]) : (Po_np1[i], So_np1[i]);
+                            To = Tr*Kro(So_up)/(μo(Po_up)*Bo(Po_up));
                             Ro[i] += To*(Po_np1[i+1] - Po_np1[i])/Dx;
                         }
+
+                        // Time accumulation terms (implicit backward Euler method)
+                        Rw[i] -= V*Phi[i]*(Sw_np1[i]/Bw(Pw_np1[i]) - Sw_n[i]/Bw(Pw_n[i]))/dt;
+                        Ro[i] -= V*Phi[i]*(So_np1[i]/Bo(Po_np1[i]) - So_n[i]/Bo(Po_n[i]))/dt;
                     }
 
                     // Peaceman radius calculation for an isolated wellbore
-                    re = 0.14*Hypot(Dx, Dy); 
+                    re = 0.14*Hypot(Dx, Dy);
+                    int idx;
 
                     // --- Well Formulation: Producer Section ---
                     Rwells[0] += Qwells_np1[0];
+                    idx = Producer.Index;
                     // Base Well Index calculation
-                    WI = alpha_well*K[Producer.Index]*Dz/Log(re/rw);
+                    WI = alpha_well*K[idx]*Dz/Log(re/rw);
                     // Water mobility at well
-                    WIw = WI*Krw(Sw_np1[Producer.Index])/(μw(Pw_np1[Producer.Index])*Bw(Pw_np1[Producer.Index]));
+                    WIw = WI*Krw(Sw_np1[idx])/(μw(Pw_np1[idx])*Bw(Pw_np1[idx]));
                     // Oil mobility at well
-                    WIo = WI*Kro(So_np1[Producer.Index])/(μo(Po_np1[Producer.Index])*Bo(Po_np1[Producer.Index]));
-                    // Calculate phase flow rates using the wellbore pressure and connected grid cell properties
+                    WIo = WI*Kro(So_np1[idx])/(μo(Po_np1[idx])*Bo(Po_np1[idx]));
+                    // Calculate phase flow rates using the wellbore
+                    // pressure and connected grid cell properties
                     Producer.WaterRate = (Pwells_np1[0] - Pw_np1[Producer.Index])*WIw;
                     Producer.OilRate = (Pwells_np1[0] - Po_np1[Producer.Index])*WIo;
                     // Inject sink terms directly back into the connected grid cell
                     Rw[Producer.Index] += Producer.WaterRate;
                     Ro[Producer.Index] += Producer.OilRate;
                     // Well balance check
-                    Rwells[0] -= Producer.WaterRate + Producer.OilRate; 
-                    // Evaluate dynamic constraint swapping logic (Switch between Target Rate vs Minimum Allowed BHP)
-                    Rcontrol[0] = RateControl[0] ? Qwells_np1[0] - Producer.ProdRate : Pwells_np1[0] - Producer.MinPressure;
+                    Rwells[0] -= Producer.WaterRate + Producer.OilRate;
+                    // Evaluate dynamic constraint swapping logic
+                    // (Switch between Target Rate vs Minimum Allowed BHP)
+                    Rcontrol[0] = RateControl[0] ?
+                        Qwells_np1[0] - Producer.ProdRate : Pwells_np1[0] - Producer.MinPressure;
 
                     // --- Well Formulation: Injector Section ---
                     Rwells[1] += Qwells_np1[1];
+                    idx = Injector.Index;
                     // Base Well Index calculation
-                    WI = alpha_well*K[Injector.Index]*Dz/Log(re/rw); 
+                    WI = alpha_well*K[idx]*Dz/Log(re/rw);
                     // Injecting pure water phase
-                    WIw = WI*krw0/(μw(Pw_np1[Injector.Index])*Bw(Pw_np1[Injector.Index]));
-                    // Calculate injection rate using the wellbore pressure and connected grid cell properties
-                    Injector.WaterRate = (Pwells_np1[1] - Pw_np1[Injector.Index])*WIw;
+                    WIw = WI*krw0/(μw(Pw_np1[idx])*Bw(Pw_np1[idx]));
+                    // Calculate injection rate using the
+                    // wellbore pressure and connected grid cell properties
+                    Injector.WaterRate = (Pwells_np1[1] - Pw_np1[idx])*WIw;
                     // Inject source terms directly back into the connected grid cell
-                    Rw[Injector.Index] += Injector.WaterRate;
+                    Rw[idx] += Injector.WaterRate;
                     // Well balance check
-                    Rwells[1] -= Injector.WaterRate; 
-                    // Evaluate dynamic constraint swapping logic (Switch between Target Rate vs Maximum Allowed BHP)
-                    Rcontrol[1] = RateControl[1] ? Qwells_np1[1] - Injector.InjRate : Pwells_np1[1] - Injector.MaxPressure;
+                    Rwells[1] -= Injector.WaterRate;
+                    // Evaluate dynamic constraint swapping logic
+                    // (Switch between Target Rate vs Maximum Allowed BHP)
+                    Rcontrol[1] = RateControl[1] ?
+                        Qwells_np1[1] - Injector.InjRate : Pwells_np1[1] - Injector.MaxPressure;
 
                     // Consolidate values back into a single vector for solver optimization loops
                     return Pack(Ro, Rw, Rwells, Rcontrol);
@@ -361,6 +408,16 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                     int i = X.FindIndex(xi => xi>x);
                     double f = (x-X[i-1])/(X[i]-X[i-1]);
                     return [.. Y[i-1].Zip(Y[i], (a, b) => betweenab(a, b, f))];
+                }
+
+                // chunk writer utility for formatted console output of array values
+                string Write(double[] data)
+                {
+                    var chunks = data.Chunk(8);
+                    List<string> sb = [];
+                    foreach (var chunk in chunks)
+                        sb.Add(string.Join(", ", chunk.Select(x => x.ToString("F2"))));
+                    return string.Join(", \n", sb);
                 }
 
                 // =========================================================================
@@ -391,41 +448,107 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                     Injector.InjRate = rate;
 
                     // Initialize Plot Subplots for Real-Time Visual Feedback Diagnostics
-                    Subplot(7, 4, [0, 1, 4, 5]); var Pbhp = Plot([0], [0], "r", 2); Axis([0, EndTime, 0, Injector.MaxPressure*1.1]); Title("Producer BHP");
-                    Subplot(7, 4, [8, 9, 12, 13]); var Prate = Plot([0], [0], "r", 2); Axis([0, EndTime, 0, Producer.ProdRate*1.1]); Title("Producer Rate");
-                    Subplot(7, 4, [16, 17, 20, 21]); var Pbsw = Plot([0], [0], "r", 2); Axis([0, EndTime, 0, 105]); Title("Producer WaterCut");
-                    Subplot(7, 4, [2, 3, 6, 7]); var Ibhp = Plot([0], [0], "b", 2); Axis([0, EndTime, 0, Injector.MaxPressure*1.1]); Title("Injector BHP");
-                    Subplot(7, 4, [10, 11, 14, 15]); var Irate = Plot([0], [0], "b", 2); Axis([0, EndTime, 0, Injector.InjRate*1.1]); Title("Injector Rate");
-                    Subplot(7, 4, [18, 19, 22, 23]); var Iswp = Plot([0], [0], "b", 2); Axis([0, EndTime, 0, 105]); Title("Injector Sweep Efficiency");
+                    Subplot(7, 4, [0, 1, 4, 5]);
+                    var Pbhp = Plot([0], [0], "r", 2);
+                    Axis([0, EndTime, 0, Injector.MaxPressure*1.1]);
+                    Title("Producer BHP");
+
+                    Subplot(7, 4, [8, 9, 12, 13]);
+                    var Prate = Plot([0], [0], "r", 2);
+                    Axis([0, EndTime, 0, Producer.ProdRate*1.1]);
+                    Title("Producer Rate");
+
+                    Subplot(7, 4, [16, 17, 20, 21]);
+                    var Pbsw = Plot([0], [0], "r", 2);
+                    Axis([0, EndTime, 0, 105]);
+                    Title("Producer WaterCut");
+
+                    Subplot(7, 4, [2, 3, 6, 7]);
+                    var Ibhp = Plot([0], [0], "b", 2);
+                    Axis([0, EndTime, 0, Injector.MaxPressure*1.1]);
+                    Title("Injector BHP");
+
+                    Subplot(7, 4, [10, 11, 14, 15]);
+                    var Irate = Plot([0], [0], "b", 2);
+                    Axis([0, EndTime, 0, Injector.InjRate*1.1]);
+                    Title("Injector Rate");
+
+                    Subplot(7, 4, [18, 19, 22, 23]);
+                    var Iswp = Plot([0], [0], "b", 2);
+                    Axis([0, EndTime, 0, 105]);
+                    Title("Injector Sweep Efficiency");
 
                     // Spatial Profile Schematic setup for the moving Water Saturation Front
                     Subplot(7, 4, [24, 25, 26, 27]);
                     double[] xpf = [0.3, 0.7], ypf = Linspace(0.3, 0.7, 5);
-                    var (xperf, yperf)  = Meshgrid(xpf, ypf);
+                    var (xperf, yperf) = Meshgrid(xpf, ypf);
                     Rectangle([Producer.Index + 0.45, 0.2, 0.1, 1.6]); HoldOn();
                     Plot(Producer.Index + xperf, yperf, "k", 2);
                     Rectangle([Injector.Index + 0.45, 0.2, 0.1, 1.6]);
                     Plot(Injector.Index + xperf, yperf, "k", 2);
                     double[] xres = [0, 0, Nblocks, Nblocks], yres = [0, 1, 1, 0];
                     Fill(xres, yres, [1, 0, 0], 0.5);
-                    double[] xplot = [0, 0, .. Linspace(0.5, Nblocks - 0.5, Nblocks), Nblocks, Nblocks];
-                    double[] yplot = [0, .. Repmat(Sinit, Nblocks + 2), 0];
+                    xpf = Linspace(0.5, Nblocks - 0.5, Nblocks);
+                    ypf = Repmat(Sinit, Nblocks + 2);
+                    double[] xplot = [0, 0, .. xpf, Nblocks, Nblocks];
+                    double[] yplot = [0, .. ypf, 0];
                     var Water = Fill(xplot, yplot, [0, 0, 1], 0.5, 0);
-                    Axis([0, Nblocks, 0, 2.5]); Title("Water Saturation Front"); HoldOff();
+                    Axis([0, Nblocks, 0, 2.5]);
+                    Title("Water Saturation Front");
+                    HoldOff();
 
                     // Package the initial state vector and configure the nonlinear solver options
                     double[] xs = Pack(Po_n, Sw_n, Pwells_n, Qwells_n), xn;
                     var opts = SolverSet(MaxIter: 10, AbsTol: 1e-6, UseParallel: true);
 
+                    Console.WriteLine($"""
+                    ======================================================================
+                               Starting simulation for Rate = {rate} STB/day
+
+                    Time: 
+                    {0:F2} days
+
+                    Producer BHP: 
+                    {Pinit:F2} psi
+
+                    Injector BHP: 
+                    {Pinit:F2} psi
+                    
+                    Pressure: 
+                    {Write(Po_n)}
+                    
+                    Saturation:
+                    {Write(Sw_n)}
+
+
+
+                    """);
+
                     // =========================================================================
                     // STAGE 6: CORE TIME-STEPPING INTERACTION LOOP (NEWTON RAPHSON + CONTROLS)
                     // =========================================================================
+                    double[] displaytimes = Linspace(0, EndTime, 6);
+                    double printtime = 0;
                     while (Time.Last() < EndTime)
                     {
-                        // Execute the Newton-Raphson nonlinear solver to find the next state solution
+                        if (displaytimes.Any(t =>
+                        (Time.Last() - t)*(Time.Last() + dt - t) < 0))
+                        {
+                            opts.Display = true;
+                            printtime = Array.Find(displaytimes,
+                                t => (Time.Last() - t)*(Time.Last() + dt - t) < 0);
+                        }
+                        else
+                        {
+                            opts.Display = false;
+                        }
+
+                        // Call the Newton-Raphson nonlinear solver to
+                        // find the next state solution
                         xn = [.. Fsolve(Residual, xs, opts)];
 
-                        // Check convergence. If non-converged, chop the time step (time-step cuts) and retry.
+                        // Check convergence. If non-converged,
+                        // chop the time step (time-step cuts) and retry.
                         if (!opts.ans.IsConverged)
                         {
                             dt = 0.25*dt; continue;
@@ -434,12 +557,14 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                         // Unpack solution values to evaluate operational constraint validations
                         var (Po_s, Sw_s, Pwells_s, Qwells_s) = Unpack(xn);
 
-                        // Validate Producer constraints: switch to BHP control if pressure falls below minimum limits
+                        // Validate Producer constraints:
+                        // switch to BHP control if pressure falls below minimum limits
                         if (Pwells_s[0] < Producer.MinPressure)
                         {
                             RateControl[0] = Pwells_s[0] > Producer.MinPressure; continue;
                         }
-                        // Validate Injector constraints: switch to BHP control if pressure exceeds fracturing limits
+                        // Validate Injector constraints:
+                        // switch to BHP control if pressure exceeds fracturing limits
                         if (Pwells_s[1] > Injector.MaxPressure)
                         {
                             RateControl[1] = Pwells_s[1] < Injector.MaxPressure; continue;
@@ -458,20 +583,46 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                         SweepEff.Add((Sw_n.Sum()/Nblocks - Sinit)*100/(1 - Sinit));
                         Time.Add(Time.Last() + dt);
 
-                        // Adaptive Time-Stepping Logic: scale dt up if convergence is fast, scale down if slow
+                        // Adaptive Time-Stepping Logic:
+                        // scale dt up if convergence is fast, scale down if slow
                         if (opts.ans.Iter < 4) dt = 1.25*dt;
                         if (opts.ans.Iter > 8) dt = 0.5*dt;
                         if (dt < 1e-5) throw new Exception("time step is too small");
 
                         // Set current solution vector as the next time step initialization guess (xs)
                         xs = [.. xn];
+
+
+                        if (opts.Display)
+                        {
+                            Console.WriteLine($"""
+                    Time: 
+                    {printtime:F2} days
+
+                    Producer BHP: 
+                    {interps(Time, ProdPwf, printtime):F2} psi
+
+                    Injector BHP: 
+                    {interps(Time, InjPwf, printtime):F2} psi
+                    
+                    Pressure: 
+                    {Write(interpa(Time, P, printtime))}
+                    
+                    Saturation:
+                    {Write(interpa(Time, S, printtime))}
+
+
+
+                    """);
+                        }
                     }
 
                     // =========================================================================
                     // STAGE 7: POST-PROCESSING VISUALIZATION & ANIMATION EXPORT
                     // =========================================================================
 
-                    // Dynamic closure map function mapping raw state histories directly onto figure frames
+                    // Dynamic closure map function mapping raw state histories
+                    // directly onto figure frames
                     byte[] Animfun(int i)
                     {
                         // Sync time dimensions to interpolation index targets

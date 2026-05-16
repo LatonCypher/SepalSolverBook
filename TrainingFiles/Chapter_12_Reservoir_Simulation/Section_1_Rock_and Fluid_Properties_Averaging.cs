@@ -13,13 +13,11 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling.Chapt
             /// Averaging Rock and Fluid Properties
             /// ============================================================
             ///
-            /// Introduction
-            /// ============
+            /// <header 2> Introduction </header 2>
             ///
             /// In reservoir simulation, we must "upscale" geological data into grid blocks. Because reservoirs are heterogeneous, a single grid block represents multiple geological layers. To maintain physical accuracy, we use specific averaging techniques derived from fundamental physical laws.
             ///
-            /// 1. Porosity Averaging (Arithmetic)
-            /// ==================================
+            /// <header 3> 1. Porosity Averaging (Arithmetic) </header 3>
             /// 
             /// **Physical Principle:** Conservation of Mass (Volume).
             /// 
@@ -50,14 +48,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling.Chapt
             /// **Conclusion:** Porosity is always averaged using the **Volume-Weighted Arithmetic Mean**.
             /// 
             /// 
-            /// 2. Permeability Averaging (Parallel Flow)
-            /// =========================================
+            /// <header 3> 2. Permeability Averaging (Parallel Flow) </header 3>
             /// **Physical Principle:** Conservation of Flow (Total flow is the sum of layer flows).
             /// 
             /// This applies to horizontal flow along bedding planes.
             /// Derivation
             /// ----------
-            /// 
             /// 1. In a parallel system, the pressure drop (:math:`\Delta P`) and length (:math:`L`) are identical for all layers. The total flow rate (:math:`q_t`) is the sum of individual rates:
             ///     
             /// <math>
@@ -87,8 +83,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling.Chapt
             /// 
             /// **Conclusion:** Parallel flow uses the **Arithmetic Mean**, dominated by high-permeability "thief zones."
             /// 
-            /// 3. Permeability Averaging (Series Flow)
-            /// =======================================
+            /// <header 3> 3. Permeability Averaging (Series Flow) </header 3>
             /// 
             /// **Physical Principle:** Summation of Potential (Total pressure drop is the sum of layer drops).
             ///
@@ -125,9 +120,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling.Chapt
             /// 
             /// **Conclusion:** Series flow uses the **Harmonic Mean**, dominated by the lowest permeability (bottlenecks).
             /// 
-            /// 4. Fluid Property Averaging (Saturation)
-            /// ========================================
-
+            /// <header 3> 4. Fluid Property Averaging (Saturation) </header 3>
+            /// 
             /// Fluid saturations (:math:`S_w, S_o, S_g`) are fractions of the pore volume.
             /// 
             /// Derivation
@@ -147,8 +141,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling.Chapt
             /// </math> 
             ///    
             ///         
-            /// Summary Table
-            /// =============
+            /// <header 3> Summary Table </header 3>
             /// <table>
             ///  Property          | Configuration   | Averaging Method                       
             ///  **Porosity**      | Any             | **Arithmetic** (Volume Weighted)       

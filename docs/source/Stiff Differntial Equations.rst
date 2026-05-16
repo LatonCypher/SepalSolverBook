@@ -111,6 +111,12 @@ SepalSolver impelements ODE45s for stiff differential equation. This is an embed
       SaveAs("Robertson-ODE-Ode45s.png");
    
    
+   Ouput
+   
+   .. terminal::
+   
+      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
+   
    .. figure:: images/Robertson-ODE-Ode45s.png
       :align: center
       :alt: Robertson-ODE-Ode45s.png
