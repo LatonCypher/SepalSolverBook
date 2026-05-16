@@ -156,7 +156,7 @@ Applying backward Euler finite differences (Full_Implicit) in time yields a high
 
 .. math::
 
-   \vec{R}(\vec{x}) = \begin{bmatrix} \vec{R}{oil} \ \vec{R}{water} \ \vec{R}{wellbore_balance} \ \vec{R}{operational_controls} \end{bmatrix} = \vec{0}
+   \vec{R}(\vec{x}) = \begin{bmatrix} \vec{R}{oil} \\ \vec{R}{water} \\ \vec{R}{wellbore_balance} \\ \vec{R}{operational_controls} \end{bmatrix} = \vec{0}
 
 This combined system is solved iteratively using the high-performance Fsolve method, which is part of the Solver class inside SepalSolver—a proprietary scientific computing and mathematical library developed by CypherCrescent. To maximize computational throughput, the simulator pairs SepalSolver's root-finding capabilities with an automated adaptive time-stepping loop. If the non-linear solver encounters a convergence failure or an operational constraint violation, the engine automatically cuts the time step size (:math:`\Delta t`) by :math:`75\%` and retries the step. Conversely, when convergence is achieved rapidly (:math:`\text{Iterations} < 4`), the engine safely scales up :math:`\Delta t` by :math:`25\%` for subsequent steps.
 Finally, the localized state data histories collected are processed dynamically to output diagnostic performance graphs (tracking fractional water cuts, bottomhole pressures, and overall volumetric sweep efficiency) while compiling a high-speed animated GIF visualizing the propagation of the transient water saturation shock front over time.
@@ -1410,4 +1410,3 @@ Ouput
 .. figure:: images/1D_WaterFlooding_500.gif
    :align: center
    :alt: 1D_WaterFlooding_500.gif
-
