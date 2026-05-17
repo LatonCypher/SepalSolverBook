@@ -32,7 +32,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1102,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 13,
           "Children": [
             {
               "$type": "Document",
@@ -77,6 +77,10 @@
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Matrix.cs",
@@ -86,8 +90,7 @@
               "RelativeToolTip": "..\\sepalsolver\\SepalSolver\\Matrix.cs",
               "ViewState": "AgIAAHwKAAAAAAAAAAAAAI8KAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T02:17:46.485Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-16T02:17:46.485Z"
             },
             {
               "$type": "Document",
@@ -99,8 +102,7 @@
               "RelativeToolTip": "TrainingFiles\\Chapter_12_Reservoir_Simulation\\Section_1_Rock_and Fluid_Properties_Averaging.cs",
               "ViewState": "AgIAAIwAAAAAAAAAAAAgwJAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T23:46:11.245Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-15T23:46:11.245Z"
             },
             {
               "$type": "Document",
@@ -124,8 +126,7 @@
               "RelativeToolTip": "TrainingFiles\\Chapter_05_Linear_Algebra\\Section_04_LU_Facorization_and_FactorUpdate.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAAAAoAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T15:49:14.357Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-15T15:49:14.357Z"
             },
             {
               "$type": "Document",
@@ -133,9 +134,9 @@
               "Title": "Section_2_Reservoir_Simulator_1D_2_Phases.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_12_Reservoir_Simulation\\Section_2_Reservoir_Simulator_1D_2_Phases.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_12_Reservoir_Simulation\\Section_2_Reservoir_Simulator_1D_2_Phases.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_12_Reservoir_Simulation\\Section_2_Reservoir_Simulator_1D_2_Phases.cs",
-              "RelativeToolTip": "TrainingFiles\\Chapter_12_Reservoir_Simulation\\Section_2_Reservoir_Simulator_1D_2_Phases.cs",
-              "ViewState": "AgIAAH8AAAAAAAAAAAAAAIQAAABxAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_12_Reservoir_Simulation\\Section_2_Reservoir_Simulator_1D_2_Phases.cs*",
+              "RelativeToolTip": "TrainingFiles\\Chapter_12_Reservoir_Simulation\\Section_2_Reservoir_Simulator_1D_2_Phases.cs*",
+              "ViewState": "AgIAAKcCAAAAAAAAAAAAAKsCAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-15T12:15:14.698Z",
               "EditorCaption": ""

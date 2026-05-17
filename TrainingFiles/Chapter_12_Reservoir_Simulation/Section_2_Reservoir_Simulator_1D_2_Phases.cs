@@ -143,7 +143,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                 // =========================================================================
 
                 // Set root project repository path for exporting tracking diagnostics/GIFs
-                // folderpath = "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\ReservoirSimulation\\";
+                //folderpath = "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\ReservoirSimulation\\";
 
                 // Nblocks: Spatial discretization grid cells
                 // L: Maximum block boundary index for flow limits
@@ -527,7 +527,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                     // =========================================================================
                     // STAGE 6: CORE TIME-STEPPING INTERACTION LOOP (NEWTON RAPHSON + CONTROLS)
                     // =========================================================================
-                    double[] displaytimes = Linspace(0, EndTime, 6);
+                    double[] displaytimes = Linspace(0, EndTime, 21);
                     double printtime = 0;
                     while (Time.Last() < EndTime)
                     {
@@ -542,6 +542,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                         {
                             opts.Display = false;
                         }
+                        if (opts.Display)
+                            Console.WriteLine($"""
+
+
+                    Time: 
+                    {printtime:F2} days
+                    """);
 
                         // Call the Newton-Raphson nonlinear solver to
                         // find the next state solution
@@ -551,7 +558,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                         // chop the time step (time-step cuts) and retry.
                         if (!opts.ans.IsConverged)
                         {
-                            dt = 0.25*dt; continue;
+                            dt = 0.25*dt;
+                            Console.WriteLine("""
+                                ================================================
+                                           Rejected (Non-Convergence)
+                                ================================================
+                                """);
+                            continue;
                         }
 
                         // Unpack solution values to evaluate operational constraint validations
@@ -561,13 +574,25 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                         // switch to BHP control if pressure falls below minimum limits
                         if (Pwells_s[0] < Producer.MinPressure)
                         {
-                            RateControl[0] = Pwells_s[0] > Producer.MinPressure; continue;
+                            RateControl[0] = Pwells_s[0] > Producer.MinPressure;
+                            Console.WriteLine("""
+                                ================================================
+                                      Rejected (Minimum Pressure Violated) 
+                                ================================================
+                                """);
+                            continue;
                         }
                         // Validate Injector constraints:
                         // switch to BHP control if pressure exceeds fracturing limits
                         if (Pwells_s[1] > Injector.MaxPressure)
                         {
-                            RateControl[1] = Pwells_s[1] < Injector.MaxPressure; continue;
+                            RateControl[1] = Pwells_s[1] < Injector.MaxPressure;
+                            Console.WriteLine("""
+                                ================================================
+                                      Rejected (Maximum Pressure Violated) 
+                                ================================================
+                                """);
+                            continue;
                         }
 
                         // Accept the validated time step and update internal tracking states
@@ -596,9 +621,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                         if (opts.Display)
                         {
                             Console.WriteLine($"""
-                    Time: 
-                    {printtime:F2} days
-
                     Producer BHP: 
                     {interps(Time, ProdPwf, printtime):F2} psi
 
@@ -660,7 +682,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
 
                     // Clean up graphics devices to free memory hooks for the next loop run
                     CloseFig();
-                    Console.WriteLine("=======================================================");
                 }
             }
             /// </code>
