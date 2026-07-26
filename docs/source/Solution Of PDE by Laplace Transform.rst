@@ -29,8 +29,8 @@ To solve a PDE using the Laplace Transform, we follow these steps:
 2. Solve the resulting algebraic equation in the Laplace domain.
 3. Apply the inverse Laplace Transform to obtain the solution in the time domain.
 
-3. Example: Solving the Heat Equation by Laplace Transform
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3. Example: Solving the Heat Equation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Consider the one-dimensional heat equation:
 
 

@@ -1,11 +1,10 @@
 Solution Of PDE by Method of Lines
 ==================================
 
+
 The **Method of Lines (MOL)** is a powerful numerical technique used to solve partial differential equations (PDEs), particularly those that are time-dependent (evolutionary).
 
 Instead of discretizing all dimensions(space and time) simultaneously, the core idea is to discretize the spatial variables while leaving the time variable continuous. This transforms a single PDE into a system of coupled **Ordinary Differential Equations(ODEs)**.
-
-
 
 How It Works: The 3-Step Process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -73,8 +72,8 @@ implicit Runge Kutta. This allows it to handle the boundary conditions implicitl
 also correct the egde values in situation where the initial condition is not consitent 
 with the boundary condition
 
-Example: Solving the Heat Equation Numerically
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Example 1: Solving the Heat Equation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Consider the one-dimensional heat equation:
 
 
@@ -126,5 +125,72 @@ with initial condition :math:`u(x,0) = \sin(\pi x)` and boundary conditions :mat
 .. figure:: images/Temperature.png
    :align: center
    :alt: Temperature.png
+
+
+Example 2: Solving Reactive Diffusion Equation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The Fisher-KPP reaction-diffusion model transformed into a cylindrical coordinate system (:math:`m = 1`).
+In cylindrical coordinates, the model represents radial population dispersion or chemical wavefront propagation 
+outward from a central core (e.g., cell growth in a Petri dish or cylindrical tissue scaffold).
+
+
+.. math::
+
+   \frac{\partial u}{\partial t} = D\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u}{\partial r} \right) + r_g \cdot u(1 - u)
+
+
+
+.. math::
+
+   
+
+
+
+.. code-block:: csharp
+
+   // SOLVE-DIFFUSION-REACTION-EQUATION
+   // Solves the 1D reaction-diffusion equation in cylindrical coordinates using pdepe
+   // Equation:  du/dt = D/r*d/dr(r*du/dr) + g*u*(1 - u);
+   // Domain:    x in [0, 5],  t in [0, 6]
+   // IC:        u(x,0) = 0.8 if x < 0.5;
+   //                     0.0 otherwise
+   // BC:        du/dx(0,t) = 0,  du/dx(1,t) = 0
+   //
+   // 1. Model Parameters & Mesh Setup
+   int m = 1; // Slab geometry
+   double D = 0.01; // Diffusion coefficient
+   double growthRate = 1.0; // Growth rate
+
+   double[] r = Linspace(0, 5, 101);  // [0, 5]
+   double[] t = Linspace(0, 6, 7);    // [0, 6]
+
+   // 2. Defines the PDE components: du/dt = D/r*d/dr(r*du/dr) + g*u*(1 - u);
+   (double c, double f, double s) PdeFun(double r, double t, double u, double dudr)
+   {
+       double capacity = 1.0;
+       double flux = D * dudr;
+       double source = growthRate * u * (1.0 - u); // Logistic reaction term
+       return (capacity, flux, source);
+   }
+
+   // 3. Initial localized pulse at x = 0
+   double IcFun(double r) => r < 0.4 ? 1.0 : 0.0;
+
+   // 4. Insulated endpoints (zero flux)
+   (double pl, double ql, double pr, double qr) BcFun(double rl, double ul, double rr, double ur, double t)
+       => (0.0, 1.0, 0.0, 1.0);
+
+   // 5. Solve the PDE
+   (ColVec T, Matrix U) = Pdepe(m, PdeFun, IcFun, BcFun, r, t);
+   Plot(r, U, Linewidth: 2); GridOn();
+   Title("Cylindrical Fisher-KPP Radial Wave Front (m = 1)");
+   Xlabel("Position r"); Ylabel("Population Density u(r,t)");
+   Legend(T.Select(t => $"t = {t:0.00}"));
+   SaveAs("Cylindrical_FisherKPP.png");
+
+
+.. figure:: images/Cylindrical_FisherKPP.png
+   :align: center
+   :alt: Cylindrical_FisherKPP.png
 
 

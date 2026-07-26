@@ -165,7 +165,7 @@
         //{
         //    // SOLVE-DIFFUSION-REACTION-EQUATION
         //    // Solves the 1D reaction-diffusion equation in cylindrical coordinates using pdepe
-        //    // Equation:  du/dt = D * d^2u/dx^2 + g*u*(1 - u);
+        //    // Equation:  du/dt = D/r*d/dr(r*du/dr) + g*u*(1 - u);
         //    // Domain:    x in [0, 5],  t in [0, 6]
         //    // IC:        u(x,0) = 0.8 if x < 0.5;
         //    //                     0.0 otherwise
@@ -180,10 +180,10 @@
         //    double[] t = Linspace(0, 6, 7);    // [0, 6]
 
         //    // 2. Defines the PDE components: du/dt = D/r*d/dr(r*du/dr) + g*u*(1 - u);
-        //    (double c, double f, double s) PdeFun(double r, double t, double u, double dudx)
+        //    (double c, double f, double s) PdeFun(double r, double t, double u, double dudr)
         //    {
         //        double capacity = 1.0;
-        //        double flux = D * dudx;
+        //        double flux = D * dudr;
         //        double source = growthRate * u * (1.0 - u); // Logistic reaction term
         //        return (capacity, flux, source);
         //    }
@@ -197,9 +197,9 @@
 
         //    // 5. Solve the PDE
         //    (ColVec T, Matrix U) = Pdepe(m, PdeFun, IcFun, BcFun, r, t);
-        //    Plot(r, U, Linewidth: 2);
+        //    Plot(r, U, Linewidth: 2); GridOn();
         //    Title("Cylindrical Fisher-KPP Radial Wave Front (m = 1)");
-        //    Xlabel("Position r"); Ylabel("Concentration C");
+        //    Xlabel("Position r"); Ylabel("Population Density u(r,t)");
         //    Legend(T.Select(t => $"t = {t:0.00}"));
         //    SaveAs("Cylindrical_FisherKPP.png");
         //}
