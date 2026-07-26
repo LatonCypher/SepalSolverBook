@@ -77,14 +77,14 @@
             /// 
             /// by substitution in the equation we have
             /// <math>
-            /// -(A sin(x) + B cos(x))  - \frac{s}{\alpha} \left(A sin(x) + B cos(x) \right)= = -\frac{1}{\alpha}\sin(x)
+            /// -(A sin(x) + B cos(x))  - \frac{s}{\alpha} \left(A sin(x) + B cos(x) \right) = -\frac{1}{\alpha}\sin(x)
             /// </math>
             /// it follows that :math:`B = 0` and :math:`A = 1/(s + \alpha)`
             /// 
             /// General Solution is thus:, 
             /// it is clear that :math:`B(s) == 0`, because :math:`\cosh(0) = 1`.
             /// <math>
-            /// C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right) + C_2(s) \cosh\left(\sqrt{\frac{s}{\alpha}}x\right) + \frac{sin(x)}{s + \alpha}
+            /// C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right) + C_2(s) \cosh\left(\sqrt{\frac{s}{\alpha}}x\right) + \frac{\sin(x)}{s + \alpha}
             /// </math>
             ///
             /// Step 4: Applying the boundary conditions:
@@ -100,15 +100,16 @@
             /// 
             /// hence, :math:`U(x,s) = \frac{sin(x)}{s + \alpha}`
             /// 
-            /// Step 5: Apply the inverse Laplace Transform to find u(x,t)
+            /// Step 5: Apply the inverse Laplace Transform to find :math:`u(x,t)`
             /// <math>
-            /// u(x, t) = \mathcal{L}^{-1}\left{\frac{\sin(x)}{s + \alpha} \right} = \sin(x)\mathcal{L}^{-1}\left{\frac{1}{s + \alpha} \right}
+            /// u(x, t) = \mathcal{L}^{-1}\left{\frac{\sin(x)}{s + \alpha} \right} = \sin(x)\mathcal{L}^{-1}\left{ \frac{1}{s + \alpha} \right}
             /// </math>
             /// 
             /// <math>
             /// u(x, t) = e^{-alpha t}\sin(x)
             /// </math>
             /// 
+            /// <code>
             {
                 // Define the function and interval
                 double alpha = 1.0;
@@ -121,7 +122,7 @@
                 Legend(T.Select(t => $"t = {t:0.00}"));
                 SaveAs("Temperature_Laplace.png");
             }
-            /// 
+            /// </code>
             /// <\BookContent>
         }
     }

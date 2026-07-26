@@ -97,7 +97,7 @@ by substitution in the equation we have
 
 .. math::
 
-   -(A sin(x) + B cos(x))  - \frac{s}{\alpha} \left(A sin(x) + B cos(x) \right)= = -\frac{1}{\alpha}\sin(x)
+   -(A sin(x) + B cos(x))  - \frac{s}{\alpha} \left(A sin(x) + B cos(x) \right) = -\frac{1}{\alpha}\sin(x)
 
 it follows that :math:`B = 0` and :math:`A = 1/(s + \alpha)`
 
@@ -106,7 +106,7 @@ it is clear that :math:`B(s) == 0`, because :math:`\cosh(0) = 1`.
 
 .. math::
 
-   C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right) + C_2(s) \cosh\left(\sqrt{\frac{s}{\alpha}}x\right) + \frac{sin(x)}{s + \alpha}
+   C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right) + C_2(s) \cosh\left(\sqrt{\frac{s}{\alpha}}x\right) + \frac{\sin(x)}{s + \alpha}
 
 
 Step 4: Applying the boundary conditions:
@@ -126,11 +126,11 @@ Step 4: Applying the boundary conditions:
 
 hence, :math:`U(x,s) = \frac{sin(x)}{s + \alpha}`
 
-Step 5: Apply the inverse Laplace Transform to find u(x,t)
+Step 5: Apply the inverse Laplace Transform to find :math:`u(x,t)`
 
 .. math::
 
-   u(x, t) = \mathcal{L}^{-1}\left{\frac{\sin(x)}{s + \alpha} \right} = \sin(x)\mathcal{L}^{-1}\left{\frac{1}{s + \alpha} \right}
+   u(x, t) = \mathcal{L}^{-1}\left{\frac{\sin(x)}{s + \alpha} \right} = \sin(x)\mathcal{L}^{-1}\left{ \frac{1}{s + \alpha} \right}
 
 
 
@@ -139,18 +139,24 @@ Step 5: Apply the inverse Laplace Transform to find u(x,t)
    u(x, t) = e^{-alpha t}\sin(x)
 
 
-            {
-                // Define the function and interval
-                double alpha = 1.0;
-                ColVec x = Linspace(0, pi, 51);
-                RowVec T = Linspace(0, 2, 6);
-                Matrix U = Exp(-alpha * T).Times(Sin(x));
-                Plot(x, U, Linewidth: 2);
-                Xlabel("Position x"); Ylabel("Temperature T");
-                Title("Temperature vs. Position over Time");
-                Legend(T.Select(t => $"t = {t:0.00}"));
-                SaveAs("Temperature_Laplace.png");
-            }
+
+.. code-block:: csharp
+
+   // Define the function and interval
+   double alpha = 1.0;
+   ColVec x = Linspace(0, pi, 51);
+   RowVec T = Linspace(0, 2, 6);
+   Matrix U = Exp(-alpha * T).Times(Sin(x));
+   Plot(x, U, Linewidth: 2);
+   Xlabel("Position x"); Ylabel("Temperature T");
+   Title("Temperature vs. Position over Time");
+   Legend(T.Select(t => $"t = {t:0.00}"));
+   SaveAs("Temperature_Laplace.png");
+
+
+.. figure:: images/Temperature_Laplace.png
+   :align: center
+   :alt: Temperature_Laplace.png
 
 <\BookContent>
         }

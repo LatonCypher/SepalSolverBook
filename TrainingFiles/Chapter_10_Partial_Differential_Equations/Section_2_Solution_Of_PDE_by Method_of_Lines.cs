@@ -62,7 +62,7 @@
             /// </math>
             /// 
             /// with initial condition :math:`u(x,0) = \sin(x)` and boundary conditions :math:`u(0,t) = u(\pi,t) = 0`.
-            /// 
+            /// <code>
             {
                 // SOLVE_HEAT_EQUATION Solves the 1D heat equation using pdepe
                 // Equation:  du/dt = alpha * d^2u/dx^2
@@ -99,7 +99,7 @@
                 Legend(T.Select(t => $"t = {t:0.00}"));
                 SaveAs("Temperature.png");
             }
-            /// 
+            /// </code>
             /// 
             /// </BookContent>
         }
