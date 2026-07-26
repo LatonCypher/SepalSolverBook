@@ -5,11 +5,10 @@
         public static void Run()
         {
             /// <BookContent>
+            /// 
             /// The **Method of Lines (MOL)** is a powerful numerical technique used to solve partial differential equations (PDEs), particularly those that are time-dependent (evolutionary).
 
-            ///Instead of discretizing all dimensions(space and time) simultaneously, the core idea is to discretize the spatial variables while leaving the time variable continuous. This transforms a single PDE into a system of coupled **Ordinary Differential Equations(ODEs)**.
-
-
+            /// Instead of discretizing all dimensions(space and time) simultaneously, the core idea is to discretize the spatial variables while leaving the time variable continuous. This transforms a single PDE into a system of coupled **Ordinary Differential Equations(ODEs)**.
             ///
             /// <header 3> How It Works: The 3-Step Process </header>
 
@@ -60,7 +59,7 @@
             /// also correct the egde values in situation where the initial condition is not consitent 
             /// with the boundary condition
             /// 
-            /// <header 3> Example: Solving the Heat Equation Numerically </header 3>
+            /// <header 3> Example: Solving the Heat Equation </header 3>
             /// Consider the one-dimensional heat equation:
             /// 
             /// <math>

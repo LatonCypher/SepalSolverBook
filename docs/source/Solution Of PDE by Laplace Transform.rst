@@ -5,7 +5,9 @@ Solution Of PDE by Laplace Transform
 Solution of Partial Differential Equations by Laplace Transform
 ---------------------------------------------------------------
 
-The Laplace Transform is a powerful integral transform used to convert partial differential equations (PDEs) into algebraic equations, which are often easier to solve. This method is particularly useful for solving linear PDEs with constant coefficients and specific boundary conditions.
+The Laplace Transform is a powerful integral transform used to convert partial differential equations (PDEs) into algebraic equations, which are often easier to solve. 
+This method is particularly useful for solving linear PDEs with constant coefficients and specific boundary conditions. While the Laplace Transform method is not a numerical methods
+we have decided to included it in this because of its similarity to method of lines. 
 
 1. Definition of the Laplace Transform
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -27,8 +29,8 @@ To solve a PDE using the Laplace Transform, we follow these steps:
 2. Solve the resulting algebraic equation in the Laplace domain.
 3. Apply the inverse Laplace Transform to obtain the solution in the time domain.
 
-3. Example: Solving the Heat Equation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3. Example: Solving the Heat Equation by Laplace Transform
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Consider the one-dimensional heat equation:
 
 
@@ -163,7 +165,4 @@ Step 5: Apply the inverse Laplace Transform to find :math:`u(x,t)`
    :align: center
    :alt: Temperature_Laplace.png
 
-<\BookContent>
-        }
-    }
-}
+

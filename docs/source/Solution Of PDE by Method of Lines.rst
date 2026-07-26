@@ -83,7 +83,7 @@ Consider the one-dimensional heat equation:
    \frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}
 
 
-with initial condition :math:`u(x,0) = \sin(\pi x)` and boundary conditions :math:`u(0,t) = u(1, t) = 0`.
+with initial condition :math:`u(x,0) = \sin(\pi x)` and boundary conditions :math:`u(0,t) = u(1,t) = 0`.
 
 .. code-block:: csharp
 

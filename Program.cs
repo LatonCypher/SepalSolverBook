@@ -1,7 +1,7 @@
 ﻿using ConsoleApp1;
 {
     {
-        //folderpath = "C:\\Users\\lateef.a.kareem\\Documents";
+        folderpath = "C:\\Users\\lateef.a.kareem\\Documents";
         //{
         //    // SOLVE_BURGERS_EQUATION Solves the 1D burgers equation using pdepe
         //    // Equation:  du/dt = nu * du/dx - u*du/dx
@@ -43,6 +43,7 @@
         //    SaveAs("BurgersEquation.png");
         //}
 
+
         //{
         //    // SOLVE_HEAT_EQUATION Solves the 1D heat equation in cylindrical cooordinates using pdepe
         //    // Equation:  du/dt = alpha * (1/r)d/du(r*du/dr)
@@ -80,6 +81,7 @@
         //    SaveAs("CylindricalCooling.png");
         //}
 
+
         //{
         //    // SOLVE_HEAT_EQUATION Solves the 1D heat equation using pdepe
         //    // Equation:  du/dt = alpha * d^2u/dx^2
@@ -92,7 +94,7 @@
         //    int m = 0;                  // 0 = Slab / Cartesian coordinates
         //    double L = 1;               // Length of the rod
         //    double t_final = 0.5;       // Final simulation time
-    
+
         //    double [] x = Linspace(0, L, 51);        // 51 spatial grid points
         //    double [] t = Linspace(0, t_final, 6);   // 6 time steps
 
@@ -105,7 +107,7 @@
 
         //    // 4. Boundary Conditions defined as: p(x, t, u) + q(x, t) * f = 0
         //    (double pl, double ql, double pr, double qr) bcfun(double xl, double ul, double xr, double ur, double t) => (ul, 0, ur, 0);
-            
+
         //    // 5. Solve the PDE
         //    (var T, var U) = Pdepe(m, pdefun, icfun, bcfun, x, t);
 
@@ -116,6 +118,7 @@
         //    Legend(T.Select(t => $"t = {t:0.00}"));
         //    SaveAs("Temperature.png");
         //}
+
 
         //{
         //    // SOLVE-DIFFUSION-REACTION-EQUATION Solves the 1D heat equation using pdepe
@@ -198,7 +201,7 @@
         //    Title("Cylindrical Fisher-KPP Radial Wave Front (m = 1)");
         //    Xlabel("Position r"); Ylabel("Concentration C");
         //    Legend(T.Select(t => $"t = {t:0.00}"));
-        //    SaveAs("CylindricalFisherKPP.png");
+        //    SaveAs("Cylindrical_FisherKPP.png");
         //}
     }
 

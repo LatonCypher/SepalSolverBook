@@ -8,7 +8,9 @@
             /// 
             /// <header 2> Solution of Partial Differential Equations by Laplace Transform </header 2>
             /// 
-            /// The Laplace Transform is a powerful integral transform used to convert partial differential equations (PDEs) into algebraic equations, which are often easier to solve. This method is particularly useful for solving linear PDEs with constant coefficients and specific boundary conditions.
+            /// The Laplace Transform is a powerful integral transform used to convert partial differential equations (PDEs) into algebraic equations, which are often easier to solve. 
+            /// This method is particularly useful for solving linear PDEs with constant coefficients and specific boundary conditions. While the Laplace Transform method is not a numerical methods
+            /// we have decided to included it in this because of its similarity to method of lines. 
             /// 
             /// <header 3> 1. Definition of the Laplace Transform </header 3>
             /// The Laplace Transform of a function :math:`f(t)` is defined as:
@@ -126,7 +128,8 @@
                 SaveAs("Temperature_Laplace.png");
             }
             /// </code>
-            /// <\BookContent>
+            /// 
+            /// </BookContent>
         }
     }
 }
