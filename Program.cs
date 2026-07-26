@@ -1,7 +1,208 @@
 ﻿using ConsoleApp1;
 {
-    Writer.Run();
+    {
+        //folderpath = "C:\\Users\\lateef.a.kareem\\Documents";
+        //{
+        //    // SOLVE_BURGERS_EQUATION Solves the 1D burgers equation using pdepe
+        //    // Equation:  du/dt = nu * du/dx - u*du/dx
+        //    // Domain:    x in [-1, 1],  t in [0, 1]
+        //    // IC:        u(x,0) = 100
+        //    // BC:        u(0,t) = 0,  du/dr(1,t) = h*(U(1,0) - Tinf)
+        //    //
+        //    // 1. Model Parameters & Mesh Setup
+        //    int m = 0; // Slab geometry
+        //    double nu = 0.05; // Kinematic viscosity
 
+        //    double[] x = Linspace(-1, 1, 101);  // [-1, 1]
+        //    double[] t = Linspace(0, 1, 6);     // [0, 1]
+
+        //    // 1. PDE Components
+        //    (double c, double f, double s) PdeFun(double x, double t, double u, double dudx)
+        //    {
+        //        double capacity = 1.0;
+        //        double flux = nu * dudx - 0.5 * u * u;
+        //        double source = 0.0;
+        //        return (capacity, flux, source);
+        //    }
+
+        //    // 2. Initial Condition: Sinusoidal disturbance
+        //    double IcFun(double x) => -Sin(pi * x);
+
+        //    // 3. Boundary Conditions: Fixed zero velocity at endpoints (Dirichlet)
+        //    (double pl, double ql, double pr, double qr) BcFun(double xl, double ul, double xr, double ur, double t)
+        //        => (ul, 0.0, ur, 0.0);
+
+        //    // 4. Solve PDE
+        //    (ColVec T, Matrix U) = Pdepe(m, PdeFun, IcFun, BcFun, x, t);
+
+        //    // Plot Results
+        //    Plot(x, U, Linewidth: 2);
+        //    Title("Viscous Burger's Equation (Shock Formation)");
+        //    Xlabel("Position x"); Ylabel("Concentration C");
+        //    Legend(T.Select(t => $"t = {t:0.00}"));
+        //    SaveAs("BurgersEquation.png");
+        //}
+
+        //{
+        //    // SOLVE_HEAT_EQUATION Solves the 1D heat equation in cylindrical cooordinates using pdepe
+        //    // Equation:  du/dt = alpha * (1/r)d/du(r*du/dr)
+        //    // Domain:    r in [0, 1],  t in [0, 2]
+        //    // IC:        u(x,0) = 100
+        //    // BC:        u(0,t) = 0,  du/dr(1,t) = h*(U(1,0) - Tinf)
+        //    //
+        //    // 1. Model Parameters & Mesh Setup
+        //    int m = 1;             // Cylindrical coordinates
+        //    double alpha = 0.1;    // Thermal diffusivity
+        //    double h = 2.0;        // Convective heat transfer coefficient
+        //    double Tinf = 20.0;    // Ambient temperature
+
+        //    double[] r = Linspace(0, 1, 51); // Radius r in [0, 1]
+        //    double[] t = Linspace(0, 2, 6);  // Time t in [0, 2]
+
+        //    // 2. Set up the PDE
+        //    (double c, double f, double s) PdeFun(double r, double t, double u, double dudr)
+        //        => (1.0, alpha * dudr, 0.0);
+
+        //    // 3. Uniform initial temperature profile at 100°C
+        //    double IcFun(double r) => 100.0;
+
+        //    // 4. Boundary Conditions
+        //    (double pl, double ql, double pr, double qr) BcFun(double rl, double ul, double rr, double ur, double t) => 
+        //        (0, 1, h * (ur - Tinf), 1);
+
+        //    // 5. Solve the PDE
+        //    (ColVec T, Matrix U) = Pdepe(m, PdeFun, IcFun, BcFun, r, t);
+
+        //    Plot(r, U, Linewidth: 2);
+        //    Title("Radial Cooling of Cylinder (m = 1)");
+        //    Xlabel("Radius r"); Ylabel("Temperature T");
+        //    Legend(T.Select(t => $"t = {t:0.00}"));
+        //    SaveAs("CylindricalCooling.png");
+        //}
+
+        //{
+        //    // SOLVE_HEAT_EQUATION Solves the 1D heat equation using pdepe
+        //    // Equation:  du/dt = alpha * d^2u/dx^2
+        //    // Domain:    x in [0, 1],  t in [0, 0.5]
+        //    // IC:        u(x,0) = sin(pi*x)
+        //    // BC:        u(0,t) = 0,  u(1,t) = 0
+        //    //
+        //    // 1. Model Parameters & Mesh Setup
+        //    double alpha = 0.5;         // Thermal diffusivity coefficient
+        //    int m = 0;                  // 0 = Slab / Cartesian coordinates
+        //    double L = 1;               // Length of the rod
+        //    double t_final = 0.5;       // Final simulation time
+    
+        //    double [] x = Linspace(0, L, 51);        // 51 spatial grid points
+        //    double [] t = Linspace(0, t_final, 6);   // 6 time steps
+
+        //    // 2. Defines the PDE components: c* du/ dt = x ^ (-m) * d / dx(x ^ m * f) + s
+        //    (double c, double f, double s) pdefun(double x, double t, double u, double dudx) =>
+        //        (1, alpha * dudx, 0);
+
+        //    // 3. Initial sinusoidal temperature distribution
+        //    double icfun(double x) => Sin(pi * x); 
+
+        //    // 4. Boundary Conditions defined as: p(x, t, u) + q(x, t) * f = 0
+        //    (double pl, double ql, double pr, double qr) bcfun(double xl, double ul, double xr, double ur, double t) => (ul, 0, ur, 0);
+            
+        //    // 5. Solve the PDE
+        //    (var T, var U) = Pdepe(m, pdefun, icfun, bcfun, x, t);
+
+        //    // Subplot 2: 2D Temperature Profiles at Selected Times
+        //    Plot(x, U, Linewidth: 2);
+        //    Xlabel("Position x"); Ylabel("Temperature T");
+        //    Title("Temperature vs. Position over Time");
+        //    Legend(T.Select(t => $"t = {t:0.00}"));
+        //    SaveAs("Temperature.png");
+        //}
+
+        //{
+        //    // SOLVE-DIFFUSION-REACTION-EQUATION Solves the 1D heat equation using pdepe
+        //    // Equation:  du/dt = D * d^2u/dx^2 + g*u*(1 - u);
+        //    // Domain:    x in [0, 5],  t in [0, 6]
+        //    // IC:        u(x,0) = 0.8 if x < 0.5;
+        //    //                     0.0 otherwise
+        //    // BC:        du/dx(0,t) = 0,  du/dx(1,t) = 0
+        //    //
+        //    // 1. Model Parameters & Mesh Setup
+        //    int m = 0; // Slab geometry
+        //    double D = 0.01; // Diffusion coefficient
+        //    double growthRate = 1.0; // Growth rate
+
+        //    double[] x = Linspace(0, 5, 101);  // [0, 5]
+        //    double[] t = Linspace(0, 6, 7);    // [0, 6]
+
+        //    // 2. Defines the PDE components: du/ dt = D * d^2u/dx^2 + g*u*(1 - u);
+        //    (double c, double f, double s) PdeFun(double x, double t, double u, double dudx)
+        //    {
+        //        double capacity = 1.0;
+        //        double flux = D * dudx;
+        //        double source = growthRate * u * (1.0 - u); // Logistic reaction term
+        //        return (capacity, flux, source);
+        //    }
+
+        //    // 3. Initial localized pulse at x = 0
+        //    double IcFun(double x) => x < 0.5 ? 0.8 : 0.0;
+
+        //    // 4. Insulated endpoints (zero flux)
+        //    (double pl, double ql, double pr, double qr) BcFun(double xl, double ul, double xr, double ur, double t)
+        //        => (0.0, 1.0, 0.0, 1.0);
+
+        //    // 5. Solve the PDE
+        //    (ColVec T, Matrix U) = Pdepe(m, PdeFun, IcFun, BcFun, x, t);
+        //    Plot(x, U, Linewidth: 2);
+        //    Title("Fisher-KPP Traveling Wave Front");
+        //    Xlabel("Position x"); Ylabel("Concentration C");
+        //    Legend(T.Select(t => $"t = {t:0.00}"));
+        //    SaveAs("FisherKPP.png");
+        //}
+
+
+        //{
+        //    // SOLVE-DIFFUSION-REACTION-EQUATION
+        //    // Solves the 1D reaction-diffusion equation in cylindrical coordinates using pdepe
+        //    // Equation:  du/dt = D * d^2u/dx^2 + g*u*(1 - u);
+        //    // Domain:    x in [0, 5],  t in [0, 6]
+        //    // IC:        u(x,0) = 0.8 if x < 0.5;
+        //    //                     0.0 otherwise
+        //    // BC:        du/dx(0,t) = 0,  du/dx(1,t) = 0
+        //    //
+        //    // 1. Model Parameters & Mesh Setup
+        //    int m = 1; // Slab geometry
+        //    double D = 0.01; // Diffusion coefficient
+        //    double growthRate = 1.0; // Growth rate
+
+        //    double[] r = Linspace(0, 5, 101);  // [0, 5]
+        //    double[] t = Linspace(0, 6, 7);    // [0, 6]
+
+        //    // 2. Defines the PDE components: du/dt = D/r*d/dr(r*du/dr) + g*u*(1 - u);
+        //    (double c, double f, double s) PdeFun(double r, double t, double u, double dudx)
+        //    {
+        //        double capacity = 1.0;
+        //        double flux = D * dudx;
+        //        double source = growthRate * u * (1.0 - u); // Logistic reaction term
+        //        return (capacity, flux, source);
+        //    }
+
+        //    // 3. Initial localized pulse at x = 0
+        //    double IcFun(double r) => r < 0.4 ? 1.0 : 0.0;
+
+        //    // 4. Insulated endpoints (zero flux)
+        //    (double pl, double ql, double pr, double qr) BcFun(double rl, double ul, double rr, double ur, double t)
+        //        => (0.0, 1.0, 0.0, 1.0);
+
+        //    // 5. Solve the PDE
+        //    (ColVec T, Matrix U) = Pdepe(m, PdeFun, IcFun, BcFun, r, t);
+        //    Plot(r, U, Linewidth: 2);
+        //    Title("Cylindrical Fisher-KPP Radial Wave Front (m = 1)");
+        //    Xlabel("Position r"); Ylabel("Concentration C");
+        //    Legend(T.Select(t => $"t = {t:0.00}"));
+        //    SaveAs("CylindricalFisherKPP.png");
+        //}
+    }
+
+    Writer.Run();
    {
         // Reservoir Simulation
         folderpath = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\Morgana Data\";

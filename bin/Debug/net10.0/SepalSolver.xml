@@ -3194,6 +3194,98 @@
              <exception cref="T:System.ArgumentException">Thrown when the <paramref name="tspan"/> array has less than two elements.</exception>
         </member>
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Ode45a(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Func{System.Double,SepalSolver.ColVec,SepalSolver.Matrix},System.Double[],System.Double[],SepalSolver.Ode.Set)" -->
+        <member name="M:SepalSolver.Math.Pdepe(System.Int32,System.Func{System.Double,System.Double,System.Double,System.Double,System.ValueTuple{System.Double,System.Double,System.Double}},System.Func{System.Double,System.Double},System.Func{System.Double,System.Double,System.Double,System.Double,System.Double,System.ValueTuple{System.Double,System.Double,System.Double,System.Double}},System.Double[],System.Double[])">
+            <summary>
+            Solves 1D systems of parabolic and elliptic partial differential equations (PDEs) of the form
+            .. math::
+            
+                c \left(x, t, u, \frac{\partial u}{\partial x} \right) \frac{\partial u}{\partial t} = x^{-m} \frac{\partial }{\partial x}\left(x^m f\left(x, t, u, \frac{\partial u}{\partial x} \right)\right) + s\left(x, t, u, \frac{\partial u}{\partial x} \right)
+            using the Skeel-Berzins Method of Lines coupled with an implicit DAE solver (pdepe).
+            </summary>
+            <param name="m">
+            Geometry coordinate parameter:
+               * 0: Slab / Cartesian coordinates.
+               * 1: Cylindrical coordinates.
+               * 2: Spherical coordinates.
+            </param>
+            <param name="pdefun">
+            A function defining the PDE components c, f, and s.
+                    | (double c, double f, double s) pdefun(double x, double t, double u, double dudx);
+               * x: spatial coordinate.
+               * t: time.
+               * u: state value.
+               * dudx: spatial gradient.
+               * Returns: tuple (c, f, s) where c is capacity, f is flux, and s is source.
+            </param>
+            <param name="icfun">
+            A function defining the initial condition u(x, t0).
+                    | double icfun(double x);
+               * x: spatial coordinate.
+               * Returns: initial state value at time t0.
+            </param>
+            <param name="bcfun">
+            A function defining the boundary conditions p + q * f = 0 at the left and right boundaries.
+                    | (double pl, double ql, double pr, double qr) bcfun(double xl, double ul, double xr, double ur, double t);
+               * xl, xr: spatial coordinates at left and right boundaries.
+               * ul, ur: state values at left and right boundaries.
+               * t: time.
+               * Returns: tuple (pl, ql, pr, qr) defining boundary constraints.
+            </param>
+            <param name="x">
+            A strictly increasing array of spatial mesh points [x0, x1, ..., xn].
+            </param>
+            <param name="t">
+            An array of time points at which the solution is requested [t0, t1, ..., tf].
+            </param>
+            <returns>
+            A tuple (t, U) where:
+               * t: Column vector of evaluation times matching the input time mesh.
+               * U: Solution matrix where row i corresponds to time t[i] and column j corresponds to spatial node x[j].
+            </returns>
+            <remarks>
+            This method discretizes the spatial domain into non-uniform control volumes using the Skeel-Berzins method,
+            preserving flux balance and achieving second-order spatial accuracy O(dx^2). Boundary conditions are enforced
+            as index-1 DAE algebraic constraints (M[0,0] = M[n,n] = 0) integrated in time via Ode45a.
+            </remarks>
+            <example>
+            Solve the 1D Heat Conduction Equation:
+            .. math::
+            
+               \frac{\partial u}{\partial t} = 0.5 \frac{\partial^2 u}{\partial x^2}, \quad x \in [0, 1], \; t \in [0, 0.5]
+            
+            With initial condition :math:`u(x, 0) = \sin(\pi x)` and Dirichlet boundary conditions :math:`u(0, t) = 0, u(1, t) = 0`.
+            <code>
+                using SepalSolver.Math;
+                using static System.Math;
+            
+                int m = 0;
+                double[] x = Enumerable.Range(0, 51).Select(i => i * 0.02).ToArray();
+                double[] t = Enumerable.Range(0, 21).Select(i => i * 0.025).ToArray();
+            
+                (double c, double f, double s) PdeFun(double x, double t, double u, double dudx) 
+                    => (1.0, 0.5 * dudx, 0.0);
+            
+                double IcFun(double x) => Sin(PI * x);
+            
+                (double pl, double ql, double pr, double qr) BcFun(double xl, double ul, double xr, double ur, double t) 
+                    => (ul, 0.0, ur, 0.0);
+            
+                (ColVec T, Matrix U) = pdepe(m, PdeFun, IcFun, BcFun, x, t);
+            
+                PlotSurface(x, T, U);
+                Title("1D Heat Equation Solution");
+                Xlabel("Position x");
+                Ylabel("Time t");
+                SaveAs(Path + "HeatEquation.png");
+            </code>
+            </example>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when <paramref name="pdefun"/>, <paramref name="icfun"/>, or <paramref name="bcfun"/> is null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            Thrown when <paramref name="x"/> or <paramref name="t"/> contains fewer than 2 elements or <paramref name="x"/> is not strictly increasing.
+            </exception>
+        </member>
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.SolverSet(System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Object)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.OptimSet(System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},SepalSolver.ColVec,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Object,System.Nullable{System.Int32},System.Nullable{SepalSolver.Math.LevenbergeMaquardt_UpdateType})" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Fzero(System.Func{System.Double,System.Double},System.Double,SepalSolver.Solvers.Set)" -->
@@ -11637,20 +11729,6 @@
             </summary>
             <param name="x">bool [,] to be converted to Matrix</param>
             <returns>Matrix</returns>
-        </member>
-        <member name="M:SepalSolver.SparseMatrix.op_Implicit(System.Collections.Generic.List{SepalSolver.ColVec})~SepalSolver.SparseMatrix">
-            <summary>
-            Implicit operator for conversion from List of ColVec to SparseMatrix
-            </summary>
-            <param name="value">List of ColVec to be converted</param>
-            <returns>SparseMatrix</returns>
-        </member>
-        <member name="M:SepalSolver.SparseMatrix.op_Implicit(System.Collections.Generic.List{SepalSolver.RowVec})~SepalSolver.SparseMatrix">
-            <summary>
-            Implicit operator for conversion from List of RowVec to SparseMatrix
-            </summary>
-            <param name="value">List of RowVec to be converted</param>
-            <returns>SparseMatrix</returns>
         </member>
         <member name="M:SepalSolver.SparseMatrix.op_Implicit(System.Collections.Generic.List{SepalSolver.SparseColVec})~SepalSolver.SparseMatrix">
             <summary>

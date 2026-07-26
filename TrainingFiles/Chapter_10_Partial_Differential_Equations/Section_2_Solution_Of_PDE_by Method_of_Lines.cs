@@ -13,7 +13,11 @@
             ///
             /// <header 3> How It Works: The 3-Step Process </header>
 
-            /// Imagine you are solving the heat equation: :math:`\frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}`
+            /// Imagine you are solving the heat equation: 
+            /// 
+            /// <math>
+            /// \frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}
+            /// </math>
             /// 
             /// 1. **Spatial Discretization**: You divide the spatial domain into a grid of points(e.g., :math:`x_1, x_2, \cdot, x_n`). You replace the spatial derivatives :math:`(\frac{\partial^2 u}{\partial x^2})` with finite difference approximations, such as:
             /// 
@@ -49,6 +53,8 @@
             ///  **Solving Logic** | Solves the whole grid at once | Solves ODEs along "lines" of time 
             ///  **Software** | Requires custom time-stepping | Uses off-the-shelf ODE solvers 
             /// </table>
+            /// 
+            /// 
             /// 
             /// 
             /// </BookContent>
