@@ -66,7 +66,7 @@ Step 3: Solve the Ordinary Differential Equation
 
 .. math::
 
-   \sU(x,s) - sin(x) = \alpha \frac{\partial^2 U}{\partial x^2}
+   sU(x,s) - sin(x) = \alpha \frac{\partial^2 U}{\partial x^2}
 
 
 Rearranging gives:
@@ -83,27 +83,43 @@ Homogeneous solution and particular solution methods can be applied here.
    \alpha \frac{\partial^2 U}{\partial x^2} - sU(x,s) = 0
 
 
-Complementary solution: 
+Complementary Solution: 
 
 .. math::
 
-   U(x,s) = A(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right) + B(s) \cosh\left(\sqrt{\frac{s}{\alpha}}x\right)
+   U(x,s) = C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right) + C_2(s) \cosh\left(\sqrt{\frac{s}{\alpha}}x\right)
 
 
-Using the boundary conditions, 
+Particular Solution:
+We assume :math:`U_p(x) = A sin(x) + B cos(x)`
+
+by substitution in the equation we have
+
+.. math::
+
+   -(A sin(x) + B cos(x))  - \frac{s}{\alpha} \left(A sin(x) + B cos(x) \right)= = -\frac{1}{\alpha}\sin(x)
+
+it follows that :math:`B = 0` and :math:`A = 1/(s + \alpha)`
+
+General Solution is thus:, 
 it is clear that :math:`B(s) == 0`, because :math:`\cosh(0) = 1`.
 
-hence
+.. math::
 
+   C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right) + C_2(s) \cosh\left(\sqrt{\frac{s}{\alpha}}x\right) + \frac{sin(x)}{1 + \alpha}
+
+
+Applying the boundary conditions:
+1. at :math:`x = 0`:
 
 .. math::
 
-   U(x,s) = A(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right)
+   U(0, s) = C_1(1) + C_2(0) + 0 = 0 \implies C_1 = 0;
 
 
+2. at :math:`x = \pi`:
 
 Step 3: Apply the inverse Laplace Transform to find u(x,t)
-
 
 
 <\BookContent>

@@ -40,11 +40,11 @@
             /// Step 1: Take the Laplace Transform
             /// 
             /// <math>
-            /// \mathcal{L}\{\frac{\partial u}{\partial t}\} = sU(x,s) - u(x,0) = sU(x,s) - \sin(x)
+            /// \mathcal{L}\left{\frac{\partial u}{\partial t}\right} = sU(x,s) - u(x,0) = sU(x,s) - \sin(x)
             /// </math>
             /// 
             /// <math>
-            /// \mathcal{L}\{\alpha \frac{\partial^2 u}{\partial x^2}\} = \alpha \frac{\partial^2 U}{\partial x^2}
+            /// \mathcal{L}\left{\alpha \frac{\partial^2 u}{\partial x^2}\right} = \alpha \frac{\partial^2 U}{\partial x^2}
             /// </math>
             /// 
             /// Step 2: Transform the boundary conditions
@@ -81,18 +81,34 @@
             /// </math>
             /// it follows that :math:`B = 0` and :math:`A = 1/(s + \alpha)`
             /// 
-            /// Using the boundary conditions, 
+            /// General Solution is thus:, 
             /// it is clear that :math:`B(s) == 0`, because :math:`\cosh(0) = 1`.
-            /// 
-            /// hence
-            /// 
             /// <math>
-            /// U(x,s) = A(s)\sinh\left(\sqrt{\frac{s}{\alpha}}x\right)
+            /// C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right) + C_2(s) \cosh\left(\sqrt{\frac{s}{\alpha}}x\right) + \frac{sin(x)}{s + \alpha}
+            /// </math>
+            ///
+            /// Step 4: Applying the boundary conditions:
+            /// 1. at :math:`x = 0`:
+            /// <math>
+            /// U(0, s) = C_1(0) + C_2(1) + 0 = 0 \implies C_2 = 0;
             /// </math>
             /// 
+            /// 2. at :math:`x = \pi`:
+            /// <math>
+            /// C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}\pi\right) = 0 = \implies  C_1 = 0
+            /// </math>
             /// 
-            /// Step 3: Apply the inverse Laplace Transform to find u(x,t)
-            ///
+            /// hence, :math:`U(x,s) = \frac{sin(x)}{s + \alpha}`
+            /// 
+            /// Step 5: Apply the inverse Laplace Transform to find u(x,t)
+            /// <math>
+            /// u(x, t) = \mathcal{L}^{-1}\left{\frac{\sin(x)}{s + \alpha} \right} = \sin(x)\mathcal{L}^{-1}\left{\frac{1}{s + \alpha} \right}
+            /// </math>
+            /// 
+            /// <math>
+            /// u(x, t) = e^{-alpha t}\sin(x)
+            /// </math>
+            /// 
             /// 
             /// <\BookContent>
         }
