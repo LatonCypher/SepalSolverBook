@@ -128,7 +128,7 @@ hence,
 
 .. math::
 
-   U(x,s) = \frac{sin(\pi x)}{s + \pi^2\alpha}
+   U(x,s) = \frac{\sin(\pi x)}{s + \pi^2\alpha}
 
 
 Step 5: Apply the inverse Laplace Transform to find :math:`u(x,t)`
