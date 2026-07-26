@@ -80,9 +80,9 @@
                 double alpha = 0.5;       // Thermal diffusivity coefficient
                 int m = 0;                // 0 = Slab / Cartesian coordinates
                 double L = 1;             // Length of the rod
-                double t_final = 2;       // Final simulation time
+                double t_final = 0.5;     // Final simulation time
 
-                double[] x = Linspace(0, L, 51);        // 51 spatial grid points
+                double[] x = Linspace(0, L, 101);        // 51 spatial grid points
                 double[] t = Linspace(0, t_final, 6);   // 6 time steps
 
                 // 2. Defines the PDE components: c* du/ dt = x ^ (-m) * d / dx(x ^ m * f) + s

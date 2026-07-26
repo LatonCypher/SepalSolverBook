@@ -149,8 +149,8 @@ Step 5: Apply the inverse Laplace Transform to find :math:`u(x,t)`
 
    // Define the function and interval
    double alpha = 1.0, π = pi;
-   ColVec x = Linspace(0, pi, 51);
-   RowVec T = Linspace(0, 2, 6);
+   ColVec x = Linspace(0, 1, 51);
+   RowVec T = Linspace(0, 0.5, 6);
    Matrix U = Exp(-alpha * π * π * T).Times(Sin(π * x));
    Plot(x, U, Linewidth: 2); GridOn();
    Xlabel("Position x"); Ylabel("Temperature T");
