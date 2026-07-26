@@ -67,6 +67,12 @@ Imagine you are solving the heat equation:
      - Requires custom time-stepping
      - Uses off-the-shelf ODE solvers
 
+In sepalsolver, the nnumerical solution of pde (Pdepe) is built on Ode45a: 
+our differential algebraic equation solver that relies on L-stable diagonally
+implicit Runge Kutta. This allows it to handle the boundary conditions implicitly and 
+also correct the egde values in situation where the initial condition is not consitent 
+with the boundary condition
+
 Example: Solving the Heat Equation Numerically
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Consider the one-dimensional heat equation:
@@ -84,13 +90,13 @@ with initial condition :math:`u(x,0) = \sin(x)` and boundary conditions :math:`u
    // SOLVE_HEAT_EQUATION Solves the 1D heat equation using pdepe
    // Equation:  du/dt = alpha * d^2u/dx^2
    // Domain:    x in [0, 1],  t in [0, 0.5]
-   // IC:        u(x,0) = sin(pi*x)
+   // IC:        u(x,0) = sin(π x)
    // BC:        u(0,t) = 0,  u(1,t) = 0
    //
    // 1. Model Parameters & Mesh Setup
    double alpha = 0.5;       // Thermal diffusivity coefficient
    int m = 0;                // 0 = Slab / Cartesian coordinates
-   double L = pi;            // Length of the rod
+   double L = 1;             // Length of the rod
    double t_final = 2;       // Final simulation time
 
    double[] x = Linspace(0, L, 51);        // 51 spatial grid points
@@ -110,7 +116,7 @@ with initial condition :math:`u(x,0) = \sin(x)` and boundary conditions :math:`u
    (var T, var U) = Pdepe(m, pdefun, icfun, bcfun, x, t);
 
    // Subplot 2: 2D Temperature Profiles at Selected Times
-   Plot(x, U, Linewidth: 2);
+   Plot(x, U, Linewidth: 2); GridOn();
    Xlabel("Position x"); Ylabel("Temperature T");
    Title("Temperature vs. Position over Time");
    Legend(T.Select(t => $"t = {t:0.00}"));
