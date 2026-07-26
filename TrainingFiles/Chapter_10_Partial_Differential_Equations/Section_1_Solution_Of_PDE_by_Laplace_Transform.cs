@@ -109,6 +109,18 @@
             /// u(x, t) = e^{-alpha t}\sin(x)
             /// </math>
             /// 
+            {
+                // Define the function and interval
+                double alpha = 1.0;
+                ColVec x = Linspace(0, pi, 51);
+                RowVec T = Linspace(0, 2, 6);
+                Matrix U = Exp(-alpha * T).Times(Sin(x));
+                Plot(x, U, Linewidth: 2);
+                Xlabel("Position x"); Ylabel("Temperature T");
+                Title("Temperature vs. Position over Time");
+                Legend(T.Select(t => $"t = {t:0.00}"));
+                SaveAs("Temperature_Laplace.png");
+            }
             /// 
             /// <\BookContent>
         }

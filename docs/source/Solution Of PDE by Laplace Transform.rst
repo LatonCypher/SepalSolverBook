@@ -46,13 +46,13 @@ Step 1: Take the Laplace Transform
 
 .. math::
 
-   \mathcal{L}\{\frac{\partial u}{\partial t}\} = sU(x,s) - u(x,0) = sU(x,s) - \sin(x)
+   \mathcal{L}\left{\frac{\partial u}{\partial t}\right} = sU(x,s) - u(x,0) = sU(x,s) - \sin(x)
 
 
 
 .. math::
 
-   \mathcal{L}\{\alpha \frac{\partial^2 u}{\partial x^2}\} = \alpha \frac{\partial^2 U}{\partial x^2}
+   \mathcal{L}\left{\alpha \frac{\partial^2 u}{\partial x^2}\right} = \alpha \frac{\partial^2 U}{\partial x^2}
 
 
 Step 2: Transform the boundary conditions
@@ -106,21 +106,51 @@ it is clear that :math:`B(s) == 0`, because :math:`\cosh(0) = 1`.
 
 .. math::
 
-   C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right) + C_2(s) \cosh\left(\sqrt{\frac{s}{\alpha}}x\right) + \frac{sin(x)}{1 + \alpha}
+   C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right) + C_2(s) \cosh\left(\sqrt{\frac{s}{\alpha}}x\right) + \frac{sin(x)}{s + \alpha}
 
 
-Applying the boundary conditions:
+Step 4: Applying the boundary conditions:
 1. at :math:`x = 0`:
 
 .. math::
 
-   U(0, s) = C_1(1) + C_2(0) + 0 = 0 \implies C_1 = 0;
+   U(0, s) = C_1(0) + C_2(1) + 0 = 0 \implies C_2 = 0;
 
 
 2. at :math:`x = \pi`:
 
-Step 3: Apply the inverse Laplace Transform to find u(x,t)
+.. math::
 
+   C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}\pi\right) = 0 = \implies  C_1 = 0
+
+
+hence, :math:`U(x,s) = \frac{sin(x)}{s + \alpha}`
+
+Step 5: Apply the inverse Laplace Transform to find u(x,t)
+
+.. math::
+
+   u(x, t) = \mathcal{L}^{-1}\left{\frac{\sin(x)}{s + \alpha} \right} = \sin(x)\mathcal{L}^{-1}\left{\frac{1}{s + \alpha} \right}
+
+
+
+.. math::
+
+   u(x, t) = e^{-alpha t}\sin(x)
+
+
+            {
+                // Define the function and interval
+                double alpha = 1.0;
+                ColVec x = Linspace(0, pi, 51);
+                RowVec T = Linspace(0, 2, 6);
+                Matrix U = Exp(-alpha * T).Times(Sin(x));
+                Plot(x, U, Linewidth: 2);
+                Xlabel("Position x"); Ylabel("Temperature T");
+                Title("Temperature vs. Position over Time");
+                Legend(T.Select(t => $"t = {t:0.00}"));
+                SaveAs("Temperature_Laplace.png");
+            }
 
 <\BookContent>
         }

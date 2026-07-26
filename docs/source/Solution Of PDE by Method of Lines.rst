@@ -67,6 +67,53 @@ Imagine you are solving the heat equation:
      - Requires custom time-stepping
      - Uses off-the-shelf ODE solvers
 
+Example: Solving the Heat Equation Numerically
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Consider the one-dimensional heat equation:
 
+
+.. math::
+
+   \frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}
+
+
+with initial condition :math:`u(x,0) = \sin(x)` and boundary conditions :math:`u(0,t) = u(\pi,t) = 0`.
+
+            {
+                // SOLVE_HEAT_EQUATION Solves the 1D heat equation using pdepe
+                // Equation:  du/dt = alpha * d^2u/dx^2
+                // Domain:    x in [0, 1],  t in [0, 0.5]
+                // IC:        u(x,0) = sin(pi*x)
+                // BC:        u(0,t) = 0,  u(1,t) = 0
+                //
+                // 1. Model Parameters & Mesh Setup
+                double alpha = 0.5;       // Thermal diffusivity coefficient
+                int m = 0;                // 0 = Slab / Cartesian coordinates
+                double L = pi;            // Length of the rod
+                double t_final = 2;       // Final simulation time
+
+                double[] x = Linspace(0, L, 51);        // 51 spatial grid points
+                double[] t = Linspace(0, t_final, 6);   // 6 time steps
+
+                // 2. Defines the PDE components: c* du/ dt = x ^ (-m) * d / dx(x ^ m * f) + s
+                (double c, double f, double s) pdefun(double x, double t, double u, double dudx) =>
+                    (1, alpha * dudx, 0);
+
+                // 3. Initial sinusoidal temperature distribution
+                double icfun(double x) => Sin(pi * x);
+
+                // 4. Boundary Conditions defined as: p(x, t, u) + q(x, t) * f = 0
+                (double pl, double ql, double pr, double qr) bcfun(double xl, double ul, double xr, double ur, double t) => (ul, 0, ur, 0);
+
+                // 5. Solve the PDE
+                (var T, var U) = Pdepe(m, pdefun, icfun, bcfun, x, t);
+
+                // Subplot 2: 2D Temperature Profiles at Selected Times
+                Plot(x, U, Linewidth: 2);
+                Xlabel("Position x"); Ylabel("Temperature T");
+                Title("Temperature vs. Position over Time");
+                Legend(T.Select(t => $"t = {t:0.00}"));
+                SaveAs("Temperature.png");
+            }
 
 
