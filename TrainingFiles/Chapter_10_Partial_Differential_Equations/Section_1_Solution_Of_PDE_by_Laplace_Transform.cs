@@ -73,18 +73,18 @@
             /// </math>
             /// 
             /// Particular Solution:
-            /// We assume :math:`U_p(x) = A sin(\pi x) + B cos(\pi x)`
+            /// We assume :math:`U_p(x) = A\sin(\pi x) + B\cos(\pi x)`
             /// 
             /// by substitution in the equation we have
             /// <math>
-            /// -(A\sin(\pi x) + B\cos(\pi x))  - \frac{s \pi^2}{\alpha} \left(A\sin(x) + B\cos(x) \right) = -\frac{1}{\alpha}\sin(\pi x)
+            /// -\pi^2(A\sin(\pi x) + B\cos(\pi x))  - \frac{s}{\alpha} \left(A\sin(x) + B\cos(x) \right) = -\frac{1}{\alpha}\sin(\pi x)
             /// </math>
-            /// it follows that :math:`B = 0` and :math:`A = 1/(s + \alpha)`
+            /// it follows that :math:`B = 0` and :math:`A = 1/(s + \pi^2\alpha)`
             /// 
             /// General Solution is thus:, 
-            /// it is clear that :math:`B(s) == 0`, because :math:`\cosh(0) = 1`.
+            /// it is clear that :math:`B(s) = 0`, because :math:`\cosh(0) = 1`.
             /// <math>
-            /// C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right) + C_2(s) \cosh\left(\sqrt{\frac{s}{\alpha}}x\right) + \frac{\sin(\pi x)}{\pi^2 s + \alpha}
+            /// C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right) + C_2(s) \cosh\left(\sqrt{\frac{s}{\alpha}}x\right) + \frac{\sin(\pi x)}{s + \pi^2\alpha}
             /// </math>
             ///
             /// Step 4: Applying the boundary conditions:
@@ -95,14 +95,17 @@
             /// 
             /// 2. at :math:`x = \pi`:
             /// <math>
-            /// C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}\pi\right) = 0 = \implies  C_1 = 0
+            /// C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}\pi\right) = 0 \implies  C_1 = 0
             /// </math>
             /// 
-            /// hence, :math:`U(x,s) = \frac{sin(\pi x)}{\pi^2 s + \alpha}`
+            /// hence,
+            /// <math>
+            /// U(x,s) = \frac{sin(\pi x)}{s + \pi^2\alpha}
+            /// </math>
             /// 
             /// Step 5: Apply the inverse Laplace Transform to find :math:`u(x,t)`
             /// <math>
-            /// u(x, t) = \mathcal{L}^{-1}\left\{\frac{\sin(\pi x)}{\pi^2 s + \alpha} \right\} = \sin(\pi x)\mathcal{L}^{-1}\left\{ \frac{1}{\pi^2 s + \alpha} \right\}
+            /// u(x, t) = \mathcal{L}^{-1}\left\{\frac{\sin(\pi x)}{ s + \pi^2\alpha} \right\} = \sin(\pi x)\mathcal{L}^{-1}\left\{ \frac{1}{s + \pi^2\alpha} \right\}
             /// </math>
             /// 
             /// <math>
@@ -112,10 +115,10 @@
             /// <code>
             {
                 // Define the function and interval
-                double alpha = 1.0;
+                double alpha = 1.0, π = pi;
                 ColVec x = Linspace(0, pi, 51);
                 RowVec T = Linspace(0, 2, 6);
-                Matrix U = Exp(-alpha * T).Times(Sin(x));
+                Matrix U = Exp(-alpha * π * π * T).Times(Sin(π * x));
                 Plot(x, U, Linewidth: 2); GridOn();
                 Xlabel("Position x"); Ylabel("Temperature T");
                 Title("Temperature vs. Position over Time");
