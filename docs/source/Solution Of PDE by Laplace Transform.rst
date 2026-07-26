@@ -46,27 +46,34 @@ Step 1: Take the Laplace Transform
 
 .. math::
 
-   \mathcal{L}{\frac{\partial u}{\partial t}} = sU(x,s) - u(x,0) = sU(x,s) - \sin(x)
+   \mathcal{L}\{\frac{\partial u}{\partial t}\} = sU(x,s) - u(x,0) = sU(x,s) - \sin(x)
 
 
 
 .. math::
 
-   \mathcal{L}{\alpha \frac{\partial^2 u}{\partial x^2}} = \alpha \frac{\partial^2 U}{\partial x^2}
+   \mathcal{L}\{\alpha \frac{\partial^2 u}{\partial x^2}\} = \alpha \frac{\partial^2 U}{\partial x^2}
 
 
-Step 2: Solve the algebraic equation
+Step 2: Transform the boundary conditions
 
 .. math::
 
-   \sU(x,s) - f(x) = \alpha \frac{\partial^2 U}{\partial x^2}
+   U(0,s) = U(\pi,s) = 0
+
+
+Step 3: Solve the Ordinary Differential Equation
+
+.. math::
+
+   \sU(x,s) - sin(x) = \alpha \frac{\partial^2 U}{\partial x^2}
 
 
 Rearranging gives:
 
 .. math::
 
-   \alpha \frac{\partial^2 U}{\partial x^2} - sU(x,s) = -f(x)
+   \frac{\partial^2 U}{\partial x^2} - \frac{s}{\alpha}U(x,s) = -\frac{1}{\alpha}\sin(x)
 
 
 Homogeneous solution and particular solution methods can be applied here.
@@ -76,14 +83,23 @@ Homogeneous solution and particular solution methods can be applied here.
    \alpha \frac{\partial^2 U}{\partial x^2} - sU(x,s) = 0
 
 
-General solution: 
+Complementary solution: 
 
 .. math::
 
-   U(x,s) = A(s) \sinh(\sqrt{(s/α)}x) + B(s) \cosh(\sqrt{(s/α)}x)
+   U(x,s) = A(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right) + B(s) \cosh\left(\sqrt{\frac{s}{\alpha}}x\right)
 
 
-Particular solution can be found using methods like undetermined coefficients or variation of parameters.
+Using the boundary conditions, 
+it is clear that :math:`B(s) == 0`, because :math:`\cosh(0) = 1`.
+
+hence
+
+
+.. math::
+
+   U(x,s) = A(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right)
+
 
 
 Step 3: Apply the inverse Laplace Transform to find u(x,t)

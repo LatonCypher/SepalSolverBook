@@ -40,11 +40,11 @@
             /// Step 1: Take the Laplace Transform
             /// 
             /// <math>
-            /// \mathcal{L}{\frac{\partial u}{\partial t}} = sU(x,s) - u(x,0) = sU(x,s) - \sin(x)
+            /// \mathcal{L}\{\frac{\partial u}{\partial t}\} = sU(x,s) - u(x,0) = sU(x,s) - \sin(x)
             /// </math>
             /// 
             /// <math>
-            /// \mathcal{L}{\alpha \frac{\partial^2 u}{\partial x^2}} = \alpha \frac{\partial^2 U}{\partial x^2}
+            /// \mathcal{L}\{\alpha \frac{\partial^2 u}{\partial x^2}\} = \alpha \frac{\partial^2 U}{\partial x^2}
             /// </math>
             /// 
             /// Step 2: Transform the boundary conditions
@@ -54,7 +54,7 @@
             ///  
             /// Step 3: Solve the Ordinary Differential Equation
             /// <math>
-            /// \sU(x,s) - sin(x) = \alpha \frac{\partial^2 U}{\partial x^2}
+            /// sU(x,s) - sin(x) = \alpha \frac{\partial^2 U}{\partial x^2}
             /// </math>
             ///
             /// Rearranging gives:
@@ -67,10 +67,19 @@
             /// \alpha \frac{\partial^2 U}{\partial x^2} - sU(x,s) = 0
             /// </math>
             /// 
-            /// Complementary solution: 
+            /// Complementary Solution: 
             /// <math>
-            /// U(x,s) = A(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right) + B(s) \cosh\left(\sqrt{\frac{s}{\alpha}}x\right)
+            /// U(x,s) = C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right) + C_2(s) \cosh\left(\sqrt{\frac{s}{\alpha}}x\right)
             /// </math>
+            /// 
+            /// Particular Solution:
+            /// We assume :math:`U_p(x) = A sin(x) + B cos(x)`
+            /// 
+            /// by substitution in the equation we have
+            /// <math>
+            /// -(A sin(x) + B cos(x))  - \frac{s}{\alpha} \left(A sin(x) + B cos(x) \right)= = -\frac{1}{\alpha}\sin(x)
+            /// </math>
+            /// it follows that :math:`B = 0` and :math:`A = 1/(s + \alpha)`
             /// 
             /// Using the boundary conditions, 
             /// it is clear that :math:`B(s) == 0`, because :math:`\cosh(0) = 1`.
@@ -78,13 +87,12 @@
             /// hence
             /// 
             /// <math>
-            /// U(x,s) = A(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right)
+            /// U(x,s) = A(s)\sinh\left(\sqrt{\frac{s}{\alpha}}x\right)
             /// </math>
             /// 
             /// 
             /// Step 3: Apply the inverse Laplace Transform to find u(x,t)
             ///
-
             /// 
             /// <\BookContent>
         }
