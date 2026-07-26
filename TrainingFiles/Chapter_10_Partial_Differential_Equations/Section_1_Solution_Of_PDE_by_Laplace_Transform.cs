@@ -77,25 +77,25 @@
             /// 
             /// by substitution in the equation we have
             /// <math>
-            /// -\pi^2(A\sin(\pi x) + B\cos(\pi x))  - \frac{s}{\alpha} \left(A\sin(x) + B\cos(x) \right) = -\frac{1}{\alpha}\sin(\pi x)
+            /// -\pi^2(A\sin(\pi x) + B\cos(\pi x))  - \frac{s}{\alpha} \left(A\sin(\pi x) + B\cos(\pi x) \right) = -\frac{1}{\alpha}\sin(\pi x)
             /// </math>
             /// it follows that :math:`B = 0` and :math:`A = 1/(s + \pi^2\alpha)`
             /// 
             /// General Solution is thus:, 
-            /// it is clear that :math:`B(s) = 0`, because :math:`\cosh(0) = 1`.
             /// <math>
             /// C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}x\right) + C_2(s) \cosh\left(\sqrt{\frac{s}{\alpha}}x\right) + \frac{\sin(\pi x)}{s + \pi^2\alpha}
             /// </math>
             ///
             /// Step 4: Applying the boundary conditions:
+            /// 
             /// 1. at :math:`x = 0`:
             /// <math>
             /// U(0, s) = C_1(0) + C_2(1) + 0 = 0 \implies C_2 = 0;
             /// </math>
             /// 
-            /// 2. at :math:`x = \pi`:
+            /// 2. at :math:`x = 1`:
             /// <math>
-            /// C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}\pi\right) = 0 \implies  C_1 = 0
+            /// C_1(s) \sinh\left(\sqrt{\frac{s}{\alpha}}\right) = 0 \implies  C_1 = 0
             /// </math>
             /// 
             /// hence,
@@ -115,8 +115,8 @@
             /// <code>
             {
                 // Define the function and interval
-                double alpha = 1.0, π = pi;
-                ColVec x = Linspace(0, 1, 51);
+                double alpha = 0.5, π = pi;
+                ColVec x = Linspace(0, 1, 101);
                 RowVec T = Linspace(0, 0.5, 6);
                 Matrix U = Exp(-alpha * π * π * T).Times(Sin(π * x));
                 Plot(x, U, Linewidth: 2); GridOn();

@@ -67,7 +67,7 @@
             /// \frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}
             /// </math>
             /// 
-            /// with initial condition :math:`u(x,0) = \sin(x)` and boundary conditions :math:`u(0,t) = u(\pi,t) = 0`.
+            /// with initial condition :math:`u(x,0) = \sin(\pi x)` and boundary conditions :math:`u(0,t) = u(1,t) = 0`.
             /// <code>
             {
                 // SOLVE_HEAT_EQUATION Solves the 1D heat equation using pdepe
