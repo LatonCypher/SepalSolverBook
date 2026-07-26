@@ -44,7 +44,7 @@
             /// </math>
             /// 
             /// <math>
-            /// \mathcal{L}\left{\alpha \frac{\partial^2 u}{\partial x^2}\right} = \alpha \frac{\partial^2 U}{\partial x^2}
+            /// \mathcal{L}\left{ \alpha \frac{\partial^2 u}{\partial x^2} \right} = \alpha \frac{\partial^2 U}{\partial x^2}
             /// </math>
             /// 
             /// Step 2: Transform the boundary conditions
@@ -54,7 +54,7 @@
             ///  
             /// Step 3: Solve the Ordinary Differential Equation
             /// <math>
-            /// sU(x,s) - sin(x) = \alpha \frac{\partial^2 U}{\partial x^2}
+            /// sU(x,s) - \sin(x) = \alpha \frac{\partial^2 U}{\partial x^2}
             /// </math>
             ///
             /// Rearranging gives:
@@ -77,7 +77,7 @@
             /// 
             /// by substitution in the equation we have
             /// <math>
-            /// -(A sin(x) + B cos(x))  - \frac{s}{\alpha} \left(A sin(x) + B cos(x) \right) = -\frac{1}{\alpha}\sin(x)
+            /// -(A\sin(x) + B\cos(x))  - \frac{s}{\alpha} \left(A\sin(x) + B\cos(x) \right) = -\frac{1}{\alpha}\sin(x)
             /// </math>
             /// it follows that :math:`B = 0` and :math:`A = 1/(s + \alpha)`
             /// 
@@ -106,7 +106,7 @@
             /// </math>
             /// 
             /// <math>
-            /// u(x, t) = e^{-alpha t}\sin(x)
+            /// u(x, t) = e^{-\alpha t}\sin(x)
             /// </math>
             /// 
             /// <code>
