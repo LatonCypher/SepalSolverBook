@@ -246,12 +246,12 @@ boundary condition
 
 .. math::
 
-   u(\pm L/2, y, t) = 0 \text{for} y in [-L/2, L/2]
+   u(\pm L/2, y, t) = 0~\text{for}~y \in [-L/2, L/2]
 
 
 .. math::
 
-   u(x, \pm L/2, t) = 0 \text{for} x in [-L/2, L/2]
+   u(x, \pm L/2, t) = 0~\text{for}~x \in [-L/2, L/2]
 
 
 
