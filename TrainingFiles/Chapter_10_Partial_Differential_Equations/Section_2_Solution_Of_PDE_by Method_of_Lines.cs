@@ -201,6 +201,8 @@
             /// u(x,y,0) = \begin{cases} 0.5\left(1 + \cos\left(\cfrac{\pi r(x, y)}{R} \right) \right) & \text{if } r(x,y) < R, \\ 0 & \text{otherwise} \end{cases} 
             /// </math>
             /// where :math:`r = \sqrt{(x - x_c)^2 + (y - y_c)^2}`
+            /// 
+            /// 
             /// boundary condition
             /// <math>
             /// u(\pm L/2, y, t) = 0~\text{for}~y \in [-L/2, L/2]
@@ -208,6 +210,99 @@
             /// <math>
             /// u(x, \pm L/2, t) = 0~\text{for}~x \in [-L/2, L/2]
             /// </math>
+            /// 
+            /// Step 1: Convert to system of first order PDEs in time
+            /// <math>
+            /// \frac{\partial u}{\partial t} = v
+            /// </math>
+            /// and hence
+            /// <math>
+            /// \frac{\partial v}{\partial t} = c^2\left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right)
+            /// </math>
+            /// 
+            /// Step 2: discretize the spatial part of the equation as:
+            /// <math>
+            /// \frac{\partial^2 u}{\partial x^2} = \frac{u(i+1, j) - 2u(i, j) + u(i-1, j)}{(\Delta x)^2}
+            /// </math>
+            /// <math>
+            /// \frac{\partial^2 u}{\partial y^2} = \frac{u(i, j+1) - 2u(i, j) + u(i, j-1)}{(\Delta y)^2}
+            /// </math>
+            /// 
+            /// Step 3: Assemble the system of coupled ODEs
+            /// <math>
+            /// \frac{\partial u(i, j)}{\partial t} = v(i, j)
+            /// </math>
+            /// <math>
+            /// \frac{\partial v(i, j)}{\partial t} = c^2\left(\frac{u(i+1, j) - 2u(i, j) + u(i-1, j)}{(\Delta x)^2} + \frac{u(i, j+1) - 2u(i, j) + u(i, j-1)}{(\Delta y)^2} \right)
+            /// </math>
+            /// We were given boundary conditions for u but we introduce v, so we have to create the boubdary condition for that by differentiating the given boundary condition. 
+            /// 
+            /// <math>
+            /// \frac{\partial u}{\partial t}(\pm L/2, y, t) = 0~\text{for}~y \in [-L/2, L/2]
+            /// </math>
+            /// <math>
+            /// \frac{\partial u}{\partial t}(x, \pm L/2, t) = 0~\text{for}~x \in [-L/2, L/2]
+            /// </math>
+            /// 
+            /// we can do so for :math:`\partial u/\partial t` too
+            /// <math>
+            /// \frac{\partial v}{\partial t}(\pm L/2, y, t) = 0~\text{for}~y \in [-L/2, L/2]
+            /// </math>
+            /// <math>
+            /// \frac{\partial v}{\partial t}(x, \pm L/2, t) = 0~\text{for}~x \in [-L/2, L/2]
+            /// </math>
+            /// 
+            {
+                // Set the domain
+                int Nx = 100, Ny = 100;
+                double Lx = 1, Ly = 1;
+                double c = 1, dx = Lx / Nx, dy = Ly / Ny;
+                double[] x = Linspace(-Lx / 2, Lx / 2, Nx + 1);
+                double[] y = Linspace(-Ly / 2, Ly / 2, Ny + 1);
+                (var X, var Y) = Meshgrid(x, y);
+
+                // Compute dt to ensure the solution is stable
+                double CFL = 0.3;
+                double dt = CFL * (dx * dy) / (c * Hypot(dx, dy));
+                double dx2 = dx * dx, dy2 = dy * dy, c2 = c * c;
+
+                // Set the function the computes the derivatives
+                (Matrix du, Matrix dv) duvdt(Matrix u, Matrix v)
+                {
+                    Matrix du = v, dv = Zeros(Nx + 1, Ny + 1);
+                    Matrix d2udx2 = (u[..^2, 1..^1] - 2 * u[1..^1, 1..^1] + u[2.., 1..^1]) / dx2;
+                    Matrix d2udy2 = (u[1..^1, ..^2] - 2 * u[1..^1, 1..^1] + u[1..^1, 2..]) / dy2;
+                    dv[1..^1, 1..^1] = c2 * (d2udx2 + d2udy2);
+                    return (du, dv);
+                }
+
+                // RungeKutta Integrator
+                (Matrix u, Matrix v) rk4(Matrix u, Matrix v)
+                {
+                    (var ku1, var kv1) = duvdt(u, v);
+                    (var ku2, var kv2) = duvdt(u + 0.5 * ku1 * dt, v + 0.5 * kv1 * dt);
+                    (var ku3, var kv3) = duvdt(u + 0.5 * ku2 * dt, v + 0.5 * kv2 * dt);
+                    (var ku4, var kv4) = duvdt(u + ku3 * dt, v + kv3 * dt);
+                    u += (ku1 + 2 * ku2 + 2 * ku3 + ku4) * dt / 6;
+                    v += (kv1 + 2 * kv2 + 2 * kv3 + kv4) * dt / 6;
+                    return (u, v);
+                }
+
+                // Initialize
+                double xc = 0, yc = -0.4, R = 0.1;
+                Matrix r = Hypot(X - xc, Y - yc);
+                Matrix U = 1 + Cos(pi * r / R), V = Zeros(Nx + 1, Ny + 1);
+                U[r > R] = 0;
+
+                // Simulate
+                int n = 1;
+                while (n < 1000)
+                {
+                    (U, V) = rk4(U, V);
+                    n++;
+                }
+            }
+            /// </code>
             /// 
             /// 
             /// </BookContent>
