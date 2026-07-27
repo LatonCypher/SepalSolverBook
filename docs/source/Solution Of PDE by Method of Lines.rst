@@ -242,6 +242,7 @@ initial condition
 
    u(x,y,0) = \begin{cases} 0.5\left(1 + \cos\left(\cfrac{\pi r(x, y)}{R} \right) \right) & \text{if } r(x,y) < R, \\ 0 & \text{otherwise} \end{cases} 
 
+where :math:`r = \sqrt{(x - x_c)^2 + (y - y_c)^2}`
 boundary condition
 
 .. math::
