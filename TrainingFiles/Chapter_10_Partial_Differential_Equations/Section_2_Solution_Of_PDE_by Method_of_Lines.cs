@@ -252,6 +252,7 @@
             /// \frac{\partial v}{\partial t}(x, \pm L/2, t) = 0~\text{for}~x \in [-L/2, L/2]
             /// </math>
             /// 
+            /// <code>
             {
                 // Set the domain
                 int Nx = 100, Ny = 100;

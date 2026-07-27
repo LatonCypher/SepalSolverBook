@@ -318,56 +318,57 @@ we can do so for :math:`\partial u/\partial t` too
    \frac{\partial v}{\partial t}(x, \pm L/2, t) = 0~\text{for}~x \in [-L/2, L/2]
 
 
-            {
-                // Set the domain
-                int Nx = 100, Ny = 100;
-                double Lx = 1, Ly = 1;
-                double c = 1, dx = Lx / Nx, dy = Ly / Ny;
-                double[] x = Linspace(-Lx / 2, Lx / 2, Nx + 1);
-                double[] y = Linspace(-Ly / 2, Ly / 2, Ny + 1);
-                (var X, var Y) = Meshgrid(x, y);
 
-                // Compute dt to ensure the solution is stable
-                double CFL = 0.3;
-                double dt = CFL * (dx * dy) / (c * Hypot(dx, dy));
-                double dx2 = dx * dx, dy2 = dy * dy, c2 = c * c;
+.. code-block:: csharp
 
-                // Set the function the computes the derivatives
-                (Matrix du, Matrix dv) duvdt(Matrix u, Matrix v)
-                {
-                    Matrix du = v, dv = Zeros(Nx + 1, Ny + 1);
-                    Matrix d2udx2 = (u[..^2, 1..^1] - 2 * u[1..^1, 1..^1] + u[2.., 1..^1]) / dx2;
-                    Matrix d2udy2 = (u[1..^1, ..^2] - 2 * u[1..^1, 1..^1] + u[1..^1, 2..]) / dy2;
-                    dv[1..^1, 1..^1] = c2 * (d2udx2 + d2udy2);
-                    return (du, dv);
-                }
+   // Set the domain
+   int Nx = 100, Ny = 100;
+   double Lx = 1, Ly = 1;
+   double c = 1, dx = Lx / Nx, dy = Ly / Ny;
+   double[] x = Linspace(-Lx / 2, Lx / 2, Nx + 1);
+   double[] y = Linspace(-Ly / 2, Ly / 2, Ny + 1);
+   (var X, var Y) = Meshgrid(x, y);
 
-                // RungeKutta Integrator
-                (Matrix u, Matrix v) rk4(Matrix u, Matrix v)
-                {
-                    (var ku1, var kv1) = duvdt(u, v);
-                    (var ku2, var kv2) = duvdt(u + 0.5 * ku1 * dt, v + 0.5 * kv1 * dt);
-                    (var ku3, var kv3) = duvdt(u + 0.5 * ku2 * dt, v + 0.5 * kv2 * dt);
-                    (var ku4, var kv4) = duvdt(u + ku3 * dt, v + kv3 * dt);
-                    u += (ku1 + 2 * ku2 + 2 * ku3 + ku4) * dt / 6;
-                    v += (kv1 + 2 * kv2 + 2 * kv3 + kv4) * dt / 6;
-                    return (u, v);
-                }
+   // Compute dt to ensure the solution is stable
+   double CFL = 0.3;
+   double dt = CFL * (dx * dy) / (c * Hypot(dx, dy));
+   double dx2 = dx * dx, dy2 = dy * dy, c2 = c * c;
 
-                // Initialize
-                double xc = 0, yc = -0.4, R = 0.1;
-                Matrix r = Hypot(X - xc, Y - yc);
-                Matrix U = 1 + Cos(pi * r / R), V = Zeros(Nx + 1, Ny + 1);
-                U[r > R] = 0;
+   // Set the function the computes the derivatives
+   (Matrix du, Matrix dv) duvdt(Matrix u, Matrix v)
+   {
+       Matrix du = v, dv = Zeros(Nx + 1, Ny + 1);
+       Matrix d2udx2 = (u[..^2, 1..^1] - 2 * u[1..^1, 1..^1] + u[2.., 1..^1]) / dx2;
+       Matrix d2udy2 = (u[1..^1, ..^2] - 2 * u[1..^1, 1..^1] + u[1..^1, 2..]) / dy2;
+       dv[1..^1, 1..^1] = c2 * (d2udx2 + d2udy2);
+       return (du, dv);
+   }
 
-                // Simulate
-                int n = 1;
-                while (n < 1000)
-                {
-                    (U, V) = rk4(U, V);
-                    n++;
-                }
-            }
-</code>
+   // RungeKutta Integrator
+   (Matrix u, Matrix v) rk4(Matrix u, Matrix v)
+   {
+       (var ku1, var kv1) = duvdt(u, v);
+       (var ku2, var kv2) = duvdt(u + 0.5 * ku1 * dt, v + 0.5 * kv1 * dt);
+       (var ku3, var kv3) = duvdt(u + 0.5 * ku2 * dt, v + 0.5 * kv2 * dt);
+       (var ku4, var kv4) = duvdt(u + ku3 * dt, v + kv3 * dt);
+       u += (ku1 + 2 * ku2 + 2 * ku3 + ku4) * dt / 6;
+       v += (kv1 + 2 * kv2 + 2 * kv3 + kv4) * dt / 6;
+       return (u, v);
+   }
+
+   // Initialize
+   double xc = 0, yc = -0.4, R = 0.1;
+   Matrix r = Hypot(X - xc, Y - yc);
+   Matrix U = 1 + Cos(pi * r / R), V = Zeros(Nx + 1, Ny + 1);
+   U[r > R] = 0;
+
+   // Simulate
+   int n = 1;
+   while (n < 1000)
+   {
+       (U, V) = rk4(U, V);
+       n++;
+   }
+
 
 
