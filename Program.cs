@@ -203,6 +203,19 @@
         //    Legend(T.Select(t => $"t = {t:0.00}"));
         //    SaveAs("Cylindrical_FisherKPP.png");
         //}
+
+        {
+            double D = 0.01;         // Diffusion coefficient
+            double growthRate = 1.0; // Growth rate
+            double C_ambient = 0.0;  // C ambient
+
+            (ColVec T, Matrix U) = Pdepe(
+                m: 1,                                                                     // 1 for Cylindrical, 2 for Spherical
+                pdefun: (r, t, u, dudr) => (1.0, D * dudr, growthRate * u * (1.0 - u)),   // Pdefunction
+                icfun: r => r < 0.4 ? 1.0 : 0.0,                                          // Initial condition
+                bcfun: (rl, ul, rr, ur, t) => (0, 1, ur - C_ambient, 0),                  // Boundary Condition :Symmetry at origin, Dirichlet at boundary
+                x: Linspace(0, 5, 101), t: Linspace(0, 6, 7));
+        }
     }
 
     Writer.Run();

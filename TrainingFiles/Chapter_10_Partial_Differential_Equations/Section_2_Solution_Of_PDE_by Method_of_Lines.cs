@@ -114,9 +114,13 @@
             /// <math>
             /// \frac{\partial u}{\partial t} = D\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u}{\partial r} \right) + r_g \cdot u(1 - u)
             /// </math>
-            /// 
+            /// initial condition
             /// <math>
-            /// 
+            /// u(x,0) = \begin{cases} 0.8 & \text{if } x < 0.5, \\ 0 & \text{otherwise} \end{cases} 
+            /// </math>
+            /// boundary condition
+            /// <math>
+            /// \left.\frac{\partial u}{\partial r}\right|_{(0,t)} = 0, \quad \left.\frac{\partial u}{\partial r}\right|_{(5,t)} = 0
             /// </math>
             /// 
             /// <code>
@@ -127,7 +131,7 @@
                 // Domain:    x in [0, 5],  t in [0, 6]
                 // IC:        u(x,0) = 0.8 if x < 0.5;
                 //                     0.0 otherwise
-                // BC:        du/dx(0,t) = 0,  du/dx(1,t) = 0
+                // BC:        du/dx(0,t) = 0,  du/dx(5,t) = 0
                 //
                 // 1. Model Parameters & Mesh Setup
                 int m = 1; // Slab geometry
@@ -162,6 +166,48 @@
                 SaveAs("Cylindrical_FisherKPP.png");
             }
             /// </code>
+            /// 
+            /// 
+            /// It is important to note that pdepe can be invoked with a shothand form as shown in the example below
+            /// <code>
+            {
+                double D = 0.01;                  // Diffusion coefficient
+                double growthRate = 1.0;          // Growth rate
+                double C_ambient = 0.0;           // C ambient
+                double[] r = Linspace(0, 5, 101); //
+
+                (ColVec T, Matrix U) = Pdepe(
+                    m: 1,                                                                     // 1 for Cylindrical, 2 for Spherical
+                    pdefun: (r, t, u, dudr) => (1.0, D * dudr, growthRate * u * (1.0 - u)),   // Pdefunction
+                    icfun: r => r < 0.4 ? 1.0 : 0.0,                                          // Initial condition
+                    bcfun: (rl, ul, rr, ur, t) => (0, 1, ur - C_ambient, 0),                  // Boundary Condition :Symmetry at origin, Dirichlet at boundary
+                    x: r, t: Linspace(0, 6, 7));
+
+                Plot(r, U, Linewidth: 2); GridOn();
+                Title("Cylindrical Fisher-KPP Radial Wave Front (m = 1)");
+                Xlabel("Position r"); Ylabel("Population Density u(r,t)");
+                Legend(T.Select(t => $"t = {t:0.00}"));
+                SaveAs("Cylindrical_FisherKPP.png");
+            }
+            /// </code>
+            /// 
+            /// For higher dimensions, the same method can be applied. This will be demonstrated using wave equation
+            /// assume :math:`c > 0`
+            ///  <math>
+            /// \frac{\partial^2 u}{\partial t^2} = c^2\left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right)
+            /// </math>
+            /// initial condition
+            /// <math>
+            /// u(x,y,0) = \begin{cases} 0.5\left(1 + \cos\left(\cfrac{\pi r(x, y)}{R} \right) \right) & \text{if } r(x,y) < R, \\ 0 & \text{otherwise} \end{cases} 
+            /// </math>
+            /// boundary condition
+            /// <math>
+            /// u(\pm L/2, y, t) = 0 \text{for} y in [-L/2, L/2]
+            /// </math>
+            /// <math>
+            /// u(x, \pm L/2, t) = 0 \text{for} x in [-L/2, L/2]
+            /// </math>
+            /// 
             /// 
             /// </BookContent>
         }
