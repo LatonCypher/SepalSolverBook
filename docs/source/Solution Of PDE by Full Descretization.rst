@@ -173,6 +173,9 @@ where :math:`\mathbf{A}` and :math:`\mathbf{B}` are tridiagonal matrices. This s
    :alt: TemperatureProfile_CrankNicolson.gif
 
 
+
+Example 3: Implicit Scheme, with Finite Element for Spatial derivatives
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 When applying the Finite Element Method to time-dependent problems such as the 1D heat equation:
 
 
@@ -273,8 +276,8 @@ Using an implicit time-integration scheme (Backward Euler) for stability:
 
 
 
-Example 2: Chebyshev Spectral Differentiation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Example 2: Implicit Scheme with Chebyshev Spectral Differentiation for Spatial Derivative
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Constructing a Chebyshev differentiation matrix :math:`\mathbf{D}_N` to compute high-accuracy spatial derivatives on Gauss-Lobatto collocation points :math:`x_k = \cos\left(\frac{k\pi}{N}\right)`:
 
 

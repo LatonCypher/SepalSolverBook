@@ -160,6 +160,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_10_Partial_Differential_Equations
             }
             /// </code>
             /// 
+            /// 
+            ///  <header 3> Example 3: Implicit Scheme, with Finite Element for Spatial derivatives </header 3>
             /// When applying the Finite Element Method to time-dependent problems such as the 1D heat equation:
             ///
             /// <math>
@@ -185,14 +187,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_10_Partial_Differential_Equations
             ///
             /// <code>
             {
-                double alpha = 0.5;
-                double L = 1.0;
-                double t_final = 0.5;
+                double alpha = 0.5, L = 1.0, t_final = 0.5;
 
-                int numElements = 50;
-                int numNodes = numElements + 1;
-                double h = L / numElements;
-                double dt = 0.01;
+                int numElements = 50, numNodes = numElements + 1;
+                double h = L / numElements, dt = 0.01;
                 int Nt = (int)(t_final / dt);
 
                 ColVec x = Linspace(0, L, numNodes);
@@ -202,10 +200,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_10_Partial_Differential_Equations
                 Matrix M = Zeros(numNodes, numNodes);
 
                 // Local element stiffness matrix: (1/h) * [1, -1; -1, 1]
-                Matrix ke = new double[,] { { 1.0 / h, -1.0 / h }, { -1.0 / h, 1.0 / h } };
+                Matrix ke = new double[,] { { 1, -1 }, { -1, 1 } }; ke /= h;
 
                 // Local element mass matrix: (h/6) * [2, 1; 1, 2]
-                Matrix me = new double[,] { { 2.0 * h / 6.0, 1.0 * h / 6.0 }, { 1.0 * h / 6.0, 2.0 * h / 6.0 } };
+                Matrix me = new double[,] { { 2, 1 }, { 1, 2 } }; me *= h / 6;
 
                 // Global assembly over elements
                 for (int e = 0; e < numElements; e++)
@@ -249,7 +247,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_10_Partial_Differential_Equations
             /// 
             ///
             ///
-            /// <header 3> Example 2: Chebyshev Spectral Differentiation </header 3>
+            /// <header 3> Example 2: Implicit Scheme with Chebyshev Spectral Differentiation for Spatial Derivative</header 3>
             /// Constructing a Chebyshev differentiation matrix :math:`\mathbf{D}_N` to compute high-accuracy spatial derivatives on Gauss-Lobatto collocation points :math:`x_k = \cos\left(\frac{k\pi}{N}\right)`:
             ///
             /// <code>
