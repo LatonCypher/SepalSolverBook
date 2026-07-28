@@ -306,6 +306,10 @@
             /// </code>
             /// 
             /// 
+            /// <figure>
+            /// wave_2d_simulation.gif
+            /// </figure>
+            /// 
             /// </BookContent>
         }
     }
