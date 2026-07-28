@@ -371,7 +371,8 @@ we can do so for :math:`\partial u/\partial t` too
    }
 
 
+
 .. figure:: images/wave_2d_simulation.gif
-   :align: center
-   : alt: wave_2d_simulation.gif
+    :align: center
+    :alt: wave_2d_simulation.gif
 

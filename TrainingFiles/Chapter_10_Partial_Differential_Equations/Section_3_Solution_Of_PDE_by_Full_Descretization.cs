@@ -74,6 +74,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_10_Partial_Differential_Equations
 
                 // Plot the initial condition
                 var TempProfile = Plot(x, Un, Linewidth: 2);
+                Title("Emplicit Solution");
+                Xlabel("Position x"); Ylabel("Temperature T");
 
                 byte[] Animfun(int n)
                 {
@@ -87,7 +89,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_10_Partial_Differential_Equations
                     TempProfile.Ydata = Un;
                     return GetFrame();
                 }
-                AnimationMaker(Animfun, "TemperaturePrile_Explicit.gif", 10, Nt);
+                AnimationMaker(Animfun, "TemperatureProfile_Explicit.gif", 10, Nt);
                 CloseFig();
             }
             /// </code>
@@ -154,10 +156,180 @@ namespace ConsoleApp1.TrainingFiles.Chapter_10_Partial_Differential_Equations
                     TempProfile.Ydata = Un;
                     return GetFrame();
                 }
-                AnimationMaker(Animfun, "TemperaturePrile_CrankNicolson.gif", 10, Nt);
+                AnimationMaker(Animfun, "TemperatureProfile_CrankNicolson.gif", 10, Nt);
             }
             /// </code>
             /// 
+            /// When applying the Finite Element Method to time-dependent problems such as the 1D heat equation:
+            ///
+            /// <math>
+            /// \frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2} + f(x,t)
+            /// </math>
+            ///
+            /// applying the Galerkin spatial discretization yields a system of coupled ODEs in matrix form:
+            ///
+            /// <math>
+            /// \mathbf{M} \frac{d\mathbf{u}}{dt} + \alpha \mathbf{K} \mathbf{u} = \mathbf{F}
+            /// </math>
+            ///
+            /// where:
+            /// - :math:`\mathbf{M}` is the Global Mass Matrix (:math:`M_{ij} = \int_\Omega \phi_i \phi_j \, dx`), representing the temporal inertia/capacity. For 1D linear elements of length :math:`h`, the local element mass matrix is :math:`\mathbf{m}_e = \frac{h}{6} \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}`.
+            /// - :math:`\mathbf{K}` is the Global Stiffness Matrix (:math:`K_{ij} = \int_\Omega \frac{d\phi_i}{dx} \frac{d\phi_j}{dx} \, dx`), with local element stiffness matrix :math:`\mathbf{k}_e = \frac{1}{h} \begin{bmatrix} 1 & -1 \\ -1 & 1 \end{bmatrix}`.
+            /// - :math:`\mathbf{u}(t)` is the vector of nodal temperature values evolving over time.
+            ///
+            /// Using an implicit time-integration scheme (Backward Euler) for stability:
+            ///
+            /// <math>
+            /// \left( \mathbf{M} + \Delta t \cdot \alpha \mathbf{K} \right) \mathbf{u}^{n+1} = \mathbf{M} \mathbf{u}^n + \Delta t \cdot \mathbf{F}^{n+1}
+            /// </math>
+            ///
+            /// <code>
+            {
+                double alpha = 0.5;
+                double L = 1.0;
+                double t_final = 0.5;
+
+                int numElements = 50;
+                int numNodes = numElements + 1;
+                double h = L / numElements;
+                double dt = 0.01;
+                int Nt = (int)(t_final / dt);
+
+                ColVec x = Linspace(0, L, numNodes);
+
+                // Global Stiffness Matrix K and Mass Matrix M
+                Matrix K = Zeros(numNodes, numNodes);
+                Matrix M = Zeros(numNodes, numNodes);
+
+                // Local element stiffness matrix: (1/h) * [1, -1; -1, 1]
+                Matrix ke = new double[,] { { 1.0 / h, -1.0 / h }, { -1.0 / h, 1.0 / h } };
+
+                // Local element mass matrix: (h/6) * [2, 1; 1, 2]
+                Matrix me = new double[,] { { 2.0 * h / 6.0, 1.0 * h / 6.0 }, { 1.0 * h / 6.0, 2.0 * h / 6.0 } };
+
+                // Global assembly over elements
+                for (int e = 0; e < numElements; e++)
+                {
+                    int[] nodes = [e, e + 1];
+                    K[nodes, nodes] += ke;
+                    M[nodes, nodes] += me;
+                }
+
+                // Initial Condition: u(x,0) = sin(pi * x)
+                ColVec U = Sin(pi * x);
+                var TempProfile = Plot(x, U, Linewidth: 2); GridOn();
+                Title("1D FEM Transient Heat Equation Solution");
+                Xlabel("Position x"); Ylabel("Temperature T");
+
+                // Construct System Matrix A = M + dt * alpha * K for Implicit Time Stepping
+                Matrix A = M + dt * alpha * K;
+
+                // Apply Dirichlet Boundary Conditions to System Matrix A
+                A[0, ..] = 0.0; A[0, 0] = 1.0;
+                A[numNodes - 1, ..] = 0.0; A[numNodes - 1, numNodes - 1] = 1.0;
+
+                // Time-stepping Loop
+                byte[] Animfun(int n)
+                {
+                    // Right-hand side vector: B = M * u^n
+                    ColVec rhs = M * U;
+
+                    // Apply Dirichlet Boundary Conditions to RHS
+                    rhs[0] = 0.0; rhs[numNodes - 1] = 0.0;
+
+                    // Solve linear system A * u^{n+1} = rhs
+                    U = Mldivide(A, rhs);
+                    TempProfile.Ydata = U;
+                    return GetFrame();
+                }
+                AnimationMaker(Animfun, "FEM_1D_Heat_Solution.gif", 10, Nt);
+            }
+            /// </code>
+            /// 
+            /// 
+            ///
+            ///
+            /// <header 3> Example 2: Chebyshev Spectral Differentiation </header 3>
+            /// Constructing a Chebyshev differentiation matrix :math:`\mathbf{D}_N` to compute high-accuracy spatial derivatives on Gauss-Lobatto collocation points :math:`x_k = \cos\left(\frac{k\pi}{N}\right)`:
+            ///
+            /// <code>
+            {
+                // CHEBYSHEV_SPECTRAL_DERIVATIVE High-accuracy spectral spatial derivative
+
+                double alpha = 0.5;
+                double t_final = 0.5;
+                int N = 20; // Only 20 spectral nodes yield machine-precision spatial derivative
+
+                // Chebyshev Gauss-Lobatto nodes on [-1, 1]
+                ColVec k = Linspace(0, N, N + 1);
+                ColVec x = Cos(k * pi / N);
+
+                // 1. Construct Chebyshev Differentiation Matrix D
+                Matrix D = Zeros(N + 1, N + 1);
+                ColVec c = Ones(N + 1);
+                c[[0, N]] = 2.0;
+
+                for (int i = 0; i <= N; i++)
+                {
+                    for (int j = 0; j <= N; j++)
+                    {
+                        if (i != j)
+                        {
+                            D[i, j] = (c[i] / c[j]) * (Pow(-1.0, i + j) / (x[i] - x[j]));
+                        }
+                    }
+                }
+
+                // Enforce negative row-sum identity on diagonals
+                for (int i = 0; i <= N; i++)
+                {
+                    double sum = 0.0;
+                    for (int j = 0; j <= N; j++)
+                    {
+                        if (i != j) sum += D[i, j];
+                    }
+                    D[i, i] = -sum;
+                }
+
+                // 2. Second Derivative Matrix D2 = D * D
+                Matrix D2 = D * D;
+
+                // Time-stepping setup (Implicit Backward Euler)
+                double dt = 0.005;
+                int Nt = (int)(t_final / dt);
+
+                // Initial Condition: u(x,0) = cos(pi * x / 2)
+                ColVec U = Cos(pi * x / 2.0);
+                var TempProfile = Plot(x, U, Linewidth: 2); GridOn();
+                Title("1D Chebyshev Spectral Transient Heat Equation Solution");
+                Xlabel("Position x"); Ylabel("Temperature T");
+
+                // System Matrix: A = I - dt * alpha * D2
+                Matrix I = Eye(N + 1);
+                Matrix A = I - dt * alpha * D2;
+
+                // Enforce Dirichlet Boundary Conditions implicitly at x = 1 (row 0) and x = -1 (row N)
+                A[0, ..] = 0.0; A[0, 0] = 1.0;
+                A[N, ..] = 0.0; A[N, N] = 1.0;
+
+                // Time-stepping Loop
+                byte[] Animfun(int n)
+                {
+                    // Right-hand side vector: B = M * u^n
+                    ColVec rhs = U.Duplicate();
+
+                    // Apply Dirichlet Boundary Conditions to RHS
+                    rhs[0] = 0.0; rhs[N] = 0.0;
+
+                    // Solve linear system A * u^{n+1} = rhs
+                    U = Mldivide(A, rhs);
+                    TempProfile.Ydata = U;
+                    return GetFrame();
+                }
+                AnimationMaker(Animfun, "Spectral_1D_Heat_Solution.gif", 10, Nt);
+            }
+                
+            /// </code>
             /// </BookContent> 
         }
     }

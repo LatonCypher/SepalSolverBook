@@ -344,7 +344,6 @@ namespace ConsoleApp1
                     Replace(bookContent, startIndex, 1, figurelines);
 
                 }
-
             }
         }
         static void TreatCodeBlock(List<string> bookContent)
@@ -589,6 +588,5 @@ namespace ConsoleApp1
                 Replace(bookContent, startIndex, Length + 1, Codelines);
             }
         }
-
     }
 }
