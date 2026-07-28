@@ -60,7 +60,7 @@
                 };
 
                 double[] b = [2, 1, 2, 1, -1, 2];
-                double[] f = [-1, -0.3333];
+                double[] f = [-1, -1.0 / 3];
                 var result = Linprog(f, A, b);
                 Console.WriteLine(result);
             }
@@ -85,7 +85,7 @@
                 };
 
                 double[] b = [2, 1, 2, 1, -1, 2];
-                double[] f = [-1, -0.3333];
+                double[] f = [-1, -1.0 / 3];
                 double[,] Aeq = new double[,] { { 1, 1.0 / 4 } };
                 double[] beq = [1.0 / 2];
                 var result = Linprog(f, A, b, Aeq, beq);
@@ -113,7 +113,7 @@
                 };
 
                 double[] b = [2, 1, 2, 1, -1, 2];
-                double[] f = [-1, -0.3333];
+                double[] f = [-1, -1.0/3];
                 double[,] Aeq = new double[,] { { 1, 1.0 / 4 } };
                 double[] beq = [1.0 / 2];
                 double[] Lb = [-1, -0.5], Ub = [1.5, 1.25];
@@ -121,7 +121,6 @@
                 Console.WriteLine(result);
             }
             /// </code>
-            ///
             ///
             /// </BookContent>
         }
