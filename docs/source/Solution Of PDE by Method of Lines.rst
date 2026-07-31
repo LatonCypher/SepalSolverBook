@@ -39,7 +39,7 @@ Imagine you are solving the heat equation:
 
 ## Why Use It? (Advantages)
 
-- **Leverages Existing Tech**: You can use sophisticated, pre-built ODE solvers(like `NDSolve` in Mathematica or `ode45` in MATLAB) that automatically handle error control and adaptive time-stepping.
+- **Leverages Existing Tech**: You can use sophisticated, pre-built ODE solvers(like `ode45`/`Ode45a` in SepalSolver or `ode45` in MATLAB) that automatically handle error control and adaptive time-stepping.
 - **Flexibility**: You can use different spatial discretization methods, such as finite differences, finite elements, or spectral methods, depending on the geometry of your problem
 - **Simplification**: It breaks a complex multi-dimensional problem into a more manageable "line-by-line" temporal evolution.
 
@@ -120,6 +120,7 @@ with initial condition :math:`u(x,0) = \sin(\pi x)` and boundary conditions :mat
    Title("Temperature vs. Position over Time");
    Legend(T.Select(t => $"t = {t:0.00}"));
    SaveAs("Temperature.png");
+   CloseFig();
 
 
 .. figure:: images/Temperature.png
@@ -193,6 +194,7 @@ boundary condition
    Xlabel("Position r"); Ylabel("Population Density u(r,t)");
    Legend(T.Select(t => $"t = {t:0.00}"));
    SaveAs("Cylindrical_FisherKPP.png");
+   CloseFig();
 
 
 .. figure:: images/Cylindrical_FisherKPP.png
@@ -222,6 +224,7 @@ It is important to note that pdepe can be invoked with a shothand form as shown 
    Xlabel("Position r"); Ylabel("Population Density u(r,t)");
    Legend(T.Select(t => $"t = {t:0.00}"));
    SaveAs("Cylindrical_FisherKPP.png");
+   CloseFig();
 
 
 .. figure:: images/Cylindrical_FisherKPP.png
@@ -360,14 +363,13 @@ Sources :math:`\mathbf{s}`:
    Title("Concentration Profile C(r,t)");
    Xlabel("Position r"); Ylabel("Concentration (mol/L)");
    Legend(t.Select(t => $"t = {t:0.00}"), UpperLeft);
+   SaveAs("System_of_PDE.png");
+   CloseFig();
 
 
-   SaveAs("System of PDE.png");
-
-
-.. figure:: images/System of PDE.png
+.. figure:: images/System_of_PDE.png
    :align: center
-   :alt: System of PDE.png
+   :alt: System_of_PDE.png
 
 
 

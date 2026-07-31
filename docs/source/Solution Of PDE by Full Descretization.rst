@@ -168,6 +168,7 @@ where :math:`\mathbf{A}` and :math:`\mathbf{B}` are tridiagonal matrices. This s
        return GetFrame();
    }
    AnimationMaker(Animfun, "TemperatureProfile_CrankNicolson.gif", 10, Nt);
+   CloseFig();
 
 
 .. figure:: images/TemperatureProfile_CrankNicolson.gif
@@ -264,6 +265,7 @@ Using an implicit time-integration scheme (Backward Euler) for stability:
        return GetFrame();
    }
    AnimationMaker(Animfun, "FEM_1D_Heat_Solution.gif", 10, Nt);
+   CloseFig();
 
 
 .. figure:: images/FEM_1D_Heat_Solution.gif
@@ -354,6 +356,7 @@ Constructing a Chebyshev differentiation matrix :math:`\mathbf{D}_N` to compute 
        return GetFrame();
    }
    AnimationMaker(Animfun, "Spectral_1D_Heat_Solution.gif", 10, Nt);
+   CloseFig();
 
    
 
