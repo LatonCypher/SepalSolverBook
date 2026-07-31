@@ -231,7 +231,7 @@ It is important to note that pdepe can be invoked with a shothand form as shown 
    :align: center
    :alt: Cylindrical_FisherKPP.png
 
-Example 3: SYstem of Partial Differential Equations
+Example 3: System of Partial Differential Equations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Here is a classic engineering problem: Coupled Transient Heat and Mass Transfer in a 
 Cylindrical Reactor / Packed Bed (with :math:`m = 1`). This models fluid flowing axially 

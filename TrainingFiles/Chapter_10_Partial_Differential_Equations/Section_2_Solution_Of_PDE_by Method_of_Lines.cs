@@ -193,7 +193,7 @@
                 CloseFig();
             }
             /// </code>
-            /// <header 3> Example 3: SYstem of Partial Differential Equations </header 3>
+            /// <header 3> Example 3: System of Partial Differential Equations </header 3>
             /// Here is a classic engineering problem: Coupled Transient Heat and Mass Transfer in a 
             /// Cylindrical Reactor / Packed Bed (with :math:`m = 1`). This models fluid flowing axially 
             /// through a cylindrical pipe where a chemical reaction occurs, generating heat and 
