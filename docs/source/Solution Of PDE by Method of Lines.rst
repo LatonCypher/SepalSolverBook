@@ -142,7 +142,7 @@ initial condition
 
 .. math::
 
-   u(x,0) = \begin{cases} 0.8 & \text{if } x < 0.5, \\ 0 & \text{otherwise} \end{cases} 
+   u(r,0) = \begin{cases} 0.8 & \text{if } r < 0.5, \\ 0 & \text{otherwise} \end{cases} 
 
 boundary condition
 
@@ -157,10 +157,10 @@ boundary condition
    // SOLVE-DIFFUSION-REACTION-EQUATION
    // Solves the 1D reaction-diffusion equation in cylindrical coordinates using pdepe
    // Equation:  du/dt = D/r*d/dr(r*du/dr) + g*u*(1 - u);
-   // Domain:    x in [0, 5],  t in [0, 6]
-   // IC:        u(x,0) = 0.8 if x < 0.5;
+   // Domain:    r in [0, 5],  t in [0, 6]
+   // IC:        u(r,0) = 0.8 if r < 0.5;
    //                     0.0 otherwise
-   // BC:        du/dx(0,t) = 0,  du/dx(5,t) = 0
+   // BC:        du/dr(0,t) = 0,  du/dr(5,t) = 0
    //
    // 1. Model Parameters & Mesh Setup
    int m = 1; // Slab geometry
@@ -228,7 +228,151 @@ It is important to note that pdepe can be invoked with a shothand form as shown 
    :align: center
    :alt: Cylindrical_FisherKPP.png
 
+Example 3: SYstem of Partial Differential Equations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Here is a classic engineering problem: Coupled Transient Heat and Mass Transfer in a 
+Cylindrical Reactor / Packed Bed (with :math:`m = 1`). This models fluid flowing axially 
+through a cylindrical pipe where a chemical reaction occurs, generating heat and 
+consuming reactant along both the radial direction :math:`r` and over time :math:`t`.
 
+Governing System of Equations
+For radial coordinate :math:`r \in [r_0, R]` (or :math:`x \in [0, R]`) and time :math:`t > 0`, we track two coupled variables:
+
+1. Temperature :math:`T(r,t)` 
+2. Reactant Concentration :math:`C(r,t)`
+
+
+.. math::
+
+   \begin{aligned} 
+   \rho C_p \frac{\partial T}{\partial t} &= \frac{1}{r} \frac{\partial}{\partial r} \left( r \cdot k \frac{\partial T}{\partial r} \right) + (-\Delta H) \cdot k_0 C e^{-\frac{E_a}{R_g T}} \\
+   \frac{\partial C}{\partial t} &= \frac{1}{r} \frac{\partial}{\partial r} \left( r \cdot D \frac{\partial C}{\partial r} \right) - k_0 C e^{-\frac{E_a}{R_g T}} 
+   \end{aligned}
+
+
+Standard `Pdepe` Vector Mapping
+
+In terms of the `pdepe` flux-source balance equation with cylindrical symmetry (:math:`m = 1`):
+
+
+.. math::
+
+   c\left(x,t,\mathbf{u},\frac{\partial \mathbf{u}}{\partial x}\right) \frac{\partial \mathbf{u}}{\partial t} = x^{-1} \frac{\partial}{\partial x}\left(x^1 \mathbf{f}\left(x,t,\mathbf{u},\frac{\partial \mathbf{u}}{\partial x}\right)\right) + \mathbf{s}\left(x,t,\mathbf{u},\frac{\partial \mathbf{u}}{\partial x}\right)
+
+
+We map state vector :math:`\mathbf{u} = \begin{bmatrix} T \\ C \end{bmatrix}` (where :math:`u_1 = T`, :math:`u_2 = C` and spatial coordinate :math:`x = r`):
+
+-Capacities :math:`\mathbf{c}`:
+
+.. math::
+
+   c = \begin{bmatrix} \rho C_p \\ 1 \end{bmatrix}
+
+Fluxes :math:`\mathbf{f}`:
+
+.. math::
+
+   f = \begin{bmatrix} k \frac{\partial T}{\partial r} \\ D \frac{\partial C}{\partial r} \end{bmatrix}
+
+Sources :math:`\mathbf{s}`:
+
+.. math::
+
+   s = \begin{bmatrix} (-\Delta H) \cdot k_0 C e^{-\frac{E_a}{R_g T}} \\ -k_0 C e^{-\frac{E_a}{R_g T}} \end{bmatrix}
+
+
+
+.. code-block:: csharp
+
+   // System Parameters
+   double rho = 1000.0;    // Density
+   double Cp = 4.184;      // Heat capacity
+   double k = 0.6;         // Thermal conductivity
+   double D = 1.0e-5;      // Diffusivity
+   double dH = -50000.0;   // Heat of reaction (exothermic)
+   double k0 = 100.0;      // Reaction rate constant
+   double Ea = 20000.0;    // Activation energy
+   double Rg = 8.314;      // Gas constant
+
+   // 1. PDE Definition
+   (ColVec c, ColVec f, ColVec s) PdeFun(double r, double t, ColVec u, ColVec dudr)
+   {
+       double T = u[0];
+       double C = u[1];
+
+       double dTdr = dudr[0];
+       double dCdr = dudr[1];
+
+       // Reaction rate term
+       double rate = k0 * C * Exp(-Ea / (Rg * T));
+
+       double[] cVec = [rho * Cp, 1.0];
+       double[] fVec = [k * dTdr, D * dCdr];
+       double[] sVec = [-dH * rate, -rate];
+
+       return (cVec, fVec, sVec);
+   }
+
+   // 2. Initial Conditions (T0 = 300K, C0 = 1.0 mol/L)
+   ColVec IcFun(double r)
+   {
+       double[] ic =  [300.0, 1.0];
+       return ic;
+   }
+
+   // 3. Boundary Conditions
+   // At r = 0 (Symmetry): Zero flux for both T and C -> f(0,t) = 0
+   // At r = R (Cylindrical wall): Constant wall temp Tw, zero mass flux
+   (ColVec pl, ColVec ql, ColVec pr, ColVec qr) BcFun(double rLeft, ColVec uLeft, double rRight, ColVec uRight, double t)
+   {
+       double Tw = 350.0; // Cooling/heating wall temperature
+
+       // Left Boundary (r = 0, Symmetry) -> 0 + 1*f = 0
+       double[] pl = [0.0, 0.0];
+       double[] ql = [1.0, 1.0];
+
+       // Right Boundary (r = R) -> Dirichlet for T, Neumann (Zero flux) for C
+       double[] pr = [uRight[0] - Tw, 0.0];
+       double[] qr = [0.0, 1.0];
+
+       return (pl, ql, pr, qr);
+   }
+
+   // 4. Execution Call
+   int m = 1; // Cylindrical coordinates
+   double[] rMesh = Linspace(0.0, 0.05, 51); // Cylinder radius = 5 cm
+   double[] tMesh = Linspace(0.0, 100.0, 6);
+
+   // Solves and returns Ys[0] for T(r,t) and Ys[1] for C(r,t)
+   (ColVec t, Matrix[] Ys) = Pdepe(m, PdeFun, IcFun, BcFun, rMesh, tMesh);
+
+   Matrix T_sol = Ys[0]; // [TimeSteps x SpatialNodes] for Temperature
+   Matrix C_sol = Ys[1]; // [TimeSteps x SpatialNodes] for Concentration
+
+   Subplot(1, 2, 0);
+   Plot(rMesh, T_sol, Linewidth: 2); GridOn();
+   Title("Temperature Profile T(r,t)");
+   Xlabel("Position r"); Ylabel("Temperature (K)");
+   Legend(t.Select(t => $"t = {t:0.00}"), UpperLeft);
+
+   Subplot(1, 2, 1);
+   Plot(rMesh, C_sol, Linewidth: 2); GridOn();
+   Title("Concentration Profile C(r,t)");
+   Xlabel("Position r"); Ylabel("Concentration (mol/L)");
+   Legend(t.Select(t => $"t = {t:0.00}"), UpperLeft);
+
+
+   SaveAs("System of PDE.png");
+
+
+.. figure:: images/System of PDE.png
+   :align: center
+   :alt: System of PDE.png
+
+
+
+Example 4: Higher Dimension: Wave Equation Example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For higher dimensions, the same method can be applied. This will be demonstrated using wave equation
 assume :math:`c > 0`
 

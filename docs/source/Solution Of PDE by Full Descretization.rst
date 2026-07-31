@@ -59,33 +59,35 @@ Stability Warning: The 1D explicit FTCS scheme is stable if and only if :math:`r
    double L = 1.0;
    double t_final = 0.5;
 
-   int Nx = 100;
+   int Nx = 50;
    double dx = L / Nx;
    ColVec x = Linspace(0, L, Nx + 1);
 
    // Select dt to satisfy the stability criterion: r = alpha * dt / dx^2 <= 0.5
    double CFL = 0.45, r = CFL;
    double dt = CFL * (dx * dx) / alpha;
-   int Nt = (int)(t_final / dt);
+   int Nt = (int)(t_final / dt / 5);
 
    // Initial condition: u(x,0) = sin(pi * x)
    ColVec Un = Sin(pi * x), Unp1 = Zeros(Nx + 1);
 
    // Plot the initial condition
    var TempProfile = Plot(x, Un, Linewidth: 2);
-   Title("Emplicit Solution");
+   Title("Emplicit Solution"); GridOn();
    Xlabel("Position x"); Ylabel("Temperature T");
 
    byte[] Animfun(int n)
    {
-       // Internal grid point update
-       for (int i = 1; i < Nx; i++)
-           Unp1[i] = Un[i] + r * (Un[i + 1] - 2.0 * Un[i] + Un[i - 1]);
+       for (int m = 0; m < 5; m++)
+       {// Internal grid point update
+           for (int i = 1; i < Nx; i++)
+               Unp1[i] = Un[i] + r * (Un[i + 1] - 2.0 * Un[i] + Un[i - 1]);
 
-       // Dirichlet Boundary Conditions
-       Unp1[0] = 0.0; Unp1[Nx] = 0.0;
-       Un = Unp1.Duplicate();
-       TempProfile.Ydata = Un;
+           // Dirichlet Boundary Conditions
+           Unp1[0] = 0.0; Unp1[Nx] = 0.0;
+           Un = Unp1.Duplicate();
+           TempProfile.Ydata = Un;
+       }
        return GetFrame();
    }
    AnimationMaker(Animfun, "TemperatureProfile_Explicit.gif", 10, Nt);

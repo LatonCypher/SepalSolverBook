@@ -68,7 +68,7 @@
         //    double IcFun(double r) => 100.0;
 
         //    // 4. Boundary Conditions
-        //    (double pl, double ql, double pr, double qr) BcFun(double rl, double ul, double rr, double ur, double t) => 
+        //    (double pl, double ql, double pr, double qr) BcFun(double rl, double ul, double rr, double ur, double t) =>
         //        (0, 1, h * (ur - Tinf), 1);
 
         //    // 5. Solve the PDE
@@ -95,15 +95,15 @@
         //    double L = 1;               // Length of the rod
         //    double t_final = 0.5;       // Final simulation time
 
-        //    double [] x = Linspace(0, L, 51);        // 51 spatial grid points
-        //    double [] t = Linspace(0, t_final, 6);   // 6 time steps
+        //    double[] x = Linspace(0, L, 51);        // 51 spatial grid points
+        //    double[] t = Linspace(0, t_final, 6);   // 6 time steps
 
         //    // 2. Defines the PDE components: c* du/ dt = x ^ (-m) * d / dx(x ^ m * f) + s
         //    (double c, double f, double s) pdefun(double x, double t, double u, double dudx) =>
         //        (1, alpha * dudx, 0);
 
         //    // 3. Initial sinusoidal temperature distribution
-        //    double icfun(double x) => Sin(pi * x); 
+        //    double icfun(double x) => Sin(pi * x);
 
         //    // 4. Boundary Conditions defined as: p(x, t, u) + q(x, t) * f = 0
         //    (double pl, double ql, double pr, double qr) bcfun(double xl, double ul, double xr, double ur, double t) => (ul, 0, ur, 0);
@@ -204,6 +204,7 @@
         //    SaveAs("Cylindrical_FisherKPP.png");
         //}
 
+
         //{
         //    double D = 0.01;         // Diffusion coefficient
         //    double growthRate = 1.0; // Growth rate
@@ -217,6 +218,87 @@
         //        x: Linspace(0, 5, 101), t: Linspace(0, 6, 7));
         //}
     }
+
+    //{
+    //    // System Parameters
+    //    double rho = 1000.0;    // Density
+    //    double Cp = 4.184;      // Heat capacity
+    //    double k = 0.6;         // Thermal conductivity
+    //    double D = 1.0e-5;      // Diffusivity
+    //    double dH = -50000.0;   // Heat of reaction (exothermic)
+    //    double k0 = 100.0;      // Reaction rate constant
+    //    double Ea = 20000.0;    // Activation energy
+    //    double Rg = 8.314;      // Gas constant
+
+    //    // 1. PDE Definition
+    //    (ColVec c, ColVec f, ColVec s) PdeFun(double r, double t, ColVec u, ColVec dudr)
+    //    {
+    //        double T = u[0];
+    //        double C = u[1];
+
+    //        double dTdr = dudr[0];
+    //        double dCdr = dudr[1];
+
+    //        // Reaction rate term
+    //        double rate = k0 * C * Exp(-Ea / (Rg * T));
+
+    //        double[] cVec = [rho * Cp, 1.0];
+    //        double[] fVec = [k * dTdr, D * dCdr];
+    //        double[] sVec = [-dH * rate, -rate];
+
+    //        return (cVec, fVec, sVec);
+    //    }
+
+    //    // 2. Initial Conditions (T0 = 300K, C0 = 1.0 mol/L)
+    //    ColVec IcFun(double r)
+    //    {
+    //        double[] ic = [300.0, 1.0];
+    //        return ic;
+    //    }
+
+    //    // 3. Boundary Conditions
+    //    // At r = 0 (Symmetry): Zero flux for both T and C -> f(0,t) = 0
+    //    // At r = R (Cylindrical wall): Constant wall temp Tw, zero mass flux
+    //    (ColVec pl, ColVec ql, ColVec pr, ColVec qr) BcFun(double rLeft, ColVec uLeft, double rRight, ColVec uRight, double t)
+    //    {
+    //        double Tw = 350.0; // Cooling/heating wall temperature
+
+    //        // Left Boundary (r = 0, Symmetry) -> 0 + 1*f = 0
+    //        double[] pl = [0.0, 0.0];
+    //        double[] ql = [1.0, 1.0];
+
+    //        // Right Boundary (r = R) -> Dirichlet for T, Neumann (Zero flux) for C
+    //        double[] pr = [uRight[0] - Tw, 0.0];
+    //        double[] qr = [0.0, 1.0];
+
+    //        return (pl, ql, pr, qr);
+    //    }
+
+    //    // 4. Execution Call
+    //    int m = 1; // Cylindrical coordinates
+    //    double[] rMesh = Linspace(0.0, 0.05, 51); // Cylinder radius = 5 cm
+    //    double[] tMesh = Linspace(0.0, 100.0, 6);
+
+    //    // Solves and returns Ys[0] for T(r,t) and Ys[1] for C(r,t)
+    //    (ColVec t, Matrix[] Ys) = Pdepe(m, PdeFun, IcFun, BcFun, rMesh, tMesh);
+
+    //    Matrix T_sol = Ys[0]; // [TimeSteps x SpatialNodes] for Temperature
+    //    Matrix C_sol = Ys[1]; // [TimeSteps x SpatialNodes] for Concentration
+
+    //    Subplot(1, 2, 0);
+    //    Plot(rMesh, T_sol, Linewidth: 2); GridOn();
+    //    Title("Temperature Profile T(r,t)");
+    //    Xlabel("Position r"); Ylabel("Temperature (K)");
+    //    Legend(t.Select(t => $"t = {t:0.00}"), UpperLeft);
+
+    //    Subplot(1, 2, 1);
+    //    Plot(rMesh, C_sol, Linewidth: 2); GridOn();
+    //    Title("Concentration Profile C(r,t)");
+    //    Xlabel("Position r"); Ylabel("Concentration (mol/L)");
+    //    Legend(t.Select(t => $"t = {t:0.00}"), UpperLeft);
+
+    //    SaveAs("System of PDE.png");
+    //}
 
     Writer.Run();
    {
