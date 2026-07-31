@@ -184,7 +184,7 @@ When applying the Finite Element Method to time-dependent problems such as the 1
 
 .. math::
 
-   \frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2} + f(x,t)
+   \cfrac{\partial u}{\partial t} = \alpha \cfrac{\partial^2 u}{\partial x^2} + f(x,t)
 
 
 applying the Galerkin spatial discretization yields a system of coupled ODEs in matrix form:
@@ -192,12 +192,14 @@ applying the Galerkin spatial discretization yields a system of coupled ODEs in 
 
 .. math::
 
-   \mathbf{M} \frac{d\mathbf{u}}{dt} + \alpha \mathbf{K} \mathbf{u} = \mathbf{F}
+   \mathbf{M} \cfrac{d\mathbf{u}}{dt} + \alpha \mathbf{K} \mathbf{u} = \mathbf{F}
 
 
 where:
-- :math:`\mathbf{M}` is the Global Mass Matrix (:math:`M_{ij} = \int_\Omega \phi_i \phi_j \, dx`), representing the temporal inertia/capacity. For 1D linear elements of length :math:`h`, the local element mass matrix is :math:`\mathbf{m}_e = \frac{h}{6} \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}`.
-- :math:`\mathbf{K}` is the Global Stiffness Matrix (:math:`K_{ij} = \int_\Omega \frac{d\phi_i}{dx} \frac{d\phi_j}{dx} \, dx`), with local element stiffness matrix :math:`\mathbf{k}_e = \frac{1}{h} \begin{bmatrix} 1 & -1 \\ -1 & 1 \end{bmatrix}`.
+- :math:`\mathbf{M}` is the Global Mass Matrix (:math:`M_{ij} = \int_\Omega \phi_i \phi_j \, dx`), representing the temporal inertia/capacity.
+For 1D linear elements of length :math:`h`, the local element mass matrix is :math:`\mathbf{m}_e = \cfrac{h}{6} \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}`.
+- :math:`\mathbf{K}` is the Global Stiffness Matrix (:math:`K_{ij} = \int_\Omega \cfrac{d\phi_i}{dx} \cfrac{d\phi_j}{dx} \, dx`), 
+with local element stiffness matrix :math:`\mathbf{k}_e = \cfrac{1}{h} \begin{bmatrix} 1 & -1 \\ -1 & 1 \end{bmatrix}`.
 - :math:`\mathbf{u}(t)` is the vector of nodal temperature values evolving over time.
 
 Using an implicit time-integration scheme (Backward Euler) for stability:

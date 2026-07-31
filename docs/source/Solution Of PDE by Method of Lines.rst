@@ -39,7 +39,7 @@ Imagine you are solving the heat equation:
 
 ## Why Use It? (Advantages)
 
-- **Leverages Existing Tech**: You can use sophisticated, pre-built ODE solvers(like `ode45`/`Ode45a` in SepalSolver or `ode45` in MATLAB) that automatically handle error control and adaptive time-stepping.
+- **Leverages Existing Tech**: You can use sophisticated, pre-built ODE solvers(like `Ode45`/`Ode45a` in SepalSolver or `ode45` in MATLAB) that automatically handle error control and adaptive time-stepping.
 - **Flexibility**: You can use different spatial discretization methods, such as finite differences, finite elements, or spectral methods, depending on the geometry of your problem
 - **Simplification**: It breaks a complex multi-dimensional problem into a more manageable "line-by-line" temporal evolution.
 
