@@ -318,8 +318,121 @@
             }
             /// </code>
             /// 
+            /// <header 3> Example 4: Higher Order in time: Wave Equation 1D </header 3>
+            /// This is haneld using the system of PDE just like we use system of ode to handle higher oder odes. 
+            /// We first convert the higher oder derivative in time to system of first order time pdes. 
             /// 
-            /// <header 3> Example 4: Higher Dimension: Wave Equation Example </header 3>
+            /// Lets look as example of a string fixed at the right end and exited at the left end according to 
+            /// :math:`0.5 Sin(10*t)`.
+            /// 
+            /// <math>
+            /// \frac{\partial^2 u}{\partial t^2} = c^2\frac{\partial^2 u}{\partial x^2} 
+            /// </math>
+            /// initial condition
+            /// <math>
+            /// u(x,0) = 0
+            /// </math>
+            /// boundary condition
+            /// <math>
+            /// u(0, t) = 0.5\sin(10t)
+            /// </math>
+            /// <math>
+            /// u(L, t) = 0
+            /// </math>
+            /// 
+            /// To solve this, we set :math:`v = \cfrac{\partial u}{\partial t}`
+            /// This means we also have to differentiate the boundary conditions.  
+            /// And then we have 
+            /// 
+            /// <math>
+            /// \begin{align}
+            /// \frac{\partial u}{\partial t} = v \\ 
+            /// \frac{\partial v}{\partial t} = c^2\frac{\partial^2 u}{\partial x^2} 
+            /// \end{align}
+            /// </math>
+            /// initial condition
+            /// <math>
+            /// \begin{align}
+            /// u(x,0) = 0\\
+            /// v(x,0) = 0
+            /// \end{align}
+            /// </math>
+            /// boundary condition
+            /// <math>
+            /// \begin{align}
+            /// u(0, t) = 0.5\sin(10t)\\
+            /// v(0, t) = 5\cos(10t)
+            /// \end{align}
+            /// </math>
+            /// <math>
+            /// \begin{align}
+            /// u(L, t) = 0\\
+            /// v(L, t) = 0
+            /// \end{align}
+            /// </math>
+            /// <code>
+            {
+                // 1. PDE Definition
+                (ColVec c, ColVec f, ColVec s) PdeFun(double r, double t, ColVec u, ColVec dudx)
+                {
+                    double V = u[1];
+                    double dUdx = dudx[0];
+
+                    double[] cVec = [1, 1];
+                    double[] fVec = [0, dUdx];
+                    double[] sVec = [V, 0];
+
+                    return (cVec, fVec, sVec);
+                }
+
+                // 2. Initial Conditions (T0 = 300K, C0 = 1.0 mol/L)
+                ColVec IcFun(double r)
+                {
+                    double[] ic = [0, 0];
+                    return ic;
+                }
+
+                // 3. Boundary Conditions
+                // At r = 0 (Symmetry): Zero flux for both T and C -> f(0,t) = 0
+                // At r = R (Cylindrical wall): Constant wall temp Tw, zero mass flux
+                (ColVec pl, ColVec ql, ColVec pr, ColVec qr) BcFun(double rLeft, ColVec uLeft, double rRight, ColVec uRight, double t)
+                {
+                    // Left Boundary (x = 0) -> u-0.5*sin(20t) = 0
+                    double[] pl = [uLeft[0] - 0.5 * Sin(20 * t), uLeft[1] - 10 * Cos(20 * t)];
+                    double[] ql = [0.0, 0.0];
+
+                    // Right Boundary (x = L) -> Fixed: Dirichlet for U and V, 
+                    double[] pr = [uRight[0], uRight[1]];
+                    double[] qr = [0.0, 0.0];
+
+                    return (pl, ql, pr, qr);
+                }
+
+                // 4. Execution Call
+                int m = 0; // Cartesian coordinates
+                double[] x = Linspace(0, 1, 51);
+                double[] t = Linspace(0, 1, 51);
+
+                (ColVec T, Matrix[] Ys) = Pdepe(m, PdeFun, IcFun, BcFun, x, t);
+
+                Matrix U = Ys[0]; // [TimeSteps x SpatialNodes] for Position
+                Matrix V = Ys[1]; // [TimeSteps x SpatialNodes] for Velocity
+
+                var wave = Plot(x, U[0, ..], Linewidth: 2);
+
+                // Animation
+                byte[] Animfun(int i)
+                {
+                    wave.Ydata = U[i, ..].T;
+                    return GetFrame();
+                }
+                AnimationMaker(Animfun, "Wave_Equation_Using_PDEPE.gif", 10, T.Numel);
+                CloseFig();
+            }
+            /// </code>
+            /// 
+            /// 
+            /// <header 3> Example 5: Higher Dimension: Wave Equation Example </header 3>
             /// For higher dimensions, the same method can be applied. This will be demonstrated using wave equation
             /// assume :math:`c > 0`
             ///  <math>
