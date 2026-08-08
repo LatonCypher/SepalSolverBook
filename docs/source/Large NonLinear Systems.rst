@@ -42,249 +42,323 @@ Newton’s method then updates the solution iteratively as
 
 
 
-Examples
---------
+Examples 1: Solving Large Sparse Systems
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This example shows how to use features of the fsolve solver to solve large sparse systems of equations effectively. The example uses the objective function, defined for a system of n equations,
 
-.. Admonition:: Example 1 :  
+.. math::
 
-   This example shows how to use features of the fsolve solver to solve large sparse systems of equations effectively. The example uses the objective function, defined for a system of n equations,
-   
-   .. math::
-   
-      \begin{array}{rcl}
-      F(1) &=& 3x_1 − 2x_1^2 - 2x_2 + 1 \\
-      F(i) &=& 3x_i − 2x_i^2 - x_{i-1} - 2x_{i+1} + 1 \\
-      F(n) &=& 3x_n − 2x_n^2 - x_{n-1} + 1 \\
-      \end{array}
-   
-   The equations to solve are :math:`F_i(x) = 0, 1 \leq i \leq n`.The example uses n = 1000.
-   
-   .. code-block:: csharp
-   
-      //Large Nonlinear Systems
-      int n = 1000;
-   
-      ColVec b = Ones(n), xstart;
-   
-      ColVec nlsf(ColVec x)
-      {
-          ColVec F = new double[n];
-          F[0] = (3 - 2 * x[0]) * x[0] - 2 * x[1] + 1;
-          F[1..^1] = (3 - 2 * x[1..^1]).Times(x[1..^1]) - x[..^2] - 2 * x[2..] + 1;
-          F[^1] = (3 - 2 * x[^1]) * x[^1] - x[^2] + 1;
-          return F;
-      }
-   
-      xstart = -b;
-      var opts = SolverSet(Display: true);
-      var x = Fsolve(nlsf, xstart, opts);
-      Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
-      Console.WriteLine(opts.ans.FunVal.Norm());
-   
-   
-   Ouput
-   
-   .. terminal::
-   
-       Iteration    Func-count       f(x)      Norm of Step
-           0            1          31.7962        start      
-           1           1002        3.98768       7.92421     
-           2           1003        0.65762       1.13502     
-           3           1004        0.02943       0.22302     
-           4           1005        0.00773       0.00828     
-           5           1006        0.00232       0.00181     
-           6           1007      4.585e-005     7.742e-004   
-           7           1008      1.117e-005     1.109e-005   
-           8           1009      1.841e-006     2.577e-006   
-           9           1010      1.071e-007     5.041e-007   
-           10          1011      2.527e-008     1.911e-008   
-      x = 
-        -0.5708
-        -0.6819
-        -0.7025
-        -0.7063
-        -0.7070
-        -0.7071
-        -0.7071
-        -0.7071
-        -0.7071
-        -0.7071
-           ... 
-        -0.7071
-        -0.7070
-        -0.7068
-        -0.7064
-        -0.7051
-        -0.7015
-        -0.6919
-        -0.6658
-        -0.5960
-        -0.4164
-      
-      2.527081663345413E-08
-   
-   
-   While finite difference approximations are convenient, they are computationally 
-   expensive, introduce numerical errors, and fail to exploit structural
-   properties such as sparsity. Analytic Jacobians, or those obtained via
-   automatic differentiation, provide greater accuracy, stability, and efficiency,
-   making them indispensable for large-scale nonlinear systems.
-   
-   
-   .. code-block:: csharp
-   
-      //Large Nonlinear Systems
-      int n = 1000;
-      Range i = 0..n, j = 0..(n-1), jp1 = 1..n;
-   
-      ColVec a = Ones(n-1), b = Ones(n), e = -a,
-          c = 2 * e, d, xstart;
-   
-      ColVec nlsf(ColVec x)
-      {
-          ColVec F = new double[n];
-          F[0] = (3 - 2 * x[0]) * x[0] - 2 * x[1] + 1;
-          F[1..^1] = (3 - 2 * x[1..^1]).Times(x[1..^1]) - x[..^2] - 2 * x[2..] + 1;
-          F[^1] = (3 - 2 * x[^1]) * x[^1] - x[^2] + 1;
-          return F;
-      }
-   
-      SparseMatrix C, D, E;
-      Func<ColVec, SparseMatrix> Jac = x =>
-      {
-          d = -4 * x + 3 * b;
-          D = new(i, i, d, n, n);
-          C = new(j, jp1, c, n, n);
-          E = new(jp1, j, e, n, n);
-          return C + D + E;
-      };
-   
-      xstart = -b;
-      var opts = SolverSet(Display: true, UserDefinedJac: Jac);
-      var x = Fsolve(nlsf, xstart, opts);
-      Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
-      Console.WriteLine(opts.ans.FunVal.Norm());
-   
-   
-   Ouput
-   
-   .. terminal::
-   
-       Iteration    Func-count       f(x)      Norm of Step
-           0            1          31.7962        start      
-           1            2          3.98770       7.92420     
-           2            3          0.11320       1.32541     
-           3            4        1.317e-004      0.03979     
-           4            5        1.065e-009     4.555e-005   
-           5            6        7.448e-015     3.582e-010   
-      x = 
-        -0.5708
-        -0.6819
-        -0.7025
-        -0.7063
-        -0.7070
-        -0.7071
-        -0.7071
-        -0.7071
-        -0.7071
-        -0.7071
-           ... 
-        -0.7071
-        -0.7070
-        -0.7068
-        -0.7064
-        -0.7051
-        -0.7015
-        -0.6919
-        -0.6658
-        -0.5960
-        -0.4164
-      
-      7.448429925158487E-15
-   
+   \begin{array}{rcl}
+   F(1) &=& 3x_1 − 2x_1^2 - 2x_2 + 1 \\
+   F(i) &=& 3x_i − 2x_i^2 - x_{i-1} - 2x_{i+1} + 1 \\
+   F(n) &=& 3x_n − 2x_n^2 - x_{n-1} + 1 \\
+   \end{array}
+
+The equations to solve are :math:`F_i(x) = 0, 1 \leq i \leq n`.The example uses n = 1000.
+
+.. code-block:: csharp
+
+   //Large Nonlinear Systems
+   int n = 1000;
+
+   ColVec b = Ones(n), xstart;
+
+   ColVec nlsf(ColVec x)
+   {
+       ColVec F = new double[n];
+       F[0] = (3 - 2 * x[0]) * x[0] - 2 * x[1] + 1;
+       F[1..^1] = (3 - 2 * x[1..^1]).Times(x[1..^1]) - x[..^2] - 2 * x[2..] + 1;
+       F[^1] = (3 - 2 * x[^1]) * x[^1] - x[^2] + 1;
+       return F;
+   }
+
+   xstart = -b;
+   var opts = SolverSet(Display: true);
+   tic();
+   var x = Fsolve(nlsf, xstart, opts);
+   Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
+   Console.WriteLine(opts.ans.FunVal.Norm());
+   Console.WriteLine($"Elapsed time: {toc()} seconds");
 
 
-.. Admonition:: Example 2 :  
+Ouput
 
+.. terminal::
+
+    Iteration    Func-count       f(x)      Norm of Step
+        0            1          31.7962        start      
+        1           993         3.98768       7.92421     
+        2           994         0.65762       1.13502     
+        3           995         0.02943       0.22302     
+        4           996         0.00773       0.00828     
+        5           997         0.00232       0.00181     
+        6           998       4.585e-005     7.742e-004   
+        7           999       1.117e-005     1.109e-005   
+        8           1000      1.841e-006     2.577e-006   
+        9           1001      1.071e-007     5.041e-007   
+        10          1002      2.527e-008     1.911e-008   
+   x = 
+     -0.5708
+     -0.6819
+     -0.7025
+     -0.7063
+     -0.7070
+     -0.7071
+     -0.7071
+     -0.7071
+     -0.7071
+     -0.7071
+        ... 
+     -0.7071
+     -0.7070
+     -0.7068
+     -0.7064
+     -0.7051
+     -0.7015
+     -0.6919
+     -0.6658
+     -0.5960
+     -0.4164
    
-   Multirosenbrook function is another example
+   2.527081663345413E-08
+   Elapsed time: 2.0164162 seconds
+
+While finite difference approximations are convenient, they are computationally 
+expensive, introduce numerical errors, and fail to exploit structural
+properties such as sparsity. Analytic Jacobians, or those obtained via
+automatic differentiation, provide greater accuracy, stability, and efficiency,
+making them indispensable for large-scale nonlinear systems.
+
+Examples 2: Solving Large Sparse Systems Using Sparsity Pattern Exploitation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. code-block:: csharp
+
+   //Large Nonlinear Systems
+   int n = 1000;
+   Range i = 0..n, j = 0..(n - 1), jp1 = 1..n;
+
+   ColVec e = Ones(n), xstart = -e;
+
+   ColVec nlsf(ColVec x)
+   {
+       ColVec F = new double[n];
+       F[0] = (3 - 2 * x[0]) * x[0] - 2 * x[1] + 1;
+       F[1..^1] = (3 - 2 * x[1..^1]).Times(x[1..^1]) - x[..^2] - 2 * x[2..] + 1;
+       F[^1] = (3 - 2 * x[^1]) * x[^1] - x[^2] + 1;
+       return F;
+   }
+   List<int> K = [-1, 0, 1];
+   List<ColVec> Diagonals = [e, e, e];
+   SparseMatrix Jpattern = Spdiags(Diagonals, K, n);
+
+   var opts = SolverSet(Display: true, Jpattern: Jpattern);
+   tic();
+   var x = Fsolve(nlsf, xstart, opts);
+   Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
+   Console.WriteLine(opts.ans.FunVal.Norm());
+   Console.WriteLine($"Elapsed time: {toc()} seconds");
+
+
+Ouput
+
+.. terminal::
+
+    Iteration    Func-count       f(x)      Norm of Step
+        0            1          31.7962        start      
+        1            5          3.98770       7.92420     
+        2            9          0.11320       1.32541     
+        3            13       1.317e-004      0.03979     
+        4            17       1.064e-009     4.555e-005   
+        5            21       2.026e-014     3.581e-010   
+   x = 
+     -0.5708
+     -0.6819
+     -0.7025
+     -0.7063
+     -0.7070
+     -0.7071
+     -0.7071
+     -0.7071
+     -0.7071
+     -0.7071
+        ... 
+     -0.7071
+     -0.7070
+     -0.7068
+     -0.7064
+     -0.7051
+     -0.7015
+     -0.6919
+     -0.6658
+     -0.5960
+     -0.4164
    
+   2.025906063578762E-14
+   Elapsed time: 0.0686559 seconds
+
+Examples 3: Solving Large Sparse Systems Using Analytical Jacobians
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. code-block:: csharp
+
+   //Large Nonlinear Systems
+   int n = 1000;
+   Range i = 0..n, j = 0..(n - 1), jp1 = 1..n;
+
+   ColVec a = Ones(n - 1), b = Ones(n), e = -a,
+       c = 2 * e, d, xstart;
+
+   ColVec nlsf(ColVec x)
+   {
+       ColVec F = new double[n];
+       F[0] = (3 - 2 * x[0]) * x[0] - 2 * x[1] + 1;
+       F[1..^1] = (3 - 2 * x[1..^1]).Times(x[1..^1]) - x[..^2] - 2 * x[2..] + 1;
+       F[^1] = (3 - 2 * x[^1]) * x[^1] - x[^2] + 1;
+       return F;
+   }
+
+   SparseMatrix C, D, E;
+   Func<ColVec, SparseMatrix> Jac = x =>
+   {
+       d = -4 * x + 3 * b;
+       D = new(i, i, d, n, n);
+       C = new(j, jp1, c, n, n);
+       E = new(jp1, j, e, n, n);
+       return C + D + E;
+   };
+
+   xstart = -b;
+   var opts = SolverSet(Display: true, UserDefinedJac: Jac);
+   tic();
+   var x = Fsolve(nlsf, xstart, opts);
+   Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
+   Console.WriteLine(opts.ans.FunVal.Norm());
+   Console.WriteLine($"Elapsed time: {toc()} seconds");
+
+
+Ouput
+
+.. terminal::
+
+    Iteration    Func-count       f(x)      Norm of Step
+        0            1          31.7962        start      
+        1            2          3.98770       7.92420     
+        2            3          0.11320       1.32541     
+        3            4        1.317e-004      0.03979     
+        4            5        1.065e-009     4.555e-005   
+        5            6        7.448e-015     3.582e-010   
+   x = 
+     -0.5708
+     -0.6819
+     -0.7025
+     -0.7063
+     -0.7070
+     -0.7071
+     -0.7071
+     -0.7071
+     -0.7071
+     -0.7071
+        ... 
+     -0.7071
+     -0.7070
+     -0.7068
+     -0.7064
+     -0.7051
+     -0.7015
+     -0.6919
+     -0.6658
+     -0.5960
+     -0.4164
    
-   .. math::
+   7.448429925158487E-15
+   Elapsed time: 0.0286689 seconds
+
+
+Examples 4: Solving Large Sparse Systems Using Analytical Jacobians
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Multirosenbrook function is another example
+
+
+.. math::
+
+   \begin{array}{rcl}
+   F_{2n} &=& 1 - x_{2n} \\
+   F_{2n+1} &=& 10(x_{2n + 1} - x_{2n}^2)
+   \end{array}
+
+
+
+.. code-block:: csharp
+
+   // Large Nonlinear systems
+   int n = 1000;
+
+   ColVec multirosenbrook(ColVec x)
+   {
+       // Evaluate the vector function
+       ColVec F = new double[n], 
+           x2n = x[(0..n).Step(2)], 
+           x2np1 = x[(1..n).Step(2)];
+
+       F[(0..n).Step(2)] = 1 - x2n;
+       F[(1..n).Step(2)] = 10 * (x2np1 - x2n.Pow(2));
+       return F;
+   }
+
+   SparseMatrix C, D, E;
+   Func<ColVec, SparseMatrix> Jac = x =>
+   {
+       ColVec one = Ones(n/2), x2n = x[(0..n).Step(2)];
+       C = new((0..n).Step(2), (0..n).Step(2), -one, n, n);
+       D = new((1..n).Step(2), (1..n).Step(2), 10*one, n, n);
+       E = new((1..n).Step(2), (0..n).Step(2), -20 * x2n, n, n);
+       return C + D + E;
+   };
+
+   ColVec xstart = new double[n];
+   xstart[(0..n).Step(2)] = -1.9; xstart[(1..n).Step(2)] = 2;
+   var opts = SolverSet(Display: true, UserDefinedJac: Jac);
+   tic();
+   var x = Fsolve(multirosenbrook, xstart, opts);
+   Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
+   Console.WriteLine(opts.ans.FunVal.Norm());
+   Console.WriteLine($"Elapsed time: {toc()} seconds");
+
+
+Ouput
+
+.. terminal::
+
+    Iteration    Func-count       f(x)      Norm of Step
+        0            1          365.800        start      
+        1            2          1880.53       220.179     
+        2            3             0          188.053     
+        3            4             0             0        
+   x = 
+    1 
+    1 
+    1 
+    1 
+    1 
+    1 
+    1 
+    1 
+    1 
+    1 
+        ... 
+    1 
+    1 
+    1 
+    1 
+    1 
+    1 
+    1 
+    1 
+    1 
+    1 
    
-      \begin{array}{rcl}
-      F_{2n} &=& 1 - x_{2n} \\
-      F_{2n+1} &=& 10(x_{2n + 1} - x_{2n}^2)
-      \end{array}
-   
-   
-   
-   .. code-block:: csharp
-   
-      // Large Nonlinear systems
-      int n = 1000;
-   
-      ColVec multirosenbrook(ColVec x)
-      {
-          // Evaluate the vector function
-          ColVec F = new double[n], 
-              x2n = x[(0..n).Step(2)], 
-              x2np1 = x[(1..n).Step(2)];
-   
-          F[(0..n).Step(2)] = 1 - x2n;
-          F[(1..n).Step(2)] = 10 * (x2np1 - x2n.Pow(2));
-          return F;
-      }
-   
-      SparseMatrix C, D, E;
-      Func<ColVec, SparseMatrix> Jac = x =>
-      {
-          ColVec one = Ones(n/2), x2n = x[(0..n).Step(2)];
-          C = new((0..n).Step(2), (0..n).Step(2), -one, n, n);
-          D = new((1..n).Step(2), (1..n).Step(2), 10*one, n, n);
-          E = new((1..n).Step(2), (0..n).Step(2), -20 * x2n, n, n);
-          return C + D + E;
-      };
-   
-      ColVec xstart = new double[n];
-      xstart[(0..n).Step(2)] = -1.9; xstart[(1..n).Step(2)] = 2;
-      var opts = SolverSet(Display: true, UserDefinedJac: Jac);
-      var x = Fsolve(multirosenbrook, xstart, opts);
-      Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
-      Console.WriteLine(opts.ans.FunVal.Norm());
-   
-   
-   
-   Ouput
-   
-   .. terminal::
-   
-       Iteration    Func-count       f(x)      Norm of Step
-           0            1          365.800        start      
-           1            2          1880.53       220.179     
-           2            3             0          188.053     
-           3            4             0             0        
-      x = 
-       1 
-       1 
-       1 
-       1 
-       1 
-       1 
-       1 
-       1 
-       1 
-       1 
-           ... 
-       1 
-       1 
-       1 
-       1 
-       1 
-       1 
-       1 
-       1 
-       1 
-       1 
-      
-      0
+   0
+   Elapsed time: 0.0144062 seconds

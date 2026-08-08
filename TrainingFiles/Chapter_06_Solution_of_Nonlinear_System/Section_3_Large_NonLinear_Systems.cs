@@ -40,8 +40,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             /// </math>
             /// 
             /// 
-            /// <header 2> Examples </header>
-            /// <example 1> 
+            /// <header 3> Examples 1: Solving Large Sparse Systems </header>
             /// This example shows how to use features of the fsolve solver to solve large sparse systems of equations effectively. The example uses the objective function, defined for a system of n equations,
             /// <math>
             /// \begin{array}{rcl}
@@ -69,12 +68,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
 
                 xstart = -b;
                 var opts = SolverSet(Display: true);
+                tic();
                 var x = Fsolve(nlsf, xstart, opts);
                 Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
                 Console.WriteLine(opts.ans.FunVal.Norm());
+                Console.WriteLine($"Elapsed time: {toc()} seconds");
             }
             /// </code>
-            /// 
             /// 
             /// While finite difference approximations are convenient, they are computationally 
             /// expensive, introduce numerical errors, and fail to exploit structural
@@ -82,13 +82,46 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             /// automatic differentiation, provide greater accuracy, stability, and efficiency,
             /// making them indispensable for large-scale nonlinear systems.
             /// 
+            /// <header 3> Examples 2: Solving Large Sparse Systems Using Sparsity Pattern Exploitation </header>
+            /// 
             /// <code>
             {
                 //Large Nonlinear Systems
                 int n = 1000;
-                Range i = 0..n, j = 0..(n-1), jp1 = 1..n;
+                Range i = 0..n, j = 0..(n - 1), jp1 = 1..n;
 
-                ColVec a = Ones(n-1), b = Ones(n), e = -a,
+                ColVec e = Ones(n), xstart = -e;
+
+                ColVec nlsf(ColVec x)
+                {
+                    ColVec F = new double[n];
+                    F[0] = (3 - 2 * x[0]) * x[0] - 2 * x[1] + 1;
+                    F[1..^1] = (3 - 2 * x[1..^1]).Times(x[1..^1]) - x[..^2] - 2 * x[2..] + 1;
+                    F[^1] = (3 - 2 * x[^1]) * x[^1] - x[^2] + 1;
+                    return F;
+                }
+                List<int> K = [-1, 0, 1];
+                List<ColVec> Diagonals = [e, e, e];
+                SparseMatrix Jpattern = Spdiags(Diagonals, K, n);
+
+                var opts = SolverSet(Display: true, Jpattern: Jpattern);
+                tic();
+                var x = Fsolve(nlsf, xstart, opts);
+                Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
+                Console.WriteLine(opts.ans.FunVal.Norm());
+                Console.WriteLine($"Elapsed time: {toc()} seconds");
+            }
+            /// </code>
+            /// 
+            /// <header 3> Examples 3: Solving Large Sparse Systems Using Analytical Jacobians </header>
+            /// 
+            /// <code>
+            {
+                //Large Nonlinear Systems
+                int n = 1000;
+                Range i = 0..n, j = 0..(n - 1), jp1 = 1..n;
+
+                ColVec a = Ones(n - 1), b = Ones(n), e = -a,
                     c = 2 * e, d, xstart;
 
                 ColVec nlsf(ColVec x)
@@ -112,16 +145,16 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
 
                 xstart = -b;
                 var opts = SolverSet(Display: true, UserDefinedJac: Jac);
+                tic();
                 var x = Fsolve(nlsf, xstart, opts);
                 Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
                 Console.WriteLine(opts.ans.FunVal.Norm());
+                Console.WriteLine($"Elapsed time: {toc()} seconds");
             }
             /// </code>
             /// 
-            /// </example>
             /// 
-            /// <example 2> 
-            /// 
+            /// <header 3> Examples 4: Solving Large Sparse Systems Using Analytical Jacobians </header>
             /// Multirosenbrook function is another example
             /// 
             /// <math>
@@ -161,13 +194,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
                 ColVec xstart = new double[n];
                 xstart[(0..n).Step(2)] = -1.9; xstart[(1..n).Step(2)] = 2;
                 var opts = SolverSet(Display: true, UserDefinedJac: Jac);
+                tic();
                 var x = Fsolve(multirosenbrook, xstart, opts);
                 Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
                 Console.WriteLine(opts.ans.FunVal.Norm());
+                Console.WriteLine($"Elapsed time: {toc()} seconds");
             }
-
             /// </code>
-            /// </example>
             /// </BookContent>
         }
     }

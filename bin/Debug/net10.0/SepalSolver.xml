@@ -3286,7 +3286,7 @@
             Thrown when <paramref name="x"/> or <paramref name="t"/> contains fewer than 2 elements or <paramref name="x"/> is not strictly increasing.
             </exception>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.SolverSet(System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Object)" -->
+        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.SolverSet(System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Object,SepalSolver.SparseMatrix)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.OptimSet(System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},SepalSolver.ColVec,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Object,System.Nullable{System.Int32},System.Nullable{SepalSolver.Math.LevenbergeMaquardt_UpdateType})" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Fzero(System.Func{System.Double,System.Double},System.Double,SepalSolver.Solvers.Set)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Fsolve(System.Func{System.Double,System.Double},System.Double,SepalSolver.Solvers.Set)" -->
@@ -5206,6 +5206,15 @@
                 15
              </terminal>
              </example>
+        </member>
+        <member name="M:SepalSolver.Math.Clamp(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Clamps a value between a specified minimum and maximum range.
+            </summary>
+            <param name="x"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+            <returns></returns>
         </member>
         <member name="M:SepalSolver.Math.Sin(System.Double)">
             <summary>
@@ -8711,60 +8720,6 @@
             <param name="dx"></param>
             <returns></returns>
         </member>
-        <member name="M:SepalSolver.Ode.dirk12(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,System.Func{System.Double,SepalSolver.ColVec,SepalSolver.Matrix},SepalSolver.ColVec@,SepalSolver.Ode.Result)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="Mass"></param>
-            <param name="error"></param>
-            <param name="OdeResult"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.dirk12(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,SepalSolver.Matrix,SepalSolver.ColVec@,SepalSolver.Ode.Result)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="Mass"></param>
-            <param name="error"></param>
-            <param name="OdeResult"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.dirk12(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,SepalSolver.ColVec@,SepalSolver.Ode.Result)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <param name="OdeResult"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.dirk12(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Double,System.Double,System.Double@,SepalSolver.Ode.Result)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <param name="OdeResult"></param>
-            <returns></returns>
-        </member>
         <member name="M:SepalSolver.Ode.dirk45(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,System.Func{System.Double,SepalSolver.ColVec,SepalSolver.Matrix},SepalSolver.ColVec@,SepalSolver.Ode.Result)">
             <summary>
             
@@ -9089,36 +9044,6 @@
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode67(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode78(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode89(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
-        <member name="M:SepalSolver.Ode.Ode12s(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)">
-            <summary>
-            Integrates a stiff ordinary differential equations using Adaptive Trapezoidal Method
-            </summary>
-            <param name="dydx">function of the first order differentiation</param>
-            <param name="initcon">initial condition ynp1(tspan[0])</param>
-            <param name="tspan">interval of integration</param>
-            <param name="options">(Optional) integraion procedure settings such as: maximum iteration number, 
-            initial step fraction, maximum step fraction and display setting</param>
-            <returns></returns>
-            <example>
-            $$ynp1'_1 =  y_2$$
-            $$ynp1'_2 = \mu(1 - y_1^2)y_2-y_1$$
-            <code>
-                using SepalSolver;
-                using static MathChart.Chart;
-                    double mu = 1000; double[] dy; Ode.Result TY; ChartHandle chart;
-                    ColVec dydt(double t, ColVec ynp1) => dy = [ynp1[1], 
-                                                             mu * (1-ynp1[0]*ynp1[0])*ynp1[1]-ynp1[0]];
-                    TY = Ode.Ode15s(dydt,   [ 2,   0 ],  [ 0, 3000 ]);
-                    chart = Plot(TY.X, TY.Y, "-o");
-                    chart.Title = "Solution of van DyDx Pol Equation (mu = 1000) with ODE15s";
-                    chart.XLabel = "Time t";
-                    chart.YLabel = "Solution ynp1";
-                    chart.Show();
-            </code>
-            <image href="../graphics/Ode45 Vander Pole.png"/>
-            </example>
-            <exception cref="T:System.Exception"></exception>
-        </member>
         <member name="M:SepalSolver.Ode.Ode15s(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)">
             <summary>
             Integrates a stiff ordinary differential equations using Adaptive Trapezoidal Method
@@ -9306,72 +9231,6 @@
                                                                       {0, 1,   0},
                                                                       {0,   0,   0} };
                     Ode.Result TY = Ode.Dae10(dydt, Mass, [ 1, 1, -2 ], [ 0, 10 ]);
-                    var chart = Plot(TY.X, TY.Y, "-o");
-                    chart.Title = "Solution of a DAE (mu = 1) with DAE10t";
-                    chart.XLabel = "Time t";
-                    chart.YLabel = "Solution ynp1";
-                    chart.Show();
-            </code>
-            <image href="../graphics/Ode45 Vander Pole.png"/>
-            </example>
-        </member>
-        <member name="M:SepalSolver.Ode.Dae12(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Func{System.Double,SepalSolver.ColVec,SepalSolver.Matrix},System.Double[],System.Double[],SepalSolver.Ode.Set)">
-            <summary>
-            Integrates a system of stiff ordinary differential algrebraic equations using Adaptive Implicit Euler Method
-            </summary>
-            <param name="fun"></param>
-            <param name="Mass"></param>
-            <param name="initcon"></param>
-            <param name="tspan"></param>
-            <param name="options">(Optional) integraion procedure settings such as: maximum iteration number, 
-            initial step fraction, maximum step fraction and display setting</param>
-            <returns>Ode.Result containing a ColVec for X and a Matrix for Y</returns>
-            <example>
-            $$ ynp1'_1 =  y_1y_3 - y_2 $$
-            $$ ynp1'_2 = y_1 - 1 $$
-            $$ 0    = y_1 + y_2 + y_3 $$
-            <code>
-                using SepalSolver;
-                using static MathChart.Chart;
-                
-                    ColVec dydt(double t, ColVec ynp1) => new double[] { ynp1[0] * ynp1[2] - ynp1[1], 
-                                                                      ynp1[0] - 1, 
-                                                                      ynp1[0] + ynp1[1] + ynp1[2] };
-                    Matrix Mass(double t, ColVec ynp1) => new double[,]{ {1,   0,   0},
-                                                                      {0, 1,   0},
-                                                                      {0,   0,   0} };
-                    Ode.Result TY = Ode.Dae10(dydt, Mass, [ 1, 1, -2 ], [ 0, 10 ]);
-                    var chart = Plot(TY.X, TY.Y, "-o");
-                    chart.Title = "Solution of a DAE (mu = 1) with DAE10t";
-                    chart.XLabel = "Time t";
-                    chart.YLabel = "Solution ynp1";
-                    chart.Show();
-            </code>
-            <image href="../graphics/Ode45 Vander Pole.png"/>
-            </example>
-        </member>
-        <member name="M:SepalSolver.Ode.Ode12s(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)">
-            <summary>
-            Integrates a system of stiff ordinary differential algrebraic equations using Adaptive Implicit Euler Method
-            </summary>
-            <param name="dydx"></param>
-            <param name="initcon"></param>
-            <param name="tspan"></param>
-            <param name="options">(Optional) integraion procedure settings such as: maximum iteration number, 
-            initial step fraction, maximum step fraction and display setting</param>
-            <returns>Ode.Result containing a ColVec for X and a Matrix for Y</returns>
-            <example>
-            $$ ynp1'_1 =  y_1y_3 - y_2 $$
-            $$ ynp1'_2 = y_1 - 1 $$
-            $$ 0    = y_1 + y_2 + y_3 $$
-            <code>
-                using SepalSolver;
-                using static MathChart.Chart;
-                
-                    ColVec dydt(double t, ColVec ynp1) => new double[] { ynp1[0] * ynp1[2] - ynp1[1], 
-                                                                      ynp1[0] - 1, 
-                                                                      ynp1[0] + ynp1[1] + ynp1[2] };
-                    Ode.Result TY = Ode.Dae10(dydt, [ 1, 1, -2 ], [ 0, 10 ]);
                     var chart = Plot(TY.X, TY.Y, "-o");
                     chart.Title = "Solution of a DAE (mu = 1) with DAE10t";
                     chart.XLabel = "Time t";
@@ -11060,6 +10919,11 @@
             
             </summary>
         </member>
+        <member name="P:SepalSolver.Solvers.Set.SparsityPattern">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:SepalSolver.Solvers.Result">
             <summary>
             Holds the result of calls to the Solvers class. Implicitly convertes to the class of the expected result
@@ -11285,39 +11149,6 @@
             <param name="lb">Lowerbound matrix</param>
             <param name="ub">Upperbound matrix</param>
             <returns>returns a double satifying the equation 'f(x) = 0'</returns>
-        </member>
-        <member name="M:SepalSolver.Solvers.Homotopy(System.Func{SepalSolver.ColVec,SepalSolver.ColVec},SepalSolver.ColVec,SepalSolver.Solvers.Set,SepalSolver.ColVec,SepalSolver.ColVec)">
-            <summary>
-            Solves for 
-            he Solution of a system of nonlinear equations 'f(x) = 0' using Method of Continuity
-            </summary>
-            <param name="fun">Function takes a Matrix and returns a Matrix</param>
-            <param name="x0">(double) Initial Guess</param>
-            <param name="guide">Optimization settings for the solution process</param>
-            <param name="lb">Lowerbound matrix</param>
-            <param name="ub">Upperbound matrix</param>
-            <returns>returns a double satifying the equation 'f(x) = 0'</returns>
-        </member>
-        <member name="M:SepalSolver.Solvers.NewtonModified(System.Func{SepalSolver.ColVec,SepalSolver.ColVec},SepalSolver.ColVec,SepalSolver.Solvers.Set,SepalSolver.ColVec,SepalSolver.ColVec)">
-            <summary>
-            Solves for the Solution of a system of nonlinear equations 'f(x) = 0' using Modified Newton-Raphson's Multivariate Method
-            </summary>
-            <param name="fun">Function takes a Matrix and returns a Matrix</param>
-            <param name="x0">Column matrix of Initial Guess</param>
-            <param name="guide">Optimization settings for the solution process</param>
-            <returns>returns a Matrix satifying the equation 'f(x) = 0'</returns>
-        </member>
-        <member name="M:SepalSolver.Solvers.Powell(System.Func{SepalSolver.ColVec,SepalSolver.ColVec},SepalSolver.ColVec,System.Double,SepalSolver.Solvers.Set,SepalSolver.ColVec,SepalSolver.ColVec)">
-            <summary>
-            Solves for the Solution of a system of nonlinear equations 'f(x) = 0' using Powell's Hybrid Multivariate Method
-            </summary>
-            <param name="fun">Function takes a Matrix and returns a Matrix</param>
-            <param name="x0">Column matrix of Initial Guess</param>
-            <param name="MaxStep">Maximum step length allowed</param>
-            <param name="guide">Solver setting</param>
-            <param name="lb">Lower bound</param>
-            <param name="ub">Upper bound</param>
-            <returns>returns a Matrix satifying the equation 'f(x) = 0'</returns>
         </member>
         <member name="M:SepalSolver.Solvers.Broyden(System.Func{SepalSolver.ColVec,SepalSolver.ColVec},SepalSolver.ColVec,SepalSolver.Solvers.Set)">
             <summary>

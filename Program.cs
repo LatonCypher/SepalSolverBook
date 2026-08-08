@@ -1,6 +1,103 @@
 ﻿using ConsoleApp1;
 {
     {
+        //double BubblePointPressure(double[] Z, double[] Tc, double[] Tb, double[] Pc, double[] W, double T, double Psc)
+        //{
+        //    double[] TcInv = [.. Tc.Select(t => 1 / t)], TbInv = [.. Tb.Select(t => 1 / t)],
+        //        aPoly = [15e-8, 4.5e-4, 1.2], bPoly = [-3.5e-8, -1.7e-4, 0.89];
+        //    double Tinv = 1 / T;
+        //    double PbFunc(double Pb)
+        //    {
+        //        double a = Polyval(aPoly, Pb), b = Polyval(bPoly, Pb), s = 0, F, K;
+        //        for (int i = 0; i < 3; i++)
+        //        {
+        //            F = (TbInv[i] - Tinv) / (TbInv[i] - TcInv[i]) * Log10(Pc[i] / Psc);
+        //            K = Pow(10, a + b * F) / Pb; s += Z[i] * K;
+        //        }
+        //        return s - 1;
+        //    }
+        //    double Pb0 = 0;
+        //    for (int i = 0; i < 3; i++)
+        //        Pb0 += Z[i] * Pc[i] * Exp(5.371 * (1 + W[i]) * (1 - Tc[i] / T));
+        //    double Pb = Fsolve(PbFunc, Pb0);
+        //    return Pb;
+        //}
+
+        //double DewPointPressure(double[] Z, double[] Tc, double[] Tb, double[] Pc, double[] W, double T, double Psc)
+        //{
+        //    double[] TcInv = [.. Tc.Select(t => 1 / t)], TbInv = [.. Tb.Select(t => 1 / t)],
+        //        aPoly = [15e-8, 4.5e-4, 1.2], bPoly = [-3.5e-8, -1.7e-4, 0.89];
+        //    double Tinv = 1 / T;
+        //    double PdFunc(double Pd)
+        //    {
+        //        double a = Polyval(aPoly, Pd), b = Polyval(bPoly, Pd), s = 0, F, K;
+        //        for (int i = 0; i < 3; i++)
+        //        {
+        //            F = (TbInv[i] - Tinv) / (TbInv[i] - TcInv[i]) * Log10(Pc[i] / Psc);
+        //            K = Pow(10, a + b * F) / Pd; s += Z[i] / K;
+        //        }
+        //        return s - 1;
+        //    }
+        //    double Pd0 = 0;
+        //    for (int i = 0; i < 3; i++)
+        //        Pd0 += Z[i] /(Pc[i] * Exp(5.371 * (1 + W[i]) * (1 - Tc[i] / T)));
+        //    double Pd = Fsolve(PdFunc, Pd0);
+        //    return Pd;
+        //}
+
+        //string[] Components = ["C3", "C4", "C5"];
+        //double[] Z = [0.6, 0.3, 0.1], Mw = [44.09, 58.12, 72.15];
+        //double[] Tc = [665.7, 765.3, 845.4], TcInv = [.. Tc.Select(t => 1 / t)];
+        //double[] Tb = [416, 490.8, 556.6], TbInv = [.. Tb.Select(t => 1 / t)];
+        //double[] Pc = [616.3, 550.7, 488.6], W = [0.1454, 0.1928, 0.2510];
+        //double T = 760, Tinv = 1/T, Psc = 14.7, Pb, Pd;
+        //List<double> Plist = [], Tlist = [];
+        //while (T > 350)
+        //{
+        //    Pb = BubblePointPressure(Z, Tc, Tb, Pc, W, T, Psc);
+        //    Pd = DewPointPressure(Z, Tc, Tb, Pc, W, T, Psc);
+        //    Console.WriteLine($"T = {T:0.00} K, Bubble Point Pressure = {Pb:0.00} psia, Dew Point Pressure = {Pd:0.00} psia");
+        //    Plist.Add(Pd); Plist.Insert(0, Pb); Tlist.Add(T); Tlist.Insert(0, T);
+        //    T -= 10; Tinv = 1 / T;
+        //}
+        //Plot([..Tlist], [..Plist], Linewidth: 2);
+    }
+
+    static Matrix Strass(Matrix A, Matrix B)
+    {
+        if (A.Cols != B.Rows)
+            throw new Exception("Matrices are not conformable for multiplication");
+        if (A.Cols == 1)
+            return A[0, 0] * B[0, 0];
+        else
+        {
+            // get matrix size
+            int N = A.Cols / 2; 
+
+            // split A and B into submatrices
+            Matrix A11 = A[..N, ..N], A12 = A[..N, N..], B11 = B[..N, ..N], B12 = B[..N, N..],
+                   A21 = A[N.., ..N], A22 = A[N.., N..], B21 = B[N.., ..N], B22 = B[N.., N..],
+
+            // compute the strassen submatrices (7 multiplication)
+            M1 = Strass(A11 + A22, B11 + B22),
+            M2 = Strass(A21 + A22, B11),
+            M3 = Strass(A11, B12 - B22),
+            M4 = Strass(A22, B21 - B11),
+            M5 = Strass(A11 + A12, B22),
+            M6 = Strass(A21 - A11, B11 + B12),
+            M7 = Strass(A12 - A22, B21 + B22);
+
+            // compose the result
+            return new Matrix[,]
+            {
+                { M1 + M4 - M5 + M7,        M3 + M5      },
+                {      M2 + M4,        M1 - M2 + M3 + M6 }
+            };
+        }
+    }
+
+
+    {
         folderpath = "C:\\Users\\lateef.a.kareem\\Documents";
         //{
         //    // SOLVE_BURGERS_EQUATION Solves the 1D burgers equation using pdepe
@@ -304,11 +401,12 @@
     //    // 1. PDE Definition
     //    (ColVec c, ColVec f, ColVec s) PdeFun(double r, double t, ColVec u, ColVec dudx)
     //    {
+    //        double speed2 = 1;
     //        double V = u[1];
     //        double dUdx = dudx[0];
 
     //        double[] cVec = [1, 1];
-    //        double[] fVec = [0, dUdx];
+    //        double[] fVec = [0, speed2 * dUdx];
     //        double[] sVec = [V, 0];
 
     //        return (cVec, fVec, sVec);
@@ -359,12 +457,97 @@
     //    CloseFig();
     //}
 
+    //{
+    //    //Large Nonlinear Systems
+    //    int n = 3000;
+
+    //    ColVec b = Ones(n), xstart;
+
+    //    ColVec nlsf(ColVec x)
+    //    {
+    //        ColVec F = new double[n];
+    //        F[0] = (3 - 2 * x[0]) * x[0] - 2 * x[1] + 1;
+    //        F[1..^1] = (3 - 2 * x[1..^1]).Times(x[1..^1]) - x[..^2] - 2 * x[2..] + 1;
+    //        F[^1] = (3 - 2 * x[^1]) * x[^1] - x[^2] + 1;
+    //        return F;
+    //    }
+
+    //    xstart = -b;
+    //    var opts = SolverSet(Display: true);
+    //    tic();
+    //    var x = Fsolve(nlsf, xstart, opts);
+    //    Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
+    //    Console.WriteLine(opts.ans.FunVal.Norm());
+    //    Console.WriteLine($"Elapsed time: {toc()} seconds");
+    //}
+
+    //{
+    //    //Large Nonlinear Systems
+    //    int n = 3000;
+    //    Range i = 0..n, j = 0..(n - 1), jp1 = 1..n;
+
+    //    ColVec e = Ones(n), xstart = -e;
+
+    //    ColVec nlsf(ColVec x)
+    //    {
+    //        ColVec F = new double[n];
+    //        F[0] = (3 - 2 * x[0]) * x[0] - 2 * x[1] + 1;
+    //        F[1..^1] = (3 - 2 * x[1..^1]).Times(x[1..^1]) - x[..^2] - 2 * x[2..] + 1;
+    //        F[^1] = (3 - 2 * x[^1]) * x[^1] - x[^2] + 1;
+    //        return F;
+    //    }
+    //    SparseMatrix Jpattern = Spdiags([e,e,e], [-1, 0, 1], n, n);
+    //    var opts = SolverSet(Display: true, Jpattern: Jpattern);
+    //    tic();
+    //    var x = Fsolve(nlsf, xstart, opts);
+    //    Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
+    //    Console.WriteLine(opts.ans.FunVal.Norm());
+    //    Console.WriteLine($"Elapsed time: {toc()} seconds");
+    //}
+
+    //{
+    //    //Large Nonlinear Systems
+    //    int n = 3000;
+    //    Range i = 0..n, j = 0..(n - 1), jp1 = 1..n;
+
+    //    ColVec a = Ones(n - 1), b = Ones(n), e = -a,
+    //        c = 2 * e, d, xstart;
+
+    //    ColVec nlsf(ColVec x)
+    //    {
+    //        ColVec F = new double[n];
+    //        F[0] = (3 - 2 * x[0]) * x[0] - 2 * x[1] + 1;
+    //        F[1..^1] = (3 - 2 * x[1..^1]).Times(x[1..^1]) - x[..^2] - 2 * x[2..] + 1;
+    //        F[^1] = (3 - 2 * x[^1]) * x[^1] - x[^2] + 1;
+    //        return F;
+    //    }
+
+    //    SparseMatrix C, D, E;
+    //    Func<ColVec, SparseMatrix> Jac = x =>
+    //    {
+    //        d = -4 * x + 3 * b;
+    //        D = new(i, i, d, n, n);
+    //        C = new(j, jp1, c, n, n);
+    //        E = new(jp1, j, e, n, n);
+    //        return C + D + E;
+    //    };
+
+    //    xstart = -b;
+    //    var opts = SolverSet(Display: true, UserDefinedJac: Jac);
+    //    tic();
+    //    var x = Fsolve(nlsf, xstart, opts);
+    //    Console.WriteLine($"x = {x[..10]}     ... {x[^10..]}");
+    //    Console.WriteLine(opts.ans.FunVal.Norm());
+    //    Console.WriteLine($"Elapsed time: {toc()} seconds");
+    //}
+
     Writer.Run();
    {
         // Reservoir Simulation
         folderpath = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\Morgana Data\";
         Matrix Base = ReadMatrix("Base.txt");
         var id = Base[.., 2] == 3075;
+
         ColVec x = Base[id, 0], y = Base[id, 1];
         Plot(x, y, "k");
         var rx = x.Range(); var ry = y.Range();

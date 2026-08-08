@@ -28,6 +28,8 @@ __pycache__/
 *.backup.json
 *.vsidx
 *.v2 
+*.ipch
+
 
 # Distribution / packaging
 .Python
@@ -158,3 +160,25 @@ dmypy.json
 cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/python,jupyternotebooks
+
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.sln.docstates
+
+# IntelliSense / Precompiled Header cache (prevents 100MB+ AutoPCH errors)
+*.ipch
+ipch/
+AutoPCH/
+
+# Build outputs (Compiled binaries)
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio SQL & Local Databases
+*.mdf
+*.ldf
+*.ndf

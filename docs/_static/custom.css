@@ -1,13 +1,13 @@
 /* Increased specificity to outrank the RTD theme */
-div.highlight pre.terminal, 
+div.highlight pre.terminal,
 .rst-content .highlight pre.terminal,
 pre.terminal {
     /* Dark Gray background */
-    background-color: #2d2d2d !important; 
-    
+    background-color: #2d2d2d !important;
+
     /* Courier Green text */
-    color: #4AF626 !important; 
-    
+    color: #4AF626 !important;
+
     /* Font Settings */
     font-family: 'Courier New', Courier, monospace !important;
     font-size: 14px !important;
@@ -18,7 +18,7 @@ pre.terminal {
     padding: 40px 20px 20px 20px !important;
     position: relative;
     margin: 25px 0;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
     border: 1px solid #444 !important;
     white-space: pre !important;
 }
@@ -37,8 +37,8 @@ div.highlight pre.terminal::before {
     left: 18px;
     font-size: 11px;
     letter-spacing: 4px;
-    color: #ff5f56; 
-    text-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f; 
+    color: #ff5f56;
+    text-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
     font-family: sans-serif !important;
 }
 
@@ -52,4 +52,32 @@ div.highlight pre.terminal::after {
     color: #777;
     font-size: 11px;
     font-family: sans-serif;
+}
+
+/* Main callout box container */
+.rst-content .admonition,
+div.admonition,
+.admonition {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    /* Prevents header background from spilling over corners */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    margin-bottom: 24px !important;
+}
+
+/* Admonition Title Header */
+.rst-content .admonition .admonition-title,
+div.admonition p.admonition-title,
+.admonition-title {
+    border-top-left-radius: 7px !important;
+    border-top-right-radius: 7px !important;
+    margin-top: 0 !important;
+    padding: 8px 12px !important;
+}
+
+/* Optional: Slight rounding for sphinx-design cards if used */
+.sd-card {
+    border-radius: 8px !important;
+    overflow: hidden !important;
 }
