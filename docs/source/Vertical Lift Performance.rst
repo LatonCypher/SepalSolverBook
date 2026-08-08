@@ -74,10 +74,11 @@ Ouput
    :align: center
    :alt: OilVLP.png
 
-A comprehensive Vertical Lift Performance (VLP) model for multiphase oil wells.
-
-This model accounts for gas and water liquid fractions across hydrostatic (elevation), 
+A comprehensive Vertical Lift Performance (VLP) model would account hydrostatic (elevation), 
 frictional, and kinetic (acceleration) pressure gradient components. 
+
+For Multiphase flow, it would be necessary to consider the mixture density, two-phase friction factor, 
+and no-slip density. The governing equation for multiphase flow is:
 
 
 .. math::
@@ -314,12 +315,12 @@ evaluated using the Kareem et al. (2016) explicit correlation.
    Xlabel("Flowrate Q (STB/day)");
    Ylabel("Pressure P (psia)");
    Title("Oil VLP Curve");
-   SaveAs("OilVLP.png");
+   SaveAs("Multiphase_VLP.png");
 
 
-.. figure:: images/OilVLP.png
+.. figure:: images/Multiphase_VLP.png
    :align: center
-   :alt: OilVLP.png
+   :alt: Multiphase_VLP.png
 
 Gas Well VLP
 ~~~~~~~~~~~~

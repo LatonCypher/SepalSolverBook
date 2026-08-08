@@ -397,65 +397,65 @@
     //    SaveAs("System of PDE.png");
     //}
 
-    //{
-    //    // 1. PDE Definition
-    //    (ColVec c, ColVec f, ColVec s) PdeFun(double r, double t, ColVec u, ColVec dudx)
-    //    {
-    //        double speed2 = 1;
-    //        double V = u[1];
-    //        double dUdx = dudx[0];
+    {
+        // 1. PDE Definition
+        (ColVec c, ColVec f, ColVec s) PdeFun(double r, double t, ColVec u, ColVec dudx)
+        {
+            double speed2 = 1;
+            double V = u[1];
+            double dUdx = dudx[0];
 
-    //        double[] cVec = [1, 1];
-    //        double[] fVec = [0, speed2 * dUdx];
-    //        double[] sVec = [V, 0];
+            double[] cVec = [1, 1];
+            double[] fVec = [0, speed2 * dUdx];
+            double[] sVec = [V, 0];
 
-    //        return (cVec, fVec, sVec);
-    //    }
+            return (cVec, fVec, sVec);
+        }
 
-    //    // 2. Initial Conditions (T0 = 300K, C0 = 1.0 mol/L)
-    //    ColVec IcFun(double r)
-    //    {
-    //        double[] ic = [0, 0];
-    //        return ic;
-    //    }
+        // 2. Initial Conditions (T0 = 300K, C0 = 1.0 mol/L)
+        ColVec IcFun(double r)
+        {
+            double[] ic = [0, 0];
+            return ic;
+        }
 
-    //    // 3. Boundary Conditions
-    //    // At r = 0 (Symmetry): Zero flux for both T and C -> f(0,t) = 0
-    //    // At r = R (Cylindrical wall): Constant wall temp Tw, zero mass flux
-    //    (ColVec pl, ColVec ql, ColVec pr, ColVec qr) BcFun(double rLeft, ColVec uLeft, double rRight, ColVec uRight, double t)
-    //    {
-    //        // Left Boundary (x = 0) -> u-0.5*sin(20t) = 0
-    //        double[] pl = [uLeft[0] - 0.5 * Sin(20 * t), uLeft[1] - 10 * Cos(20 * t)];
-    //        double[] ql = [0.0, 0.0];
+        // 3. Boundary Conditions
+        // At r = 0 (Symmetry): Zero flux for both T and C -> f(0,t) = 0
+        // At r = R (Cylindrical wall): Constant wall temp Tw, zero mass flux
+        (ColVec pl, ColVec ql, ColVec pr, ColVec qr) BcFun(double rLeft, ColVec uLeft, double rRight, ColVec uRight, double t)
+        {
+            // Left Boundary (x = 0) -> u-0.5*sin(20t) = 0
+            double[] pl = [uLeft[0] - 0.5 * Sin(20 * t), uLeft[1] - 10 * Cos(20 * t)];
+            double[] ql = [0.0, 0.0];
 
-    //        // Right Boundary (x = L) -> Fixed: Dirichlet for U and V, 
-    //        double[] pr = [uRight[0], uRight[1]];
-    //        double[] qr = [0.0, 0.0];
+            // Right Boundary (x = L) -> Fixed: Dirichlet for U and V, 
+            double[] pr = [uRight[0], uRight[1]];
+            double[] qr = [0.0, 0.0];
 
-    //        return (pl, ql, pr, qr);
-    //    }
+            return (pl, ql, pr, qr);
+        }
 
-    //    // 4. Execution Call
-    //    int m = 0; // Cartesian coordinates
-    //    double[] x = Linspace(0, 1, 51);
-    //    double[] t = Linspace(0, 1, 51);
+        // 4. Execution Call
+        int m = 0; // Cartesian coordinates
+        double[] x = Linspace(0, 1, 51);
+        double[] t = Linspace(0, 1, 51);
 
-    //    (ColVec T, Matrix[] Ys) = Pdepe(m, PdeFun, IcFun, BcFun, x, t);
+        (ColVec T, Matrix[] Ys) = Pdepe(m, PdeFun, IcFun, BcFun, x, t);
 
-    //    Matrix U = Ys[0]; // [TimeSteps x SpatialNodes] for Position
-    //    Matrix V = Ys[1]; // [TimeSteps x SpatialNodes] for Velocity
+        Matrix U = Ys[0]; // [TimeSteps x SpatialNodes] for Position
+        Matrix V = Ys[1]; // [TimeSteps x SpatialNodes] for Velocity
 
-    //    var wave = Plot(x, U[0, ..], Linewidth: 2);
+        var wave = Plot(x, U[0, ..], Linewidth: 2);
 
-    //    // Animation
-    //    byte[] Animfun(int i)
-    //    {
-    //        wave.Ydata = U[i, ..].T;
-    //        return GetFrame();
-    //    }
-    //    AnimationMaker(Animfun, "Wave_Equation_Using_PDEPE.gif", 10, T.Numel);
-    //    CloseFig();
-    //}
+        // Animation
+        byte[] Animfun(int i)
+        {
+            wave.Ydata = U[i, ..].T;
+            return GetFrame();
+        }
+        AnimationMaker(Animfun, "Wave_Equation_Using_PDEPE.gif", 10, T.Numel);
+        CloseFig();
+    }
 
     //{
     //    //Large Nonlinear Systems

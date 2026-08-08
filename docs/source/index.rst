@@ -111,4 +111,3 @@ Content
    Partial Differential Equations
    Production System Modelling
    Reservoir Simulation
-   Conclusion
