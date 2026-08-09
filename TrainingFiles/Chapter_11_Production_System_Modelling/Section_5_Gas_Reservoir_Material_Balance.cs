@@ -17,7 +17,7 @@ using static System.Collections.Specialized.BitVector32;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
 {
-    internal class Section_4_Gas_Reservoir_Material_Balance
+    internal class Section_5_Gas_Reservoir_Material_Balance
     {
         public static void Run()
         {

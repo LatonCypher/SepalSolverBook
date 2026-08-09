@@ -79,9 +79,9 @@ Mathematical modelling in petroleum production is not just about solving equatio
 
 .. toctree::
 
+   Pressure Volume Temperature PVT
    Inflow Performance Relation
    Vertical Lift Performance
    Nodal Analysis
    Gas Reservoir Material Balance
    Decline Curve Analysis
-   Pressure Volume Temperature PVT

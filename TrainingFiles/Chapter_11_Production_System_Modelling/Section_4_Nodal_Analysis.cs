@@ -14,7 +14,7 @@ using static CSharpMath.Rendering.Text.TextAtom;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
 {
-    internal class Section_3_Nodal_Analysis
+    internal class Section_4_Nodal_Analysis
     {
         public static void Run()
         {

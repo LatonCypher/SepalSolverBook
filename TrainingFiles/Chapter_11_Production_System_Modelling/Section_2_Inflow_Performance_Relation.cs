@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
 {
-    internal class Section_1_Inflow_Performance_Relation
+    internal class Section_2_Inflow_Performance_Relation
     {
         public static void Run()
         {

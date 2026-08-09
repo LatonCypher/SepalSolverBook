@@ -15,7 +15,7 @@ using static CSharpMath.Rendering.Text.TextAtom;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
 {
-    internal class Section_5_Decline_Curve_Analysis
+    internal class Section_6_Decline_Curve_Analysis
     {
         public static void Run()
         {

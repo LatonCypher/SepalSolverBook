@@ -300,18 +300,12 @@ Sources :math:`\mathbf{s}`:
    // 1. PDE Definition
    (ColVec c, ColVec f, ColVec s) PdeFun(double r, double t, ColVec u, ColVec dudr)
    {
-       double T = u[0];
-       double C = u[1];
-
-       double dTdr = dudr[0];
-       double dCdr = dudr[1];
+       double T = u[0], C = u[1];
+       double dTdr = dudr[0], dCdr = dudr[1];
 
        // Reaction rate term
        double rate = k0 * C * Exp(-Ea / (Rg * T));
-
-       double[] cVec = [rho * Cp, 1.0];
-       double[] fVec = [k * dTdr, D * dCdr];
-       double[] sVec = [-dH * rate, -rate];
+       double[] cVec = [rho * Cp, 1.0],  fVec = [k * dTdr, D * dCdr], sVec = [-dH * rate, -rate];
 
        return (cVec, fVec, sVec);
    }
@@ -331,12 +325,10 @@ Sources :math:`\mathbf{s}`:
        double Tw = 350.0; // Cooling/heating wall temperature
 
        // Left Boundary (r = 0, Symmetry) -> 0 + 1*f = 0
-       double[] pl = [0.0, 0.0];
-       double[] ql = [1.0, 1.0];
+       double[] pl = [0.0, 0.0], ql = [1.0, 1.0];
 
        // Right Boundary (r = R) -> Dirichlet for T, Neumann (Zero flux) for C
-       double[] pr = [uRight[0] - Tw, 0.0];
-       double[] qr = [0.0, 1.0];
+       double[] pr = [uRight[0] - Tw, 0.0], qr = [0.0, 1.0];
 
        return (pl, ql, pr, qr);
    }
@@ -395,7 +387,7 @@ boundary condition
 
 .. math::
 
-   u(0, t) = 0.5\sin(10t)
+   u(0, t) = 0.5\sin(20t)
 
 
 .. math::
@@ -429,8 +421,8 @@ boundary condition
 .. math::
 
    \begin{align}
-   u(0, t) = 0.5\sin(10t)\\
-   v(0, t) = 5\cos(10t)
+   u(0, t) = 0.5\sin(20t)\\
+   v(0, t) = 10\cos(20t)
    \end{align}
 
 
@@ -465,12 +457,11 @@ boundary condition
    (ColVec pl, ColVec ql, ColVec pr, ColVec qr) BcFun(double rLeft, ColVec uLeft, double rRight, ColVec uRight, double t)
    {
        // Left Boundary (x = 0) -> u-0.5*sin(20t) = 0
-       double[] pl = [uLeft[0] - 0.5 * Sin(20 * t), uLeft[1] - 10 * Cos(20 * t)];
-       double[] ql = [0.0, 0.0];
+       double[] pl = [uLeft[0] - 0.5 * Sin(20 * t), uLeft[1] - 10 * Cos(20 * t)],
+                ql = [0.0, 0.0];
 
        // Right Boundary (x = L) -> Fixed: Dirichlet for U and V, 
-       double[] pr = [uRight[0], uRight[1]];
-       double[] qr = [0.0, 0.0];
+       double[] pr = [uRight[0], uRight[1]],  qr = [0.0, 0.0];
 
        return (pl, ql, pr, qr);
    }
@@ -486,7 +477,7 @@ boundary condition
    Matrix V = Ys[1]; // [TimeSteps x SpatialNodes] for Velocity
 
    var wave = Plot(x, U[0, ..], Linewidth: 2);
-
+   Axis([x[0], x[^1], -0.6, 0.6]);
    // Animation
    byte[] Animfun(int i)
    {

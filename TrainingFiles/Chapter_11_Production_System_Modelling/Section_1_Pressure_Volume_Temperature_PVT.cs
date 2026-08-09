@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
 {
-    internal class Section_6_Pressure_Volume_Temperature_PVT
+    internal class Section_1_Pressure_Volume_Temperature_PVT
     {
         public static void Run()
         {
@@ -66,7 +66,30 @@
             ///     \rho_g = \frac{P \cdot MW_g}{ Z \cdot R \cdot T}
             /// </math>
             /// 
-            /// In the vode below, we provide Kareem et al, compressiblity factor correlation
+            /// Kareem et al, z factor correlation is a really good approximation and is described below. 
+            /// 
+            /// <math>
+            /// \begin{equation}
+            /// z = \frac{DP_{pr}(1 + y + y^2 - y^3)}{(DP_{pr} + Ey^2 - Fy^G)(1 - y)^3} \tag{14}
+            /// \end{equation}
+            /// 
+            /// \begin{equation}
+            /// y = \frac{DP_{pr}}{\left(\frac{1+A^2}{C} - \frac{A^2 B}{C^3}\right)} \tag{15}
+            /// \end{equation}
+            /// 
+            /// \noindent where
+            /// \[
+            /// t = \frac{1}{T_{pr}},
+            /// \]
+            /// 
+            /// \begin{align*}
+            /// A &= a_1 t e^{a_2(1-t)^2} P_{pr}, & B &= a_3 t + a_4 t^2 + a_5 t^6 P_{pr}^6, \\
+            /// C &= a_9 + a_8 t P_{pr} + a_7 t^2 P_{pr}^2 + a_6 t^3 P_{pr}^3, \\
+            /// D &= a_{10} t e^{a_{11}(1-t)^2}, & E &= a_{12} t + a_{13} t^2 + a_{14} t^3, \\
+            /// F &= a_{15} t + a_{16} t^2 + a_{17} t^3, & G &= a_{18} + a_{19} t
+            /// \end{align*}
+            /// </math>
+            /// 
             /// <code>
             {
                 // Constants from Table 3 for Kareem et al. (2016) Correlation 
@@ -75,7 +98,8 @@
                 const double a9 = 0.966910, a10 = 0.063069, a11 = -1.966847, a12 = 21.0581;
                 const double a13 = -27.0246, a14 = 16.23, a15 = 207.783, a16 = -488.161;
                 const double a17 = 176.29, a18 = 1.88453, a19 = 3.05921;
-                double[] poly1 = [a6, a7, a8, a9], poly2 = [a14, a13, a12], poly3 = [a17, a16, a15]; 
+                double[] poly1 = [a6, a7, a8, a9], poly2 = [a14, a13, a12], 
+                    poly3 = [a17, a16, a15], poly4 = [-1,1,1,1]; 
                 double Kareem(double Ppr, double Tpr)
                 {
                     double t = 1.0 / Tpr, dt = 1.0 - t, dt2 = dt * dt, tPpr = t * Ppr;
@@ -92,8 +116,8 @@
                         y = (D * Ppr) / denom_y;
 
                     // Equation 14: Compressibility factor z
-                    double y2 = y * y, y3 = y2 * y, num_z = D * Ppr * (1.0 + y + y2 - y3);
-                    double denom_z = (D * Ppr + E * y2 - F * Pow(y, G)) * Pow(1.0 - y, 3);
+                    double num_z = D * Ppr * Polyval(poly4, y);
+                    double denom_z = (D * Ppr + E * y*y - F * Pow(y, G)) * Pow(1.0 - y, 3);
 
                     return num_z / denom_z;
                 }
