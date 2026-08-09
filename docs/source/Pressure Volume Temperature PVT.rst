@@ -84,7 +84,8 @@ Linearization for Gas Density:
 
 
 Kareem et al, z factor correlation is a really good approximation and is described below.
-given that :math:`t = \frac{1}{T_{pr}}`
+
+given that :math:`t = 1/T_{pr}`
 
 
 .. math::
@@ -92,7 +93,8 @@ given that :math:`t = \frac{1}{T_{pr}}`
    \begin{align*}
    A &= a_1 t e^{a_2(1-t)^2} P_{pr}, \\
    B &= a_3 t + a_4 t^2 + a_5 t^6 P_{pr}^6, \\
-   C &= a_9 + a_8 t P_{pr} + a_7 t^2 P_{pr}^2 + a_6 t^3 P_{pr}^3
+   C &= a_9 + a_8 t P_{pr} + a_7 t^2 P_{pr}^2 + a_6 t^3 P_{pr}^3,\\
+   D &= a_{10} t e^{a_{11}(1-t)^2}, \\
    \end{align*}
 
 
@@ -104,12 +106,10 @@ given that :math:`t = \frac{1}{T_{pr}}`
    \end{equation}
 
 
-given that :math:`t = \frac{1}{T_{pr}}`
 
 .. math::
 
    \begin{align*}
-   D &= a_{10} t e^{a_{11}(1-t)^2}, \\
    E &= a_{12} t + a_{13} t^2 + a_{14} t^3, \\
    F &= a_{15} t + a_{16} t^2 + a_{17} t^3, \\
    G &= a_{18} + a_{19} t
