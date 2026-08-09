@@ -357,7 +357,7 @@
                      -y[1] * y[4] - g,
                      y[0]*y[2] + y[1]*y[3]];
 
-                double[,] mass_f(double t, double[] y) => Diag([1, 1, 1, 1, 0]);
+                double[,] mass_f = Diag([1, 1, 1, 1, 0]);
 
                 double[] y0 = [0, 1, 1, 0, -1];
                 var opts = Odeset(Stats: true);

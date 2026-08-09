@@ -9075,42 +9075,6 @@
             <exception cref="T:System.Exception"></exception>
         </member>
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode45s(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
-        <member name="M:SepalSolver.Ode.Ode15i(System.Func{System.Double,System.Double,System.Double,System.Double},System.ValueTuple{System.Double,System.Double},System.Double[],SepalSolver.Ode.Set)">
-            <summary>
-            Integrates a implicit ordinary differential equations using Adaptive Trapezoidal Method
-            </summary>
-            <param name="fun">Implicit function of the first order differentiation</param>
-            <param name="initcon">initial condition (ynp1(tspan[0]), yp([tspan[0]))</param>
-            <param name="tspan">interval of integration</param>
-            <param name="options">(Optional) integraion procedure settings such as: maximum iteration number, 
-            initial step fraction, maximum step fraction and display setting</param>
-            <returns>Ode.Result containing a ColVecs for X and Y</returns>
-            <example>
-            $$ ty^2(ynp1')^3 - ynp1^3(ynp1')^2 + t(t^2 + 1)ynp1' - t^2y = 0$$
-            <code>
-                using System;
-                using SepalSolver;
-                using static MathChart.Chart;
-                {
-                    static double fun(double t, double ynp1, double yp) =>
-                        t * ynp1 * ynp1 * yp * yp * yp - ynp1 * ynp1 * ynp1 * yp * yp + t * (t * t + 1) * yp - t * t * ynp1;
-                        
-                    double t0 = 1, y0 = Sqrt(t0 * t0 + 1 / 2.0), yp0 = 0;
-                    (y0, yp0) = Ode.decic(fun, t0, y0, 1, yp0,   0);
-                    TY = Ode.Ode15i(fun, (y0, yp0), [t0, 10], guide);
-                    ColVec Y_exact = TY.X.Select(t => Sqrt(t * t + 0.5)).ToList();
-                    var chart = Plot(TY.X, TY.Y["",   0], "*");
-                    chart.AddPlot(TY.X, Y_exact, "-o");
-                    chart.Title = "Implicit differential (weissinger) equation with ODE15i";
-                    chart.XLabel = "Time t";
-                    chart.YLabel = "Solution ynp1";
-                    chart.Show();
-                }
-            </code>
-            <image href="../graphics/Ode45 Vander Pole.png"/>
-            </example>
-            <exception cref="T:System.Exception"></exception>
-        </member>
         <member name="M:SepalSolver.Ode.Ode23(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)">
             <summary>
             Integrates a system of non-stiff ordinary differential equations using (Bogacki–Shampine) adaptive RungeKutta Explicit Method
@@ -9145,101 +9109,6 @@
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode67(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode78(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode89(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)" -->
-        <member name="M:SepalSolver.Ode.Ode15s(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)">
-            <summary>
-            Integrates a system of stiff ordinary differential equations using Adaptive Trapezoidal Method
-            </summary>
-            <param name="dydx">function of system of first order differentiation</param>
-            <param name="initcon">initial condition ynp1(tspan[0])</param>
-            <param name="tspan">interval of integration</param>
-            <param name="options">(Optional) integraion procedure settings such as: maximum iteration number, 
-            initial step fraction, maximum step fraction and display setting</param>
-            <returns>Ode.Result containing a ColVec for X and a Matrix for Y</returns>
-            <example>
-            $$ ynp1'_1 =  y_1y_3 - y_2 $$
-            $$ ynp1'_2 = y_1 - 1 $$
-            $$ ynp1'_3 = y_1 + y_2 + y_3 $$
-            <code>
-                using SepalSolver;
-                using static MathChart.Chart;
-                
-                    ColVec dydt(double t, ColVec ynp1) => new double[] { ynp1[0] * ynp1[2] - ynp1[1], 
-                                                                      ynp1[0] - 1, 
-                                                                      ynp1[0] + ynp1[1] + ynp1[2] };
-                    Ode.Result TY = Ode.Ode15t(dydt, [ 1, 1,  -2 ], [ 0, 10 ]);
-                    var chart = Plot(TY.X, TY.Y, "-o");
-                    chart.XLabel = "Time t";
-                    chart.YLabel = "Solution ynp1";
-                    chart.Show();
-            </code>
-            <image href="../graphics/Ode45 Vander Pole.png"/>
-            </example>
-        </member>
-        <member name="M:SepalSolver.Ode.Ode15i(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec,SepalSolver.ColVec},System.ValueTuple{SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],SepalSolver.Ode.Set)">
-            <summary>
-            Integrates a system of implicit ordinary differential equations using Adaptive Trapezoidal Method
-            </summary>
-            <param name="fun">function of system of first order differentiation</param>
-            <param name="initcon">initial condition ynp1(tspan[0])</param>
-            <param name="tspan">interval of integration</param>
-            <param name="options">(Optional) integraion procedure settings such as: maximum iteration number, 
-            initial step fraction, maximum step fraction and display setting</param>
-            <returns>Ode.Result containing a ColVec for X and a Matrix for Y</returns>
-            <example>
-            $$ ynp1'_1 =  y_1y_3 - y_2 $$
-            $$ ynp1'_2 = y_1 - 1 $$
-            $$ ynp1'_3 = y_1 + y_2 + y_3 $$
-            <code>
-                using SepalSolver;
-                using static MathChart.Chart;
-                
-                    ColVec dydt(double t, ColVec ynp1) => new double[] { ynp1[0] * ynp1[2] - ynp1[1], 
-                                                                      ynp1[0] - 1, 
-                                                                      ynp1[0] + ynp1[1] + ynp1[2] };
-                    Ode.Result TY = Ode.Ode15t(dydt, [ 1, 1,  -2 ], [ 0, 10 ]);
-                    var chart = Plot(TY.X, TY.Y, "-o");
-                    chart.XLabel = "Time t";
-                    chart.YLabel = "Solution ynp1";
-                    chart.Show();
-            </code>
-            <image href="../graphics/Ode45 Vander Pole.png"/>
-            </example>
-        </member>
-        <member name="M:SepalSolver.Ode.Dae15(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Func{System.Double,SepalSolver.ColVec,SepalSolver.Matrix},System.Double[],System.Double[],SepalSolver.Ode.Set)">
-            <summary>
-            Integrates a system of stiff ordinary differential algrebraic equations using Adaptive Trapezoidal Method
-            </summary>
-            <param name="fun">function of system of first order differentiation</param>
-            <param name="Mass"></param>
-            <param name="initcon">initial condition ynp1(tspan[0])</param>
-            <param name="tspan">interval of integration</param>
-            <param name="options">(Optional) integraion procedure settings such as: maximum iteration number, 
-            initial step fraction, maximum step fraction and display setting</param>
-            <returns>Ode.Result containing a ColVec for X and a Matrix for Y</returns>
-            <example>
-            $$ ynp1'_1 =  y_1y_3 - y_2 $$
-            $$ ynp1'_2 = y_1 - 1 $$
-            $$ 0    = y_1 + y_2 + y_3 $$
-            <code>
-                using SepalSolver;
-                using static MathChart.Chart;
-                
-                    ColVec dydt(double t, ColVec ynp1) => new double[] { ynp1[0] * ynp1[2] - ynp1[1], 
-                                                                      ynp1[0] - 1, 
-                                                                      ynp1[0] + ynp1[1] + ynp1[2] };
-                    Matrix Mass(double t, ColVec ynp1) => new double[,]{ {1,   0,   0},
-                                                                      {0, 1,   0},
-                                                                      {0,   0,   0} };
-                    Ode.Result TY = Ode.Dae10(dydt, Mass, [ 1, 1, -2 ], [ 0, 10 ]);
-                    var chart = Plot(TY.X, TY.Y, "-o");
-                    chart.Title = "Solution of a DAE (mu = 1) with DAE10t";
-                    chart.XLabel = "Time t";
-                    chart.YLabel = "Solution ynp1";
-                    chart.Show();
-            </code>
-            <image href="../graphics/Ode45 Vander Pole.png"/>
-            </example>
-        </member>
         <member name="M:SepalSolver.Ode.Dae45(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Func{System.Double,SepalSolver.ColVec,SepalSolver.Matrix},System.Double[],System.Double[],SepalSolver.Ode.Set)">
             <summary>
             Integrates a system of stiff ordinary differential algrebraic equations using Adaptive Implicit Euler Method
@@ -11183,6 +11052,7 @@
             <param name="x">Column Vector of variable values at which the gradient is to be computed</param>
             <param name="F">Column Vector of function values at x</param>
             <param name="del">small pertubation factor used for the gradient</param>
+            <param name="options">solver option to control computation of jacobian</param>
             <returns>Matrix of first order partial derivatives of the function with respect to the varaibles</returns>
         </member>
         <member name="M:SepalSolver.Solvers.Diff2VecFun(System.Func{SepalSolver.ColVec,SepalSolver.ColVec},SepalSolver.ColVec,System.Double)">

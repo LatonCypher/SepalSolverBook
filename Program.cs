@@ -397,65 +397,68 @@
     //    SaveAs("System of PDE.png");
     //}
 
-    {
-        // 1. PDE Definition
-        (ColVec c, ColVec f, ColVec s) PdeFun(double r, double t, ColVec u, ColVec dudx)
-        {
-            double speed2 = 1;
-            double V = u[1];
-            double dUdx = dudx[0];
+    //{
+    //    // 1. PDE Definition
+    //    (ColVec c, ColVec f, ColVec s) PdeFun(double r, double t, ColVec u, ColVec dudx)
+    //    {
+    //        double speed2 = 1;
+    //        double V = u[1];
+    //        double dUdx = dudx[0];
 
-            double[] cVec = [1, 1];
-            double[] fVec = [0, speed2 * dUdx];
-            double[] sVec = [V, 0];
+    //        double[] cVec = [1, 1];
+    //        double[] fVec = [0, speed2 * dUdx];
+    //        double[] sVec = [V, 0];
 
-            return (cVec, fVec, sVec);
-        }
+    //        return (cVec, fVec, sVec);
+    //    }
 
-        // 2. Initial Conditions (T0 = 300K, C0 = 1.0 mol/L)
-        ColVec IcFun(double r)
-        {
-            double[] ic = [0, 0];
-            return ic;
-        }
+    //    // 2. Initial Conditions (T0 = 300K, C0 = 1.0 mol/L)
+    //    ColVec IcFun(double r)
+    //    {
+    //        double[] ic = [0, 0];
+    //        return ic;
+    //    }
 
-        // 3. Boundary Conditions
-        // At r = 0 (Symmetry): Zero flux for both T and C -> f(0,t) = 0
-        // At r = R (Cylindrical wall): Constant wall temp Tw, zero mass flux
-        (ColVec pl, ColVec ql, ColVec pr, ColVec qr) BcFun(double rLeft, ColVec uLeft, double rRight, ColVec uRight, double t)
-        {
-            // Left Boundary (x = 0) -> u-0.5*sin(20t) = 0
-            double[] pl = [uLeft[0] - 0.5 * Sin(20 * t), uLeft[1] - 10 * Cos(20 * t)];
-            double[] ql = [0.0, 0.0];
+    //    // 3. Boundary Conditions
+    //    // At r = 0 (Symmetry): Zero flux for both T and C -> f(0,t) = 0
+    //    // At r = R (Cylindrical wall): Constant wall temp Tw, zero mass flux
+    //    (ColVec pl, ColVec ql, ColVec pr, ColVec qr) BcFun(double rLeft, ColVec uLeft, double rRight, ColVec uRight, double t)
+    //    {
+    //        // Left Boundary (x = 0) -> u-0.5*sin(20t) = 0
+    //        double[] pl = [uLeft[0] - 0.5 * Sin(20 * t), uLeft[1] - 10 * Cos(20 * t)];
+    //        double[] ql = [0.0, 0.0];
 
-            // Right Boundary (x = L) -> Fixed: Dirichlet for U and V, 
-            double[] pr = [uRight[0], uRight[1]];
-            double[] qr = [0.0, 0.0];
+    //        // Right Boundary (x = L) -> Fixed: Dirichlet for U and V, 
+    //        double[] pr = [uRight[0], uRight[1]];
+    //        double[] qr = [0.0, 0.0];
 
-            return (pl, ql, pr, qr);
-        }
+    //        return (pl, ql, pr, qr);
+    //    }
 
-        // 4. Execution Call
-        int m = 0; // Cartesian coordinates
-        double[] x = Linspace(0, 1, 51);
-        double[] t = Linspace(0, 1, 51);
+    //    // 4. Execution Call
+    //    int m = 0; // Cartesian coordinates
+    //    double[] x = Linspace(0, 1, 101);
+    //    double[] t = Linspace(0, 1, 51);
 
-        (ColVec T, Matrix[] Ys) = Pdepe(m, PdeFun, IcFun, BcFun, x, t);
+    //    tic();
+    //    (ColVec T, Matrix[] Ys) = Pdepe(m, PdeFun, IcFun, BcFun, x, t);
+    //    Console.WriteLine(toc());
 
-        Matrix U = Ys[0]; // [TimeSteps x SpatialNodes] for Position
-        Matrix V = Ys[1]; // [TimeSteps x SpatialNodes] for Velocity
+    //    Matrix U = Ys[0]; // [TimeSteps x SpatialNodes] for Position
+    //    Matrix V = Ys[1]; // [TimeSteps x SpatialNodes] for Velocity
 
-        var wave = Plot(x, U[0, ..], Linewidth: 2);
+    //    var wave = Plot(x, U[0, ..], Linewidth: 2);
+    //    Axis([0, 1, -1, 1]);
 
-        // Animation
-        byte[] Animfun(int i)
-        {
-            wave.Ydata = U[i, ..].T;
-            return GetFrame();
-        }
-        AnimationMaker(Animfun, "Wave_Equation_Using_PDEPE.gif", 10, T.Numel);
-        CloseFig();
-    }
+    //    // Animation
+    //    byte[] Animfun(int i)
+    //    {
+    //        wave.Ydata = U[i, ..].T;
+    //        return GetFrame();
+    //    }
+    //    AnimationMaker(Animfun, "Wave_Equation_Using_PDEPE.gif", 10, T.Numel);
+    //    CloseFig();
+    //}
 
     //{
     //    //Large Nonlinear Systems
@@ -541,8 +544,221 @@
     //    Console.WriteLine($"Elapsed time: {toc()} seconds");
     //}
 
+    //{
+    //    //define ODE
+    //    double[] robertsonimplicit(double t, double[] y, double[] yp) =>
+    //        [yp[0] + 0.04 * y[0] - 1e4 * y[1]*y[2],
+    //                 yp[1] - 0.04 * y[0] + 1e4 * y[1]*y[2] + 3e7*y[1]*y[1],
+    //                 y[0] + y[1] + y[2] - 1];
+
+    //    var opts = Odeset(Stats: true
+    //    , UserDefinedJacobian: new(
+    //    (t, y, yp) => new double[,]
+    //    {
+    //                { 0.04, -1e4 * y[2], -1e4 * y[1] },
+    //                { -0.04, 1e4 * y[2]+ 6e7 * y[1], 1e4 * y[1] },
+    //                { 1, 1, 1 }
+    //    },
+    //    (t, y, yp) => new double[,]
+    //    {
+    //                {1, 0, 0},
+    //                {0, 1, 0},
+    //                {0, 0, 0}
+    //    })
+    //    );
+
+    //    // Set intial conditions for y0 and guess values for yp0
+    //    double[] y0 = [1, 0, 0], yp0 = [0, 0, 0];
+
+    //    // Solve for yp0, Truth array for y0 = [1,1,1] but for yp0 it is [0,0,0]. 
+    //    (y0, yp0) = decic(robertsonimplicit, 0, y0, [1, 1, 0], yp0, [0, 0, 0]);
+    //    //Solve ODE
+    //    (ColVec T, Matrix Y, Matrix Yp) = Ode45i(robertsonimplicit, (y0, yp0), [0, 4e6], opts);
+    //    // Plot the result
+    //    Y[.., 1] = 1e4 * Y[.., 1];
+    //    SemiLogx(T, Y);
+    //    Xlabel("Time t"); Ylabel("Soluton y");
+    //    Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
+    //    Title("Solution of implicit Robertson's ODE with ODE45i");
+    //    SaveAs("Implicit-Robertson-ODE-Ode45i_With_jacobian.png");
+    //}
+
+    //{
+    //    double[] robertson_f(double t, double[] y) =>
+    //        [(-0.04 * y[0] + 1e4 * y[1] * y[2]),
+    //                 (0.04 * y[0] - 1e4 * y[1] * y[2] - 3e7 * y[1]*y[1]),
+    //                 y[0] + y[1] + y[2] - 1.0];
+
+    //    double[,] mass_f(double t, double[] y) => Diag([1, 1, 0]);
+
+    //    double[] y0 = [1.0, 0.0, 0.0];
+    //    (ColVec T, Matrix Y) = Ode45a(robertson_f, mass_f, y0, [0, 1e7]);
+    //    // Plot the result
+    //    Y[.., 1] = 1e4 * Y[.., 1];
+    //    SemiLogx(T, Y);
+    //    Xlabel("Time t"); Ylabel("Soluton y");
+    //    Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
+    //    Title("Solution of Robertson's ODE with ODE45a");
+    //    SaveAs("Robertson-ODE-given-points-Ode45a.png");
+    //}
+    //{
+    //    double g = 9.81;
+
+    //    // State vector y = [x, y, u, v, λ]
+    //    double[] pendulum_f(double t, double[] y) =>
+    //        [y[2],
+    //                 y[3],
+    //                 -y[0] * y[4],
+    //                 -y[1] * y[4] - g,
+    //                 y[2]*y[2] + y[3]*y[3] - y[1] * g - y[4]];
+
+    //    double[,] mass_f(double t, double[] y) => Diag([1, 1, 1, 1, 0]);
+
+    //    double[] y0 = [0, 1, 1, 0, 1 - g];
+    //    var opts = Odeset(Stats: true, RelTol: 1e-6);
+    //    (ColVec T, Matrix Y) = Ode45a(pendulum_f, mass_f, y0, [0, 6], opts);
+    //    Plot(T, Y, Linewidth: 2); Xlabel("x"); Ylabel("y");
+    //    Legend(["x", "y", "u", "v", "λ"]);
+    //    Title("Pendulum Trajectory (DAE)");
+    //    SaveAs("Index_1-Pendulum-Problem-Ode45a.png");
+    //}
+
+    //{
+    //    double Ub = 6, R0 = 1000, R15 = 9000, alpha = 0.99,
+    //        beta = 1e-6, Uf = 0.026, c1 = 1e-6, c2 = 2e-6, c3 = 3e-6;
+    //    double[,] Mass(double t, double[] y) => new double[,]
+    //    {
+    //                {-c1,  c1,  0,   0,   0 },
+    //                { c1, -c1,  0,   0,   0 },
+    //                { 0,   0,  -c2,  0,   0 },
+    //                { 0,   0,   0,  -c3,  c3},
+    //                { 0,   0,   0,   c3, -c3}
+    //    };
+    //    double Ue(double t) => 0.4 * Sin(200 * pi * t);
+    //    double[] dudt(double t, double[] u)
+    //    {
+    //        double f23 = beta * (Exp((u[1] - u[2]) / Uf) - 1);
+    //        return [ -(Ue(t) - u[0])/R0,
+    //                         -(Ub/R15 - u[1]*2/R15 - (1-alpha)*f23),
+    //                         -(f23 - u[2]/R15),
+    //                         -((Ub - u[3])/R15 - alpha*f23),
+    //                         u[4]/R15 ];
+    //    }
+    //    double[] tspan = [0, 0.1];
+    //    double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
+
+    //    var opts = Odeset(RelTol: 1e-5);
+    //    (ColVec T, Matrix Y) = Ode45a(dudt, Mass, y0, tspan, opts);
+    //    Scatter(T, Arrayfun(Ue, T), "o"); HoldOn();
+    //    Plot(T, Y[.., 4], "--r"); HoldOff();
+    //    Legend(["Input", "Output"], UpperLeft);
+    //    Xlabel("Time t"); Ylabel("Solution y");
+    //    Title("One Transistor Amplifier DAE Problem-Ode45a");
+    //    SaveAs("One-Transistor-Amplifier-DAE-Problem-Ode45a.png");
+    //}
+
+    //{
+    //    double k1 = 18.7, k2 = 0.58, k3 = 0.09, k4 = 0.42, K = 34.4, Fin = 0.012;
+    //    double r1(double[] y) => k1 * Pow(y[0], 4) * Pow(y[1], 0.5);
+    //    double r2(double[] y) => k2 * y[2] * y[3];
+    //    double r3(double[] y) => (k2 / K) * y[0] * y[4];
+    //    double r4(double[] y) => k3 * y[0] * Pow(y[3], 2);
+    //    double r5(double[] y) => k4 * Pow(y[5], 2) * Pow(y[1], 0.5);
+
+    //    double[] akzo_f(double t, double[] y) =>
+    //        [
+    //            -2*r1(y) + r2(y) - r3(y) - r4(y),
+    //                    -0.5*r1(y) - r5(y) + 0.5*Fin,
+    //                    r1(y) - r2(y) + r3(y),
+    //                    -r2(y) + r3(y) - 2*r4(y),
+    //                    r2(y) - r3(y) + r4(y),
+    //                    -r5(y),
+    //                    y[0] * y[2] - y[6],
+    //                    y[3] * y[4] - y[7]
+    //        ];
+
+    //    double[,] mass_f(double t, double[] y) => Diag([1, 1, 1, 1, 1, 1, 0, 0]);
+    //    double[] y0 = [0.444, 0.0012, 0.0, 0.0037, 0.0, 0.0, 0.0, 0.0];
+    //    (ColVec T, Matrix Y) = Ode45a(akzo_f, mass_f, y0, [0, 180]);
+    //    Plot(T, Y);
+    //    Xlabel("Time"); Ylabel("Concentration");
+    //    Title("Akzo Nobel Chemical Kinetics (DAE)");
+    //    SaveAs("Akzo-Nobel-Ode45a.png");
+    //}
+
+    //{
+    //    // define the DAE
+    //    double alpha = 10;
+    //    double[] Ercan(double t, double[] x) =>
+    //        [ (alpha - 1/(2-t))*x[0] + (2-t)*alpha*x[2] + (3-t)/(2-t)*x[1],
+    //                  (1-alpha)/(t-2)*x[0] - x[1] + (alpha-1)*x[2] + 2*Exp(t),
+    //                  (t+2)*x[0] + (t*t-4)*x[1] - (t*t+t-2)*Exp(t) ];
+
+    //    double[,] mass_f(double t, double[] x) => Diag([1, 1, 0]);
+    //    double[] y0 = [1, 1, 0]; // only the differential variables need initial conditions
+    //    var opts = Odeset(Stats: true);
+    //    (ColVec T, Matrix Y) = Ode45a(Ercan, mass_f, y0, [0, 1], opts);
+    //    Scatter(T, Hcart(Exp(T), Exp(T), -Exp(T).Div(2 - T)), "o"); HoldOn();
+    //    Plot(T, Y); HoldOff();
+    //    Xlabel("Time t"); Ylabel("Solution x");
+    //    Legend(["x_1_Exact", "x_2_Exact", "z_Exact", "x_1_NumSol", "x_2_NumSol", "z_NumSol"]);
+    //    Title("Index-2 DAE Example (Ercan Celık)");
+    //    SaveAs("Index-2-DAE-Ercan-Celik.png");
+
+    //    // We can actually print out the result to compare with the analytical solution
+    //    Console.WriteLine("""
+    //                    t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
+    //                --------++-----------------+----------------++-----------------+----------------++-----------------+---------------
+    //                """);
+    //    for (int i = 0; i < T.Numel; i++)
+    //    {
+    //        Console.WriteLine($"""
+    //                      {T[i]:F2}  ||     {Y[i, 0]:F6}    |    {Exp(T[i]):F6}    ||     {Y[i, 1]:F6}    |    {Exp(T[i]):F6}    ||     {Y[i, 2]:F6}   |  {-Exp(T[i]) / (2 - T[i]):F6}
+    //                    """);
+    //    }
+
+    //    // We can compute the solution to a higher accuracy 
+    //    Console.WriteLine("\n\nNow we compute the solution to a higher accuracy (RelTol = 1e-5):\n");
+    //    opts = Odeset(Stats: true, RelTol: 1e-5);
+    //    (T, Y) = Ode45a(Ercan, mass_f, y0, [0, 1], opts);
+    //    Console.WriteLine("""
+    //                    t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
+    //                --------++-----------------+----------------++-----------------+----------------++-----------------+---------------
+    //                """);
+    //    for (int i = 0; i < T.Numel; i++)
+    //    {
+    //        Console.WriteLine($"""
+    //                      {T[i]:F2}  ||     {Y[i, 0]:F6}    |    {Exp(T[i]):F6}    ||     {Y[i, 1]:F6}    |    {Exp(T[i]):F6}    ||     {Y[i, 2]:F6}   |  {-Exp(T[i]) / (2 - T[i]):F6}
+    //                    """);
+    //    }
+    //}
+
+    //{
+    //    double g = 9.81;
+
+    //    // State vector y = [x, y, u, v, λ]
+    //    double[] pendulum_f(double t, double[] y) =>
+    //        [ y[2],
+    //          y[3],
+    //         -y[0] * y[4],
+    //         -y[1] * y[4] - g,
+    //          y[0]*y[2] + y[1]*y[3] ];
+
+    //    double[,] mass_f = Diag([1, 1, 1, 1, 0]);
+
+    //    double[] y0 = [0, 1, 1, 0, -1];
+    //    var opts = Odeset(Stats: true);
+    //    (ColVec T, Matrix Y) = Ode45a(pendulum_f, mass_f, y0, [0, 6], opts);
+    //    Plot(T, Y, Linewidth: 2); Xlabel("x"); Ylabel("y");
+    //    Legend(["x", "y", "u", "v", "λ"]);
+    //    Title("Pendulum Trajectory (DAE)");
+    //    SaveAs("Index_2-Pendulum-Problem-Ode45a.png");
+
+    //    Console.WriteLine("\n\n");
+    //    Console.WriteLine(Hcart(T, Y));
+    //}
     Writer.Run();
-   {
+    {
         // Reservoir Simulation
         folderpath = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\Morgana Data\";
         Matrix Base = ReadMatrix("Base.txt");

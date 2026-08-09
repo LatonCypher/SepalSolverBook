@@ -111,12 +111,6 @@ SepalSolver impelements ODE45s for stiff differential equation. This is an embed
       SaveAs("Robertson-ODE-Ode45s.png");
    
    
-   Ouput
-   
-   .. terminal::
-   
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-   
    .. figure:: images/Robertson-ODE-Ode45s.png
       :align: center
       :alt: Robertson-ODE-Ode45s.png
@@ -214,10 +208,10 @@ SepalSolver impelements ODE45s for stiff differential equation. This is an embed
       Summary of statistics by Ode45s
               142 successful steps
               0 failed attempts
-              3526 function evaluations
+              4224 function evaluations
               568 partial derivatives
               568 LU decompositions
-              1253 solutions of linear systems
+              1951 solutions of linear systems
       
       
       
@@ -226,8 +220,8 @@ SepalSolver impelements ODE45s for stiff differential equation. This is an embed
       Summary of statistics by Ode45s
               210 successful steps
               0 failed attempts
-              5345 function evaluations
+              6557 function evaluations
               840 partial derivatives
               840 LU decompositions
-              1984 solutions of linear systems
+              3196 solutions of linear systems
       

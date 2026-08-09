@@ -67,25 +67,26 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    .. code-block:: csharp
    
       // define the implicit function F(x, y, yp) = 0
-      double F(double x, double y, double yp) => y - x*yp - yp * yp;
-   
+      double F(double t, double y, double yp) => y - t * yp - yp * yp;
+      var opts = Odeset(UserDefinedJacobian: new((t, y, yp) => 1, (t, y, yp) => -t - 2 * yp));
       // initial conditions y(0) = 1, and guess for y'(0) = 0.1   
       double y0 = 1, yp0 = 0.1;
    
       // Compute y'(0) using decic
       (y0, yp0) = decic(F, 0, y0, 1, yp0, 0);
    
+   
       // Now solve the implicit ODE using Ode45i
-      var (T, Y, Yp) = Ode45i(F, (y0, yp0), [0, 5]);
+      var (T, Y, Yp) = Ode45i(F, (y0, yp0), [0, 5], opts);
    
       // Plot the results
       Scatter(T, Y, "fob"); HoldOn();
    
       // Add analytical solution for comparison
-      Plot(T, T+1, "r"); HoldOff();
+      Plot(T, T + 1, "r"); HoldOff();
    
       // Axis label and legend
-      Xlabel("x"); Ylabel("y"); 
+      Xlabel("x"); Ylabel("y");
       Legend(["Numerical Solution", "Analytical Solution"], LowerRight);
    
       // Save the plot
@@ -146,7 +147,22 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    * **Classical Mechanics:** Describing trajectories where the velocity constraint is non-linear.
    * **Singularities:** Just like Clairaut equations, Weissinger equations often have "envelope" solutions where the uniqueness of the solution breaks down.
    
+   
+   Using user defined derivative
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   We can also specify the derivative of the function with respect to :math:`y` and :math:`y'`. TO demonstrate this, 
+   
    Consider :math:`F(t, y, y') = ty^2(y')^3 - y^3(y')^2 + t(t^2 + 1)y' - t^2y = 0`
+   
+   .. math::
+   
+      \frac{\partial F}{\partial y} = 2ty(y')^3 - 3y^2(y')^2 - t^2
+   
+   
+   .. math::
+   
+      \frac{\partial F}{\partial y'} = 3ty^2(y')^2 - 2y^3y' + t(t^2 + 1)
+   
    
    In this case, fix the initial value :math:`y(t_0) = \sqrt{\cfrac{3}{2}}` and let decic compute a consistent initial value for the derivative :math:`y'(t_0)`, starting from an initial guess of :math:`y'(t_0) = 0`.
    
@@ -154,17 +170,20 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    .. code-block:: csharp
    
       // Define the implicit function F(t, y, yp) = 0
-      double F(double t, double y, double yp) => t*y*y*yp*yp*yp - y*y*y*yp*yp + t*(t*t + 1)*yp - t*t*y;
-      
+      double F(double t, double y, double yp) => t * y * y * yp * yp * yp - y * y * y * yp * yp + t * (t * t + 1) * yp - t * t * y;
+      var opts = Odeset(UserDefinedJacobian:
+          new((t, y, yp) => 2 * t * y * yp * yp * yp - 3 * y * y * yp * yp - t * t,
+          (t, y, yp) => 3 * t * y * y * yp * yp - 2 * y * y * y * yp + t * (t * t + 1)));
+   
       // Initial conditions y(t0) = sqrt(3/2), and guess for y'(t0) = 0
-      double t0 = 1, y0 = Sqrt(3.0/2.0), yp0 = 0;
-      
+      double t0 = 1, y0 = Sqrt(3.0 / 2.0), yp0 = 0;
+   
       // Compute y'(t0) using decic
       (y0, yp0) = decic(F, t0, y0, 1, yp0, 0);
-      
+   
       // Now solve the implicit ODE using Ode45i
-      var (T, Y, Yp) = Ode45i(F, (y0, yp0), [t0, 5]);
-      
+      var (T, Y, Yp) = Ode45i(F, (y0, yp0), [t0, 5], opts);
+   
       // Plot the results
       Scatter(T, Y, "fob"); HoldOn();
    
@@ -172,17 +191,18 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       Plot(T, Sqrt(T.Pow(2) + 0.5), "r"); HoldOff();
    
       // Axis label and legend
-      Xlabel("t"); Ylabel("y"); 
+      Xlabel("t"); Ylabel("y");
       Legend(["Numerical Solution", "Analytical Solution"], LowerRight);
    
       // Save the plot
-      SaveAs("Weissinger.png");
+      SaveAs("Weissinger_With_Jacobian.png");
    
    
-   .. figure:: images/Weissinger.png
+   .. figure:: images/Weissinger_With_Jacobian.png
       :align: center
-      :alt: Weissinger.png
+      :alt: Weissinger_With_Jacobian.png
    
+
 
 
 .. Admonition:: Example 3 :  Robertson differential equation in implicit form
@@ -238,10 +258,11 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       // Solve for yp0, Truth array for y0 = [1,1,1] but for yp0 it is [0,0,0]. 
       (y0, yp0) = decic(robertsonimplicit, 0, y0, [1, 1, 0], yp0, [0, 0, 0]);
    
+      var opts = Odeset(Stats: true);
       //Solve ODE
-      (ColVec T, Matrix Y, Matrix Yp) = Ode45i(robertsonimplicit, (y0, yp0), [0, 4e6]);
+      (ColVec T, Matrix Y, Matrix Yp) = Ode45i(robertsonimplicit, (y0, yp0), [0, 4e6], opts);
       // Plot the result
-      Y[.., 1] = 1e4*Y[.., 1];
+      Y[.., 1] = 1e4 * Y[.., 1];
       SemiLogx(T, Y);
       Xlabel("Time t"); Ylabel("Soluton y");
       Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
@@ -253,136 +274,93 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    
    .. terminal::
    
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
-      Warning: Matrix is close to singular or badly scaled.Results may be inaccurate
+      Summary of statistics by Ode45i
+              89 successful steps
+              3 failed attempts
+              3911 function evaluations
+              359 partial derivatives
+              359 LU decompositions
+              1390 solutions of linear systems
+      
    
    .. figure:: images/Implicit-Robertson-ODE-Ode45i.png
       :align: center
       :alt: Implicit-Robertson-ODE-Ode45i.png
+   
+   Using the user defined jacobian reduces the number of function calls made during the computation. 
+   
+   .. math::
+   
+      \frac{\partial F}{\partial y} = 
+      \begin{bmatrix}
+      0.04 & - 10^4 y_3 & - 10^4 y_2 \\
+      -0.04 & 10^4 y_3 + (6 \times 10^7)y_2 & 10^4 y_2 \\
+      1 & 1 & 1
+      \end{bmatrix}
+   
+   
+   
+   .. math::
+   
+      \frac{\partial F}{\partial y'} = 
+      \begin{bmatrix}
+      1 & 0 & 0 \\
+      0 & 1 & 0 \\
+      0 & 0 & 0
+      \end{bmatrix}
+   
+   
+   .. code-block:: csharp
+   
+      //define ODE
+      double[] robertsonimplicit(double t, double[] y, double[] yp) =>
+          [yp[0] + 0.04 * y[0] - 1e4 * y[1]*y[2],
+           yp[1] - 0.04 * y[0] + 1e4 * y[1]*y[2] + 3e7*y[1]*y[1],
+           y[0] + y[1] + y[2] - 1];
+   
+      var opts = Odeset(Stats: true, UserDefinedJacobian:
+          new((t, y, yp) => new double[,] 
+          { 
+              { 0.04, -1e4 * y[2], -1e4 * y[1] }, 
+              { -0.04, 1e4 * y[2]+ 6e7 * y[1], 1e4 * y[1] },
+              { 1, 1, 1 } 
+          },
+          (t, y, yp) => new double[,]
+          { 
+              {1, 0, 0}, 
+              {0, 1, 0}, 
+              {0, 0, 0} 
+          }));
+   
+      // Set intial conditions for y0 and guess values for yp0
+      double[] y0 = [1, 0, 0], yp0 = [0, 0, 0];
+   
+      // Solve for yp0, Truth array for y0 = [1,1,1] but for yp0 it is [0,0,0]. 
+      (y0, yp0) = decic(robertsonimplicit, 0, y0, [1, 1, 0], yp0, [0, 0, 0]);
+      //Solve ODE
+      (ColVec T, Matrix Y, Matrix Yp) = Ode45i(robertsonimplicit, (y0, yp0), [0, 4e6], opts);
+      // Plot the result
+      Y[.., 1] = 1e4 * Y[.., 1];
+      SemiLogx(T, Y);
+      Xlabel("Time t"); Ylabel("Soluton y");
+      Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
+      Title("Solution of implicit Robertson's ODE with ODE45i");
+      SaveAs("Implicit-Robertson-ODE-Ode45i_With_jacobian.png");
+   
+   
+   Ouput
+   
+   .. terminal::
+   
+      Summary of statistics by Ode45i
+              90 successful steps
+              3 failed attempts
+              1498 function evaluations
+      
+   
+   .. figure:: images/Implicit-Robertson-ODE-Ode45i_With_jacobian.png
+      :align: center
+      :alt: Implicit-Robertson-ODE-Ode45i_With_jacobian.png
    
    
    As an exercise, the reader is encouraged to solve this same problem but using this constraint

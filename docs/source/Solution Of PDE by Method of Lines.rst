@@ -447,13 +447,8 @@ boundary condition
    // 1. PDE Definition
    (ColVec c, ColVec f, ColVec s) PdeFun(double r, double t, ColVec u, ColVec dudx)
    {
-       double V = u[1];
-       double dUdx = dudx[0];
-
-       double[] cVec = [1, 1];
-       double[] fVec = [0, dUdx];
-       double[] sVec = [V, 0];
-
+       double V = u[1], dUdx = dudx[0];
+       double[] cVec = [1, 1], fVec = [0, dUdx], sVec = [V, 0];
        return (cVec, fVec, sVec);
    }
 
@@ -482,8 +477,8 @@ boundary condition
 
    // 4. Execution Call
    int m = 0; // Cartesian coordinates
-   double[] x = Linspace(0, 1, 51);
-   double[] t = Linspace(0, 1, 51);
+   double[] x = Linspace(0, 1, 101);
+   double[] t = Linspace(0, 2, 101);
 
    (ColVec T, Matrix[] Ys) = Pdepe(m, PdeFun, IcFun, BcFun, x, t);
 
