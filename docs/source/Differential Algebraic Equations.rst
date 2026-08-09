@@ -119,7 +119,7 @@ Where :math:`M` is a singular matrix.
       Summary of statistics by Ode45a
               1224 successful steps
               7 failed attempts
-              48797 function evaluations
+              48792 function evaluations
               4921 partial derivatives
               4921 LU decompositions
               19274 solutions of linear systems
@@ -508,7 +508,7 @@ Now we look at examples of index 2 DAEs
       Summary of statistics by Ode45a
               89 successful steps
               31 failed attempts
-              5523 function evaluations
+              5524 function evaluations
               480 partial derivatives
               480 LU decompositions
               2629 solutions of linear systems

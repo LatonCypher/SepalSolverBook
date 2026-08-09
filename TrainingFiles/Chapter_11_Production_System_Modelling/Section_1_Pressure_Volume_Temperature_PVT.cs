@@ -70,28 +70,36 @@
             /// </math>
             /// 
             /// Kareem et al, z factor correlation is a really good approximation and is described below.
+            /// given that :math:`t = \frac{1}{T_{pr}}`
+            /// 
+            /// <math>
+            /// \begin{align*}
+            /// A &= a_1 t e^{a_2(1-t)^2} P_{pr}, \\
+            /// B &= a_3 t + a_4 t^2 + a_5 t^6 P_{pr}^6, \\
+            /// C &= a_9 + a_8 t P_{pr} + a_7 t^2 P_{pr}^2 + a_6 t^3 P_{pr}^3
+            /// \end{align*}
+            /// </math>
+            /// 
+            /// <math>
+            /// \begin{equation}
+            /// y = \cfrac{DP_{pr}}{\left(\cfrac{1+A^2}{C} - \cfrac{A^2 B}{C^3}\right)}
+            /// \end{equation}
+            /// </math>
+            /// 
+            /// given that :math:`t = \frac{1}{T_{pr}}`
+            /// <math>
+            /// \begin{align*}
+            /// D &= a_{10} t e^{a_{11}(1-t)^2}, \\
+            /// E &= a_{12} t + a_{13} t^2 + a_{14} t^3, \\
+            /// F &= a_{15} t + a_{16} t^2 + a_{17} t^3, \\
+            /// G &= a_{18} + a_{19} t
+            /// \end{align*}
+            /// </math>
+            /// 
             /// <math>
             /// \begin{equation}
             /// z = \frac{DP_{pr}(1 + y + y^2 - y^3)}{(DP_{pr} + Ey^2 - Fy^G)(1 - y)^3} 
             /// \end{equation}
-            /// </math>
-            /// <math>
-            /// \begin{equation}
-            /// y = \frac{DP_{pr}}{\left(\frac{1+A^2}{C} - \frac{A^2 B}{C^3}\right)}
-            /// \end{equation}
-            /// 
-            /// \noindent where
-            /// \[
-            /// t = \frac{1}{T_{pr}},
-            /// \]
-            /// </math>
-            /// <math>
-            /// \begin{align*}
-            /// A &= a_1 t e^{a_2(1-t)^2} P_{pr}, & B &= a_3 t + a_4 t^2 + a_5 t^6 P_{pr}^6, \\
-            /// C &= a_9 + a_8 t P_{pr} + a_7 t^2 P_{pr}^2 + a_6 t^3 P_{pr}^3, \\
-            /// D &= a_{10} t e^{a_{11}(1-t)^2}, & E &= a_{12} t + a_{13} t^2 + a_{14} t^3, \\
-            /// F &= a_{15} t + a_{16} t^2 + a_{17} t^3, & G &= a_{18} + a_{19} t
-            /// \end{align*}
             /// </math>
             /// 
             /// <code>
