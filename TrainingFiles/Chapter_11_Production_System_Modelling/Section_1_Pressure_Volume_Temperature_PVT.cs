@@ -15,7 +15,9 @@
             /// - :math:`\mu_o`: Oil Viscosity (cP)
             /// - :math:`\gamma_o, \gamma_g`: Specific gravities of oil and gas. 
             /// 
-            /// The Bubble Point Pressure (:math:`P_b`) The pressure at which the first bubble of gas comes out of solution. Below this pressure, the fluid is "saturated." A common correlation used is Standing’s method.
+            /// 1. The Bubble Point Pressure (:math:`P_b`):
+            /// 
+            /// The pressure at which the first bubble of gas comes out of solution. Below this pressure, the fluid is "saturated." A common correlation used is Standing’s method.
             /// 
             /// <math>
             ///     P_b = 18.2 \left[ \left( \frac{R_s}{\gamma_g} \right)^{0.83} \times 10^{(0.00091 T - 0.0125 API)} - 1.4 \right]
@@ -37,7 +39,7 @@
             }
             ///</code>
             ///
-            /// 2. Oil Formation Volume Factor(:math:B_o)Since oil shrinks as gas escapes, :math:B_o is almost always greater than 1.0.For pressures below the bubble point, we use the Standing correlation:
+            /// 2. Oil Formation Volume Factor(:math:`B_o`): Since oil shrinks as gas escapes, :math:`B_o` is almost always greater than 1.0.For pressures below the bubble point, we use the Standing correlation:
             /// <math>
             ///     B_o = 0.9759 + 0.00012\left[R_s \left( \frac{\gamma_g}{\gamma_o} \right)^{0.5} + 1.25 T \right]^{1.2}
             /// </math>
@@ -58,7 +60,8 @@
             }
             /// </code>
             /// 
-            /// 3.Gas Compressibility Factor(:math:`z`)
+            /// 3. Gas Compressibility Factor(:math:`z`):
+            /// 
             /// For gas modeling, the Ideal Gas Law fails at high pressure. We use the :math:`Z`-factor to correct it. The Hall-Yarborough or Dranchuk-Abu-Kassam methods are standard for coding this.
             /// 
             /// Linearization for Gas Density:
@@ -66,22 +69,23 @@
             ///     \rho_g = \frac{P \cdot MW_g}{ Z \cdot R \cdot T}
             /// </math>
             /// 
-            /// Kareem et al, z factor correlation is a really good approximation and is described below. 
-            /// 
+            /// Kareem et al, z factor correlation is a really good approximation and is described below.
             /// <math>
             /// \begin{equation}
-            /// z = \frac{DP_{pr}(1 + y + y^2 - y^3)}{(DP_{pr} + Ey^2 - Fy^G)(1 - y)^3} \tag{14}
+            /// z = \frac{DP_{pr}(1 + y + y^2 - y^3)}{(DP_{pr} + Ey^2 - Fy^G)(1 - y)^3} 
             /// \end{equation}
-            /// 
+            /// </math>
+            /// <math>
             /// \begin{equation}
-            /// y = \frac{DP_{pr}}{\left(\frac{1+A^2}{C} - \frac{A^2 B}{C^3}\right)} \tag{15}
+            /// y = \frac{DP_{pr}}{\left(\frac{1+A^2}{C} - \frac{A^2 B}{C^3}\right)}
             /// \end{equation}
             /// 
             /// \noindent where
             /// \[
             /// t = \frac{1}{T_{pr}},
             /// \]
-            /// 
+            /// </math>
+            /// <math>
             /// \begin{align*}
             /// A &= a_1 t e^{a_2(1-t)^2} P_{pr}, & B &= a_3 t + a_4 t^2 + a_5 t^6 P_{pr}^6, \\
             /// C &= a_9 + a_8 t P_{pr} + a_7 t^2 P_{pr}^2 + a_6 t^3 P_{pr}^3, \\
