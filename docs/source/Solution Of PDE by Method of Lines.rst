@@ -477,7 +477,7 @@ boundary condition
    Matrix V = Ys[1]; // [TimeSteps x SpatialNodes] for Velocity
 
    var wave = Plot(x, U[0, ..], Linewidth: 2);
-   Axis([x[0], x[^1], -0.6, 0.6]);
+   Axis([x[0], x[^1], -1, 1]);
    // Animation
    byte[] Animfun(int i)
    {

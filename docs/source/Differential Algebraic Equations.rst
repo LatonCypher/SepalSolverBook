@@ -508,7 +508,7 @@ Now we look at examples of index 2 DAEs
       Summary of statistics by Ode45a
               89 successful steps
               31 failed attempts
-              5525 function evaluations
+              5523 function evaluations
               480 partial derivatives
               480 LU decompositions
               2629 solutions of linear systems
