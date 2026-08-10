@@ -176,7 +176,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
        (ColVec T, Matrix Y) = Ode45(dydt, i0, tspan);
        Plot(T, Y, Linewidth: 2);
        Legend(["i", "i'"], UpperLeft);
-      Title("RLC Circuit");
+       Title("RLC Circuit");
        SaveAs("HigherOrder_RLC.png");
    
    

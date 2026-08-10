@@ -52,7 +52,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             /// \min \quad -x_1 - 0.3333 x_2 \quad \text{s.t.} \quad \mathbf{A}\mathbf{x} \le \mathbf{b}, \quad x_1 \in \mathbb{Z}
             /// </math>
             ///
-            /// 
+            /// <code>      
             {
                 // SOLVE_MILP Solves Mixed-Integer LP where specific variables are constrained to integers
                 double[,] A = new double[,]{
@@ -73,7 +73,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
                 var result = Intlinprog(f, intCon, A, b);
                 Console.WriteLine(result);
             }
-            /// 
+            /// </code>
             ///
             ///  <header 3> Example 2: MILP with Equality Constraints </header 3>
             /// Combining integer variable restrictions with linear equality systems :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}` to model fixed discrete relationship balance equations:
@@ -81,7 +81,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             /// \min \quad \mathbf{f}^T \mathbf{x} \quad \text{s.t.} \quad \mathbf{A}\mathbf{x} \le \mathbf{b}, \quad \mathbf{A}{eq}\mathbf{x} = \mathbf{b}{eq}, \quad x_1, x_2 \in \mathbb{Z}
             /// 
             ///
-            /// 
+            /// <code>
             {
                 double[,] A = new double[,]{
                     { 1.00,  1.00 },
@@ -102,7 +102,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
                 var result = Intlinprog(f, intCon, A, b, Aeq, beq);
                 Console.WriteLine(result);
             }
-            /// 
+            /// </code>
             ///
             ///
             /// <header 3> Example 3: Fully Constrained MILP with Binary/Integer Variable Bounds </header 3>
@@ -112,7 +112,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             /// \min \quad \mathbf{f}^T \mathbf{x} \quad \text{s.t.} \quad \mathbf{A}\mathbf{x} \le \mathbf{b}, \quad \mathbf{A}{eq}\mathbf{x} = \mathbf{b}{eq}, \quad \mathbf{Lb} \le \mathbf{x} \le \mathbf{Ub}, \quad x_j \in \mathbb{Z} \ \forall j \in intCon
             /// </math>
             ///
-            /// 
+            /// <code>
             {
                 double[,] A = new double[,]{
                     { 1.00,  1.00 },
@@ -134,7 +134,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
                 var result = Intlinprog(f, intCon, A, b, Aeq, beq, Lb, Ub);
                 Console.WriteLine(result);
             }
-            /// 
+            /// </code>
             ///
             ///
             /// </BookContent>

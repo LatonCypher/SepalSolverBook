@@ -148,7 +148,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                  (ColVec T, Matrix Y) = Ode45(dydt, i0, tspan);
                  Plot(T, Y, Linewidth: 2);
                  Legend(["i", "i'"], UpperLeft);
-                Title("RLC Circuit");
+                 Title("RLC Circuit");
                  SaveAs("HigherOrder_RLC.png");
             }
             /// </code>

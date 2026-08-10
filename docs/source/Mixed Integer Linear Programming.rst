@@ -50,27 +50,37 @@ Enforcing integer restrictions on selected decision variables by providing an in
 
 
 
-            {
-                // SOLVE_MILP Solves Mixed-Integer LP where specific variables are constrained to integers
-                double[,] A = new double[,]{
-                    { 1.00,  1.00 },
-                    { 1.00,  0.25 },
-                    { 1.00, -1.00 },
-                    {-0.25, -1.00 },
-                    {-1.00, -1.00 },
-                    {-1.00,  1.00 }
-                };
+.. code-block:: csharp
 
-                double[] b = [2, 1, 2, 1, -1, 2];
-                double[] f = [-1, -1.0 / 3];
+   // SOLVE_MILP Solves Mixed-Integer LP where specific variables are constrained to integers
+   double[,] A = new double[,]{
+       { 1.00,  1.00 },
+       { 1.00,  0.25 },
+       { 1.00, -1.00 },
+       {-0.25, -1.00 },
+       {-1.00, -1.00 },
+       {-1.00,  1.00 }
+   };
 
-                // Define 1-based or 0-based indices of variables that must be integers (e.g., x1 is integer)
-                int[] intCon = [0];
+   double[] b = [2, 1, 2, 1, -1, 2];
+   double[] f = [-1, -1.0 / 3];
 
-                var result = Intlinprog(f, intCon, A, b);
-                Console.WriteLine(result);
-            }
+   // Define 1-based or 0-based indices of variables that must be integers (e.g., x1 is integer)
+   int[] intCon = [0];
 
+   var result = Intlinprog(f, intCon, A, b);
+   Console.WriteLine(result);
+
+
+Ouput
+
+.. terminal::
+
+   Optimal solution found
+   
+      0.6667
+      1.3333
+   
 
 Example 2: MILP with Equality Constraints
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -80,27 +90,37 @@ Combining integer variable restrictions with linear equality systems :math:`\mat
 
 
 
-            {
-                double[,] A = new double[,]{
-                    { 1.00,  1.00 },
-                    { 1.00,  0.25 },
-                    { 1.00, -1.00 },
-                    {-0.25, -1.00 },
-                    {-1.00, -1.00 },
-                    {-1.00,  1.00 }
-                };
+.. code-block:: csharp
 
-                double[] b = [2, 1, 2, 1, -1, 2];
-                double[] f = [-1, -1.0 / 3];
-                int[] intCon = [0, 1]; // Both x1 and x2 must be integer values
+   double[,] A = new double[,]{
+       { 1.00,  1.00 },
+       { 1.00,  0.25 },
+       { 1.00, -1.00 },
+       {-0.25, -1.00 },
+       {-1.00, -1.00 },
+       {-1.00,  1.00 }
+   };
 
-                double[,] Aeq = new double[,] { { 1, 1.0 / 4 } };
-                double[] beq = [1.0 / 2];
+   double[] b = [2, 1, 2, 1, -1, 2];
+   double[] f = [-1, -1.0 / 3];
+   int[] intCon = [0, 1]; // Both x1 and x2 must be integer values
 
-                var result = Intlinprog(f, intCon, A, b, Aeq, beq);
-                Console.WriteLine(result);
-            }
+   double[,] Aeq = new double[,] { { 1, 1.0 / 4 } };
+   double[] beq = [1.0 / 2];
 
+   var result = Intlinprog(f, intCon, A, b, Aeq, beq);
+   Console.WriteLine(result);
+
+
+Ouput
+
+.. terminal::
+
+   Optimal solution found
+   
+    0 
+    2 
+   
 
 
 Example 3: Fully Constrained MILP with Binary/Integer Variable Bounds
@@ -114,27 +134,37 @@ Solving a fully constrained MILP with explicit lower (:math:`\mathbf{Lb}`) and u
 
 
 
-            {
-                double[,] A = new double[,]{
-                    { 1.00,  1.00 },
-                    { 1.00,  0.25 },
-                    { 1.00, -1.00 },
-                    {-0.25, -1.00 },
-                    {-1.00, -1.00 },
-                    {-1.00,  1.00 }
-                };
+.. code-block:: csharp
 
-                double[] b = [2, 1, 2, 1, -1, 2];
-                double[] f = [-1, -1.0 / 3];
-                int[] intCon = [0, 1];
+   double[,] A = new double[,]{
+       { 1.00,  1.00 },
+       { 1.00,  0.25 },
+       { 1.00, -1.00 },
+       {-0.25, -1.00 },
+       {-1.00, -1.00 },
+       {-1.00,  1.00 }
+   };
 
-                double[,] Aeq = new double[,] { { 1, 1.0 / 4 } };
-                double[] beq = [1.0 / 2];
-                double[] Lb = [-1, -0.5], Ub = [1.5, 1.25];
+   double[] b = [2, 1, 2, 1, -1, 2];
+   double[] f = [-1, -1.0 / 3];
+   int[] intCon = [0, 1];
 
-                var result = Intlinprog(f, intCon, A, b, Aeq, beq, Lb, Ub);
-                Console.WriteLine(result);
-            }
+   double[,] Aeq = new double[,] { { 1, 1.0 / 4 } };
+   double[] beq = [1.0 / 2];
+   double[] Lb = [-1, -0.5], Ub = [1.5, 1.25];
 
+   var result = Intlinprog(f, intCon, A, b, Aeq, beq, Lb, Ub);
+   Console.WriteLine(result);
+
+
+Ouput
+
+.. terminal::
+
+   Optimal solution found
+   
+      0.1875
+      1.2500
+   
 
 
