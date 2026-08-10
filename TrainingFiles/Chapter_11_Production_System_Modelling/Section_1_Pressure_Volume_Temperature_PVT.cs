@@ -84,7 +84,7 @@
             /// 
             /// <math>
             /// \begin{equation}
-            /// y = \cfrac{DP_{pr}}{\left(\cfrac{1+A^2}{C} - \cfrac{A^2 B}{C^3}\right)}
+            /// y = \frac{C^3DP_{pr}}{\left(C^2(1+A^2) - A^2 B\right)}
             /// \end{equation}
             /// </math>
             /// 
