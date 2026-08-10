@@ -1,18 +1,4 @@
-﻿using ScottPlot.Hatches;
-using ScottPlot.Interactivity.UserActions;
-using ScottPlot.Plottables;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
-using System.Xml.Linq;
-using static SepalSolver.Statistics;
-
-namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
+﻿namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
 {
     internal class Section_4_Curve_Fitting
     {
@@ -47,7 +33,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
                 double[] xFit = Linspace(1, 5, 100);
                 double[] yFit = Polyval(coefficients, xFit);
                 Plot(xFit, yFit, Linewidth: 2);
-                SaveAs("CurveFitting.png");
+                SaveAs("Polynomial_Fitting.png");
+                CloseFig();
             }
             /// </code>
             /// 
@@ -57,8 +44,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             /// while controlling truncation errors, floating-point precision loss, and
             /// spectral artifacts.
             /// 
-            /// Mathematical Formulation
-            /// ========================
+            /// Mathematical Formulation:
+            /// 
             /// A truncated Fourier series approximating a periodic function :math:`f(x)` on 
             /// the interval :math:`[-\pi, \pi]` with :math:`N` harmonics is defined as:
             /// 
@@ -97,7 +84,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
                     fourier.Ydata = A * p;
                     return GetFrame();
                 }
-                AnimationMaker(Animfun, "FourierFit.gif", 5, 100);
+                AnimationMaker(Animfun, "FourierFitting.gif", 5, 100);
                 CloseFig();
             }
             /// </code>
@@ -127,7 +114,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
                 x0 = [-1, -2, 1, -1]; weight[xdata < 0.5] = 1;
                 var opts = OptimSet(Display: true, MaxIter: 200, StepTol: 1e-6, OptimalityTol: 1e-6);
                 var ans = Lsqcurvefit(fun, x0, xdata, ydata, options: opts);
-                AnimateHistory(fun, xdata, ydata, ans.history, "Fitting.gif");
+                AnimateHistory(fun, xdata, ydata, ans.history, "Bi_Exponential_Fitting.gif");
+                CloseFig();
             }
             /// </code>
             /// 
@@ -158,11 +146,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             }
             /// </code>
             /// 
-
-
-
-
-
+            /// </BookContent>
         }
     }
 }
