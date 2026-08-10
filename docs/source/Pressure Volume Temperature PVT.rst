@@ -147,7 +147,7 @@ given that :math:`t = 1/T_{pr}`
 
        // Equation 15: Reduced density y
        double A2 = A * A, C2 = C * C, C3 = C2 * C,
-           denom_y = C2 * (1.0 + A2) - A2 * B,
+           denom_y = C2 * (1.0 + A2) - (A2 * B),
            y = (C3 * D * Ppr) / denom_y;
 
        // Equation 14: Compressibility factor z

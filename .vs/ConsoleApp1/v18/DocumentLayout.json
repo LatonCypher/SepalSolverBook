@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_11_production_system_modelling\\section_1_pressure_volume_temperature_pvt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_11_production_system_modelling\\section_1_pressure_volume_temperature_pvt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_10_partial_differential_equations\\section_2_solution_of_pde_by method_of_lines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_10_partial_differential_equations\\section_2_solution_of_pde_by method_of_lines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -53,7 +53,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1102,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
@@ -67,6 +67,19 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-25T11:41:47.712Z",
               "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Section_2_Solution_Of_PDE_by Method_of_Lines.cs",
+              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_2_Solution_Of_PDE_by Method_of_Lines.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_2_Solution_Of_PDE_by Method_of_Lines.cs",
+              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_2_Solution_Of_PDE_by Method_of_Lines.cs*",
+              "RelativeToolTip": "TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_2_Solution_Of_PDE_by Method_of_Lines.cs*",
+              "ViewState": "AgIAAIwBAAAAAAAAAAAuwJcBAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T00:20:23.017Z",
               "EditorCaption": ""
             },
             {
@@ -156,19 +169,6 @@
               "ViewState": "AgIAAF8CAAAAAAAAAAAkwGcCAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-09T01:51:09.206Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Section_1_Pressure_Volume_Temperature_PVT.cs",
-              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_11_Production_System_Modelling\\Section_1_Pressure_Volume_Temperature_PVT.cs",
-              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_11_Production_System_Modelling\\Section_1_Pressure_Volume_Temperature_PVT.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_11_Production_System_Modelling\\Section_1_Pressure_Volume_Temperature_PVT.cs*",
-              "RelativeToolTip": "TrainingFiles\\Chapter_11_Production_System_Modelling\\Section_1_Pressure_Volume_Temperature_PVT.cs*",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAuwFkAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-09T01:40:15.627Z",
               "EditorCaption": ""
             },
             {
