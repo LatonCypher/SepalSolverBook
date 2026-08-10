@@ -166,7 +166,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
                 xdata = Linspace(2,7); ydata = model(xstar, xdata) + noise/10;
                 Scatter(xdata, ydata, "ro");
 
-                Xlabel("x"); Ylabel("y"); SaveAs("Seeded_Curve_Fitting_Data.png");
+                Xlabel("x"); Ylabel("y"); 
+                SaveAs("Seeded_Curve_Fitting_Data.png");
                 CloseFig();
             }
             /// </code>

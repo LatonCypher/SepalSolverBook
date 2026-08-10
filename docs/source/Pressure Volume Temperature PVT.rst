@@ -241,3 +241,76 @@ Practical Application: Material BalanceWe combine these PVT parameters to calcul
 
    N = \frac{N_p B_o + (G_p - N_p R_s) B_g}{ B_o - B_{ oi} }
 
+
+Bubble Point and Dew Point Pressures are critical for determining the phase behavior of reservoir fluids. The bubble point is the pressure at which gas begins to come out of solution in oil, while the dew point is the pressure at which liquid begins to condense from gas. 
+These pressures can be estimated using correlations or laboratory PVT analysis.
+
+.. code-block:: csharp
+
+   double BubblePointPressure(double[] Z, double[] Tc, double[] Tb, double[] Pc, double[] W, double T, double Psc)
+   {
+       double[] TcInv = [.. Tc.Select(t => 1 / t)], TbInv = [.. Tb.Select(t => 1 / t)],
+           aPoly = [15e-8, 4.5e-4, 1.2], bPoly = [-3.5e-8, -1.7e-4, 0.89];
+       double Tinv = 1 / T;
+       double PbFunc(double Pb)
+       {
+           double a = Polyval(aPoly, Pb), b = Polyval(bPoly, Pb), s = 0, F, K;
+           for (int i = 0; i < 3; i++)
+           {
+               F = (TbInv[i] - Tinv) / (TbInv[i] - TcInv[i]) * Log10(Pc[i] / Psc);
+               K = Pow(10, a + b * F) / Pb; s += Z[i] * K;
+           }
+           return s - 1;
+       }
+       double Pb0 = 0;
+       for (int i = 0; i < 3; i++)
+           Pb0 += Z[i] * Pc[i] * Exp(5.371 * (1 + W[i]) * (1 - Tc[i] / T));
+       double Pb = Fsolve(PbFunc, Pb0);
+       return Pb;
+   }
+
+   double DewPointPressure(double[] Z, double[] Tc, double[] Tb, double[] Pc, double[] W, double T, double Psc)
+   {
+       double[] TcInv = [.. Tc.Select(t => 1 / t)], TbInv = [.. Tb.Select(t => 1 / t)],
+           aPoly = [15e-8, 4.5e-4, 1.2], bPoly = [-3.5e-8, -1.7e-4, 0.89];
+       double Tinv = 1 / T;
+       double PdFunc(double Pd)
+       {
+           double a = Polyval(aPoly, Pd), b = Polyval(bPoly, Pd), s = 0, F, K;
+           for (int i = 0; i < 3; i++)
+           {
+               F = (TbInv[i] - Tinv) / (TbInv[i] - TcInv[i]) * Log10(Pc[i] / Psc);
+               K = Pow(10, a + b * F) / Pd; s += Z[i] / K;
+           }
+           return s - 1;
+       }
+       double Pd0 = 0;
+       for (int i = 0; i < 3; i++)
+           Pd0 += Z[i] / (Pc[i] * Exp(5.371 * (1 + W[i]) * (1 - Tc[i] / T)));
+       double Pd = Fsolve(PdFunc, Pd0);
+       return Pd;
+   }
+
+   string[] Components = ["C3", "C4", "C5"];
+   double[] Z = [0.6, 0.3, 0.1], Mw = [44.09, 58.12, 72.15];
+   double[] Tc = [665.7, 765.3, 845.4], TcInv = [.. Tc.Select(t => 1 / t)];
+   double[] Tb = [416, 490.8, 556.6], TbInv = [.. Tb.Select(t => 1 / t)];
+   double[] Pc = [616.3, 550.7, 488.6], W = [0.1454, 0.1928, 0.2510];
+   double T = 760, Tinv = 1 / T, Psc = 14.7, Pb, Pd;
+   List<double> Plist = [], Tlist = [];
+   Pb = BubblePointPressure(Z, Tc, Tb, Pc, W, T, Psc);
+   Pd = DewPointPressure(Z, Tc, Tb, Pc, W, T, Psc);
+   Console.WriteLine($"""
+       T = {T:0.00} K, 
+       Bubble Point Pressure = {Pb:0.00} psia, 
+       Dew Point Pressure = {Pd:0.00} psia
+       """);
+
+
+Ouput
+
+.. terminal::
+
+   T = 760.00 K, 
+   Bubble Point Pressure = 1223.46 psia, 
+   Dew Point Pressure = 771.49 psia
