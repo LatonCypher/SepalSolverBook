@@ -51,10 +51,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
                 Console.WriteLine(result);
             }
             /// </code>
-            /// 
-            /// 
             ///
-            /// <header 3> Rosenbrock function with constraint 
+            /// <header 3> Rosenbrock function with constraint </header>
             ///
             /// The goal is to find the parameter vector :math:\mathbf{x} = [x_0, x_1]^T that
             /// minimizes the non-convex Rosenbrock objective function:
@@ -80,7 +78,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             }
             /// </code> 
             ///
-            /// <header 3> Rosenbrock function with constraint, Lower and Upperbound 
+            /// <header 3> Rosenbrock function with constraint, Lower and Upperbound </header>
             ///
             /// Minimizes the Rosenbrock objective subject to a shifted circular inequality constraint combined with explicit lower (lb) and upper (ub) parameter boundaries:
             ///
@@ -107,7 +105,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             }
             /// </code>
             ///
-            /// <header 3> Unconstrained Derivative-Free Optimization with Fminsearch 
+            /// <header 3> Unconstrained Derivative-Free Optimization with Fminsearch </header>
             ///
             /// When gradient information is unavailable or the objective is non-differentiable, Fminsearch uses the Nelder-Mead Simplex algorithm to locate the unconstrained global minimum at :math:\mathbf{x}^* = (1, 1) where :math:f(\mathbf{x}^*) = 0.
             ///
@@ -125,7 +123,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             }
             /// </code>
             ///
-            /// <header 3> Global Stochastic Optimization with Genetic Algorithm 
+            /// <header 3> Global Stochastic Optimization with Genetic Algorithm </header>
              ///
              /// For non-convex or multimodal objective functions where gradient-based solvers risk getting trapped in local minima, the Genetic Algorithm (GA) uses population-based operators to explore bounded search spaces without requiring an initial guess.
              ///

@@ -86,13 +86,15 @@ where the complex coefficients :math:`c_n` relate to the real coefficients via:
    Plot(x, Rect, Linewidth: 2); HoldOn();
    var fourier = Plot(x, 0 * x, "r", Linewidth: 2);
    Axis([x[0], x[^1], -1.5, 1.5]);
-   List<ColVec> A = [Cos(x * 0)];
+   
    byte[] Animfun(int N)
    {
+       Matrix A = Zeros(1001, 2 * N + 3);
+       A[.., 0] = Ones(1001);
        for (int n = 1; n <= (N + 1); n++)
        {
-           A.Add(Cos(n * x));
-           A.Add(Sin(n * x));
+           A[.., 2 * n-1] = Cos(n * x); 
+           A[.., 2 * n] = Sin(n * x);
        }
        ColVec p = Mldivide(A, Rect);
        fourier.Ydata = A * p;
@@ -148,21 +150,35 @@ Ouput
 
                                                Norm of      First-order 
     Iteration   Func-count       Resnorm          step       optimality 
-        0            5          1.7077e0                       3.5260e0 
-        1           11         7.8691e-1     2.5440e-1         1.4608e0 
-        2           17         5.1843e-1     2.3592e-1        2.9514e-1 
-        3           23         4.4079e-1     5.2358e-1        1.4397e-1 
-        4           29         2.6146e-1      2.0144e0        6.8605e-1 
-        5           35         1.0668e-1      2.9691e0        7.0986e-1 
-        6           41         5.7130e-3     4.5565e-1        7.8767e-2 
-        7           47         5.4844e-3     4.9595e-1        1.6375e-1 
-        8           53         4.9634e-3     4.2578e-1        1.5010e-1 
-        9           59         4.1768e-3     3.4644e-1        1.0967e-1 
-       10           65         3.5414e-3     2.4090e-1        5.3263e-2 
-       11           71         3.3603e-3     1.1944e-1        1.2606e-2 
-       12           77         3.3496e-3     3.1169e-2        8.3915e-4 
-       13           83         3.3496e-3     3.2189e-3        9.1020e-6 
-       14           89         3.3496e-3     1.2679e-4        1.4619e-8 
+        0            5          1.7402e0                       3.5398e0 
+        1           11         7.9925e-1     2.5783e-1         1.4729e0 
+        2           17         5.2540e-1     2.3741e-1        2.9737e-1 
+        3           23         4.4895e-1     5.1808e-1        1.4155e-1 
+        4           29         2.6962e-1      2.0123e0        6.8188e-1 
+        5           35         1.1615e-1      3.0604e0        7.3086e-1 
+        6           41         6.2612e-3     5.2110e-1        7.8108e-2 
+        7           48         4.3597e-3     2.1549e-1        3.6373e-2 
+        8           55         4.0775e-3     1.6239e-1        1.9590e-2 
+        9           62         3.9244e-3     1.2128e-1        1.1594e-2 
+       10           68         3.8778e-3     2.5971e-1        5.1595e-2 
+       11           75         3.6255e-3     1.4173e-1        1.7832e-2 
+       12           82         3.5550e-3     1.0859e-1        1.0586e-2 
+       13           89         3.5136e-3     8.4691e-2        6.5860e-3 
+       14           96         3.4862e-3     6.9106e-2        4.4550e-3 
+       15          102         3.4738e-3     1.5708e-1        2.2604e-2 
+       16          109         3.4229e-3     1.0322e-1        9.7636e-3 
+       17          116         3.4049e-3     7.9221e-2        5.7583e-3 
+       18          123         3.3945e-3     6.3118e-2        3.6448e-3 
+       19          130         3.3878e-3     5.1956e-2        2.4610e-3 
+       20          136         3.3859e-3     1.1314e-1        1.1556e-2 
+       21          143         3.3737e-3     7.5973e-2        4.9956e-3 
+       22          150         3.3698e-3     5.6188e-2        2.7155e-3 
+       23          157         3.3679e-3     4.3092e-2        1.5836e-3 
+       24          163         3.3674e-3     7.7843e-2        5.1420e-3 
+       25          169         3.3665e-3     8.0319e-2        5.3042e-3 
+       26          175         3.3647e-3     4.0441e-2        1.2875e-3 
+       27          181         3.3645e-3     8.2056e-3        5.1859e-5 
+       28          187         3.3645e-3     5.3816e-4        2.2555e-7 
 
 .. figure:: images/Bi_Exponential_Fitting.gif
    :align: center
@@ -194,6 +210,7 @@ Ouput
    ydata.Min()-0.1*ydata.Range(), ydata.Max()+0.1*ydata.Range()]);
    SaveAs("CurveFitting.png");
    AnimateHistory(fun, xdata, ydata, ans.history, "CurveFitting.gif");
+   CloseFig();
 
 
 Ouput
@@ -222,5 +239,156 @@ Ouput
 .. figure:: images/CurveFitting.gif
    :align: center
    :alt: CurveFitting.gif
+
+
+Lsqcurvefit allows the use of constraints. 
+1. Seed data for reproducability
+
+.. code-block:: csharp
+
+   int seed = 23;
+   Random rng = new(seed);
+   ColVec xdata, ydata, noise = Randn(100);
+   double[] xstar = [2, 4, 5, 0.5];
+
+   ColVec model(ColVec x, ColVec xdata) => x[0] + x[1] * Atan(xdata - x[2]) + x[3] * xdata;
+   xdata = Linspace(2,7); ydata = model(xstar, xdata) + noise/10;
+   Scatter(xdata, ydata, "ro");
+
+   Xlabel("x"); Ylabel("y"); SaveAs("Seeded_Curve_Fitting_Data.png");
+   CloseFig();
+
+
+.. figure:: images/x
+   :align: center
+   :alt: x
+
+
+2. Fitting with Linear constraint
+
+.. code-block:: csharp
+
+   int seed = 23;
+   Random rng = new(seed);
+   ColVec xdata, ydata, noise = Randn(100);
+   double[] xstar = [2, 4, 5, 0.5], startpt = [1, 2, 3, 1];
+
+   ColVec model(ColVec x, ColVec xdata) => x[0] + x[1] * Atan(xdata - x[2]) + x[3] * xdata;
+   RowVec A = new double[] { -1, -1, 1, 1 };
+   ColVec fineq(ColVec x) => A * x; ColVec lb = Zeros(4), ub = 7 + lb;
+   xdata = Linspace(2, 7); ydata = model(xstar, xdata) + noise / 10;
+
+   var opts = OptimSet(Display: true, MaxIter: 200, StepTol: 1e-6, OptimalityTol: 1e-6);
+   var ans = Lsqcurvefit(model, startpt, xdata, ydata, fineq, null, lb, ub, options: opts);
+   Console.WriteLine($"x = {ans.x.T}");
+   Console.WriteLine($"c = {fineq(ans.x)}");
+
+   Scatter(xdata, ydata, "ro"); HoldOn();
+   Plot(xdata, ans.y_hat, "-b", Linewidth: 2);
+
+   Xlabel("x"); Ylabel("y");
+   Legend(["Measured Data", "Model Estimate"], UpperRight);
+   SaveAs("Example_of_CurveFitting_using_Lsqcurvefit_with_Linear_Inequality_Constraints.png");
+   CloseFig();
+
+
+Ouput
+
+.. terminal::
+
+                                               Norm of      First-order 
+    Iteration   Func-count       Resnorm          step       optimality 
+        0            5          1.5722e3                       1.5048e3 
+        1           11          1.2943e3     2.0919e-1         1.3067e3 
+        2           17          7.9564e2     4.8211e-1         8.8385e2 
+        3           23          3.0359e2     8.0481e-1         3.3470e2 
+        4           29          6.1263e1     9.7039e-1         6.8934e1 
+        5           35          1.0782e1     6.6033e-1         3.6515e1 
+        6           41          5.7128e0     3.9969e-1         2.2087e0 
+        7           47          2.6850e0     5.5299e-1         3.5111e0 
+        8           53          1.9956e0     5.7542e-1         1.9045e0 
+        9           59         8.1663e-1     2.4166e-1        3.4998e-1 
+       10           65         7.4695e-1     3.5315e-1        3.1161e-1 
+       11           71         7.4033e-1     1.3106e-1        3.7382e-2 
+       12           77         7.4024e-1     1.6768e-2        9.1297e-4 
+       13           83         7.4024e-1     6.9658e-4        7.7118e-6 
+       14           89         7.4024e-1     9.1932e-6        3.1495e-8 
+   x = 
+      2.1452    4.0581    4.9927    0.4714
+   
+   c =   -0.7392
+
+.. figure:: images/Example_of_CurveFitting_using_Lsqcurvefit_with_Linear_Inequality_Constraints.png
+   :align: center
+   :alt: Example_of_CurveFitting_using_Lsqcurvefit_with_Linear_Inequality_Constraints.png
+
+
+3. Fitting with nonlinear constraint.
+
+.. code-block:: csharp
+
+   int seed = 23;
+   Random rng = new(seed);
+   ColVec xdata, ydata, noise = Randn(100);
+   double[] xstar = [2, 4, 5, 0.5], startpt = [1, 2, 3, 1];
+
+   ColVec model(ColVec x, ColVec xdata) => x[0] + x[1] * Atan(xdata - x[2]) + x[3] * xdata;
+   ColVec fineq(ColVec x) => x[0] * x[0] + x[1] * x[1] - 16; ColVec lb = Zeros(4), ub = 7 + lb;
+   xdata = Linspace(2, 7); ydata = model(xstar, xdata) + noise / 10;
+
+   var opts = OptimSet(Display: true, MaxIter: 200, StepTol: 1e-6, OptimalityTol: 1e-6);
+   var ans = Lsqcurvefit(model, startpt, xdata, ydata, fineq, null, lb, ub, options: opts);
+   Console.WriteLine($"x = {ans.x.T}");
+   Console.WriteLine($"c = {fineq(ans.x)}");
+
+   Scatter(xdata, ydata, "ro"); HoldOn();
+   Plot(xdata, ans.y_hat, "-b", Linewidth: 2);
+
+   Xlabel("x"); Ylabel("y");
+   Legend(["Measured Data", "Model Estimate"], UpperRight);
+   SaveAs("Example_of_CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.png");
+   CloseFig();
+
+
+Ouput
+
+.. terminal::
+
+                                               Norm of      First-order 
+    Iteration   Func-count       Resnorm          step       optimality 
+        0            5          1.5760e3                       1.5145e3 
+        1           11          1.2924e3     2.1282e-1         1.3133e3 
+        2           17          7.8421e2     4.9085e-1         8.8426e2 
+        3           23          2.8671e2     8.1990e-1         3.2762e2 
+        4           29          5.2830e1     9.6703e-1         6.9357e1 
+        5           35          4.9297e0     6.2110e-1         3.4013e1 
+        6           41          2.3539e0     1.9513e-1         4.1330e0 
+        7           47          2.1306e0     1.6440e-1         1.0436e0 
+        8           53          1.7545e0     3.6433e-1         1.3565e0 
+        9           59          1.2873e0     6.4827e-1         1.3925e0 
+       10           67          1.2093e0     1.6522e-1        5.5190e-1 
+       11           77          1.2071e0     5.1914e-3        5.1905e-1 
+       12           84          1.2057e0     5.1555e-3        5.1452e-1 
+       13           90          1.2046e0     1.6548e-3        2.3010e-1 
+       14           96          1.2043e0     7.8952e-4        2.2603e-1 
+       15          102          1.2042e0     1.9197e-4        2.3218e-1 
+       16          108          1.2042e0     5.7346e-5        2.3365e-1 
+       17          114          1.2042e0     1.7314e-4        2.3766e-1 
+       18          120          1.2041e0     4.5883e-4        2.4950e-1 
+       19          126          1.2040e0     9.0041e-4        2.7714e-1 
+       20          132          1.2040e0     2.5967e-4        2.8604e-1 
+       21          138          1.2039e0     3.2092e-4        2.9747e-1 
+       22          144          1.2039e0     4.7405e-4        3.1519e-1 
+       23          150          1.2039e0     3.2477e-4        3.2783e-1 
+       24          156          1.2039e0     8.2054e-5        3.3109e-1 
+       25          162          1.2039e0     6.7035e-6        3.3136e-1 
+   x = 
+      1.3574    3.7626    5.0081    0.6335
+   
+   c =    0.0000
+
+.. figure:: images/Example_of_CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.png
+   :align: center
+   :alt: Example_of_CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.png
 
 

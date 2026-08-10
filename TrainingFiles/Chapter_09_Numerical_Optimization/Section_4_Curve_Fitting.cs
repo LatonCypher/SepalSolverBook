@@ -1,4 +1,8 @@
-﻿namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
+﻿using ScottPlot;
+using ScottPlot.Colormaps;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
 {
     internal class Section_4_Curve_Fitting
     {
@@ -72,13 +76,15 @@
                 Plot(x, Rect, Linewidth: 2); HoldOn();
                 var fourier = Plot(x, 0 * x, "r", Linewidth: 2);
                 Axis([x[0], x[^1], -1.5, 1.5]);
-                List<ColVec> A = [Cos(x * 0)];
+                
                 byte[] Animfun(int N)
                 {
+                    Matrix A = Zeros(1001, 2 * N + 3);
+                    A[.., 0] = Ones(1001);
                     for (int n = 1; n <= (N + 1); n++)
                     {
-                        A.Add(Cos(n * x));
-                        A.Add(Sin(n * x));
+                        A[.., 2 * n-1] = Cos(n * x); 
+                        A[.., 2 * n] = Sin(n * x);
                     }
                     ColVec p = Mldivide(A, Rect);
                     fourier.Ydata = A * p;
@@ -143,6 +149,80 @@
                 ydata.Min()-0.1*ydata.Range(), ydata.Max()+0.1*ydata.Range()]);
                 SaveAs("CurveFitting.png");
                 AnimateHistory(fun, xdata, ydata, ans.history, "CurveFitting.gif");
+                CloseFig();
+            }
+            /// </code>
+            /// 
+            /// Lsqcurvefit allows the use of constraints. 
+            /// 1. Seed data for reproducability
+            /// <code>
+            {
+                int seed = 23;
+                Random rng = new(seed);
+                ColVec xdata, ydata, noise = Randn(100);
+                double[] xstar = [2, 4, 5, 0.5];
+
+                ColVec model(ColVec x, ColVec xdata) => x[0] + x[1] * Atan(xdata - x[2]) + x[3] * xdata;
+                xdata = Linspace(2,7); ydata = model(xstar, xdata) + noise/10;
+                Scatter(xdata, ydata, "ro");
+
+                Xlabel("x"); Ylabel("y"); SaveAs("Seeded_Curve_Fitting_Data.png");
+                CloseFig();
+            }
+            /// </code>
+            /// 
+            /// 2. Fitting with Linear constraint
+            /// <code>
+            {
+                int seed = 23;
+                Random rng = new(seed);
+                ColVec xdata, ydata, noise = Randn(100);
+                double[] xstar = [2, 4, 5, 0.5], startpt = [1, 2, 3, 1];
+
+                ColVec model(ColVec x, ColVec xdata) => x[0] + x[1] * Atan(xdata - x[2]) + x[3] * xdata;
+                RowVec A = new double[] { -1, -1, 1, 1 };
+                ColVec fineq(ColVec x) => A * x; ColVec lb = Zeros(4), ub = 7 + lb;
+                xdata = Linspace(2, 7); ydata = model(xstar, xdata) + noise / 10;
+
+                var opts = OptimSet(Display: true, MaxIter: 200, StepTol: 1e-6, OptimalityTol: 1e-6);
+                var ans = Lsqcurvefit(model, startpt, xdata, ydata, fineq, null, lb, ub, options: opts);
+                Console.WriteLine($"x = {ans.x.T}");
+                Console.WriteLine($"c = {fineq(ans.x)}");
+
+                Scatter(xdata, ydata, "ro"); HoldOn();
+                Plot(xdata, ans.y_hat, "-b", Linewidth: 2);
+
+                Xlabel("x"); Ylabel("y");
+                Legend(["Measured Data", "Model Estimate"], UpperRight);
+                SaveAs("Example_of_CurveFitting_using_Lsqcurvefit_with_Linear_Inequality_Constraints.png");
+                CloseFig();
+            }
+            /// </code>
+            /// 
+            /// 3. Fitting with nonlinear constraint.
+            /// <code>
+            {
+                int seed = 23;
+                Random rng = new(seed);
+                ColVec xdata, ydata, noise = Randn(100);
+                double[] xstar = [2, 4, 5, 0.5], startpt = [1, 2, 3, 1];
+
+                ColVec model(ColVec x, ColVec xdata) => x[0] + x[1] * Atan(xdata - x[2]) + x[3] * xdata;
+                ColVec fineq(ColVec x) => x[0] * x[0] + x[1] * x[1] - 16; ColVec lb = Zeros(4), ub = 7 + lb;
+                xdata = Linspace(2, 7); ydata = model(xstar, xdata) + noise / 10;
+
+                var opts = OptimSet(Display: true, MaxIter: 200, StepTol: 1e-6, OptimalityTol: 1e-6);
+                var ans = Lsqcurvefit(model, startpt, xdata, ydata, fineq, null, lb, ub, options: opts);
+                Console.WriteLine($"x = {ans.x.T}");
+                Console.WriteLine($"c = {fineq(ans.x)}");
+
+                Scatter(xdata, ydata, "ro"); HoldOn();
+                Plot(xdata, ans.y_hat, "-b", Linewidth: 2);
+
+                Xlabel("x"); Ylabel("y");
+                Legend(["Measured Data", "Model Estimate"], UpperRight);
+                SaveAs("Example_of_CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.png");
+                CloseFig();
             }
             /// </code>
             /// 
