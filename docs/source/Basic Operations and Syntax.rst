@@ -88,6 +88,3 @@ The rest of sytax, structure,  variable and operators are addressed in the follo
    Primitive Types
    Variables
    Operators And Expressions
-   Collections and Linq
-   Algorithm Flow Control
-   Exercise On Basic Operation and Syntax

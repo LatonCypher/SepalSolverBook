@@ -103,7 +103,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             /// <math>
             ///     f(x; \theta) = \theta_2 e^{\theta_0 x} + \theta_3 e^{\theta_1 x}
             /// </math>
-            /// where: math:`\theta = [\theta_0, \theta_1, \theta_2, \theta_3] ^ T` represents the unknown parameters.
+            /// where  math:`\theta = [\theta_0, \theta_1, \theta_2, \theta_3]^T` represents the unknown parameters.
             /// 
             /// Find :math:`\hat{\theta}` minimizing the sum of squared residuals:
             /// 

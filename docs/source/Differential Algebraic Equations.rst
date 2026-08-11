@@ -119,7 +119,7 @@ Where :math:`M` is a singular matrix.
       Summary of statistics by Ode45a
               1224 successful steps
               7 failed attempts
-              48795 function evaluations
+              48804 function evaluations
               4921 partial derivatives
               4921 LU decompositions
               19274 solutions of linear systems

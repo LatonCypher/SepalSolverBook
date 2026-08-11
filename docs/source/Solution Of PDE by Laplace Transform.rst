@@ -166,3 +166,114 @@ Step 5: Apply the inverse Laplace Transform to find :math:`u(x,t)`
    :alt: Temperature_Laplace.png
 
 
+Numerical Inversion Laplace Transform : Dimensionless Water Influx Estimation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Water influx in an oil reservoir is the migration of water from an aquifer into the pore spaces of the reservoir rock containing oil.  This water movement is primarily driven by pressure differences between the aquifer and the reservoir as the oil is produced and reservoir pressure declines.  The water influx can provide pressure support, helping to maintain reservoir pressure and sustain oil production. Hence, understanding and accurate estimation of water influx is crucial for optimizing oil recovery strategies and the long-term economic viability of an oil field.
+For use in material balance computation in edge drive configuration, reservoir engneering books provide plots for Wd as a function of dimensionless radius and time
+
+In an edge drive configuration with the aquifer closed at its outer boundary, the governing equation gives:
+
+.. math::
+
+   \cfrac{\partial P} {\partial t} = \cfrac{ 1} { r}\cfrac{\partial} {\partial r}\left(r \cfrac{\partial P} {\partial r} \right)
+
+
+
+.. math::
+
+   P(t = 0, r) = 0, P(t, r = 1) = 1, \cfrac{\partial P} {\partial r} (t, r = r_D) = 0
+
+
+The solution in laplace space:
+
+
+.. math::
+
+   P(s, r) = \Phi_1 I_0(r\sqrt{ s}) + \Phi_2 K_0(r\sqrt{ s})
+
+
+Using the boundary conditions to evaluate the constants and substitute them:
+
+
+.. math::
+
+   P(s, r) = \cfrac{ K_1(r_D\sqrt{ s}) I_0(r\sqrt{ s}) +I_1(r_D\sqrt{ s}) K_0(r\sqrt{ s})}{ s(K_1(r_D\sqrt{ s}) I_0(\sqrt{ s}) +I_1(r_D\sqrt{ s}) K_0(\sqrt{ s}))}
+
+
+From Darcy law, we know that the rate of water influx is proportional to the negative rate of change of pressure with respect to radial position at the reservoir aquifer boundary, hence total water influx after a time t is thus:
+
+
+.. math::
+
+   W(t) = \int_{ 0}^{ t_D}-\cfrac{\partial P} {\partial r} (\tau, r = 1) \partial \tau
+
+
+This can be accomplised by performing the integration in laplace space before inverting to time space.
+
+
+.. math::
+
+   W(t) = \mathcal{L}^{-1}\left(\frac{-1}{s} \cfrac{\partial P}{\partial r}(s, r = 1) \right)
+
+
+
+.. math::
+
+   W(t) = \mathcal{ L} ^{ -1}\left(\frac{ 1}
+   { s\sqrt{ s} } \cfrac{ I_1(r_D\sqrt{ s}) K_1(\sqrt{ s}) -K_1(r_D\sqrt{ s}) I_1(\sqrt{ s})}
+   { (I_1(r_D\sqrt{ s}) K_0(\sqrt{ s}) +K_1(r_D\sqrt{ s}) I_0(\sqrt{ s}))} \right)
+
+
+Lets see how to compute water influx, and generate the started water influx plot as shown above
+
+
+.. code-block:: csharp
+
+   Func<double, double> I0 = x=> BesselI(0, x), I1 = x=> BesselI(1, x), 
+                        K0 = x=> BesselK(0, x), K1 = x=> BesselK(1, x);
+   double EdgeClosedBoundaryRadial_Wd(double tD, double rD)
+   {
+       // define the embedded laplace space solution
+       Func<double, double> lapW = new(s =>
+       {
+           double sqrts, sqrts3, rDsqrts, Num, Den;
+           sqrts = Sqrt(s); sqrts3 = s * sqrts; rDsqrts = rD * sqrts;
+           Num = I1(rDsqrts) * K1(sqrts) - K1(rDsqrts) * I1(sqrts);
+           Den = I1(rDsqrts) * K0(sqrts) + K1(rDsqrts) * I0(sqrts);
+           if (double.IsInfinity(Num) || double.IsInfinity(Den))
+               return 1 / sqrts3;
+           else
+               return Num / (sqrts3 * Den);
+       });
+       return tD == 0 || rD == 1 ? 0 : NiLaplace(lapW, tD);
+   }
+
+   double[] Rd; ColVec Td; Matrix Wd;
+   Subplot(2, 1, 0);
+   // define the time and radial mesh
+   Rd = [2, 2.5, 3, 3.5, 4, inf];
+   Td = Logspace(-1, 2);
+   Wd = Meshfun(EdgeClosedBoundaryRadial_Wd, Td, Rd);
+   SemiLogx(Td, Wd, Linewidth: 2);
+   Legend(Rd.Select(rd => "rD = " + rd), UpperLeft);
+   Xlabel("tD"); Ylabel("WD"); Axis([0.1, 100, 1, 8]);
+   Title("Dimensionless Water Influx Rd <= 4");
+   Subplot(2, 1, 1);
+   // define the time and radial mesh
+   Rd = [5, 6, 7, 8, 9, 10, inf];
+   Td = Logspace(0, 3);
+   Wd = Meshfun(EdgeClosedBoundaryRadial_Wd, Td, Rd);
+   SemiLogx(Td, Wd, Linewidth: 2);
+   Legend(Rd.Select(rd => "rD = " + rd), UpperLeft);
+   Xlabel("tD"); Ylabel("WD"); Axis([1, 1000, 1, 70]);
+   Title("Dimensionless Water Influx Rd >= 5");
+
+   SaveAs("Dimensionless_Water_Influx.png");
+   CloseFig();
+
+
+.. figure:: images/Dimensionless_Water_Influx.png
+   :align: center
+   :alt: Dimensionless_Water_Influx.png
+
+

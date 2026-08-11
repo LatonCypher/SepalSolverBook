@@ -161,19 +161,18 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
                         double Num = K1(sqrts), Den = K0(sqrts);
                         if (!double.IsInfinity(rD))
                         {
-                            double rDsqrts = rD*sqrts;
+                            double rDsqrts = rD * sqrts;
                             Num = I1(rDsqrts) * Num - K1(rDsqrts) * I1(sqrts);
                             Den = I1(rDsqrts) * Den + K1(rDsqrts) * I0(sqrts);
                         }
-                        return Num /(Den * sqrts3);
+                        return Num / (Den * sqrts3);
                     }
                     return tD == 0 ? 0 : NiLaplace(LapW, tD);
                 }
                 // plotfunction 
-                void PlotFunction(ColVec Rd, ColVec Td)
+                void PlotFunction(ColVec Td, RowVec Rd)
                 {
-                    Matrix Wd = Rd.Select(rd => Arrayfun(tD => 
-                        EdgeClosedBoundaryRadial_Wd(tD, rd), Td)).ToList();
+                    Matrix Wd = Meshfun(EdgeClosedBoundaryRadial_Wd, Td, Rd);
                     SemiLogx(Td, Wd, Linewidth: 2);
                     Xlabel("tD"); Ylabel("WD"); GridOn(); MinorGridOn();
                     Legend(Rd.Select(rd => $"rD = {rd}"), UpperLeft);
@@ -181,22 +180,22 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
 
                 {// Compute and Plot Wd for Rd <= 4
                     Subplot(2, 1, 0);
-                    double[] Rd = [2, 2.5, 3, 3.5, 4, double.PositiveInfinity];
-                    double[] Td = Logspace(-1, 2);
-                    PlotFunction(Rd, Td); Axis([0.1, 100, 1, 8]);
+                    double[] Rd = [2, 2.5, 3, 3.5, 4, inf],
+                        Td = Logspace(-1, 2);
+                    PlotFunction(Td, Rd); Axis([0.1, 100, 1, 8]);
                     Title("Dimensionless Water Influx Rd <= 4");
                 }
 
                 {// Compute and Plot Wd for Rd >= 5
                     Subplot(2, 1, 1);
-                    double[] Rd = [5, 6, 7, 8, 9, 10, double.PositiveInfinity];
-                    double[] Td = Logspace(0, 3);
-                    PlotFunction(Rd, Td); Axis([1, 1000, 0, 70]);
+                    double[] Rd = [5, 6, 7, 8, 9, 10, inf],
+                        Td = Logspace(0, 3);
+                    PlotFunction(Td, Rd); Axis([1, 1000, 0, 70]);
                     Title("Dimensionless Water Influx Rd >= 5");
                 }
 
                 //Save Figure
-                SaveAs("Dimensionless-Water-Influx.png", 600, 900); CloseFig();
+                SaveAs("Dimensionless-Water-Influx.png", 600, 900); CloseFig(); CloseFig();
             }
             /// </code>
             /// 
@@ -205,7 +204,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
             /// 
             /// * **1.The Governing Equation** The heat conduction in the rod(assuming no variation along the length) is governed by: 
             /// <math>
-            ///     \cfrac{\partial T}{\partial t} = \alpha \left(\cfrac{\partial^2 T}{\partial r^2}  + \cfrac{1}{r} \cfrac{\partial T}{\partial t} \right)
+            ///     \cfrac{\partial T}{\partial t} = \alpha \left(\cfrac{\partial^2 T}{\partial r^2}  + \cfrac{1}{r} \cfrac{\partial T}{\partial r} \right)
             /// </math>
             /// Where :math:`\alpha` is the thermal diffusivity.
             /// 
