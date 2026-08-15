@@ -208,10 +208,10 @@ SepalSolver impelements ODE45s for stiff differential equation. This is an embed
       Summary of statistics by Ode45s
               142 successful steps
               0 failed attempts
-              4224 function evaluations
-              568 partial derivatives
+              3420 function evaluations
+              142 partial derivatives
               568 LU decompositions
-              1951 solutions of linear systems
+              2283 solutions of linear systems
       
       
       
@@ -220,8 +220,8 @@ SepalSolver impelements ODE45s for stiff differential equation. This is an embed
       Summary of statistics by Ode45s
               210 successful steps
               0 failed attempts
-              6557 function evaluations
-              840 partial derivatives
+              5490 function evaluations
+              210 partial derivatives
               840 LU decompositions
-              3196 solutions of linear systems
+              3809 solutions of linear systems
       

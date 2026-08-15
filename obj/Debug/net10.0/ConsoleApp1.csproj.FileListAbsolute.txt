@@ -168,7 +168,8 @@ C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net10.0\runt
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net10.0\runtimes\win-x64\native\tbbbind_2_5.dll
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net10.0\runtimes\win-x64\native\tbbmalloc.dll
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net10.0\runtimes\win-x64\native\tbbmalloc_proxy.dll
-C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net10.0\ComputationalGeometry2021.dll
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net10.0\SepalSolver.PlotLib.pdb
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net10.0\SepalSolver.pdb
 C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net10.0\SepalSolver.xml
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net10.0\ComputationalGeometry.dll
+C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\bin\Debug\net10.0\ComputationalGeometry.pdb

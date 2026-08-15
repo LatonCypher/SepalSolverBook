@@ -1,93 +1,20 @@
 ﻿using ConsoleApp1;
+using ComputationalGeometry;
 {
-
-    folderpath = "C:\\Users\\lateef.a.kareem\\Documents";
-    {
-        double g = 9.81;
-
-        // State vector y = [x, y, u, v, λ]
-        double[] pendulum_f(double t, double[] y) =>
-            [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
-                     y[0]*y[0] + y[1]*y[1] - 1];
-
-        double[,] mass_f = Diag([1, 1, 1, 1, 0]);
-
-        double[] y0 = [0, 1, 1, 0, 0];
-        var opts = Odeset(Stats: true);
-        (ColVec T, Matrix Y) = Ode45a(pendulum_f, mass_f, y0, [0, 6], opts);
-        Subplot(2, 1, 0);
-        Plot(T, Y, Linewidth: 2); Xlabel("x"); Ylabel("y");
-        Legend(["x", "y", "u", "v", "λ"]);
-        Title("Pendulum Trajectory (DAE)");
-
-        var Constrainterror = Y[.., 0].Pow(2) + Y[.., 1].Pow(2) - 1;
-        var Tangencyerror = Y[.., 0].Times(Y[.., 2]) + Y[.., 1].Times(Y[.., 3]);
-        Subplot(2, 1, 1); 
-        SemiLogy(T, Constrainterror); HoldOn();
-        SemiLogy(T, Tangencyerror);
-        Title("Pendulum Trajectory (DAE) errors");
-
-        SaveAs("Index_3-Pendulum-Problem-Ode45a.png", 1000, 800);
-        CloseFig();
-    }
-
-    {
-        double g = 9.81;
-
-        // State vector y = [x, y, u, v, λ]
-        double[] pendulum_f(double t, double[] y) =>
-            [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
-                     y[0]*y[2] + y[1]*y[3]];
-
-        double[,] mass_f = Diag([1, 1, 1, 1, 0]);
-
-        double[] y0 = [0, 1, 1, 0, 0];
-        var opts = Odeset(Stats: true);
-        (ColVec T, Matrix Y) = Ode45a(pendulum_f, mass_f, y0, [0, 6], opts);
-        Subplot(2, 1, 0);
-        Plot(T, Y, Linewidth: 2); Xlabel("x"); Ylabel("y");
-        Legend(["x", "y", "u", "v", "λ"]);
-        Title("Pendulum Trajectory (DAE)");
-
-        var Constrainterror = Y[.., 0].Pow(2) + Y[.., 1].Pow(2) - 1;
-        var Tangencyerror = Y[.., 0].Times(Y[.., 2]) + Y[.., 1].Times(Y[.., 3]);
-        Subplot(2, 1, 1);
-        SemiLogy(T, Constrainterror); HoldOn();
-        SemiLogy(T, Tangencyerror);
-        Title("Pendulum Trajectory (DAE) errors");
-        SaveAs("Index_2-Pendulum-Problem-Ode45a.png", 1000, 800);
-        CloseFig();
-    }
-
-    {
-        double g = 9.81;
-
-        // State vector y = [x, y, u, v, λ]
-        double[] pendulum_f(double t, double[] y) =>
-            [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
-               y[2]*y[2] + y[3]*y[3] - y[1] * g - y[4]];
-
-        double[,] mass_f = Diag([1, 1, 1, 1, 0]);
-
-        double[] y0 = [0, 1, 1, 0, 0];
-        var opts = Odeset(Stats: true, RelTol: 1e-6);
-        (ColVec T, Matrix Y) = Ode45a(pendulum_f, mass_f, y0, [0, 6], opts);
-        Subplot(2, 1, 0);
-        Plot(T, Y, Linewidth: 2); Xlabel("x"); Ylabel("y");
-        Legend(["x", "y", "u", "v", "λ"]);
-        Title("Pendulum Trajectory (DAE)");
-
-        var Constrainterror = Y[.., 0].Pow(2) + Y[.., 1].Pow(2) - 1;
-        var Tangencyerror = Y[.., 0].Times(Y[.., 2]) + Y[.., 1].Times(Y[.., 3]);
-        Subplot(2, 1, 1);
-        SemiLogy(T, Constrainterror); HoldOn();
-        SemiLogy(T, Tangencyerror);
-        Title("Pendulum Trajectory (DAE) errors");
-
-        SaveAs("Index_1-Pendulum-Problem-Ode45a.png", 1000, 800);
-        CloseFig();
-    }
     Writer.Run();
+    {
+        ColVec x = Rand(200), y = Rand(200);
+        DelaunayTriangulation DT = new(x, y);
+        TriPlot(x, y, DT, "b", 2); HoldOn();
+        Voronoi(x, y, DT, "g", 2);
+        ColVec xh = x[DT.Hull], yh = y[DT.Hull];
+        xh = Vcart(xh, xh[0]); yh = Vcart(yh, yh[0]);
+        Plot(xh, yh, "r", 2);
+        Axis([0, 1, 0, 1]);
+        SaveAs("zDV_Diagram.png", 600, 600);
+        List<ColVec> M = [x, y];
+        WriteMatrix(M, "Dln.txt");
+    }
     {
         // Reservoir Simulation
         folderpath = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\Morgana Data\";

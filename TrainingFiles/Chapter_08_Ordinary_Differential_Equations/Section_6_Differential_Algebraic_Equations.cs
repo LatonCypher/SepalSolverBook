@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
+﻿using ScottPlot.Hatches;
+
+namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 {
     internal class Section_6_Differential_Algebraic_Equations
     {
@@ -377,6 +379,96 @@
             /// 
             /// </example>
             /// 
+            /// To show more capability of the sepalsolver with higher index DAEs, we present this solution of the Pendulum equation from index 0 to index 3 below
+            /// 
+            /// % --- Index 0 ---
+            /// <math>
+            ///     \begin{ aligned}
+            ///         \dot{ x} &= u \\
+            ///         \dot{ y} &= v \\
+            ///         \dot{ u} &= -x \lambda \\
+            ///         \dot{ v} &= -y \lambda - g \\
+            ///         \dot{\lambda} &= -2\lambda(xu + yv) - 3gv
+            ///     \end{ aligned}
+            /// </math>
+            /// 
+            /// % --- Index 1 ---
+            /// <math>
+            ///     \begin{ aligned}
+            ///         \dot{ x} &= u \\
+            ///         \dot{ y} &= v \\
+            ///         \dot{ u} &= -x \lambda \\
+            ///         \dot{ v} &= -y \lambda - g \\
+            ///         0 &= u^2 + v^2 - y g - \lambda
+            ///     \end{ aligned}
+            /// </math>
+            /// 
+            /// % --- Index 2 ---
+            /// <math>
+            ///     \begin{ aligned}
+            ///         \dot{ x} &= u \\
+            ///         \dot{ y} &= v \\
+            ///         \dot{ u} &= -x \lambda \\
+            ///         \dot{ v} &= -y \lambda - g \\
+            ///         0 &= x u + y v
+            ///     \end{ aligned}
+            /// </math>
+            /// 
+            /// % --- Index 3 ---
+            /// <math>
+            ///     \begin{ aligned}
+            ///         \dot{ x} &= u \\
+            ///         \dot{ y} &= v \\
+            ///         \dot{ u} &= -x \lambda \\
+            ///         \dot{ v} &= -y \lambda - g \\
+            ///         0 &= x^2 + y^2 - 1
+            ///     \end{ aligned}
+            /// </math>
+            /// 
+            /// <code>
+            {
+                double g = 9.81; ColVec T; Matrix Y;
+                double[] y0 = [0, 1, 1, 0, 1 - g], interval = [0, 6];
+                var opts = Odeset(Stats: true, RelTol: 1e-6);
+                double[,] Mass = Diag([1, 1, 1, 1, 0]);
+                Matrix Error(Matrix Y) => Hcart(Abs(Y[.., 0].Pow(2) + Y[.., 1].Pow(2) - 1),
+                                                Abs(Y[.., 0].Times(Y[.., 2]) + Y[.., 1].Times(Y[.., 3])));
+                void ResultPloter(ColVec T, Matrix Y, int index)
+                {
+                    Subplot(4, 2, 2 * index);
+                    Plot(T, Y, Linewidth: 2); GridOn();
+                    Xlabel("x"); Ylabel("y");
+                    Legend(["x", "y", "u", "v", "λ"]);
+                    Title($"Index_{index}_Pendulum Trajectory (DAE)");
+
+                    Subplot(4, 2, 2 * index + 1);
+                    SemiLogy(T, Error(Y), Linewidth: 2); GridOn();
+                    Xlabel("x"); Ylabel("error");
+                    Legend(["r", "ε"]);
+                    Title($"Index_{index}_Pendulum Trajectory (DAE) errors");
+                }
+
+                // Index 0
+                (T, Y) = Ode45((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+                        -2 * y[4] * (y[0] * y[2] + y[1] * y[3]) - 3 * g * y[3]],
+                        y0, interval, opts); ResultPloter(T, Y, 0);
+                // Index 1
+                (T, Y) = Ode45a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+                         y[2]*y[2] + y[3]*y[3] - y[1] * g - y[4]], Mass, 
+                         y0, interval, opts); ResultPloter(T, Y, 1);
+                // Index 2
+                (T, Y) = Ode45a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+                         y[0]*y[2] + y[1]*y[3]], Mass, 
+                         y0, interval, opts); ResultPloter(T, Y, 2);
+                // Index 3
+                (T, Y) = Ode45a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+                         y[0]*y[0] + y[1]*y[1] - 1], Mass, 
+                         y0, interval, opts); ResultPloter(T, Y, 3);
+
+                SaveAs("Pendulum-Problem-Ode45a.png", 1200, 1800);
+                CloseFig();
+            }
+            /// </code>
             /// 
             /// </BookContent>
         }

@@ -275,12 +275,12 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    .. terminal::
    
       Summary of statistics by Ode45i
-              89 successful steps
-              3 failed attempts
-              3908 function evaluations
-              359 partial derivatives
-              359 LU decompositions
-              1390 solutions of linear systems
+              85 successful steps
+              10 failed attempts
+              2745 function evaluations
+              95 partial derivatives
+              356 LU decompositions
+              1722 solutions of linear systems
       
    
    .. figure:: images/Implicit-Robertson-ODE-Ode45i.png
@@ -353,9 +353,9 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    .. terminal::
    
       Summary of statistics by Ode45i
-              90 successful steps
-              3 failed attempts
-              1498 function evaluations
+              85 successful steps
+              10 failed attempts
+              2069 function evaluations
       
    
    .. figure:: images/Implicit-Robertson-ODE-Ode45i_With_jacobian.png

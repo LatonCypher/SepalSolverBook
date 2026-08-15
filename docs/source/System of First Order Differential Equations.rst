@@ -312,7 +312,7 @@ These are examples of how to use SepalSolver to solve various systems of first-o
    
    .. terminal::
    
-      Solution is 0.3325656239600801
+      Solution is 0.33256562390833655
    
    .. figure:: images/Blasius-bounary-layer.png
       :align: center

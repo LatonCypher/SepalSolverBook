@@ -3024,7 +3024,7 @@
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Ifft(System.Double[],System.Int32)" -->
         <member name="M:SepalSolver.Math.decic(System.Func{System.Double,System.Double,System.Double,System.Double},System.Double,System.Double,System.Int32,System.Double,System.Int32)">
              <summary>
-             Compute consistent initial conditions for ODE45I.
+             Compute consistent initial conditions for ODE45I and ODE89I.
              </summary>
              <param name="fun">
              The function that represents the implicit ODE. The function should accept three doubles (time, state, and its derivative) and return a double representing the derivative of the state.
@@ -8720,70 +8720,6 @@
             <param name="dx"></param>
             <returns></returns>
         </member>
-        <member name="M:SepalSolver.Ode.dirk45(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,System.Func{System.Double,SepalSolver.ColVec,SepalSolver.Matrix},SepalSolver.ColVec@,SepalSolver.Ode.Result)">
-            <summary>
-            
-            </summary>
-            <param name="Fun"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="Mass"></param>
-            <param name="error"></param>
-            <param name="OdeResult"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.dirk45(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,SepalSolver.Matrix,SepalSolver.ColVec@,SepalSolver.Ode.Result)">
-            <summary>
-            
-            </summary>
-            <param name="Fun"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="Mass"></param>
-            <param name="error"></param>
-            <param name="OdeResult"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.dirk45(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,SepalSolver.ColVec@,SepalSolver.Ode.Result)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <param name="OdeResult"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.dirk45(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Double,System.Double,System.Double@,SepalSolver.Ode.Result)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <param name="OdeResult"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk38(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Double)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="dx"></param>
-            <returns></returns>
-        </member>
         <member name="M:SepalSolver.Ode.rk38(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,System.Double)">
             <summary>
             
@@ -9108,123 +9044,6 @@
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode56(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode67(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode78(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)" -->
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode89(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)" -->
-        <member name="M:SepalSolver.Ode.Dae45(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Func{System.Double,SepalSolver.ColVec,SepalSolver.Matrix},System.Double[],System.Double[],SepalSolver.Ode.Set)">
-            <summary>
-            Integrates a system of stiff ordinary differential algrebraic equations using Adaptive Implicit Euler Method
-            </summary>
-            <param name="fun"></param>
-            <param name="Mass"></param>
-            <param name="initcon"></param>
-            <param name="tspan"></param>
-            <param name="options">(Optional) integraion procedure settings such as: maximum iteration number, 
-            initial step fraction, maximum step fraction and display setting</param>
-            <returns>Ode.Result containing a ColVec for X and a Matrix for Y</returns>
-            <example>
-            $$ ynp1'_1 =  y_1y_3 - y_2 $$
-            $$ ynp1'_2 = y_1 - 1 $$
-            $$ 0    = y_1 + y_2 + y_3 $$
-            <code>
-                using SepalSolver;
-                using static MathChart.Chart;
-                
-                    ColVec dydt(double t, ColVec ynp1) => new double[] { ynp1[0] * ynp1[2] - ynp1[1], 
-                                                                      ynp1[0] - 1, 
-                                                                      ynp1[0] + ynp1[1] + ynp1[2] };
-                    Matrix Mass(double t, ColVec ynp1) => new double[,]{ {1,   0,   0},
-                                                                      {0, 1,   0},
-                                                                      {0,   0,   0} };
-                    Ode.Result TY = Ode.Dae10(dydt, Mass, [ 1, 1, -2 ], [ 0, 10 ]);
-                    var chart = Plot(TY.X, TY.Y, "-o");
-                    chart.Title = "Solution of a DAE (mu = 1) with DAE10t";
-                    chart.XLabel = "Time t";
-                    chart.YLabel = "Solution ynp1";
-                    chart.Show();
-            </code>
-            <image href="../graphics/Ode45 Vander Pole.png"/>
-            </example>
-        </member>
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode45s(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)" -->
-        <member name="M:SepalSolver.Ode.Ode45i(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec,SepalSolver.ColVec},System.ValueTuple{SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],SepalSolver.Ode.Set)">
-            <summary>
-            Integrates a system of Implicit ordinary differential algrebraic equations using Adaptive Diagonally Implicit RungKutta of order 4 and 5
-            </summary>
-            <param name="fun"></param>
-            <param name="Mass"></param>
-            <param name="initcon"></param>
-            <param name="tspan"></param>
-            <param name="options">(Optional) integraion procedure settings such as: maximum iteration number, 
-            initial step fraction, maximum step fraction and display setting</param>
-            <returns>Ode.Result containing a ColVec for X and a Matrix for Y</returns>
-            <example>
-            $$ ynp1'_1 =  y_1y_3 - y_2 $$
-            $$ ynp1'_2 = y_1 - 1 $$
-            $$ 0    = y_1 + y_2 + y_3 $$
-            <code>
-                using SepalSolver;
-                using static MathChart.Chart;
-                
-                    ColVec dydt(double t, ColVec ynp1) => new double[] { ynp1[0] * ynp1[2] - ynp1[1], 
-                                                                      ynp1[0] - 1, 
-                                                                      ynp1[0] + ynp1[1] + ynp1[2] };
-                    Matrix Mass(double t, ColVec ynp1) => new double[,]{ {1,   0,   0},
-                                                                      {0, 1,   0},
-                                                                      {0,   0,   0} };
-                    Ode.Result TY = Ode.Dae10(dydt, Mass, [ 1, 1, -2 ], [ 0, 10 ]);
-                    var chart = Plot(TY.X, TY.Y, "-o");
-                    chart.Title = "Solution of a DAE (mu = 1) with DAE10t";
-                    chart.XLabel = "Time t";
-                    chart.YLabel = "Solution ynp1";
-                    chart.Show();
-            </code>
-            <image href="../graphics/Ode45 Vander Pole.png"/>
-            </example>
-        </member>
-        <member name="M:SepalSolver.Ode.Ode45i(System.Func{System.Double,System.Double,System.Double,System.Double},System.ValueTuple{System.Double,System.Double},System.Double[],SepalSolver.Ode.Set)">
-            <summary>
-            Integrates a system of Implicit ordinary differential algrebraic equations using Adaptive Diagonally Implicit RungKutta of order 4 and 5
-            </summary>
-            <param name="fun"></param>
-            <param name="Mass"></param>
-            <param name="initcon"></param>
-            <param name="tspan"></param>
-            <param name="options">(Optional) integraion procedure settings such as: maximum iteration number, 
-            initial step fraction, maximum step fraction and display setting</param>
-            <returns>Ode.Result containing a ColVec for X and a Matrix for Y</returns>
-            <example>
-            $$ ynp1'_1 =  y_1y_3 - y_2 $$
-            $$ ynp1'_2 = y_1 - 1 $$
-            $$ 0       = y_1 + y_2 + y_3 $$
-            <code>
-                using SepalSolver;
-                using static MathChart.Chart;
-                
-                    ColVec dydt(double t, ColVec ynp1) => new double[] { ynp1[0] * ynp1[2] - ynp1[1], 
-                                                                         ynp1[0] - 1, 
-                                                                         ynp1[0] + ynp1[1] + ynp1[2] };
-                    Matrix Mass(double t, ColVec ynp1) => new double[,]{ {1,   0,   0},
-                                                                         {0,   1,   0},
-                                                                         {0,   0,   0} };
-                    Ode.Result TY = Ode.Dae10(dydt, Mass, [ 1, 1, -2 ], [ 0, 10 ]);
-                    var chart = Plot(TY.X, TY.Y, "-o");
-                    chart.Title = "Solution of a DAE (mu = 1) with DAE10t";
-                    chart.XLabel = "Time t";
-                    chart.YLabel = "Solution ynp1";
-                    chart.Show();
-            </code>
-            <image href="../graphics/Ode45 Vander Pole.png"/>
-            </example>
-        </member>
-        <member name="M:SepalSolver.Ode.CheckIndex(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Func{System.Double,SepalSolver.ColVec,SepalSolver.Matrix},System.Double[],System.Double)">
-            <summary>
-            
-            </summary>
-            <param name="fun"></param>
-            <param name="Mass"></param>
-            <param name="initcon"></param>
-            <param name="t0"></param>
-            <returns></returns>
-        </member>
         <member name="T:SepalSolver.CallbackIter">
             <summary>
             
@@ -10778,6 +10597,11 @@
             
             </summary>
         </member>
+        <member name="P:SepalSolver.Solvers.Set.JacobianFreezing">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:SepalSolver.Solvers.Set.XTol">
             <summary>
             
@@ -11044,7 +10868,7 @@
             <param name="x">Column Matrix of varaible valuesat which the gradiate is to be computed</param>
             <returns>Matrix of first order partial derivatives of the function with respect to the varaibles</returns>
         </member>
-        <member name="M:SepalSolver.Solvers.Jacobian(System.Func{SepalSolver.ColVec,SepalSolver.ColVec},SepalSolver.ColVec,SepalSolver.ColVec,System.Double,SepalSolver.Solvers.Set)">
+        <member name="M:SepalSolver.Solvers.Jacobian(System.Func{SepalSolver.ColVec,SepalSolver.ColVec},SepalSolver.ColVec,SepalSolver.ColVec,SepalSolver.Solvers.Set)">
             <summary>
             Returns a Matrix of gradient of a multivariate Vector function with respect to its variable
             </summary>
@@ -11055,23 +10879,6 @@
             <param name="options">solver option to control computation of jacobian</param>
             <returns>Matrix of first order partial derivatives of the function with respect to the varaibles</returns>
         </member>
-        <member name="M:SepalSolver.Solvers.Diff2VecFun(System.Func{SepalSolver.ColVec,SepalSolver.ColVec},SepalSolver.ColVec,System.Double)">
-            <summary>
-            Returns a Matrix of gradient of a multivariate Vector function with respect to its variable
-            </summary>
-            <param name="fun">Multivariate Vector function</param>
-            <param name="x">Column Matrix of varaible valuesat which the gradient is to be computed</param>
-            <returns>An order 3 tensor of second order partial derivatives of the function with respect to the varaibles</returns>
-        </member>
-        <member name="M:SepalSolver.Solvers.Diff1(System.Func{System.Double,System.Double},System.Double,System.Boolean,System.Double)">
-            <summary>
-            Returns the first order deraivative of a scaler function 
-            </summary>
-            <param name="fun">Univariate Scaler function</param>
-            <param name="X">varaible value at which the gradient is to be computed</param>
-            <param name="accuracyhigh">bool stating whether or not high accuracy diffferention method should be used</param>
-            <returns>double of derivative of the function with respect to the varaible</returns>
-        </member>
         <member name="M:SepalSolver.Solvers.Diff1(System.Func{System.Double,System.Double},System.Double,SepalSolver.Solvers.Set)">
             <summary>
             Returns the first order deraivative of a scaler function 
@@ -11081,7 +10888,7 @@
             <param name="accuracyhigh">bool stating whether or not high accuracy diffferention method should be used</param>
             <returns>double of derivative of the function with respect to the varaible</returns>
         </member>
-        <member name="M:SepalSolver.Solvers.Diff1(System.Func{SepalSolver.Complex,SepalSolver.Complex},SepalSolver.Complex,System.Boolean,System.Double)">
+        <member name="M:SepalSolver.Solvers.Diff1(System.Func{SepalSolver.Complex,SepalSolver.Complex},SepalSolver.Complex,SepalSolver.Solvers.Set)">
             <summary>
             Returns the first order deraivative of a scaler function 
             </summary>
@@ -11089,41 +10896,6 @@
             <param name="X">varaible value at which the gradiate is to be computed</param>
             <param name="accuracyhigh">bool stating whether or not high accuracy diffferention method should be used</param>
             <returns>double of derivative of the function with respect to the varaible</returns>
-        </member>
-        <member name="M:SepalSolver.Solvers.ForwardDiff1(System.Func{System.Double,System.Double},System.Double,System.Double)">
-            <summary>
-            Returns the first order forward deraivative of a scaler function 
-            </summary>
-            <param name="fun">Univariate Scaler function</param>
-            <param name="X">varaible value at which the gradiate is to be computed</param>
-            <returns>double of derivative of the function with respect to the varaible</returns>
-        </member>
-        <member name="M:SepalSolver.Solvers.Diff2(System.Func{System.Double,System.Double},System.Double,System.Boolean,System.Double)">
-            <summary>
-            Returns the second order deraivative of a scaler function 
-            </summary>
-            <param name="fun">Univariate Scaler function</param>
-            <param name="X">varaible value at which the gradiate is to be computed</param>
-            <param name="accuracyhigh">bool stating whether or not high accuracy diffferention method should be used</param>
-            <returns>double of second order derivative of the function with respect to the varaible</returns>
-        </member>
-        <member name="M:SepalSolver.Solvers.Diff3(System.Func{System.Double,System.Double},System.Double,System.Boolean,System.Double)">
-            <summary>
-            Returns the third order deraivative of a scaler function 
-            </summary>
-            <param name="fun">Univariate Scaler function</param>
-            <param name="X">varaible value at which the gradiate is to be computed</param>
-            <param name="accuracyhigh">bool stating whether or not high accuracy diffferention method should be used</param>
-            <returns>double of third order derivative of the function with respect to the varaible</returns>
-        </member>
-        <member name="M:SepalSolver.Solvers.Diff4(System.Func{System.Double,System.Double},System.Double,System.Boolean,System.Double)">
-            <summary>
-            Returns the fourth order deraivative of a scaler function 
-            </summary>
-            <param name="fun">Univariate Scaler function</param>
-            <param name="X">varaible value at which the gradiate is to be computed</param>
-            <param name="accuracyhigh">bool stating whether or not high accuracy diffferention method should be used</param>
-            <returns>double of fourth order derivative of the function with respect to the varaible</returns>
         </member>
         <member name="T:SepalSolver.SolversException">
             <summary>

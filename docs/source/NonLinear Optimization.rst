@@ -1212,13 +1212,10 @@ Ouput
    
                                    Best             Mean             Max             Stall
     Generation   Func-count        f(x)             f(x)         Constraints      Generations
-   
-                                   Best             Mean             Max             Stall
-    Generation   Func-count        f(x)             f(x)         Constraints      Generations
    Stopping: no improvement for too long.
    (
-      0.8596
-      0.7384
-   , False, 0.01973561017287463, 0x1 empty double row vector, 0x1 empty double row vector)
+      0.9808
+      0.9620
+   , False, 0.00036739910550094064, 0x1 empty double row vector, 0x1 empty double row vector)
 
 
