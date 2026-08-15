@@ -850,44 +850,46 @@ Now we look at examples of index 2 DAEs
    Sending in a wrong initial condition was done on purpose, to test the ability of sepalsolver to compute the initial condition of the algebraic variable. 
    
 
+Solving Index 3
+~~~~~~~~~~~~~~~
 To show more capability of the sepalsolver with higher index DAEs, we present this solution of the Pendulum equation from index 0 to index 3 below
 
 % --- Index 0 ---
 
 .. math::
 
-   \begin{ aligned}
-   \dot{ x} &= u \\
-   \dot{ y} &= v \\
-   \dot{ u} &= -x \lambda \\
-   \dot{ v} &= -y \lambda - g \\
-   \dot{\lambda} &= -2\lambda(xu + yv) - 3gv
-   \end{ aligned}
+   \begin{aligned}
+      \dot{x} &= u \\
+      \dot{y} &= v \\
+      \dot{u} &= -x \lambda \\
+      \dot{v} &= -y \lambda - g \\
+      \dot{\lambda} &= -2\lambda(xu + yv) - 3gv
+   \end{aligned}
 
 
 % --- Index 1 ---
 
 .. math::
 
-   \begin{ aligned}
-   \dot{ x} &= u \\
-   \dot{ y} &= v \\
-   \dot{ u} &= -x \lambda \\
-   \dot{ v} &= -y \lambda - g \\
-   0 &= u^2 + v^2 - y g - \lambda
-   \end{ aligned}
+   \begin{aligned}
+      \dot{x} &= u \\
+      \dot{y} &= v \\
+      \dot{u} &= -x \lambda \\
+      \dot{v} &= -y \lambda - g \\
+      0 &= u^2 + v^2 - y g - \lambda
+   \end{aligned}
 
 
 % --- Index 2 ---
 
 .. math::
 
-   \begin{ aligned}
-   \dot{ x} &= u \\
-   \dot{ y} &= v \\
-   \dot{ u} &= -x \lambda \\
-   \dot{ v} &= -y \lambda - g \\
-   0 &= x u + y v
+   \begin{aligned}
+      \dot{x} &= u \\
+      \dot{y} &= v \\
+      \dot{u} &= -x \lambda \\
+      \dot{v} &= -y \lambda - g \\
+      0 &= x u + y v
    \end{ aligned}
 
 
@@ -895,13 +897,13 @@ To show more capability of the sepalsolver with higher index DAEs, we present th
 
 .. math::
 
-   \begin{ aligned}
-   \dot{ x} &= u \\
-   \dot{ y} &= v \\
-   \dot{ u} &= -x \lambda \\
-   \dot{ v} &= -y \lambda - g \\
-   0 &= x^2 + y^2 - 1
-   \end{ aligned}
+   \begin{aligned}
+      \dot{x} &= u \\
+      \dot{y} &= v \\
+      \dot{u} &= -x \lambda \\
+      \dot{v} &= -y \lambda - g \\
+      0 &= x^2 + y^2 - 1
+   \end{aligned}
 
 
 
