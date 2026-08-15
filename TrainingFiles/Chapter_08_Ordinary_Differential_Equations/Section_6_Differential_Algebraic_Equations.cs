@@ -385,46 +385,46 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// 
             /// % --- Index 0 ---
             /// <math>
-            ///     \begin{aligned}
+            ///     \begin{array}{rcl}
             ///         \dot{x} &= u \\
             ///         \dot{y} &= v \\
             ///         \dot{u} &= -x \lambda \\
             ///         \dot{v} &= -y \lambda - g \\
             ///         \dot{\lambda} &= -2\lambda(xu + yv) - 3gv
-            ///     \end{aligned}
+            ///     \end{array}
             /// </math>
             /// 
             /// % --- Index 1 ---
             /// <math>
-            ///     \begin{aligned}
+            ///     \begin{array}{rcl}
             ///         \dot{x} &= u \\
             ///         \dot{y} &= v \\
             ///         \dot{u} &= -x \lambda \\
             ///         \dot{v} &= -y \lambda - g \\
             ///         0 &= u^2 + v^2 - y g - \lambda
-            ///     \end{aligned}
+            ///     \end{array}
             /// </math>
             /// 
             /// % --- Index 2 ---
             /// <math>
-            ///     \begin{aligned}
+            ///     \begin{array}{rcl}
             ///         \dot{x} &= u \\
             ///         \dot{y} &= v \\
             ///         \dot{u} &= -x \lambda \\
             ///         \dot{v} &= -y \lambda - g \\
             ///         0 &= x u + y v
-            ///     \end{aligned}
+            ///     \end{array}
             /// </math>
             /// 
             /// % --- Index 3 ---
             /// <math>
-            ///     \begin{aligned}
+            ///     \begin{array}{rcl}
             ///         \dot{x} &= u \\
             ///         \dot{y} &= v \\
             ///         \dot{u} &= -x \lambda \\
             ///         \dot{v} &= -y \lambda - g \\
             ///         0 &= x^2 + y^2 - 1
-            ///     \end{aligned}
+            ///     \end{array}
             /// </math>
             /// 
             /// <code>

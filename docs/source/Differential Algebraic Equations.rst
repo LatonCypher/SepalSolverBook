@@ -858,52 +858,52 @@ To show more capability of the sepalsolver with higher index DAEs, we present th
 
 .. math::
 
-   \begin{aligned}
+   \begin{array}{rcl}
       \dot{x} &= u \\
       \dot{y} &= v \\
       \dot{u} &= -x \lambda \\
       \dot{v} &= -y \lambda - g \\
       \dot{\lambda} &= -2\lambda(xu + yv) - 3gv
-   \end{aligned}
+   \end{array}
 
 
 % --- Index 1 ---
 
 .. math::
 
-   \begin{aligned}
+   \begin{array}{rcl}
       \dot{x} &= u \\
       \dot{y} &= v \\
       \dot{u} &= -x \lambda \\
       \dot{v} &= -y \lambda - g \\
       0 &= u^2 + v^2 - y g - \lambda
-   \end{aligned}
+   \end{array}
 
 
 % --- Index 2 ---
 
 .. math::
 
-   \begin{aligned}
+   \begin{array}{rcl}
       \dot{x} &= u \\
       \dot{y} &= v \\
       \dot{u} &= -x \lambda \\
       \dot{v} &= -y \lambda - g \\
       0 &= x u + y v
-   \end{ aligned}
+   \end{array}
 
 
 % --- Index 3 ---
 
 .. math::
 
-   \begin{aligned}
+   \begin{array}{rcl}
       \dot{x} &= u \\
       \dot{y} &= v \\
       \dot{u} &= -x \lambda \\
       \dot{v} &= -y \lambda - g \\
       0 &= x^2 + y^2 - 1
-   \end{aligned}
+   \end{array}
 
 
 
