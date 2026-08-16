@@ -4343,7 +4343,7 @@
             </example>
             
         </member>
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.LambertW(System.Double,System.Double)" -->
+        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.LambertW(System.Double)" -->
         <member name="M:SepalSolver.Math.LnGamma(System.Double)">
              <summary>
              Computes the natural logarithm of the gamma function, ln(Γ(x)), for positive real arguments.
@@ -12185,7 +12185,7 @@
             <param name="x"></param>
             <returns></returns>
         </member>
-        <member name="M:SepalSolver.SpecialFunctions.LambertW(System.Double,System.Double)">
+        <member name="M:SepalSolver.SpecialFunctions.LambertW(System.Int32,System.Double)">
             <summary>
             
             </summary>
