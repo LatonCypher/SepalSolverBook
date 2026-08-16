@@ -100,7 +100,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
                 Console.WriteLine($"A = {A}");
 
                 //  set submatrix elements
-                Indexer i = new(0, 3), j = new(1, 3);
                 A[0..3, 1..3] = new double[,]
                 {
                         { 100, 150 },
@@ -219,7 +218,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
                     {
                         // get matrix size
                         int N = A.Cols / 2;
-
                         // Step 1: Divide matrices into quadrants
                         Matrix A11 = A[..N, ..N], A12 = A[..N, N..],
                                A21 = A[N.., ..N], A22 = A[N.., N..],

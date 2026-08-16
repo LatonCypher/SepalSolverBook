@@ -925,13 +925,14 @@ namespace ConsoleApp1.TrainingFiles
                     beta * (Exp((u[1] - u[2]) / Uf) - 1);
                 dynamic input(dynamic t) => 
                     0.4 * Sin(200 * pi * t);
-                Matrix Mass(double t, ColVec y) =>
-                    new double[,] {
-                        {-c1,  c1,  0,   0,   0 },
-                        { c1, -c1,  0,   0,   0 },
-                        { 0,   0,  -c2,  0,   0 },
-                        { 0,   0,   0,  -c3,  c3},
-                        { 0,   0,   0,   c3, -c3}};
+                Matrix Mass = new double[,] 
+                {
+                    {-c1,  c1,  0,   0,   0 },
+                    { c1, -c1,  0,   0,   0 },
+                    { 0,   0,  -c2,  0,   0 },
+                    { 0,   0,   0,  -c3,  c3},
+                    { 0,   0,   0,   c3, -c3}
+                };
 
                 ColVec dudt(double t, ColVec u)
                 {
@@ -947,8 +948,7 @@ namespace ConsoleApp1.TrainingFiles
                 double[] tspan = [0, 0.1];
                 double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
 
-                var opts = Odeset(Stats: true, RelTol: 1e-3, 
-                    MassType: Ode.MassType.Constant);
+                var opts = Odeset(Stats: true, RelTol: 1e-3);
 
                 (ColVec T, Matrix Y) = 
                     Ode45a(dudt, Mass, y0, tspan, opts);

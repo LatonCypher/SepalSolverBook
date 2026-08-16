@@ -87,16 +87,16 @@ Ouput
 
     Iteration    Func-count       f(x)      Norm of Step
         0            1          31.7962        start      
-        1           1000        3.98768       7.92421     
-        2           1001        0.65762       1.13502     
-        3           1002        0.02943       0.22302     
-        4           1003        0.00773       0.00828     
-        5           1004        0.00232       0.00181     
-        6           1005      4.585e-005     7.742e-004   
-        7           1006      1.117e-005     1.109e-005   
-        8           1007      1.841e-006     2.577e-006   
-        9           1008      1.071e-007     5.041e-007   
-        10          1009      2.527e-008     1.911e-008   
+        1           995         3.98768       7.92421     
+        2           996         0.65762       1.13502     
+        3           997         0.02943       0.22302     
+        4           998         0.00773       0.00828     
+        5           999         0.00232       0.00181     
+        6           1000      4.585e-005     7.742e-004   
+        7           1001      1.117e-005     1.109e-005   
+        8           1002      1.841e-006     2.577e-006   
+        9           1003      1.071e-007     5.041e-007   
+        10          1004      2.527e-008     1.911e-008   
    x = 
      -0.5708
      -0.6819
@@ -121,7 +121,7 @@ Ouput
      -0.4164
    
    2.527081663345413E-08
-   Elapsed time: 1.7982256 seconds
+   Elapsed time: 2.6848228 seconds
 
 While finite difference approximations are convenient, they are computationally 
 expensive, introduce numerical errors, and fail to exploit structural
@@ -137,7 +137,7 @@ Examples 2: Solving Large Sparse Systems Using Sparsity Pattern Exploitation
 
    //Large Nonlinear Systems
    int n = 1000;
-   Range i = 0..n, j = 0..(n - 1), jp1 = 1..n;
+   Indexer i = 0..n, j = 0..(n - 1), jp1 = 1..n;
 
    ColVec e = Ones(n), xstart = -e;
 
@@ -196,7 +196,7 @@ Ouput
      -0.4164
    
    3.420135685938544E-15
-   Elapsed time: 0.0586264 seconds
+   Elapsed time: 0.1035828 seconds
 
 Examples 3: Solving Large Sparse Systems Using Analytical Jacobians
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -206,7 +206,7 @@ Examples 3: Solving Large Sparse Systems Using Analytical Jacobians
 
    //Large Nonlinear Systems
    int n = 1000;
-   Range i = 0..n, j = 0..(n - 1), jp1 = 1..n;
+   Indexer i = (0..n), j = 0..(n - 1), jp1 = 1..n;
 
    ColVec a = Ones(n - 1), b = Ones(n), e = -a,
        c = 2 * e, d, xstart;
@@ -274,7 +274,7 @@ Ouput
      -0.4164
    
    7.448429925158487E-15
-   Elapsed time: 0.0479565 seconds
+   Elapsed time: 0.0567088 seconds
 
 
 Examples 4: Solving Large Sparse Systems Using Analytical Jacobians
@@ -295,31 +295,28 @@ Multirosenbrook function is another example
 
    // Large Nonlinear systems
    int n = 1000;
-
+   Indexer odds = (0..n).Step(2), evens = odds + 1;
    ColVec multirosenbrook(ColVec x)
    {
        // Evaluate the vector function
-       ColVec F = new double[n], 
-           x2n = x[(0..n).Step(2)], 
-           x2np1 = x[(1..n).Step(2)];
-
-       F[(0..n).Step(2)] = 1 - x2n;
-       F[(1..n).Step(2)] = 10 * (x2np1 - x2n.Pow(2));
+       ColVec F = new double[n];
+       F[odds] = 1 - x[odds];
+       F[evens] = 10 * (x[evens] - x[odds].Pow(2));
        return F;
    }
 
    SparseMatrix C, D, E;
    Func<ColVec, SparseMatrix> Jac = x =>
    {
-       ColVec one = Ones(n/2), x2n = x[(0..n).Step(2)];
-       C = new((0..n).Step(2), (0..n).Step(2), -one, n, n);
-       D = new((1..n).Step(2), (1..n).Step(2), 10*one, n, n);
-       E = new((1..n).Step(2), (0..n).Step(2), -20 * x2n, n, n);
+       ColVec one = Ones(n/2), x2n = x[odds];
+       C = new(odds, odds, -one, n, n);
+       D = new(evens, evens, 10*one, n, n);
+       E = new(evens, odds, -20 * x2n, n, n);
        return C + D + E;
    };
 
    ColVec xstart = new double[n];
-   xstart[(0..n).Step(2)] = -1.9; xstart[(1..n).Step(2)] = 2;
+   xstart[odds] = -1.9; xstart[evens] = 2;
    var opts = SolverSet(Display: true, UserDefinedJac: Jac);
    tic();
    var x = Fsolve(multirosenbrook, xstart, opts);
@@ -361,4 +358,4 @@ Ouput
     1 
    
    0
-   Elapsed time: 0.0113913 seconds
+   Elapsed time: 0.0241438 seconds

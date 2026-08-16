@@ -427,6 +427,14 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             ///     \end{array}
             /// </math>
             /// 
+            /// The result is assessed using these errors
+            /// <math>
+            ///     \begin{array}{rcl}
+            ///         r &= |x^2 + y^2 - 1| \\
+            ///         \epsilon &= |xu + yv| 
+            ///     \end{array}
+            /// </math>
+            /// 
             /// <code>
             {
                 double g = 9.81; ColVec T; Matrix Y;

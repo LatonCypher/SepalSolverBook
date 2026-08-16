@@ -88,7 +88,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             {
                 //Large Nonlinear Systems
                 int n = 1000;
-                Range i = 0..n, j = 0..(n - 1), jp1 = 1..n;
+                Indexer i = 0..n, j = 0..(n - 1), jp1 = 1..n;
 
                 ColVec e = Ones(n), xstart = -e;
 
@@ -119,7 +119,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             {
                 //Large Nonlinear Systems
                 int n = 1000;
-                Range i = 0..n, j = 0..(n - 1), jp1 = 1..n;
+                Indexer i = (0..n), j = 0..(n - 1), jp1 = 1..n;
 
                 ColVec a = Ones(n - 1), b = Ones(n), e = -a,
                     c = 2 * e, d, xstart;
@@ -168,31 +168,28 @@ namespace ConsoleApp1.TrainingFiles.Chapter_06_Solution_of_Nonlinear_System
             {
                 // Large Nonlinear systems
                 int n = 1000;
-
+                Indexer odds = (0..n).Step(2), evens = odds + 1;
                 ColVec multirosenbrook(ColVec x)
                 {
                     // Evaluate the vector function
-                    ColVec F = new double[n], 
-                        x2n = x[(0..n).Step(2)], 
-                        x2np1 = x[(1..n).Step(2)];
-
-                    F[(0..n).Step(2)] = 1 - x2n;
-                    F[(1..n).Step(2)] = 10 * (x2np1 - x2n.Pow(2));
+                    ColVec F = new double[n];
+                    F[odds] = 1 - x[odds];
+                    F[evens] = 10 * (x[evens] - x[odds].Pow(2));
                     return F;
                 }
 
                 SparseMatrix C, D, E;
                 Func<ColVec, SparseMatrix> Jac = x =>
                 {
-                    ColVec one = Ones(n/2), x2n = x[(0..n).Step(2)];
-                    C = new((0..n).Step(2), (0..n).Step(2), -one, n, n);
-                    D = new((1..n).Step(2), (1..n).Step(2), 10*one, n, n);
-                    E = new((1..n).Step(2), (0..n).Step(2), -20 * x2n, n, n);
+                    ColVec one = Ones(n/2), x2n = x[odds];
+                    C = new(odds, odds, -one, n, n);
+                    D = new(evens, evens, 10*one, n, n);
+                    E = new(evens, odds, -20 * x2n, n, n);
                     return C + D + E;
                 };
 
                 ColVec xstart = new double[n];
-                xstart[(0..n).Step(2)] = -1.9; xstart[(1..n).Step(2)] = 2;
+                xstart[odds] = -1.9; xstart[evens] = 2;
                 var opts = SolverSet(Display: true, UserDefinedJac: Jac);
                 tic();
                 var x = Fsolve(multirosenbrook, xstart, opts);

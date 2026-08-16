@@ -119,7 +119,7 @@ Where :math:`M` is a singular matrix.
       Summary of statistics by Ode45a
               1320 successful steps
               19 failed attempts
-              36984 function evaluations
+              36985 function evaluations
               1339 partial derivatives
               5356 LU decompositions
               23577 solutions of linear systems
@@ -846,12 +846,12 @@ Now we look at examples of index 2 DAEs
       :align: center
       :alt: Index_2-Pendulum-Problem-Ode45a.png
    
+   
    Observe that the initial condition supplied for :math:`\lambda` was :math:`-1`; but the result returned shown that the correct initial condition for the algebraic variable :math:`\lambda` is :math:`-8.81`.
    Sending in a wrong initial condition was done on purpose, to test the ability of sepalsolver to compute the initial condition of the algebraic variable. 
    
 
-Solving Index 3
-~~~~~~~~~~~~~~~
+<header> Solving Index 3 </header>
 To show more capability of the sepalsolver with higher index DAEs, we present this solution of the Pendulum equation from index 0 to index 3 below
 
 % --- Index 0 ---
@@ -859,11 +859,11 @@ To show more capability of the sepalsolver with higher index DAEs, we present th
 .. math::
 
    \begin{array}{rcl}
-      \dot{x} &= u \\
-      \dot{y} &= v \\
-      \dot{u} &= -x \lambda \\
-      \dot{v} &= -y \lambda - g \\
-      \dot{\lambda} &= -2\lambda(xu + yv) - 3gv
+   \dot{x} &= u \\
+   \dot{y} &= v \\
+   \dot{u} &= -x \lambda \\
+   \dot{v} &= -y \lambda - g \\
+   \dot{\lambda} &= -2\lambda(xu + yv) - 3gv
    \end{array}
 
 
@@ -872,11 +872,11 @@ To show more capability of the sepalsolver with higher index DAEs, we present th
 .. math::
 
    \begin{array}{rcl}
-      \dot{x} &= u \\
-      \dot{y} &= v \\
-      \dot{u} &= -x \lambda \\
-      \dot{v} &= -y \lambda - g \\
-      0 &= u^2 + v^2 - y g - \lambda
+   \dot{x} &= u \\
+   \dot{y} &= v \\
+   \dot{u} &= -x \lambda \\
+   \dot{v} &= -y \lambda - g \\
+   0 &= u^2 + v^2 - y g - \lambda
    \end{array}
 
 
@@ -885,11 +885,11 @@ To show more capability of the sepalsolver with higher index DAEs, we present th
 .. math::
 
    \begin{array}{rcl}
-      \dot{x} &= u \\
-      \dot{y} &= v \\
-      \dot{u} &= -x \lambda \\
-      \dot{v} &= -y \lambda - g \\
-      0 &= x u + y v
+   \dot{x} &= u \\
+   \dot{y} &= v \\
+   \dot{u} &= -x \lambda \\
+   \dot{v} &= -y \lambda - g \\
+   0 &= x u + y v
    \end{array}
 
 
@@ -898,11 +898,21 @@ To show more capability of the sepalsolver with higher index DAEs, we present th
 .. math::
 
    \begin{array}{rcl}
-      \dot{x} &= u \\
-      \dot{y} &= v \\
-      \dot{u} &= -x \lambda \\
-      \dot{v} &= -y \lambda - g \\
-      0 &= x^2 + y^2 - 1
+   \dot{x} &= u \\
+   \dot{y} &= v \\
+   \dot{u} &= -x \lambda \\
+   \dot{v} &= -y \lambda - g \\
+   0 &= x^2 + y^2 - 1
+   \end{array}
+
+
+The result is assessed using these errors
+
+.. math::
+
+   \begin{array}{rcl}
+   r &= |x^2 + y^2 - 1| \\
+   \epsilon &= |xu + yv| 
    \end{array}
 
 
@@ -963,7 +973,7 @@ Ouput
    Summary of statistics by Ode45a
            1222 successful steps
            10 failed attempts
-           34364 function evaluations
+           34363 function evaluations
            1232 partial derivatives
            4928 LU decompositions
            22026 solutions of linear systems
@@ -979,7 +989,7 @@ Ouput
    Summary of statistics by Ode45a
            10949 successful steps
            26 failed attempts
-           343159 function evaluations
+           343161 function evaluations
            10975 partial derivatives
            43897 LU decompositions
            233402 solutions of linear systems

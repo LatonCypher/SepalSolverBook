@@ -1565,7 +1565,7 @@
              </terminal>
              </example>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Svd(SepalSolver.Matrix,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Svd(SepalSolver.Matrix,System.Nullable{System.Int32})" -->
         <member name="M:SepalSolver.Math.Mldivide(SepalSolver.Matrix,SepalSolver.ColVec)">
              <summary>
              Solves the linear system Ax = b using matrix left division (backslash operator). This function automatically
@@ -8438,11 +8438,6 @@
             Note that this is necessay only when M is stronly nonlienar in ynp1
             </summary>
         </member>
-        <member name="P:SepalSolver.Ode.Set.MassType">
-            <summary>
-            Indicates the type of mass function
-            </summary>
-        </member>
         <member name="P:SepalSolver.Ode.InnerSet.RelTol">
             <summary>
             Tolerance used in determining the step size of auto step control methods
@@ -8487,11 +8482,6 @@
             <summary>
             Differentiation of the mass with respect to each component of ynp1. 
             Note that this is necessay only when M is stronly nonlienar in ynp1
-            </summary>
-        </member>
-        <member name="P:SepalSolver.Ode.InnerSet.MassType">
-            <summary>
-            Indicates the type of mass function
             </summary>
         </member>
         <member name="T:SepalSolver.Ode.Result">
@@ -8619,86 +8609,6 @@
             <summary>
             Interpolating Function that computes the dependent valirable given the inpendent varaible
             </summary>
-        </member>
-        <member name="M:SepalSolver.Ode.Trapezoidal(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Double,System.Double,System.Double@,SepalSolver.Ode.Result)">
-            <summary>
-            
-            </summary>
-            <param name="dydt"></param>
-            <param name="t"></param>
-            <param name="yn"></param>
-            <param name="ypn"></param>
-            <param name="dt"></param>
-            <param name="error"></param>
-            <param name="OdeResult"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.Trapezoidal(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,SepalSolver.ColVec@,SepalSolver.Ode.Result)">
-            <summary>
-            
-            </summary>
-            <param name="dydt"></param>
-            <param name="t"></param>
-            <param name="yn"></param>
-            <param name="ypn"></param>
-            <param name="dt"></param>
-            <param name="error"></param>
-            <param name="OdeResult"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.Trapezoidal(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,System.Func{System.Double,SepalSolver.ColVec,SepalSolver.Matrix},SepalSolver.ColVec@,SepalSolver.Ode.Result)">
-            <summary>
-            
-            </summary>
-            <param name="fun"></param>
-            <param name="t"></param>
-            <param name="yn"></param>
-            <param name="ypn"></param>
-            <param name="dt"></param>
-            <param name="Mass"></param>
-            <param name="error"></param>
-            <param name="OdeResult"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.Trapezoidal(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,System.Double,System.Func{System.Double,SepalSolver.ColVec,SepalSolver.Matrix},SepalSolver.ColVec@,SepalSolver.Ode.Result)">
-            <summary>
-            
-            </summary>
-            <param name="fun"></param>
-            <param name="t"></param>
-            <param name="yn"></param>
-            <param name="ypn"></param>
-            <param name="dt"></param>
-            <param name="Mass"></param>
-            <param name="error"></param>
-            <param name="OdeResult"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.Trapezoidal(System.Func{System.Double,System.Double,System.Double,System.Double},System.Double,System.Double,System.Double,System.Double,System.Double@,SepalSolver.Ode.Result)">
-            <summary>
-            
-            </summary>
-            <param name="fun"></param>
-            <param name="t"></param>
-            <param name="yn"></param>
-            <param name="ypn"></param>
-            <param name="dt"></param>
-            <param name="error"></param>
-            <param name="OdeResult"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.Trapezoidal(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,SepalSolver.ColVec@,SepalSolver.Ode.Result)">
-            <summary>
-            
-            </summary>
-            <param name="fun"></param>
-            <param name="t"></param>
-            <param name="yn"></param>
-            <param name="ypn"></param>
-            <param name="dt"></param>
-            <param name="error"></param>
-            <param name="OdeResult"></param>
-            <returns></returns>
         </member>
         <member name="M:SepalSolver.Ode.rk4(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Double)">
             <summary>
@@ -8980,36 +8890,6 @@
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode67(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode78(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode89(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
-        <member name="M:SepalSolver.Ode.Ode15s(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)">
-            <summary>
-            Integrates a stiff ordinary differential equations using Adaptive Trapezoidal Method
-            </summary>
-            <param name="dydx">function of the first order differentiation</param>
-            <param name="initcon">initial condition ynp1(tspan[0])</param>
-            <param name="tspan">interval of integration</param>
-            <param name="options">(Optional) integraion procedure settings such as: maximum iteration number, 
-            initial step fraction, maximum step fraction and display setting</param>
-            <returns></returns>
-            <example>
-            $$ynp1'_1 =  y_2$$
-            $$ynp1'_2 = \mu(1 - y_1^2)y_2-y_1$$
-            <code>
-                using SepalSolver;
-                using static MathChart.Chart;
-                    double mu = 1000; double[] dy; Ode.Result TY; ChartHandle chart;
-                    ColVec dydt(double t, ColVec ynp1) => dy = [ynp1[1], 
-                                                             mu * (1-ynp1[0]*ynp1[0])*ynp1[1]-ynp1[0]];
-                    TY = Ode.Ode15s(dydt,   [ 2,   0 ],  [ 0, 3000 ]);
-                    chart = Plot(TY.X, TY.Y, "-o");
-                    chart.Title = "Solution of van DyDx Pol Equation (mu = 1000) with ODE15s";
-                    chart.XLabel = "Time t";
-                    chart.YLabel = "Solution ynp1";
-                    chart.Show();
-            </code>
-            <image href="../graphics/Ode45 Vander Pole.png"/>
-            </example>
-            <exception cref="T:System.Exception"></exception>
-        </member>
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode45s(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
         <member name="M:SepalSolver.Ode.Ode23(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)">
             <summary>
@@ -11696,7 +11576,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SepalSolver.SparseMatrix.MakeSVD(System.Int32)">
+        <member name="M:SepalSolver.SparseMatrix.MakeSVD(System.Nullable{System.Int32})">
             <summary>
             Single Value Decomposition
             </summary>
