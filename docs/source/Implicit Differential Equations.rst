@@ -47,7 +47,7 @@ One of the most famous IDEs is **Clairaut's Equation**: :math:`y = x \cfrac{dy}{
 
 Numerical Solution
 ------------------
-SepalSolver's Ode45i can handle implicit equations, but you need to provide the function in the form :math:`F(x, y, y') = 0`. Here's a simple example of how to set up and solve an implicit equation using SepalSolver:
+SepalSolver's Ode43i can handle implicit equations, but you need to provide the function in the form :math:`F(x, y, y') = 0`. Here's a simple example of how to set up and solve an implicit equation using SepalSolver:
 To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x, y, y') = 0`: ie
 , :math:`F(x, y, y') = y - x y' - f(y')`.
 
@@ -62,7 +62,7 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    
    
    First we need to compute the :math:`y'(0)` from the initial condition using decic. 
-   And then we can use the computed :math:`y'(0)` to solve the equation using Ode45i.
+   And then we can use the computed :math:`y'(0)` to solve the equation using Ode43i.
    
    .. code-block:: csharp
    
@@ -76,8 +76,8 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       (y0, yp0) = decic(F, 0, y0, 1, yp0, 0);
    
    
-      // Now solve the implicit ODE using Ode45i
-      var (T, Y, Yp) = Ode45i(F, (y0, yp0), [0, 5], opts);
+      // Now solve the implicit ODE using Ode43i
+      var (T, Y, Yp) = Ode43i(F, (y0, yp0), [0, 5], opts);
    
       // Plot the results
       Scatter(T, Y, "fob"); HoldOn();
@@ -181,8 +181,8 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       // Compute y'(t0) using decic
       (y0, yp0) = decic(F, t0, y0, 1, yp0, 0);
    
-      // Now solve the implicit ODE using Ode45i
-      var (T, Y, Yp) = Ode45i(F, (y0, yp0), [t0, 5], opts);
+      // Now solve the implicit ODE using Ode43i
+      var (T, Y, Yp) = Ode43i(F, (y0, yp0), [t0, 5], opts);
    
       // Plot the results
       Scatter(T, Y, "fob"); HoldOn();
@@ -260,32 +260,32 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    
       var opts = Odeset(Stats: true);
       //Solve ODE
-      (ColVec T, Matrix Y, Matrix Yp) = Ode45i(robertsonimplicit, (y0, yp0), [0, 4e6], opts);
+      (ColVec T, Matrix Y, Matrix Yp) = Ode43i(robertsonimplicit, (y0, yp0), [0, 4e6], opts);
       // Plot the result
       Y[.., 1] = 1e4 * Y[.., 1];
       SemiLogx(T, Y);
       Xlabel("Time t"); Ylabel("Soluton y");
       Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
-      Title("Solution of implicit Robertson's ODE with ODE45i");
-      SaveAs("Implicit-Robertson-ODE-Ode45i.png");
+      Title("Solution of implicit Robertson's ODE with ODE43i");
+      SaveAs("Implicit-Robertson-ODE-Ode43i.png");
    
    
    Ouput
    
    .. terminal::
    
-      Summary of statistics by Ode45i
-              85 successful steps
-              10 failed attempts
-              2745 function evaluations
-              95 partial derivatives
-              356 LU decompositions
-              1722 solutions of linear systems
+      Summary of statistics by Ode43i
+              68 successful steps
+              9 failed attempts
+              2280 function evaluations
+              77 partial derivatives
+              284 LU decompositions
+              1459 solutions of linear systems
       
    
-   .. figure:: images/Implicit-Robertson-ODE-Ode45i.png
+   .. figure:: images/Implicit-Robertson-ODE-Ode43i.png
       :align: center
-      :alt: Implicit-Robertson-ODE-Ode45i.png
+      :alt: Implicit-Robertson-ODE-Ode43i.png
    
    Using the user defined jacobian reduces the number of function calls made during the computation. 
    
@@ -338,29 +338,29 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       // Solve for yp0, Truth array for y0 = [1,1,1] but for yp0 it is [0,0,0]. 
       (y0, yp0) = decic(robertsonimplicit, 0, y0, [1, 1, 0], yp0, [0, 0, 0]);
       //Solve ODE
-      (ColVec T, Matrix Y, Matrix Yp) = Ode45i(robertsonimplicit, (y0, yp0), [0, 4e6], opts);
+      (ColVec T, Matrix Y, Matrix Yp) = Ode43i(robertsonimplicit, (y0, yp0), [0, 4e6], opts);
       // Plot the result
       Y[.., 1] = 1e4 * Y[.., 1];
       SemiLogx(T, Y);
       Xlabel("Time t"); Ylabel("Soluton y");
       Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
-      Title("Solution of implicit Robertson's ODE with ODE45i");
-      SaveAs("Implicit-Robertson-ODE-Ode45i_With_jacobian.png");
+      Title("Solution of implicit Robertson's ODE with ODE43i");
+      SaveAs("Implicit-Robertson-ODE-Ode43i_With_jacobian.png");
    
    
    Ouput
    
    .. terminal::
    
-      Summary of statistics by Ode45i
-              85 successful steps
-              10 failed attempts
-              2069 function evaluations
+      Summary of statistics by Ode43i
+              68 successful steps
+              9 failed attempts
+              1734 function evaluations
       
    
-   .. figure:: images/Implicit-Robertson-ODE-Ode45i_With_jacobian.png
+   .. figure:: images/Implicit-Robertson-ODE-Ode43i_With_jacobian.png
       :align: center
-      :alt: Implicit-Robertson-ODE-Ode45i_With_jacobian.png
+      :alt: Implicit-Robertson-ODE-Ode43i_With_jacobian.png
    
    
    As an exercise, the reader is encouraged to solve this same problem but using this constraint

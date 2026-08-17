@@ -3024,7 +3024,7 @@
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Ifft(System.Double[],System.Int32)" -->
         <member name="M:SepalSolver.Math.decic(System.Func{System.Double,System.Double,System.Double,System.Double},System.Double,System.Double,System.Int32,System.Double,System.Int32)">
              <summary>
-             Compute consistent initial conditions for ODE45I and ODE89I.
+             Compute consistent initial conditions for ODE32I, ODE43I and ODE85I.
              </summary>
              <param name="fun">
              The function that represents the implicit ODE. The function should accept three doubles (time, state, and its derivative) and return a double representing the derivative of the state.
@@ -3092,10 +3092,68 @@
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Ode67(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Ode78(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Ode89(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Ode45s(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
-        <member name="M:SepalSolver.Math.Ode45i(System.Func{System.Double,System.Double,System.Double,System.Double},System.ValueTuple{System.Double,System.Double},System.Double[],SepalSolver.Ode.Set)">
+        <member name="M:SepalSolver.Math.Ode32s(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)">
+            <summary>
+            Solves stiff ordinary differential equations (ODE) using Adaptive Diagonally Implicit Runge-Kutta of 3rd and 2nd Order Local Truncation Error (Ode32s).
+            </summary>
+            <param name="dydx">
+            A function that represents the ODE. 
+                    | double dydx(double t, double y);
+                    | ColVec dydx(double t, ColVec y);
+               * t: time.
+               * y: state.
+               * Returns: evaluation of the ODE.
+            </param>
+            <param name="initcon">
+            Initial condition for the state y (scalar or array).
+            </param>
+            <param name="tspan">
+            A two-element array specifying the time interval for integration: [t0, tf].
+            </param>
+            <param name="options">
+            Optional parameters for the ODE solver (RelTol, AbsTol, MaxStep, Stats, etc.).
+            </param>
+            <returns>
+            A tuple (T, Y) containing computed time points and corresponding state solutions.
+            </returns>
+            <remarks>
+            This method uses the 3-stage ESDIRK2(1)3 / TR-BDF2 scheme with an embedded 1st-order estimator (Local Truncation Error order 3 for primary step, order 2 for error estimator).
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="dydx"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="tspan"/> has fewer than two elements.</exception>
+        </member>
+        <member name="M:SepalSolver.Math.Ode32i(System.Func{System.Double,System.Double,System.Double,System.Double},System.ValueTuple{System.Double,System.Double},System.Double[],SepalSolver.Ode.Set)">
+            <summary>
+            Solves implicit ordinary differential equations (ODE) using Adaptive Diagonally Implicit Runge-Kutta of 3rd and 2nd Order Local Truncation Error (Ode32i).
+            </summary>
+            <param name="fun">
+            A function that represents the implicit ODE residual: f(t, y, y') = 0.
+            </param>
+            <param name="initcon">
+            A tuple containing initial state y0 and initial derivative yp0.
+            </param>
+            <param name="tspan">
+            Time interval [t0, tf].
+            </param>
+            <param name="options">
+            Solver options configured via Odeset(...).
+            </param>
+            <returns>
+            A tuple (T, Y, Yp) containing time points, solution values, and derivative values.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="fun"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="tspan"/> has fewer than two elements.</exception>
+        </member>
+        <member name="M:SepalSolver.Math.Ode32a(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Func{System.Double,SepalSolver.ColVec,SepalSolver.Matrix},System.Double[],System.Double[],SepalSolver.Ode.Set)">
+            <summary>
+            Solves semi-explicit differential-algebraic equations (DAEs) of the form M(t, y) * y' = f(t, y)
+            using an adaptive diagonally implicit Runge-Kutta method of 3rd and 2nd Order Local Truncation Error (Ode32a).
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Ode43s(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
+        <member name="M:SepalSolver.Math.Ode43i(System.Func{System.Double,System.Double,System.Double,System.Double},System.ValueTuple{System.Double,System.Double},System.Double[],SepalSolver.Ode.Set)">
              <summary>
-             Solves inmplicit ordinary differential equations (ODE) using Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45i).
+             Solves inmplicit ordinary differential equations (ODE) using Adaptive Diagonally Implicit RungeKutta of 4th and 3rd Order Method (Ode43i).
              </summary>
              <param name="fun">
              A function that represents the implicit ODE. 
@@ -3128,7 +3186,7 @@
                 * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
              </returns>
              <remarks>
-             This method uses Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45i) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
+             This method uses Adaptive Diagonally Implicit RungeKutta of 4th and 3rd Order Method (Ode43i) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
              For best results, the function should be smooth within the integration interval.
              </remarks>
              <example>
@@ -3146,7 +3204,7 @@
                 var opts = Odeset(Stats: true);
                 double t0 = 1, y0 = Sqrt(t0 * t0 + 0.5), yp0 = 0;
                 (y0, yp0) = decic(fun, t0, y0, 1, yp0, 0);
-                (ColVec T, Matrix Y) = Ode45i(fun, (y0, yp0), [t0, 10], opts);
+                (ColVec T, Matrix Y) = Ode43i(fun, (y0, yp0), [t0, 10], opts);
                 
                 // Compare with exact solution
                 ColVec Y_exact = T.Select(t => Sqrt(t * t + 0.5)).ToList();
@@ -3155,13 +3213,13 @@
                 //Plotting
                 Plot(T, Y, "*"); hold = true;
                 Plot(T, Y_exact, "-o"); hold = false;
-                Title("Implicit differential (weissinger) equation with ODE45i");
+                Title("Implicit differential (weissinger) equation with ODE43i");
                 Xlabel("Time t");
                 Ylabel("Solution y");
-                SaveAs("Weissinger-Ode45i.png");
+                SaveAs("Weissinger-Ode43i.png");
              </code>
              <terminal>
-                 Summary of statistics by Ode45i
+                 Summary of statistics by Ode43i
                          13 successful steps
                          0 failed attempts
                          335 function evaluations
@@ -3185,16 +3243,74 @@
                 10.0236   10.0250
              </terminal>
              <figure>
-             .. figure:: images/Weissinger-Ode45i.png
+             .. figure:: images/Weissinger-Ode43i.png
                 :align: center
-                :alt: Weissinger-Ode45i.png
+                :alt: Weissinger-Ode43i.png
              </figure>
              </example>
              <exception cref="T:System.ArgumentNullException">Thrown when the <paramref name="dydx"/> is null.</exception>
              <exception cref="T:System.ArgumentException">Thrown when the <paramref name="tspan"/> array has less than two elements.</exception>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Ode45a(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Func{System.Double,SepalSolver.ColVec,SepalSolver.Matrix},System.Double[],System.Double[],SepalSolver.Ode.Set)" -->
-        <member name="M:SepalSolver.Math.Pdepe(System.Int32,System.Func{System.Double,System.Double,System.Double,System.Double,System.ValueTuple{System.Double,System.Double,System.Double}},System.Func{System.Double,System.Double},System.Func{System.Double,System.Double,System.Double,System.Double,System.Double,System.ValueTuple{System.Double,System.Double,System.Double,System.Double}},System.Double[],System.Double[])">
+        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Ode43a(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Func{System.Double,SepalSolver.ColVec,SepalSolver.Matrix},System.Double[],System.Double[],SepalSolver.Ode.Set)" -->
+        <member name="M:SepalSolver.Math.Ode85s(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)">
+            <summary>
+            Solves stiff ordinary differential equations (ODE) using Adaptive Diagonally Implicit Runge-Kutta of 8th and 5th Order Local Truncation Error (Ode85s).
+            </summary>
+            <param name="dydx">
+            A function that represents the ODE. 
+                    | double dydx(double t, double y);
+                    | ColVec dydx(double t, ColVec y);
+               * t: time.
+               * y: state.
+               * Returns: evaluation of the ODE.
+            </param>
+            <param name="initcon">
+            Initial condition for the state y (scalar or array).
+            </param>
+            <param name="tspan">
+            A two-element array specifying the time interval for integration: [t0, tf].
+            </param>
+            <param name="options">
+            Optional parameters for the ODE solver (RelTol, AbsTol, MaxStep, Stats, etc.).
+            </param>
+            <returns>
+            A tuple (T, Y) containing computed time points and corresponding state solutions.
+            </returns>
+            <remarks>
+            This high-order method uses an ESDIRK scheme designed for stringent accuracy tolerances, providing an 8th-order local truncation error step with an embedded 5th-order error estimator.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="dydx"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="tspan"/> has fewer than two elements.</exception>
+        </member>
+        <member name="M:SepalSolver.Math.Ode85i(System.Func{System.Double,System.Double,System.Double,System.Double},System.ValueTuple{System.Double,System.Double},System.Double[],SepalSolver.Ode.Set)">
+            <summary>
+            Solves implicit ordinary differential equations (ODE) using Adaptive Diagonally Implicit Runge-Kutta of 8th and 5th Order Local Truncation Error (Ode85i).
+            </summary>
+            <param name="fun">
+            A function that represents the implicit ODE residual: f(t, y, y') = 0.
+            </param>
+            <param name="initcon">
+            A tuple containing initial state y0 and initial derivative yp0.
+            </param>
+            <param name="tspan">
+            Time interval [t0, tf].
+            </param>
+            <param name="options">
+            Solver options configured via Odeset(...).
+            </param>
+            <returns>
+            A tuple (T, Y, Yp) containing time points, solution values, and derivative values.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="fun"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="tspan"/> has fewer than two elements.</exception>
+        </member>
+        <member name="M:SepalSolver.Math.Ode85a(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Func{System.Double,SepalSolver.ColVec,SepalSolver.Matrix},System.Double[],System.Double[],SepalSolver.Ode.Set)">
+            <summary>
+            Solves semi-explicit differential-algebraic equations (DAEs) of the form M(t, y) * y' = f(t, y)
+            using an adaptive diagonally implicit Runge-Kutta method of 8th and 5th Order Local Truncation Error (Ode85a).
+            </summary>
+        </member>
+        <member name="M:SepalSolver.Math.Pdepe(System.Int32,System.Func{System.Double,System.Double,System.Double,System.Double,System.ValueTuple{System.Double,System.Double,System.Double}},System.Func{System.Double,System.Double},System.Func{System.Double,System.Double,System.Double,System.Double,System.Double,System.ValueTuple{System.Double,System.Double,System.Double,System.Double}},System.Double[],System.Double[],SepalSolver.Ode.Set)">
             <summary>
             Solves 1D systems of parabolic and elliptic partial differential equations (PDEs) of the form
             .. math::
@@ -3237,6 +3353,15 @@
             <param name="t">
             An array of time points at which the solution is requested [t0, t1, ..., tf].
             </param>
+            <param name="options">
+            Optional parameters for the ODE solver, such as:
+                * OdeSolver: choice of ode solver,
+                * RelTol: relative tolerance, 
+                * AbsTol: absolute tolerance, 
+                * MaxStep: maximum step size, 
+                * Stats: Statistics toggle.
+                Use Odeset(...) to configure
+            </param>
             <returns>
             A tuple (t, U) where:
                * t: Column vector of evaluation times matching the input time mesh.
@@ -3245,7 +3370,7 @@
             <remarks>
             This method discretizes the spatial domain into non-uniform control volumes using the Skeel-Berzins method,
             preserving flux balance and achieving second-order spatial accuracy O(dx^2). Boundary conditions are enforced
-            as index-1 DAE algebraic constraints (M[0,0] = M[n,n] = 0) integrated in time via Ode45a.
+            as index-1 DAE algebraic constraints (M[0,0] = M[n,n] = 0) integrated in time via Ode3a.
             </remarks>
             <example>
             Solve the 1D Heat Conduction Equation:
@@ -3259,13 +3384,13 @@
                 using static System.Math;
             
                 int m = 0;
-                double[] x = Enumerable.Range(0, 51).Select(i => i * 0.02).ToArray();
-                double[] t = Enumerable.Range(0, 21).Select(i => i * 0.025).ToArray();
+                double[] x = Linspace(0,1,51);
+                double[] t = Linspace(0,0.5,6);;
             
                 (double c, double f, double s) PdeFun(double x, double t, double u, double dudx) 
                     => (1.0, 0.5 * dudx, 0.0);
             
-                double IcFun(double x) => Sin(PI * x);
+                double IcFun(double x) => Sin(pi * x);
             
                 (double pl, double ql, double pr, double qr) BcFun(double xl, double ul, double xr, double ur, double t) 
                     => (ul, 0.0, ur, 0.0);
@@ -8382,11 +8507,6 @@
             Contains settings for OdeSolvers algortihms
             </summary>
         </member>
-        <member name="P:SepalSolver.Ode.Set.CheckIndex">
-            <summary>
-            States whether to check the index of a DAE or not
-            </summary>
-        </member>
         <member name="P:SepalSolver.Ode.Set.RelTol">
             <summary>
             Tolerance used in determining the step size of auto step control methods
@@ -8610,320 +8730,6 @@
             Interpolating Function that computes the dependent valirable given the inpendent varaible
             </summary>
         </member>
-        <member name="M:SepalSolver.Ode.rk4(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Double)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="dx"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk4(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,System.Double)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="dx"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk38(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,System.Double)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="dx"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk5(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Double)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="dx"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk5(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,System.Double)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="dx"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk23(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Double,System.Double,System.Double@)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk23(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,SepalSolver.ColVec@)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk34_XWJX(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double@)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="xn"></param>
-            <param name="xnm1"></param>
-            <param name="yn"></param>
-            <param name="fn"></param>
-            <param name="ynm1"></param>
-            <param name="fnm1"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk34_XWJX(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,System.Double,SepalSolver.ColVec,SepalSolver.ColVec,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,SepalSolver.ColVec@)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="xn"></param>
-            <param name="xnm1"></param>
-            <param name="yn"></param>
-            <param name="fn"></param>
-            <param name="ynm1"></param>
-            <param name="fnm1"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk45_FLBG(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Double,System.Double,System.Double@)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk45_DMNP(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Double,System.Double,System.Double@)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk45_FLBG(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,SepalSolver.ColVec@)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk45_DMNP(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,SepalSolver.ColVec@)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk56(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Double,System.Double,System.Double@)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk56(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,SepalSolver.ColVec@)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk67(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Double,System.Double,System.Double@)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk67(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,SepalSolver.ColVec@)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk78(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Double,System.Double,System.Double@)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk78(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,SepalSolver.ColVec@)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk89(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Double,System.Double,System.Double@)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.rk89(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,SepalSolver.ColVec,System.Double,SepalSolver.ColVec@)">
-            <summary>
-            
-            </summary>
-            <param name="dydx"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="yp"></param>
-            <param name="dx"></param>
-            <param name="error"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Ode.decic(System.Func{System.Double,System.Double,System.Double,System.Double},System.Double,System.Double,System.Int32,System.Double,System.Int32)">
-            <summary>
-            Compute consistent initial conditions for Ode.ode12i and Ode.ode23i
-            </summary>
-            <param name="fun"></param>
-            <param name="t0"></param>
-            <param name="y0"></param>
-            <param name="ytruth"></param>
-            <param name="yp0"></param>
-            <param name="yptruth"></param>
-            <returns></returns>
-            <exception cref="T:System.Exception"></exception>
-        </member>
-        <member name="M:SepalSolver.Ode.decic(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec,SepalSolver.ColVec},System.Double,SepalSolver.ColVec,System.Int32[],SepalSolver.ColVec,System.Int32[])">
-            <summary>
-            Compute consistent initial conditions for Ode.ode15i
-            </summary>
-            <param name="fun"></param>
-            <param name="t0"></param>
-            <param name="y0"></param>
-            <param name="ytruth"></param>
-            <param name="yp0"></param>
-            <param name="yptruth"></param>
-            <returns></returns>
-            <exception cref="T:System.Exception"></exception>
-        </member>
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode23(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode34(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode45(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode56(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode67(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode78(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode89(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode45s(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
-        <member name="M:SepalSolver.Ode.Ode23(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)">
-            <summary>
-            Integrates a system of non-stiff ordinary differential equations using (Bogacki–Shampine) adaptive RungeKutta Explicit Method
-            </summary>
-            <param name="dydx">function of system of first order differentiation</param>
-            <param name="initcon">initial condition ynp1(tspan[0])</param>
-            <param name="tspan">interval of integration</param>
-            <param name="options">(Optional) integraion procedure settings such as: maximum iteration number, 
-            initial step fraction, maximum step fraction and display setting</param>
-            <returns>Ode.Result containing a ColVec for X and a Matrix for Y</returns>
-            <example>
-            $$ynp1'_1 =  y_2$$
-            $$ynp1'_2 = \mu(1 - y_1^2)y_2-y_1$$
-            <code>
-                using SepalSolver;
-                using static MathChart.Chart;
-                    double mu = 1;
-                    ColVec dydt(double t, ColVec ynp1) => new double[] { ynp1[1], mu*(1-ynp1[0]*ynp1[0])*ynp1[1]-ynp1[0] };
-                    Ode.Result TY = Ode.Ode23(dydt,   [ 2,   0 ],  [ 0, 20 ]);
-                    var chart = Plot(TY.X, TY.Y, "-o");
-                    chart.Title = "Solution of van DyDx Pol Equation (mu = 1) with ODE23";
-                    chart.XLabel = "Time t";
-                    chart.YLabel = "Solution ynp1";
-                    chart.Show();
-            </code>
-            <image href="../graphics/Ode45 Vander Pole.png"/>
-            </example>
-        </member>
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode34(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)" -->
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode45(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)" -->
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode56(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)" -->
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode67(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)" -->
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Ode.Ode78(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec},System.Double[],System.Double[],SepalSolver.Ode.Set)" -->
         <member name="T:SepalSolver.CallbackIter">
             <summary>
             

@@ -42,7 +42,7 @@
             /// One of the most famous IDEs is **Clairaut's Equation**: :math:`y = x \cfrac{dy}{dx} + f\left(\cfrac{dy}{dx}\right)`. This equation is unique because it often yields two types of solutions: a family of straight lines(the general solution) and a "singular solution" that acts as an envelope to those lines.
             /// 
             /// <header 2> Numerical Solution </header>
-            /// SepalSolver's Ode45i can handle implicit equations, but you need to provide the function in the form :math:`F(x, y, y') = 0`. Here's a simple example of how to set up and solve an implicit equation using SepalSolver:
+            /// SepalSolver's Ode43i can handle implicit equations, but you need to provide the function in the form :math:`F(x, y, y') = 0`. Here's a simple example of how to set up and solve an implicit equation using SepalSolver:
             /// To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x, y, y') = 0`: ie
             /// , :math:`F(x, y, y') = y - x y' - f(y')`.
             /// 
@@ -53,7 +53,7 @@
             /// </math>
             /// 
             /// First we need to compute the :math:`y'(0)` from the initial condition using decic. 
-            /// And then we can use the computed :math:`y'(0)` to solve the equation using Ode45i.
+            /// And then we can use the computed :math:`y'(0)` to solve the equation using Ode43i.
             /// <code>
             {
                 // define the implicit function F(x, y, yp) = 0
@@ -66,8 +66,8 @@
                 (y0, yp0) = decic(F, 0, y0, 1, yp0, 0);
 
 
-                // Now solve the implicit ODE using Ode45i
-                var (T, Y, Yp) = Ode45i(F, (y0, yp0), [0, 5], opts);
+                // Now solve the implicit ODE using Ode43i
+                var (T, Y, Yp) = Ode43i(F, (y0, yp0), [0, 5], opts);
 
                 // Plot the results
                 Scatter(T, Y, "fob"); HoldOn();
@@ -152,8 +152,8 @@
                 // Compute y'(t0) using decic
                 (y0, yp0) = decic(F, t0, y0, 1, yp0, 0);
 
-                // Now solve the implicit ODE using Ode45i
-                var (T, Y, Yp) = Ode45i(F, (y0, yp0), [t0, 5], opts);
+                // Now solve the implicit ODE using Ode43i
+                var (T, Y, Yp) = Ode43i(F, (y0, yp0), [t0, 5], opts);
 
                 // Plot the results
                 Scatter(T, Y, "fob"); HoldOn();
@@ -217,14 +217,14 @@
 
                 var opts = Odeset(Stats: true);
                 //Solve ODE
-                (ColVec T, Matrix Y, Matrix Yp) = Ode45i(robertsonimplicit, (y0, yp0), [0, 4e6], opts);
+                (ColVec T, Matrix Y, Matrix Yp) = Ode43i(robertsonimplicit, (y0, yp0), [0, 4e6], opts);
                 // Plot the result
                 Y[.., 1] = 1e4 * Y[.., 1];
                 SemiLogx(T, Y);
                 Xlabel("Time t"); Ylabel("Soluton y");
                 Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
-                Title("Solution of implicit Robertson's ODE with ODE45i");
-                SaveAs("Implicit-Robertson-ODE-Ode45i.png");
+                Title("Solution of implicit Robertson's ODE with ODE43i");
+                SaveAs("Implicit-Robertson-ODE-Ode43i.png");
             }
             /// </code>
             /// Using the user defined jacobian reduces the number of function calls made during the computation. 
@@ -273,14 +273,14 @@
                 // Solve for yp0, Truth array for y0 = [1,1,1] but for yp0 it is [0,0,0]. 
                 (y0, yp0) = decic(robertsonimplicit, 0, y0, [1, 1, 0], yp0, [0, 0, 0]);
                 //Solve ODE
-                (ColVec T, Matrix Y, Matrix Yp) = Ode45i(robertsonimplicit, (y0, yp0), [0, 4e6], opts);
+                (ColVec T, Matrix Y, Matrix Yp) = Ode43i(robertsonimplicit, (y0, yp0), [0, 4e6], opts);
                 // Plot the result
                 Y[.., 1] = 1e4 * Y[.., 1];
                 SemiLogx(T, Y);
                 Xlabel("Time t"); Ylabel("Soluton y");
                 Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
-                Title("Solution of implicit Robertson's ODE with ODE45i");
-                SaveAs("Implicit-Robertson-ODE-Ode45i_With_jacobian.png");
+                Title("Solution of implicit Robertson's ODE with ODE43i");
+                SaveAs("Implicit-Robertson-ODE-Ode43i_With_jacobian.png");
             }
             /// </code>
             /// 

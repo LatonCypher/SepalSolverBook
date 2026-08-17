@@ -951,7 +951,7 @@ namespace ConsoleApp1.TrainingFiles
                 var opts = Odeset(Stats: true, RelTol: 1e-3);
 
                 (ColVec T, Matrix Y) = 
-                    Ode45a(dudt, Mass, y0, tspan, opts);
+                    Ode43a(dudt, Mass, y0, tspan, opts);
                 ColVec X = T, U5 = Y["", 4];
                 Scatter(X, input(X), "o"); HoldOn();
                 Plot(X, U5, "--r"); HoldOff();
@@ -1109,7 +1109,7 @@ namespace ConsoleApp1.TrainingFiles
                 double[] tspan = [.. Linspace(0, 4, 121)];
                 double[] y0 = [0, 4, L, 20, -pi / 2, 2];
                 var options = Odeset(Stats: true, AbsTol: 1e-10, RelTol: 1e-4);
-                (ColVec T, Matrix Z) = Ode45a(dydt, Mass, y0, tspan, options);
+                (ColVec T, Matrix Z) = Ode43a(dydt, Mass, y0, tspan, options);
                 ColVec X = Z["", 0], Y = Z["", 2], theta = Z["", 4];
                 ColVec s = Sin(theta), c = Cos(theta);
                 Matrix xvals = Hcart(X, X + L * c).T, 

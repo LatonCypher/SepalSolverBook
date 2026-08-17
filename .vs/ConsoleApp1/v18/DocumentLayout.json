@@ -3,8 +3,30 @@
   "WorkspaceRootPath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_10_partial_differential_equations\\section_1_solution_of_pde_by_laplace_transform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_10_partial_differential_equations\\section_1_solution_of_pde_by_laplace_transform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38444283-8F1E-3A0C-7445-848A0E849057}|..\\sepalsolver\\SepalSolver\\SepalSolver.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolver\\sepalsolver\\ode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_10_partial_differential_equations\\section_2_solution_of_pde_by method_of_lines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_10_partial_differential_equations\\section_2_solution_of_pde_by method_of_lines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_08_ordinary_differential_equations\\section_4_stiff_differntial_equations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_08_ordinary_differential_equations\\section_4_stiff_differntial_equations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\globalusings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:globalusings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38444283-8F1E-3A0C-7445-848A0E849057}|..\\sepalsolver\\SepalSolver\\SepalSolver.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolver\\sepalsolver\\transform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{38444283-8F1E-3A0C-7445-848A0E849057}|..\\sepalsolver\\SepalSolver\\SepalSolver.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolver\\sepalsolver\\specialfunctions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -14,17 +36,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{38444283-8F1E-3A0C-7445-848A0E849057}|..\\sepalsolver\\SepalSolver\\SepalSolver.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolver\\sepalsolver\\math.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\last_chapter_advanced_science_and_engineering_applications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\last_chapter_advanced_science_and_engineering_applications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38444283-8F1E-3A0C-7445-848A0E849057}|..\\sepalsolver\\SepalSolver\\SepalSolver.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolver\\sepalsolver\\ode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_10_partial_differential_equations\\section_2_solution_of_pde_by method_of_lines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_10_partial_differential_equations\\section_2_solution_of_pde_by method_of_lines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{38444283-8F1E-3A0C-7445-848A0E849057}|..\\sepalsolver\\SepalSolver\\SepalSolver.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolver\\sepalsolver\\linearalgebra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -43,10 +54,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{38444283-8F1E-3A0C-7445-848A0E849057}|..\\sepalsolver\\SepalSolver\\SepalSolver.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolver\\sepalsolver\\solvers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_08_ordinary_differential_equations\\section_6_differential_algebraic_equations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_08_ordinary_differential_equations\\section_6_differential_algebraic_equations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_02_polynomials\\section_99_exercise_on_polynomials.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -99,10 +106,6 @@
       "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_04_special_functions\\section_2_bessel_functions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_10_partial_differential_equations\\section_1_solution_of_pde_by_laplace_transform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_10_partial_differential_equations\\section_1_solution_of_pde_by_laplace_transform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\bookwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:bookwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -127,17 +130,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1102,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 13,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\Program.cs*",
-              "RelativeToolTip": "Program.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAgAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-25T11:41:47.712Z",
               "IsPinned": true,
@@ -169,59 +172,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SpecialFunctions.cs",
-              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\SpecialFunctions.cs",
-              "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\SpecialFunctions.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\SpecialFunctions.cs",
-              "RelativeToolTip": "..\\sepalsolver\\SepalSolver\\SpecialFunctions.cs",
-              "ViewState": "AgIAAPsDAAAAAAAAAAAUwP4DAABcAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "GlobalUsings.cs",
+              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\GlobalUsings.cs",
+              "RelativeDocumentMoniker": "GlobalUsings.cs",
+              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\GlobalUsings.cs",
+              "RelativeToolTip": "GlobalUsings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-16T07:58:24.285Z",
+              "WhenOpened": "2026-08-17T05:47:13.612Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Ode.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\Ode.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\Ode.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\Ode.cs",
               "RelativeToolTip": "..\\sepalsolver\\SepalSolver\\Ode.cs",
-              "ViewState": "AgIAAH4FAAAAAAAAAAAAwIkFAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAMsGAAAAAAAAAAAQwNUGAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-25T14:26:10.065Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Last_Chapter_Advanced_Science_And_Engineering_Applications.cs",
-              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Last_Chapter_Advanced_Science_And_Engineering_Applications.cs",
-              "RelativeDocumentMoniker": "TrainingFiles\\Last_Chapter_Advanced_Science_And_Engineering_Applications.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Last_Chapter_Advanced_Science_And_Engineering_Applications.cs",
-              "RelativeToolTip": "TrainingFiles\\Last_Chapter_Advanced_Science_And_Engineering_Applications.cs",
-              "ViewState": "AgIAAOoDAAAAAAAAAAAAAP8DAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-12T08:59:34.729Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Section_2_Solution_Of_PDE_by Method_of_Lines.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_2_Solution_Of_PDE_by Method_of_Lines.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_2_Solution_Of_PDE_by Method_of_Lines.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_2_Solution_Of_PDE_by Method_of_Lines.cs",
               "RelativeToolTip": "TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_2_Solution_Of_PDE_by Method_of_Lines.cs",
-              "ViewState": "AgIAALIAAAAAAAAAAAAkwMMAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAK8AAAAAAAAAAAAWwL0AAABeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-15T21:48:19.226Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "Matrix.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\Matrix.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\Matrix.cs",
@@ -234,7 +224,59 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Transform.cs",
+              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\Transform.cs",
+              "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\Transform.cs",
+              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\Transform.cs",
+              "RelativeToolTip": "..\\sepalsolver\\SepalSolver\\Transform.cs",
+              "ViewState": "AgIAAK0BAAAAAAAAAAAswLQBAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-16T19:10:44.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 7,
+              "Title": "SpecialFunctions.cs",
+              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\SpecialFunctions.cs",
+              "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\SpecialFunctions.cs",
+              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\SpecialFunctions.cs",
+              "RelativeToolTip": "..\\sepalsolver\\SepalSolver\\SpecialFunctions.cs",
+              "ViewState": "AgIAALMDAAAAAAAAAAAIwPsDAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-16T07:58:24.285Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Section_1_Solution_Of_PDE_by_Laplace_Transform.cs",
+              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_1_Solution_Of_PDE_by_Laplace_Transform.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_1_Solution_Of_PDE_by_Laplace_Transform.cs",
+              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_1_Solution_Of_PDE_by_Laplace_Transform.cs*",
+              "RelativeToolTip": "TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_1_Solution_Of_PDE_by_Laplace_Transform.cs*",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAmwJQAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T17:21:18.215Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Section_4_Stiff_Differntial_Equations.cs",
+              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_4_Stiff_Differntial_Equations.cs",
+              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_4_Stiff_Differntial_Equations.cs",
+              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_4_Stiff_Differntial_Equations.cs",
+              "RelativeToolTip": "TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_4_Stiff_Differntial_Equations.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAswDYAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-17T06:40:24.82Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "LinearAlgebra.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\LinearAlgebra.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\LinearAlgebra.cs",
@@ -247,7 +289,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "Math.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\Math.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\Math.cs",
@@ -260,7 +302,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "Section_02_Matrix_Slicing.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_05_Linear_Algebra\\Section_02_Matrix_Slicing.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_05_Linear_Algebra\\Section_02_Matrix_Slicing.cs",
@@ -273,7 +315,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "Section_08_Singular_Value_Decomposition.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_05_Linear_Algebra\\Section_08_Singular_Value_Decomposition.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_05_Linear_Algebra\\Section_08_Singular_Value_Decomposition.cs",
@@ -286,7 +328,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "Section_3_Large_NonLinear_Systems.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_06_Solution_of_Nonlinear_System\\Section_3_Large_NonLinear_Systems.cs",
@@ -299,20 +341,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Section_6_Differential_Algebraic_Equations.cs",
-              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_6_Differential_Algebraic_Equations.cs",
-              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_6_Differential_Algebraic_Equations.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_6_Differential_Algebraic_Equations.cs",
-              "RelativeToolTip": "TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_6_Differential_Algebraic_Equations.cs",
-              "ViewState": "AgIAAJoBAAAAAAAAAAAAALEBAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-10T17:47:42.845Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "Section_3_Polynomial_Differentiation_and_Integration.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_3_Polynomial_Differentiation_and_Integration.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_02_Polynomials\\Section_3_Polynomial_Differentiation_and_Integration.cs",
@@ -325,7 +354,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "Solvers.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\Solvers.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\Solvers.cs",
@@ -338,7 +367,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "Section_2_Polynomial_Fitting.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_2_Polynomial_Fitting.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_02_Polynomials\\Section_2_Polynomial_Fitting.cs",
@@ -351,7 +380,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "Section_4_Polynomial_Arithmetics.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_4_Polynomial_Arithmetics.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_02_Polynomials\\Section_4_Polynomial_Arithmetics.cs",
@@ -364,7 +393,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "Section_4_Polynomial_Roots.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_4_Polynomial_Roots.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_02_Polynomials\\Section_4_Polynomial_Roots.cs",
@@ -377,7 +406,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "Section_99_Exercise_On_Polynomials.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_99_Exercise_On_Polynomials.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_02_Polynomials\\Section_99_Exercise_On_Polynomials.cs",
@@ -390,7 +419,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "Introduction.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Introduction.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_02_Polynomials\\Introduction.cs",
@@ -403,7 +432,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "Section_1_Polynomial_Evaluation.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_1_Polynomial_Evaluation.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_02_Polynomials\\Section_1_Polynomial_Evaluation.cs",
@@ -416,7 +445,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "PlotUtils.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver.PlotLib\\PlotUtils.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver.PlotLib\\PlotUtils.cs",
@@ -429,7 +458,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "KDTree.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\ComputationalGeometry\\KDTree.cs",
               "RelativeDocumentMoniker": "..\\ComputationalGeometry\\KDTree.cs",
@@ -441,7 +470,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "Contour.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\ComputationalGeometry\\Contour.cs",
               "RelativeDocumentMoniker": "..\\ComputationalGeometry\\Contour.cs",
@@ -453,7 +482,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "HStick.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\ComputationalGeometry\\HStick.cs",
               "RelativeDocumentMoniker": "..\\ComputationalGeometry\\HStick.cs",
@@ -465,7 +494,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 27,
               "Title": "Fault.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\ComputationalGeometry\\Fault.cs",
               "RelativeDocumentMoniker": "..\\ComputationalGeometry\\Fault.cs",
@@ -477,7 +506,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 28,
               "Title": "Section_2_Bessel_Functions.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_04_Special_Functions\\Section_2_Bessel_Functions.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_04_Special_Functions\\Section_2_Bessel_Functions.cs",
@@ -489,7 +518,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "Line.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\ComputationalGeometry\\Line.cs",
               "RelativeDocumentMoniker": "..\\ComputationalGeometry\\Line.cs",
@@ -502,19 +531,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "Section_1_Solution_Of_PDE_by_Laplace_Transform.cs",
-              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_1_Solution_Of_PDE_by_Laplace_Transform.cs",
-              "RelativeDocumentMoniker": "TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_1_Solution_Of_PDE_by_Laplace_Transform.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_1_Solution_Of_PDE_by_Laplace_Transform.cs",
-              "RelativeToolTip": "TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_1_Solution_Of_PDE_by_Laplace_Transform.cs",
-              "ViewState": "AgIAAK8AAAAAAAAAAAAAALMAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-10T17:21:18.215Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "Optimizers.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\Optimizers.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\Optimizers.cs",
@@ -526,7 +543,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "BookWriter.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\BookWriter.cs",
               "RelativeDocumentMoniker": "BookWriter.cs",
@@ -538,7 +555,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "Complex.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\Complex.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\Complex.cs",
@@ -550,7 +567,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "OptimizedTrig.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\OptimizedTrig.cs",
               "RelativeDocumentMoniker": "OptimizedTrig.cs",
@@ -562,7 +579,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "AutoDiff.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\AutoDiff.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\AutoDiff.cs",

@@ -166,6 +166,31 @@ Step 5: Apply the inverse Laplace Transform to find :math:`u(x,t)`
    :alt: Temperature_Laplace.png
 
 
+Numerical Inversion of Laplace Transform
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sepalsolver has inbuilt numerical laplace transform inversion routine that allows the invesion of the solution fron Laplace space. 
+We cn demonstrate this ability using the last example. 
+
+
+.. code-block:: csharp
+
+   // Define the function and interval
+   double alpha = 0.5, π = pi;
+   ColVec x = Linspace(0, 1, 101);
+   RowVec T = Linspace(0, 0.5, 6);
+   double Unuminv (double x, double t) => t == 0 ? Sin(π * x) : NiLaplace(s=> Sin(π * x)/(s + π* π*alpha), t);
+   Matrix U = Meshfun(Unuminv, x, T);
+   Plot(x, U, Linewidth: 2); GridOn();
+   Xlabel("Position x"); Ylabel("Temperature T");
+   Title("Temperature vs. Position over Time by Numerical Inversion");
+   Legend(T.Select(t => $"t = {t:0.00}"));
+   SaveAs("Temperature_Using_Numerical_Inversion_Laplace.png");
+
+
+.. figure:: images/Temperature_Using_Numerical_Inversion_Laplace.png
+   :align: center
+   :alt: Temperature_Using_Numerical_Inversion_Laplace.png
+
 Numerical Inversion Laplace Transform : Dimensionless Water Influx Estimation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Water influx in an oil reservoir is the migration of water from an aquifer into the pore spaces of the reservoir rock containing oil.  This water movement is primarily driven by pressure differences between the aquifer and the reservoir as the oil is produced and reservoir pressure declines.  The water influx can provide pressure support, helping to maintain reservoir pressure and sustain oil production. Hence, understanding and accurate estimation of water influx is crucial for optimizing oil recovery strategies and the long-term economic viability of an oil field.

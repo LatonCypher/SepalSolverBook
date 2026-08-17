@@ -30,7 +30,7 @@ The cure for stiffness is the use of Implicit Methods (such as Backward Euler or
 
 Examples
 ~~~~~~~~
-SepalSolver impelements ODE45s for stiff differential equation. This is an embeded diagonally implicit solver which is capable of error estimate and hence enable adpative time stepping.  Here we look at how to use this function to solve stiff Van der Pol Oscillator and Robertson differential equation. 
+SepalSolver impelements ODE43s for stiff differential equation. This is an embeded diagonally implicit solver which is capable of error estimate and hence enable adpative time stepping.  Here we look at how to use this function to solve stiff Van der Pol Oscillator and Robertson differential equation. 
 
 .. Admonition:: Example 1 :  Van der Pol Oscillator (:math:`\mu = 1 \times 10^5`)
 
@@ -54,19 +54,19 @@ SepalSolver impelements ODE45s for stiff differential equation. This is an embed
           [y[1], 1e5*((1 - y[0] * y[0]) * y[1] - y[0])];
    
       //Solve ODE
-      (ColVec T, Matrix Y) = Ode45s(vdp2, [2, 0], [0, 6.3]);
+      (ColVec T, Matrix Y) = Ode43s(vdp2, [2, 0], [0, 6.3]);
       // Plot the result
       Plot(T, Y);
       Axis([0, 6.3, -10, 10]);
       Xlabel("Time t"); Ylabel("Soluton y");
       Legend(["y_1", "y_2"], UpperLeft);
-      Title("Solution of van der Pol Equation (μ = 1e5) with ODE45s");
-      SaveAs("Van-der-Pol-μ=1e5-Ode45s.png");
+      Title("Solution of van der Pol Equation (μ = 1e5) with ODE43s");
+      SaveAs("Van-der-Pol-μ=1e5-Ode43s.png");
    
    
-   .. figure:: images/Van-der-Pol-μ=1e5-Ode45s.png
+   .. figure:: images/Van-der-Pol-μ=1e5-Ode43s.png
       :align: center
-      :alt: Van-der-Pol-μ=1e5-Ode45s.png
+      :alt: Van-der-Pol-μ=1e5-Ode43s.png
    
 
 
@@ -101,19 +101,19 @@ SepalSolver impelements ODE45s for stiff differential equation. This is an embed
             3e7*y[1]*y[1]];
    
       //Solve ODE
-      (ColVec T, Matrix Y) = Ode45s(robertson, [1, 0, 0], [0, 4e6]);
+      (ColVec T, Matrix Y) = Ode43s(robertson, [1, 0, 0], [0, 4e6]);
       // Plot the result
       Y[.., 1] = 1e4*Y[.., 1];
       SemiLogx(T, Y);
       Xlabel("Time t"); Ylabel("Soluton y");
       Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
-      Title("Solution of Robertson's ODE with ODE45s");
-      SaveAs("Robertson-ODE-Ode45s.png");
+      Title("Solution of Robertson's ODE with ODE43s");
+      SaveAs("Robertson-ODE-Ode43s.png");
    
    
-   .. figure:: images/Robertson-ODE-Ode45s.png
+   .. figure:: images/Robertson-ODE-Ode43s.png
       :align: center
-      :alt: Robertson-ODE-Ode45s.png
+      :alt: Robertson-ODE-Ode43s.png
    
    
 
@@ -135,19 +135,19 @@ SepalSolver impelements ODE45s for stiff differential equation. This is an embed
    //Solve ODE
    //Now we want the results to be computed at
    //logarithmically evenly spaced points from 1e-6 to 4e6
-   (ColVec T, Matrix Y) = Ode45s(robertson, [1, 0, 0], [0, ..Logspace(-6, 6.6)]);
+   (ColVec T, Matrix Y) = Ode43s(robertson, [1, 0, 0], [0, ..Logspace(-6, 6.6)]);
    // Plot the result
    Y[.., 1] = 1e4*Y[.., 1];
    SemiLogx(T, Y);
    Xlabel("Time t"); Ylabel("Soluton y");
    Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
-   Title("Solution of Robertson's ODE with ODE45s");
-   SaveAs("Robertson-ODE-given-points-Ode45s.png");
+   Title("Solution of Robertson's ODE with ODE43s");
+   SaveAs("Robertson-ODE-given-points-Ode43s.png");
 
 
-.. figure:: images/Robertson-ODE-given-points-Ode45s.png
+.. figure:: images/Robertson-ODE-given-points-Ode43s.png
    :align: center
-   :alt: Robertson-ODE-given-points-Ode45s.png
+   :alt: Robertson-ODE-given-points-Ode43s.png
 
 
 
@@ -172,7 +172,7 @@ SepalSolver impelements ODE45s for stiff differential equation. This is an embed
       //Solve ODE
       // Here we chose reltol = 1e-4(defult is 1e-3), abstol = 1e-7(default is 1e-6)
       var opts = Odeset(RelTol: 1e-4, AbsTol: 1e-7);
-      (ColVec T, Matrix Y) = Ode45s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
+      (ColVec T, Matrix Y) = Ode43s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
    
    
    
@@ -193,11 +193,11 @@ SepalSolver impelements ODE45s for stiff differential equation. This is an embed
       //Solve ODE
       var opts = Odeset(Stats: true);
       Console.WriteLine("Computational Cost Using Default Tolerance Setting:");
-      Ode45s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
+      Ode43s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
       Console.WriteLine("\n\n");
       opts = Odeset(Stats: true, RelTol: 1e-4, AbsTol: 1e-7);
       Console.WriteLine("Computational Cost Using Custom Tolerance Setting");
-      Ode45s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
+      Ode43s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
    
    
    Ouput
@@ -205,23 +205,23 @@ SepalSolver impelements ODE45s for stiff differential equation. This is an embed
    .. terminal::
    
       Computational Cost Using Default Tolerance Setting:
-      Summary of statistics by Ode45s
-              142 successful steps
+      Summary of statistics by Ode43s
+              119 successful steps
               0 failed attempts
-              3420 function evaluations
-              142 partial derivatives
-              568 LU decompositions
-              2283 solutions of linear systems
+              2888 function evaluations
+              119 partial derivatives
+              476 LU decompositions
+              1935 solutions of linear systems
       
       
       
       
       Computational Cost Using Custom Tolerance Setting
-      Summary of statistics by Ode45s
-              210 successful steps
+      Summary of statistics by Ode43s
+              180 successful steps
               0 failed attempts
-              5490 function evaluations
-              210 partial derivatives
-              840 LU decompositions
-              3809 solutions of linear systems
+              4711 function evaluations
+              180 partial derivatives
+              720 LU decompositions
+              3270 solutions of linear systems
       

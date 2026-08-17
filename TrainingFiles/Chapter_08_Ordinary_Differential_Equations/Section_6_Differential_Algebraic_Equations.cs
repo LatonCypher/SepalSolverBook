@@ -44,17 +44,17 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                      (0.04 * y[0] - 1e4 * y[1] * y[2] - 3e7 * y[1]*y[1]),
                      y[0] + y[1] + y[2] - 1.0];
 
-                double[,] mass_f(double t, double[] y) => Diag([1, 1, 0]);
+                double[,] mass_f = Diag([1, 1, 0]);
 
                 double[] y0 = [1.0, 0.0, 0.0];
-                (ColVec T, Matrix Y) = Ode45a(robertson_f, mass_f, y0, [0, 1e7]);
+                (ColVec T, Matrix Y) = Ode43a(robertson_f, mass_f, y0, [0, 1e7]);
                 // Plot the result
                 Y[.., 1] = 1e4*Y[.., 1];
                 SemiLogx(T, Y);
                 Xlabel("Time t"); Ylabel("Soluton y");
                 Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
-                Title("Solution of Robertson's ODE with ODE45a");
-                SaveAs("Robertson-ODE-given-points-Ode45a.png");
+                Title("Solution of Robertson's ODE with ODE43a");
+                SaveAs("Robertson-ODE-given-points-Ode43a.png");
             }
             /// </code>
             /// </example>
@@ -92,15 +92,15 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                      -y[1] * y[4] - g,
                      y[2]*y[2] + y[3]*y[3] - y[1] * g - y[4]];
 
-                double[,] mass_f(double t, double[] y) => Diag([1, 1, 1, 1, 0]);
+                double[,] mass_f = Diag([1, 1, 1, 1, 0]);
 
                 double[] y0 = [0, 1, 1, 0, 1 - g];
                 var opts = Odeset(Stats: true, RelTol: 1e-6);
-                (ColVec T, Matrix Y) = Ode45a(pendulum_f, mass_f, y0, [0, 6], opts);
+                (ColVec T, Matrix Y) = Ode43a(pendulum_f, mass_f, y0, [0, 6], opts);
                 Plot(T, Y, Linewidth: 2); Xlabel("x"); Ylabel("y");
                 Legend(["x", "y", "u", "v", "λ"]);
                 Title("Pendulum Trajectory (DAE)");
-                SaveAs("Index_1-Pendulum-Problem-Ode45a.png");
+                SaveAs("Index_1-Pendulum-Problem-Ode43a.png");
             }
             /// </code>
             /// </example>
@@ -160,7 +160,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             {
                 double Ub = 6, R0 = 1000, R15 = 9000, alpha = 0.99,
                     beta = 1e-6, Uf = 0.026, c1 = 1e-6, c2 = 2e-6, c3 = 3e-6;
-                double[,] Mass(double t, double[] y) => new double[,]
+                double[,] Mass = new double[,]
                 {
                     {-c1,  c1,  0,   0,   0 },
                     { c1, -c1,  0,   0,   0 },
@@ -182,13 +182,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
 
                 var opts = Odeset(RelTol: 1e-5);
-                (ColVec T, Matrix Y) = Ode45a(dudt, Mass, y0, tspan, opts);
+                (ColVec T, Matrix Y) = Ode43a(dudt, Mass, y0, tspan, opts);
                 Scatter(T, Arrayfun(Ue, T), "o"); HoldOn();
                 Plot(T, Y[.., 4], "--r"); HoldOff();
                 Legend(["Input", "Output"], UpperLeft);
                 Xlabel("Time t"); Ylabel("Solution y");
-                Title("One Transistor Amplifier DAE Problem-Ode45a");
-                SaveAs("One-Transistor-Amplifier-DAE-Problem-Ode45a.png");
+                Title("One Transistor Amplifier DAE Problem-Ode43a");
+                SaveAs("One-Transistor-Amplifier-DAE-Problem-Ode43a.png");
             }
             /// </code>
             /// </example>
@@ -250,13 +250,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                         y[3] * y[4] - y[7]
                     ];
 
-                double[,] mass_f(double t, double[] y) => Diag([1, 1, 1, 1, 1, 1, 0, 0]);
+                double[,] mass_f = Diag([1, 1, 1, 1, 1, 1, 0, 0]);
                 double[] y0 = [0.444, 0.0012, 0.0, 0.0037, 0.0, 0.0, 0.0, 0.0];
-                (ColVec T, Matrix Y) = Ode45a(akzo_f, mass_f, y0, [0, 180]);
+                (ColVec T, Matrix Y) = Ode43a(akzo_f, mass_f, y0, [0, 180]);
                 Plot(T, Y);
                 Xlabel("Time"); Ylabel("Concentration");
                 Title("Akzo Nobel Chemical Kinetics (DAE)");
-                SaveAs("Akzo-Nobel-Ode45a.png");
+                SaveAs("Akzo-Nobel-Ode43a.png");
             }
             /// </code>
             /// </example>
@@ -289,10 +289,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                       (1-alpha)/(t-2)*x[0] - x[1] + (alpha-1)*x[2] + 2*Exp(t),
                       (t+2)*x[0] + (t*t-4)*x[1] - (t*t+t-2)*Exp(t) ];
 
-                double[,] mass_f(double t, double[] x) => Diag([1, 1, 0]);
+                double[,] mass_f = Diag([1, 1, 0]);
                 double[] y0 = [1, 1, 0]; // only the differential variables need initial conditions
                 var opts = Odeset(Stats: true);
-                (ColVec T, Matrix Y) = Ode45a(Ercan, mass_f, y0, [0, 1], opts);
+                (ColVec T, Matrix Y) = Ode43a(Ercan, mass_f, y0, [0, 1], opts);
                 Scatter(T, Hcart(Exp(T), Exp(T), -Exp(T).Div(2-T)), "o"); HoldOn();
                 Plot(T, Y); HoldOff();
                 Xlabel("Time t"); Ylabel("Solution x");
@@ -315,7 +315,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 // We can compute the solution to a higher accuracy 
                 Console.WriteLine("\n\nNow we compute the solution to a higher accuracy (RelTol = 1e-5):\n");
                 opts = Odeset(Stats: true, RelTol: 1e-5);
-                (T, Y) = Ode45a(Ercan, mass_f, y0, [0, 1], opts);
+                (T, Y) = Ode43a(Ercan, mass_f, y0, [0, 1], opts);
                 Console.WriteLine("""
                         t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
                     --------++-----------------+----------------++-----------------+----------------++-----------------+---------------
@@ -363,11 +363,11 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 
                 double[] y0 = [0, 1, 1, 0, -1];
                 var opts = Odeset(Stats: true);
-                (ColVec T, Matrix Y) = Ode45a(pendulum_f, mass_f, y0, [0, 6], opts);
+                (ColVec T, Matrix Y) = Ode43a(pendulum_f, mass_f, y0, [0, 6], opts);
                 Plot(T, Y, Linewidth: 2); Xlabel("x"); Ylabel("y");
                 Legend(["x", "y", "u", "v", "λ"]);
                 Title("Pendulum Trajectory (DAE)");
-                SaveAs("Index_2-Pendulum-Problem-Ode45a.png");
+                SaveAs("Index_2-Pendulum-Problem-Ode43a.png");
 
                 Console.WriteLine("\n\n");
                 Console.WriteLine(Hcart(T, Y));
@@ -463,19 +463,19 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                         -2 * y[4] * (y[0] * y[2] + y[1] * y[3]) - 3 * g * y[3]],
                         y0, interval, opts); ResultPloter(T, Y, 0);
                 // Index 1
-                (T, Y) = Ode45a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+                (T, Y) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
                          y[2]*y[2] + y[3]*y[3] - y[1] * g - y[4]], Mass, 
                          y0, interval, opts); ResultPloter(T, Y, 1);
                 // Index 2
-                (T, Y) = Ode45a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+                (T, Y) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
                          y[0]*y[2] + y[1]*y[3]], Mass, 
                          y0, interval, opts); ResultPloter(T, Y, 2);
                 // Index 3
-                (T, Y) = Ode45a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+                (T, Y) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
                          y[0]*y[0] + y[1]*y[1] - 1], Mass, 
                          y0, interval, opts); ResultPloter(T, Y, 3);
 
-                SaveAs("Pendulum-Problem-Ode45a.png", 1200, 1800);
+                SaveAs("Pendulum-Problem-Ode43a.png", 1200, 1800);
                 CloseFig();
             }
             /// </code>

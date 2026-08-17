@@ -39,7 +39,7 @@ Imagine you are solving the heat equation:
 
 ## Why Use It? (Advantages)
 
-- **Leverages Existing Tech**: You can use sophisticated, pre-built ODE solvers(like `Ode45`/`Ode45a` in SepalSolver or `ode45` in MATLAB) that automatically handle error control and adaptive time-stepping.
+- **Leverages Existing Tech**: You can use sophisticated, pre-built ODE solvers(like `Ode45`/`Ode43a` in SepalSolver or `ode45` in MATLAB) that automatically handle error control and adaptive time-stepping.
 - **Flexibility**: You can use different spatial discretization methods, such as finite differences, finite elements, or spectral methods, depending on the geometry of your problem
 - **Simplification**: It breaks a complex multi-dimensional problem into a more manageable "line-by-line" temporal evolution.
 
@@ -66,7 +66,7 @@ Imagine you are solving the heat equation:
      - Requires custom time-stepping
      - Uses off-the-shelf ODE solvers
 
-In sepalsolver, the nnumerical solution of pde (Pdepe) is built on Ode45a: 
+In sepalsolver, the nnumerical solution of pde (Pdepe) is built on Ode43a: 
 our differential algebraic equation solver that relies on L-stable diagonally
 implicit Runge Kutta. This allows it to handle the boundary conditions implicitly and 
 also correct the egde values in situation where the initial condition is not consitent 
@@ -220,7 +220,8 @@ It is important to note that pdepe can be invoked with a shothand form as shown 
        icfun: r => r < 0.4 ? 1.0 : 0.0,                                          // Initial condition: u(r,0) = 1 for r < 0.4, else 0
        bcfun: (rl, ul, rr, ur, t) => (0, 1, ur - C_ambient, 0),                  // BCs: Symmetry at origin (du/dr = 0), Dirichlet at boundary (u(5,t) = C_ambient)
        x: r,                                                                     // Spatial discretization array
-       t: t);                                                                    // Solution output times
+       t: t,                                                                     // Solution output times
+       Odeset(Stats: true, AbsTol: 1e-5, OdeSolver: "ode32a"));                  // Ode options                                                                 
 
    Plot(r, U, Linewidth: 2); GridOn();
    Title("Cylindrical Fisher-KPP Radial Wave Front (m = 1)");
@@ -229,6 +230,19 @@ It is important to note that pdepe can be invoked with a shothand form as shown 
    SaveAs("Cylindrical_FisherKPP.png");
    CloseFig();
 
+
+Ouput
+
+.. terminal::
+
+   Summary of statistics by Ode32a
+           948 successful steps
+           3 failed attempts
+           10480 function evaluations
+           951 partial derivatives
+           1902 LU decompositions
+           3807 solutions of linear systems
+   
 
 .. figure:: images/Cylindrical_FisherKPP.png
    :align: center

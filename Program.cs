@@ -1,6 +1,10 @@
 ﻿using ConsoleApp1;
 using ComputationalGeometry;
 {
+
+    folderpath = "C:\\Users\\lateef.a.kareem\\Documents";
+    
+
     Writer.Run();
     {
         ColVec x = Rand(200), y = Rand(200);

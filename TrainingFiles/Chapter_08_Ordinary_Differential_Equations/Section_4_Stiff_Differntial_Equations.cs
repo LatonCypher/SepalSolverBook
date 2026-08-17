@@ -27,7 +27,7 @@
             /// The cure for stiffness is the use of Implicit Methods (such as Backward Euler or BDF - Backward Differentiation Formulas and Diagonally Implicit Runge Kuttas).Unlike explicit methods that look at where the system is, implicit methods look at where the system is going by solving an algebraic equation at every step. While this requires more CPU power per step (often involving a matrix inversion), it allows for much larger time steps without losing stability.
             /// 
             /// <header 3> Examples </header 3>
-            /// SepalSolver impelements ODE45s for stiff differential equation. This is an embeded diagonally implicit solver which is capable of error estimate and hence enable adpative time stepping.  Here we look at how to use this function to solve stiff Van der Pol Oscillator and Robertson differential equation. 
+            /// SepalSolver impelements ODE43s for stiff differential equation. This is an embeded diagonally implicit solver which is capable of error estimate and hence enable adpative time stepping.  Here we look at how to use this function to solve stiff Van der Pol Oscillator and Robertson differential equation. 
             /// <example 1> Van der Pol Oscillator (:math:`\mu = 1 \times 10^5`)
             ///  Solve the ODE :math:`~d^2y/dt^2 = 10^{5}((1 - y^2)y' - y)~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 6.3]`.
             ///  
@@ -46,14 +46,14 @@
                     [y[1], 1e5*((1 - y[0] * y[0]) * y[1] - y[0])];
 
                 //Solve ODE
-                (ColVec T, Matrix Y) = Ode45s(vdp2, [2, 0], [0, 6.3]);
+                (ColVec T, Matrix Y) = Ode43s(vdp2, [2, 0], [0, 6.3]);
                 // Plot the result
                 Plot(T, Y);
                 Axis([0, 6.3, -10, 10]);
                 Xlabel("Time t"); Ylabel("Soluton y");
                 Legend(["y_1", "y_2"], UpperLeft);
-                Title("Solution of van der Pol Equation (μ = 1e5) with ODE45s");
-                SaveAs("Van-der-Pol-μ=1e5-Ode45s.png");
+                Title("Solution of van der Pol Equation (μ = 1e5) with ODE43s");
+                SaveAs("Van-der-Pol-μ=1e5-Ode43s.png");
             }
             /// </code>
             /// </example>
@@ -87,14 +87,14 @@
                       3e7*y[1]*y[1]];
 
                 //Solve ODE
-                (ColVec T, Matrix Y) = Ode45s(robertson, [1, 0, 0], [0, 4e6]);
+                (ColVec T, Matrix Y) = Ode43s(robertson, [1, 0, 0], [0, 4e6]);
                 // Plot the result
                 Y[.., 1] = 1e4*Y[.., 1];
                 SemiLogx(T, Y);
                 Xlabel("Time t"); Ylabel("Soluton y");
                 Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
-                Title("Solution of Robertson's ODE with ODE45s");
-                SaveAs("Robertson-ODE-Ode45s.png");
+                Title("Solution of Robertson's ODE with ODE43s");
+                SaveAs("Robertson-ODE-Ode43s.png");
             }
             /// </code>
             /// 
@@ -115,14 +115,14 @@
                 //Solve ODE
                 //Now we want the results to be computed at
                 //logarithmically evenly spaced points from 1e-6 to 4e6
-                (ColVec T, Matrix Y) = Ode45s(robertson, [1, 0, 0], [0, ..Logspace(-6, 6.6)]);
+                (ColVec T, Matrix Y) = Ode43s(robertson, [1, 0, 0], [0, ..Logspace(-6, 6.6)]);
                 // Plot the result
                 Y[.., 1] = 1e4*Y[.., 1];
                 SemiLogx(T, Y);
                 Xlabel("Time t"); Ylabel("Soluton y");
                 Legend(["y_1", "1e4*y_2", "y_3"], MiddleLeft);
-                Title("Solution of Robertson's ODE with ODE45s");
-                SaveAs("Robertson-ODE-given-points-Ode45s.png");
+                Title("Solution of Robertson's ODE with ODE43s");
+                SaveAs("Robertson-ODE-given-points-Ode43s.png");
             }
             /// </code>
             /// 
@@ -143,7 +143,7 @@
                 //Solve ODE
                 // Here we chose reltol = 1e-4(defult is 1e-3), abstol = 1e-7(default is 1e-6)
                 var opts = Odeset(RelTol: 1e-4, AbsTol: 1e-7);
-                (ColVec T, Matrix Y) = Ode45s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
+                (ColVec T, Matrix Y) = Ode43s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
             }
             /// </code>
             /// 
@@ -162,11 +162,11 @@
                 //Solve ODE
                 var opts = Odeset(Stats: true);
                 Console.WriteLine("Computational Cost Using Default Tolerance Setting:");
-                Ode45s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
+                Ode43s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
                 Console.WriteLine("\n\n");
                 opts = Odeset(Stats: true, RelTol: 1e-4, AbsTol: 1e-7);
                 Console.WriteLine("Computational Cost Using Custom Tolerance Setting");
-                Ode45s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
+                Ode43s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
             }
             /// </code>
             /// </example>
