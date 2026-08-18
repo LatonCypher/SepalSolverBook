@@ -10,7 +10,7 @@
             ProjectFolder = projectRoot + "TrainingFiles\\";
             BookFolder = projectRoot + "docs\\source\\";
             ImageFolder = BookFolder + "images\\";
-            folderpath = ImageFolder;
+            currenctdirectory = ImageFolder;
         }
         public static void Run()
         {

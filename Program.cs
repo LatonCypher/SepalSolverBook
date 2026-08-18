@@ -1,13 +1,18 @@
 ﻿using ConsoleApp1;
 using ComputationalGeometry;
 {
-
-    folderpath = "C:\\Users\\lateef.a.kareem\\Documents";
-    
-
-    Writer.Run();
+    currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents";
     {
-        ColVec x = Rand(200), y = Rand(200);
+        (var X, var Y) = Meshgrid(Linspace(-10, 10));
+        var Z = Cos(X) + Sin(Y);
+        var cntr1 = Contour(X, Y, Z, Linspace(-2, 2, 10), "jet", "-", 2);
+        var cntr2 = Contour(X, Y, Z, Linspace(-2, 2, 10), "jet", "-", 2);
+        var cntr3 = Contour(X, Y, Z, Linspace(-2, 2, 10), "jet", "-", 2);
+        SaveAs("Contour3.png", 600, 600);
+    }
+    {
+        int N = 50;
+        ColVec x = Rand(N), y = Rand(N);
         DelaunayTriangulation DT = new(x, y);
         TriPlot(x, y, DT, "b", 2); HoldOn();
         Voronoi(x, y, DT, "g", 2);
@@ -19,9 +24,11 @@ using ComputationalGeometry;
         List<ColVec> M = [x, y];
         WriteMatrix(M, "Dln.txt");
     }
+
+    Writer.Run();
     {
         // Reservoir Simulation
-        folderpath = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\Morgana Data\";
+        currenctdirectory = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\Morgana Data\";
         Matrix Base = ReadMatrix("Base.txt");
         var id = Base[.., 2] == 3075;
 
@@ -31,7 +38,7 @@ using ComputationalGeometry;
     }
     {
         // Morgana Field Development Plan
-        folderpath = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\Morgana Data\";
+        currenctdirectory = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\Morgana Data\";
         Matrix Top = ReadMatrix("Top.txt"), Base = ReadMatrix("Base.txt");
         double Area(Matrix Data, double level)
         {
