@@ -9,7 +9,7 @@
             {
                 SparseMatrix B = SparseMatrix.Bucky(), R, S;
                 B = B + 4 * SparseMatrix.Eye(60);
-                Indexer r = SparseMatrix.Symrcm(B), p = SparseMatrix.Symamd(B);
+                int[] r = SparseMatrix.Symrcm(B), p = SparseMatrix.Symamd(B);
                 R = B[r, r]; S = B[p, p]; 
 
                 B.MakeChol();

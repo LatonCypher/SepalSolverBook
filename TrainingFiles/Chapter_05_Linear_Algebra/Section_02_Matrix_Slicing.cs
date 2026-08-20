@@ -88,7 +88,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
                 Console.WriteLine($"A = {A}");
 
                 //  set multiple elements using index
-                A[2..5] = new double[,] { { 10, 15, 20 } };
+                A[2..5] = new double[] { 10, 15, 20 };
                 Console.WriteLine($"A = {A}");
 
                 //  set multiple elements using subscript along a row

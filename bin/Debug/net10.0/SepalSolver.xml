@@ -7125,12 +7125,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SepalSolver.Indexer.op_Implicit(System.Int32[])~SepalSolver.Indexer">
-            <summary>
-            
-            </summary>
-            <param name="value"></param>
-        </member>
         <member name="M:SepalSolver.Indexer.op_Implicit(System.Collections.Generic.List{System.Int32})~SepalSolver.Indexer">
             <summary>
             
@@ -7327,30 +7321,6 @@
             <returns></returns>
         </member>
         <member name="M:SepalSolver.Indexer.op_Multiply(SepalSolver.Indexer,SepalSolver.Indexer)">
-            <summary>
-            
-            </summary>
-            <param name="indx1"></param>
-            <param name="indx2"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Indexer.op_Division(SepalSolver.Indexer,SepalSolver.Indexer)">
-            <summary>
-            
-            </summary>
-            <param name="indx1"></param>
-            <param name="indx2"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Indexer.op_BitwiseAnd(SepalSolver.Indexer,SepalSolver.Indexer)">
-            <summary>
-            
-            </summary>
-            <param name="indx1"></param>
-            <param name="indx2"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SepalSolver.Indexer.op_BitwiseOr(SepalSolver.Indexer,SepalSolver.Indexer)">
             <summary>
             
             </summary>
@@ -7809,93 +7779,213 @@
         </member>
         <member name="P:SepalSolver.Matrix.Item(System.Int32)">
             <summary>
-            Access this matrix as A11 1D array
+            
             </summary>
-            <param name="I"></param>
+            <param name="i"></param>
             <returns></returns>
         </member>
         <member name="P:SepalSolver.Matrix.Item(System.Index)">
             <summary>
-            Access this matrix as A11 1D array
+            
             </summary>
-            <param name="I"></param>
+            <param name="i"></param>
             <returns></returns>
         </member>
         <member name="P:SepalSolver.Matrix.Item(SepalSolver.Indexer)">
             <summary>
-            Access this matrix as A11 2D array
+            
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(SepalSolver.StepRange)">
+            <summary>
+            
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(System.Int32[])">
+            <summary>
+            
             </summary>
             <param name="I"></param>
             <returns></returns>
         </member>
         <member name="P:SepalSolver.Matrix.Item(System.Int32,System.Int32)">
             <summary>
-            Access this matrix as A11 2D array
+            
             </summary>
-            <param name="iRow"></param>
-            <param name="iCol"></param>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(System.Index,System.Index)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
             <returns></returns>
         </member>
         <member name="P:SepalSolver.Matrix.Item(SepalSolver.Indexer,SepalSolver.Indexer)">
             <summary>
-            Access this matrix as A11 2D array
+            
             </summary>
             <param name="iRow"></param>
             <param name="iCol"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(SepalSolver.Indexer,System.Int32[])">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(System.Int32[],SepalSolver.Indexer)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(System.Int32[],System.Int32[])">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(System.Index,SepalSolver.Indexer)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(System.Index,System.Int32[])">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(System.Index,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(SepalSolver.Indexer,System.Index)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(System.Int32[],System.Index)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
             <returns></returns>
         </member>
         <member name="P:SepalSolver.Matrix.Item(System.String,System.Int32)">
             <summary>
-            Access this matrix as A11 2D array
+            
             </summary>
-            <param name="iRow"></param>
-            <param name="iCol"></param>
+            <param name="_"></param>
+            <param name="col"></param>
             <returns></returns>
         </member>
         <member name="P:SepalSolver.Matrix.Item(System.Int32,System.String)">
             <summary>
-            Access this matrix as A11 2D array
+            
             </summary>
-            <param name="iRow"></param>
-            <param name="iCol"></param>
+            <param name="row"></param>
+            <param name="_"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(SepalSolver.Indexer,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
             <returns></returns>
         </member>
         <member name="P:SepalSolver.Matrix.Item(System.Int32,SepalSolver.Indexer)">
             <summary>
-            Access this matrix as A11 2D array
+            
             </summary>
-            <param name="iRow"></param>
-            <param name="iCol"></param>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(SepalSolver.StepRange,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(System.Int32,SepalSolver.StepRange)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
             <returns></returns>
         </member>
         <member name="P:SepalSolver.Matrix.Item(System.String,SepalSolver.Indexer)">
             <summary>
-            Access this matrix as A11 2D array
+            
             </summary>
-            <param name="iRow"></param>
-            <param name="iCol"></param>
+            <param name="row"></param>
+            <param name="col"></param>
             <returns></returns>
         </member>
         <member name="P:SepalSolver.Matrix.Item(SepalSolver.Indexer,System.String)">
             <summary>
-            Access this matrix as A11 2D array
+            
             </summary>
-            <param name="iRow"></param>
-            <param name="iCol"></param>
+            <param name="row"></param>
+            <param name="col"></param>
             <returns></returns>
         </member>
-        <member name="P:SepalSolver.Matrix.Item(System.Boolean[0:,0:])">
-            <summary>
-            Access this matrix as A11 2D array with A11 bool array
-            </summary>
-            <param name="B"></param>
-            <returns></returns>
-        </member>
-        <member name="P:SepalSolver.Matrix.Item(System.String)">
+        <member name="P:SepalSolver.Matrix.Item(SepalSolver.StepRange,SepalSolver.Indexer)">
             <summary>
             
             </summary>
-            <param name="I"></param>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(SepalSolver.Indexer,SepalSolver.StepRange)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(SepalSolver.StepRange,SepalSolver.StepRange)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
             <returns></returns>
         </member>
         <member name="M:SepalSolver.Matrix.Reshape(SepalSolver.Matrix,System.Int32,System.Int32)">
@@ -9811,19 +9901,17 @@
         </member>
         <member name="P:SepalSolver.RowVec.Item(System.Index)">
             <summary>
-            Indexes the row vector
+            
             </summary>
-            <param name="iCol"></param>
+            <param name="col"></param>
             <returns></returns>
-            <exception cref="T:System.IndexOutOfRangeException"></exception>
         </member>
         <member name="P:SepalSolver.RowVec.Item(System.Int32)">
             <summary>
-            Indexes the row vector
+            
             </summary>
-            <param name="iCol"></param>
+            <param name="col"></param>
             <returns></returns>
-            <exception cref="T:System.IndexOutOfRangeException"></exception>
         </member>
         <member name="P:SepalSolver.RowVec.Item(SepalSolver.StepRange)">
             <summary>
@@ -9833,19 +9921,11 @@
             <returns></returns>
             <exception cref="T:System.Exception"></exception>
         </member>
-        <member name="P:SepalSolver.RowVec.Item(SepalSolver.Indexer)">
+        <member name="P:SepalSolver.RowVec.Item(System.Int32[])">
             <summary>
             Indexes the row vector with an Indexer
             </summary>
             <param name="J"></param>
-            <returns></returns>
-            <exception cref="T:System.Exception"></exception>
-        </member>
-        <member name="P:SepalSolver.RowVec.Item(System.Index[])">
-            <summary>
-            Indexes the row vector with an array of Index
-            </summary>
-            <param name="jarray"></param>
             <returns></returns>
             <exception cref="T:System.Exception"></exception>
         </member>
@@ -11126,47 +11206,215 @@
             <param name="B">Matrix B</param>
             <returns>Matrix</returns>
         </member>
-        <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.Indexer,SepalSolver.Indexer)">
-            <summary>
-            Access this matrix as a 2D array
-            </summary>
-            <param name="iRow"></param>
-            <param name="iCol"></param>
-            <returns></returns>
-        </member>
         <member name="P:SepalSolver.SparseMatrix.Item(System.Int32)">
             <summary>
-            Access this matrix as a 1D array
+            
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(System.Index)">
+            <summary>
+            
             </summary>
             <param name="i"></param>
             <returns></returns>
         </member>
         <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.Indexer)">
             <summary>
-            Access this matrix as a 2D array
+            
             </summary>
-            <param name="I"></param>
+            <param name="i"></param>
             <returns></returns>
         </member>
         <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.StepRange)">
             <summary>
-            Access this matrix as a 2D array
+            
             </summary>
-            <param name="I"></param>
+            <param name="i"></param>
             <returns></returns>
         </member>
-        <member name="P:SepalSolver.SparseMatrix.Item(System.Boolean[])">
+        <member name="P:SepalSolver.SparseMatrix.Item(System.Int32[])">
             <summary>
-            Access this matrix as a 2D array
+            
             </summary>
-            <param name="I"></param>
+            <param name="i"></param>
             <returns></returns>
         </member>
-        <member name="P:SepalSolver.SparseMatrix.Item(System.Boolean[0:,0:])">
+        <member name="P:SepalSolver.SparseMatrix.Item(System.Int32,System.Int32)">
             <summary>
-            Access this matrix as a 2D array
+            
             </summary>
-            <param name="I"></param>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(System.Index,System.Index)">
+            <summary>
+            
+            </summary>
+            <param name="iRow"></param>
+            <param name="iCol"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.Indexer,SepalSolver.Indexer)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.Indexer,System.Int32[])">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(System.Int32[],SepalSolver.Indexer)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(System.Int32[],System.Int32[])">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(System.Index,SepalSolver.Indexer)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(System.Index,System.Int32[])">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(System.Index,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.Indexer,System.Index)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(System.Int32[],System.Index)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="_"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="_"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.Indexer,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(System.Int32,SepalSolver.Indexer)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.StepRange,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(System.Int32,SepalSolver.StepRange)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(System.String,SepalSolver.Indexer)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.Indexer,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.StepRange,SepalSolver.Indexer)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.Indexer,SepalSolver.StepRange)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.StepRange,SepalSolver.StepRange)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
             <returns></returns>
         </member>
         <member name="M:SepalSolver.SparseMatrix.Add(SepalSolver.SparseMatrix,SepalSolver.SparseMatrix)">

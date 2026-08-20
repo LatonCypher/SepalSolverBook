@@ -43,8 +43,7 @@ namespace ConsoleApp1.TrainingFiles
                 ColVec my = Marker.Ydata - y[0];
                 ColVec z = Linspace(-3, 1, 321),
                     w = ((z+3)*4*pi)%(2*pi), x = 0.7*Sin(w);
-                Indexer gthan = 0.75*pi < w, lthan = w < 1.25*pi;
-                x[gthan & lthan] = double.NaN;
+                x[0.75 * pi < w & w < 1.25 * pi] = double.NaN;
                 var Spring = Plot(x, z, "k", 3);
 
                 Plot([1.5, 14], [1, 1], "k");
@@ -833,9 +832,6 @@ namespace ConsoleApp1.TrainingFiles
                 //define time span and intial guess
                 double[] tspan, y0, y35guess;
 
-                // define intexer for the unknwon initial conditions
-                Indexer I = new int[] { 1, 3 };
-
                 //define function for solution of howarth transformation
                 (ColVec, Matrix) HowarthTransform(double M)
                 {
@@ -1050,8 +1046,7 @@ namespace ConsoleApp1.TrainingFiles
                 ColVec my = Marker.Ydata - y[0];
                 ColVec z = Linspace(-3, 1, 321), 
                     w = ((z+3)*4*pi)%(2*pi), x = 0.7*Sin(w);
-                Indexer gthan = 0.75*pi < w, lthan = w < 1.25*pi;
-                x[gthan & lthan] = double.NaN;
+                x[0.75 * pi < w & w < 1.25 * pi] = double.NaN;
                 var Spring = Plot(x, z, "k", 3);
 
                 Plot([1.5, 14], [1, 1], "k"); 

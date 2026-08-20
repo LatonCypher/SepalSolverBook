@@ -266,7 +266,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 Title("Cholesky factor of Squid");
 
                 // Compute RCM reordering permutation
-                Indexer I = SparseMatrix.Symrcm(S);
+                int[] I = SparseMatrix.Symrcm(S);
 
                 // Reorder the squid
                 SparseMatrix T = S[I, I];
@@ -307,7 +307,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 Title("Cholesky factor of Squid");
 
                 // Compute AMD reordering permutation
-                Indexer I = SparseMatrix.Symamd(S);
+                int[] I = SparseMatrix.Symamd(S);
 
                 // Reorder the squid
                 SparseMatrix T = S[I, I];
