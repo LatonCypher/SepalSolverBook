@@ -1,54 +1,54 @@
 ﻿using ConsoleApp1;
 using ComputationalGeometry;
 {
-    currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents";
-    {
-        SparseMatrix A = SparseMatrix.Bucky();
-        Spy(A);
-        SaveAs("bucky.png");
-        A[.., 10..50] = null;
-        Spy(A);
-        SaveAs("bucky2.png");
-        A[10..50,..] = null;
-        Spy(A);
-        SaveAs("bucky3.png");
-    }
+    //currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents";
+    //{
+    //    SparseMatrix A = SparseMatrix.Bucky();
+    //    Spy(A);
+    //    SaveAs("bucky.png");
+    //    A[.., 10..50] = null;
+    //    Spy(A);
+    //    SaveAs("bucky2.png");
+    //    A[10..50,..] = null;
+    //    Spy(A);
+    //    SaveAs("bucky3.png");
+    //}
 
-    {
-        (var X, var Y) = Meshgrid(Linspace(-2 * pi, 2 * pi, 101), Linspace(0, 4 * pi, 101));
-        var Z = Sin(X) + Cos(Y);
-        Contour(X, Y, Z, 10);
-        SaveAs("Contour.png", 600, 400);
-        Contourf(X, Y, Z, 10);
-        SaveAs("Contourf.png", 600, 400);
-    }
+    //{
+    //    (var X, var Y) = Meshgrid(Linspace(-2 * pi, 2 * pi, 101), Linspace(0, 4 * pi, 101));
+    //    var Z = Sin(X) + Cos(Y);
+    //    Contour(X, Y, Z, 10);
+    //    SaveAs("Contour.png", 600, 400);
+    //    Contourf(X, Y, Z, 10);
+    //    SaveAs("Contourf.png", 600, 400);
+    //}
 
-    {
-        (var X, var Y) = Meshgrid(Linspace(-3, 3));
-        var T1 = 3 * (1 - X).Pow(2);
-        var T2 = Exp(-X.Pow(2) - (Y + 1).Pow(2));
-        var T3 = 10 * (X / 5 - X.Pow(3) - Y.Pow(3));
-        var T4 = Exp(-X.Pow(2) - Y.Pow(2));
-        var T5 = Exp(-(X + 1).Pow(2) - Y.Pow(2)) / 3;
-        var Z = T1.Times(T2) - T3.Times(T4) - T5;
-        Contour(X, Y, Z, 20);
-        SaveAs("Contour.png", 600, 400);
-    }
+    //{
+    //    (var X, var Y) = Meshgrid(Linspace(-3, 3));
+    //    var T1 = 3 * (1 - X).Pow(2);
+    //    var T2 = Exp(-X.Pow(2) - (Y + 1).Pow(2));
+    //    var T3 = 10 * (X / 5 - X.Pow(3) - Y.Pow(3));
+    //    var T4 = Exp(-X.Pow(2) - Y.Pow(2));
+    //    var T5 = Exp(-(X + 1).Pow(2) - Y.Pow(2)) / 3;
+    //    var Z = T1.Times(T2) - T3.Times(T4) - T5;
+    //    Contour(X, Y, Z, 20);
+    //    SaveAs("Contour.png", 600, 400);
+    //}
 
-    {
-        int N = 50;
-        ColVec x = Rand(N), y = Rand(N);
-        DelaunayTriangulation DT = new(x, y);
-        TriPlot(x, y, DT, "b", 2); HoldOn();
-        Voronoi(x, y, DT, "g", 2);
-        ColVec xh = x[DT.Hull], yh = y[DT.Hull];
-        xh = Vcart(xh, xh[0]); yh = Vcart(yh, yh[0]);
-        Plot(xh, yh, "r", 2);
-        Axis([0, 1, 0, 1]);
-        SaveAs("zDV_Diagram.png", 600, 600);
-        List<ColVec> M = [x, y];
-        WriteMatrix(M, "Dln.txt");
-    }
+    //{
+    //    int N = 50;
+    //    ColVec x = Rand(N), y = Rand(N);
+    //    DelaunayTriangulation DT = new(x, y);
+    //    TriPlot(x, y, DT, "b", 2); HoldOn();
+    //    Voronoi(x, y, DT, "g", 2);
+    //    ColVec xh = x[DT.Hull], yh = y[DT.Hull];
+    //    xh = Vcart(xh, xh[0]); yh = Vcart(yh, yh[0]);
+    //    Plot(xh, yh, "r", 2);
+    //    Axis([0, 1, 0, 1]);
+    //    SaveAs("zDV_Diagram.png", 600, 600);
+    //    List<ColVec> M = [x, y];
+    //    WriteMatrix(M, "Dln.txt");
+    //}
 
     Writer.Run();
     {

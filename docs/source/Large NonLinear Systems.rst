@@ -121,7 +121,7 @@ Ouput
      -0.4164
    
    2.527081663345413E-08
-   Elapsed time: 1.7231 seconds
+   Elapsed time: 3.1048455 seconds
 
 While finite difference approximations are convenient, they are computationally 
 expensive, introduce numerical errors, and fail to exploit structural
@@ -196,7 +196,7 @@ Ouput
      -0.4164
    
    3.420135685938544E-15
-   Elapsed time: 0.0578374 seconds
+   Elapsed time: 0.0570987 seconds
 
 Examples 3: Solving Large Sparse Systems Using Analytical Jacobians
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -274,7 +274,7 @@ Ouput
      -0.4164
    
    7.448429925158487E-15
-   Elapsed time: 0.0391177 seconds
+   Elapsed time: 0.0586182 seconds
 
 
 Examples 4: Solving Large Sparse Systems Using Analytical Jacobians
@@ -358,4 +358,4 @@ Ouput
     1 
    
    0
-   Elapsed time: 0.0161832 seconds
+   Elapsed time: 0.0148561 seconds

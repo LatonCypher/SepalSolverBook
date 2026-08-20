@@ -7940,7 +7940,23 @@
             <param name="col"></param>
             <returns></returns>
         </member>
+        <member name="P:SepalSolver.Matrix.Item(SepalSolver.StepRange,System.Index)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
         <member name="P:SepalSolver.Matrix.Item(System.Int32,SepalSolver.StepRange)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(System.Index,SepalSolver.StepRange)">
             <summary>
             
             </summary>
@@ -7972,7 +7988,23 @@
             <param name="col"></param>
             <returns></returns>
         </member>
+        <member name="P:SepalSolver.Matrix.Item(SepalSolver.StepRange,System.Int32[])">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
         <member name="P:SepalSolver.Matrix.Item(SepalSolver.Indexer,SepalSolver.StepRange)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.Matrix.Item(System.Int32[],SepalSolver.StepRange)">
             <summary>
             
             </summary>
@@ -11369,7 +11401,23 @@
             <param name="col"></param>
             <returns></returns>
         </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.StepRange,System.Index)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
         <member name="P:SepalSolver.SparseMatrix.Item(System.Int32,SepalSolver.StepRange)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(System.Index,SepalSolver.StepRange)">
             <summary>
             
             </summary>
@@ -11401,7 +11449,23 @@
             <param name="col"></param>
             <returns></returns>
         </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.StepRange,System.Int32[])">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
         <member name="P:SepalSolver.SparseMatrix.Item(SepalSolver.Indexer,SepalSolver.StepRange)">
+            <summary>
+            
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SepalSolver.SparseMatrix.Item(System.Int32[],SepalSolver.StepRange)">
             <summary>
             
             </summary>

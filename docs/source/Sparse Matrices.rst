@@ -419,7 +419,7 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
    Title("Cholesky factor of Squid");
 
    // Compute RCM reordering permutation
-   Indexer I = SparseMatrix.Symrcm(S);
+   int[] I = SparseMatrix.Symrcm(S);
 
    // Reorder the squid
    SparseMatrix T = S[I, I];
@@ -465,7 +465,7 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
    Title("Cholesky factor of Squid");
 
    // Compute AMD reordering permutation
-   Indexer I = SparseMatrix.Symamd(S);
+   int[] I = SparseMatrix.Symamd(S);
 
    // Reorder the squid
    SparseMatrix T = S[I, I];
