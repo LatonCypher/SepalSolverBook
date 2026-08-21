@@ -53,11 +53,20 @@
             ///  **Software** | Requires custom time-stepping | Uses off-the-shelf ODE solvers 
             /// </table>
             /// 
-            /// In sepalsolver, the nnumerical solution of pde (Pdepe) is built on Ode43a: 
-            /// our differential algebraic equation solver that relies on L-stable diagonally
-            /// implicit Runge Kutta. This allows it to handle the boundary conditions implicitly and 
-            /// also correct the egde values in situation where the initial condition is not consitent 
-            /// with the boundary condition
+            /// <header 3> Parabolic and Ellipitic PDE Solver </header>
+            /// In sepalsolver, the nnumerical solution of parabolic and elliptic pde (Pdepe) is built on Ode43a: 
+            /// our differential algebraic equation solver that relies on L-stable diagonally implicit Runge Kutta. 
+            /// This allows it to handle the boundary conditions implicitly and also correct the egde values in 
+            /// situation where the initial condition is not consitent with the boundary condition
+            /// 
+            /// <math>
+            ///     x^m c\left(x,t,u,\frac{\partial u}{\partial x}\right) \frac{\partial \mathbf{u}}{\partial t} =  \frac{\partial}{\partial x}\left(x^m f\left(x,t, u,\frac{\partial u}{\partial x}\right)\right) + x^m s\left(x,t, u,\frac{\partial u}{\partial x}\right)
+            /// </math>
+            /// 
+            /// :math:`m` is the symmetry constant, which is 0 for cartesian cooridnate system, 1, for cylindrical coordinate system and 2 for spherical coordinate system  
+            /// 
+            /// In the foolwing example, we show how to use the Pdepe function to solve PDEs.
+            ///
             /// 
             /// <header 3> Example 1: Solving the Heat Equation </header 3>
             /// Consider the one-dimensional heat equation:
