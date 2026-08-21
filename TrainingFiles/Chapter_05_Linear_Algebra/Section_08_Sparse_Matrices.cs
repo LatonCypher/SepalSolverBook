@@ -426,6 +426,23 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 CloseFig();
             }
             /// </code>
+            /// 
+            /// <header 3> Sparse Matrix Slicing </header>
+            /// Like dense matrices, sparse matrices can also be sliced and this is demonstracted in the example below
+            /// 
+            /// <code>
+            {
+                SparseMatrix A = SparseMatrix.Bucky();
+                Spy(A);
+                SaveAs("bucky.png");
+                A[.., 10..50] = null;
+                Spy(A);
+                SaveAs("bucky2.png");
+                A[10..50, ..] = null;
+                Spy(A);
+                SaveAs("bucky3.png");
+            }
+            /// </code>
             /// </BookContent>
         }
     }

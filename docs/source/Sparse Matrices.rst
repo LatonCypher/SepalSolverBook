@@ -598,3 +598,36 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
    :align: center
    :alt: RCM_reordering_of_Bucky.png
 
+
+Sparse Matrix Slicing
+~~~~~~~~~~~~~~~~~~~~~
+Like dense matrices, sparse matrices can also be sliced and this is demonstracted in the example below
+
+
+.. code-block:: csharp
+
+   SparseMatrix A = SparseMatrix.Bucky();
+   Spy(A);
+   SaveAs("bucky.png");
+   A[.., 10..50] = null;
+   Spy(A);
+   SaveAs("bucky2.png");
+   A[10..50, ..] = null;
+   Spy(A);
+   SaveAs("bucky3.png");
+
+
+.. figure:: images/bucky.png
+   :align: center
+   :alt: bucky.png
+
+
+.. figure:: images/bucky2.png
+   :align: center
+   :alt: bucky2.png
+
+
+.. figure:: images/bucky3.png
+   :align: center
+   :alt: bucky3.png
+

@@ -1,27 +1,15 @@
 ﻿using ConsoleApp1;
 using ComputationalGeometry;
 {
-    //currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents";
-    //{
-    //    SparseMatrix A = SparseMatrix.Bucky();
-    //    Spy(A);
-    //    SaveAs("bucky.png");
-    //    A[.., 10..50] = null;
-    //    Spy(A);
-    //    SaveAs("bucky2.png");
-    //    A[10..50,..] = null;
-    //    Spy(A);
-    //    SaveAs("bucky3.png");
-    //}
-
-    //{
-    //    (var X, var Y) = Meshgrid(Linspace(-2 * pi, 2 * pi, 101), Linspace(0, 4 * pi, 101));
-    //    var Z = Sin(X) + Cos(Y);
-    //    Contour(X, Y, Z, 10);
-    //    SaveAs("Contour.png", 600, 400);
-    //    Contourf(X, Y, Z, 10);
-    //    SaveAs("Contourf.png", 600, 400);
-    //}
+    currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents";
+    {
+        (var X, var Y) = Meshgrid(Linspace(-2 * pi, 2 * pi, 51), Linspace(0, 4 * pi, 51));
+        var Z = Sin(X) + Cos(Y);
+        Contour(X, Y, Z, 10);
+        SaveAs("Contour.png", 600, 400);
+        Contourf(X, Y, Z, 10);
+        SaveAs("Contourf.png", 600, 400);
+    }
 
     //{
     //    (var X, var Y) = Meshgrid(Linspace(-3, 3));

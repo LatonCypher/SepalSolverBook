@@ -1214,8 +1214,8 @@ Ouput
     Generation   Func-count        f(x)             f(x)         Constraints      Generations
    Stopping: no improvement for too long.
    (
-      0.9745
-      0.9610
-   , False, 0.013645174633644015, 0x1 empty double row vector, 0x1 empty double row vector)
+      1.0764
+      1.1596
+   , False, 0.005936937115547626, 0x1 empty double row vector, 0x1 empty double row vector)
 
 
