@@ -348,6 +348,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 Spy(S.L_chol * S.L_chol.T, 1e-15);
             }
             /// </code>
+            /// <figure> LUFactorization_of_Bucky.gif </figure>
             /// 
             /// <code>
             {

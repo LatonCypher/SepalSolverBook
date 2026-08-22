@@ -2285,6 +2285,48 @@
              </terminal>
              </example>
         </member>
+        <member name="M:SepalSolver.Math.NaNs(System.Int32)">
+             <summary>
+             Generates a two-dimensional array of NaN with specified dimensions.
+             This method creates a matrix of M rows and N columns, where every element is initialized to 1.0.
+             <code>
+                double[] NaNs(int M)
+                double[,] NaNs(int M, int N)
+                double[,] NaNs(int[] S) 
+             </code>
+             </summary>
+             <param name="M">
+             The number of rows in the resulting matrix.
+             </param>
+             <param name="N">
+             The number of columns in the resulting matrix.
+             </param>
+             <param name="S">
+             Array of integer rows and columns in the resulting matrix.
+             </param>
+             <returns>
+             An array of vector of size M or matrix of size M by N filled with ones.
+             </returns>
+             <example>
+             Create a 2x3 matrix of ones:
+             <code>
+                // import libraries 
+                using System;
+                using static SepalSolver.Math;
+                  
+                //Generate Matrix 2 by 3 with all the element has NaN
+                Matrix nans = NaNs(2, 3);
+            
+                // Display matrix
+                Console.WriteLine(nans);
+                
+             </code>
+             <terminal>
+                1.0000    1.0000    1.0000
+                1.0000    1.0000    1.0000
+             </terminal>
+             </example>
+        </member>
         <member name="M:SepalSolver.Math.Repmat(System.Double,System.Int32)">
              <summary>
              Replicates a scalar value across a one-dimensional array or two-dimensional matrix of specified size.

@@ -262,7 +262,7 @@ The SepalSolver also allow for easy computation of matrix equations. For instanc
        Iteration    Func-count       f(x)      Norm of Step
            0            1          3.74165        start      
            1            6          0.94293       0.61237     
-           2            7          2661960       6432.80     
+           2            7          2661952       6432.80     
            3            8          0.45614       6432.80     
            4            9          0.39097       0.05487     
            5            10         0.39548       0.03847     
@@ -271,7 +271,7 @@ The SepalSolver also allow for easy computation of matrix equations. For instanc
            8            17         263.674       6.34236     
            9            18         0.37461       6.33363     
            10           19         0.37411       0.00901     
-           11           20         3.91142       1.47633     
+           11           20         3.91141       1.47633     
            12           21         0.35406       1.34995     
            13           22         0.31481       0.11135     
            14           23         1.75353       0.89775     

@@ -75,7 +75,7 @@ Examples
    
    .. terminal::
    
-      Spring Constant k: 99.79999999999995 N/m
+      Spring Constant k: 99.80000000000003 N/m
 
 
 .. Admonition:: Example 3 :  Handling Noise in Experimental Data 
@@ -97,7 +97,7 @@ Examples
    
    .. terminal::
    
-      Quadratic term (should be small): -0.04285714285714366
+      Quadratic term (should be small): -0.04285714285714191
 
 Usage Warning
 ~~~~~~~~~~~~~
@@ -188,7 +188,7 @@ Ouput
 
 .. terminal::
 
-   Model: z = 0.908333333333332 + 1.4250000000000007x + 1.133333333333334y
+   Model: z = 0.9083333333333335 + 1.4249999999999998x + 1.1333333333333329y
 
 Examples
 --------

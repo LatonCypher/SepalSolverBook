@@ -231,8 +231,8 @@ Ouput
 
 .. terminal::
 
-   Initial P/z = 4269.359990640229
-   GIIP = 85.38985191375376
+   Initial P/z = 4269.359990640227
+   GIIP = 85.38985191375379
 
 .. figure:: images/Gas_Reserve_Exercise.png
    :align: center

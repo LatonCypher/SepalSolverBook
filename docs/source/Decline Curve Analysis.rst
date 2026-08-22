@@ -295,8 +295,8 @@ Ouput
 
 .. terminal::
 
-   D = -0.0010050369357366175
-   q_i = 999.9999607852839
+   D = -0.0010050369357365967
+   q_i = 999.9999607852828
 
 .. figure:: images/Decline_Curve_Fitting.png
    :align: center

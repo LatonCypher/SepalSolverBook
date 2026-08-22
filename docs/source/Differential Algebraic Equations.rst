@@ -119,7 +119,7 @@ Where :math:`M` is a singular matrix.
       Summary of statistics by Ode43a
               1054 successful steps
               16 failed attempts
-              30516 function evaluations
+              30517 function evaluations
               1070 partial derivatives
               4280 LU decompositions
               19799 solutions of linear systems
@@ -465,7 +465,7 @@ Now we look at examples of index 2 DAEs
         0.90  ||     2.460403    |    2.460403    ||     2.460403    |    2.460403    ||     -2.237392   |  -2.237392
         0.91  ||     2.475216    |    2.475216    ||     2.475216    |    2.475216    ||     -2.263215   |  -2.263216
         0.91  ||     2.490118    |    2.490118    ||     2.490118    |    2.490118    ||     -2.289406   |  -2.289406
-        0.92  ||     2.505110    |    2.505110    ||     2.505110    |    2.505110    ||     -2.315970   |  -2.315970
+        0.92  ||     2.505109    |    2.505110    ||     2.505110    |    2.505110    ||     -2.315970   |  -2.315970
         0.92  ||     2.520191    |    2.520191    ||     2.520191    |    2.520191    ||     -2.342915   |  -2.342915
         0.93  ||     2.535364    |    2.535364    ||     2.535364    |    2.535364    ||     -2.370246   |  -2.370246
         0.94  ||     2.550628    |    2.550628    ||     2.550628    |    2.550628    ||     -2.397972   |  -2.397972
@@ -535,7 +535,7 @@ Now we look at examples of index 2 DAEs
       Summary of statistics by Ode43a
               768 successful steps
               744 failed attempts
-              45118 function evaluations
+              45119 function evaluations
               1512 partial derivatives
               4671 LU decompositions
               31359 solutions of linear systems
@@ -1460,12 +1460,12 @@ Ouput
            23173 solutions of linear systems
    
    Summary of statistics by Ode43a
-           8757 successful steps
-           30 failed attempts
-           282545 function evaluations
-           8787 partial derivatives
-           35145 LU decompositions
-           194659 solutions of linear systems
+           8756 successful steps
+           19 failed attempts
+           282369 function evaluations
+           8775 partial derivatives
+           35097 LU decompositions
+           194608 solutions of linear systems
    
 
 .. figure:: images/Pendulum-Problem-Ode43a.png

@@ -97,7 +97,7 @@ SepalSolver provides two major iterative solvers. Conjugate Gradient (`ConjGrad`
       
       flag = 0
       iter = 9
-      res = 3.6283012552149887E-07
+      res = 3.6283012552149844E-07
 
 
 .. Admonition:: Example 2 :  Conjugate Gradient
@@ -128,7 +128,7 @@ SepalSolver provides two major iterative solvers. Conjugate Gradient (`ConjGrad`
       
       flag = 0
       iter = 6
-      res = 8.189558921548075E-07
+      res = 8.189558921548077E-07
 
 . 3. Overdetermined Systems (Least Squares)
 -------------------------------------------

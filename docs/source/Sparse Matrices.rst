@@ -510,6 +510,9 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
    Spy(S.L_chol, 1e-15);
    Spy(S.L_chol * S.L_chol.T, 1e-15);
 
+.. figure:: images/LUFactorization_of_Bucky.gif
+    :align: center
+    :alt: LUFactorization_of_Bucky.gif
 
 
 .. code-block:: csharp

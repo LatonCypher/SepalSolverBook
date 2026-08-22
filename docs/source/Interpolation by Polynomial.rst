@@ -166,7 +166,7 @@ The idea of using polynomial fits can be extended to multiple dimensions. For ex
    .. terminal::
    
       Interpolation by Polynomial Fitting
-      Specific volume at T = 1350 and P = 0.0373 is 28.053581185031376
+      Specific volume at T = 1350 and P = 0.0373 is 28.05358118503139
       Interpolation by Bilinear Interpolation
       Specific volume at T = 1350 and P = 0.0373 is 20.413475
       Interpolation by Polynomial Fitting-Using Narrow Region
