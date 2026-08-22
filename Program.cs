@@ -1,7 +1,31 @@
 ﻿using ConsoleApp1;
-using ComputationalGeometry;
 {
     currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents";
+    {
+        double D = 0.01;                  // Diffusion coefficient
+        double growthRate = 1.0;          // Growth rate
+        double C_ambient = 0.0;           // Ambient/Boundary concentration
+
+        double[] r = Linspace(0, 5, 101); // Spatial grid [0, 5]
+        double[] t = Linspace(0, 6, 7);   // Time output points [0, 6]
+
+        (ColVec T, Matrix U) = Pdepe(
+            m: 1,                                                                     // Geometry: 0 = Cartesian, 1 = Cylindrical, 2 = Spherical
+            pdefun: (r, t, u, dudr) => (1.0, D * dudr, growthRate * u * (1.0 - u)),   // PDE components: (c, f, s) -> du/dt = D/r*d/dr(r*du/dr) + g*u*(1-u)
+            icfun: r => r < 0.4 ? 1.0 : 0.0,                                          // Initial condition: u(r,0) = 1 for r < 0.4, else 0
+            bcfun: (rl, ul, rr, ur, t) => (0, 1, ur - C_ambient, 0),                  // BCs: Symmetry at origin (du/dr = 0), Dirichlet at boundary (u(5,t) = C_ambient)
+            x: r,                                                                     // Spatial discretization array
+            t: t,                                                                     // Solution output times
+            Odeset(Stats: true, AbsTol: 1e-5, OdeSolver: "ode43a"));                  // Ode options
+
+        Plot(r, U, Linewidth: 2); GridOn();
+        Title("Cylindrical Fisher-KPP Radial Wave Front (m = 1)");
+        Xlabel("Position r"); Ylabel("Population Density u(r,t)");
+        Legend(T.Select(time => $"t = {time:0.00}"));
+        SaveAs("Cylindrical_FisherKPP.png");
+        CloseFig();
+    }
+
     {
         (var X, var Y) = Meshgrid(Linspace(-2 * pi, 2 * pi, 51), Linspace(0, 4 * pi, 51));
         var Z = Sin(X) + Cos(Y);

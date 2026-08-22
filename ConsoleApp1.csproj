@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ComputationalGeometry\ComputationalGeometry.csproj" />
     <ProjectReference Include="..\sepalsolver\SepalSolver.PlotLib\SepalSolver.PlotLib.csproj" />
     <ProjectReference Include="..\sepalsolver\SepalSolver\SepalSolver.csproj" />
   </ItemGroup>

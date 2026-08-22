@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SepalSolver", "..\sepalsolv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SepalSolver.PlotLib", "..\sepalsolver\SepalSolver.PlotLib\SepalSolver.PlotLib.csproj", "{1AACEB31-9B3A-35AD-F134-2BF127A2FC09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputationalGeometry", "..\ComputationalGeometry\ComputationalGeometry.csproj", "{D20F9712-BAA8-4A82-91A6-8FF024D6A448}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{1AACEB31-9B3A-35AD-F134-2BF127A2FC09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AACEB31-9B3A-35AD-F134-2BF127A2FC09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AACEB31-9B3A-35AD-F134-2BF127A2FC09}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D20F9712-BAA8-4A82-91A6-8FF024D6A448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D20F9712-BAA8-4A82-91A6-8FF024D6A448}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D20F9712-BAA8-4A82-91A6-8FF024D6A448}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D20F9712-BAA8-4A82-91A6-8FF024D6A448}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

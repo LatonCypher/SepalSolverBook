@@ -8,7 +8,6 @@
     ".NETCoreApp,Version=v10.0": {
       "ConsoleApp1/1.0.0": {
         "dependencies": {
-          "ComputationalGeometry": "1.0.0",
           "SepalSolver": "1.1.8.3",
           "SepalSolver.PlotLib": "1.1.8.3"
         },
@@ -814,17 +813,6 @@
           }
         }
       },
-      "ComputationalGeometry/1.0.0": {
-        "dependencies": {
-          "SepalSolver": "1.1.8.3"
-        },
-        "runtime": {
-          "ComputationalGeometry.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
       "SepalSolver/1.1.8.3": {
         "dependencies": {
           "Highs.Native": "1.14.0",
@@ -844,7 +832,6 @@
         "dependencies": {
           "CSharpMath": "0.5.1",
           "CSharpMath.SkiaSharp": "0.5.1",
-          "ComputationalGeometry": "1.0.0",
           "FFmpeg.AutoGen": "8.0.0",
           "Magick.NET-Q16-AnyCPU": "14.10.0",
           "Magick.NET.Core": "14.10.0",
@@ -1047,11 +1034,6 @@
       "sha512": "sha512-LCISd6JAF80vsy9L6wuetZeOMR3FH+SwKovw5Zl0Nov9pB9ZOiCSqvOfMzooypPItQLv0mGfEePjJ1nCCQztNw==",
       "path": "system.drawing.common/10.0.8",
       "hashPath": "system.drawing.common.10.0.8.nupkg.sha512"
-    },
-    "ComputationalGeometry/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     },
     "SepalSolver/1.1.8.3": {
       "type": "project",

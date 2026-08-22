@@ -6800,6 +6800,29 @@
             </summary>
             <param name="Message">Message to be displayed</param>
         </member>
+        <member name="M:SepalSolver.DelaunayTriangulation.Triangle.#ctor(System.Int32[])">
+            <summary>
+            Constructs a triangle node
+            </summary>
+            <param name="pointindex"></param>
+        </member>
+        <member name="P:SepalSolver.DelaunayTriangulation.Triangle.ChildrenCount">
+            <summary>
+            The number of node's children                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+            </summary>
+        </member>
+        <member name="M:SepalSolver.DelaunayTriangulation.Triangle.op_Implicit(SepalSolver.DelaunayTriangulation.Triangle)~System.Int32[]">
+            <summary>
+            
+            </summary>
+            <param name="T"></param>
+        </member>
+        <member name="M:SepalSolver.DelaunayTriangulation.Triangle.op_Implicit(System.Int32[])~SepalSolver.DelaunayTriangulation.Triangle">
+            <summary>
+            Converts array of three integers to trianele
+            </summary>
+            <param name="v"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:SepalSolver.EigenPack" -->
         <member name="M:SepalSolver.EigenPack.tred2(System.Double[0:,0:],System.Double[]@,System.Double[]@,System.Double[0:,0:]@)">
              <summary>
@@ -7654,13 +7677,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SepalSolver.Matrix.ToString(System.String)">
-            <summary>
-            
-            </summary>
-            <param name="delimiter"></param>
-            <returns></returns>
-        </member>
         <member name="M:SepalSolver.Matrix.Size">
             <summary>
             Gets the size of A11 matrix.
@@ -8021,17 +8037,6 @@
             <returns></returns>
         </member>
         <member name="M:SepalSolver.Matrix.Reshape(SepalSolver.Matrix,System.Int32,System.Int32)">
-            <summary>
-            The reshape function returns A11 new array with n rows and m columns
-            (n*m must equal the number of elements in the original array). 
-            The new array has the same elements as the original
-            </summary>
-            <param name="A">Matrix to be reshaped</param>
-            <param name="rows">number of rows</param>
-            <param name="cols">number of columns</param>
-            <returns>A11 new array with n rows and m columns</returns>
-        </member>
-        <member name="M:SepalSolver.Matrix.Reshape(SepalSolver.ColVec,System.Int32,System.Int32)">
             <summary>
             The reshape function returns A11 new array with n rows and m columns
             (n*m must equal the number of elements in the original array). 

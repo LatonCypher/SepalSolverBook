@@ -860,19 +860,6 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "ComputationalGeometry/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "SepalSolver": "1.1.8.3"
-        },
-        "compile": {
-          "bin/placeholder/ComputationalGeometry.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ComputationalGeometry.dll": {}
-        }
-      },
       "SepalSolver/1.1.8.3": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -896,7 +883,6 @@
         "dependencies": {
           "CSharpMath": "0.5.1",
           "CSharpMath.SkiaSharp": "0.5.1",
-          "ComputationalGeometry": "1.0.0",
           "FFmpeg.AutoGen": "8.0.0",
           "Magick.NET-Q16-AnyCPU": "14.10.0",
           "Magick.NET.Core": "14.10.0",
@@ -1913,11 +1899,6 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "ComputationalGeometry/1.0.0": {
-      "type": "project",
-      "path": "../ComputationalGeometry/ComputationalGeometry.csproj",
-      "msbuildProject": "../ComputationalGeometry/ComputationalGeometry.csproj"
-    },
     "SepalSolver/1.1.8.3": {
       "type": "project",
       "path": "../sepalsolver/SepalSolver/SepalSolver.csproj",
@@ -1931,7 +1912,6 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "ComputationalGeometry >= 1.0.0",
       "SepalSolver >= 1.1.8.3",
       "SepalSolver.PlotLib >= 1.1.8.3"
     ]
@@ -1970,9 +1950,6 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\ComputationalGeometry\\ComputationalGeometry.csproj": {
-              "projectPath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\ComputationalGeometry\\ComputationalGeometry.csproj"
-            },
             "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver.PlotLib\\SepalSolver.PlotLib.csproj": {
               "projectPath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver.PlotLib\\SepalSolver.PlotLib.csproj"
             },
@@ -1992,7 +1969,7 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.300"
+      "SdkAnalysisLevel": "10.0.400"
     },
     "frameworks": {
       "net10.0": {
@@ -2014,7 +1991,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
