@@ -7,9 +7,9 @@
         {
 
             {
-                SparseMatrix B = SparseMatrix.Bucky(), R, S;
-                B = B + 4 * SparseMatrix.Eye(60);
-                int[] r = SparseMatrix.Symrcm(B), p = SparseMatrix.Symamd(B);
+                SparseMatrix B = Bucky(), R, S;
+                B = B + 4 * Speye(60);
+                int[] r = Symrcm(B), p = Symamd(B);
                 R = B[r, r]; S = B[p, p]; 
 
                 B.MakeChol();
@@ -31,7 +31,7 @@
             }
 
             {
-                SparseMatrix B = SparseMatrix.Bucky(), L, U;
+                SparseMatrix B = Bucky(), L, U;
                 Spy(B, 1e-15);
 
 

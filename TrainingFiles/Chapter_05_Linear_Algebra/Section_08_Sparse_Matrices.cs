@@ -1,13 +1,4 @@
-﻿using CSharpMath.Atom.Atoms;
-using ScottPlot;
-using ScottPlot.Colormaps;
-using ScottPlot.Palettes;
-using ScottPlot.TickGenerators.Financial;
-using ScottPlot.TickGenerators.TimeUnits;
-using ScottPlot.Triangulation;
-using SepalSolver;
-using System.Runtime.Intrinsics.Arm;
-using System.Xml.Linq;
+﻿
 
 namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
 {
@@ -142,7 +133,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             /// SparseMatrices sparsity partterns can be visualized using Spy in the Plotlibrary. 
             /// <code>
             {
-                var A = SparseMatrix.Squid();
+                var A = Squid();
                 Spy(A);
                 SaveAs("Squid-Pattern.png");
             }
@@ -249,10 +240,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             /// <code>
             {
                 // Load squid matrix 
-                SparseMatrix S = SparseMatrix.Squid();
+                SparseMatrix S = Squid();
 
                 // Add more weight to the diagonal
-                S += 20 * SparseMatrix.Eye(S.Rows);
+                S += 20 * Speye(S.Rows);
 
                 // Visualize the sparsity pattern
                 Subplot(2, 2, 0); Spy(S); 
@@ -266,7 +257,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 Title("Cholesky factor of Squid");
 
                 // Compute RCM reordering permutation
-                int[] I = SparseMatrix.Symrcm(S);
+                int[] I = Symrcm(S);
 
                 // Reorder the squid
                 SparseMatrix T = S[I, I];
@@ -290,10 +281,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             /// <code>
             {
                 // Load squid matrix 
-                SparseMatrix S = SparseMatrix.Squid();
+                SparseMatrix S = Squid();
 
                 // Add more weight to the diagonal
-                S += 20 * SparseMatrix.Eye(S.Rows);
+                S += 20 * Speye(S.Rows);
 
                 // Visualize the sparsity pattern
                 Subplot(2, 2, 0); Spy(S);
@@ -307,7 +298,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 Title("Cholesky factor of Squid");
 
                 // Compute AMD reordering permutation
-                int[] I = SparseMatrix.Symamd(S);
+                int[] I = Symamd(S);
 
                 // Reorder the squid
                 SparseMatrix T = S[I, I];
@@ -330,9 +321,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             /// 
             /// <code>
             {
-                SparseMatrix B = SparseMatrix.Bucky(), R, S;
-                B += 20 * SparseMatrix.Eye(B.Rows);
-                PermIndexer r = SparseMatrix.Symrcm(B), p = SparseMatrix.Symamd(B);
+                SparseMatrix B = Bucky(), R, S;
+                B += 20 * Speye(B.Rows);
+                PermIndexer r = Symrcm(B), p = Symamd(B);
                 R = B[r, r]; S = B[p, p]; B.MakeChol(); R.MakeChol(); S.MakeChol();
 
                 Spy(B, 1e-15);
@@ -348,12 +339,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 Spy(S.L_chol * S.L_chol.T, 1e-15);
             }
             /// </code>
+            /// 
             /// <figure> LUFactorization_of_Bucky.gif </figure>
             /// 
             /// <code>
             {
-                SparseMatrix B = SparseMatrix.Bucky();
-                B += 20 * SparseMatrix.Eye(B.Rows);
+                SparseMatrix B = Bucky();
+                B += 20 * Speye(B.Rows);
 
                 Subplot(3, 2, 0);
                 Spy(B, 1e-15);
@@ -369,7 +361,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 Title("U factor of Bucky");
 
                 // AMD reordering of Bucky
-                var I = SparseMatrix.Symamd(B);
+                var I = Symamd(B);
                 B = B[I, I];
                 Subplot(3, 2, 1);
                 Spy(B, 1e-15);
@@ -391,8 +383,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             /// 
             /// /// <code>
             {
-                SparseMatrix B = SparseMatrix.Bucky();
-                B += 20 * SparseMatrix.Eye(B.Rows);
+                SparseMatrix B = Bucky();
+                B += 20 * Speye(B.Rows);
 
                 Subplot(3, 2, 0);
                 Spy(B, 1e-15);
@@ -408,7 +400,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 Title("U factor of Bucky");
 
                 // RCM reordering of Bucky
-                var I = SparseMatrix.Symrcm(B);
+                var I = Symrcm(B);
                 B = B[I, I];
                 Subplot(3, 2, 1);
                 Spy(B, 1e-15);
@@ -433,7 +425,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             /// 
             /// <code>
             {
-                SparseMatrix A = SparseMatrix.Bucky();
+                SparseMatrix A = Bucky();
                 Spy(A);
                 SaveAs("bucky.png");
                 A[.., 10..50] = null;
