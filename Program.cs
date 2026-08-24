@@ -1,6 +1,19 @@
 ﻿using ConsoleApp1;
 {
     currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents";
+    {
+        //int funeval = 0;
+        //double SumSq(double[] x) => x.Sum(x => x * x);
+        //double fun(double[] x)
+        //{ 
+        //    funeval++;
+        //    return 1;
+        //}
+        //var J = IntegralN(fun, 
+        //    [a =>-1, a => -Sqrt(1 - SumSq(a[..1])), a => -Sqrt(1 - SumSq(a[..1])), a => -Sqrt(1 - SumSq(a[..2]))],
+        //    [a => 1, a => Sqrt(1 - SumSq(a[..1])), a => Sqrt(1 - SumSq(a[..1])), a => Sqrt(1 - SumSq(a[..2]))]);
+        //Console.WriteLine($"J = {J}, {4 * pi / 3}");
+    }
     Writer.Run();
     //{
     //    double Area(ColVec x, ColVec y)

@@ -54,6 +54,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
                 Console.WriteLine($"I = {I}");
             }
             /// </code>
+            /// </example>
             ///
             /// Exact Analytical Result:
             /// \left[ \frac{x^4}{4} - \frac{3x^2}{2} + 2x \right]0^2 = (4 - 6 + 4) - 0 = 2
@@ -61,7 +62,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             /// </example>
             /// ---
             ///
-            /// <example 2>
             /// Example 2: Transcendental Function 
             /// Evaluate :math:`\int{0}^{\pi} \sin(x) , dx` 
             ///
@@ -77,18 +77,134 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             /// </example>
             /// 
             ///
-            /// <example 3>
             /// Example 3: Transcendental Function 
             /// Evaluate :math:`\int{0}^{\infty} e^{x^2}(\ln(x))^2 , dx` 
             ///
             /// <code>
             {
-                var I = Integral(x => Exp(-x*x)*Pow(Log(x), 2), 0, inf);
+                var I = Integral(x => Exp(-x * x) * Pow(Log(x), 2), 0, inf);
                 Console.WriteLine($"I = {I}");
             }
             /// </code>
             /// 
-            /// </example>
+            /// Multiple Integral
+            /// 
+            /// 
+            /// Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
+            ///  :math:`y` ranges from :math:`1` to :math:`2`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
+            /// <math>
+            ///    \int_{x_1}^{x_2} \int_{y_1}^{y_2}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
+            /// </math>
+            /// <code>
+            {
+                // Define the function to integrate
+                Func<double, double, double, double> f = (x, y, z) => x * y * z;
+                // Set the lower bound of x
+                double x_1 = 0;
+                // Set the upper bound of x
+                double x_2 = 1;
+                // Set the lower bound of y
+                double y_1 = 1;
+                // Set the upper bound of y
+                double y_2 = 2;
+                // Set the lower bound of z
+                double z1 = 2;
+                // Set the upper bound of z
+                double z2 = 3;
+                // Calculate the integral
+                double integral = Integral3(f, x_1, x_2, y_1, y_2, z1, z2);
+                // Print the result
+                Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+            }
+            /// </code>
+            /// 
+            /// 
+            /// Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
+            /// y ranges from :math:`x^2` to :math:`2`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
+            /// <math>
+            ///    \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
+            /// </math>
+            /// <code>
+            {
+                // Define the function to integrate
+                Func<double, double, double, double> f = (x, y, z) => x * y * z;
+                // Define the lower bound of y as a function of x
+                Func<double, double> y_1 = (x) => x * x;
+                // Set the upper bound of y
+                double y_2 = 2;
+                // Set the lower bound of z
+                double z_1 = 2;
+                // Set the upper bound of z
+                double z_2 = 3;
+                // Set the lower bound of x
+                double x_1 = 0;
+                // Set the upper bound of x
+                double x_2 = 1;
+                // Calculate the integral
+                double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+                // Print the result
+                Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+            }
+            /// </code>
+            /// 
+            /// 
+            /// Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
+            ///  y ranges from :math:`1` to :math:`x^2`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
+            /// <math>
+            ///    \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
+            /// </math>
+            /// <code>
+            {
+                // Define the function to integrate
+                Func<double, double, double, double> f = (x, y, z) => x * y * z;
+                // Define the upper bound of y as a function of x
+                Func<double, double> y_2 = (x) => x * x;
+                // Set the lower bound of x
+                double x_1 = 0;
+                // Set the upper bound of x
+                double x_2 = 1;
+                // Set the lower bound of y
+                double y_1 = 1;
+                // Set the lower bound of z
+                double z_1 = 2;
+                // Set the upper bound of z
+                double z_2 = 3;
+                // Calculate the integral
+                double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+                // Print the result
+                Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+            }
+            /// </code>
+            /// 
+            /// 
+            /// Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
+            /// y ranges from :math:`x^2` to :math:`\sqrt{x}`, and :math:`z` ranges from :math:`xy` to :math:`x+y`, which can be expressed as:
+            /// <math>
+            ///    \int_{x_1}^{x_2} \int_{x^2}^{\sqrt{x}}  \int_{xy}^{x+y} x y z \, dz \, dy \, dx
+            /// </math>
+            /// <code>
+            {
+                // Define the function to integrate
+                Func<double, double, double, double> f = (x, y, z) => x * y * z;
+                // Define the lower bound of y as a function of x
+                Func<double, double> y_1 = (x) => x * x;
+                // Define the upper bound of y as a function of x
+                Func<double, double> y_2 = (x) => Sqrt(x);
+                // Define the lower bound of z as a function of x and y
+                Func<double, double, double> z_1 = (x, y) => x * y;
+                // Define the upper bound of z as a function of x and y
+                Func<double, double, double> z_2 = (x, y) => x + y;
+                // Set the lower bound of x
+                double x_1 = 0;
+                // Set the upper bound of x
+                double x_2 = 1;
+                // Calculate the integral
+                double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+                // Print the result
+                Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+            }
+            /// </code>
+            /// 
             /// </BookContent>
         }
     }
