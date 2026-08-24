@@ -83,7 +83,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             ///
             /// <code>
             {
-                var I = Integrators.GaussLag(x => Exp(-x*x)*Pow(Log(x), 2));
+                var I = Integral(x => Exp(-x*x)*Pow(Log(x), 2), 0, inf);
                 Console.WriteLine($"I = {I}");
             }
             /// </code>

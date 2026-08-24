@@ -1,18 +1,6 @@
 ﻿using ConsoleApp1;
 {
     currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents";
-    {
-        var I = Integral(x => Polyval([1.0, 0.0, -3.0, 2.0], x), 0, 2);
-        Console.WriteLine($"I = {I}");
-    }
-    {
-        var I = Integral(x => Sin(x), 0, pi);
-        Console.WriteLine($"I = {I}");
-    }
-    {
-        var I = Integrators.GaussLag(x => Exp(x -x * x) * Pow(Log(x), 2));
-        Console.WriteLine($"I = {I}");
-    }
     Writer.Run();
     //{
     //    double Area(ColVec x, ColVec y)
