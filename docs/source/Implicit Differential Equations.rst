@@ -277,7 +277,7 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       Summary of statistics by Ode43i
               68 successful steps
               9 failed attempts
-              2281 function evaluations
+              2283 function evaluations
               77 partial derivatives
               284 LU decompositions
               1459 solutions of linear systems

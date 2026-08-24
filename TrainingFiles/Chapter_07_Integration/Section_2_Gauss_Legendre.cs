@@ -44,8 +44,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             ///
             /// <header 3> Applied Examples (Solved via Simple Solver) </header>
             ///
-            /// <example 1>
-            /// Example 1: Exact Polynomial Integration (2-Point Rule)
+            /// <example 1> Exact Polynomial Integration (2-Point Rule)
             /// Evaluate :math:`\int_{0}^{2} (x^3 - 3x + 2) , dx` using :math:`n = 2` points.
             ///
             /// <code>
@@ -54,15 +53,17 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
                 Console.WriteLine($"I = {I}");
             }
             /// </code>
-            /// </example>
+            /// 
             ///
             /// Exact Analytical Result:
+            /// <math>
             /// \left[ \frac{x^4}{4} - \frac{3x^2}{2} + 2x \right]0^2 = (4 - 6 + 4) - 0 = 2
+            /// </math>
             /// Because the integrand is degree 3 (\le 2(2) - 1 = 3), the 2-point Gauss-Legendre result is exact.
             /// </example>
             /// ---
             ///
-            /// Example 2: Transcendental Function 
+            /// <example 2> Transcendental Function 
             /// Evaluate :math:`\int{0}^{\pi} \sin(x) , dx` 
             ///
             /// <code>
@@ -77,7 +78,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             /// </example>
             /// 
             ///
-            /// Example 3: Transcendental Function 
+            /// <example 3> Infinite bound 
             /// Evaluate :math:`\int{0}^{\infty} e^{x^2}(\ln(x))^2 , dx` 
             ///
             /// <code>
@@ -87,13 +88,18 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             }
             /// </code>
             /// 
-            /// Multiple Integral
+            /// </example>
             /// 
             /// 
+            /// <header 3> Multiple Integral </header>
+            /// SepalSolver can handle multiple integral via `IntegralN`. IntegralN is built on Integral running over multiply direction recursively. 
+            /// It is abole to compute upto 4 dimensional integrals efficiently.
+            /// 
+            /// <example 4> Hypercube domain in 3 dimensions
             /// Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
             ///  :math:`y` ranges from :math:`1` to :math:`2`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
             /// <math>
-            ///    \int_{x_1}^{x_2} \int_{y_1}^{y_2}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
+            ///    \int_{0}^{1} \int_{1}^{2}  \int_{2}^{3} x y z \, dz \, dy \, dx
             /// </math>
             /// <code>
             {
@@ -117,12 +123,14 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
                 Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
             }
             /// </code>
+            /// </example>
             /// 
             /// 
+            /// <example 5>
             /// Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
             /// y ranges from :math:`x^2` to :math:`2`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
             /// <math>
-            ///    \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
+            ///    \int_{0}^{1} \int_{1}^{x^2}  \int_{2}^{3} x y z \, dz \, dy \, dx
             /// </math>
             /// <code>
             {
@@ -146,12 +154,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
                 Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
             }
             /// </code>
+            /// </example>
             /// 
-            /// 
+            /// <example 6> Functional boundary 
             /// Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
-            ///  y ranges from :math:`1` to :math:`x^2`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
+            ///  y ranges from :math:`x^2` to :math:`\sqrt{x}`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
             /// <math>
-            ///    \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
+            ///    \int_{0}^{1} \int_{x^2}^{\sqrt{x}}  \int_{2}^{3} x y z \, dz \, dy \, dx
             /// </math>
             /// <code>
             {
@@ -175,8 +184,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
                 Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
             }
             /// </code>
+            /// </example>
             /// 
-            /// 
+            /// <example 7> Functional boundary
             /// Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
             /// y ranges from :math:`x^2` to :math:`\sqrt{x}`, and :math:`z` ranges from :math:`xy` to :math:`x+y`, which can be expressed as:
             /// <math>
@@ -186,6 +196,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             {
                 // Define the function to integrate
                 Func<double, double, double, double> f = (x, y, z) => x * y * z;
+                // Set the lower bound of x
+                double x_1 = 0;
+                // Set the upper bound of x
+                double x_2 = 1;
                 // Define the lower bound of y as a function of x
                 Func<double, double> y_1 = (x) => x * x;
                 // Define the upper bound of y as a function of x
@@ -194,17 +208,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
                 Func<double, double, double> z_1 = (x, y) => x * y;
                 // Define the upper bound of z as a function of x and y
                 Func<double, double, double> z_2 = (x, y) => x + y;
-                // Set the lower bound of x
-                double x_1 = 0;
-                // Set the upper bound of x
-                double x_2 = 1;
                 // Calculate the integral
                 double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
                 // Print the result
                 Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
             }
             /// </code>
-            /// 
+            /// </example>
             /// </BookContent>
         }
     }

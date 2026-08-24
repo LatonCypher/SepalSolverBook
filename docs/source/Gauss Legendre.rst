@@ -44,9 +44,8 @@ Applied Examples (Solved via Simple Solver)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-.. Admonition:: Example 1 : 
+.. Admonition:: Example 1 :  Exact Polynomial Integration (2-Point Rule)
 
-   Example 1: Exact Polynomial Integration (2-Point Rule)
    Evaluate :math:`\int_{0}^{2} (x^3 - 3x + 2) , dx` using :math:`n = 2` points.
    
    
@@ -61,197 +60,217 @@ Applied Examples (Solved via Simple Solver)
    .. terminal::
    
       I = 1.9999999999999931
-
-Exact Analytical Result:
-\left[ \frac{x^4}{4} - \frac{3x^2}{2} + 2x \right]0^2 = (4 - 6 + 4) - 0 = 2
-Because the integrand is degree 3 (\le 2(2) - 1 = 3), the 2-point Gauss-Legendre result is exact.
-</example>
+   
+   
+   Exact Analytical Result:
+   
+   .. math::
+   
+      \left[ \frac{x^4}{4} - \frac{3x^2}{2} + 2x \right]0^2 = (4 - 6 + 4) - 0 = 2
+   
+   Because the integrand is degree 3 (\le 2(2) - 1 = 3), the 2-point Gauss-Legendre result is exact.
 ---
 
-Example 2: Transcendental Function 
-Evaluate :math:`\int{0}^{\pi} \sin(x) , dx` 
+
+.. Admonition:: Example 2 :  Transcendental Function 
+
+   Evaluate :math:`\int{0}^{\pi} \sin(x) , dx` 
+   
+   
+   .. code-block:: csharp
+   
+      var I = Integral(x => Sin(x), 0, pi);
+      Console.WriteLine($"I = {I}");
+   
+   
+   Ouput
+   
+   .. terminal::
+   
+      I = 2
+   
+   Exact Analytical Result:
+   [-\cos(x)]_0^\pi = 1 - (-1) = 2.000000 (Relative Error < 0.07% with just 3 evaluations).
 
 
-.. code-block:: csharp
 
-   var I = Integral(x => Sin(x), 0, pi);
-   Console.WriteLine($"I = {I}");
+.. Admonition:: Example 3 :  Infinite bound 
 
+   Evaluate :math:`\int{0}^{\infty} e^{x^2}(\ln(x))^2 , dx` 
+   
+   
+   .. code-block:: csharp
+   
+      var I = Integral(x => Exp(-x * x) * Pow(Log(x), 2), 0, inf);
+      Console.WriteLine($"I = {I}");
+   
+   
+   Ouput
+   
+   .. terminal::
+   
+      I = 1.9475221803007223
+   
 
-Ouput
-
-.. terminal::
-
-   I = 2
-
-Exact Analytical Result:
-[-\cos(x)]_0^\pi = 1 - (-1) = 2.000000 (Relative Error < 0.07% with just 3 evaluations).
-</example>
-
-
-Example 3: Transcendental Function 
-Evaluate :math:`\int{0}^{\infty} e^{x^2}(\ln(x))^2 , dx` 
-
-
-.. code-block:: csharp
-
-   var I = Integral(x => Exp(-x * x) * Pow(Log(x), 2), 0, inf);
-   Console.WriteLine($"I = {I}");
-
-
-Ouput
-
-.. terminal::
-
-   I = 1.9475221803007223
 
 Multiple Integral
+~~~~~~~~~~~~~~~~~
+SepalSolver can handle multiple integral via `IntegralN`. IntegralN is built on Integral running over multiply direction recursively. 
+It is abole to compute upto 4 dimensional integrals efficiently.
 
 
-Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
-:math:`y` ranges from :math:`1` to :math:`2`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
+.. Admonition:: Example 4 :  Hypercube domain in 3 dimensions
 
-.. math::
-
-   \int_{x_1}^{x_2} \int_{y_1}^{y_2}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
-
-
-.. code-block:: csharp
-
-   // Define the function to integrate
-   Func<double, double, double, double> f = (x, y, z) => x * y * z;
-   // Set the lower bound of x
-   double x_1 = 0;
-   // Set the upper bound of x
-   double x_2 = 1;
-   // Set the lower bound of y
-   double y_1 = 1;
-   // Set the upper bound of y
-   double y_2 = 2;
-   // Set the lower bound of z
-   double z1 = 2;
-   // Set the upper bound of z
-   double z2 = 3;
-   // Calculate the integral
-   double integral = Integral3(f, x_1, x_2, y_1, y_2, z1, z2);
-   // Print the result
-   Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-
-
-Ouput
-
-.. terminal::
-
-   The triple integral of x*y*z is approximately: 1.874999999999984
-
-
-Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
-y ranges from :math:`x^2` to :math:`2`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
-
-.. math::
-
-   \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
+   Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
+   :math:`y` ranges from :math:`1` to :math:`2`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
+   
+   .. math::
+   
+      \int_{0}^{1} \int_{1}^{2}  \int_{2}^{3} x y z \, dz \, dy \, dx
+   
+   
+   .. code-block:: csharp
+   
+      // Define the function to integrate
+      Func<double, double, double, double> f = (x, y, z) => x * y * z;
+      // Set the lower bound of x
+      double x_1 = 0;
+      // Set the upper bound of x
+      double x_2 = 1;
+      // Set the lower bound of y
+      double y_1 = 1;
+      // Set the upper bound of y
+      double y_2 = 2;
+      // Set the lower bound of z
+      double z1 = 2;
+      // Set the upper bound of z
+      double z2 = 3;
+      // Calculate the integral
+      double integral = Integral3(f, x_1, x_2, y_1, y_2, z1, z2);
+      // Print the result
+      Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+   
+   
+   Ouput
+   
+   .. terminal::
+   
+      The triple integral of x*y*z is approximately: 1.874999999999984
 
 
-.. code-block:: csharp
 
-   // Define the function to integrate
-   Func<double, double, double, double> f = (x, y, z) => x * y * z;
-   // Define the lower bound of y as a function of x
-   Func<double, double> y_1 = (x) => x * x;
-   // Set the upper bound of y
-   double y_2 = 2;
-   // Set the lower bound of z
-   double z_1 = 2;
-   // Set the upper bound of z
-   double z_2 = 3;
-   // Set the lower bound of x
-   double x_1 = 0;
-   // Set the upper bound of x
-   double x_2 = 1;
-   // Calculate the integral
-   double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
-   // Print the result
-   Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+.. Admonition:: Example 5 : 
 
-
-Ouput
-
-.. terminal::
-
-   The triple integral of x*y*z is approximately: 2.291666666666647
-
-
-Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
-y ranges from :math:`1` to :math:`x^2`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
-
-.. math::
-
-   \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
-
-
-.. code-block:: csharp
-
-   // Define the function to integrate
-   Func<double, double, double, double> f = (x, y, z) => x * y * z;
-   // Define the upper bound of y as a function of x
-   Func<double, double> y_2 = (x) => x * x;
-   // Set the lower bound of x
-   double x_1 = 0;
-   // Set the upper bound of x
-   double x_2 = 1;
-   // Set the lower bound of y
-   double y_1 = 1;
-   // Set the lower bound of z
-   double z_1 = 2;
-   // Set the upper bound of z
-   double z_2 = 3;
-   // Calculate the integral
-   double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
-   // Print the result
-   Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+   Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
+   y ranges from :math:`x^2` to :math:`2`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
+   
+   .. math::
+   
+      \int_{0}^{1} \int_{1}^{x^2}  \int_{2}^{3} x y z \, dz \, dy \, dx
+   
+   
+   .. code-block:: csharp
+   
+      // Define the function to integrate
+      Func<double, double, double, double> f = (x, y, z) => x * y * z;
+      // Define the lower bound of y as a function of x
+      Func<double, double> y_1 = (x) => x * x;
+      // Set the upper bound of y
+      double y_2 = 2;
+      // Set the lower bound of z
+      double z_1 = 2;
+      // Set the upper bound of z
+      double z_2 = 3;
+      // Set the lower bound of x
+      double x_1 = 0;
+      // Set the upper bound of x
+      double x_2 = 1;
+      // Calculate the integral
+      double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+      // Print the result
+      Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+   
+   
+   Ouput
+   
+   .. terminal::
+   
+      The triple integral of x*y*z is approximately: 2.291666666666647
 
 
-Ouput
+.. Admonition:: Example 6 :  Functional boundary 
 
-.. terminal::
+   Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
+   y ranges from :math:`x^2` to :math:`\sqrt{x}`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
+   
+   .. math::
+   
+      \int_{0}^{1} \int_{x^2}^{\sqrt{x}}  \int_{2}^{3} x y z \, dz \, dy \, dx
+   
+   
+   .. code-block:: csharp
+   
+      // Define the function to integrate
+      Func<double, double, double, double> f = (x, y, z) => x * y * z;
+      // Define the upper bound of y as a function of x
+      Func<double, double> y_2 = (x) => x * x;
+      // Set the lower bound of x
+      double x_1 = 0;
+      // Set the upper bound of x
+      double x_2 = 1;
+      // Set the lower bound of y
+      double y_1 = 1;
+      // Set the lower bound of z
+      double z_1 = 2;
+      // Set the upper bound of z
+      double z_2 = 3;
+      // Calculate the integral
+      double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+      // Print the result
+      Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+   
+   
+   Ouput
+   
+   .. terminal::
+   
+      The triple integral of x*y*z is approximately: -0.41666666666666324
 
-   The triple integral of x*y*z is approximately: -0.41666666666666324
 
+.. Admonition:: Example 7 :  Functional boundary
 
-Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
-y ranges from :math:`x^2` to :math:`\sqrt{x}`, and :math:`z` ranges from :math:`xy` to :math:`x+y`, which can be expressed as:
-
-.. math::
-
-   \int_{x_1}^{x_2} \int_{x^2}^{\sqrt{x}}  \int_{xy}^{x+y} x y z \, dz \, dy \, dx
-
-
-.. code-block:: csharp
-
-   // Define the function to integrate
-   Func<double, double, double, double> f = (x, y, z) => x * y * z;
-   // Define the lower bound of y as a function of x
-   Func<double, double> y_1 = (x) => x * x;
-   // Define the upper bound of y as a function of x
-   Func<double, double> y_2 = (x) => Sqrt(x);
-   // Define the lower bound of z as a function of x and y
-   Func<double, double, double> z_1 = (x, y) => x * y;
-   // Define the upper bound of z as a function of x and y
-   Func<double, double, double> z_2 = (x, y) => x + y;
-   // Set the lower bound of x
-   double x_1 = 0;
-   // Set the upper bound of x
-   double x_2 = 1;
-   // Calculate the integral
-   double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
-   // Print the result
-   Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-
-
-Ouput
-
-.. terminal::
-
-   The triple integral of x*y*z is approximately: 0.06412037025310191
-
+   Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
+   y ranges from :math:`x^2` to :math:`\sqrt{x}`, and :math:`z` ranges from :math:`xy` to :math:`x+y`, which can be expressed as:
+   
+   .. math::
+   
+      \int_{x_1}^{x_2} \int_{x^2}^{\sqrt{x}}  \int_{xy}^{x+y} x y z \, dz \, dy \, dx
+   
+   
+   .. code-block:: csharp
+   
+      // Define the function to integrate
+      Func<double, double, double, double> f = (x, y, z) => x * y * z;
+      // Set the lower bound of x
+      double x_1 = 0;
+      // Set the upper bound of x
+      double x_2 = 1;
+      // Define the lower bound of y as a function of x
+      Func<double, double> y_1 = (x) => x * x;
+      // Define the upper bound of y as a function of x
+      Func<double, double> y_2 = (x) => Sqrt(x);
+      // Define the lower bound of z as a function of x and y
+      Func<double, double, double> z_1 = (x, y) => x * y;
+      // Define the upper bound of z as a function of x and y
+      Func<double, double, double> z_2 = (x, y) => x + y;
+      // Calculate the integral
+      double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+      // Print the result
+      Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+   
+   
+   Ouput
+   
+   .. terminal::
+   
+      The triple integral of x*y*z is approximately: 0.06412037025310191
