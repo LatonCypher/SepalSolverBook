@@ -34,7 +34,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
                 
                 // The first and last points are multiplied by 1
                 // The internal points are multiplied by 2
-                double integral_result = (h/2) * (y[0] + 2*y[1..^2].Sum() + y[^1]);
+                double integral_result = (h/2) * (y[0] + 2*y[1..^1].Sum() + y[^1]);
                 Console.WriteLine($"The approximate integral is: \n{integral_result}");
             }
             /// </code>

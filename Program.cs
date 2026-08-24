@@ -2,46 +2,59 @@
 {
     currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents";
     {
-        double Area(ColVec x, ColVec y)
-        {
-            x = Vcart(x, x[0]); y = Vcart(y, y[0]);
-            return Abs(x[1..].T * y[..^1] - x[..^1].T * y[1..]) / 2.0;
-        }
-        (ColVec xl, ColVec yl) FillPoints(double theta, double f, double a, double b, ColVec x, ColVec y)
-        {
-            double frac(double h, double phi) => Acos(h) - h * Sqrt(1 - h * h) - phi * pi;
-            double h = Fzero(h => f <= 0.5 ? frac(h,f) : frac(h,1 - f), [0, 1]), d1, d2, t;
-            double A = -Sin(theta), B = Cos(theta), scale = Hypot(a * A, b * B), C = Sign(0.5 - f) * h * scale;
-            List<double> xl = [], yl = []; int n = x.Numel;
-            for (int i = 0; i < n; i++)
-            {
-                int j = (i + 1) % n;
-                d1 = (A * x[i] + B * y[i] + C);
-                d2 = (A * x[j] + B * y[j] + C);
-                if (d1 <= 0) { xl.Add(x[i]); yl.Add(y[i]); }
-                if (d1 * d2 < 0)
-                {
-                    t = d1 / (d1 - d2);
-                    xl.Add(x[i] + t * (x[j] - x[i])); 
-                    yl.Add(y[i] + t * (y[j] - y[i]));
-                }
-            }
-            return (xl, yl);
-        }
-        ColVec t, x, y, xl, yl; double f = 0.5, a = 3, b = 1.5;
-        t = Linspace(0, 2*pi);
-        x = a * Cos(t); y = b * Sin(t);
-        var plt = Plot(x, y, "k", 3);
-        HoldOn();
-        double TankArea = Area(x, y);
-        double theta = 30.0 * pi / 180.0;
-        (xl, yl) = FillPoints(theta, f, a, b, x, y);
-        var fluid = Fill(xl, yl, "b", 0.5);
-        AxisEqual();
-        SaveAs("TankFill.png");
-        double calculatedFluidArea = Area(xl, yl);
-        double expectedFluidArea = f * TankArea;
+        var I = Integral(x => Polyval([1.0, 0.0, -3.0, 2.0], x), 0, 2);
+        Console.WriteLine($"I = {I}");
     }
+    {
+        var I = Integral(x => Sin(x), 0, pi);
+        Console.WriteLine($"I = {I}");
+    }
+    {
+        var I = Integrators.GaussLag(x => Exp(x -x * x) * Pow(Log(x), 2));
+        Console.WriteLine($"I = {I}");
+    }
+    Writer.Run();
+    //{
+    //    double Area(ColVec x, ColVec y)
+    //    {
+    //        x = Vcart(x, x[0]); y = Vcart(y, y[0]);
+    //        return Abs(x[1..].T * y[..^1] - x[..^1].T * y[1..]) / 2.0;
+    //    }
+    //    (ColVec xl, ColVec yl) FillPoints(double theta, double f, double a, double b, ColVec x, ColVec y)
+    //    {
+    //        double frac(double h, double phi) => Acos(h) - h * Sqrt(1 - h * h) - phi * pi;
+    //        double h = Fzero(h => f <= 0.5 ? frac(h, f) : frac(h, 1 - f), [0, 1]), d1, d2, t;
+    //        double A = -Sin(theta), B = Cos(theta), scale = Hypot(a * A, b * B), C = Sign(0.5 - f) * h * scale;
+    //        List<double> xl = [], yl = []; int n = x.Numel;
+    //        for (int i = 0; i < n; i++)
+    //        {
+    //            int j = (i + 1) % n;
+    //            d1 = (A * x[i] + B * y[i] + C);
+    //            d2 = (A * x[j] + B * y[j] + C);
+    //            if (d1 <= 0) { xl.Add(x[i]); yl.Add(y[i]); }
+    //            if (d1 * d2 < 0)
+    //            {
+    //                t = d1 / (d1 - d2);
+    //                xl.Add(x[i] + t * (x[j] - x[i]));
+    //                yl.Add(y[i] + t * (y[j] - y[i]));
+    //            }
+    //        }
+    //        return (xl, yl);
+    //    }
+    //    ColVec t, x, y, xl, yl; double f = 0.2, a = 3, b = 1.5;
+    //    t = Linspace(0, 2 * pi);
+    //    x = a * Cos(t); y = b * Sin(t);
+    //    var plt = Plot(x, y, "k", 3);
+    //    HoldOn();
+    //    double TankArea = Area(x, y);
+    //    double theta = 0.0 * pi / 180.0;
+    //    (xl, yl) = FillPoints(theta, f, a, b, x, y);
+    //    var fluid = Fill(xl, yl, "b", 0.5);
+    //    AxisEqual();
+    //    SaveAs("TankFill.png");
+    //    double calculatedFluidArea = Area(xl, yl);
+    //    double expectedFluidArea = f * TankArea;
+    //}
     //{
     //    string name = "plot"; int n = 0;
     //    SparseMatrix A = SparseMatrix.Bucky();
@@ -112,7 +125,6 @@
     //    WriteMatrix(M, "Dln.txt");
     //}
 
-    Writer.Run();
     {
         // Reservoir Simulation
         currenctdirectory = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\Morgana Data\";

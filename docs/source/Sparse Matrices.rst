@@ -172,7 +172,7 @@ SparseMatrices sparsity partterns can be visualized using Spy in the Plotlibrary
 
 .. code-block:: csharp
 
-   var A = SparseMatrix.Squid();
+   var A = Squid();
    Spy(A);
    SaveAs("Squid-Pattern.png");
 
@@ -402,10 +402,10 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
 .. code-block:: csharp
 
    // Load squid matrix 
-   SparseMatrix S = SparseMatrix.Squid();
+   SparseMatrix S = Squid();
 
    // Add more weight to the diagonal
-   S += 20 * SparseMatrix.Eye(S.Rows);
+   S += 20 * Speye(S.Rows);
 
    // Visualize the sparsity pattern
    Subplot(2, 2, 0); Spy(S); 
@@ -419,7 +419,7 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
    Title("Cholesky factor of Squid");
 
    // Compute RCM reordering permutation
-   int[] I = SparseMatrix.Symrcm(S);
+   int[] I = Symrcm(S);
 
    // Reorder the squid
    SparseMatrix T = S[I, I];
@@ -448,10 +448,10 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
 .. code-block:: csharp
 
    // Load squid matrix 
-   SparseMatrix S = SparseMatrix.Squid();
+   SparseMatrix S = Squid();
 
    // Add more weight to the diagonal
-   S += 20 * SparseMatrix.Eye(S.Rows);
+   S += 20 * Speye(S.Rows);
 
    // Visualize the sparsity pattern
    Subplot(2, 2, 0); Spy(S);
@@ -465,7 +465,7 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
    Title("Cholesky factor of Squid");
 
    // Compute AMD reordering permutation
-   int[] I = SparseMatrix.Symamd(S);
+   int[] I = Symamd(S);
 
    // Reorder the squid
    SparseMatrix T = S[I, I];
@@ -493,9 +493,9 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
 
 .. code-block:: csharp
 
-   SparseMatrix B = SparseMatrix.Bucky(), R, S;
-   B += 20 * SparseMatrix.Eye(B.Rows);
-   PermIndexer r = SparseMatrix.Symrcm(B), p = SparseMatrix.Symamd(B);
+   SparseMatrix B = Bucky(), R, S;
+   B += 20 * Speye(B.Rows);
+   PermIndexer r = Symrcm(B), p = Symamd(B);
    R = B[r, r]; S = B[p, p]; B.MakeChol(); R.MakeChol(); S.MakeChol();
 
    Spy(B, 1e-15);
@@ -510,6 +510,7 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
    Spy(S.L_chol, 1e-15);
    Spy(S.L_chol * S.L_chol.T, 1e-15);
 
+
 .. figure:: images/LUFactorization_of_Bucky.gif
     :align: center
     :alt: LUFactorization_of_Bucky.gif
@@ -517,8 +518,8 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
 
 .. code-block:: csharp
 
-   SparseMatrix B = SparseMatrix.Bucky();
-   B += 20 * SparseMatrix.Eye(B.Rows);
+   SparseMatrix B = Bucky();
+   B += 20 * Speye(B.Rows);
 
    Subplot(3, 2, 0);
    Spy(B, 1e-15);
@@ -534,7 +535,7 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
    Title("U factor of Bucky");
 
    // AMD reordering of Bucky
-   var I = SparseMatrix.Symamd(B);
+   var I = Symamd(B);
    B = B[I, I];
    Subplot(3, 2, 1);
    Spy(B, 1e-15);
@@ -561,8 +562,8 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
 
 .. code-block:: csharp
 
-   SparseMatrix B = SparseMatrix.Bucky();
-   B += 20 * SparseMatrix.Eye(B.Rows);
+   SparseMatrix B = Bucky();
+   B += 20 * Speye(B.Rows);
 
    Subplot(3, 2, 0);
    Spy(B, 1e-15);
@@ -578,7 +579,7 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
    Title("U factor of Bucky");
 
    // RCM reordering of Bucky
-   var I = SparseMatrix.Symrcm(B);
+   var I = Symrcm(B);
    B = B[I, I];
    Subplot(3, 2, 1);
    Spy(B, 1e-15);
@@ -609,7 +610,7 @@ Like dense matrices, sparse matrices can also be sliced and this is demonstracte
 
 .. code-block:: csharp
 
-   SparseMatrix A = SparseMatrix.Bucky();
+   SparseMatrix A = Bucky();
    Spy(A);
    SaveAs("bucky.png");
    A[.., 10..50] = null;
