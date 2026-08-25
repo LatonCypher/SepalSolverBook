@@ -46,7 +46,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             /// 
             /// Exact Analytical Result:
             /// <math>
-            ///     `\Gamma(4) = 3! = 6`
+            ///     \Gamma(4) = 3! = 6
             /// </math>
             /// 
             /// </example>
@@ -54,7 +54,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             /// <example 2> Example 2: Quantum Physics Atomic Orbital Integral
             /// Evaluate 
             /// <math>
-            ///     `\int_{0}^{\infty} e^{-x} x^2 \, dx`
+            ///     \int_{0}^{\infty} e^{-x} x^2 \, dx
             /// </math>
             /// 
             /// <code>
@@ -65,7 +65,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             /// </code>
             /// 
             /// Exact Analytical Result:
-            /// \Gamma(3) = 2! = 2.000000
+            /// <math>
+            ///     \Gamma(3) = 2! = 2.0000
+            /// </math>
             /// 
             /// Commonly used in radial wave-function integrals for hydrogen-like atom probability densities.
             /// </example>
@@ -84,7 +86,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             /// </code>
             /// Exact Analytical Result:
             /// <math>
-            ///     `\left[ -\frac{1}{2}e^{-2x} \right]_0^\infty = \frac{1}{2} = 0.500000`
+            ///     \left[ -\frac{1}{2}e^{-2x} \right]_0^\infty = \frac{1}{2} = 0.5000
             /// </math>
             /// Computed by expressing the integrand as :math:`e^{-x} f(x)` where :math:`f(x) = e^{-x}`.
             /// </example>
@@ -93,7 +95,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             /// <example 4> Example 4: Trigonometric Oscillatory Decay
             /// Evaluate :
             /// <math>
-            ///     `\int_{0}^{\infty} e^{-x} \cos(x) \, dx`
+            ///     \int_{0}^{\infty} e^{-x} \cos(x) \, dx
             /// </math>
             /// 
             /// <code>

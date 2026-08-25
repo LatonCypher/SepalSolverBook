@@ -55,7 +55,7 @@ Applied Examples
    
    .. math::
    
-      `\Gamma(4) = 3! = 6`
+      \Gamma(4) = 3! = 6
    
    
 
@@ -66,7 +66,7 @@ Applied Examples
    
    .. math::
    
-      `\int_{0}^{\infty} e^{-x} x^2 \, dx`
+      \int_{0}^{\infty} e^{-x} x^2 \, dx
    
    
    
@@ -83,7 +83,11 @@ Applied Examples
       I = 2.0000
    
    Exact Analytical Result:
-   \Gamma(3) = 2! = 2.000000
+   
+   .. math::
+   
+      \Gamma(3) = 2! = 2.0000
+   
    
    Commonly used in radial wave-function integrals for hydrogen-like atom probability densities.
 
@@ -113,7 +117,7 @@ Applied Examples
    
    .. math::
    
-      `\left[ -\frac{1}{2}e^{-2x} \right]_0^\infty = \frac{1}{2} = 0.500000`
+      \left[ -\frac{1}{2}e^{-2x} \right]_0^\infty = \frac{1}{2} = 0.5000
    
    Computed by expressing the integrand as :math:`e^{-x} f(x)` where :math:`f(x) = e^{-x}`.
 
@@ -125,7 +129,7 @@ Applied Examples
    
    .. math::
    
-      `\int_{0}^{\infty} e^{-x} \cos(x) \, dx`
+      \int_{0}^{\infty} e^{-x} \cos(x) \, dx
    
    
    
