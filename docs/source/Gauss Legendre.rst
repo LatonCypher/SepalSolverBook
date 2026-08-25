@@ -107,20 +107,32 @@ Applied Examples (Solved via Simple Solver)
 
 .. Admonition:: Example 3 :  Infinite bound 
 
-   Evaluate :math:`\int_{0}^{\infty} e^{x^2}(\ln(x))^2 , dx` 
+   Evaluate 
+   
+   .. math::
+   
+      \int_{0}^{\infty} e^{-x^2}(\ln(x))^2 , dx
+   
    
    
    .. code-block:: csharp
    
       var I = Integral(x => Exp(-x * x) * Pow(Log(x), 2), 0, inf);
-      Console.WriteLine($"I = {I:F4}");
+      Console.WriteLine($"I = {I:F5}");
    
    
    Ouput
    
    .. terminal::
    
-      I = 1.9475
+      I = 1.94752
+   
+   Exact Analytical Result:
+   
+   .. math::
+   
+      \int_{0}^{\infty} e^{-x^2}(\ln(x))^2 , dx = \frac{\sqrt{\pi}}{16}\left(\pi^2 + 2(\gamma + \ln(4))^2\right) = 1.94752
+   
    
 
 
