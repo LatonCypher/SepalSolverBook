@@ -32,7 +32,7 @@ Writing the algorithm manually allows for a deeper understanding of how the weig
    // The first and last points are multiplied by 1
    // The internal points are multiplied by 2
    double integral_result = (h/2) * (y[0] + 2*y[1..^1].Sum() + y[^1]);
-   Console.WriteLine($"The approximate integral is: \n{integral_result}");
+   Console.WriteLine($"The approximate integral is: \n{integral_result:F4}");
 
 
 Ouput
@@ -40,7 +40,7 @@ Ouput
 .. terminal::
 
    The approximate integral is: 
-   1.9993419830762615
+   1.9993
 
 Error Analysis
 ~~~~~~~~~~~~~~
@@ -85,11 +85,11 @@ where :math:`\xi` is some number in the interval :math:`[a, b]`. This indicates 
    // Perform the integration using the trapezoidal rule
    double result = Trapz(f, 0, pi);
    // Print the result
-   Console.WriteLine($"The integral of sin(x) from {0} to pi is approximately {result}");
+   Console.WriteLine($"The integral of sin(x) from {0} to pi is approximately {result:F4}");
 
 
 Ouput
 
 .. terminal::
 
-   The integral of sin(x) from 0 to pi is approximately 2.000000000000283
+   The integral of sin(x) from 0 to pi is approximately 2.0000

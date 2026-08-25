@@ -35,7 +35,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
                 // The first and last points are multiplied by 1
                 // The internal points are multiplied by 2
                 double integral_result = (h/2) * (y[0] + 2*y[1..^1].Sum() + y[^1]);
-                Console.WriteLine($"The approximate integral is: \n{integral_result}");
+                Console.WriteLine($"The approximate integral is: \n{integral_result:F4}");
             }
             /// </code>
             /// 
@@ -66,7 +66,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
                 // Perform the integration using the trapezoidal rule
                 double result = Trapz(f, 0, pi);
                 // Print the result
-                Console.WriteLine($"The integral of sin(x) from {0} to pi is approximately {result}");
+                Console.WriteLine($"The integral of sin(x) from {0} to pi is approximately {result:F4}");
             }
             /// </code>
             /// </BookContent>       

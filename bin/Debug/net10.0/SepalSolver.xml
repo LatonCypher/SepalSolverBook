@@ -7417,10 +7417,6 @@
             </summary>
         </member>
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Integrators.GaussLeg(System.Func{System.Double,System.Double},System.Double,System.Double,System.Double)" -->
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Integrators.GaussLeg2(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Double,System.Double,System.Double)" -->
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Integrators.GaussLeg2(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Func{System.Double,System.Double},System.Double,System.Double)" -->
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Integrators.GaussLeg2(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Double,System.Func{System.Double,System.Double},System.Double)" -->
-        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Integrators.GaussLeg2(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double,System.Func{System.Double,System.Double},System.Func{System.Double,System.Double},System.Double)" -->
         <member name="T:SepalSolver.Intersect">
             <summary>
             
