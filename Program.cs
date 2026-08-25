@@ -124,8 +124,6 @@
     //    SaveAs("zDV_Diagram.png", 600, 600);
     //    List<ColVec> M = [x, y];
     //    WriteMatrix(M, "Dln.txt");
-    //}
-
     {
         // Reservoir Simulation
         currenctdirectory = @"C:\Users\lateef.a.kareem\Documents\GitHub\SepalSolverBook\Morgana Data\";

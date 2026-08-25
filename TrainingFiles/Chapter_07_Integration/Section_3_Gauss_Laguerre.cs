@@ -10,6 +10,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
     {
         public static void Run()
         {
+            /// <BookContent>
             /// Gauss-Laguerre Quadrature is a numerical integration technique designed to evaluate semi-infinite definite integrals featuring exponential decay weight functions.
             /// Unlike Gauss-Legendre quadrature which targets finite intervals, Gauss-Laguerre quadrature naturally handles integration domains from zero to infinity by weighting samples according to the Laguerre polynomials.
             /// Mathematical Foundation
@@ -30,7 +31,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             ///     \int_{0}^{\infty} g(x) , dx = \int_{0}^{\infty} e^{-x} \left( e^{x} g(x) \right) dx \approx \sum_{i=1}^{n} w_i e^{x_i} g(x_i)
             /// </math>
             /// 
-            /// <header 3> Applied Examples 
+            /// <header 3> Applied Examples </header>
             /// <example 1> Example 1: Standard Exponential-Weighted Polynomial Integration
             /// Evaluate 
             /// <math>
@@ -67,7 +68,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             /// \Gamma(3) = 2! = 2.000000
             /// 
             /// Commonly used in radial wave-function integrals for hydrogen-like atom probability densities.
-            /// 
+            /// </example>
             /// 
             /// <example 3> Example 3: Unweighted Semi-Infinite Exponential Decay 
             /// Evaluate 
@@ -100,6 +101,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
                 var I = GaussLag(x => Cos(x));
                 Console.WriteLine($"I = {I:F4}");
             }
+            /// </code>
+            /// 
             /// Exact Analytical Result:
             /// <math>
             ///     \frac{1}{1^2 + 1^2} = 0.500000
@@ -107,7 +110,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             /// </example>
             /// Demonstrates high-precision convergence on decaying trigonometric response functions.
             /// 
-            /// ///
+            /// </BookContent>
         }
     }
 }

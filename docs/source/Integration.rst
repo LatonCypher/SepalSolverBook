@@ -18,5 +18,7 @@ In this chapter, we will explore different numerical integration methods, their 
    Trapezoidal Method
    Gauss Legendre
    Gauss Laguerre
+   Gauss Hermite
+   GaussChebyshev
    Polynomial Integration
    Exercise On Integration
