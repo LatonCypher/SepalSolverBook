@@ -46,7 +46,11 @@ Applied Examples (Solved via Simple Solver)
 
 .. Admonition:: Example 1 :  Exact Polynomial Integration (2-Point Rule)
 
-   Evaluate :math:`\int_{0}^{2} (x^3 - 3x + 2) , dx` using :math:`n = 2` points.
+   Evaluate 
+   
+   .. math::
+   
+      \int_{0}^{2} (x^3 - 3x + 2) , dx
    
    
    .. code-block:: csharp
@@ -74,7 +78,11 @@ Applied Examples (Solved via Simple Solver)
 
 .. Admonition:: Example 2 :  Transcendental Function 
 
-   Evaluate :math:`\int{0}^{\pi} \sin(x) , dx` 
+   
+   .. math::
+   
+      \int{0}^{\pi} \sin(x) , dx
+   
    
    
    .. code-block:: csharp
@@ -133,6 +141,7 @@ It is abole to compute upto 4 dimensional integrals efficiently.
    
       // Define the function to integrate
       Func<double, double, double, double> f = (x, y, z) => x * y * z;
+   
       // Set the lower bound of x
       double x_1 = 0;
       // Set the upper bound of x
@@ -145,6 +154,7 @@ It is abole to compute upto 4 dimensional integrals efficiently.
       double z1 = 2;
       // Set the upper bound of z
       double z2 = 3;
+   
       // Calculate the integral
       double integral = Integral3(f, x_1, x_2, y_1, y_2, z1, z2);
       // Print the result
@@ -162,29 +172,31 @@ It is abole to compute upto 4 dimensional integrals efficiently.
 .. Admonition:: Example 5 : 
 
    Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
-   y ranges from :math:`x^2` to :math:`2`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
+   :math:`y` ranges from :math:`x^2` to :math:`2`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
    
    .. math::
    
-      \int_{0}^{1} \int_{1}^{x^2}  \int_{2}^{3} x y z \, dz \, dy \, dx
+      \int_{0}^{1} \int_{x^2}^{2}  \int_{2}^{3} x y z \, dz \, dy \, dx
    
    
    .. code-block:: csharp
    
       // Define the function to integrate
       Func<double, double, double, double> f = (x, y, z) => x * y * z;
+   
+      // Set the lower bound of x
+      double x_1 = 0;
+      // Set the upper bound of x
+      double x_2 = 1;
       // Define the lower bound of y as a function of x
-      Func<double, double> y_1 = (x) => x * x;
+      Func<double, double> y_1 = x => x * x;
       // Set the upper bound of y
       double y_2 = 2;
       // Set the lower bound of z
       double z_1 = 2;
       // Set the upper bound of z
       double z_2 = 3;
-      // Set the lower bound of x
-      double x_1 = 0;
-      // Set the upper bound of x
-      double x_2 = 1;
+   
       // Calculate the integral
       double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
       // Print the result
@@ -201,7 +213,7 @@ It is abole to compute upto 4 dimensional integrals efficiently.
 .. Admonition:: Example 6 :  Functional boundary 
 
    Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
-   y ranges from :math:`x^2` to :math:`\sqrt{x}`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
+   :math:`y` ranges from :math:`x^2` to :math:`\sqrt{x}`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
    
    .. math::
    
@@ -212,18 +224,20 @@ It is abole to compute upto 4 dimensional integrals efficiently.
    
       // Define the function to integrate
       Func<double, double, double, double> f = (x, y, z) => x * y * z;
-      // Define the upper bound of y as a function of x
-      Func<double, double> y_2 = (x) => x * x;
+   
       // Set the lower bound of x
       double x_1 = 0;
       // Set the upper bound of x
       double x_2 = 1;
-      // Set the lower bound of y
-      double y_1 = 1;
+      // Set the lower bound of y as a function of x
+      Func<double, double> y_1 = x => x * x;
+      // Define the upper bound of y as a function of x
+      Func<double, double> y_2 = x => Sqrt(x);
       // Set the lower bound of z
       double z_1 = 2;
       // Set the upper bound of z
       double z_2 = 3;
+   
       // Calculate the integral
       double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
       // Print the result
@@ -234,13 +248,13 @@ It is abole to compute upto 4 dimensional integrals efficiently.
    
    .. terminal::
    
-      The triple integral of x*y*z is approximately: -0.41666666666666324
+      The triple integral of x*y*z is approximately: 0.2083333333333316
 
 
 .. Admonition:: Example 7 :  Functional boundary
 
    Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
-   y ranges from :math:`x^2` to :math:`\sqrt{x}`, and :math:`z` ranges from :math:`xy` to :math:`x+y`, which can be expressed as:
+   :math:`y` ranges from :math:`x^2` to :math:`\sqrt{x}`, and :math:`z` ranges from :math:`xy` to :math:`x+y`, which can be expressed as:
    
    .. math::
    
@@ -251,18 +265,20 @@ It is abole to compute upto 4 dimensional integrals efficiently.
    
       // Define the function to integrate
       Func<double, double, double, double> f = (x, y, z) => x * y * z;
+   
       // Set the lower bound of x
       double x_1 = 0;
       // Set the upper bound of x
       double x_2 = 1;
       // Define the lower bound of y as a function of x
-      Func<double, double> y_1 = (x) => x * x;
+      Func<double, double> y_1 = x => x * x;
       // Define the upper bound of y as a function of x
-      Func<double, double> y_2 = (x) => Sqrt(x);
+      Func<double, double> y_2 = x => Sqrt(x);
       // Define the lower bound of z as a function of x and y
       Func<double, double, double> z_1 = (x, y) => x * y;
       // Define the upper bound of z as a function of x and y
       Func<double, double, double> z_2 = (x, y) => x + y;
+   
       // Calculate the integral
       double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
       // Print the result
