@@ -1462,7 +1462,7 @@ Ouput
    Summary of statistics by Ode43a
            8756 successful steps
            19 failed attempts
-           282380 function evaluations
+           282376 function evaluations
            8775 partial derivatives
            35097 LU decompositions
            194608 solutions of linear systems

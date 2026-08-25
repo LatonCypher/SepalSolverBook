@@ -59,7 +59,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             ///
             /// Exact Analytical Result:
             /// <math>
-            /// \left[ \frac{x^4}{4} - \frac{3x^2}{2} + 2x \right]0^2 = (4 - 6 + 4) - 0 = 2
+            /// \left[ \frac{x^4}{4} - \frac{3x^2}{2} + 2x \right]_0^2 = (4 - 6 + 4) - 0 = 2
             /// </math>
             /// Because the integrand is degree 3 (\le 2(2) - 1 = 3), the 2-point Gauss-Legendre result is exact.
             /// </example>
@@ -78,7 +78,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_07_Integration
             /// </code>
             /// 
             /// Exact Analytical Result:
-            /// [-\cos(x)]_0^\pi = 1 - (-1) = 2.000000 (Relative Error < 0.07% with just 3 evaluations).
+            /// <math>
+            ///     [-\cos(x)]_0^\pi = 1 - (-1) = 2
+            /// </math>
             /// </example>
             /// 
             ///

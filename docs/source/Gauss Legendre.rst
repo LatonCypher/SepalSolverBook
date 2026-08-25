@@ -56,21 +56,21 @@ Applied Examples (Solved via Simple Solver)
    .. code-block:: csharp
    
       var I = Integral(x => Polyval([1.0, 0.0, -3.0, 2.0], x), 0, 2);
-      Console.WriteLine($"I = {I}");
+      Console.WriteLine($"I = {I:F4}");
    
    
    Ouput
    
    .. terminal::
    
-      I = 1.9999999999999931
+      I = 2.0000
    
    
    Exact Analytical Result:
    
    .. math::
    
-      \left[ \frac{x^4}{4} - \frac{3x^2}{2} + 2x \right]0^2 = (4 - 6 + 4) - 0 = 2
+      \left[ \frac{x^4}{4} - \frac{3x^2}{2} + 2x \right]_0^2 = (4 - 6 + 4) - 0 = 2
    
    Because the integrand is degree 3 (\le 2(2) - 1 = 3), the 2-point Gauss-Legendre result is exact.
 ---
@@ -88,17 +88,21 @@ Applied Examples (Solved via Simple Solver)
    .. code-block:: csharp
    
       var I = Integral(x => Sin(x), 0, pi);
-      Console.WriteLine($"I = {I}");
+      Console.WriteLine($"I = {I:F4}");
    
    
    Ouput
    
    .. terminal::
    
-      I = 2
+      I = 2.0000
    
    Exact Analytical Result:
-   [-\cos(x)]_0^\pi = 1 - (-1) = 2.000000 (Relative Error < 0.07% with just 3 evaluations).
+   
+   .. math::
+   
+      [-\cos(x)]_0^\pi = 1 - (-1) = 2
+   
 
 
 
@@ -110,14 +114,14 @@ Applied Examples (Solved via Simple Solver)
    .. code-block:: csharp
    
       var I = Integral(x => Exp(-x * x) * Pow(Log(x), 2), 0, inf);
-      Console.WriteLine($"I = {I}");
+      Console.WriteLine($"I = {I:F4}");
    
    
    Ouput
    
    .. terminal::
    
-      I = 1.9475221803007223
+      I = 1.9475
    
 
 
@@ -158,14 +162,14 @@ It is abole to compute upto 4 dimensional integrals efficiently.
       // Calculate the integral
       double integral = Integral3(f, x_1, x_2, y_1, y_2, z1, z2);
       // Print the result
-      Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+      Console.WriteLine($"The triple integral of x*y*z is approximately: {integral:F4}");
    
    
    Ouput
    
    .. terminal::
    
-      The triple integral of x*y*z is approximately: 1.874999999999984
+      The triple integral of x*y*z is approximately: 1.8750
 
 
 
@@ -200,14 +204,14 @@ It is abole to compute upto 4 dimensional integrals efficiently.
       // Calculate the integral
       double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
       // Print the result
-      Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+      Console.WriteLine($"The triple integral of x*y*z is approximately: {integral:F4}");
    
    
    Ouput
    
    .. terminal::
    
-      The triple integral of x*y*z is approximately: 2.291666666666647
+      The triple integral of x*y*z is approximately: 2.2917
 
 
 .. Admonition:: Example 6 :  Functional boundary 
@@ -241,14 +245,14 @@ It is abole to compute upto 4 dimensional integrals efficiently.
       // Calculate the integral
       double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
       // Print the result
-      Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+      Console.WriteLine($"The triple integral of x*y*z is approximately: {integral:F4}");
    
    
    Ouput
    
    .. terminal::
    
-      The triple integral of x*y*z is approximately: 0.2083333333333316
+      The triple integral of x*y*z is approximately: 0.2083
 
 
 .. Admonition:: Example 7 :  Functional boundary
@@ -282,11 +286,11 @@ It is abole to compute upto 4 dimensional integrals efficiently.
       // Calculate the integral
       double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
       // Print the result
-      Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+      Console.WriteLine($"The triple integral of x*y*z is approximately: {integral:F4}");
    
    
    Ouput
    
    .. terminal::
    
-      The triple integral of x*y*z is approximately: 0.06412037025310191
+      The triple integral of x*y*z is approximately: 0.0641
