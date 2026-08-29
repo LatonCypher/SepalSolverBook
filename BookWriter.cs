@@ -144,20 +144,22 @@ namespace ConsoleApp1
                     writer.WriteLine(chaptermessage);
                 }
                 string[] ChapterSections = Directory.GetFiles(BookChapter, "*.cs");
-                relativePath = Path.GetRelativePath(BookChapter, ChapterSections[0]);
-                var sectionname = string.Join(' ', relativePath.Split(['_']).Skip(2));
-                string outputPath = bookfolder + sectionname + ".rst";
-                string[] Content = File.ReadAllLines(ChapterSections[0]);
-                List<string> bookContent = [..Content.SkipWhile(line=> !line.Contains("/// <BookContent>")).
-                                              TakeWhile(line=>!line.Contains("/// </BookContent>"))];
-                if (bookContent.Count > 0)
-                    bookContent = processBookContent(bookContent[1..]);
-                using (StreamWriter writer = new(chapterfile, true))
+                if (ChapterSections.Length > 0)
                 {
-                    foreach (var line in bookContent)
-                        writer.WriteLine(line);
+                    relativePath = Path.GetRelativePath(BookChapter, ChapterSections[0]);
+                    var sectionname = string.Join(' ', relativePath.Split(['_']).Skip(2));
+                    string outputPath = bookfolder + sectionname + ".rst";
+                    string[] Content = File.ReadAllLines(ChapterSections[0]);
+                    List<string> bookContent = [..Content.SkipWhile(line=> !line.Contains("/// <BookContent>")).
+                                              TakeWhile(line=>!line.Contains("/// </BookContent>"))];
+                    if (bookContent.Count > 0)
+                        bookContent = processBookContent(bookContent[1..]);
+                    using (StreamWriter writer = new(chapterfile, true))
+                    {
+                        foreach (var line in bookContent)
+                            writer.WriteLine(line);
 
-                    string chapterchildren = $"""
+                        string chapterchildren = $"""
                     
 
 
@@ -165,21 +167,22 @@ namespace ConsoleApp1
                     .. toctree::
 
                     """;
-                    writer.WriteLine(chapterchildren);
-                }
-
-                ChapterSections = ChapterSections[1..];
-
-                foreach (string ChapterSection in ChapterSections)
-                {
-                    relativePath = Path.GetRelativePath(BookChapter, ChapterSection);
-                    sectionname = string.Join(' ', relativePath.Split(['_']).Skip(2));
-                    sectionname = sectionname.Split('.')[0];
-                    using (StreamWriter writer = new(chapterfile, append: true))
-                    {
-                        writer.WriteLine("   " + sectionname);
+                        writer.WriteLine(chapterchildren);
                     }
-                    Run(ChapterSection, sectionname, bookfolder);
+
+                    ChapterSections = ChapterSections[1..];
+
+                    foreach (string ChapterSection in ChapterSections)
+                    {
+                        relativePath = Path.GetRelativePath(BookChapter, ChapterSection);
+                        sectionname = string.Join(' ', relativePath.Split(['_']).Skip(2));
+                        sectionname = sectionname.Split('.')[0];
+                        using (StreamWriter writer = new(chapterfile, append: true))
+                        {
+                            writer.WriteLine("   " + sectionname);
+                        }
+                        Run(ChapterSection, sectionname, bookfolder);
+                    }
                 }
             }
         }

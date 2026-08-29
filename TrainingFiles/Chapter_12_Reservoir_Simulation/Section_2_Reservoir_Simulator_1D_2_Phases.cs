@@ -313,13 +313,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                             (Pw_up, Sw_up) = Pw_np1[i-1] > Pw_np1[i] ?
                                 (Pw_np1[i-1], Sw_np1[i-1]) : (Pw_np1[i], Sw_np1[i]);
                             Tw = Tr*Krw(Sw_up)/(μw(Pw_up)*Bw(Pw_up));
-                            Rw[i] += Tw*(Pw_np1[i-1] - Pw_np1[i])/Dx;
+                            Rw[i] += Tw * (Pw_np1[i - 1] - Pw_np1[i]) * dt / Dx;
 
                             // Single-point upstream weighting for oil phase stability
                             (Po_up, So_up) = Po_np1[i-1] > Po_np1[i] ?
                                 (Po_np1[i-1], So_np1[i-1]) : (Po_np1[i], So_np1[i]);
                             To = Tr*Kro(So_up)/(μo(Po_up)*Bo(Po_up));
-                            Ro[i] += To*(Po_np1[i-1] - Po_np1[i])/Dx;
+                            Ro[i] += To*(Po_np1[i-1] - Po_np1[i]) * dt / Dx;
                         }
 
                         // Inter-block inter-flux flux logic (Right neighbor interaction)
@@ -331,18 +331,18 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                             (Pw_up, Sw_up) = Pw_np1[i+1] > Pw_np1[i] ?
                                 (Pw_np1[i+1], Sw_np1[i+1]) : (Pw_np1[i], Sw_np1[i]);
                             Tw = Tr*Krw(Sw_up)/(μw(Pw_up)*Bw(Pw_up));
-                            Rw[i] += Tw*(Pw_np1[i+1] - Pw_np1[i])/Dx;
+                            Rw[i] += Tw*(Pw_np1[i+1] - Pw_np1[i]) * dt / Dx;
 
                             // Single-point upstream weighting for oil phase stability
                             (Po_up, So_up) = Po_np1[i+1] > Po_np1[i] ?
                                 (Po_np1[i+1], So_np1[i+1]) : (Po_np1[i], So_np1[i]);
                             To = Tr*Kro(So_up)/(μo(Po_up)*Bo(Po_up));
-                            Ro[i] += To*(Po_np1[i+1] - Po_np1[i])/Dx;
+                            Ro[i] += To*(Po_np1[i+1] - Po_np1[i]) * dt / Dx;
                         }
 
                         // Time accumulation terms (implicit backward Euler method)
-                        Rw[i] -= V*Phi[i]*(Sw_np1[i]/Bw(Pw_np1[i]) - Sw_n[i]/Bw(Pw_n[i]))/dt;
-                        Ro[i] -= V*Phi[i]*(So_np1[i]/Bo(Po_np1[i]) - So_n[i]/Bo(Po_n[i]))/dt;
+                        Rw[i] -= V*Phi[i]*(Sw_np1[i]/Bw(Pw_np1[i]) - Sw_n[i]/Bw(Pw_n[i]));
+                        Ro[i] -= V*Phi[i]*(So_np1[i]/Bo(Po_np1[i]) - So_n[i]/Bo(Po_n[i]));
                     }
 
                     // Peaceman radius calculation for an isolated wellbore
@@ -363,8 +363,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                     Producer.WaterRate = (Pwells_np1[0] - Pw_np1[Producer.Index])*WIw;
                     Producer.OilRate = (Pwells_np1[0] - Po_np1[Producer.Index])*WIo;
                     // Inject sink terms directly back into the connected grid cell
-                    Rw[Producer.Index] += Producer.WaterRate;
-                    Ro[Producer.Index] += Producer.OilRate;
+                    Rw[Producer.Index] += Producer.WaterRate * dt;
+                    Ro[Producer.Index] += Producer.OilRate * dt;
                     // Well balance check
                     Rwells[0] -= Producer.WaterRate + Producer.OilRate;
                     // Evaluate dynamic constraint swapping logic
@@ -383,7 +383,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
                     // wellbore pressure and connected grid cell properties
                     Injector.WaterRate = (Pwells_np1[1] - Pw_np1[idx])*WIw;
                     // Inject source terms directly back into the connected grid cell
-                    Rw[idx] += Injector.WaterRate;
+                    Rw[idx] += Injector.WaterRate * dt;
                     // Well balance check
                     Rwells[1] -= Injector.WaterRate;
                     // Evaluate dynamic constraint swapping logic

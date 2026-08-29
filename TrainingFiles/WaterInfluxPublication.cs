@@ -215,26 +215,29 @@ namespace ConsoleApp1.TrainingFiles
 
             double Pd_Infinite_Exact(double tD)
             {
+                if (tD == 0) return 0;
                 double LapP(double s)
                 {
                     double sqrts = Sqrt(s), sqrts3 = s*sqrts;
                     double Num = K0(sqrts), Den = K1(sqrts);
                     return Num / (Den * sqrts3);
                 }
-                return tD == 0 ? 0 : NiLaplace(LapP, tD);
+                return NiLaplace(LapP, tD);
             }
             double DPd_Infinite_Exact(double tD)
             {
+                if (tD == 0) return 0;
                 double LapP(double s)
                 {
                     double sqrts = Sqrt(s);
                     double Num = K0(sqrts), Den = K1(sqrts);
                     return Num / (Den * sqrts);
                 }
-                return tD == 0 ? 0 : NiLaplace(LapP, tD);
+                return NiLaplace(LapP, tD);
             }
             double Pd_Finite_Exact(double tD, double rD)
             {
+                if (tD == 0) return 0;
                 if (double.IsPositiveInfinity(rD))
                     return Pd_Infinite_Exact(tD);
                 double LapP(double s)
@@ -244,10 +247,11 @@ namespace ConsoleApp1.TrainingFiles
                            Den = I1(rDsqrts) * K1(sqrts) - K1(rDsqrts) * I1(sqrts);
                     return Num / (Den * sqrts3);
                 }
-                return tD == 0 ? 0 : NiLaplace(LapP, tD);
+                return NiLaplace(LapP, tD);
             }
             double DPd_Finite_Exact(double tD, double rD)
             {
+                if (tD == 0) return 0;
                 if (double.IsPositiveInfinity(rD))
                     return DPd_Infinite_Exact(tD);
                 double LapP(double s)
@@ -257,30 +261,33 @@ namespace ConsoleApp1.TrainingFiles
                            Den = I1(rDsqrts) * K1(sqrts) - K1(rDsqrts) * I1(sqrts);
                     return Num /(Den * sqrts);
                 }
-                return tD == 0 ? 0 : NiLaplace(LapP, tD);
+                return NiLaplace(LapP, tD);
             }
             double Qd_Infinite_Exact(double tD)
             {
+                if (tD == 0) return 0;
                 double LapP(double s)
                 {
                     double sqrts = Sqrt(s), sqrts3 = s * sqrts;
                     double Num = K1(sqrts), Den = K0(sqrts);
                     return Num /(Den * sqrts3);
                 }
-                return tD == 0 ? 0 : NiLaplace(LapP, tD);
+                return NiLaplace(LapP, tD);
             }
             double IQd_Infinite_Exact(double tD)
             {
+                if (tD == 0) return 0;
                 double LapP(double s)
                 {
                     double sqrts = Sqrt(s), sqrts3 = s * sqrts;
                     double Num = K1(sqrts), Den = K0(sqrts);
                     return Num /(Den * sqrts3 * s);
                 }
-                return tD == 0 ? 0 : NiLaplace(LapP, tD);
+                return NiLaplace(LapP, tD);
             }
             double Qd_Finite_Exact(double tD, double rD)
             {
+                if (tD == 0) return 0;
                 if (double.IsPositiveInfinity(rD))
                     return Qd_Infinite_Exact(tD);
                 double LapP(double s)
@@ -290,10 +297,11 @@ namespace ConsoleApp1.TrainingFiles
                            Den = I1(rDsqrts) * K0(sqrts) + K1(rDsqrts) * I0(sqrts);
                     return Num /(Den * sqrts3);
                 }
-                return tD == 0 ? 0 : NiLaplace(LapP, tD);
+                return NiLaplace(LapP, tD);
             }
             double IQd_Finite_Exact(double tD, double rD)
             {
+                if (tD == 0) return 0;
                 if (double.IsPositiveInfinity(rD))
                     return IQd_Infinite_Exact(tD);
                 double LapP(double s)
@@ -303,78 +311,118 @@ namespace ConsoleApp1.TrainingFiles
                            Den = I1(rDsqrts) * K0(sqrts) + K1(rDsqrts) * I0(sqrts);
                     return Num /(Den * sqrts3 * s);
                 }
-                return tD == 0 ? 0 : NiLaplace(LapP, tD);
+                return NiLaplace(LapP, tD);
             }
 
 
+            double BottomClosed_Qd(double tD, double hD, double rD)
+            {
+                if (tD == 0) return 0;
+                Func<double, double> lapW = s =>
+                {
+                    double phi, lap, s2, bm, bm_rD, jr;
+                    phi = Sqrt(s); s2 = s * s;
+                    lap = 2 * hD * s2 / Tanh(phi * hD) / (rD * rD * phi);
+                    for (int m = 0; m <= 20; m++)
+                    {
+                        bm = ZerosJ1[m]; bm_rD = bm / rD;
+                        phi = Sqrt(bm_rD * bm_rD + s);
+                        jr = Pow(J1(bm_rD) / J0(bm), 2);
+                        lap += 8 * hD * s2 / Tanh(phi * hD) * jr / (phi * bm * bm);
+                    }
+                    return 1 / lap;
+                };
+                return NiLaplace(lapW, tD);
+            }
 
-            //double BottomClosed_Qd(double tD, double hD, double rD)
-            //{
-            //    Func<double, double> lapW = s =>
-            //    {
-            //        double phi, lap, s2, bm, bm_rD, jr, term;
-            //        phi = Sqrt(s); s2 = s * s;
-            //        lap = 2 * hD * s2 / Tanh(phi * hD) / (rD * rD * phi);
-            //        for (int m = 0; m <= 100; m++)
-            //        {
-            //            bm = ZerosJ1[m]; bm_rD = bm / rD;
-            //            phi = Sqrt(bm_rD * bm_rD + s);
-            //            jr = Pow(J1(bm_rD) / J0(bm), 2);
-            //            lap += (term = 8 * hD * s2 / Tanh(phi * hD) * jr / (phi * bm * bm));
-            //            //Console.WriteLine($"{m}, {term}");
-            //        }
-            //        return 1 / lap;
-            //    };
-            //    //Console.WriteLine("============================");
-            //    return tD == 0 ? 0 : NiLaplace(lapW, tD);
-            //}
-
-            //double BottomClosed_Qd2(double tD, double hD, double rD)
-            //{
-            //    Func<double, double> lapW = s =>
-            //    {
-            //        double phi, lap, s2, bm, bm_rD, jr, term;
-            //        phi = Sqrt(s); s2 = s * s;
-            //        lap = hD * s2 / Tanh(phi * hD) / (rD * rD * phi);
-            //        for (int m = 0; m <= 100; m++)
-            //        {
-            //            bm = ZerosJ1[m]; bm_rD = bm / rD;
-            //            phi = Sqrt(bm_rD * bm_rD + s);
-            //            jr = Pow(J1(bm_rD) / J0(bm), 2);
-            //            lap += (term = 4 * hD * s2 / Tanh(phi * hD) * jr / (phi * bm * bm));
-            //            //Console.WriteLine($"{m}, {term}");
-            //        }
-            //        return 1 / lap;
-            //    };
-            //    //Console.WriteLine("============================");
-            //    return tD == 0 ? 0 : NiLaplace(lapW, tD);
-            //}
-
-
-            //Matrix Data = ReadMatrix(@"C:\Users\lateef.a.kareem\Documents\MATLAB\WaterInflux\data2.txt");
-            //double[] zD = [0.05, 0.1, 0.3, 0.5, 0.7, 0.9, 1.0];
-            //double td;
-            //var wi = zD.Select(z => string.Format("{0,8:F2}", z)).ToArray();
-            //Console.WriteLine($"|   td   |{string.Join(' ', wi)}");
-            //Console.WriteLine("--------------------------------------------------------------------------");
-            //for (int i = 0; i < Data.Rows; i++)
-            //{
-            //    td = Data[i, 0];
-            //    wi = zD.Select(z => string.Format("{0,8:F4}", BottomClosed_Qd(td, z, 10))).ToArray();
-            //    Console.WriteLine($"|  {string.Format("{0,4:F0}", td)}  | {string.Join(' ', wi)}");
-            //}
-
-            //wi = zD.Select(z => string.Format("{0,8:F2}", z)).ToArray();
-            //Console.WriteLine($"|   td   |{string.Join(' ', wi)}");
-            //Console.WriteLine("--------------------------------------------------------------------------");
-            //for (int i = 0; i < Data.Rows; i++)
-            //{
-            //    td = Data[i, 0];
-            //    wi = zD.Select(z => string.Format("{0,8:F4}", BottomClosed_Qd2(td, z, 10))).ToArray();
-            //    Console.WriteLine($"|  {string.Format("{0,4:F0}", td)}  | {string.Join(' ', wi)}");
-            //}
-
+            double BottomClosed_Pd(double tD, double hD, double rD)
+            {
+                if (tD == 0) return 0;
+                Func<double, double> lapW = s =>
+                {
+                    double phi, lap, s2, bm, bm_rD, jr;
+                    phi = Sqrt(s); s2 = s * s;
+                    lap = 2 * hD * s2 / Tanh(phi * hD) / (rD * rD * phi);
+                    for (int m = 0; m <= 20; m++)
+                    {
+                        bm = ZerosJ1[m]; bm_rD = bm / rD;
+                        phi = Sqrt(bm_rD * bm_rD + s);
+                        jr = Pow(J1(bm_rD) / J0(bm), 2);
+                        lap += 8 * hD * s2 / Tanh(phi * hD) * jr / (phi * bm * bm);
+                    }
+                    return 1 / lap;
+                };
+                return NiLaplace(lapW, tD);
+            }
             
+            double BottomInfiniteActingRadial_Wd(double tD, double hD)
+            {
+                if(tD == 0) return 0;
+                Func<double, double> lapW = s =>
+                {
+                    double s3 = s * s * s;
+                    Func<double, double> Intfun = x =>
+                    {
+                        double fac = Pow(J1(x) / x, 2), am = 0, am2, x2 = x * x;
+                        double fun = Coth(hD * x) / s - 1 / (hD * x * (s + x2));
+                        double error = 1;
+                        for (int m = 1; m < 100000; m++)
+                        {
+                            am = m * pi / hD; am2 = am * am;
+                            error = 2 * x / hD / ((x2 + am2) * (s + x2 + am2));
+                            fun -= error;
+                            error = error / fun;
+                            if (error < 1e-13)
+                                break;
+                        }
+                        return fac * fun;
+                    };
+                    return 1 / (2 * s3 * hD * IntergalTemp(x=> Pow(J1(x) / x, 2), 0, inf));
+                };
+                return NiLaplace(lapW, tD);
+            }
+
+            double IntergalTemp(Func<double, double> fun, double x1, double x2)
+            {
+                return Integrators.GaussLeg(t =>
+                {
+                    double om_t = 1.0 - t;
+                    if (Abs(om_t) < 1e-15) return 0.0;
+                    double x = x1 + (1.0 + t) / om_t;
+                    double dxdt = 2.0 / (om_t * om_t);
+                    return fun(x) * dxdt;
+                }, -1.0, 1.0, 1000);
+            }
+
+            Matrix Data = ReadMatrix(@"C:\Users\lateef.a.kareem\Documents\MATLAB\WaterInflux\data2.txt");
+            double[] zD = [0.05, 0.1, 0.3, 0.5, 0.7, 0.9, 1.0];
+            double td;
+            var wi = zD.Select(z => string.Format("{0,8:F2}", z)).ToArray();
+            Console.WriteLine($"|   td   |{string.Join(' ', wi)}");
+            Console.WriteLine("--------------------------------------------------------------------------");
+            for (int i = 0; i < Data.Rows; i++)
+            {
+                td = Data[i, 0];
+                wi = zD.Select(z => string.Format("{0,8:F4}", BottomClosed_Qd(td, z, 10))).ToArray();
+                Console.WriteLine($"|  {string.Format("{0,4:F0}", td)}  | {string.Join(' ', wi)}");
+            }
+            Console.WriteLine("\n\n\n");
+            Indexer Td = 2..21;
+            for (int i = 0; i < Td.Numel; i++)
+            {
+                td = Td[i];
+                wi = zD.Select(z => string.Format("{0,8:F4}", BottomClosed_Qd(td, z, 4))).ToArray();
+                Console.WriteLine($"|  {string.Format("{0,4:F0}", td)}  | {string.Join(' ', wi)}");
+            }
+            Console.WriteLine("\n\n\n");
+            Td = 1..10;
+            for (int i = 0; i < Td.Numel; i++)
+            {
+                td = Td[i];
+                wi = zD.Select(z => string.Format("{0,8:F4}", BottomInfiniteActingRadial_Wd(td, z))).ToArray();
+                Console.WriteLine($"|  {string.Format("{0,4:F0}", td)}  | {string.Join(' ', wi)}");
+            }
+
 
             ColVec tD = Logspace(-2, 3, 101);
             ColVec rD = new double[] { 2, 3, 4, 5, 6, 8, double.PositiveInfinity };
@@ -463,216 +511,13 @@ namespace ConsoleApp1.TrainingFiles
             }
 
 
-            {
-                // Solve Nonlinear System of Polynomials
-                Matrix A = new double[,]
-                {
-            {1, 2},
-            {3, 4}
-                };
-                var opts = SolverSet(Display: true);
-                Matrix x = Fsolve(x => x*x*x - A, Ones(2, 2), opts);
-                Console.WriteLine(x);
-            }
+            
 
-            {
-                //Large Nonlinear Systems
-                int n = 100000;
-                Indexer i = new(0, n), j = new(0, n - 1), jp1 = j + 1,
-                    l = new(1, n - 1), lp1 = l + 1, lm1 = l - 1;
+            
 
-                ColVec a = Ones(n-1), b = Ones(n), e = -a,
-                    c = 2 * e, d, xstart, F = new double[n];
+            
 
-                SparseMatrix C, D, E;
-
-                ColVec nlsf(ColVec x)
-                {
-                    F[l] = (3 - 2 * x[l]).Times(x[l]) - x[lm1] - 2 * x[lp1] + 1;
-                    F[n - 1] = (3 - 2 * x[n - 1]) * x[n - 1] - x[n - 2] + 1;
-                    F[0] = (3 - 2 * x[0]) * x[0] - 2 * x[1] + 1;
-                    return F;
-                }
-
-                Func<ColVec, SparseMatrix> Jac = x =>
-                {
-                    d = -4 * x + 3 * b;
-                    D = new(i, i, d, n, n);
-                    C = new(j, jp1, c, n, n);
-                    E = new(jp1, j, e, n, n);
-                    return C + D + E;
-                };
-
-                var opts = SolverSet(Display: true);
-                opts.UserDefinedJacobian = Jac;
-                xstart = -b;
-
-                var result = Fsolve(nlsf, xstart, opts);
-            }
-
-            {
-                Matrix A = new double[,] { { 8,    1,    6,    1,  16 },
-                                   { 3,    5,    6,    2,  15 },
-                                   { 4,    7,    2,    1,  14 } };
-
-                // Extract single element using subscript
-                Console.WriteLine($"A = {A}");
-
-                {
-                    // Extract single element using subscript
-                    Console.WriteLine($"A[1,2] = {A[1, 2]}");
-                }
-
-
-                {
-                    //  Extract single element using index
-                    Console.WriteLine($"A[5] = {A[5]}");
-                }
-
-                {
-                    //  Extract multiple elements using index
-                    Indexer i = new(2, 5);
-                    Console.WriteLine($"A[i] = {A[i]}");
-                }
-
-                {
-                    //  Extract multiple elements using subscript along a row
-                    Indexer j = new(2, 4);
-                    Console.WriteLine($"A[1, j] = {A[1, j]}");
-                }
-
-                {
-                    //  Extract multiple elements using subscript along a col
-                    Indexer i = new(0, 3);
-                    Console.WriteLine($"A[i, 3] = {A[i, 3]}");
-                }
-
-                {
-                    //  Extract submatrix elements
-                    Indexer i = new(0, 3), j = new(1, 3);
-                    Console.WriteLine($"A[i, j] = {A[i, j]}");
-                }
-
-                {
-                    // Extract single row
-                    Console.WriteLine($"A[1,\"\"] = {A[1, ""]}");
-                }
-
-                {
-                    // Extract multiple rows
-                    Indexer i = new(1, 3);
-                    Console.WriteLine($"A[i,\"\"] = {A[i, ""]}");
-                }
-            }
-
-            {
-                // Vector declaration
-                ColVec C = new double[] { 1, 2, 3, 4, 5 };
-                RowVec R = new double[] { 1, 2, 3, 4, 5 };
-
-                // Matrix declaration
-                Matrix M = new double[,] { { 1, 2, 3, 4, 5},
-                                   { 4, 5, 6, 4, 5},
-                                   { 7, 8, 9, 4, 5} };
-
-                // Printing Vectors and Matrix
-                Console.WriteLine($"Vector C: {C}");
-                Console.WriteLine($"Vector R: {R}");
-                Console.WriteLine($"Matrix M: {M}");
-
-                // Operations Involving Matrices and Vectors
-                Console.WriteLine($"C * R = {C * R}");
-                Console.WriteLine($"C + R = {C + R}");
-                Console.WriteLine($"C - R = {C - R}");
-                Console.WriteLine($"R * C = {R * C}");
-                Console.WriteLine($"R + C = {R + C}");
-                Console.WriteLine($"R - C = {R - C}");
-
-                // Transpose
-                Console.WriteLine($"Vector C Transpose: {C.T}");
-
-                // Matrix Multiplication
-                Console.WriteLine($"M * C = {M * C}");
-
-                // TermWise Operation
-                ColVec V = new double[] { 3, 2, 1, -1, -2 },
-                       U = new double[] { 2, 3, 1, 1, 2 };
-
-                Console.WriteLine($"V.*U = {V.Times(U)}");
-                Console.WriteLine($"V.^U = {V.Pow(U)}");
-                Console.WriteLine($"V./U = {V.Div(U)}");
-
-                // Solution of Linear System
-                Matrix A = Rand(7, 7);
-                ColVec b = Rand(7);
-                ColVec x = Mldivide(A, b);
-
-
-                Console.WriteLine($"A = {A}");
-                Console.WriteLine($"b = {b}");
-                Console.WriteLine($"x = {x}");
-
-            }
-
-            {
-                //double Fs = 1000;            // Sampling frequency
-                //double T = 1/Fs;             // Sampling period
-                //int L = 1500;                // Length of signal
-                //Indexer I = new(0, L);       // Indexer for the signal
-                //ColVec t = I*T;              // Time vector
-
-                //ColVec S = 0.8 + 0.7*Sin(2*pi*50*t) + Sin(2*pi*120*t);
-                //ColVec Noise = Randn(t.Numel);
-                //ColVec X = S + 2*Noise;
-
-                //Plot(1000*t, X);
-                //Title("Signal Corrupted with Zero-Mean Random Noise");
-                //Xlabel("t (milliseconds)");
-                //Ylabel("X(t)");
-            }
-
-            {
-                //ColVec xdata, ydata, x, y_est; double[] x0;
-                //xdata = new double[] { 0.9, 1.5, 13.8, 19.8, 24.1, 28.2, 35.2, 60.3, 74.6, 81.3 };
-                //ydata = new double[] { 455.2, 428.6, 124.1, 67.3, 43.2, 28.1, 13.1, -0.4, -1.3, -1.5 };
-
-                //x0 = [100, -1];
-                //static ColVec model(ColVec x, ColVec xdata) => x[0] * Exp(x[1] * xdata);
-                //var opts = OptimSet(Display: true, MaxIter: 200, StepTol: 1e-6, OptimalityTol: 1e-6);
-                //var ans = Lsqcurvefit(model, x0, xdata, ydata, options: opts);
-                //Console.WriteLine($"x = {ans.x.T}");
-
-                //x = Linspace(xdata.First(), xdata.Last());
-                //Scatter(xdata, ydata); HoldOn();
-                //Plot(x, y_est = model(ans.x, x), "r", Linewidth: 2);
-                //Axis([xdata.Min()-0.01*xdata.Range(), xdata.Max()+0.01*xdata.Range(),
-                //     ydata.Min()-0.1*ydata.Range(), ydata.Max()+0.1*ydata.Range()]);
-
-                //Xlabel("x"); Ylabel("y"); Legend(["Measured Data", "Model Estimate"], Alignment.UpperRight);
-                //Title("Example of CurveFitting using Lsqcurvefit");
-                //SaveAs("LMTest1.png");
-
-                //AnimateHistory(model, xdata, ydata, ans.output);
-            }
-
-            {
-                //Func<double, double> f = x => x*BesselJ(0, 2*x) - BesselJ(1, 3*x);
-                //var  options = SolverSet(Display: true);
-                //var x = NextZero(f, 3);
-                //Console.WriteLine(x);
-
-                //x = NextZero(f, x+0.5);
-                //Console.WriteLine(x);
-
-                //x = NextZero(f, x+0.5);
-                //Console.WriteLine(x);
-            }
-
-            {
-                //Func<double, double> f = x => Pow(Abs(x-1.0/7), -0.5)*Pow(Abs(x-2.0/3), -0.15);
-                //double I = Integral(f, 0, 1, 1e-6, [1.0/7, 2.0/3]);
-                //Console.WriteLine(I);
-            }
+           
 
             {
                 //double ymin, ds;
@@ -776,42 +621,6 @@ namespace ConsoleApp1.TrainingFiles
                 //}
                 //Animation.Make(AnimatingFunction, "ProdOptim.gif", 10, 501);
             }
-
-            {
-                //ColVec x1 = Linspace(0, 5, 500),
-                //       x2 = Cos(6.2957*x1),
-                //       y1 = Exp(-0.5*x1),
-                //       y2 = Exp(-0.5*Sqr(x1)),
-                //       y3 = Exp(-0.5*Sqrt(5.0-x1)),
-                //       y4 = Sin(8.8141*x1);
-                //Matrix Y = new List<ColVec> { y1, y2, y3 };
-                //Subplot(1, 1, 1);
-                //Plot(x1, Y);
-
-                //Subplot(3, 3, 1);
-                //Plot(x2, y4);
-                //SaveAs("plottesting.png");
-            }
-
-            {
-                //// Example of finding roots of a polynomial with complex coefficients
-                //double[] Coeffs = [2, 3, 4, 2, 7, 4];
-                //Complex[] roots = Roots(Coeffs);
-
-                //// Print the result
-                //Console.WriteLine($"Roots:\n {string.Join("\n ", roots)}");
-            }
-
-            {
-                //double x = 3e200, y = 4e200;
-                //var hyp = Sqrt(Pow(x, 2)+Pow(y, 2));
-                //var hypotenuse = Hypot(x, y);
-                //Console.WriteLine(hyp);
-                //Console.WriteLine(hypotenuse);
-            }
-
         }
-
-
     }
 }

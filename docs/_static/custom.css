@@ -81,3 +81,139 @@ div.admonition p.admonition-title,
     border-radius: 8px !important;
     overflow: hidden !important;
 }
+
+
+/* ==========================================================================
+   1. Typography & Page Layout
+   ========================================================================== */
+
+/* Optimal reading width for technical content and equations */
+.rst-content {
+    max-width: 860px !important;
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+/* Clear hierarchy for chapter and section headings */
+.rst-content h1 {
+    font-weight: 700;
+    color: #1a202c;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.3em;
+}
+
+.rst-content h2 {
+    font-weight: 600;
+    color: #2d3748;
+    margin-top: 1.8em;
+}
+
+/* ==========================================================================
+   2. Mathematical Equations (MathJax Styling)
+   ========================================================================== */
+
+/* Center display equations with subtle horizontal padding and scroll for mobile */
+.rst-content div.math {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.8em 0;
+    margin: 1.2em 0;
+    background-color: #f8fafc;
+    border-radius: 6px;
+    border-left: 3px solid #3182ce;
+}
+
+/* Ensure inline math matches natural body text sizing */
+.rst-content span.math {
+    font-size: 1.05em;
+}
+
+/* ==========================================================================
+   3. Code Blocks & Syntax Highlighting
+   ========================================================================== */
+
+/* Professional rounded border and shadow for code blocks */
+.rst-content div[class^='highlight'] {
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin: 1.5em 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Styled code block captions (file names) */
+.rst-content .code-block-caption {
+    background-color: #edf2f7;
+    color: #2d3748;
+    font-family: monospace;
+    font-weight: 600;
+    font-size: 0.85em;
+    padding: 6px 12px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Inline code formatting */
+.rst-content code.literal {
+    background-color: #edf2f7;
+    color: #c53030;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    border: 1px solid #e2e8f0;
+}
+
+/* ==========================================================================
+   4. Custom Callouts for Theorems, Proofs, and Examples
+   ========================================================================== */
+
+/* Styled container for Worked Examples and Theorems */
+.rst-content .topic {
+    background-color: #f7fafc;
+    border: 1px solid #cbd5e0;
+    border-left: 5px solid #2b6cb0;
+    border-radius: 6px;
+    padding: 1.2em 1.5em;
+    margin: 1.8em 0;
+}
+
+.rst-content .topic-title {
+    font-weight: 700;
+    color: #2b6cb0;
+    font-size: 1.1em;
+    margin-bottom: 0.8em;
+}
+
+/* Admonition styling tweaks (Notes, Warnings, Hints) */
+.rst-content .admonition {
+    border-radius: 6px;
+    box-shadow: none;
+}
+
+/* ==========================================================================
+   5. Numerical & Data Tables
+   ========================================================================== */
+
+/* Clean formatting for numerical results and matrix displays */
+.rst-content table.docutils {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+}
+
+.rst-content table.docutils th {
+    background-color: #edf2f7;
+    color: #2d3748;
+    font-weight: 600;
+    padding: 10px 12px;
+    border-bottom: 2px solid #cbd5e0;
+}
+
+.rst-content table.docutils td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.rst-content table.docutils tr:nth-child(even) {
+    background-color: #f7fafc;
+}

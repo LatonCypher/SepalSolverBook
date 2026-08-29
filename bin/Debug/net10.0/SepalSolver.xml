@@ -5824,6 +5824,13 @@
             </terminal>
             </example>
         </member>
+        <member name="M:SepalSolver.Math.Coth(System.Double)">
+            <summary>
+            
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
         <member name="M:SepalSolver.Math.Atanh(System.Double)">
             <summary>
             Calculates the inverse hyperbolic tangent (area hyperbolic tangent) of a specified value.

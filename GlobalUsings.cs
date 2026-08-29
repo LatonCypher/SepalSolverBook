@@ -10,7 +10,6 @@ global using static SepalSolver.Math;
 global using static SepalSolver.PlotLib.Chart;
 global using static SepalSolver.PlotLib.Interpreter;
 global using static SepalSolver.PlotLib.Location;
-global using static SepalSolver.OdeSolvers;
 
 global using Microsoft.CodeAnalysis.CSharp.Scripting;
 global using Microsoft.CodeAnalysis.Scripting;
