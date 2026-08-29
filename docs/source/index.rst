@@ -109,6 +109,3 @@ Content
    Ordinary Differential Equations
    Numerical Optimization
    Partial Differential Equations
-   Production System Modelling
-   Reservoir Simulation
-   Summary and Conclusion

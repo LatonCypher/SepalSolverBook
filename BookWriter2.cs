@@ -1,18 +1,13 @@
-﻿
-
-using ScottPlot;
-using System.Collections.Generic;
-
-namespace ConsoleApp1
+﻿namespace ConsoleApp1
 {
-    internal class BookWriter(string ProjectFolder, string BookFolder)
+    internal class BookWriter2(string ProjectFolder, string BookFolder)
     {
         string bookfolder = BookFolder;
         string projectfolder = ProjectFolder;
 
         public void WriteBook()
         {
-            string book_indexfile = bookfolder + "index.rst";
+            string indexfile = bookfolder + "index.rst";
             string indexmessage = """
                 Welcome to Numerical Methods with SepalSolver!
                 #################################################
@@ -117,7 +112,7 @@ namespace ConsoleApp1
 
                 """;
 
-            using (StreamWriter writer = new(book_indexfile))
+            using (StreamWriter writer = new(indexfile))
             {
                 writer.WriteLine(indexmessage);
             }
@@ -126,53 +121,35 @@ namespace ConsoleApp1
             foreach (string BookChapter in BookChapters)
             {
                 string relativePath = string.Join(' ', BookChapter.Split(['_']).Skip(2));
-                using (StreamWriter writer = new(book_indexfile, true))
+                using (StreamWriter writer = new(indexfile, append: true))
                 {
                     writer.WriteLine("   " + relativePath);
                 }
-                string chapterfolder = bookfolder + relativePath + "\\";
-                if (!Directory.Exists(chapterfolder))
-                    Directory.CreateDirectory(chapterfolder);
 
-                string chapter_indexfile = chapterfolder + "index.rst";
+
+                string chapterfile = bookfolder + relativePath + ".rst";
                 string chaptermessage = $"""
                     
                     {relativePath}
                     {new string('#', relativePath.Length)}
 
                     """;
-                using (StreamWriter writer = new(chapter_indexfile))
+                using (StreamWriter writer = new(chapterfile))
                 {
                     writer.WriteLine(chaptermessage);
                 }
-
-                string[] Content = File.ReadAllLines(BookChapter + "\\Introduction.cs");
-                // Extract BookContent block
-                List<string> bookContent = [..Content.SkipWhile(line=> !line.Contains("/// <BookContent>")).
-                                              TakeWhile(line=>!line.Contains("/// </BookContent>"))];
-                if (bookContent.Count == 0) return;
-
-                //Headers format
-                bookContent = processBookContent(bookContent[1..]);
-
-                using (StreamWriter writer = new(chapter_indexfile, true))
-                {
-                    foreach (var line in bookContent)
-                        writer.WriteLine(line);
-                }
-
                 string[] ChapterSections = Directory.GetFiles(BookChapter, "*.cs");
                 if (ChapterSections.Length > 0)
                 {
                     relativePath = Path.GetRelativePath(BookChapter, ChapterSections[0]);
                     var sectionname = string.Join(' ', relativePath.Split(['_']).Skip(2));
-                    string outputPath = chapterfolder + sectionname + ".rst";
-                    Content = File.ReadAllLines(ChapterSections[0]);
-                    bookContent = [..Content.SkipWhile(line=> !line.Contains("/// <BookContent>")).
+                    string outputPath = bookfolder + sectionname + ".rst";
+                    string[] Content = File.ReadAllLines(ChapterSections[0]);
+                    List<string> bookContent = [..Content.SkipWhile(line=> !line.Contains("/// <BookContent>")).
                                               TakeWhile(line=>!line.Contains("/// </BookContent>"))];
                     if (bookContent.Count > 0)
                         bookContent = processBookContent(bookContent[1..]);
-                    using (StreamWriter writer = new(chapter_indexfile, true))
+                    using (StreamWriter writer = new(chapterfile, true))
                     {
                         foreach (var line in bookContent)
                             writer.WriteLine(line);
@@ -195,11 +172,11 @@ namespace ConsoleApp1
                         relativePath = Path.GetRelativePath(BookChapter, ChapterSection);
                         sectionname = string.Join(' ', relativePath.Split(['_']).Skip(2));
                         sectionname = sectionname.Split('.')[0];
-                        using (StreamWriter writer = new(chapter_indexfile, true))
+                        using (StreamWriter writer = new(chapterfile, append: true))
                         {
                             writer.WriteLine("   " + sectionname);
                         }
-                        Run(ChapterSection, sectionname, chapterfolder);
+                        Run(ChapterSection, sectionname, bookfolder);
                     }
                 }
             }

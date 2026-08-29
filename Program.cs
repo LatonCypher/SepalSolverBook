@@ -1,54 +1,7 @@
 ﻿using ConsoleApp1;
 {
     currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents";
-    {
-        double I0(double x) => BesselI(0, x); double I1(double x) => BesselI(1, x);
-        double K0(double x) => BesselK(0, x); double K1(double x) => BesselK(1, x);
-        // define Wd function in time space.
-        double EdgeClosedBoundaryRadial_Wd(double tD, double rD)
-        {
-            double LapW(double s)
-            {
-                double sqrts = Sqrt(s), sqrts3 = s * sqrts;
-                double Num = K1(sqrts), Den = K0(sqrts);
-                if (!double.IsInfinity(rD))
-                {
-                    double rDsqrts = rD * sqrts;
-                    Num = I1(rDsqrts) * Num - K1(rDsqrts) * I1(sqrts);
-                    Den = I1(rDsqrts) * Den + K1(rDsqrts) * I0(sqrts);
-                }
-                return Num / (Den * sqrts3);
-            }
-            return tD == 0 ? 0 : NiLaplace(LapW, tD);
-        }
-        // plotfunction 
-        void PlotFunction(ColVec Td, RowVec Rd)
-        {
-            Matrix Wd = Meshfun(EdgeClosedBoundaryRadial_Wd, Td, Rd);
-            SemiLogx(Td, Wd, Linewidth: 2);
-            Xlabel("tD"); Ylabel("WD"); GridOn(); MinorGridOn();
-            Legend(Rd.Select(rd => $"rD = {rd}"), UpperLeft);
-        }
-
-        {// Compute and Plot Wd for Rd <= 4
-            Subplot(1, 2, 0);
-            double[] Rd = [2, 2.5, 3, 3.5, 4, inf],
-                Td = Logspace(-1, 2);
-            PlotFunction(Td, Rd); Axis([0.1, 100, 1, 8]);
-            Title("Dimensionless Water Influx Rd <= 4");
-        }
-
-        {// Compute and Plot Wd for Rd >= 5
-            Subplot(1, 2, 1);
-            double[] Rd = [5, 6, 7, 8, 9, 10, inf],
-                Td = Logspace(0, 3);
-            PlotFunction(Td, Rd); Axis([1, 1000, 0, 70]);
-            Title("Dimensionless Water Influx Rd >= 5");
-        }
-
-        //Save Figure
-        SaveAs("Dimensionless-Water-Influx.png", 1000, 400); CloseFig();
-    }
+    Writer.Run();
     {
         Func<double, double> J0, J1;
         J0 = (x) => BesselJ(0, x); J1 = (x) => BesselJ(1, x);
@@ -87,9 +40,7 @@
     }
     {
         ConsoleApp1.TrainingFiles.WaterInfluxPublication.Run();
-
     }
-    Writer.Run();
     {
         // =========================================================================
         // STAGE 1: GLOBAL SIMULATION PARAMETERS & FIELD CHARACTERISTICS

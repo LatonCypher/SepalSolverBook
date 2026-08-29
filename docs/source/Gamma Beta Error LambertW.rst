@@ -1,3 +1,0 @@
-Gamma Beta Error LambertW
-=========================
-
