@@ -68,7 +68,7 @@
                 SaveAs("Simple_Harmonic_Oscillator.png");
             }
             /// </code>
-            /// </example 1>
+            /// </example>
             /// 
             /// 
             /// <example 2> Lotka–Volterra Predator–Prey
@@ -100,7 +100,7 @@
                 SaveAs("Lotka_Volterra_Predator_Prey_System.png");
             }
             /// </code>
-            /// </example 2>
+            /// </example>
             /// 
             /// 
             /// <example 3> Lorenz System (Chaotic, Non‑analytical)
@@ -135,7 +135,7 @@
                 SaveAs("Lorenz_System.png");
             }
             /// </code>
-            /// </example 3>
+            /// </example>
             /// 
             /// <example 4> SIR Epidemic Model
             /// The SIR model divides a population into three compartments: Susceptible (S), Infected (I), and Recovered (R). The model is defined by the following system of ODEs:
@@ -169,7 +169,7 @@
                 SaveAs("SIR_Epidemic_Model.png");
             }
             /// </code>
-            /// </example 4>
+            /// </example>
             /// 
             /// 
             /// <example 5> Brusselator Model
@@ -203,7 +203,7 @@
                 SaveAs("Brusselator_Model.png");
             }
             /// </code>
-            /// </example 5>
+            /// </example>
             /// 
             /// <example 6> Blasius Boundary Layer 
             /// The Blasius Boundary Layer refers to a boundary layer of fluid in the vicinity of a flat plate that moves steadily in its own plane.This concept was first introduced by German mathematician Heinrich Blasius. This solution is important in the field of fluid dynamics, particularly in the area of laminar flow.In this solution, the flow velocity outside the boundary layer is assumed to be uniform. Inside the boundary layer, the fluid's velocity changes from zero at the plate surface to the free stream velocity at the edge of the boundary layer. This concept plays a significant role in understanding and predicting the behavior of fluid flow in various engineering and scientific applications.
@@ -258,7 +258,7 @@
                 SaveAs("Blasius-bounary-layer.png");
             }
             /// </code> 
-            /// </example 6>
+            /// </example>
             /// </BookContent>
         }
     }

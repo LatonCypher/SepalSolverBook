@@ -63,7 +63,7 @@
                 SaveAs("Exponential_Growth.png");
             }
             /// </code>
-            /// </example 1>
+            /// </example>
             /// 
             /// <example 2> Linear Decay with Forcing
             /// | Solve the first-order ODE :math:`\cfrac{dy}{dt} = -2y + \sin(t)`,  
@@ -87,7 +87,7 @@
                 SaveAs("Linear_Decay_with_Forcing.png");
             }
             /// </code>
-            /// </example 2>
+            /// </example>
             /// 
             /// <example 3> Logistic Growth
             /// | Solve the first-order ODE :math:`\cfrac{dy}{dt} = -0.2y\left(1 - \cfrac{y}{K}\right)`,  
@@ -112,7 +112,7 @@
                 SaveAs("Logistic_Growth.png");
             }
             /// </code>
-            /// </example 3>
+            /// </example>
             /// 
             /// <example 4> Michaelis–Menten Type ODE
             /// | Solve the first-order ODE :math:`\cfrac{dy}{dt} = \cfrac{V_{max}y}{K + y}`,  
@@ -137,7 +137,7 @@
                 SaveAs("Michaelis_Menten_Type_ODE.png");
             }
             /// </code>
-            /// </example 4>
+            /// </example>
             /// 
             /// 
             /// <example 5> NonLinear Damping
@@ -162,7 +162,7 @@
                 SaveAs("Non_Linear_Damping.png");
             }
             /// </code>
-            /// </example 5>
+            /// </example>
             /// 
             /// </BookContent>
         }

@@ -151,7 +151,7 @@ namespace ConsoleApp1
                     writer.WriteLine(chaptermessage);
                 }
 
-                string[] Content = File.ReadAllLines(BookChapter + "\\Introduction.cs");
+                string[] Content = File.ReadAllLines(BookChapter + "\\index.cs");
                 // Extract BookContent block
                 List<string> bookContent = [..Content.SkipWhile(line=> !line.Contains("/// <BookContent>")).
                                               TakeWhile(line=>!line.Contains("/// </BookContent>"))];

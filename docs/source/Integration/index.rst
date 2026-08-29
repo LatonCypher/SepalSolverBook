@@ -28,4 +28,4 @@ In this chapter, we will explore different numerical integration methods, their 
    Gauss Hermite
    GaussChebyshev
    Polynomial Integration
-   Exercise On Integration
+   Exercise

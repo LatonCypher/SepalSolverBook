@@ -20,7 +20,7 @@ In C#, every statement must end with a semicolon `;`. This acts as a "terminator
 Writing code is only half the battle; explaining it is the other. C# provides two main ways to leave notes for yourself and other engineers:
 
 - Single-line (//): Best for quick notes about a specific line. 
-- Multi-line (/* ... */): Best for describing complex algorithms. 
+- Multi-line (/\* ... \*/): Best for describing complex algorithms. 
 - XML Documentation (///): Used to generate tooltips for your library. 
 
 
@@ -97,7 +97,7 @@ In C#, every statement must end with a semicolon `;`. This acts as a "terminator
 Writing code is only half the battle; explaining it is the other. C# provides two main ways to leave notes for yourself and other engineers:
 
 - Single-line (//): Best for quick notes about a specific line. 
-- Multi-line (/* ... */): Best for describing complex algorithms. 
+- Multi-line (/\* ... \*/): Best for describing complex algorithms. 
 - XML Documentation (///): Used to generate tooltips for your library. 
 
 
@@ -167,4 +167,4 @@ The rest of sytax, structure,  variable and operators are addressed in the follo
    Operators And Expressions
    Collections and Linq
    Algorithm Flow Control
-   Exercise On Basic Operation and Syntax
+   Exercise

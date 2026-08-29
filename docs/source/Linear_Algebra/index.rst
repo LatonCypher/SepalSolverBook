@@ -32,4 +32,4 @@ In this chapter, we will explore different linear algebra methods, their impleme
    Singular Value Decomposition
    Sparse Matrices
    Solution Of Sparse Linear System
-   Exercise On Linear Algebra
+   Exercise

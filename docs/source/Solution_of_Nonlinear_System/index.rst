@@ -111,4 +111,4 @@ where: math:`J` is the Jacobian matrix of partial derivatives.
    Nonlinear Equation
    NonLinear System
    Large NonLinear Systems
-   Exercise On Nonlinear Systems
+   Exercise

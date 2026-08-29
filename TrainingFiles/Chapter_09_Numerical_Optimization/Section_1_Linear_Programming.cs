@@ -34,13 +34,14 @@
             /// - Variable Bounds (:math:`\mathbf{Lb} \le \mathbf{x} \le \mathbf{Ub}`): Sets direct lower and upper box constraints on individual decision variables, improving solver efficiency.
             ///
             /// Comparison: Linprog Formulation Levels
-            /// 
-            /// Feature | Basic Inequality LP | LP with Equality Constraints | Fully Bounded LP
-            /// Objective | :math:`\min \mathbf{f}^T \mathbf{x}` | :math:`\min \mathbf{f}^T \mathbf{x}` | :math:`\min \mathbf{f}^T \mathbf{x}`
-            /// Inequalities | :math:`\mathbf{A}\mathbf{x} \le \mathbf{b}` | :math:`\mathbf{A}\mathbf{x} \le \mathbf{b}` | :math:`\mathbf{A}\mathbf{x} \le \mathbf{b}`
-            /// Equalities | None | :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}` | :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}`
-            /// Variable Bounds | Implicit / Unbounded | Implicit / Unbounded | Explicit (:math:`\mathbf{Lb}, \mathbf{Ub}`)
-            ///
+            /// <table>
+            /// Feature         | Basic Inequality LP                         | LP with Equality Constraints                        | Fully Bounded LP
+            /// Objective       | :math:`\min \mathbf{f}^T \mathbf{x}`        | :math:`\min \mathbf{f}^T \mathbf{x}`                | :math:`\min \mathbf{f}^T \mathbf{x}`
+            /// Inequalities    | :math:`\mathbf{A}\mathbf{x} \le \mathbf{b}` | :math:`\mathbf{A}\mathbf{x} \le \mathbf{b}`         | :math:`\mathbf{A}\mathbf{x} \le \mathbf{b}`
+            /// Equalities      | None                                        | :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}` | :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}`
+            /// Variable Bounds | Implicit / Unbounded                        | Implicit / Unbounded                                | Explicit (:math:`\mathbf{Lb}, \mathbf{Ub}`)
+            /// </table>
+            ///     
             /// <header 3> Example 1: Standard Linear Program with Inequality Constraints </header 3>
             /// Minimizing a linear objective function subject to a system of linear inequalities defining a 2D polyhedral feasible region:
             /// <math>
@@ -66,7 +67,7 @@
             }
             /// </code>
             ///
-            ///  <header 3> Example 2: Linear Program with Inequality and Equality Constraints </header 3>
+            /// <header 3> Example 2: Linear Program with Inequality and Equality Constraints </header 3>
             /// Incorporating linear equality constraints :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}` to restrict the search space along a hyper-plane intersecting the feasible region:
             /// 
             /// <math>

@@ -169,7 +169,7 @@
                 SaveAs("Weissinger_With_Jacobian.png");
             }
             /// </code>
-            /// </example 2> 
+            /// </example> 
             /// 
             /// 
             /// <example 3> Robertson differential equation in implicit form

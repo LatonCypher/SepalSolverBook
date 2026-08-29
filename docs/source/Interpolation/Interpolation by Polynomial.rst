@@ -13,6 +13,9 @@ While standard interpolation (like linear or Hermite) forces a curve to pass thr
 
 2. Global vs. Local Interpolation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unlike linear interpolation, which only looks at the two closest points, a polynomial fit considers the entire trend. 
+This results in a much smoother curve, but it can be prone to "swinging" if the polynomial degree is too high for the amount of data provided.
+
 
 .. code-block:: csharp
 
@@ -42,7 +45,9 @@ Examples
 
 .. Admonition:: Example 1 :  Signal Denoising and Prediction
 
-   In sensor applications, individual readings often jump due to electronic noise.By fitting a low-degree polynomial to a window of data, you "smooth out" the noise.You can then interpolate to find values at high-frequency time steps that the sensor didn't actually record.
+   In sensor applications, individual readings often jump due to electronic noise.
+   By fitting a low-degree polynomial to a window of data, you "smooth out" the noise.
+   You can then interpolate to find values at high-frequency time steps that the sensor didn't actually record.
    
    
    .. code-block:: csharp
@@ -67,7 +72,9 @@ Examples
 
 .. Admonition:: Example 2 :  Structural Deformation Mapping
 
-   If you measure the deflection of a beam at 5 specific locations, a polynomial fit of degree 3 or 4 can describe the continuous "shape" of the beam.You can then use this model to interpolate the deflection at any other point along the beam's length.
+   If you measure the deflection of a beam at 5 specific locations, 
+   a polynomial fit of degree 3 or 4 can describe the continuous "shape" of the beam.
+   You can then use this model to interpolate the deflection at any other point along the beam's length.
    
    .. code-block:: csharp
    
@@ -94,8 +101,8 @@ Task: Determine which degree :math:N is most appropriate for the data and evalua
 .. code-block:: csharp
 
    double[] x = [1, 2, 3, 4, 5, 6], y = [2.1, 4.2, 5.9, 8.1, 10.3, 11.9];
-   Looks like y = 2x//
-   Task: Fit a linear model and interpolate at x = 3.5
+    Looks like y = 2x//
+    Task: Fit a linear model and interpolate at x = 3.5
    int degree = ____;
    double[] p = Polyfit(x, y, degree);
 

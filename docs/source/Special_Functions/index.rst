@@ -26,4 +26,4 @@ In this chapter, we will explore different special functions, their implementati
    Bessel Functions
    Error Functions
    Mittag-Leffler Functions
-   Exercise On Special Functions
+   Exercise

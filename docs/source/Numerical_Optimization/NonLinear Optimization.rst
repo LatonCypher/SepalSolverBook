@@ -1209,13 +1209,10 @@ Ouput
 
 .. terminal::
 
-   
-                                   Best             Mean             Max             Stall
-    Generation   Func-count        f(x)             f(x)         Constraints      Generations
    Stopping: no improvement for too long.
    (
-      1.0398
-      1.0754
-   , False, 0.004941545619641626, 0x1 empty double row vector, 0x1 empty double row vector)
+      0.9180
+      0.8412
+   , False, 0.0069817915408217955, 0x1 empty double row vector, 0x1 empty double row vector)
 
 

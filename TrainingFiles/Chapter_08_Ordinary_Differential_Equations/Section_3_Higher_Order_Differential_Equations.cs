@@ -81,7 +81,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                  SaveAs("HigherOrder_SHO.png");
             }
             /// </code>
-            /// </example 1>
+            /// </example>
             /// 
             /// <example 2> Damped Oscillator
             /// | Equation: :math:`y'' + 2β y' + ω^2 y = 0`,
@@ -105,7 +105,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                  SaveAs("HigherOrder_Damped.png");
             }
             /// </code>
-            /// </example 2>
+            /// </example>
             /// 
             /// <example 3> Forced Oscillator
             /// | Equation: :math:`y'' + y = cos(t)`,
@@ -128,7 +128,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                  SaveAs("HigherOrder_Forced.png");
             }
             /// </code>
-            /// </example 3>
+            /// </example>
             /// 
             /// <example 4> RLC Circuit
             /// | Equation: :math:`L i'' + R i' + (1/C) i = 0`,
@@ -152,7 +152,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                  SaveAs("HigherOrder_RLC.png");
             }
             /// </code>
-            /// </example 4>
+            /// </example>
             /// 
             /// <example 5> Third‑Order Example
             /// | Equation: :math:`y''' - y = 0`,
@@ -176,7 +176,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                  SaveAs("HigherOrder_Third.png");
             }
             /// </code>
-            /// </example 5>
+            /// </example>
             /// 
             /// <example 6> Pleiades System (Using Higher Order Solvers)
             /// The Pleiades, also known as the Seven Sisters(M45)[1], is a prominent open star cluster located in the constellation Taurus.It's one of the closest and most easily visible star clusters to Earth[2], making it a favorite target for stargazers and a subject of fascination across cultures. The system of equations describing the motion of the stars in the cluster consists of 14 nonstiff second-order differential equations, which produce a system of 28 equations when rewritten in first-order form.

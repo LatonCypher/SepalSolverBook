@@ -36,11 +36,29 @@ The Linprog solver handles three levels of constraint complexity depending on pr
 
 Comparison: Linprog Formulation Levels
 
-Feature | Basic Inequality LP | LP with Equality Constraints | Fully Bounded LP
-Objective | :math:`\min \mathbf{f}^T \mathbf{x}` | :math:`\min \mathbf{f}^T \mathbf{x}` | :math:`\min \mathbf{f}^T \mathbf{x}`
-Inequalities | :math:`\mathbf{A}\mathbf{x} \le \mathbf{b}` | :math:`\mathbf{A}\mathbf{x} \le \mathbf{b}` | :math:`\mathbf{A}\mathbf{x} \le \mathbf{b}`
-Equalities | None | :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}` | :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}`
-Variable Bounds | Implicit / Unbounded | Implicit / Unbounded | Explicit (:math:`\mathbf{Lb}, \mathbf{Ub}`)
+.. list-table:: 
+   :header-rows: 1
+
+   * - Feature
+     - Basic Inequality LP
+     - LP with Equality Constraints
+     - Fully Bounded LP
+   * - Objective
+     - :math:`\min \mathbf{f}^T \mathbf{x}`
+     - :math:`\min \mathbf{f}^T \mathbf{x}`
+     - :math:`\min \mathbf{f}^T \mathbf{x}`
+   * - Inequalities
+     - :math:`\mathbf{A}\mathbf{x} \le \mathbf{b}`
+     - :math:`\mathbf{A}\mathbf{x} \le \mathbf{b}`
+     - :math:`\mathbf{A}\mathbf{x} \le \mathbf{b}`
+   * - Equalities
+     - None
+     - :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}`
+     - :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}`
+   * - Variable Bounds
+     - Implicit / Unbounded
+     - Implicit / Unbounded
+     - Explicit (:math:`\mathbf{Lb}, \mathbf{Ub}`)
 
 Example 1: Standard Linear Program with Inequality Constraints
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -34,7 +34,7 @@ Examples
       double[] coefficients = Polyfit(X, Y, N);
    
       // Output: 1, 0, 0 (representing 1x^2 + 0x + 0)
-      Console.WriteLine($"Coefficients: [{string.Join(", ", coefficients.Select(n => n.ToString("F4")))}]");
+      Console.WriteLine($"Coefficients: [{string.Join(", ", coefficients.Select(n => $"{n:F4}"))}]");
    
       // Plotting the results
       Scatter(X, Y, "fob", 15); HoldOn();
