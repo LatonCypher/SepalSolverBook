@@ -134,6 +134,11 @@ namespace ConsoleApp1
                 if (!Directory.Exists(chapterfolder))
                     Directory.CreateDirectory(chapterfolder);
 
+                currenctdirectory = chapterfolder + "images\\";
+                if (!Directory.Exists(currenctdirectory))
+                    Directory.CreateDirectory(currenctdirectory);
+
+
                 string chapter_indexfile = chapterfolder + "index.rst";
                 string chaptermessage = $"""
                     
