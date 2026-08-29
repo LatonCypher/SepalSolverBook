@@ -2,8 +2,6 @@ Exercise
 ========
 
 
-Exercise: Basic Operations and Syntax
--------------------------------------
 
 This exercise is designed to reinforce your understanding of basic operations and syntax in C#. You will implement a simple console application that performs arithmetic operations, handles user input, and displays results.
 

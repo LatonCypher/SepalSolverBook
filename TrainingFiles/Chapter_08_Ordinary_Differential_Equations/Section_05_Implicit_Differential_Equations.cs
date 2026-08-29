@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 {
-    internal class Section_5_Implicit_Differential_Equations
+    internal class Section_05_Implicit_Differential_Equations
     {
         public static void Run()
         {

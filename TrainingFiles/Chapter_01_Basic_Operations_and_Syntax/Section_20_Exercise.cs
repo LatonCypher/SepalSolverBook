@@ -7,7 +7,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_01_Basic_Operations_Syntax
         {
             /// <BookContent>
             /// 
-            /// <header 2> Exercise: Basic Operations and Syntax </header 2>
             /// 
             /// This exercise is designed to reinforce your understanding of basic operations and syntax in C#. You will implement a simple console application that performs arithmetic operations, handles user input, and displays results.
             /// 

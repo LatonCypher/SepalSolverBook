@@ -1212,10 +1212,19 @@ Ouput
    
                                    Best             Mean             Max             Stall
     Generation   Func-count        f(x)             f(x)         Constraints      Generations
-   Stopping: no improvement for too long.
+   
+                                   Best             Mean             Max             Stall
+    Generation   Func-count        f(x)             f(x)         Constraints      Generations
+   
+                                   Best             Mean             Max             Stall
+    Generation   Func-count        f(x)             f(x)         Constraints      Generations
+   
+                                   Best             Mean             Max             Stall
+    Generation   Func-count        f(x)             f(x)         Constraints      Generations
+   average change in the fitness value is less than FuncTol
    (
-      1.0034
-      1.0097
-   , False, 0.0008222035211862456, 0x1 empty double row vector, 0x1 empty double row vector)
+      0.9578
+      0.9172
+   , True, 0.0017855936786432894, 0x1 empty double row vector, 0x1 empty double row vector)
 
 

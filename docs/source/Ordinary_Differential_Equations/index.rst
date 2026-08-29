@@ -23,9 +23,9 @@ In this chapter, we will explore different numerical methods for solving ODEs, t
 .. toctree::
 
    First Order Differential Equation
-   Exercise
    System of First Order Differential Equations
    Higher Order Differential Equations
    Stiff Differntial Equations
    Implicit Differential Equations
    Differential Algebraic Equations
+   Exercise

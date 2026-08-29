@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 {
-    internal class Section_3_Higher_Order_Differential_Equations
+    internal class Section_03_Higher_Order_Differential_Equations
     {
         public static void Run()
         {

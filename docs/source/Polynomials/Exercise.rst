@@ -2,8 +2,6 @@ Exercise
 ========
 
 
-Exercise: Polynomial Operations and Calculus
---------------------------------------------
 
 This set of exercises is designed to solidify your mastery of polynomial manipulation within the SepalSolver ecosystem. You will apply coefficient logic, calculus rules, and numerical fitting to solve engineering-inspired problems.
 
