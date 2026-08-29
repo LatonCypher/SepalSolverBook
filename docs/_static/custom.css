@@ -1,100 +1,13 @@
-/* Increased specificity to outrank the RTD theme */
-div.highlight pre.terminal,
-.rst-content .highlight pre.terminal,
-pre.terminal {
-    /* Dark Gray background */
-    background-color: #2d2d2d !important;
-
-    /* Courier Green text */
-    color: #4AF626 !important;
-
-    /* Font Settings */
-    font-family: 'Courier New', Courier, monospace !important;
-    font-size: 14px !important;
-    line-height: 1.5 !important;
-
-    /* Window Styling */
-    border-radius: 6px !important;
-    padding: 40px 20px 20px 20px !important;
-    position: relative;
-    margin: 25px 0;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
-    border: 1px solid #444 !important;
-    white-space: pre !important;
-}
-
-/* Force all internal text to be green and ignore syntax highlighting */
-div.highlight pre.terminal span {
-    color: #4AF626 !important;
-    background: transparent !important;
-}
-
-/* Window Buttons */
-div.highlight pre.terminal::before {
-    content: "● ● ●";
-    position: absolute;
-    top: 12px;
-    left: 18px;
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: #ff5f56;
-    text-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
-    font-family: sans-serif !important;
-}
-
-/* Label for the window */
-div.highlight pre.terminal::after {
-    content: "SepalSolver Output";
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #777;
-    font-size: 11px;
-    font-family: sans-serif;
-}
-
-/* Main callout box container */
-.rst-content .admonition,
-div.admonition,
-.admonition {
-    border-radius: 8px !important;
-    overflow: hidden !important;
-    /* Prevents header background from spilling over corners */
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08) !important;
-    border: 1px solid rgba(0, 0, 0, 0.1) !important;
-    margin-bottom: 24px !important;
-}
-
-/* Admonition Title Header */
-.rst-content .admonition .admonition-title,
-div.admonition p.admonition-title,
-.admonition-title {
-    border-top-left-radius: 7px !important;
-    border-top-right-radius: 7px !important;
-    margin-top: 0 !important;
-    padding: 8px 12px !important;
-}
-
-/* Optional: Slight rounding for sphinx-design cards if used */
-.sd-card {
-    border-radius: 8px !important;
-    overflow: hidden !important;
-}
-
-
 /* ==========================================================================
-   1. Typography & Page Layout
+   1. Typography & Readability Layout
    ========================================================================== */
 
-/* Optimal reading width for technical content and equations */
 .rst-content {
     max-width: 860px !important;
     font-size: 16px;
     line-height: 1.65;
 }
 
-/* Clear hierarchy for chapter and section headings */
 .rst-content h1 {
     font-weight: 700;
     color: #1a202c;
@@ -109,92 +22,193 @@ div.admonition p.admonition-title,
 }
 
 /* ==========================================================================
-   2. Mathematical Equations (MathJax Styling)
+   2. Example Panels (Light Blue Background, Rounded Corners)
    ========================================================================== */
 
-/* Center display equations with subtle horizontal padding and scroll for mobile */
-.rst-content div.math {
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 0.8em 0;
-    margin: 1.2em 0;
-    background-color: #f8fafc;
-    border-radius: 6px;
-    border-left: 3px solid #3182ce;
+/* Target topic directives used for Worked Examples */
+.rst-content .topic,
+.rst-content div.topic {
+    background-color: #f0f7ff !important;
+    /* Soft Light Blue */
+    border: 1px solid #bae6fd !important;
+    /* Light blue border */
+    border-left: 6px solid #0284c7 !important;
+    /* Deep blue left accent */
+    border-radius: 12px !important;
+    /* Rounded corners */
+    padding: 1.5em !important;
+    margin: 2em 0 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
 }
 
-/* Ensure inline math matches natural body text sizing */
+.rst-content .topic-title,
+.rst-content p.topic-title {
+    color: #0369a1 !important;
+    font-weight: 700 !important;
+    font-size: 1.15em !important;
+    margin-bottom: 1em !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   3. Math Equations Inside Example Panels (White Background)
+   ========================================================================== */
+
+/* Math display blocks nested inside example panels */
+.rst-content .topic div.math,
+.rst-content .topic .math {
+    background-color: #ffffff !important;
+    /* Pure White Panel */
+    border: 1px solid #cbd5e1 !important;
+    /* Soft slate border */
+    border-radius: 8px !important;
+    /* Rounded corners */
+    padding: 1.2em !important;
+    margin: 1.2em 0 !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04) !important;
+    overflow-x: auto;
+}
+
+/* Standalone math blocks outside example panels */
+.rst-content div.math {
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-left: 4px solid #3182ce !important;
+    border-radius: 8px !important;
+    padding: 1em !important;
+    margin: 1.2em 0 !important;
+    overflow-x: auto;
+}
+
 .rst-content span.math {
     font-size: 1.05em;
 }
 
 /* ==========================================================================
-   3. Code Blocks & Syntax Highlighting
+   4. Code Panels (Darker Blue Background, Rounded Corners)
    ========================================================================== */
 
-/* Professional rounded border and shadow for code blocks */
-.rst-content div[class^='highlight'] {
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
-    margin: 1.5em 0;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+/* Outer Code Block Container */
+.rst-content div[class*='highlight'] {
+    background-color: #0f172a !important;
+    /* Deep Dark Blue / Slate */
+    border-radius: 10px !important;
+    /* Rounded corners */
+    border: 1px solid #1e293b !important;
+    margin: 1.5em 0 !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Styled code block captions (file names) */
+/* Force inner pre/code background to match dark blue and override RTD themes */
+.rst-content div[class*='highlight'] pre,
+.rst-content div[class*='highlight'] pre span {
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+}
+
+.rst-content div[class*='highlight'] pre {
+    padding: 1.2em !important;
+    font-family: 'Fira Code', 'Consolas', 'Courier New', monospace !important;
+    font-size: 0.9em !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+}
+
+/* Code Block Caption Bar (File Names) */
 .rst-content .code-block-caption {
-    background-color: #edf2f7;
-    color: #2d3748;
+    background-color: #1e293b !important;
+    color: #94a3b8 !important;
     font-family: monospace;
-    font-weight: 600;
     font-size: 0.85em;
-    padding: 6px 12px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom: 1px solid #e2e8f0;
+    font-weight: 600;
+    padding: 8px 16px !important;
+    border-bottom: 1px solid #334155 !important;
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
 }
 
-/* Inline code formatting */
-.rst-content code.literal {
-    background-color: #edf2f7;
-    color: #c53030;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.9em;
-    border: 1px solid #e2e8f0;
+/* Sphinx CopyButton Adjustments for Dark Background */
+.copybutton {
+    color: #94a3b8 !important;
+    border-radius: 6px !important;
+    padding: 4px !important;
+}
+
+.copybutton:hover {
+    color: #ffffff !important;
+    background-color: #334155 !important;
 }
 
 /* ==========================================================================
-   4. Custom Callouts for Theorems, Proofs, and Examples
+   5. Terminal Window Style Output (`pre.terminal`)
    ========================================================================== */
 
-/* Styled container for Worked Examples and Theorems */
-.rst-content .topic {
-    background-color: #f7fafc;
-    border: 1px solid #cbd5e0;
-    border-left: 5px solid #2b6cb0;
-    border-radius: 6px;
-    padding: 1.2em 1.5em;
-    margin: 1.8em 0;
+div.highlight pre.terminal,
+.rst-content .highlight pre.terminal,
+pre.terminal {
+    background-color: #2d2d2d !important;
+    color: #4AF626 !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    border-radius: 8px !important;
+    padding: 40px 20px 20px 20px !important;
+    position: relative;
+    margin: 25px 0 !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid #444 !important;
+    white-space: pre !important;
 }
 
-.rst-content .topic-title {
-    font-weight: 700;
-    color: #2b6cb0;
-    font-size: 1.1em;
-    margin-bottom: 0.8em;
+div.highlight pre.terminal span {
+    color: #4AF626 !important;
+    background: transparent !important;
 }
 
-/* Admonition styling tweaks (Notes, Warnings, Hints) */
+div.highlight pre.terminal::before {
+    content: "● ● ●";
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #ff5f56;
+    text-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+    font-family: sans-serif !important;
+}
+
+div.highlight pre.terminal::after {
+    content: "SepalSolver Output";
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #777;
+    font-size: 11px;
+    font-family: sans-serif;
+}
+
+/* ==========================================================================
+   6. General Admonitions & Tables
+   ========================================================================== */
+
 .rst-content .admonition {
-    border-radius: 6px;
-    box-shadow: none;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    margin-bottom: 24px !important;
 }
 
-/* ==========================================================================
-   5. Numerical & Data Tables
-   ========================================================================== */
+.rst-content .admonition .admonition-title {
+    border-top-left-radius: 7px !important;
+    border-top-right-radius: 7px !important;
+    margin-top: 0 !important;
+    padding: 8px 12px !important;
+}
 
-/* Clean formatting for numerical results and matrix displays */
 .rst-content table.docutils {
     width: 100%;
     border-collapse: collapse;
@@ -216,117 +230,4 @@ div.admonition p.admonition-title,
 
 .rst-content table.docutils tr:nth-child(even) {
     background-color: #f7fafc;
-}
-
-/* ==========================================================================
-   1. Example Panel (Light Blue Background, Rounded Corners)
-   ========================================================================== */
-
-/* Styles Sphinx topic directives (used for Worked Examples) */
-.rst-content .topic,
-.rst-content div.topic {
-    background-color: #f0f7ff !important;
-    /* Soft Light Blue */
-    border: 1px solid #bae6fd !important;
-    /* Border accent */
-    border-left: 5px solid #0284c7 !important;
-    /* Distinctive left accent bar */
-    border-radius: 12px !important;
-    /* Rounded corners */
-    padding: 1.5em !important;
-    margin: 2em 0 !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-}
-
-/* Example Panel Header / Title */
-.rst-content .topic-title,
-.rst-content p.topic-title {
-    color: #0369a1 !important;
-    font-weight: 700 !important;
-    font-size: 1.15em !important;
-    margin-bottom: 1em !important;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-/* ==========================================================================
-   2. Math Equations Inside Example Panel (White Background)
-   ========================================================================== */
-
-/* Display Math Block inside Example Panels */
-.rst-content .topic div.math,
-.rst-content .topic .math {
-    background-color: #ffffff !important;
-    /* Crisp White background */
-    border: 1px solid #e2e8f0 !important;
-    /* Subtle light grey border */
-    border-radius: 8px !important;
-    /* Slightly rounded corners */
-    padding: 1em !important;
-    margin: 1.2em 0 !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-    overflow-x: auto;
-}
-
-/* General Display Math outside panels (optional consistency) */
-.rst-content div.math {
-    background-color: #f8fafc;
-    border-radius: 8px;
-    padding: 1em;
-    overflow-x: auto;
-}
-
-/* ==========================================================================
-   3. Code Panel (Darker Blue Background, Rounded Corners)
-   ========================================================================== */
-
-/* Outer Code Block Container */
-.rst-content div[class^='highlight'] {
-    background-color: #0f172a !important;
-    /* Deep Dark Blue / Slate */
-    border-radius: 10px !important;
-    /* Rounded corners */
-    border: 1px solid #1e293b !important;
-    margin: 1.5em 0 !important;
-    overflow: hidden;
-    /* Keeps inner code contained */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Target internal pygments container */
-.rst-content div[class^='highlight'] pre {
-    background-color: transparent !important;
-    color: #f8fafc !important;
-    /* Bright legible text */
-    padding: 1.2em !important;
-    font-family: 'Fira Code', 'Consolas', monospace !important;
-    font-size: 0.9em !important;
-    line-height: 1.5 !important;
-}
-
-/* Caption bar if you specify :caption: filename.cs */
-.rst-content .code-block-caption {
-    background-color: #1e293b !important;
-    /* Slightly lighter dark blue */
-    color: #94a3b8 !important;
-    /* Muted grey-blue text */
-    font-family: monospace;
-    font-size: 0.85em;
-    font-weight: 600;
-    padding: 8px 16px;
-    border-bottom: 1px solid #334155;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-/* Adjust sphinx-copybutton icon alignment for dark panels */
-.copybutton {
-    color: #94a3b8 !important;
-    border-radius: 6px !important;
-    padding: 4px !important;
-}
-
-.copybutton:hover {
-    color: #ffffff !important;
-    background-color: #334155 !important;
 }
