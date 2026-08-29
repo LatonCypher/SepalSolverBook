@@ -60,123 +60,125 @@ Comparison: Linprog Formulation Levels
      - Implicit / Unbounded
      - Explicit (:math:`\mathbf{Lb}, \mathbf{Ub}`)
 
-Example 1: Standard Linear Program with Inequality Constraints
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Minimizing a linear objective function subject to a system of linear inequalities defining a 2D polyhedral feasible region:
 
-.. math::
+.. Admonition:: Example 1 :  Example 1: Standard Linear Program with Inequality Constraints 
 
-   \min \quad -x_1 - 0.3333 x_2 \quad \text{s.t.} \quad \mathbf{A}\mathbf{x} \le \mathbf{b}
-
-
-
-.. code-block:: csharp
-
-   // SOLVE_LP_SIMPLEX Solves 2D Linear Program using standard Linear Programming solver
-   double[,] A = new double[,]{
-       { 1.00,  1.00 },
-       { 1.00,  0.25 },
-       { 1.00, -1.00 },
-       {-0.25, -1.00 },
-       {-1.00, -1.00 },
-       {-1.00,  1.00 }
-   };
-
-   double[] b = [2, 1, 2, 1, -1, 2];
-   double[] f = [-1, -1.0 / 3];
-   var result = Linprog(f, A, b);
-   Console.WriteLine(result);
-
-
-Ouput
-
-.. terminal::
-
-   Optimal solution found
+   Minimizing a linear objective function subject to a system of linear inequalities defining a 2D polyhedral feasible region:
    
-      0.6667
-      1.3333
+   .. math::
    
-
-Example 2: Linear Program with Inequality and Equality Constraints
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Incorporating linear equality constraints :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}` to restrict the search space along a hyper-plane intersecting the feasible region:
-
-
-.. math::
-
-   \min \quad \mathbf{f}^T \mathbf{x} \quad \text{s.t.} \quad \mathbf{A}\mathbf{x} \le \mathbf{b}, \quad x_1 + \frac{1}{4} x_2 = \frac{1}{2}
-
-
-
-.. code-block:: csharp
-
-   double[,] A = new double[,]{
-       { 1.00,  1.00 },
-       { 1.00,  0.25 },
-       { 1.00, -1.00 },
-       {-0.25, -1.00 },
-       {-1.00, -1.00 },
-       {-1.00,  1.00 }
-   };
-
-   double[] b = [2, 1, 2, 1, -1, 2];
-   double[] f = [-1, -1.0 / 3];
-   double[,] Aeq = new double[,] { { 1, 1.0 / 4 } };
-   double[] beq = [1.0 / 2];
-   var result = Linprog(f, A, b, Aeq, beq);
-   Console.WriteLine(result);
-
-
-Ouput
-
-.. terminal::
-
-   Optimal solution found
+      \min \quad -x_1 - 0.3333 x_2 \quad \text{s.t.} \quad \mathbf{A}\mathbf{x} \le \mathbf{b}
    
-    0 
-    2 
    
-
-
-Example 3: Fully Constrained Linear Program with Variable Bounds
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Enforcing explicit lower (:math:`\mathbf{Lb}`) and upper (:math:`\mathbf{Ub}`) limits on each decision variable alongside inequality and equality systems:
-
-
-.. math::
-
-   \min \quad \mathbf{f}^T \mathbf{x} \quad \text{s.t.} \quad \mathbf{A}\mathbf{x} \le \mathbf{b}, \quad \mathbf{A}{eq}\mathbf{x} = \mathbf{b}{eq}, \quad \mathbf{Lb} \le \mathbf{x} \le \mathbf{Ub}
-
-
-
-.. code-block:: csharp
-
-   double[,] A = new double[,]{
-       { 1.00,  1.00 },
-       { 1.00,  0.25 },
-       { 1.00, -1.00 },
-       {-0.25, -1.00 },
-       {-1.00, -1.00 },
-       {-1.00,  1.00 }
-   };
-
-   double[] b = [2, 1, 2, 1, -1, 2];
-   double[] f = [-1, -1.0/3];
-   double[,] Aeq = new double[,] { { 1, 1.0 / 4 } };
-   double[] beq = [1.0 / 2];
-   double[] Lb = [-1, -0.5], Ub = [1.5, 1.25];
-   var result = Linprog(f, A, b, Aeq, beq, Lb, Ub);
-   Console.WriteLine(result);
-
-
-Ouput
-
-.. terminal::
-
-   Optimal solution found
    
-      0.1875
-      1.2500
+   .. code-block:: csharp
    
+      // SOLVE_LP_SIMPLEX Solves 2D Linear Program using standard Linear Programming solver
+      double[,] A = new double[,]{
+          { 1.00,  1.00 },
+          { 1.00,  0.25 },
+          { 1.00, -1.00 },
+          {-0.25, -1.00 },
+          {-1.00, -1.00 },
+          {-1.00,  1.00 }
+      };
+   
+      double[] b = [2, 1, 2, 1, -1, 2];
+      double[] f = [-1, -1.0 / 3];
+      var result = Linprog(f, A, b);
+      Console.WriteLine(result);
+   
+   
+   Ouput
+   
+   .. terminal::
+   
+      Optimal solution found
+      
+         0.6667
+         1.3333
+      
 
+
+
+.. Admonition:: Example 2 :  Example 2: Linear Program with Inequality and Equality Constraints 
+
+   Incorporating linear equality constraints :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}` to restrict the search space along a hyper-plane intersecting the feasible region:
+   
+   
+   .. math::
+   
+      \min \quad \mathbf{f}^T \mathbf{x} \quad \text{s.t.} \quad \mathbf{A}\mathbf{x} \le \mathbf{b}, \quad x_1 + \frac{1}{4} x_2 = \frac{1}{2}
+   
+   
+   
+   .. code-block:: csharp
+   
+      double[,] A = new double[,]{
+          { 1.00,  1.00 },
+          { 1.00,  0.25 },
+          { 1.00, -1.00 },
+          {-0.25, -1.00 },
+          {-1.00, -1.00 },
+          {-1.00,  1.00 }
+      };
+   
+      double[] b = [2, 1, 2, 1, -1, 2];
+      double[] f = [-1, -1.0 / 3];
+      double[,] Aeq = new double[,] { { 1, 1.0 / 4 } };
+      double[] beq = [1.0 / 2];
+      var result = Linprog(f, A, b, Aeq, beq);
+      Console.WriteLine(result);
+   
+   
+   Ouput
+   
+   .. terminal::
+   
+      Optimal solution found
+      
+       0 
+       2 
+      
+
+
+.. Admonition:: Example 3 :  Example 3: Fully Constrained Linear Program with Variable Bounds 
+
+   Enforcing explicit lower (:math:`\mathbf{Lb}`) and upper (:math:`\mathbf{Ub}`) limits on each decision variable alongside inequality and equality systems:
+   
+   
+   .. math::
+   
+      \min \quad \mathbf{f}^T \mathbf{x} \quad \text{s.t.} \quad \mathbf{A}\mathbf{x} \le \mathbf{b}, \quad \mathbf{A}{eq}\mathbf{x} = \mathbf{b}{eq}, \quad \mathbf{Lb} \le \mathbf{x} \le \mathbf{Ub}
+   
+   
+   
+   .. code-block:: csharp
+   
+      double[,] A = new double[,]{
+          { 1.00,  1.00 },
+          { 1.00,  0.25 },
+          { 1.00, -1.00 },
+          {-0.25, -1.00 },
+          {-1.00, -1.00 },
+          {-1.00,  1.00 }
+      };
+   
+      double[] b = [2, 1, 2, 1, -1, 2];
+      double[] f = [-1, -1.0/3];
+      double[,] Aeq = new double[,] { { 1, 1.0 / 4 } };
+      double[] beq = [1.0 / 2];
+      double[] Lb = [-1, -0.5], Ub = [1.5, 1.25];
+      var result = Linprog(f, A, b, Aeq, beq, Lb, Ub);
+      Console.WriteLine(result);
+   
+   
+   Ouput
+   
+   .. terminal::
+   
+      Optimal solution found
+      
+         0.1875
+         1.2500
+      

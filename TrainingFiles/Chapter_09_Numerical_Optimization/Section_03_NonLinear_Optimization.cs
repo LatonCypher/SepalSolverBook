@@ -4,7 +4,7 @@ using static SepalSolver.Math;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
 {
-    public class Section_3_NonLinear_Optimization
+    public class Section_03_NonLinear_Optimization
     {
         public static void Run()
         {

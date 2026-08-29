@@ -4,7 +4,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
 {
-    internal class Section_4_Curve_Fitting
+    internal class Section_04_Curve_Fitting
     {
         public static void Run()
         {

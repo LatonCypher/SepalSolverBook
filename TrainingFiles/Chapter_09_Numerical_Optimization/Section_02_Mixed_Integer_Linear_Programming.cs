@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
 {
-    internal class Section_2_Mixed_Integer_Linear_Programming
+    internal class Section_02_Mixed_Integer_Linear_Programming
     {
         public static void Run()
         {

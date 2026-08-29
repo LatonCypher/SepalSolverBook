@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
 {
-    internal class Section_5_Constrained_Curve_Fitting
+    internal class Section_05_Constrained_Curve_Fitting
     {
     }
 }

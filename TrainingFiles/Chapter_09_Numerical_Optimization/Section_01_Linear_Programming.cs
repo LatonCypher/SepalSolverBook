@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
 {
-    public class Section_1_Linear_Programming
+    public class Section_01_Linear_Programming
     {
         public static void Run()
         {
@@ -42,7 +42,7 @@
             /// Variable Bounds | Implicit / Unbounded                        | Implicit / Unbounded                                | Explicit (:math:`\mathbf{Lb}, \mathbf{Ub}`)
             /// </table>
             ///     
-            /// <header 3> Example 1: Standard Linear Program with Inequality Constraints </header 3>
+            /// <example 1> Example 1: Standard Linear Program with Inequality Constraints 
             /// Minimizing a linear objective function subject to a system of linear inequalities defining a 2D polyhedral feasible region:
             /// <math>
             /// \min \quad -x_1 - 0.3333 x_2 \quad \text{s.t.} \quad \mathbf{A}\mathbf{x} \le \mathbf{b}
@@ -66,8 +66,10 @@
                 Console.WriteLine(result);
             }
             /// </code>
-            ///
-            /// <header 3> Example 2: Linear Program with Inequality and Equality Constraints </header 3>
+            /// </example>
+            /// 
+            /// 
+            /// <example 2> Example 2: Linear Program with Inequality and Equality Constraints 
             /// Incorporating linear equality constraints :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}` to restrict the search space along a hyper-plane intersecting the feasible region:
             /// 
             /// <math>
@@ -93,9 +95,9 @@
                 Console.WriteLine(result);
             }
             /// </code>
+            /// </example>
             ///
-            ///
-            /// <header 3> Example 3: Fully Constrained Linear Program with Variable Bounds </header 3>
+            /// <example 3> Example 3: Fully Constrained Linear Program with Variable Bounds 
             /// Enforcing explicit lower (:math:`\mathbf{Lb}`) and upper (:math:`\mathbf{Ub}`) limits on each decision variable alongside inequality and equality systems:
             ///
             /// <math>
@@ -122,7 +124,7 @@
                 Console.WriteLine(result);
             }
             /// </code>
-            ///
+            /// </example>
             /// </BookContent>
         }
     }
