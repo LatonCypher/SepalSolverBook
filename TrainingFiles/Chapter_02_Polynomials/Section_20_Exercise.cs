@@ -165,6 +165,21 @@ namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
             ///     Console.WriteLine($"Area: {area}");
             /// }
             /// </code>
+            /// 
+            /// Task 11: To fit a full quadratic surface :math:`z = a + bx + cy + dxy`, your matrix A needs four columns. Complete the column assignment for the cross-term :math:`xy`.
+            /// <code> 
+            {
+                // Data points
+                double[] x = [0, 1, 2, 0, 1, 2], y = [0, 0, 0, 1, 1, 1], z = [1.1, 2.0, 3.9, 2.2, 3.1, 5.1];
+
+                // Compute the cross term for multivariate polynomial fitting
+                double[] xy = [.. x.Zip(y, (xi, yi) => xi * yi)];
+
+                // Task: Make the Matrix A with the cross term included
+
+                // Solve for the coefficients using Least Squares
+            }
+            /// </code>
             ///
             /// </BookContent>
         }

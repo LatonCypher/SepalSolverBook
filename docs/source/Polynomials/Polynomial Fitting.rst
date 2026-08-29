@@ -121,7 +121,7 @@ Overfitting can occur if the degree is too high, while underfitting can happen i
       double[] yp1 = [.. xp.Select(x => Polyval(fit1, x))];
       Plot(xp, yp1, "r");
       Console.WriteLine($"""
-          Linear fit : [{string.Join(",", fit1)}] 
+          Linear fit : [{string.Join(", ", fit1.Select(p=>$"{p:f4}"))}] 
           Residual: {yp1.Zip(y, (l, m) => Pow(l-m, 2)).Sum()}
           """);
    
@@ -129,7 +129,7 @@ Overfitting can occur if the degree is too high, while underfitting can happen i
       double[] yp2 = [.. xp.Select(x => Polyval(fit2, x))];
       Plot(xp, yp2, "g");
       Console.WriteLine($"""
-          Quaratic fit : [{string.Join(",", fit2)}] 
+          Quaratic fit : [{string.Join(",", fit2.Select(p => $"{p:f4}"))}] 
           Residual: {yp2.Zip(y, (q, m) => Pow(q-m, 2)).Sum()}
           """);
    
@@ -142,9 +142,9 @@ Overfitting can occur if the degree is too high, while underfitting can happen i
    
    .. terminal::
    
-      Linear fit : [5.999999999999998,-1.9999999999999942] 
+      Linear fit : [6.0000, -2.0000] 
       Residual: 1008.4903581267214
-      Quaratic fit : [1.0000000000000193,-1.2151770273257475E-13,5.000000000000152] 
+      Quaratic fit : [1.0000,-0.0000,5.0000] 
       Residual: 846.5558445323921
    
    .. figure:: images/Polyfit_Example_4.png

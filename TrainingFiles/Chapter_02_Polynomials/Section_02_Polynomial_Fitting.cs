@@ -91,7 +91,7 @@
                 double[] yp1 = [.. xp.Select(x => Polyval(fit1, x))];
                 Plot(xp, yp1, "r");
                 Console.WriteLine($"""
-                    Linear fit : [{string.Join(",", fit1)}] 
+                    Linear fit : [{string.Join(", ", fit1.Select(p=>$"{p:f4}"))}] 
                     Residual: {yp1.Zip(y, (l, m) => Pow(l-m, 2)).Sum()}
                     """);
 
@@ -99,7 +99,7 @@
                 double[] yp2 = [.. xp.Select(x => Polyval(fit2, x))];
                 Plot(xp, yp2, "g");
                 Console.WriteLine($"""
-                    Quaratic fit : [{string.Join(",", fit2)}] 
+                    Quaratic fit : [{string.Join(",", fit2.Select(p => $"{p:f4}"))}] 
                     Residual: {yp2.Zip(y, (q, m) => Pow(q-m, 2)).Sum()}
                     """);
 
@@ -113,14 +113,18 @@
             /// 
             /// <header 2> Multivariate Polynomial Fitting </header 2>
             /// 
-            /// In many engineering scenarios, a dependent variable :math:z is influenced by multiple independent variables (e.g., :math:`x` and :math:`y`). This is known as Multivariate Fitting or Surface Fitting. While a standard Polyfit handles a single line, a multivariate fit finds a surface that minimizes the residuals across multiple dimensions.
+            /// In many engineering scenarios, a dependent variable :math:`z` is influenced by multiple independent variables (e.g., :math:`x` and :math:`y`). 
+            /// This is known as Multivariate Fitting or Surface Fitting. While a standard Polyfit handles a single line, a multivariate fit finds a surface 
+            /// that minimizes the residuals across multiple dimensions.
             /// 
-            /// <header 3> 1.The Mathematical Model</header 3>
-            /// For two variables :math:`x` and :math:`y`, a second-order multivariate polynomial takes the form: :math:`z(x, y) = a_0 + a_1x + a_2y + a_3x^2 + a_4xy + a_5y^2`
-            /// The "cross term" :math: xy is vital because it accounts for the interaction between the two variables—how the influence of :math:x might change depending on the current value of :math:`y`.
+            /// <header 3> 1. The Mathematical Model</header 3>
+            /// For two variables :math:`x` and :math:`y`, a second-order multivariate polynomial takes the form: :math:`z(x, y) = a_0 + a_1x + a_2y + a_3x^2 + a_4xy + a_5y^2`.
+            /// The "cross term" :math:`xy` is vital because it accounts for the interaction between the two variables—how the influence of :math:`x` might change depending on 
+            /// the current value of :math:`y`.
             /// 
-            /// <header 3> 2.Implementation Logic </header 3>
-            /// In SepalSolver, multivariate fitting is performed by constructing an augmented matrix where each column represents a term in the polynomial expansion(1, :math:`x`, :math:`y`, :math:`x^2`, etc.) and solving the resulting linear system.
+            /// <header 3> 2. Implementation Logic </header 3>
+            /// In SepalSolver, multivariate fitting is performed by constructing an augmented matrix where each column represents a term in the polynomial expansion 
+            /// (1, :math:`x`, :math:`y`, :math:`x^2`, etc.) and solving the resulting linear system.
             /// 
             /// <code> 
             { 
@@ -135,17 +139,20 @@
                 // A' * A * coeff = A' * z
                 var coeff = Mldivide(A, z);
 
-                Console.WriteLine($"Model: z = {coeff[0]} + {coeff[1]}x + {coeff[2]}y");
+                Console.WriteLine($"Model: z = {coeff[0]:f4} + {coeff[1]:f4}x + {coeff[2]:f4}y");
             }
             /// </code>
             /// 
             /// <header 2> Examples </header 2>
             /// 
-            /// <example 1> Material Stress Analysis The stress(:math:`\sigma`) on a component might depend on both Temperature(:math:`T`) and Pressure(:math:`P`). A multivariate fit allows you to create a "Stress Surface" that can predict failure points at any combination of: math:`T` and :math:`P`. 
+            /// <example 1> 
+            /// Material Stress Analysis The stress(:math:`\sigma`) on a component might depend on both Temperature(:math:`T`) and Pressure(:math:`P`). 
+            /// A multivariate fit allows you to create a "Stress Surface" that can predict failure points at any combination of: math:`T` and :math:`P`. 
             /// 
             /// </example>
             /// 
-            /// <example 2> Aero-Efficiency Mapping For a wing, the Lift Coefficient(:math:`C_L`) is a function of both the Angle of Attack(:math:`\alpha`) and the Mach Number(:math:`M`). Using multivariate fitting, flight computers can interpolate lift values instantly across the entire flight envelope.
+            /// <example 2> Aero-Efficiency Mapping For a wing, the Lift Coefficient(:math:`C_L`) is a function of both the Angle of Attack(:math:`\alpha`) 
+            /// and the Mach Number(:math:`M`). Using multivariate fitting, flight computers can interpolate lift values instantly across the entire flight envelope.
             /// </example>
             /// 
             /// <example 3>
@@ -155,9 +162,9 @@
             /// </math>
             /// 
             /// Where:
-            /// - :math:`p` = vapor pressure
-            /// - :math:`T` = temperature
-            /// - :math:`A, B, C` = substance-specific constants
+            /// | :math:`p` = vapor pressure
+            /// | :math:`T` = temperature
+            /// | :math:`A, B, C` = substance-specific constants
             /// 
             /// In other to estimate the values of this constants, we express the equation in a linear form
             /// 
@@ -176,10 +183,11 @@
             ///     T\log_{10}(p) = A T - C\log_{10}(p) + (AC - B)
             /// </math>
             /// 
-            /// This is a linear equation in terms of :math:`T` and :math:`log10(p)`, which can be used to estimate the constants :math:`A`, :math:`B`, and :math:`C` via multiple linear regression.
+            /// This is a linear equation in terms of :math:`T` and :math:`\log10(p)`, which can be used to estimate the constants :math:`A`, :math:`B`, and :math:`C` 
+            /// via multiple linear regression.
             /// 
             /// - Slope with respect to :math:`T \to A`
-            /// - Slope with respect to :math:`log10(p) \to -C`
+            /// - Slope with respect to :math:`\log10(p) \to -C`
             /// - Intercept  :math:`\to AC - B`
             /// 
             /// 
@@ -217,22 +225,6 @@
             /// </code>
             /// </example>
             /// 
-            /// 
-            /// <header 3> Exercise: Term Expansion</header 3>
-            /// Task: To fit a full quadratic surface :math:`z = a + bx + cy + dxy`, your matrix A needs four columns. Complete the column assignment for the cross-term :math:`xy`.
-            /// <code> 
-            {
-                // Data points
-                double[] x = [0, 1, 2, 0, 1, 2], y = [0, 0, 0, 1, 1, 1], z = [1.1, 2.0, 3.9, 2.2, 3.1, 5.1];
-
-                // Compute the cross term for multivariate polynomial fitting
-                double[] xy = [..x.Zip(y, (xi, yi) => xi * yi)];
-
-                // Task: Make the Matrix A with the cross term included
-
-                // Solve for the coefficients using Least Squares
-            }
-            /// </code>
             /// 
             /// </BookContent>
 
