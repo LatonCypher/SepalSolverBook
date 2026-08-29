@@ -20,26 +20,26 @@
             /// </math>
             /// 1. Decision Variables: Define the vector of unknown variables :math:`\mathbf{x} = [x_1, x_2]^T` to be optimized.
             ///
-            /// 2. Objective Function Vector: Specify the objective coefficient vector :math:\mathbf{f}, defining the linear cost or performance surface to minimize:
+            /// 2. Objective Function Vector: Specify the objective coefficient vector :math:`\mathbf{f}`, defining the linear cost or performance surface to minimize:
             /// <math>
             /// f(\mathbf{x}) = f_1 x_1 + f_2 x_2 = \mathbf{f}^T \mathbf{x}
             /// </math>
-            /// 3. Constraints & Bounding Domains: Formulate inequality systems :math:`\mathbf{A}\mathbf{x} \le \mathbf{b}`, equality restrictions :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}`, and lower/upper variable bounds :math:\mathbf{Lb} \le \mathbf{x} \le \mathbf{Ub}.
+            /// 3. Constraints & Bounding Domains: Formulate inequality systems :math:`\mathbf{A}\mathbf{x} \le \mathbf{b}`, equality restrictions :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}`, and lower/upper variable bounds :math:`\mathbf{Lb} \le \mathbf{x} \le \mathbf{Ub}`.
             ///
-            ///  ## Constraint Types in Linprog
-            ///
-
+            /// **Constraint Types in Linprog**
+            ///   
             /// The Linprog solver handles three levels of constraint complexity depending on problem parameters:
             /// - Inequality Constraints (:math:`\mathbf{A}\mathbf{x} \le \mathbf{b}`): Defines the primary polyhedral boundary of the feasible region.
             /// - Equality Constraints (:math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}`): Restricts the feasible solution domain to a lower-dimensional affine subspace or hyperplane within the polyhedron.
             /// - Variable Bounds (:math:`\mathbf{Lb} \le \mathbf{x} \le \mathbf{Ub}`): Sets direct lower and upper box constraints on individual decision variables, improving solver efficiency.
             ///
             /// Comparison: Linprog Formulation Levels
+            /// 
             /// Feature | Basic Inequality LP | LP with Equality Constraints | Fully Bounded LP
             /// Objective | :math:`\min \mathbf{f}^T \mathbf{x}` | :math:`\min \mathbf{f}^T \mathbf{x}` | :math:`\min \mathbf{f}^T \mathbf{x}`
             /// Inequalities | :math:`\mathbf{A}\mathbf{x} \le \mathbf{b}` | :math:`\mathbf{A}\mathbf{x} \le \mathbf{b}` | :math:`\mathbf{A}\mathbf{x} \le \mathbf{b}`
             /// Equalities | None | :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}` | :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}`
-            /// Variable Bounds | Implicit / Unbounded | Implicit / Unbounded | Explicit (:math`:\mathbf{Lb}, \mathbf{Ub}`)
+            /// Variable Bounds | Implicit / Unbounded | Implicit / Unbounded | Explicit (:math:`\mathbf{Lb}, \mathbf{Ub}`)
             ///
             /// <header 3> Example 1: Standard Linear Program with Inequality Constraints </header 3>
             /// Minimizing a linear objective function subject to a system of linear inequalities defining a 2D polyhedral feasible region:

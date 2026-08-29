@@ -128,9 +128,9 @@ namespace ConsoleApp1
                 string relativePath = string.Join(' ', BookChapter.Split(['_']).Skip(2));
                 using (StreamWriter writer = new(book_indexfile, true))
                 {
-                    writer.WriteLine("   " + relativePath);
+                    writer.WriteLine("   " + relativePath.Replace(" ", "_") + "/index");
                 }
-                string chapterfolder = bookfolder + relativePath + "\\";
+                string chapterfolder = bookfolder + relativePath.Replace(" ", "_") + "\\";
                 if (!Directory.Exists(chapterfolder))
                     Directory.CreateDirectory(chapterfolder);
 

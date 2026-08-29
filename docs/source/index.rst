@@ -99,13 +99,13 @@ Content
 
 .. toctree::
 
-   Basic Operations and Syntax
-   Polynomials
-   Interpolation
-   Special Functions
-   Linear Algebra
-   Solution of Nonlinear System
-   Integration
-   Ordinary Differential Equations
-   Numerical Optimization
-   Partial Differential Equations
+   Basic_Operations_and_Syntax/index
+   Polynomials/index
+   Interpolation/index
+   Special_Functions/index
+   Linear_Algebra/index
+   Solution_of_Nonlinear_System/index
+   Integration/index
+   Ordinary_Differential_Equations/index
+   Numerical_Optimization/index
+   Partial_Differential_Equations/index
