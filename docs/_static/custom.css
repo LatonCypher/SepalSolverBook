@@ -217,3 +217,116 @@ div.admonition p.admonition-title,
 .rst-content table.docutils tr:nth-child(even) {
     background-color: #f7fafc;
 }
+
+/* ==========================================================================
+   1. Example Panel (Light Blue Background, Rounded Corners)
+   ========================================================================== */
+
+/* Styles Sphinx topic directives (used for Worked Examples) */
+.rst-content .topic,
+.rst-content div.topic {
+    background-color: #f0f7ff !important;
+    /* Soft Light Blue */
+    border: 1px solid #bae6fd !important;
+    /* Border accent */
+    border-left: 5px solid #0284c7 !important;
+    /* Distinctive left accent bar */
+    border-radius: 12px !important;
+    /* Rounded corners */
+    padding: 1.5em !important;
+    margin: 2em 0 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Example Panel Header / Title */
+.rst-content .topic-title,
+.rst-content p.topic-title {
+    color: #0369a1 !important;
+    font-weight: 700 !important;
+    font-size: 1.15em !important;
+    margin-bottom: 1em !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   2. Math Equations Inside Example Panel (White Background)
+   ========================================================================== */
+
+/* Display Math Block inside Example Panels */
+.rst-content .topic div.math,
+.rst-content .topic .math {
+    background-color: #ffffff !important;
+    /* Crisp White background */
+    border: 1px solid #e2e8f0 !important;
+    /* Subtle light grey border */
+    border-radius: 8px !important;
+    /* Slightly rounded corners */
+    padding: 1em !important;
+    margin: 1.2em 0 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    overflow-x: auto;
+}
+
+/* General Display Math outside panels (optional consistency) */
+.rst-content div.math {
+    background-color: #f8fafc;
+    border-radius: 8px;
+    padding: 1em;
+    overflow-x: auto;
+}
+
+/* ==========================================================================
+   3. Code Panel (Darker Blue Background, Rounded Corners)
+   ========================================================================== */
+
+/* Outer Code Block Container */
+.rst-content div[class^='highlight'] {
+    background-color: #0f172a !important;
+    /* Deep Dark Blue / Slate */
+    border-radius: 10px !important;
+    /* Rounded corners */
+    border: 1px solid #1e293b !important;
+    margin: 1.5em 0 !important;
+    overflow: hidden;
+    /* Keeps inner code contained */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Target internal pygments container */
+.rst-content div[class^='highlight'] pre {
+    background-color: transparent !important;
+    color: #f8fafc !important;
+    /* Bright legible text */
+    padding: 1.2em !important;
+    font-family: 'Fira Code', 'Consolas', monospace !important;
+    font-size: 0.9em !important;
+    line-height: 1.5 !important;
+}
+
+/* Caption bar if you specify :caption: filename.cs */
+.rst-content .code-block-caption {
+    background-color: #1e293b !important;
+    /* Slightly lighter dark blue */
+    color: #94a3b8 !important;
+    /* Muted grey-blue text */
+    font-family: monospace;
+    font-size: 0.85em;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-bottom: 1px solid #334155;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Adjust sphinx-copybutton icon alignment for dark panels */
+.copybutton {
+    color: #94a3b8 !important;
+    border-radius: 6px !important;
+    padding: 4px !important;
+}
+
+.copybutton:hover {
+    color: #ffffff !important;
+    background-color: #334155 !important;
+}

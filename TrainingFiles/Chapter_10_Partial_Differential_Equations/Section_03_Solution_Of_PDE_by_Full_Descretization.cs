@@ -253,8 +253,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_10_Partial_Differential_Equations
             /// 
             ///
             ///
-            /// <header 3> Example 2: Implicit Scheme with Chebyshev Spectral Differentiation for Spatial Derivative</header 3>
-            /// Constructing a Chebyshev differentiation matrix :math:`\mathbf{D}_N` to compute high-accuracy spatial derivatives on Gauss-Lobatto collocation points :math:`x_k = \cos\left(\frac{k\pi}{N}\right)`:
+            /// <header 3> Example 4: Implicit Scheme with Chebyshev Spectral Differentiation for Spatial Derivative</header 3>
+            /// Constructing a Chebyshev differentiation matrix :math:`\mathbf{D}_N` to compute high-accuracy spatial derivatives on Gauss-Lobatto collocation points :math:`x_k = \cos\left(\cfrac{k\pi}{N}\right)`:
             ///
             /// <code>
             {
