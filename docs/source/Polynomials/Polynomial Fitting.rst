@@ -156,16 +156,20 @@ Overfitting can occur if the degree is too high, while underfitting can happen i
 Multivariate Polynomial Fitting
 -------------------------------
 
-In many engineering scenarios, a dependent variable :math:z is influenced by multiple independent variables (e.g., :math:`x` and :math:`y`). This is known as Multivariate Fitting or Surface Fitting. While a standard Polyfit handles a single line, a multivariate fit finds a surface that minimizes the residuals across multiple dimensions.
+In many engineering scenarios, a dependent variable :math:`z` is influenced by multiple independent variables (e.g., :math:`x` and :math:`y`). 
+This is known as Multivariate Fitting or Surface Fitting. While a standard Polyfit handles a single line, a multivariate fit finds a surface 
+that minimizes the residuals across multiple dimensions.
 
-1.The Mathematical Model
-~~~~~~~~~~~~~~~~~~~~~~~~
-For two variables :math:`x` and :math:`y`, a second-order multivariate polynomial takes the form: :math:`z(x, y) = a_0 + a_1x + a_2y + a_3x^2 + a_4xy + a_5y^2`
-The "cross term" :math: xy is vital because it accounts for the interaction between the two variables—how the influence of :math:x might change depending on the current value of :math:`y`.
+1. The Mathematical Model
+~~~~~~~~~~~~~~~~~~~~~~~~~
+For two variables :math:`x` and :math:`y`, a second-order multivariate polynomial takes the form: :math:`z(x, y) = a_0 + a_1x + a_2y + a_3x^2 + a_4xy + a_5y^2`.
+The "cross term" :math:`xy` is vital because it accounts for the interaction between the two variables—how the influence of :math:`x` might change depending on 
+the current value of :math:`y`.
 
-2.Implementation Logic
-~~~~~~~~~~~~~~~~~~~~~~
-In SepalSolver, multivariate fitting is performed by constructing an augmented matrix where each column represents a term in the polynomial expansion(1, :math:`x`, :math:`y`, :math:`x^2`, etc.) and solving the resulting linear system.
+2. Implementation Logic
+~~~~~~~~~~~~~~~~~~~~~~~
+In SepalSolver, multivariate fitting is performed by constructing an augmented matrix where each column represents a term in the polynomial expansion 
+(1, :math:`x`, :math:`y`, :math:`x^2`, etc.) and solving the resulting linear system.
 
 
 .. code-block:: csharp
@@ -181,26 +185,29 @@ In SepalSolver, multivariate fitting is performed by constructing an augmented m
    // A' * A * coeff = A' * z
    var coeff = Mldivide(A, z);
 
-   Console.WriteLine($"Model: z = {coeff[0]} + {coeff[1]}x + {coeff[2]}y");
+   Console.WriteLine($"Model: z = {coeff[0]:f4} + {coeff[1]:f4}x + {coeff[2]:f4}y");
 
 
 Ouput
 
 .. terminal::
 
-   Model: z = 0.9083333333333335 + 1.4249999999999998x + 1.1333333333333329y
+   Model: z = 0.9083 + 1.4250x + 1.1333y
 
 Examples
 --------
 
 
-.. Admonition:: Example 1 :  Material Stress Analysis The stress(:math:`\sigma`) on a component might depend on both Temperature(:math:`T`) and Pressure(:math:`P`). A multivariate fit allows you to create a "Stress Surface" that can predict failure points at any combination of: math:`T` and :math:`P`. 
+.. Admonition:: Example 1 :  
 
+   Material Stress Analysis The stress(:math:`\sigma`) on a component might depend on both Temperature(:math:`T`) and Pressure(:math:`P`). 
+   A multivariate fit allows you to create a "Stress Surface" that can predict failure points at any combination of: math:`T` and :math:`P`. 
    
 
 
-.. Admonition:: Example 2 :  Aero-Efficiency Mapping For a wing, the Lift Coefficient(:math:`C_L`) is a function of both the Angle of Attack(:math:`\alpha`) and the Mach Number(:math:`M`). Using multivariate fitting, flight computers can interpolate lift values instantly across the entire flight envelope.
+.. Admonition:: Example 2 :  Aero-Efficiency Mapping For a wing, the Lift Coefficient(:math:`C_L`) is a function of both the Angle of Attack(:math:`\alpha`) 
 
+   and the Mach Number(:math:`M`). Using multivariate fitting, flight computers can interpolate lift values instantly across the entire flight envelope.
 
 
 .. Admonition:: Example 3 : 
@@ -213,9 +220,9 @@ Examples
    
    
    Where:
-   - :math:`p` = vapor pressure
-   - :math:`T` = temperature
-   - :math:`A, B, C` = substance-specific constants
+   | :math:`p` = vapor pressure
+   | :math:`T` = temperature
+   | :math:`A, B, C` = substance-specific constants
    
    In other to estimate the values of this constants, we express the equation in a linear form
    
@@ -240,10 +247,11 @@ Examples
       T\log_{10}(p) = A T - C\log_{10}(p) + (AC - B)
    
    
-   This is a linear equation in terms of :math:`T` and :math:`log10(p)`, which can be used to estimate the constants :math:`A`, :math:`B`, and :math:`C` via multiple linear regression.
+   This is a linear equation in terms of :math:`T` and :math:`\log10(p)`, which can be used to estimate the constants :math:`A`, :math:`B`, and :math:`C` 
+   via multiple linear regression.
    
    - Slope with respect to :math:`T \to A`
-   - Slope with respect to :math:`log10(p) \to -C`
+   - Slope with respect to :math:`\log10(p) \to -C`
    - Intercept  :math:`\to AC - B`
    
    
@@ -287,22 +295,5 @@ Examples
    .. terminal::
    
       Fitted Parameters: A = 6.1681, B = 1170.7321, C = -48.0075
-
-
-Exercise: Term Expansion
-~~~~~~~~~~~~~~~~~~~~~~~~
-Task: To fit a full quadratic surface :math:`z = a + bx + cy + dxy`, your matrix A needs four columns. Complete the column assignment for the cross-term :math:`xy`.
-
-.. code-block:: csharp
-
-   // Data points
-   double[] x = [0, 1, 2, 0, 1, 2], y = [0, 0, 0, 1, 1, 1], z = [1.1, 2.0, 3.9, 2.2, 3.1, 5.1];
-
-   // Compute the cross term for multivariate polynomial fitting
-   double[] xy = [..x.Zip(y, (xi, yi) => xi * yi)];
-
-   // Task: Make the Matrix A with the cross term included
-
-   // Solve for the coefficients using Least Squares
 
 
