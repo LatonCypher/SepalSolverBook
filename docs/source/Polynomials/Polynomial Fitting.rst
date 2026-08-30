@@ -198,19 +198,8 @@ Examples
 --------
 
 
-.. Admonition:: Example 1 :  
 
-   Material Stress Analysis The stress(:math:`\sigma`) on a component might depend on both Temperature(:math:`T`) and Pressure(:math:`P`). 
-   A multivariate fit allows you to create a "Stress Surface" that can predict failure points at any combination of: math:`T` and :math:`P`. 
-   
-
-
-.. Admonition:: Example 2 :  Aero-Efficiency Mapping For a wing, the Lift Coefficient(:math:`C_L`) is a function of both the Angle of Attack(:math:`\alpha`) 
-
-   and the Mach Number(:math:`M`). Using multivariate fitting, flight computers can interpolate lift values instantly across the entire flight envelope.
-
-
-.. Admonition:: Example 3 : 
+.. Admonition:: Example 1 : 
 
    The Antoine equation relates the vapor pressure of a substance to its temperature:
    
@@ -297,3 +286,14 @@ Examples
       Fitted Parameters: A = 6.1681, B = 1170.7321, C = -48.0075
 
 
+.. Admonition:: Example 2 :  
+
+   Material Stress Analysis The stress(:math:`\sigma`) on a component might depend on both Temperature(:math:`T`) and Pressure(:math:`P`). 
+   A multivariate fit allows you to create a "Stress Surface" that can predict failure points at any combination of: math:`T` and :math:`P`. 
+   
+
+
+.. Admonition:: Example 3 :  
+
+   Aero-Efficiency Mapping For a wing, the Lift Coefficient(:math:`C_L`) is a function of both the Angle of Attack(:math:`\alpha`) 
+   and the Mach Number(:math:`M`). Using multivariate fitting, flight computers can interpolate lift values instantly across the entire flight envelope.

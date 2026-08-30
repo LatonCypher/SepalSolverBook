@@ -1,70 +1,95 @@
 /* ==========================================================================
-   1. Light Blue Example Callout Panels (Rounded Corners)
+   1. Typography & General Layout
    ========================================================================== */
 
-/* Outer Admonition / Example Container */
+.rst-content {
+    max-width: 860px !important;
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+.rst-content h1 {
+    font-weight: 700;
+    color: #1a202c;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.3em;
+}
+
+.rst-content h2 {
+    font-weight: 600;
+    color: #2d3748;
+    margin-top: 1.8em;
+}
+
+/* ==========================================================================
+   2. Light Blue Example Callout Box (Rounded Corners)
+   ========================================================================== */
+
+/* Outer Admonition / Example Box */
 body .rst-content div.admonition,
 body .rst-content .topic,
 body .rst-content .admonition {
     background-color: #f0f7ff !important;
     /* Soft Light Blue */
     border: 1px solid #bae6fd !important;
-    /* Subtle border */
+    /* Light Blue Border */
     border-left: 6px solid #0284c7 !important;
     /* Deep Blue Accent Bar */
     border-radius: 12px !important;
-    /* Rounded Corners */
+    /* Rounded Outer Corners */
     padding: 1.25em !important;
     margin: 1.8em 0 !important;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04) !important;
     overflow: hidden !important;
-    /* Forces child clipping */
+    /* Ensures internal content clips to rounded edges */
 }
 
-/* Example Box Title Bar */
+/* Header Bar Inside Example Box */
 body .rst-content div.admonition .admonition-title,
-body .rst-content .topic-title {
+body .rst-content .topic-title,
+body .rst-content p.topic-title {
     background-color: #0284c7 !important;
-    /* Deep Blue Title Header */
+    /* Solid Blue Title Bar */
     color: #ffffff !important;
-    /* White Text */
+    /* Crisp White Header Text */
     font-weight: 700 !important;
     border-radius: 8px !important;
     /* Rounded Header Corners */
-    padding: 8px 14px !important;
+    padding: 10px 14px !important;
     margin: -0.25em -0.25em 1em -0.25em !important;
     font-size: 1.05em !important;
 }
 
 /* ==========================================================================
-   2. Dark Blue Code Panels (Overrides Light Green Background & Adds Rounded Corners)
+   3. Dark Blue Code Panel (Overrides Light-Green / Light-Gray Boxes)
    ========================================================================== */
 
 /* Outer Highlight Container */
 body .rst-content div[class*='highlight'],
 body .rst-content .highlight,
-body .rst-content .highlight-csharp {
+body .rst-content .highlight-csharp,
+body .rst-content .highlight-default {
     background-color: #0f172a !important;
-    /* Dark Slate Blue */
+    /* Deep Dark Slate Blue */
     border-radius: 12px !important;
     /* Rounded Corners */
     border: 1px solid #1e293b !important;
     margin: 1.2em 0 !important;
     overflow: hidden !important;
-    /* Clips sharp inner elements */
+    /* Forces inner pre tags to clip */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Inner Pre Tag - Explicitly overrides RTD default sharp corners */
+/* Inner Pre Tag - Explicitly Overrides RTD Sharp Corners & Light Background */
 body .rst-content div[class*='highlight'] pre,
 body .rst-content .highlight pre,
 body .rst-content pre {
     background-color: #0f172a !important;
-    /* Dark Slate Blue */
+    /* Matches Container Dark Blue */
     border-radius: 12px !important;
     /* Matching Rounded Corners */
     color: #f8fafc !important;
-    /* Bright Legible Text */
+    /* Bright White/Slate Code Text */
     padding: 1.2em !important;
     font-family: 'Consolas', 'Fira Code', Monaco, monospace !important;
     font-size: 0.9em !important;
@@ -74,19 +99,19 @@ body .rst-content pre {
     overflow-x: auto !important;
 }
 
-/* Strip out all Pygments default light green background spans */
+/* Strip out all Pygments default light-green background spans */
 body .rst-content div[class*='highlight'] pre *,
 body .rst-content .highlight pre * {
     background-color: transparent !important;
 }
 
-/* C# Syntax Highlighting Colors on Dark Blue */
+/* Syntax Highlighting Colors for Dark Background */
 body .rst-content div[class*='highlight'] .k,
 body .rst-content div[class*='highlight'] .kt {
     color: #38bdf8 !important;
 }
 
-/* Keywords / Types (double, var) */
+/* Keywords & C# Types (double, var) */
 body .rst-content div[class*='highlight'] .c1 {
     color: #94a3b8 !important;
     font-style: italic;
@@ -107,7 +132,7 @@ body .rst-content div[class*='highlight'] .mf {
 
 /* Numbers */
 
-/* Code Block Caption Bar */
+/* Code Block Caption Bar (File Names) */
 body .rst-content .code-block-caption {
     background-color: #1e293b !important;
     color: #94a3b8 !important;
@@ -121,7 +146,7 @@ body .rst-content .code-block-caption {
 }
 
 /* ==========================================================================
-   3. White Math Panel Inside Example Boxes (Rounded Corners)
+   4. White Math Panel Inside Example Boxes
    ========================================================================== */
 
 body .rst-content div.math,
@@ -139,8 +164,61 @@ body .rst-content div.admonition div.math {
     overflow-x: auto !important;
 }
 
+body .rst-content span.math {
+    font-size: 1.05em;
+}
+
 /* ==========================================================================
-   4. Copy Button Styling
+   5. Custom Terminal Window Directive (`.. terminal::`)
+   ========================================================================== */
+
+body div.highlight pre.terminal,
+body .rst-content .highlight pre.terminal,
+body pre.terminal {
+    background-color: #2d2d2d !important;
+    color: #4AF626 !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    border-radius: 10px !important;
+    padding: 40px 20px 20px 20px !important;
+    position: relative;
+    margin: 25px 0 !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid #444 !important;
+    white-space: pre !important;
+}
+
+body div.highlight pre.terminal span {
+    color: #4AF626 !important;
+    background: transparent !important;
+}
+
+body div.highlight pre.terminal::before {
+    content: "● ● ●";
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #ff5f56;
+    text-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+    font-family: sans-serif !important;
+}
+
+body div.highlight pre.terminal::after {
+    content: "SepalSolver Output";
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #777;
+    font-size: 11px;
+    font-family: sans-serif;
+}
+
+/* ==========================================================================
+   6. Copy Button Extension Styling
    ========================================================================== */
 
 body .copybutton {
