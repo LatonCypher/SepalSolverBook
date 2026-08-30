@@ -73,7 +73,7 @@ Examples
 --------
 
 
-.. Admonition:: Example 1 :  Compare Linear and Hermite interpolation for sparsely compited sin(x)
+.. card:: Example 1 :  Compare Linear and Hermite interpolation for sparsely compited sin(x)
 
    If sin(x) is give at 7 points between :math:`0` and :math:`\pi`. Interpolate for sin(x) for 100 points between :math:`0` and :math:`\pi` using linear and hermite spline and compare the plots.
    
@@ -117,7 +117,7 @@ Examples
 
 
 
-.. Admonition:: Example 2 : 
+.. card:: Example 2 : 
 
    If a robot moves from point A to point B, a linear path causes an abrupt change in velocity at the corners. By using Hermite interpolation and specifying the desired entry/exit velocity vectors, we create a path that the robot can follow without stopping or jerking. 
    
@@ -213,7 +213,7 @@ Exercise: Animation of Slope Impact
 
 
 
-.. Admonition:: Example 5 :  Using Hermite Spline as Sin Approximator
+.. card:: Example 5 :  Using Hermite Spline as Sin Approximator
 
    Lets use table of Sine and Cosine at 15 degrees interval given in table
    
@@ -290,23 +290,23 @@ Exercise: Animation of Slope Impact
    
         Angle  |  Sineapprox  |    Sine
       ---------+--------------+-------------
-        51.40  |   0.781560   |  0.781570
-        41.99  |   0.668994   |  0.668997
-        45.75  |   0.716349   |  0.716349
-        34.49  |   0.566315   |  0.566321
-        69.56  |   0.937047   |  0.937057
-        71.76  |   0.949728   |  0.949733
-        37.63  |   0.610572   |  0.610580
-        21.99  |   0.374488   |  0.374493
-        50.12  |   0.767391   |  0.767399
-        78.94  |   0.981432   |  0.981440
-        22.47  |   0.382186   |  0.382190
-        58.18  |   0.849742   |  0.849744
-        41.64  |   0.664419   |  0.664423
-        18.60  |   0.318955   |  0.318957
-        66.12  |   0.914408   |  0.914419
-        82.58  |   0.991617   |  0.991630
-        17.79  |   0.305500   |  0.305501
-        31.12  |   0.516815   |  0.516816
-        17.96  |   0.308287   |  0.308289
-        80.76  |   0.987019   |  0.987029
+        13.30  |   0.229989   |  0.229989
+        69.03  |   0.933734   |  0.933745
+        24.24  |   0.410539   |  0.410543
+        51.46  |   0.782175   |  0.782184
+        87.93  |   0.999347   |  0.999350
+        64.50  |   0.902570   |  0.902578
+        14.55  |   0.251173   |  0.251173
+        36.51  |   0.594900   |  0.594907
+        71.53  |   0.948462   |  0.948468
+        22.65  |   0.385022   |  0.385026
+        42.36  |   0.673733   |  0.673735
+        50.31  |   0.769497   |  0.769505
+        78.96  |   0.981491   |  0.981498
+        77.68  |   0.976981   |  0.976985
+        59.50  |   0.861634   |  0.861634
+        12.91  |   0.223469   |  0.223470
+        53.36  |   0.802386   |  0.802395
+        64.88  |   0.905380   |  0.905389
+        32.62  |   0.539085   |  0.539087
+        49.65  |   0.762087   |  0.762094

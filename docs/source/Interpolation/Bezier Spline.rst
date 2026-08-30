@@ -52,6 +52,6 @@ In SepalSolver, the BezierCurve method generates a series of points along a spli
 Examples
 --------
 
-.. Admonition:: Example 1 :  Robot Path Smoothing 
+.. card:: Example 1 :  Robot Path Smoothing 
 
    A robot might calculate a path as a series of sharp turns (linear). By using these points as control points for a Bézier spline, the robot can follow a smooth trajectory that doesn't require it to come to a complete stop at every corner. 

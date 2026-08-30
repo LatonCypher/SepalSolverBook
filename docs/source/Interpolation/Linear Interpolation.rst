@@ -45,7 +45,7 @@ Examples
 --------
 
 
-.. Admonition:: Example 1 :  Reading Steam Tables
+.. card:: Example 1 :  Reading Steam Tables
 
    Engineers often use tables of data where values are only provided at fixed intervals (e.g., every 5 degrees). Linear interpolation allows for the estimation of properties at specific, non-tabulated temperatures.
    
@@ -67,7 +67,7 @@ Examples
       Estimated pressure at 107.5C: :math:132.05 kPa
 
 
-.. Admonition:: Example 2 :  Lookup Tables in Control Systems
+.. card:: Example 2 :  Lookup Tables in Control Systems
 
    In real-time control, complex mathematical functions are often replaced by "lookup tables" to save processing power. Linear interpolation provides a fast way to get reasonably accurate intermediate values from these tables.
    
@@ -157,7 +157,7 @@ Examples
 --------
 
 
-.. Admonition:: Example 1 :  Topographic Height Estimation
+.. card:: Example 1 :  Topographic Height Estimation
 
    Imagine you have a grid of elevation data from a survey. You want to know the height at a specific coordinate that wasn't directly measured.
    
@@ -183,7 +183,7 @@ Examples
       Height at (100.5, 50.5): :math:537.5 m
 
 
-.. Admonition:: Example 2 :  Pressure Mapping
+.. card:: Example 2 :  Pressure Mapping
 
    In aerodynamics, sensors on a wing provide pressure data at specific :math:`(x, y)` points. ``Interp2`` allows the solver to reconstruct the pressure distribution across the entire surface for lift calculations.
    
@@ -210,7 +210,7 @@ Examples
       Interpolated Z: 50
 
 
-.. Admonition:: Example 3 :  Reading steam table
+.. card:: Example 3 :  Reading steam table
 
    In thermodynamics, the properties of water and steam (such as Enthalpy :math:`h`, Entropy :math:`s`, or Specific Volume :math:`v`) are determined by two independent state variables, typically Pressure (:math:`P`) and Temperature (:math:`T`).
    

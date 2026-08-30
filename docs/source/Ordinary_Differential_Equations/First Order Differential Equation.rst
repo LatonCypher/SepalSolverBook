@@ -43,7 +43,7 @@ where :math:`f(t, y)` is a function that defines the rate of change of :math:`y`
 Examples
 ~~~~~~~~
 
-.. Admonition:: Example 1 :  Exponential Growth
+.. card:: Example 1 :  Exponential Growth
 
    | Solve the first-order ODE: :math:`\cfrac{dy}{dt} = 0.5y`,
    | with the initial condition: :math:`y(0) = 1`,
@@ -73,7 +73,7 @@ Examples
    
 
 
-.. Admonition:: Example 2 :  Linear Decay with Forcing
+.. card:: Example 2 :  Linear Decay with Forcing
 
    | Solve the first-order ODE :math:`\cfrac{dy}{dt} = -2y + \sin(t)`,  
    | with the initial condition :math:`y(0) = 0`,  
@@ -103,7 +103,7 @@ Examples
    
 
 
-.. Admonition:: Example 3 :  Logistic Growth
+.. card:: Example 3 :  Logistic Growth
 
    | Solve the first-order ODE :math:`\cfrac{dy}{dt} = -0.2y\left(1 - \cfrac{y}{K}\right)`,  
    | with the initial condition :math:`y(0) = 10`,  
@@ -134,7 +134,7 @@ Examples
    
 
 
-.. Admonition:: Example 4 :  Michaelis–Menten Type ODE
+.. card:: Example 4 :  Michaelis–Menten Type ODE
 
    | Solve the first-order ODE :math:`\cfrac{dy}{dt} = \cfrac{V_{max}y}{K + y}`,  
    | with the initial condition :math:`y(0) = 0`,  
@@ -166,7 +166,7 @@ Examples
 
 
 
-.. Admonition:: Example 5 :  NonLinear Damping
+.. card:: Example 5 :  NonLinear Damping
 
    | Solve the first-order ODE :math:`\cfrac{dy}{dt} = -0.1y^3 + \cos(t)`,  
    | with the initial condition :math:`y(0) = 0`,  

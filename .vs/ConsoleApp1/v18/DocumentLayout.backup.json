@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\bookwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:bookwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_02_polynomials\\section_02_polynomial_fitting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_02_polynomials\\section_02_polynomial_fitting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -101,11 +105,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1102,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -115,6 +119,19 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-25T11:41:47.712Z",
               "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BookWriter.cs",
+              "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\BookWriter.cs",
+              "RelativeDocumentMoniker": "BookWriter.cs",
+              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\BookWriter.cs*",
+              "RelativeToolTip": "BookWriter.cs*",
+              "ViewState": "AgIAABkCAAAAAAAAAAAgwDYCAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-30T11:42:31.583Z",
               "EditorCaption": ""
             },
             {
@@ -143,33 +160,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Polynomial Fitting.rst",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\docs\\source\\Polynomials\\Polynomial Fitting.rst",
               "RelativeDocumentMoniker": "docs\\source\\Polynomials\\Polynomial Fitting.rst",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\docs\\source\\Polynomials\\Polynomial Fitting.rst",
               "RelativeToolTip": "docs\\source\\Polynomials\\Polynomial Fitting.rst",
-              "ViewState": "AgIAAPYAAAAAAAAAAAAAABoAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACsBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2026-08-30T00:08:48.966Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Section_02_Polynomial_Fitting.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_02_Polynomial_Fitting.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_02_Polynomials\\Section_02_Polynomial_Fitting.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_02_Polynomial_Fitting.cs*",
-              "RelativeToolTip": "TrainingFiles\\Chapter_02_Polynomials\\Section_02_Polynomial_Fitting.cs*",
-              "ViewState": "AgIAAL4AAAAAAAAAAAAowOAAAAAbAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_02_Polynomials\\Section_02_Polynomial_Fitting.cs",
+              "RelativeToolTip": "TrainingFiles\\Chapter_02_Polynomials\\Section_02_Polynomial_Fitting.cs",
+              "ViewState": "AgIAAMgAAAAAAAAAAAAgwNYAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-29T18:05:19.462Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Section_03_Solution_Of_PDE_by_Full_Descretization.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_03_Solution_Of_PDE_by_Full_Descretization.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_10_Partial_Differential_Equations\\Section_03_Solution_Of_PDE_by_Full_Descretization.cs",
@@ -182,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "PlotUtils.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver.PlotLib\\PlotUtils.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver.PlotLib\\PlotUtils.cs",
@@ -195,7 +212,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "DynamicCompiler.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\DynamicCompiler.cs",
               "RelativeDocumentMoniker": "DynamicCompiler.cs",
@@ -208,7 +225,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "GlobalUsings.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\GlobalUsings.cs",
               "RelativeDocumentMoniker": "GlobalUsings.cs",
@@ -220,7 +237,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Transform.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\Transform.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\Transform.cs",
@@ -233,7 +250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "ConsoleApp1.csproj",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\ConsoleApp1.csproj",
               "RelativeDocumentMoniker": "ConsoleApp1.csproj",
@@ -245,7 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Math.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\Math.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\Math.cs",
@@ -257,7 +274,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Matrix.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\Matrix.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\Matrix.cs",
@@ -270,7 +287,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "ContourfHandle.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver.PlotLib\\ContourfHandle.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver.PlotLib\\ContourfHandle.cs",
@@ -282,7 +299,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "PlotHandle.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver.PlotLib\\PlotHandle.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver.PlotLib\\PlotHandle.cs",
@@ -294,7 +311,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "SparseColVec.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\SparseColVec.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\SparseColVec.cs",
@@ -306,7 +323,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "SparseMatrix.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\SparseMatrix.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\SparseMatrix.cs",
@@ -318,7 +335,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "ContourHandle.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver.PlotLib\\ContourHandle.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver.PlotLib\\ContourHandle.cs",
@@ -330,7 +347,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "MathData.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\MathData.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\MathData.cs",
@@ -342,7 +359,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "DelaunayTriangulation.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\DelaunayTriangulation.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\DelaunayTriangulation.cs",
@@ -354,7 +371,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Vector2d.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\Vector2d.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\Vector2d.cs",
@@ -366,7 +383,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "SepalSolver.PlotLib.csproj",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver.PlotLib\\SepalSolver.PlotLib.csproj",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver.PlotLib\\SepalSolver.PlotLib.csproj",
@@ -378,7 +395,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Curve.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver.PlotLib\\Curve.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver.PlotLib\\Curve.cs",
@@ -390,7 +407,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "Combinatorics.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\Combinatorics.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\Combinatorics.cs",
@@ -402,7 +419,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "RowVec.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\RowVec.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\RowVec.cs",
@@ -414,7 +431,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "Section_04_Stiff_Differntial_Equations.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_04_Stiff_Differntial_Equations.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_08_Ordinary_Differential_Equations\\Section_04_Stiff_Differntial_Equations.cs",
@@ -427,7 +444,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "Section_08_Singular_Value_Decomposition.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_05_Linear_Algebra\\Section_08_Singular_Value_Decomposition.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_05_Linear_Algebra\\Section_08_Singular_Value_Decomposition.cs",
@@ -439,7 +456,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "Complex.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\Complex.cs",
               "RelativeDocumentMoniker": "..\\sepalsolver\\SepalSolver\\Complex.cs",
@@ -451,7 +468,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "OptimizedTrig.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\OptimizedTrig.cs",
               "RelativeDocumentMoniker": "OptimizedTrig.cs",

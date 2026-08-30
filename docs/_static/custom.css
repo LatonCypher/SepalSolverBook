@@ -2,34 +2,47 @@
    1. Light Blue Example Card (sphinx-design override)
    ========================================================================== */
 
-/* Outer Light Blue Card */
+/* Outer Card Container */
 div.sd-card.example-card {
     background-color: #f0f7ff !important;
     border: 1px solid #bae6fd !important;
     border-left: 6px solid #0284c7 !important;
     border-radius: 12px !important;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04) !important;
-    padding: 1.25em !important;
     margin: 1.8em 0 !important;
+    overflow: hidden !important;
+}
+
+/* Internal Card Body (Where text/math/code live) */
+div.sd-card.example-card .sd-card-body {
+    background-color: #f0f7ff !important;
+    color: #1e293b !important;
+    padding: 1.25em !important;
 }
 
 /* Card Header Bar */
-div.sd-card.example-card div.sd-card-header,
-div.example-card-header {
+div.sd-card.example-card .sd-card-header,
+div.sd-card.example-card div.sd-card-header {
     background-color: #0284c7 !important;
     color: #ffffff !important;
     font-weight: 700 !important;
-    border-radius: 8px !important;
-    padding: 10px 14px !important;
-    margin: -1.25em -1.25em 1em -1.25em !important;
+    font-size: 1.05em !important;
     border: none !important;
+    border-bottom: 1px solid #bae6fd !important;
+    padding: 10px 16px !important;
+    border-top-left-radius: 11px !important;
+    border-top-right-radius: 11px !important;
+}
+
+/* Force header text to white */
+div.sd-card.example-card .sd-card-header * {
+    color: #ffffff !important;
 }
 
 /* ==========================================================================
-   2. Dark Blue Code Blocks (Overrides Light Green Syntax Box)
+   2. Dark Slate Blue Code Blocks
    ========================================================================== */
 
-/* Target highlight container inside and outside cards */
 div.sd-card.example-card div[class*='highlight'],
 div[class*='highlight'],
 .rst-content div[class*='highlight'] {
@@ -40,7 +53,7 @@ div[class*='highlight'],
     overflow: hidden !important;
 }
 
-/* Force dark blue on the pre tag and remove theme background overrides */
+/* Force dark blue on the pre tag */
 div[class*='highlight'] pre,
 .rst-content div[class*='highlight'] pre {
     background-color: #0f172a !important;
@@ -53,13 +66,41 @@ div[class*='highlight'] pre,
     border: none !important;
 }
 
-/* Remove internal span green backgrounds */
-div[class*='highlight'] pre * {
+/* Strip out internal Pygments green/yellow span backgrounds */
+div[class*='highlight'] pre *,
+.rst-content div[class*='highlight'] pre * {
     background-color: transparent !important;
 }
 
+/* Syntax Highlighting Colors on Dark Blue */
+div[class*='highlight'] .k,
+div[class*='highlight'] .kt {
+    color: #38bdf8 !important;
+}
+
+/* Keywords & Types */
+div[class*='highlight'] .c1 {
+    color: #94a3b8 !important;
+    font-style: italic;
+}
+
+/* Comments */
+div[class*='highlight'] .s2,
+div[class*='highlight'] .s {
+    color: #fde047 !important;
+}
+
+/* Strings */
+div[class*='highlight'] .m,
+div[class*='highlight'] .mi,
+div[class*='highlight'] .mf {
+    color: #4ade80 !important;
+}
+
+/* Numbers */
+
 /* ==========================================================================
-   3. Crisp White Math Panel Inside Example Card
+   3. Crisp White Math Panels
    ========================================================================== */
 
 div.sd-card.example-card div.math,

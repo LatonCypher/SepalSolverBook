@@ -27,7 +27,7 @@ Properties
 * Optimization problems.
 * Covariance matrix factorization in statistics.
 
-.. Admonition:: Example 1 : 
+.. card:: Example 1 : 
 
    Consider the matrix:
    
@@ -53,7 +53,7 @@ Properties
 
 Using SepalSolver, we call Chol on an instance of the matrix. 
 
-.. Admonition:: Example 2 :         
+.. card:: Example 2 :         
 
    
    .. code-block:: csharp
