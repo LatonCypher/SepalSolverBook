@@ -41,3 +41,20 @@ epub_show_urls = 'footnote'
 
 # -- Options for Pygment style
 pygments_style = 'sphinx'
+
+
+# Ensure _static directory is included
+html_static_path = ['_static']
+
+# Set pygments_style to 'none' so Sphinx stops hardcoding light backgrounds
+pygments_style = 'none'
+
+# Register custom CSS
+html_css_files = [
+    'custom.css',
+]
+
+# Ensure custom.css is appended after all theme stylesheets
+def setup(app):
+    app.add_directive("terminal", TerminalDirective)
+    app.add_css_file('custom.css', priority=999)  # Priority 999 forces it to load LAST
