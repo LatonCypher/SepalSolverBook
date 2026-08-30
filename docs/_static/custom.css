@@ -1,237 +1,74 @@
 /* ==========================================================================
-   1. Typography & General Layout
+   1. Light Blue Example Card (sphinx-design override)
    ========================================================================== */
 
-.rst-content {
-    max-width: 860px !important;
-    font-size: 16px;
-    line-height: 1.65;
-}
-
-.rst-content h1 {
-    font-weight: 700;
-    color: #1a202c;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 0.3em;
-}
-
-.rst-content h2 {
-    font-weight: 600;
-    color: #2d3748;
-    margin-top: 1.8em;
-}
-
-/* ==========================================================================
-   2. Light Blue Example Callout Box (Rounded Corners)
-   ========================================================================== */
-
-/* Outer Admonition / Example Box */
-body .rst-content div.admonition,
-body .rst-content .topic,
-body .rst-content .admonition {
+/* Outer Light Blue Card */
+div.sd-card.example-card {
     background-color: #f0f7ff !important;
-    /* Soft Light Blue */
     border: 1px solid #bae6fd !important;
-    /* Light Blue Border */
     border-left: 6px solid #0284c7 !important;
-    /* Deep Blue Accent Bar */
     border-radius: 12px !important;
-    /* Rounded Outer Corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04) !important;
     padding: 1.25em !important;
     margin: 1.8em 0 !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04) !important;
-    overflow: hidden !important;
-    /* Ensures internal content clips to rounded edges */
 }
 
-/* Header Bar Inside Example Box */
-body .rst-content div.admonition .admonition-title,
-body .rst-content .topic-title,
-body .rst-content p.topic-title {
+/* Card Header Bar */
+div.sd-card.example-card div.sd-card-header,
+div.example-card-header {
     background-color: #0284c7 !important;
-    /* Solid Blue Title Bar */
     color: #ffffff !important;
-    /* Crisp White Header Text */
     font-weight: 700 !important;
     border-radius: 8px !important;
-    /* Rounded Header Corners */
     padding: 10px 14px !important;
-    margin: -0.25em -0.25em 1em -0.25em !important;
-    font-size: 1.05em !important;
+    margin: -1.25em -1.25em 1em -1.25em !important;
+    border: none !important;
 }
 
 /* ==========================================================================
-   3. Dark Blue Code Panel (Overrides Light-Green / Light-Gray Boxes)
+   2. Dark Blue Code Blocks (Overrides Light Green Syntax Box)
    ========================================================================== */
 
-/* Outer Highlight Container */
-body .rst-content div[class*='highlight'],
-body .rst-content .highlight,
-body .rst-content .highlight-csharp,
-body .rst-content .highlight-default {
+/* Target highlight container inside and outside cards */
+div.sd-card.example-card div[class*='highlight'],
+div[class*='highlight'],
+.rst-content div[class*='highlight'] {
     background-color: #0f172a !important;
-    /* Deep Dark Slate Blue */
-    border-radius: 12px !important;
-    /* Rounded Corners */
+    border-radius: 10px !important;
     border: 1px solid #1e293b !important;
     margin: 1.2em 0 !important;
     overflow: hidden !important;
-    /* Forces inner pre tags to clip */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Inner Pre Tag - Explicitly Overrides RTD Sharp Corners & Light Background */
-body .rst-content div[class*='highlight'] pre,
-body .rst-content .highlight pre,
-body .rst-content pre {
+/* Force dark blue on the pre tag and remove theme background overrides */
+div[class*='highlight'] pre,
+.rst-content div[class*='highlight'] pre {
     background-color: #0f172a !important;
-    /* Matches Container Dark Blue */
-    border-radius: 12px !important;
-    /* Matching Rounded Corners */
     color: #f8fafc !important;
-    /* Bright White/Slate Code Text */
+    border-radius: 10px !important;
     padding: 1.2em !important;
-    font-family: 'Consolas', 'Fira Code', Monaco, monospace !important;
+    font-family: 'Consolas', 'Fira Code', monospace !important;
     font-size: 0.9em !important;
-    line-height: 1.5 !important;
     margin: 0 !important;
     border: none !important;
-    overflow-x: auto !important;
 }
 
-/* Strip out all Pygments default light-green background spans */
-body .rst-content div[class*='highlight'] pre *,
-body .rst-content .highlight pre * {
+/* Remove internal span green backgrounds */
+div[class*='highlight'] pre * {
     background-color: transparent !important;
 }
 
-/* Syntax Highlighting Colors for Dark Background */
-body .rst-content div[class*='highlight'] .k,
-body .rst-content div[class*='highlight'] .kt {
-    color: #38bdf8 !important;
-}
-
-/* Keywords & C# Types (double, var) */
-body .rst-content div[class*='highlight'] .c1 {
-    color: #94a3b8 !important;
-    font-style: italic;
-}
-
-/* Comments */
-body .rst-content div[class*='highlight'] .s2,
-body .rst-content div[class*='highlight'] .s {
-    color: #fde047 !important;
-}
-
-/* Strings */
-body .rst-content div[class*='highlight'] .m,
-body .rst-content div[class*='highlight'] .mi,
-body .rst-content div[class*='highlight'] .mf {
-    color: #4ade80 !important;
-}
-
-/* Numbers */
-
-/* Code Block Caption Bar (File Names) */
-body .rst-content .code-block-caption {
-    background-color: #1e293b !important;
-    color: #94a3b8 !important;
-    font-family: monospace;
-    font-size: 0.85em;
-    font-weight: 600;
-    padding: 8px 16px !important;
-    border-bottom: 1px solid #334155 !important;
-    border-top-left-radius: 12px !important;
-    border-top-right-radius: 12px !important;
-}
-
 /* ==========================================================================
-   4. White Math Panel Inside Example Boxes
+   3. Crisp White Math Panel Inside Example Card
    ========================================================================== */
 
-body .rst-content div.math,
-body .rst-content .topic div.math,
-body .rst-content div.admonition div.math {
+div.sd-card.example-card div.math,
+.rst-content div.math {
     background-color: #ffffff !important;
-    /* Crisp White Background */
     border: 1px solid #cbd5e1 !important;
-    /* Soft Grey Border */
     border-radius: 8px !important;
-    /* Rounded Corners */
     padding: 1em !important;
     margin: 1em 0 !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03) !important;
     overflow-x: auto !important;
-}
-
-body .rst-content span.math {
-    font-size: 1.05em;
-}
-
-/* ==========================================================================
-   5. Custom Terminal Window Directive (`.. terminal::`)
-   ========================================================================== */
-
-body div.highlight pre.terminal,
-body .rst-content .highlight pre.terminal,
-body pre.terminal {
-    background-color: #2d2d2d !important;
-    color: #4AF626 !important;
-    font-family: 'Courier New', Courier, monospace !important;
-    font-size: 14px !important;
-    line-height: 1.5 !important;
-    border-radius: 10px !important;
-    padding: 40px 20px 20px 20px !important;
-    position: relative;
-    margin: 25px 0 !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
-    border: 1px solid #444 !important;
-    white-space: pre !important;
-}
-
-body div.highlight pre.terminal span {
-    color: #4AF626 !important;
-    background: transparent !important;
-}
-
-body div.highlight pre.terminal::before {
-    content: "● ● ●";
-    position: absolute;
-    top: 12px;
-    left: 18px;
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: #ff5f56;
-    text-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
-    font-family: sans-serif !important;
-}
-
-body div.highlight pre.terminal::after {
-    content: "SepalSolver Output";
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #777;
-    font-size: 11px;
-    font-family: sans-serif;
-}
-
-/* ==========================================================================
-   6. Copy Button Extension Styling
-   ========================================================================== */
-
-body .copybutton {
-    color: #94a3b8 !important;
-    border-radius: 6px !important;
-    padding: 4px 6px !important;
-    background-color: #1e293b !important;
-    border: 1px solid #334155 !important;
-    opacity: 0.8;
-}
-
-body .copybutton:hover {
-    opacity: 1;
-    color: #ffffff !important;
-    background-color: #0284c7 !important;
 }

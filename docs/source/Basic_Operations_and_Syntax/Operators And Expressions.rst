@@ -94,7 +94,7 @@ Examples
 --------
 
 
-.. Admonition:: Example 1 :  Filtering Convergence Data
+.. card:: Example 1 :  Filtering Convergence Data
 
    In this scenario, we have a list of error values captured from a solver
    that is struggling to reach a steady state. We want to programmatically
@@ -118,7 +118,7 @@ Examples
       Found 2 converged steps.
 
 
-.. Admonition:: Example 2 :  Statistical Analysis
+.. card:: Example 2 :  Statistical Analysis
 
    Imagine you have completed a simulation and possess a vector of residuals
    representing the difference between your guess and the true solution.
@@ -141,7 +141,7 @@ Examples
       Average: 0.038, Energy: 0.0103
 
 
-.. Admonition:: Example 3 :  Mapping Node IDs
+.. card:: Example 3 :  Mapping Node IDs
 
    In Finite Element Analysis (FEA), nodes are often assigned unique
    identification numbers that aren't necessarily sequential. By using a
@@ -172,7 +172,7 @@ Examples
       Node 102 position: 0.5
 
 
-.. Admonition:: Example 4 :  Generating Sequences
+.. card:: Example 4 :  Generating Sequences
 
    Setup is a major part of numerical modeling. Instead of writing
    cumbersome loops to initialize an identity-like vector or an index

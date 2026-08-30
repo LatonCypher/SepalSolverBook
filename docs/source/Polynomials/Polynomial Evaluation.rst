@@ -29,7 +29,7 @@ When coefficients are in descending order, Horner's method becomes particularly 
 Examples
 --------
 
-.. Admonition:: Example 1 :  Real Value Evaluation (Descending)
+.. card:: Example 1 :  Real Value Evaluation (Descending)
 
    We define a cubic polynomial :math:`P(x)= 2x^3 −6x^2 + 2x−1`. Notice how the input sequence exactly matches the mathematical coefficients written from highest to lowest degree.
    
@@ -48,7 +48,7 @@ Examples
       P(3.0) = 5
 
 
-.. Admonition:: Example 2 :  Complex Evaluation (Descending) 
+.. card:: Example 2 :  Complex Evaluation (Descending) 
 
    Evaluating at a complex point :math:`s = \sigma + j \omega` is common in control theory. Here we evaluate :math:`P(s)=1s^2 + 0s + 1` (which is :math:`s^2 + 1`) at the imaginary unit i.
    
@@ -67,7 +67,7 @@ Examples
       P(i) =   0.0000 + 0.0000i 
 
 
-.. Admonition:: Example 3 :  Column Vector Evaluation (Vectorized) 
+.. card:: Example 3 :  Column Vector Evaluation (Vectorized) 
 
 In this case, we have a set of measurements in a ColVec and we want to pass them through our polynomial model. SepalSolver iterates /// through the vector, applying the descending-order Horner's method /// to each element. 
    

@@ -101,6 +101,3 @@ Content
 
    Basic_Operations_and_Syntax/index
    Polynomials/index
-   Interpolation/index
-   Special_Functions/index
-   Linear_Algebra/index

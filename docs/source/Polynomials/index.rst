@@ -27,4 +27,3 @@ A polynomial :math:`P(x)=a_0 x^n + a_1 x^{n-1} + a_2 x^{n - 2} + \cdots + a_n` i
    Polynomial Differentiation and Integration
    Polynomial Arithmetics
    Polynomial Roots
-   Exercise

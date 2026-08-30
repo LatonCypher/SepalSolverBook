@@ -65,7 +65,7 @@ Examples
 ~~~~~~~~
 
 
-.. Admonition:: Example 1 :  Explicit vs Implicit Typing 
+.. card:: Example 1 :  Explicit vs Implicit Typing 
 
    
    .. code-block:: csharp
@@ -82,7 +82,7 @@ Examples
       Precision: 0.0001, Tolerance: 1E-06
 
 
-.. Admonition:: Example 2 :  Constant Variables 
+.. card:: Example 2 :  Constant Variables 
 
    
    .. code-block:: csharp
@@ -100,7 +100,7 @@ Examples
       Acceleration due to gravity: 9.81 m/s²
 
 
-.. Admonition:: Example 3 :  Scope and Braces
+.. card:: Example 3 :  Scope and Braces
 
    
    .. code-block:: csharp
@@ -121,7 +121,7 @@ Examples
       Sum: 30
 
 
-.. Admonition:: Example 4 :  Nullable Reference Types 
+.. card:: Example 4 :  Nullable Reference Types 
 
    
    .. code-block:: csharp

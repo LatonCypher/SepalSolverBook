@@ -160,7 +160,7 @@ Examples
 ~~~~~~~~
 
 
-.. Admonition:: Example 1 :  Integer Arithmetic 
+.. card:: Example 1 :  Integer Arithmetic 
 
    
    .. code-block:: csharp
@@ -180,7 +180,7 @@ Examples
    
 
 
-.. Admonition:: Example 2 :  Floating Point Calculation 
+.. card:: Example 2 :  Floating Point Calculation 
 
    
    .. code-block:: csharp
@@ -197,7 +197,7 @@ Examples
       Area = 78.53981633974483
 
 
-.. Admonition:: Example 3 :  Character and ASCII 
+.. card:: Example 3 :  Character and ASCII 
 
    
    .. code-block:: csharp
@@ -214,7 +214,7 @@ Examples
       Character: A, ASCII: 65
 
 
-.. Admonition:: Example 4 :  Boolean Logic 
+.. card:: Example 4 :  Boolean Logic 
 
    
    .. code-block:: csharp
@@ -232,7 +232,7 @@ Examples
       Go out? False
 
 
-.. Admonition:: Example 5 :  Strings 
+.. card:: Example 5 :  Strings 
 
    
    .. code-block:: csharp

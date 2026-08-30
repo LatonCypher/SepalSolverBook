@@ -18,7 +18,7 @@ Examples
 --------
 
 
-.. Admonition:: Example 1 :  Fitting a Perfect Quadratic 
+.. card:: Example 1 :  Fitting a Perfect Quadratic 
 
    If our data follows a perfect square relationship, such as :math:`y = x^2`, we expect `Polyfit` to return coefficients that reflect :math:`1x^2 + 0x + 0`. In this example, we fit a degree :math:`N=2` polynomial to a set of coordinates. 
    
@@ -56,7 +56,7 @@ Examples
    
 
 
-.. Admonition:: Example 2 :  Linear Regression from Sensor Data
+.. card:: Example 2 :  Linear Regression from Sensor Data
 
    Imagine you are testing a linear spring. You record the force :math:`Y` applied at various displacements :math:`X`. By fitting a degree :math:`N=1` polynomial, you can find the spring constant :math:`k`, which corresponds to the first coefficient in the returned array.
    
@@ -78,7 +78,7 @@ Examples
       Spring Constant k: 99.80000000000003 N/m
 
 
-.. Admonition:: Example 3 :  Handling Noise in Experimental Data 
+.. card:: Example 3 :  Handling Noise in Experimental Data 
 
    Real-world data is rarely perfect. When data points are "noisy," fitting a lower-degree polynomial acts as a filter, capturing the general trend without being distracted by individual measurement errors. 
    
@@ -106,7 +106,7 @@ It is also important to choose the correct degree of the polynomial to get a goo
 Overfitting can occur if the degree is too high, while underfitting can happen if the degree is too low.
 
 
-.. Admonition:: Example 4 :  Underfitting Problem
+.. card:: Example 4 :  Underfitting Problem
 
    In this example, we compare a linear and quaradtic fit for the same data. showing the importance of choosing the right degree for the fitting. 
    
@@ -199,7 +199,7 @@ Examples
 
 
 
-.. Admonition:: Example 1 : 
+.. card:: Example 1 : 
 
    The Antoine equation relates the vapor pressure of a substance to its temperature:
    
@@ -286,14 +286,14 @@ Examples
       Fitted Parameters: A = 6.1681, B = 1170.7321, C = -48.0075
 
 
-.. Admonition:: Example 2 :  
+.. card:: Example 2 :  
 
    Material Stress Analysis The stress(:math:`\sigma`) on a component might depend on both Temperature(:math:`T`) and Pressure(:math:`P`). 
    A multivariate fit allows you to create a "Stress Surface" that can predict failure points at any combination of: math:`T` and :math:`P`. 
    
 
 
-.. Admonition:: Example 3 :  
+.. card:: Example 3 :  
 
    Aero-Efficiency Mapping For a wing, the Lift Coefficient(:math:`C_L`) is a function of both the Angle of Attack(:math:`\alpha`) 
    and the Mach Number(:math:`M`). Using multivariate fitting, flight computers can interpolate lift values instantly across the entire flight envelope.

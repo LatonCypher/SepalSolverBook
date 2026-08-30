@@ -36,7 +36,7 @@ Examples
 --------
 
 
-.. Admonition:: Example 1 :  Finding Natural Frequencies
+.. card:: Example 1 :  Finding Natural Frequencies
 
    
    In vibration analysis, the roots of a characteristic polynomial :math:`(s^2 + 4s + 13)`represent the squared natural frequencies of a system. By passing the coefficients of the system's governing equation to Roots, we can identify the resonance points. 
@@ -60,7 +60,7 @@ Examples
         -2.0000 + 3.0000i 
 
 
-.. Admonition:: Example 2 :  Intersection of a Curve and an Axis
+.. card:: Example 2 :  Intersection of a Curve and an Axis
 
    
    Imagine a robot arm path described by :math:`f(x) = x^3 - 2x^2 - 5x + 6`. We need to know exactly where the arm crosses the baseline (the x-axis). Using the Roots function allows us to find all three points of intersection simultaneously. 
@@ -86,7 +86,7 @@ Examples
       Crossing at: 3
 
 
-.. Admonition:: Example 3 : 
+.. card:: Example 3 : 
 
    Compute the roots of :math:`x^8 + 2x^7 + 3x^6 + 4x^5 + 5x^4 + 6x^3 + 7x^2 + 2x + 3`
    
@@ -120,7 +120,7 @@ Examples
 
 
 
-.. Admonition:: Example 4 :  Refining a Guess with Newton-Raphson
+.. card:: Example 4 :  Refining a Guess with Newton-Raphson
 
    When high precision is required for a specific physical boundary, we take a rough estimate from a graph and refine it. By combining Evaluate and Polyder, we can implement a custom search that converges in just a few iterations.
    

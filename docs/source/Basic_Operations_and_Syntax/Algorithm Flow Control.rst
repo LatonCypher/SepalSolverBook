@@ -68,7 +68,7 @@ Examples
 --------
 
 
-.. Admonition:: Example 1 :  The If-Condition: Safety Checks
+.. card:: Example 1 :  The If-Condition: Safety Checks
 
    Before performing a division in a numerical formula, such as normalizing
    a vector, it is vital to ensure we aren't dividing by zero. An `if`
@@ -95,7 +95,7 @@ Examples
       Inversion successful: 100000000
 
 
-.. Admonition:: Example 2 :  The Switch-Condition: Solver Selection
+.. card:: Example 2 :  The Switch-Condition: Solver Selection
 
    In a multi-physics application, you might need to switch between different
    integration schemes. The `switch` statement makes this choice clear and
@@ -127,7 +127,7 @@ Examples
       Executing Runge-Kutta 4th Order...
 
 
-.. Admonition:: Example 3 :  The While-Loop: Convergence Monitor
+.. card:: Example 3 :  The While-Loop: Convergence Monitor
 
    A `while` loop is the heartbeat of iterative methods. In this example,
    we simulate a cooling process where we keep calculating the temperature
@@ -156,7 +156,7 @@ Examples
       Cooled to 25.10°C in 63 seconds.
 
 
-.. Admonition:: Example 4 :  The Foreach Loop: Property Calculation
+.. card:: Example 4 :  The Foreach Loop: Property Calculation
 
    When you need to perform an operation on every element in a collection,
    like calculating the total mass of all elements in a structural model,

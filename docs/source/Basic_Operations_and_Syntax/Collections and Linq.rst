@@ -78,7 +78,7 @@ A vital concept in LINQ is that queries are not executed when they are defined.T
 Examples
 --------
 
-.. Admonition:: Example 1 :  Filtering Convergence Data
+.. card:: Example 1 :  Filtering Convergence Data
 
    
    .. code-block:: csharp
@@ -99,7 +99,7 @@ Examples
       Found 2 converged steps.
 
 
-.. Admonition:: Example 2 :  Statistical Analysis of a Vector
+.. card:: Example 2 :  Statistical Analysis of a Vector
 
    
    .. code-block:: csharp
@@ -118,7 +118,7 @@ Examples
       Average: 0.038, Energy: 0.0103
 
 
-.. Admonition:: Example 3 :  Mapping Node IDs to Coordinates
+.. card:: Example 3 :  Mapping Node IDs to Coordinates
 
    
    .. code-block:: csharp
@@ -138,7 +138,7 @@ Examples
       Node 102 position: 0.5
 
 
-.. Admonition:: Example 4 :  Generating Sequences
+.. card:: Example 4 :  Generating Sequences
 
    
    .. code-block:: csharp
