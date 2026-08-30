@@ -1,4 +1,6 @@
 # Configuration file for the Sphinx documentation builder.
+from docutils import nodes
+from docutils.parsers.rst import Directive
 
 # -- Project information
 
@@ -21,7 +23,7 @@ extensions = [
     'sphinx_tabs.tabs',
     'sphinx.ext.autosectionlabel',
     'sphinx_copybutton',
-    'sphinx.design'
+    'sphinx_design',  # FIXED: Changed from 'sphinx.design' to 'sphinx_design'
 ]
 
 intersphinx_mapping = {
@@ -36,25 +38,30 @@ templates_path = ['_templates']
 
 html_theme = 'sphinx_rtd_theme'
 
+# Disable Pygments theme backgrounds so custom CSS handles code panel styling
+pygments_style = 'none'
+
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
 
-# -- Options for Pygment style
-pygments_style = 'sphinx'
+# -- Static files and Custom CSS
 
-
-# Ensure _static directory is included
 html_static_path = ['_static']
 
-# Set pygments_style to 'none' so Sphinx stops hardcoding light backgrounds
-pygments_style = 'none'
-
-# Register custom CSS
 html_css_files = [
     'custom.css',
 ]
 
-# Ensure custom.css is appended after all theme stylesheets
+# -- Custom Terminal Directive
+
+class TerminalDirective(Directive):
+    has_content = True
+    def run(self):
+        text = '\n'.join(self.content)
+        node = nodes.literal_block(text, text)
+        node['classes'].append('terminal')
+        node['language'] = 'none'
+        return [node]
+
 def setup(app):
     app.add_directive("terminal", TerminalDirective)
-    app.add_css_file('custom.css', priority=999)  # Priority 999 forces it to load LAST
