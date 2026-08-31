@@ -556,7 +556,7 @@ namespace ConsoleApp1
                 string line = bookContent[startIndex];
                 string contentangle = Regex.Match(line, "<(.*?)>").Value;
                 string[] examplen = contentangle.Substring(1, contentangle.Length-2).Split(' ');
-                List<string> Codelines = ["", $".. card:: Example {examplen[1]} : {line.Substring(line.IndexOf(">")+1)}", ""];
+                List<string> Codelines = ["", $".. admonition:: Example {examplen[1]} : {line.Substring(line.IndexOf(">")+1)}", ""];
 
                 while (!bookContent[startIndex + Length].Contains("</example"))
                 {

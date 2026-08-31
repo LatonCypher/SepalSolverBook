@@ -61,7 +61,7 @@ Comparison: Linprog Formulation Levels
      - Explicit (:math:`\mathbf{Lb}, \mathbf{Ub}`)
 
 
-.. Admonition:: Example 1 :  Example 1: Standard Linear Program with Inequality Constraints 
+.. admonition:: Example 1 :  Example 1: Standard Linear Program with Inequality Constraints 
 
    Minimizing a linear objective function subject to a system of linear inequalities defining a 2D polyhedral feasible region:
    
@@ -101,7 +101,7 @@ Comparison: Linprog Formulation Levels
 
 
 
-.. Admonition:: Example 2 :  Example 2: Linear Program with Inequality and Equality Constraints 
+.. admonition:: Example 2 :  Example 2: Linear Program with Inequality and Equality Constraints 
 
    Incorporating linear equality constraints :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}` to restrict the search space along a hyper-plane intersecting the feasible region:
    
@@ -142,7 +142,7 @@ Comparison: Linprog Formulation Levels
       
 
 
-.. Admonition:: Example 3 :  Example 3: Fully Constrained Linear Program with Variable Bounds 
+.. admonition:: Example 3 :  Example 3: Fully Constrained Linear Program with Variable Bounds 
 
    Enforcing explicit lower (:math:`\mathbf{Lb}`) and upper (:math:`\mathbf{Ub}`) limits on each decision variable alongside inequality and equality systems:
    

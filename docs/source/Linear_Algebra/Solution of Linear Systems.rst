@@ -69,7 +69,7 @@ Ouput
 SepalSolver provides two major iterative solvers. Conjugate Gradient (`ConjGrad`) for large sparse symmetric matrices and the Generalized Minimum Residual (`GenMinRes`) for large sparse nonsymmetric matrices. 
 
 
-.. card:: Example 1 :  Generalized Minimum Residual 
+.. admonition:: Example 1 :  Generalized Minimum Residual 
 
    This eaxample shows how to use generalized minimum residutal method. Pay attention to how the Matrix was made. 
    
@@ -100,7 +100,7 @@ SepalSolver provides two major iterative solvers. Conjugate Gradient (`ConjGrad`
       res = 3.6283012552149844E-07
 
 
-.. card:: Example 2 :  Conjugate Gradient
+.. admonition:: Example 2 :  Conjugate Gradient
 
    This eaxample shows how to use conjugate gradient.
    

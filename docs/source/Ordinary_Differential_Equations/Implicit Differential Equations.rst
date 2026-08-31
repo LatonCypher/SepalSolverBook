@@ -52,7 +52,7 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
 , :math:`F(x, y, y') = y - x y' - f(y')`.
 
 
-.. Admonition:: Example 1 :  Solving Clairaut's Equation :math:`y = x y' + \left(y'\right)^2`
+.. admonition:: Example 1 :  Solving Clairaut's Equation :math:`y = x y' + \left(y'\right)^2`
 
    
    
@@ -99,7 +99,7 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    
 
 
-.. Admonition:: Example 2 :  Solve Weissinger implicit ODE :math:`y = x^n f(y') + g(y')`
+.. admonition:: Example 2 :  Solve Weissinger implicit ODE :math:`y = x^n f(y') + g(y')`
 
    While Clairaut's equation is a textbook classic, **Weissinger’s Implicit Differential Equation** takes things a step further into the realm of higher-degree implicit equations. It is specifically a first-order equation where the derivative  is raised to a power, but it maintains a structure that allows for a clever substitution method.
    The general form of a Weissinger equation is:
@@ -205,7 +205,7 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
 
 
 
-.. Admonition:: Example 3 :  Robertson differential equation in implicit form
+.. admonition:: Example 3 :  Robertson differential equation in implicit form
 
    Here we reformulate the robertson ode as a pully implicit system of differential algebraic equations
    

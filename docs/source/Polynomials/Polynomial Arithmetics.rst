@@ -87,7 +87,7 @@ Examples
 --------
 
 
-.. card:: Example 1 :  Combining Structural Models
+.. admonition:: Example 1 :  Combining Structural Models
 
    Suppose you are combining two transfer functions in a control system. You need to add the characteristic polynomials of two sub-components. Using PolyAdd, the solver automatically handles the degree mismatch between a quadratic and a linear system.
    
@@ -109,7 +109,7 @@ Examples
       New Degree: 2
       Combined Coefficients: [1, -4, 8]
 
-.. card:: Example 2 :  Expanding a Product of Factors
+.. admonition:: Example 2 :  Expanding a Product of Factors
 
 In root-finding verification, you might want to multiply factors :math:`(x - r_1)(x - r_2)` to see if you recover the original polynomial. Conv makes this/// expansion trivial and numerically stable.
    
@@ -131,7 +131,7 @@ In root-finding verification, you might want to multiply factors :math:`(x - r_1
       Expanded = [1, -5, 6]
 
 
-.. card:: Example 3 :  Finding Remainders in Signal Filtering
+.. admonition:: Example 3 :  Finding Remainders in Signal Filtering
 
    When dividing polynomials to check for divisibility or performing long division in a filter design, the remainder tells us if one polynomial is a perfect factor of another.
    

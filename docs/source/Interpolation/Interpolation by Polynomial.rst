@@ -43,7 +43,7 @@ This results in a much smoother curve, but it can be prone to "swinging" if the 
 Examples
 --------
 
-.. card:: Example 1 :  Signal Denoising and Prediction
+.. admonition:: Example 1 :  Signal Denoising and Prediction
 
    In sensor applications, individual readings often jump due to electronic noise.
    By fitting a low-degree polynomial to a window of data, you "smooth out" the noise.
@@ -70,7 +70,7 @@ Examples
        midvoltage = 1.0365000000000002
 
 
-.. card:: Example 2 :  Structural Deformation Mapping
+.. admonition:: Example 2 :  Structural Deformation Mapping
 
    If you measure the deflection of a beam at 5 specific locations, 
    a polynomial fit of degree 3 or 4 can describe the continuous "shape" of the beam.
@@ -117,7 +117,7 @@ Multivariate Application
 The idea of using polynomial fits can be extended to multiple dimensions. For example, if you have data points in 2D space (x, y) with corresponding values z, you can fit a polynomial surface to approximate z as a function of x and y. This is particularly useful in fields like geostatistics or thermodynamic property evaluation, where you want to model complex surfaces based on scattered data.
 
 
-.. card:: Example 4 :  Thermodynamic Property Estimation
+.. admonition:: Example 4 :  Thermodynamic Property Estimation
 
    
    .. code-block:: csharp

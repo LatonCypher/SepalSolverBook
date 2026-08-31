@@ -1,9 +1,9 @@
 /* ==========================================================================
-   1. Light Blue Example Card (sphinx-design override)
+   1. Light Blue Example admonition (sphinx-design override)
    ========================================================================== */
 
-/* Outer Card Container */
-div.sd-card.example-card {
+/* Outer admonition Container */
+div.sd-admonition.example-admonition {
     background-color: #292561 !important;
     border: 1px solid #0d4766 !important;
     border-left: 6px solid #0284c7 !important;
@@ -13,16 +13,16 @@ div.sd-card.example-card {
     overflow: hidden !important;
 }
 
-/* Internal Card Body (Where text/math/code live) */
-div.sd-card.example-card .sd-card-body {
+/* Internal admonition Body (Where text/math/code live) */
+div.sd-admonition.example-admonition .sd-admonition-body {
     background-color: #1c6fce !important;
     color: #1e293b !important;
     padding: 1.25em !important;
 }
 
-/* Card Header Bar */
-div.sd-card.example-card .sd-card-header,
-div.sd-card.example-card div.sd-card-header {
+/* admonition Header Bar */
+div.sd-admonition.example-admonition .sd-admonition-header,
+div.sd-admonition.example-admonition div.sd-admonition-header {
     background-color: #2b4552 !important;
     color: #ffffff !important;
     font-weight: 700 !important;
@@ -35,7 +35,7 @@ div.sd-card.example-card div.sd-card-header {
 }
 
 /* Force header text to white */
-div.sd-card.example-card .sd-card-header * {
+div.sd-admonition.example-admonition .sd-admonition-header * {
     color: #ffffff !important;
 }
 
@@ -43,7 +43,7 @@ div.sd-card.example-card .sd-card-header * {
    2. Dark Slate Blue Code Blocks
    ========================================================================== */
 
-div.sd-card.example-card div[class*='highlight'],
+div.sd-admonition.example-admonition div[class*='highlight'],
 div[class*='highlight'],
 .rst-content div[class*='highlight'] {
     background-color: #0f172a !important;
@@ -103,7 +103,7 @@ div[class*='highlight'] .mf {
    3. Crisp White Math Panels
    ========================================================================== */
 
-div.sd-card.example-card div.math,
+div.sd-admonition.example-admonition div.math,
 .rst-content div.math {
     background-color: #ffffff !important;
     border: 1px solid #cbd5e1 !important;

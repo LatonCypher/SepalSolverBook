@@ -30,7 +30,7 @@ For integrals lacking an explicit :math:`e^{-x}` weight or evaluated over :math:
 Applied Examples
 ~~~~~~~~~~~~~~~~
 
-.. card:: Example 1 :  Example 1: Standard Exponential-Weighted Polynomial Integration
+.. admonition:: Example 1 :  Example 1: Standard Exponential-Weighted Polynomial Integration
 
    Evaluate 
    
@@ -60,7 +60,7 @@ Applied Examples
    
 
 
-.. card:: Example 2 :  Example 2: Quantum Physics Atomic Orbital Integral
+.. admonition:: Example 2 :  Example 2: Quantum Physics Atomic Orbital Integral
 
    Evaluate 
    
@@ -92,7 +92,7 @@ Applied Examples
    Commonly used in radial wave-function integrals for hydrogen-like atom probability densities.
 
 
-.. card:: Example 3 :  Example 3: Unweighted Semi-Infinite Exponential Decay 
+.. admonition:: Example 3 :  Example 3: Unweighted Semi-Infinite Exponential Decay 
 
    Evaluate 
    
@@ -123,7 +123,7 @@ Applied Examples
 
 
 
-.. card:: Example 4 :  Example 4: Trigonometric Oscillatory Decay
+.. admonition:: Example 4 :  Example 4: Trigonometric Oscillatory Decay
 
    Evaluate :
    

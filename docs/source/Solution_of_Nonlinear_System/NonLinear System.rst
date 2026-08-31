@@ -45,7 +45,7 @@ Examples
 --------
 
 
-.. card:: Example 1 :  : Single Equation
+.. admonition:: Example 1 :  : Single Equation
 
    Solve: :math:`x^2 - 4 = 0`:
    
@@ -66,7 +66,7 @@ Examples
    
 
 
-.. card:: Example 2 :  System of Equations
+.. admonition:: Example 2 :  System of Equations
 
    Solve the system:
    
@@ -186,7 +186,7 @@ Parameterized nonlinear equations :math:`F(x, \lambda) = 0` are equations or sys
 This parameter(s) can be exploited to provide means to guarantee that a good initial guess can be estimated. For instance, some values of the parameter might help eliminate the nonlinearity of the system and hence, no guess is needed for the solution. Then variation of this parameter can then be used to move the solution :math:`x` gently to their values that corresponds to the orginally intended values of the parameter :math:`\lambda`.
 
 
-.. card:: Example 2 : 
+.. admonition:: Example 2 : 
 
    Consider this parameterized nonlinear system. The nonlinearity is controlled by parameter :math:`c`.
    
@@ -234,7 +234,7 @@ Matrix Equation
 ---------------
 The SepalSolver also allow for easy computation of matrix equations. For instance, we can easily compute the cuberoot of a matrix. :math:`x^3 = \begin{pmatrix} 1&2 \\ 3&4  \end{pmatrix}`;
 
-.. card:: Example 3 : 
+.. admonition:: Example 3 : 
 
    
    .. math::

@@ -32,7 +32,7 @@ Examples
 ~~~~~~~~
 SepalSolver impelements ODE43s for stiff differential equation. This is an embeded diagonally implicit solver which is capable of error estimate and hence enable adpative time stepping.  Here we look at how to use this function to solve stiff Van der Pol Oscillator and Robertson differential equation. 
 
-.. Admonition:: Example 1 :  Van der Pol Oscillator (:math:`\mu = 1 \times 10^5`)
+.. admonition:: Example 1 :  Van der Pol Oscillator (:math:`\mu = 1 \times 10^5`)
 
    Solve the ODE :math:`~d^2y/dt^2 = 10^{5}((1 - y^2)y' - y)~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 6.3]`.
    
@@ -70,7 +70,7 @@ SepalSolver impelements ODE43s for stiff differential equation. This is an embed
    
 
 
-.. Admonition:: Example 2 :  Robertson ODE
+.. admonition:: Example 2 :  Robertson ODE
 
    The Robertson ODE is the classic "benchmark" problem used to test the efficiency and stability of numerical solvers for stiff differential equations. It describes a simplified chemical reaction involving three species (:math:`y_1, y_2, y_3`) with reaction rates that differ by several orders of magnitude.
    
@@ -157,7 +157,7 @@ SepalSolver impelements ODE43s for stiff differential equation. This is an embed
 
 
 
-.. Admonition:: Example 4 :  Using OdeSet
+.. admonition:: Example 4 :  Using OdeSet
 
    Here we look at the use of odeset
    

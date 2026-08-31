@@ -44,7 +44,7 @@ Applied Examples (Solved via Simple Solver)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-.. card:: Example 1 :  Exact Polynomial Integration (2-Point Rule)
+.. admonition:: Example 1 :  Exact Polynomial Integration (2-Point Rule)
 
    Evaluate 
    
@@ -75,7 +75,7 @@ Applied Examples (Solved via Simple Solver)
 ---
 
 
-.. card:: Example 2 :  Transcendental Function 
+.. admonition:: Example 2 :  Transcendental Function 
 
    
    .. math::
@@ -105,7 +105,7 @@ Applied Examples (Solved via Simple Solver)
 
 
 
-.. card:: Example 3 :  Infinite bound 
+.. admonition:: Example 3 :  Infinite bound 
 
    Evaluate 
    
@@ -142,7 +142,7 @@ SepalSolver can handle multiple integral via `IntegralN`. IntegralN is built on 
 It is abole to compute upto 4 dimensional integrals efficiently.
 
 
-.. card:: Example 4 :  Hypercube domain in 3 dimensions
+.. admonition:: Example 4 :  Hypercube domain in 3 dimensions
 
    Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
    :math:`y` ranges from :math:`1` to :math:`2`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
@@ -184,7 +184,7 @@ It is abole to compute upto 4 dimensional integrals efficiently.
 
 
 
-.. card:: Example 5 : 
+.. admonition:: Example 5 : 
 
    Integrate the function :math:`f(x, y) = xy` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
    :math:`y` ranges from :math:`x^2` to :math:`2`, which can be expressed as:
@@ -221,7 +221,7 @@ It is abole to compute upto 4 dimensional integrals efficiently.
       The triple integral of x*y*z is approximately: 0.9167
 
 
-.. card:: Example 6 :  Functional boundary 
+.. admonition:: Example 6 :  Functional boundary 
 
    Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
    :math:`y` ranges from :math:`x^2` to :math:`\sqrt{x}`, and :math:`z` ranges from :math:`2` to :math:`3`, which can be expressed as:
@@ -262,7 +262,7 @@ It is abole to compute upto 4 dimensional integrals efficiently.
       The triple integral of x*y*z is approximately: 0.2083
 
 
-.. card:: Example 7 :  Functional boundary
+.. admonition:: Example 7 :  Functional boundary
 
    Integrate the function :math:`f(x, y, z) = xyz` over the region where :math:`x` ranges from :math:`0` to :math:`1`, 
    :math:`y` ranges from :math:`x^2` to :math:`\sqrt{x}`, and :math:`z` ranges from :math:`xy` to :math:`x+y`, which can be expressed as:

@@ -60,7 +60,7 @@ Examples
 Here are examples of converting and solving various higher‑order ODEs using SepalSolver.
 
 
-.. Admonition:: Example 1 :  Simple Harmonic Oscillator (Second Order)
+.. admonition:: Example 1 :  Simple Harmonic Oscillator (Second Order)
 
    | Equation: :math:`y'' + y = 0`,
    | Converted system:
@@ -91,7 +91,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
    
 
 
-.. Admonition:: Example 2 :  Damped Oscillator
+.. admonition:: Example 2 :  Damped Oscillator
 
    | Equation: :math:`y'' + 2β y' + ω^2 y = 0`,
    | Converted system:
@@ -123,7 +123,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
    
 
 
-.. Admonition:: Example 3 :  Forced Oscillator
+.. admonition:: Example 3 :  Forced Oscillator
 
    | Equation: :math:`y'' + y = cos(t)`,
    | Converted system:
@@ -154,7 +154,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
    
 
 
-.. Admonition:: Example 4 :  RLC Circuit
+.. admonition:: Example 4 :  RLC Circuit
 
    | Equation: :math:`L i'' + R i' + (1/C) i = 0`,
    | Converted system:
@@ -186,7 +186,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
    
 
 
-.. Admonition:: Example 5 :  Third‑Order Example
+.. admonition:: Example 5 :  Third‑Order Example
 
    | Equation: :math:`y''' - y = 0`,
    | Converted system:
@@ -218,7 +218,7 @@ Here are examples of converting and solving various higher‑order ODEs using Se
    
 
 
-.. Admonition:: Example 6 :  Pleiades System (Using Higher Order Solvers)
+.. admonition:: Example 6 :  Pleiades System (Using Higher Order Solvers)
 
    The Pleiades, also known as the Seven Sisters(M45)[1], is a prominent open star cluster located in the constellation Taurus.It's one of the closest and most easily visible star clusters to Earth[2], making it a favorite target for stargazers and a subject of fascination across cultures. The system of equations describing the motion of the stars in the cluster consists of 14 nonstiff second-order differential equations, which produce a system of 28 equations when rewritten in first-order form.
    

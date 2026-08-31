@@ -31,7 +31,7 @@ Where :math:`M` is a singular matrix.
 ----------------------------
 
 
-.. Admonition:: Example 1 : 
+.. admonition:: Example 1 : 
 
    **Example 1: The Robertson Problem (Chemical Kinetics)**
    This is a classic stiff DAE representing the reaction of three species. It is an Index-1 DAE where the total mass is conserved via an algebraic constraint.
@@ -64,7 +64,7 @@ Where :math:`M` is a singular matrix.
    
 
 
-.. Admonition:: Example 1 :  The Simple Pendulum (Index-1)
+.. admonition:: Example 1 :  The Simple Pendulum (Index-1)
 
    A pendulum in Cartesian coordinates is naturally an Index-3 DAE. We solve the stabilized Index-1 version by including velocity constraints.
    
@@ -135,7 +135,7 @@ this initial condition y0 = [1, 0, 0, 1, 1];
 
 
 
-.. Admonition:: Example 2 :  Semi-Explicit DAE (The Transistor Amplifier)**
+.. admonition:: Example 2 :  Semi-Explicit DAE (The Transistor Amplifier)**
 
    This example mimics the "hbdae" problem from MathWorks, representing an electrical circuit with nonlinear components.
    
@@ -229,7 +229,7 @@ this initial condition y0 = [1, 0, 0, 1, 1];
    
 
 
-.. Admonition:: Example 3 :  The Akzo Nobel Problem
+.. admonition:: Example 3 :  The Akzo Nobel Problem
 
    A high-dimensional DAE describing a chemical process with 6 differential and 2 algebraic equations. This tests the solver's ability to handle stiff systems with coupled variables.
    
@@ -315,7 +315,7 @@ Most DAE solvers usually avoid solving DAEs in index 2 form. But SepalSolver is 
 Now we look at examples of index 2 DAEs
 
 
-.. Admonition:: Example 4 :  
+.. admonition:: Example 4 :  
 
    Usnig the example from "On the numerical solution of differential–algebraic equations with index-2" by Ercan Celık
    
@@ -482,7 +482,7 @@ Now we look at examples of index 2 DAEs
    
 
 
-.. Admonition:: Example 5 :  Pendulum position constraint (Index-2)
+.. admonition:: Example 5 :  Pendulum position constraint (Index-2)
 
    To reduce the index, if we differentiated the constraint once instead of twice, we end up with index 2 problem. 
    
@@ -535,7 +535,7 @@ Now we look at examples of index 2 DAEs
       Summary of statistics by Ode43a
               768 successful steps
               744 failed attempts
-              45119 function evaluations
+              45120 function evaluations
               1512 partial derivatives
               4671 LU decompositions
               31359 solutions of linear systems
@@ -1446,7 +1446,7 @@ Ouput
    Summary of statistics by Ode43a
            1054 successful steps
            16 failed attempts
-           30517 function evaluations
+           30516 function evaluations
            1070 partial derivatives
            4280 LU decompositions
            19799 solutions of linear systems
