@@ -5,9 +5,9 @@
 /* Main Admonition Container */
 body .rst-content div.admonition.example-box,
 body .rst-content .admonition.example-box {
-    background-color: #f0f7ff !important;
+    background-color: #0284c7 !important;
     /* Soft Light Blue Background */
-    border: 1px solid #bae6fd !important;
+    border: 1px solid #0284c7 !important;
     /* Soft Blue Border */
     border-left: 6px solid #0284c7 !important;
     /* Accent Left Bar */
@@ -26,7 +26,7 @@ body .rst-content div.admonition.example-box .admonition-title,
 body .rst-content .admonition.example-box .admonition-title {
     background-color: #0284c7 !important;
     /* Solid Blue Title Bar */
-    color: #ffffff !important;
+    color: #0284c7 !important;
     /* Crisp White Header Text */
     font-weight: 700 !important;
     padding: 10px 16px !important;
@@ -70,7 +70,7 @@ body .rst-content pre {
     background-color: #0f172a !important;
     /* Matches Container Dark Blue */
     border-radius: 10px !important;
-    color: #f8fafc !important;
+    color: #0284c7 !important;
     /* Legible Code Font */
     padding: 1.2em !important;
     font-family: 'Consolas', 'Fira Code', Monaco, monospace !important;
@@ -95,14 +95,14 @@ body .rst-content div[class*='highlight'] .kt {
 
 /* Keywords & Types (double, var) */
 body .rst-content div[class*='highlight'] .c1 {
-    color: #94a3b8 !important;
+    color: #0284c7 !important;
     font-style: italic;
 }
 
 /* Comments */
 body .rst-content div[class*='highlight'] .s2,
 body .rst-content div[class*='highlight'] .s {
-    color: #fde047 !important;
+    color: #0284c7 !important;
 }
 
 /* Strings */
@@ -120,9 +120,9 @@ body .rst-content div[class*='highlight'] .mf {
 
 body .rst-content div.admonition.example-box div.math,
 body .rst-content div.math {
-    background-color: #ffffff !important;
+    background-color: #0284c7 !important;
     /* Pure White Background */
-    border: 1px solid #cbd5e1 !important;
+    border: 1px solid #0284c7 !important;
     /* Soft Grey Border */
     border-radius: 8px !important;
     /* Rounded Corners */
