@@ -21,7 +21,7 @@ extensions = [
     'sphinx_tabs.tabs',
     'sphinx.ext.autosectionlabel',
     'sphinx_copybutton',
-    'sphinx.design'
+    'sphinx_design'
 ]
 
 intersphinx_mapping = {
