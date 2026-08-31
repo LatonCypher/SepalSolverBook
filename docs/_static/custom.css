@@ -1,113 +1,131 @@
 /* ==========================================================================
-   1. Light Blue Example admonition (sphinx-design override)
+   1. Light Blue Example Admonition Panel (Rounded Corners)
    ========================================================================== */
 
-/* Outer admonition Container */
-div.sd-admonition.example-admonition {
-    background-color: #292561 !important;
-    border: 1px solid #0d4766 !important;
+/* Main Admonition Container */
+body .rst-content div.admonition.example-box,
+body .rst-content .admonition.example-box {
+    background-color: #f0f7ff !important;
+    /* Soft Light Blue Background */
+    border: 1px solid #bae6fd !important;
+    /* Soft Blue Border */
     border-left: 6px solid #0284c7 !important;
+    /* Accent Left Bar */
     border-radius: 12px !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04) !important;
+    /* Rounded Outer Corners */
+    padding: 0 !important;
+    /* Clear padding so title header spans full width */
     margin: 1.8em 0 !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04) !important;
     overflow: hidden !important;
+    /* Force inner elements to clip to rounded edges */
 }
 
-/* Internal admonition Body (Where text/math/code live) */
-div.sd-admonition.example-admonition .sd-admonition-body {
-    background-color: #1c6fce !important;
-    color: #1e293b !important;
-    padding: 1.25em !important;
-}
-
-/* admonition Header Bar */
-div.sd-admonition.example-admonition .sd-admonition-header,
-div.sd-admonition.example-admonition div.sd-admonition-header {
-    background-color: #2b4552 !important;
+/* Admonition Header Bar */
+body .rst-content div.admonition.example-box .admonition-title,
+body .rst-content .admonition.example-box .admonition-title {
+    background-color: #0284c7 !important;
+    /* Solid Blue Title Bar */
     color: #ffffff !important;
+    /* Crisp White Header Text */
     font-weight: 700 !important;
+    padding: 10px 16px !important;
+    margin: 0 !important;
     font-size: 1.05em !important;
     border: none !important;
-    border-bottom: 1px solid #bae6fd !important;
-    padding: 10px 16px !important;
-    border-top-left-radius: 11px !important;
-    border-top-right-radius: 11px !important;
 }
 
-/* Force header text to white */
-div.sd-admonition.example-admonition .sd-admonition-header * {
-    color: #ffffff !important;
+/* Admonition Inner Content Padding */
+body .rst-content div.admonition.example-box>*:not(.admonition-title) {
+    padding-left: 1.25em !important;
+    padding-right: 1.25em !important;
+}
+
+body .rst-content div.admonition.example-box>*:last-child {
+    padding-bottom: 1.25em !important;
 }
 
 /* ==========================================================================
-   2. Dark Slate Blue Code Blocks
+   2. Dark Slate Blue Code Blocks (Overrides Light Green Syntax Box)
    ========================================================================== */
 
-div.sd-admonition.example-admonition div[class*='highlight'],
-div[class*='highlight'],
-.rst-content div[class*='highlight'] {
+/* Outer Code Block Container inside and outside Example Admonitions */
+body .rst-content div[class*='highlight'],
+body .rst-content .highlight {
     background-color: #0f172a !important;
+    /* Deep Slate Blue */
     border-radius: 10px !important;
+    /* Rounded Corners */
     border: 1px solid #1e293b !important;
     margin: 1.2em 0 !important;
     overflow: hidden !important;
+    /* Forces pre tag to clip */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Force dark blue on the pre tag */
-div[class*='highlight'] pre,
-.rst-content div[class*='highlight'] pre {
+/* Inner Pre Tag */
+body .rst-content div[class*='highlight'] pre,
+body .rst-content .highlight pre,
+body .rst-content pre {
     background-color: #0f172a !important;
-    color: #f8fafc !important;
+    /* Matches Container Dark Blue */
     border-radius: 10px !important;
+    color: #f8fafc !important;
+    /* Legible Code Font */
     padding: 1.2em !important;
-    font-family: 'Consolas', 'Fira Code', monospace !important;
+    font-family: 'Consolas', 'Fira Code', Monaco, monospace !important;
     font-size: 0.9em !important;
+    line-height: 1.5 !important;
     margin: 0 !important;
     border: none !important;
+    overflow-x: auto !important;
 }
 
-/* Strip out internal Pygments green/yellow span backgrounds */
-div[class*='highlight'] pre *,
-.rst-content div[class*='highlight'] pre * {
+/* Strip out default Pygments light-green background spans */
+body .rst-content div[class*='highlight'] pre *,
+body .rst-content .highlight pre * {
     background-color: transparent !important;
 }
 
-/* Syntax Highlighting Colors on Dark Blue */
-div[class*='highlight'] .k,
-div[class*='highlight'] .kt {
+/* C# Syntax Highlighting Colors on Dark Blue */
+body .rst-content div[class*='highlight'] .k,
+body .rst-content div[class*='highlight'] .kt {
     color: #38bdf8 !important;
 }
 
-/* Keywords & Types */
-div[class*='highlight'] .c1 {
+/* Keywords & Types (double, var) */
+body .rst-content div[class*='highlight'] .c1 {
     color: #94a3b8 !important;
     font-style: italic;
 }
 
 /* Comments */
-div[class*='highlight'] .s2,
-div[class*='highlight'] .s {
+body .rst-content div[class*='highlight'] .s2,
+body .rst-content div[class*='highlight'] .s {
     color: #fde047 !important;
 }
 
 /* Strings */
-div[class*='highlight'] .m,
-div[class*='highlight'] .mi,
-div[class*='highlight'] .mf {
+body .rst-content div[class*='highlight'] .m,
+body .rst-content div[class*='highlight'] .mi,
+body .rst-content div[class*='highlight'] .mf {
     color: #4ade80 !important;
 }
 
 /* Numbers */
 
 /* ==========================================================================
-   3. Crisp White Math Panels
+   3. Crisp White Math Panel Inside Admonitions
    ========================================================================== */
 
-div.sd-admonition.example-admonition div.math,
-.rst-content div.math {
+body .rst-content div.admonition.example-box div.math,
+body .rst-content div.math {
     background-color: #ffffff !important;
+    /* Pure White Background */
     border: 1px solid #cbd5e1 !important;
+    /* Soft Grey Border */
     border-radius: 8px !important;
+    /* Rounded Corners */
     padding: 1em !important;
     margin: 1em 0 !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03) !important;
