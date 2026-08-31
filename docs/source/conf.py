@@ -1,6 +1,4 @@
 # Configuration file for the Sphinx documentation builder.
-from docutils import nodes
-from docutils.parsers.rst import Directive
 
 # -- Project information
 
@@ -23,7 +21,7 @@ extensions = [
     'sphinx_tabs.tabs',
     'sphinx.ext.autosectionlabel',
     'sphinx_copybutton',
-    'sphinx_design',  # FIXED: Changed from 'sphinx.design' to 'sphinx_design'
+    'sphinx.design'
 ]
 
 intersphinx_mapping = {
@@ -38,30 +36,8 @@ templates_path = ['_templates']
 
 html_theme = 'sphinx_rtd_theme'
 
-# Disable Pygments theme backgrounds so custom CSS handles code panel styling
-pygments_style = 'none'
-
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
 
-# -- Static files and Custom CSS
-
-html_static_path = ['_static']
-
-html_css_files = [
-    'custom.css',
-]
-
-# -- Custom Terminal Directive
-
-class TerminalDirective(Directive):
-    has_content = True
-    def run(self):
-        text = '\n'.join(self.content)
-        node = nodes.literal_block(text, text)
-        node['classes'].append('terminal')
-        node['language'] = 'none'
-        return [node]
-
-def setup(app):
-    app.add_directive("terminal", TerminalDirective)
+# -- Options for Pygment style
+pygments_style = 'sphinx'
