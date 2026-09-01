@@ -389,74 +389,67 @@ button.copybtn:hover {
 }
 
 /* ==========================================================================
-   6. LaTeX / MathJax Equations (Clean, Unboxed, No Border)
+   6. LaTeX / MathJax Equations (100% Zero Borders & Zero Shadows Anywhere)
    ========================================================================== */
 
-/* INLINE Math (:math:`...`) - Zero box */
-.rst-content span.math,
-.rst-content :not(div).math,
-.rst-content p .MathJax,
-.rst-content li .MathJax,
-.rst-content td .MathJax,
-.MathJax_Preview,
-mjx-container:not([display="true"]) {
-    background: transparent !important;
-    background-color: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    color: var(--ss-text-heading) !important;
-    display: inline !important;
-}
-
-/* DISPLAY Block Equations (.. math::) - Centered Display with NO Border */
+.rst-content .math,
 .rst-content div.math,
 .rst-content div.math-wrapper,
-.rst-content .math[display="block"],
+.rst-content span.math,
+.rst-content .math-wrapper,
+.rst-content div[class*='math'],
+.rst-content .MathJax,
+.rst-content .MathJax_Display,
+.rst-content .MathJax_Preview,
+.rst-content mjx-container,
+.rst-content mjx-math,
+.rst-content .katex,
+.rst-content .katex-display,
+div.math,
+div.math-wrapper,
+span.math,
+.MathJax,
+.MathJax_Display,
+mjx-container,
+mjx-container[display="true"],
+mjx-container:not([display="true"]) {
+    border: none !important;
+    border-width: 0 !important;
+    border-style: none !important;
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Block Equation Centering & Clean Display */
+.rst-content div.math,
+.rst-content div.math-wrapper,
+.rst-content .MathJax_Display,
+.rst-content mjx-container[display="true"],
 div.math,
 div.math-wrapper {
     display: table !important;
     width: auto !important;
     max-width: 100% !important;
     margin: 1.2rem auto !important;
-    padding: 0.3rem 0.5rem !important;
-    background-color: transparent !important;
-    background: transparent !important;
-    color: var(--ss-text-heading) !important;
-    border: none !important;
-    box-shadow: none !important;
+    padding: 0.25rem 0 !important;
     text-align: center !important;
     box-sizing: border-box !important;
 }
 
-/* Reset any child element expansions */
-.rst-content div.math > *,
-.rst-content div.math-wrapper > *,
-.rst-content div.math .MathJax_Display,
-.rst-content div.math mjx-container {
+/* Inline Equation Flow */
+.rst-content span.math,
+.rst-content :not(div).math,
+.rst-content p .MathJax,
+.rst-content li .MathJax,
+.rst-content td .MathJax,
+.rst-content mjx-container:not([display="true"]) {
+    display: inline !important;
     margin: 0 !important;
     padding: 0 !important;
-    display: inline-block !important;
-    width: auto !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-/* Standalone MathJax/KaTeX display elements */
-.MathJax_Display,
-mjx-container[display="true"] {
-    display: table !important;
-    width: auto !important;
-    max-width: 100% !important;
-    margin: 1.2rem auto !important;
-    padding: 0.3rem 0.5rem !important;
-    background-color: transparent !important;
-    background: transparent !important;
-    color: var(--ss-text-heading) !important;
-    border: none !important;
-    box-shadow: none !important;
-    box-sizing: border-box !important;
 }
 
 /* ==========================================================================
@@ -550,7 +543,7 @@ mjx-container[display="true"] {
 
 /* ==========================================================================
    8. Scientific Tables (Clean Booktabs Style)
-   ========================================================================== */
+   ========================================================================= */
 
 .rst-content table.docutils,
 .rst-content table.wy-table-responsive {
