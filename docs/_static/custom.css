@@ -1,6 +1,6 @@
 /* ==========================================================================
    SEPALSOLVER BOOK - READTHEDOCS (sphinx_rtd_theme) THEME OVERHAUL
-   Modern Academic Typography, High-Contrast C# Syntax, Polished Admonitions
+   Modern Academic Typography, Light Green Code Theme, Polished Admonitions
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -8,12 +8,10 @@
 :root {
     /* Color Palette */
     --ss-primary: #0284c7;
-    /* Deep Sky Blue */
     --ss-primary-dark: #0369a1;
     --ss-primary-light: #e0f2fe;
 
     --ss-bg-sidebar: #0f172a;
-    /* Deep Slate / Obsidian */
     --ss-bg-sidebar-active: #1e293b;
     --ss-sidebar-text: #94a3b8;
     --ss-sidebar-text-active: #38bdf8;
@@ -23,9 +21,14 @@
     --ss-text-muted: #64748b;
     --ss-text-heading: #0f172a;
 
-    --ss-bg-code: #0b0f19;
-    /* Midnight Black */
-    --ss-bg-code-header: #131824;
+    /* Light Green Code Palette */
+    --ss-bg-code: #f0fdf4;
+    --ss-border-code: #bbf7d0;
+    --ss-text-code: #14532d;
+    --ss-bg-code-inline: #dcfce7;
+    --ss-border-code-inline: #86efac;
+    --ss-text-code-inline: #166534;
+
     --ss-bg-terminal: #090d16;
 
     --ss-border: #e2e8f0;
@@ -54,7 +57,7 @@ body,
     -webkit-font-smoothing: antialiased;
 }
 
-/* Expand content area from RTD default 800px to spacious 980px */
+/* Expand content area from RTD default 800px to spacious 1020px */
 .wy-nav-content {
     max-width: 1020px !important;
     padding: 2.2rem 3rem 4rem 3rem !important;
@@ -112,17 +115,18 @@ body,
     color: var(--ss-text-heading) !important;
 }
 
-/* Inline Code Snippets */
+/* Inline Code Snippets (Light Green) */
 .rst-content code.literal,
 .rst-content tt.literal,
 code {
     font-family: 'Fira Code', 'Cascadia Code', Consolas, monospace !important;
     font-size: 0.88em !important;
-    background-color: #f1f5f9 !important;
-    color: #0369a1 !important;
+    background-color: var(--ss-bg-code-inline) !important;
+    color: var(--ss-text-code-inline) !important;
     padding: 0.2em 0.45em !important;
     border-radius: 4px !important;
-    border: 1px solid #e2e8f0 !important;
+    border: 1px solid var(--ss-border-code-inline) !important;
+    font-weight: 500 !important;
     white-space: normal !important;
 }
 
@@ -216,26 +220,28 @@ code {
 }
 
 /* ==========================================================================
-   4. C# Code Blocks & Syntax Highlighting
+   4. C# Code Blocks & Syntax Highlighting (Light Green Theme)
    ========================================================================== */
 
 .rst-content div[class*='highlight'],
 .rst-content .highlight {
     background-color: var(--ss-bg-code) !important;
-    border: 1px solid #1e293b !important;
+    border: 1px solid var(--ss-border-code) !important;
+    border-left: 5px solid #16a34a !important; /* Emerald Accent Left Bar */
     border-radius: var(--ss-radius-md) !important;
     margin: 1.6rem 0 !important;
-    box-shadow: var(--ss-shadow-md) !important;
+    box-shadow: var(--ss-shadow-sm) !important;
     overflow: hidden !important;
     position: relative !important;
 }
 
 /* Code block pre formatting */
 .rst-content div[class*='highlight'] pre,
-.rst-content .highlight pre {
+.rst-content .highlight pre,
+.rst-content pre {
     background-color: var(--ss-bg-code) !important;
-    color: #f8fafc !important;
-    padding: 1.3rem 1.5rem !important;
+    color: var(--ss-text-code) !important;
+    padding: 1.2rem 1.5rem !important;
     font-family: 'Fira Code', 'Cascadia Code', Consolas, Monaco, monospace !important;
     font-size: 0.9rem !important;
     line-height: 1.65 !important;
@@ -250,79 +256,70 @@ code {
     background-color: transparent !important;
 }
 
-/* Modern C# Dark Palette */
+/* High-Contrast Syntax Colors on Light Green Background */
 .rst-content div[class*='highlight'] .k,
 .rst-content div[class*='highlight'] .kd,
 .rst-content div[class*='highlight'] .kn,
 .rst-content div[class*='highlight'] .kr {
-    color: #f43f5e !important;
-    font-weight: 600;
+    color: #dc2626 !important; /* Crimson Keywords (public, static, return, if, var) */
+    font-weight: 700 !important;
 }
-
-/* Keywords (public, static, return, if) */
 
 .rst-content div[class*='highlight'] .kt,
 .rst-content div[class*='highlight'] .nc {
-    color: #38bdf8 !important;
-    font-weight: 600;
+    color: #0369a1 !important; /* Royal Blue Types (double, int, ColVec, Matrix, Func) */
+    font-weight: 700 !important;
 }
-
-/* Types (double, int, ColVec, Matrix, Func) */
 
 .rst-content div[class*='highlight'] .nf,
 .rst-content div[class*='highlight'] .fm {
-    color: #c084fc !important;
+    color: #7c3aed !important; /* Violet Functions (Fzero, Exp, Sqrt, Linspace) */
+    font-weight: 600 !important;
 }
-
-/* Functions (Fzero, Exp, Sqrt, Linspace, Meshgrid) */
 
 .rst-content div[class*='highlight'] .s,
 .rst-content div[class*='highlight'] .s2,
 .rst-content div[class*='highlight'] .sa,
 .rst-content div[class*='highlight'] .sb {
-    color: #4ade80 !important;
+    color: #047857 !important; /* Deep Green Strings */
+    font-weight: 500 !important;
 }
-
-/* Strings */
 
 .rst-content div[class*='highlight'] .m,
 .rst-content div[class*='highlight'] .mi,
 .rst-content div[class*='highlight'] .mf {
-    color: #fb923c !important;
+    color: #d97706 !important; /* Amber Numbers */
+    font-weight: 600 !important;
 }
-
-/* Numbers */
 
 .rst-content div[class*='highlight'] .c,
 .rst-content div[class*='highlight'] .c1,
 .rst-content div[class*='highlight'] .cm {
-    color: #64748b !important;
-    font-style: italic;
+    color: #64748b !important; /* Slate Comments */
+    font-style: italic !important;
 }
-
-/* Comments */
 
 .rst-content div[class*='highlight'] .o,
 .rst-content div[class*='highlight'] .p {
-    color: #94a3b8 !important;
+    color: #334155 !important; /* Dark Slate Operators & Punctuation */
 }
-
-/* Operators & Punctuation */
 
 /* Copy Button Integration */
 button.copybtn {
-    opacity: 0.7 !important;
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    opacity: 0.75 !important;
+    background-color: #ffffff !important;
+    border: 1px solid #86efac !important;
     border-radius: var(--ss-radius-sm) !important;
-    color: #f8fafc !important;
+    color: #166534 !important;
     padding: 4px 8px !important;
     transition: all 0.15s ease !important;
 }
 
 button.copybtn:hover {
     opacity: 1 !important;
-    background-color: var(--ss-primary) !important;
+    background-color: #16a34a !important;
+    color: #ffffff !important;
+    border-color: #16a34a !important;
 }
 
 /* ==========================================================================
@@ -334,7 +331,6 @@ button.copybtn:hover {
     background-color: var(--ss-bg-terminal) !important;
     border: 1px solid #1e293b !important;
     border-left: 4px solid #10b981 !important;
-    /* Terminal Emerald Left Bar */
     border-radius: var(--ss-radius-md) !important;
     color: #e2e8f0 !important;
     font-family: 'Fira Code', Consolas, monospace !important;
@@ -396,7 +392,7 @@ button.copybtn:hover {
     border-left-width: 5px !important;
     box-shadow: var(--ss-shadow-sm) !important;
     overflow: hidden !important;
-    background-color: #061b7c !important;
+    background-color: #ffffff !important;
 }
 
 .rst-content .admonition .admonition-title {
