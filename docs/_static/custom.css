@@ -1,51 +1,49 @@
 /* ==========================================================================
-   SEPALSOLVER BOOK - REFINED SLATE IDE THEME (Comfortable Dark-Dimmed)
-   Original RTD Fonts, Slate Canvas, High-Contrast Code, Clean Math & Callouts
+   SEPALSOLVER BOOK - MODERN LIGHT DOCUMENTATION THEME
+   Bright Crisp Canvas, Deep Contrast Typography, Tight Math Boxes
    ========================================================================== */
 
 :root {
-    /* Lightened Slate Dark Color Palette */
-    --ide-bg-canvas: #1e222d;        /* Soft Dark Slate Outer Canvas */
-    --ide-bg-surface: #262c3a;       /* Main Content Card (Lightened & Readable) */
-    --ide-bg-sidebar: #181c24;       /* Sleek Dark Slate Sidebar */
-    --ide-bg-sidebar-active: #323b4e;/* Active Tree Item Highlight */
-    --ide-bg-code: #1a1e28;          /* Code Editor Background */
-    --ide-bg-terminal: #14171f;      /* Terminal Console Background */
+    /* Bright & Light Color Palette */
+    --light-bg-canvas: #f8fafc;       /* Soft Light Slate Canvas */
+    --light-bg-surface: #ffffff;      /* Pure White Reading Surface */
+    --light-bg-sidebar: #f1f5f9;      /* Soft Slate Sidebar */
+    --light-bg-sidebar-active: #e0f2fe;/* Active Item Highlight */
+    
+    /* Code Blocks (Midnight Dark Editor on Light Page for Optimal Contrast) */
+    --light-bg-code: #0f172a;         /* Deep Slate Code Background */
+    --light-bg-terminal: #090d16;     /* Terminal Console */
+    --light-bg-code-inline: #f1f5f9;  /* Inline Code Background */
 
-    /* Typography & Text (High Contrast & Legible) */
-    --ide-text-heading: #ffffff;     /* Bright Pure White */
-    --ide-text-main: #e2e8f0;        /* Crisp Soft Slate */
-    --ide-text-muted: #94a3b8;       /* Readable Medium Gray */
-    --ide-text-code-inline: #38bdf8; /* Glowing Cyan Inline Code */
+    /* Typography & Text */
+    --light-text-heading: #0f172a;    /* Deep Charcoal / Near Black */
+    --light-text-main: #334155;       /* Readable Slate Gray */
+    --light-text-muted: #64748b;      /* Muted Subtitle Gray */
+    --light-text-code-inline: #0369a1;/* Deep Sky Blue Inline Code */
 
     /* Borders & Accents */
-    --ide-border: #333b4d;           /* Visible, Clean Card & Grid Divider */
-    --ide-border-light: #3e475d;
-    --ide-border-active: #38bdf8;    /* Active Border Highlight */
-    
-    --ide-accent-blue: #38bdf8;      /* Sky Blue */
-    --ide-accent-green: #34d399;     /* Emerald Mint */
-    --ide-accent-purple: #c084fc;    /* Violet */
-    --ide-accent-amber: #fbbf24;     /* Amber Gold */
-    --ide-accent-rose: #f43f5e;      /* Crimson Rose */
+    --light-border: #e2e8f0;          /* Clean Light Border */
+    --light-border-dark: #cbd5e1;
+    --light-primary: #0284c7;         /* Deep Sky Blue Accent */
+    --light-primary-dark: #0369a1;
 
     /* Radii & Shadows */
-    --ide-radius-sm: 6px;
-    --ide-radius-md: 10px;
-    --ide-radius-lg: 14px;
-    --ide-shadow-card: 0 4px 20px rgba(0, 0, 0, 0.25);
-    --ide-shadow-code: 0 6px 18px rgba(0, 0, 0, 0.35);
+    --light-radius-sm: 6px;
+    --light-radius-md: 10px;
+    --light-radius-lg: 14px;
+    --light-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+    --light-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
 }
 
 /* ==========================================================================
-   1. Global Layout & Typography (Original Fonts)
+   1. Global Layout & Typography
    ========================================================================== */
 
 html,
 body,
 .wy-body-for-nav {
-    background-color: var(--ide-bg-canvas) !important;
-    color: var(--ide-text-main) !important;
+    background-color: var(--light-bg-canvas) !important;
+    color: var(--light-text-main) !important;
     font-size: 16.5px !important;
     line-height: 1.78 !important;
     -webkit-font-smoothing: antialiased;
@@ -53,22 +51,22 @@ body,
 
 /* Central Content Container */
 .wy-nav-content-wrap {
-    background-color: var(--ide-bg-canvas) !important;
+    background-color: var(--light-bg-canvas) !important;
 }
 
 .wy-nav-content {
     max-width: 1040px !important;
     padding: 2.5rem 3.2rem 5rem 3.2rem !important;
-    background-color: var(--ide-bg-surface) !important;
-    border-left: 1px solid var(--ide-border) !important;
-    border-right: 1px solid var(--ide-border) !important;
-    box-shadow: var(--ide-shadow-card) !important;
+    background-color: var(--light-bg-surface) !important;
+    border-left: 1px solid var(--light-border) !important;
+    border-right: 1px solid var(--light-border) !important;
+    box-shadow: var(--light-shadow-sm) !important;
     min-height: 100vh !important;
 }
 
 .rst-content {
     font-size: 1.02rem !important;
-    color: var(--ide-text-main) !important;
+    color: var(--light-text-main) !important;
 }
 
 /* Headings */
@@ -77,7 +75,7 @@ body,
 .rst-content h3,
 .rst-content h4 {
     font-weight: 700 !important;
-    color: var(--ide-text-heading) !important;
+    color: var(--light-text-heading) !important;
     letter-spacing: -0.025em !important;
     line-height: 1.3 !important;
 }
@@ -87,8 +85,8 @@ body,
     font-weight: 800 !important;
     margin-bottom: 1.4rem !important;
     padding-bottom: 0.6rem !important;
-    border-bottom: 1px solid var(--ide-border) !important;
-    color: #ffffff !important;
+    border-bottom: 2px solid #e0f2fe !important;
+    color: var(--light-text-heading) !important;
 }
 
 .rst-content h2 {
@@ -96,36 +94,36 @@ body,
     margin-top: 2.8rem !important;
     margin-bottom: 1rem !important;
     padding-bottom: 0.4rem !important;
-    border-bottom: 1px solid var(--ide-border) !important;
-    color: #ffffff !important;
+    border-bottom: 1px solid var(--light-border) !important;
+    color: var(--light-text-heading) !important;
 }
 
 .rst-content h3 {
     font-size: 1.3rem !important;
     margin-top: 2rem !important;
     margin-bottom: 0.8rem !important;
-    color: var(--ide-accent-blue) !important;
+    color: var(--light-primary-dark) !important;
 }
 
 .rst-content p {
     line-height: 1.8 !important;
     margin-bottom: 1.3rem !important;
-    color: var(--ide-text-main) !important;
+    color: var(--light-text-main) !important;
 }
 
 .rst-content strong {
     font-weight: 700 !important;
-    color: #ffffff !important;
+    color: var(--light-text-heading) !important;
 }
 
 .rst-content a {
-    color: var(--ide-accent-blue) !important;
+    color: var(--light-primary) !important;
     text-decoration: none !important;
     transition: color 0.15s ease !important;
 }
 
 .rst-content a:hover {
-    color: #7dd3fc !important;
+    color: var(--light-primary-dark) !important;
     text-decoration: underline !important;
 }
 
@@ -138,30 +136,30 @@ tt.literal,
 code {
     font-family: 'Consolas', 'Fira Code', Monaco, monospace !important;
     font-size: 0.88em !important;
-    background-color: #1e2430 !important;
-    background: #1e2430 !important;
-    color: var(--ide-text-code-inline) !important;
+    background-color: var(--light-bg-code-inline) !important;
+    background: var(--light-bg-code-inline) !important;
+    color: var(--light-text-code-inline) !important;
     padding: 0.18em 0.48em !important;
     border-radius: 4px !important;
-    border: 1px solid #333d52 !important;
-    font-weight: 500 !important;
+    border: 1px solid var(--light-border) !important;
+    font-weight: 600 !important;
     white-space: normal !important;
 }
 
 /* ==========================================================================
-   2. Dark Sidebar & File Explorer Navigation
+   2. Light Sidebar & File Explorer Navigation
    ========================================================================== */
 
 .wy-nav-side {
-    background-color: var(--ide-bg-sidebar) !important;
-    border-right: 1px solid var(--ide-border) !important;
-    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25) !important;
+    background-color: var(--light-bg-sidebar) !important;
+    border-right: 1px solid var(--light-border) !important;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.04) !important;
 }
 
 .wy-side-nav-search {
-    background-color: #14171f !important;
+    background-color: #0f172a !important;
     padding: 1.8rem 1.4rem 1.4rem 1.4rem !important;
-    border-bottom: 1px solid var(--ide-border) !important;
+    border-bottom: 1px solid #1e293b !important;
 }
 
 .wy-side-nav-search>a {
@@ -173,10 +171,10 @@ code {
 
 .wy-side-nav-search .wy-dropdown>a,
 .wy-side-nav-search input[type=text] {
-    background-color: #212634 !important;
-    border: 1px solid var(--ide-border) !important;
+    background-color: #1e293b !important;
+    border: 1px solid #334155 !important;
     color: #f8fafc !important;
-    border-radius: var(--ide-radius-md) !important;
+    border-radius: var(--light-radius-md) !important;
     padding: 0.55rem 1rem !important;
     font-size: 0.9rem !important;
     box-shadow: none !important;
@@ -184,29 +182,29 @@ code {
 }
 
 .wy-side-nav-search input[type=text]:focus {
-    border-color: var(--ide-accent-blue) !important;
-    background-color: #262c3c !important;
+    border-color: var(--light-primary) !important;
+    background-color: #0f172a !important;
 }
 
 /* Sidebar Links */
 .wy-menu-vertical a {
-    color: var(--ide-text-muted) !important;
+    color: #475569 !important;
     font-size: 0.92rem !important;
     padding: 0.55rem 1.4rem !important;
     transition: all 0.15s ease-in-out !important;
 }
 
 .wy-menu-vertical a:hover {
-    background-color: rgba(255, 255, 255, 0.05) !important;
-    color: var(--ide-accent-blue) !important;
+    background-color: rgba(2, 132, 199, 0.08) !important;
+    color: var(--light-primary-dark) !important;
 }
 
 .wy-menu-vertical li.current>a,
 .wy-menu-vertical li.on a {
-    background-color: var(--ide-bg-sidebar-active) !important;
-    color: #ffffff !important;
-    font-weight: 600 !important;
-    border-left: 4px solid var(--ide-accent-blue) !important;
+    background-color: var(--light-bg-sidebar-active) !important;
+    color: var(--light-primary-dark) !important;
+    font-weight: 700 !important;
+    border-left: 4px solid var(--light-primary) !important;
 }
 
 .wy-menu-vertical li.toctree-l1>a {
@@ -224,20 +222,20 @@ code {
     font-size: 0.85rem !important;
     margin-bottom: 2rem !important;
     padding-bottom: 0.75rem !important;
-    border-bottom: 1px solid var(--ide-border) !important;
+    border-bottom: 1px solid var(--light-border) !important;
 }
 
 .wy-breadcrumbs li {
-    color: var(--ide-text-muted) !important;
+    color: var(--light-text-muted) !important;
 }
 
 .wy-breadcrumbs li a {
-    color: var(--ide-accent-blue) !important;
+    color: var(--light-primary) !important;
     font-weight: 500 !important;
 }
 
 /* ==========================================================================
-   4. High-Contrast IDE Code Editor (VS Code / Antigravity Style)
+   4. High-Contrast Code Editor (Midnight on Light Page)
    ========================================================================== */
 
 /* Outer Code Block Containers */
@@ -251,13 +249,13 @@ code {
 div[class*='highlight'],
 div[class^='highlight'],
 div.highlight {
-    background-color: var(--ide-bg-code) !important;
-    background: var(--ide-bg-code) !important;
-    border: 1px solid var(--ide-border) !important;
-    border-left: 5px solid var(--ide-accent-blue) !important;
-    border-radius: var(--ide-radius-md) !important;
+    background-color: var(--light-bg-code) !important;
+    background: var(--light-bg-code) !important;
+    border: 1px solid #1e293b !important;
+    border-left: 5px solid var(--light-primary) !important;
+    border-radius: var(--light-radius-md) !important;
     margin: 1.6rem 0 !important;
-    box-shadow: var(--ide-shadow-code) !important;
+    box-shadow: var(--light-shadow-md) !important;
     overflow: hidden !important;
     position: relative !important;
 }
@@ -273,8 +271,8 @@ div[class*='highlight'] pre,
 div[class^='highlight'] pre,
 div.highlight pre,
 pre.literal-block {
-    background-color: var(--ide-bg-code) !important;
-    background: var(--ide-bg-code) !important;
+    background-color: var(--light-bg-code) !important;
+    background: var(--light-bg-code) !important;
     color: #f1f5f9 !important;
     padding: 1.2rem 1.5rem !important;
     font-family: 'Consolas', 'Fira Code', Monaco, monospace !important;
@@ -318,7 +316,7 @@ div.highlight pre * {
 .rst-content div[class*='highlight'] .s2,
 .rst-content div[class*='highlight'] .sa,
 .rst-content div[class*='highlight'] .sb {
-    color: #34d399 !important; /* Emerald Mint */
+    color: #4ade80 !important; /* Emerald Mint */
 }
 
 .rst-content div[class*='highlight'] .m,
@@ -330,7 +328,7 @@ div.highlight pre * {
 .rst-content div[class*='highlight'] .c,
 .rst-content div[class*='highlight'] .c1,
 .rst-content div[class*='highlight'] .cm {
-    color: #94a3b8 !important; /* Readable Slate Gray */
+    color: #94a3b8 !important; /* Slate Gray */
     font-style: italic !important;
 }
 
@@ -341,19 +339,19 @@ div.highlight pre * {
 
 /* Copy Button */
 button.copybtn {
-    opacity: 0.75 !important;
-    background-color: rgba(255, 255, 255, 0.08) !important;
-    border: 1px solid var(--ide-border-light) !important;
-    border-radius: var(--ide-radius-sm) !important;
-    color: #e2e8f0 !important;
+    opacity: 0.8 !important;
+    background-color: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: var(--light-radius-sm) !important;
+    color: #ffffff !important;
     padding: 4px 8px !important;
     transition: all 0.15s ease !important;
 }
 
 button.copybtn:hover {
     opacity: 1 !important;
-    background-color: var(--ide-accent-blue) !important;
-    color: #14171f !important;
+    background-color: var(--light-primary) !important;
+    color: #ffffff !important;
     font-weight: 600 !important;
 }
 
@@ -363,17 +361,17 @@ button.copybtn:hover {
 
 .rst-content pre.terminal,
 .rst-content .literal-block.terminal {
-    background-color: var(--ide-bg-terminal) !important;
-    border: 1px solid var(--ide-border) !important;
-    border-left: 4px solid var(--ide-accent-green) !important;
-    border-radius: var(--ide-radius-md) !important;
+    background-color: var(--light-bg-terminal) !important;
+    border: 1px solid #1e293b !important;
+    border-left: 4px solid #10b981 !important;
+    border-radius: var(--light-radius-md) !important;
     color: #e2e8f0 !important;
     font-family: 'Consolas', 'Fira Code', Monaco, monospace !important;
     font-size: 0.88rem !important;
     line-height: 1.6 !important;
     padding: 1.1rem 1.4rem !important;
     margin: 1.4rem 0 !important;
-    box-shadow: var(--ide-shadow-code) !important;
+    box-shadow: var(--light-shadow-md) !important;
     position: relative !important;
 }
 
@@ -384,15 +382,15 @@ button.copybtn:hover {
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.08em;
-    color: var(--ide-accent-green);
+    color: #10b981;
     margin-bottom: 0.5rem;
 }
 
 /* ==========================================================================
-   6. LaTeX / MathJax Equations (Shrink to Fit Text Exactly & Centered)
+   6. LaTeX / MathJax Equations (Tightly Fit to Text Exactly)
    ========================================================================== */
 
-/* INLINE Math (:math:`...`) - Zero box */
+/* INLINE Math (:math:`...`) - Flow naturally with ZERO box */
 .rst-content span.math,
 .rst-content :not(div).math,
 .rst-content p .MathJax,
@@ -406,42 +404,71 @@ mjx-container:not([display="true"]) {
     box-shadow: none !important;
     padding: 0 !important;
     margin: 0 !important;
-    color: #f8fafc !important;
+    color: var(--light-text-heading) !important;
     display: inline !important;
 }
 
-/* DISPLAY Block Equations (.. math::) - Snug Shrink-Wrapped Box */
+/* DISPLAY Block Equations (.. math::) - Tightly Shrunk to Text & Centered */
 .rst-content div.math,
 .rst-content div.math-wrapper,
 .rst-content .math[display="block"],
-.MathJax_Display {
-    width: fit-content !important;
+div.math,
+div.math-wrapper {
+    display: table !important;
+    width: auto !important;
     max-width: 100% !important;
-    margin: 1.2rem auto !important;
-    display: block !important;
-    background-color: rgba(255, 255, 255, 0.03) !important;
-    background: rgba(255, 255, 255, 0.03) !important;
-    color: #ffffff !important;
-    border: 1px solid var(--ide-border) !important;
-    border-radius: var(--ide-radius-sm) !important;
-    padding: 0.35rem 0.85rem !important;
-    box-shadow: none !important;
-    overflow-x: auto !important;
+    margin: 1rem auto !important;
+    padding: 0.25rem 0.65rem !important;
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: var(--light-text-heading) !important;
+    border: 1px solid var(--light-border) !important;
+    border-radius: var(--light-radius-sm) !important;
+    box-shadow: var(--light-shadow-sm) !important;
     text-align: center !important;
+    box-sizing: border-box !important;
+}
+
+/* Reset any child element expansions */
+.rst-content div.math > *,
+.rst-content div.math-wrapper > *,
+.rst-content div.math .MathJax_Display,
+.rst-content div.math mjx-container {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-block !important;
+    width: auto !important;
+}
+
+/* Standalone MathJax/KaTeX display elements */
+.MathJax_Display,
+mjx-container[display="true"] {
+    display: table !important;
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 1rem auto !important;
+    padding: 0.25rem 0.65rem !important;
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: var(--light-text-heading) !important;
+    border: 1px solid var(--light-border) !important;
+    border-radius: var(--light-radius-sm) !important;
+    box-shadow: var(--light-shadow-sm) !important;
+    box-sizing: border-box !important;
 }
 
 /* ==========================================================================
-   7. Glowing Slate Admonitions & Callout Cards
+   7. Clean Light Admonitions & Callout Cards
    ========================================================================== */
 
 .rst-content .admonition {
-    border-radius: var(--ide-radius-md) !important;
+    border-radius: var(--light-radius-md) !important;
     margin: 1.8rem 0 !important;
-    border: 1px solid var(--ide-border) !important;
+    border: 1px solid var(--light-border) !important;
     border-left-width: 5px !important;
-    box-shadow: var(--ide-shadow-card) !important;
+    box-shadow: var(--light-shadow-sm) !important;
     overflow: hidden !important;
-    background-color: #202532 !important;
+    background-color: #ffffff !important;
 }
 
 .rst-content .admonition .admonition-title {
@@ -456,71 +483,71 @@ mjx-container:not([display="true"]) {
 .rst-content .admonition>*:not(.admonition-title) {
     padding-left: 1.25rem !important;
     padding-right: 1.25rem !important;
-    color: #cbd5e1 !important;
+    color: var(--light-text-main) !important;
 }
 
 .rst-content .admonition>*:last-child {
     padding-bottom: 1.1rem !important;
 }
 
-/* Example Box (Electric Blue) */
+/* Example Box (Blue) */
 .rst-content .admonition.example-box {
-    border-left-color: var(--ide-accent-blue) !important;
-    background: linear-gradient(to right, rgba(56, 189, 248, 0.08), #202532) !important;
+    border-left-color: var(--light-primary) !important;
+    background: linear-gradient(to right, rgba(2, 132, 199, 0.04), #ffffff) !important;
 }
 .rst-content .admonition.example-box .admonition-title {
-    background-color: rgba(56, 189, 248, 0.18) !important;
-    color: #7dd3fc !important;
+    background-color: #e0f2fe !important;
+    color: #0369a1 !important;
 }
 
-/* Note (Blue) */
+/* Note (Sky Blue) */
 .rst-content .admonition.note {
-    border-left-color: #3b82f6 !important;
-    background: linear-gradient(to right, rgba(59, 130, 246, 0.08), #202532) !important;
+    border-left-color: #0284c7 !important;
+    background: linear-gradient(to right, rgba(2, 132, 199, 0.04), #ffffff) !important;
 }
 .rst-content .admonition.note .admonition-title {
-    background-color: rgba(59, 130, 246, 0.18) !important;
-    color: #93c5fd !important;
+    background-color: #e0f2fe !important;
+    color: #0369a1 !important;
 }
 
 /* Tip & Hint (Emerald) */
 .rst-content .admonition.tip,
 .rst-content .admonition.hint {
-    border-left-color: var(--ide-accent-green) !important;
-    background: linear-gradient(to right, rgba(52, 211, 153, 0.08), #202532) !important;
+    border-left-color: #10b981 !important;
+    background: linear-gradient(to right, rgba(16, 185, 129, 0.04), #ffffff) !important;
 }
 .rst-content .admonition.tip .admonition-title,
 .rst-content .admonition.hint .admonition-title {
-    background-color: rgba(52, 211, 153, 0.18) !important;
-    color: #6ee7b7 !important;
+    background-color: #d1fae5 !important;
+    color: #065f46 !important;
 }
 
 /* Warning & Caution (Amber) */
 .rst-content .admonition.warning,
 .rst-content .admonition.caution {
-    border-left-color: var(--ide-accent-amber) !important;
-    background: linear-gradient(to right, rgba(251, 191, 36, 0.08), #202532) !important;
+    border-left-color: #f59e0b !important;
+    background: linear-gradient(to right, rgba(245, 158, 11, 0.04), #ffffff) !important;
 }
 .rst-content .admonition.warning .admonition-title,
 .rst-content .admonition.caution .admonition-title {
-    background-color: rgba(251, 191, 36, 0.18) !important;
-    color: #fde68a !important;
+    background-color: #fef3c7 !important;
+    color: #92400e !important;
 }
 
 /* Danger & Error (Rose) */
 .rst-content .admonition.danger,
 .rst-content .admonition.error {
-    border-left-color: var(--ide-accent-rose) !important;
-    background: linear-gradient(to right, rgba(244, 63, 94, 0.08), #202532) !important;
+    border-left-color: #ef4444 !important;
+    background: linear-gradient(to right, rgba(239, 68, 68, 0.04), #ffffff) !important;
 }
 .rst-content .admonition.danger .admonition-title,
 .rst-content .admonition.error .admonition-title {
-    background-color: rgba(244, 63, 94, 0.18) !important;
-    color: #fda4af !important;
+    background-color: #fee2e2 !important;
+    color: #991b1b !important;
 }
 
 /* ==========================================================================
-   8. Scientific Tables (Dark Slate Matrix Style)
+   8. Scientific Tables (Clean Booktabs Style)
    ========================================================================== */
 
 .rst-content table.docutils,
@@ -529,25 +556,25 @@ mjx-container:not([display="true"]) {
     border-collapse: collapse !important;
     font-size: 0.92rem !important;
     margin: 2rem 0 !important;
-    background-color: #202532 !important;
-    border: 1px solid var(--ide-border) !important;
-    border-radius: var(--ide-radius-md) !important;
-    box-shadow: var(--ide-shadow-card) !important;
+    background-color: #ffffff !important;
+    border-top: 2px solid var(--light-text-heading) !important;
+    border-bottom: 2px solid var(--light-text-heading) !important;
+    box-shadow: var(--light-shadow-sm) !important;
     overflow: hidden !important;
 }
 
 .rst-content table.docutils th {
-    background-color: #282f40 !important;
-    color: var(--ide-accent-blue) !important;
+    background-color: #f8fafc !important;
+    color: var(--light-text-heading) !important;
     font-weight: 700 !important;
     padding: 0.85rem 1rem !important;
-    border-bottom: 1px solid var(--ide-border) !important;
+    border-bottom: 1px solid var(--light-text-heading) !important;
 }
 
 .rst-content table.docutils td {
     padding: 0.75rem 1rem !important;
-    border-bottom: 1px solid var(--ide-border) !important;
-    color: var(--ide-text-main) !important;
+    border-bottom: 1px solid var(--light-border) !important;
+    color: var(--light-text-main) !important;
 }
 
 .rst-content table.docutils tbody tr:last-child td {
@@ -555,7 +582,7 @@ mjx-container:not([display="true"]) {
 }
 
 .rst-content table.docutils tbody tr:hover {
-    background-color: rgba(56, 189, 248, 0.06) !important;
+    background-color: rgba(2, 132, 199, 0.04) !important;
 }
 
 /* ==========================================================================
@@ -572,17 +599,17 @@ mjx-container:not([display="true"]) {
 .rst-content .figure img {
     max-width: 100% !important;
     height: auto !important;
-    border-radius: var(--ide-radius-md) !important;
-    border: 1px solid var(--ide-border) !important;
-    box-shadow: var(--ide-shadow-card) !important;
-    background-color: #1e2430 !important;
+    border-radius: var(--light-radius-md) !important;
+    border: 1px solid var(--light-border) !important;
+    box-shadow: var(--light-shadow-md) !important;
+    background-color: #ffffff !important;
 }
 
 .rst-content .caption,
 .rst-content .caption-text,
 .rst-content figcaption {
     font-size: 0.88rem !important;
-    color: var(--ide-text-muted) !important;
+    color: var(--light-text-muted) !important;
     margin-top: 0.75rem !important;
     font-style: italic !important;
 }
@@ -594,31 +621,31 @@ mjx-container:not([display="true"]) {
 .rst-content .rst-footer-buttons {
     margin-top: 3.5rem !important;
     padding-top: 1.5rem !important;
-    border-top: 1px solid var(--ide-border) !important;
+    border-top: 1px solid var(--light-border) !important;
     display: flex !important;
     justify-content: space-between !important;
 }
 
 .rst-content .rst-footer-buttons a.btn {
-    background-color: #202532 !important;
-    color: #ffffff !important;
-    border: 1px solid var(--ide-border) !important;
-    border-radius: var(--ide-radius-md) !important;
+    background-color: #f8fafc !important;
+    color: var(--light-primary-dark) !important;
+    border: 1px solid var(--light-border) !important;
+    border-radius: var(--light-radius-md) !important;
     padding: 0.75rem 1.4rem !important;
     font-weight: 600 !important;
     font-size: 0.92rem !important;
-    box-shadow: var(--ide-shadow-card) !important;
+    box-shadow: var(--light-shadow-sm) !important;
     transition: all 0.2s ease !important;
 }
 
 .rst-content .rst-footer-buttons a.btn:hover {
-    background-color: var(--ide-accent-blue) !important;
-    color: #14171f !important;
-    border-color: var(--ide-accent-blue) !important;
+    background-color: var(--light-primary) !important;
+    color: #ffffff !important;
+    border-color: var(--light-primary) !important;
     transform: translateY(-1px) !important;
-    box-shadow: 0 6px 18px rgba(56, 189, 248, 0.25) !important;
+    box-shadow: var(--light-shadow-md) !important;
 }
 
 .rst-content .rst-footer-buttons a.btn-neutral {
-    color: #e2e8f0 !important;
+    color: var(--light-text-main) !important;
 }
