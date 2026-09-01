@@ -4,7 +4,7 @@ from docutils.parsers.rst import Directive
 
 # -- Project information
 
-project = 'CypherCresent'
+project = 'CypherCrescent'
 copyright = '2025, CypherCrescent'
 author = 'CypherCrescent'
 
@@ -23,7 +23,7 @@ extensions = [
     'sphinx_tabs.tabs',
     'sphinx.ext.autosectionlabel',
     'sphinx_copybutton',
-    'sphinx_design',  # FIXED: Changed from 'sphinx.design' to 'sphinx_design'
+    'sphinx_design',
 ]
 
 intersphinx_mapping = {
@@ -32,7 +32,7 @@ intersphinx_mapping = {
 }
 intersphinx_disabled_domains = ['std']
 
-templates_path = ['_templates']
+templates_path = ['_templates', '../_templates']
 
 # -- Options for HTML output
 
@@ -46,10 +46,10 @@ epub_show_urls = 'footnote'
 
 # -- Static files and Custom CSS
 
-html_static_path = ['_static']
+html_static_path = ['_static', '../_static']
 
 html_css_files = [
-    'custom.css?v=8.0',
+    'custom.css',
 ]
 
 # -- Custom Terminal Directive
