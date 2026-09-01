@@ -22,12 +22,13 @@
     --ss-text-heading: #0f172a;
 
     /* Light Green Code Palette */
-    --ss-bg-code: #f0fdf4;
-    --ss-border-code: #bbf7d0;
-    --ss-text-code: #14532d;
-    --ss-bg-code-inline: #dcfce7;
-    --ss-border-code-inline: #86efac;
-    --ss-text-code-inline: #166534;
+    --ss-bg-code: #e8f5e9;           /* Soft Light Green */
+    --ss-border-code: #a5d6a7;       /* Muted Emerald Border */
+    --ss-border-code-accent: #2e7d32;/* Deep Green Accent Bar */
+    --ss-text-code: #1b5e20;         /* Dark Forest Green */
+    --ss-bg-code-inline: #e8f5e9;
+    --ss-border-code-inline: #a5d6a7;
+    --ss-text-code-inline: #1b5e20;
 
     --ss-bg-terminal: #090d16;
 
@@ -118,15 +119,19 @@ body,
 /* Inline Code Snippets (Light Green) */
 .rst-content code.literal,
 .rst-content tt.literal,
+.rst-content code,
+code.literal,
+tt.literal,
 code {
     font-family: 'Fira Code', 'Cascadia Code', Consolas, monospace !important;
     font-size: 0.88em !important;
     background-color: var(--ss-bg-code-inline) !important;
+    background: var(--ss-bg-code-inline) !important;
     color: var(--ss-text-code-inline) !important;
     padding: 0.2em 0.45em !important;
     border-radius: 4px !important;
     border: 1px solid var(--ss-border-code-inline) !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
     white-space: normal !important;
 }
 
@@ -223,11 +228,21 @@ code {
    4. C# Code Blocks & Syntax Highlighting (Light Green Theme)
    ========================================================================== */
 
+/* Outer Code Block Containers */
 .rst-content div[class*='highlight'],
-.rst-content .highlight {
+.rst-content div[class^='highlight'],
+.rst-content .highlight,
+.rst-content .highlight-csharp,
+.rst-content .highlight-default,
+.rst-content .literal-block-wrapper,
+.rst-content .literal-block-wrapper .highlight,
+div[class*='highlight'],
+div[class^='highlight'],
+div.highlight {
     background-color: var(--ss-bg-code) !important;
+    background: var(--ss-bg-code) !important;
     border: 1px solid var(--ss-border-code) !important;
-    border-left: 5px solid #16a34a !important; /* Emerald Accent Left Bar */
+    border-left: 5px solid var(--ss-border-code-accent) !important; /* Forest Green Left Accent */
     border-radius: var(--ss-radius-md) !important;
     margin: 1.6rem 0 !important;
     box-shadow: var(--ss-shadow-sm) !important;
@@ -235,11 +250,19 @@ code {
     position: relative !important;
 }
 
-/* Code block pre formatting */
+/* All Inner <pre> Tags */
 .rst-content div[class*='highlight'] pre,
+.rst-content div[class^='highlight'] pre,
 .rst-content .highlight pre,
-.rst-content pre {
+.rst-content pre.literal-block,
+.rst-content .literal-block-wrapper pre,
+.rst-content pre:not(.terminal),
+div[class*='highlight'] pre,
+div[class^='highlight'] pre,
+div.highlight pre,
+pre.literal-block {
     background-color: var(--ss-bg-code) !important;
+    background: var(--ss-bg-code) !important;
     color: var(--ss-text-code) !important;
     padding: 1.2rem 1.5rem !important;
     font-family: 'Fira Code', 'Cascadia Code', Consolas, Monaco, monospace !important;
@@ -250,10 +273,12 @@ code {
     overflow-x: auto !important;
 }
 
-/* Strip out Pygments background fills */
+/* Strip out default Pygments background fills */
 .rst-content div[class*='highlight'] pre *,
-.rst-content .highlight pre * {
+.rst-content .highlight pre *,
+div.highlight pre * {
     background-color: transparent !important;
+    background: transparent !important;
 }
 
 /* High-Contrast Syntax Colors on Light Green Background */
@@ -261,19 +286,19 @@ code {
 .rst-content div[class*='highlight'] .kd,
 .rst-content div[class*='highlight'] .kn,
 .rst-content div[class*='highlight'] .kr {
-    color: #dc2626 !important; /* Crimson Keywords (public, static, return, if, var) */
+    color: #b91c1c !important; /* Deep Crimson Keywords (public, static, return, if, var) */
     font-weight: 700 !important;
 }
 
 .rst-content div[class*='highlight'] .kt,
 .rst-content div[class*='highlight'] .nc {
-    color: #0369a1 !important; /* Royal Blue Types (double, int, ColVec, Matrix, Func) */
+    color: #0369a1 !important; /* Deep Royal Blue Types (double, int, ColVec, Matrix, Func) */
     font-weight: 700 !important;
 }
 
 .rst-content div[class*='highlight'] .nf,
 .rst-content div[class*='highlight'] .fm {
-    color: #7c3aed !important; /* Violet Functions (Fzero, Exp, Sqrt, Linspace) */
+    color: #6d28d9 !important; /* Deep Violet Functions (Fzero, Exp, Sqrt, Linspace) */
     font-weight: 600 !important;
 }
 
@@ -281,15 +306,15 @@ code {
 .rst-content div[class*='highlight'] .s2,
 .rst-content div[class*='highlight'] .sa,
 .rst-content div[class*='highlight'] .sb {
-    color: #047857 !important; /* Deep Green Strings */
-    font-weight: 500 !important;
+    color: #047857 !important; /* Deep Emerald Strings */
+    font-weight: 600 !important;
 }
 
 .rst-content div[class*='highlight'] .m,
 .rst-content div[class*='highlight'] .mi,
 .rst-content div[class*='highlight'] .mf {
-    color: #d97706 !important; /* Amber Numbers */
-    font-weight: 600 !important;
+    color: #c2410c !important; /* Dark Amber Numbers */
+    font-weight: 700 !important;
 }
 
 .rst-content div[class*='highlight'] .c,
@@ -301,25 +326,26 @@ code {
 
 .rst-content div[class*='highlight'] .o,
 .rst-content div[class*='highlight'] .p {
-    color: #334155 !important; /* Dark Slate Operators & Punctuation */
+    color: #1e293b !important; /* Dark Slate Operators & Punctuation */
+    font-weight: 600 !important;
 }
 
 /* Copy Button Integration */
 button.copybtn {
-    opacity: 0.75 !important;
+    opacity: 0.8 !important;
     background-color: #ffffff !important;
-    border: 1px solid #86efac !important;
+    border: 1px solid var(--ss-border-code) !important;
     border-radius: var(--ss-radius-sm) !important;
-    color: #166534 !important;
+    color: #1b5e20 !important;
     padding: 4px 8px !important;
     transition: all 0.15s ease !important;
 }
 
 button.copybtn:hover {
     opacity: 1 !important;
-    background-color: #16a34a !important;
+    background-color: #2e7d32 !important;
     color: #ffffff !important;
-    border-color: #16a34a !important;
+    border-color: #2e7d32 !important;
 }
 
 /* ==========================================================================

@@ -49,7 +49,7 @@ epub_show_urls = 'footnote'
 html_static_path = ['_static']
 
 html_css_files = [
-    'custom.css?v=6.0',
+    'custom.css?v=7.0',
 ]
 
 # -- Custom Terminal Directive
