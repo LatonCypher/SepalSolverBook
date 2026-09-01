@@ -389,10 +389,10 @@ button.copybtn:hover {
 }
 
 /* ==========================================================================
-   6. LaTeX / MathJax Equations (Clean, Natural, No Heavy Box)
+   6. LaTeX / MathJax Equations (Shrink to Fit Text Exactly & Centered)
    ========================================================================== */
 
-/* INLINE Math (:math:`...`) - Flow naturally with ZERO box */
+/* INLINE Math (:math:`...`) - Zero box */
 .rst-content span.math,
 .rst-content :not(div).math,
 .rst-content p .MathJax,
@@ -410,19 +410,21 @@ mjx-container:not([display="true"]) {
     display: inline !important;
 }
 
-/* DISPLAY Block Equations (.. math::) - Sleek, Centered, Compact */
+/* DISPLAY Block Equations (.. math::) - Snug Shrink-Wrapped Box */
 .rst-content div.math,
 .rst-content div.math-wrapper,
 .rst-content .math[display="block"],
-mjx-container[display="true"],
 .MathJax_Display {
+    width: fit-content !important;
+    max-width: 100% !important;
+    margin: 1.2rem auto !important;
+    display: block !important;
     background-color: rgba(255, 255, 255, 0.03) !important;
     background: rgba(255, 255, 255, 0.03) !important;
     color: #ffffff !important;
     border: 1px solid var(--ide-border) !important;
     border-radius: var(--ide-radius-sm) !important;
-    padding: 0.6rem 1rem !important;
-    margin: 1.2rem 0 !important;
+    padding: 0.35rem 0.85rem !important;
     box-shadow: none !important;
     overflow-x: auto !important;
     text-align: center !important;
