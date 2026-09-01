@@ -1,7 +1,9 @@
 /* ==========================================================================
-   SEPALSOLVER BOOK - MODERN LIGHT DOCUMENTATION THEME
-   Bright Crisp Canvas, Deep Contrast Typography, Tight Math Boxes
+   SEPALSOLVER BOOK - READTHEDOCS OFFICIAL DEFAULT FONTS & CLEAN LIGHT THEME
+   Fonts: Lato (Body), Roboto Slab (Headings), SFMono/Inconsolata (Code)
    ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700');
 
 :root {
     /* Bright & Light Color Palette */
@@ -10,7 +12,7 @@
     --light-bg-sidebar: #f1f5f9;      /* Soft Slate Sidebar */
     --light-bg-sidebar-active: #e0f2fe;/* Active Item Highlight */
     
-    /* Code Blocks (Midnight Dark Editor on Light Page for Optimal Contrast) */
+    /* Code Blocks */
     --light-bg-code: #0f172a;         /* Deep Slate Code Background */
     --light-bg-terminal: #090d16;     /* Terminal Console */
     --light-bg-code-inline: #f1f5f9;  /* Inline Code Background */
@@ -36,16 +38,17 @@
 }
 
 /* ==========================================================================
-   1. Global Layout & Typography
+   1. Global Layout & Exact ReadTheDocs Official Typography
    ========================================================================== */
 
 html,
 body,
 .wy-body-for-nav {
+    font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif !important;
     background-color: var(--light-bg-canvas) !important;
     color: var(--light-text-main) !important;
-    font-size: 16.5px !important;
-    line-height: 1.78 !important;
+    font-size: 16px !important;
+    line-height: 1.75 !important;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -65,24 +68,28 @@ body,
 }
 
 .rst-content {
-    font-size: 1.02rem !important;
+    font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 1rem !important;
     color: var(--light-text-main) !important;
 }
 
-/* Headings */
+/* Official ReadTheDocs Heading Font: Roboto Slab */
 .rst-content h1,
 .rst-content h2,
 .rst-content h3,
-.rst-content h4 {
-    font-weight: 700 !important;
+.rst-content h4,
+.rst-content h5,
+.rst-content h6,
+.rst-content .caption-text,
+.wy-side-nav-search>a {
+    font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif !important;
     color: var(--light-text-heading) !important;
-    letter-spacing: -0.025em !important;
     line-height: 1.3 !important;
 }
 
 .rst-content h1 {
     font-size: 2.35rem !important;
-    font-weight: 800 !important;
+    font-weight: 700 !important;
     margin-bottom: 1.4rem !important;
     padding-bottom: 0.6rem !important;
     border-bottom: 2px solid #e0f2fe !important;
@@ -91,6 +98,7 @@ body,
 
 .rst-content h2 {
     font-size: 1.65rem !important;
+    font-weight: 700 !important;
     margin-top: 2.8rem !important;
     margin-bottom: 1rem !important;
     padding-bottom: 0.4rem !important;
@@ -100,13 +108,15 @@ body,
 
 .rst-content h3 {
     font-size: 1.3rem !important;
+    font-weight: 700 !important;
     margin-top: 2rem !important;
     margin-bottom: 0.8rem !important;
     color: var(--light-primary-dark) !important;
 }
 
 .rst-content p {
-    line-height: 1.8 !important;
+    font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif !important;
+    line-height: 1.75 !important;
     margin-bottom: 1.3rem !important;
     color: var(--light-text-main) !important;
 }
@@ -127,14 +137,14 @@ body,
     text-decoration: underline !important;
 }
 
-/* Inline Code Snippets */
+/* Official ReadTheDocs Monospace Font Stack for Inline Code */
 .rst-content code.literal,
 .rst-content tt.literal,
 .rst-content code,
 code.literal,
 tt.literal,
 code {
-    font-family: 'Consolas', 'Fira Code', Monaco, monospace !important;
+    font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", Courier, monospace !important;
     font-size: 0.88em !important;
     background-color: var(--light-bg-code-inline) !important;
     background: var(--light-bg-code-inline) !important;
@@ -188,6 +198,7 @@ code {
 
 /* Sidebar Links */
 .wy-menu-vertical a {
+    font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif !important;
     color: #475569 !important;
     font-size: 0.92rem !important;
     padding: 0.55rem 1.4rem !important;
@@ -235,7 +246,7 @@ code {
 }
 
 /* ==========================================================================
-   4. High-Contrast Code Editor (Midnight on Light Page)
+   4. High-Contrast Code Editor (Official RTD Monospace)
    ========================================================================== */
 
 /* Outer Code Block Containers */
@@ -275,7 +286,7 @@ pre.literal-block {
     background: var(--light-bg-code) !important;
     color: #f1f5f9 !important;
     padding: 1.2rem 1.5rem !important;
-    font-family: 'Consolas', 'Fira Code', Monaco, monospace !important;
+    font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", Courier, monospace !important;
     font-size: 0.92rem !important;
     line-height: 1.68 !important;
     margin: 0 !important;
@@ -366,7 +377,7 @@ button.copybtn:hover {
     border-left: 4px solid #10b981 !important;
     border-radius: var(--light-radius-md) !important;
     color: #e2e8f0 !important;
-    font-family: 'Consolas', 'Fira Code', Monaco, monospace !important;
+    font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", Courier, monospace !important;
     font-size: 0.88rem !important;
     line-height: 1.6 !important;
     padding: 1.1rem 1.4rem !important;
@@ -472,6 +483,7 @@ mjx-container[display="true"] {
 }
 
 .rst-content .admonition .admonition-title {
+    font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif !important;
     font-weight: 700 !important;
     font-size: 0.95rem !important;
     letter-spacing: 0.02em !important;
@@ -554,6 +566,7 @@ mjx-container[display="true"] {
 .rst-content table.wy-table-responsive {
     width: 100% !important;
     border-collapse: collapse !important;
+    font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif !important;
     font-size: 0.92rem !important;
     margin: 2rem 0 !important;
     background-color: #ffffff !important;
@@ -608,6 +621,7 @@ mjx-container[display="true"] {
 .rst-content .caption,
 .rst-content .caption-text,
 .rst-content figcaption {
+    font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif !important;
     font-size: 0.88rem !important;
     color: var(--light-text-muted) !important;
     margin-top: 0.75rem !important;
