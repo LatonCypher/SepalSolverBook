@@ -1,6 +1,6 @@
 /* ==========================================================================
    SEPALSOLVER BOOK - 100% NATIVE READTHEDOCS FONTS & CLEAN LIGHT THEME
-   (Zero font-family overrides - 100% native sphinx_rtd_theme typography)
+   (Larger, Highly Readable Typography & Clean Light UI)
    ========================================================================== */
 
 :root {
@@ -37,13 +37,17 @@
 }
 
 /* ==========================================================================
-   1. Global Layout & Typography
+   1. Global Layout & Enlarged Typography
    ========================================================================== */
 
+html,
 body,
 .wy-body-for-nav {
     background-color: var(--ss-bg-canvas) !important;
     color: var(--ss-text-main) !important;
+    font-size: 17.5px !important;      /* Increased base font size */
+    line-height: 1.8 !important;
+    -webkit-font-smoothing: antialiased;
 }
 
 .wy-nav-content-wrap {
@@ -51,17 +55,18 @@ body,
 }
 
 .wy-nav-content {
-    max-width: 1040px !important;
-    padding: 2.2rem 3rem 4.5rem 3rem !important;
+    max-width: 1060px !important;
+    padding: 2.4rem 3.2rem 4.8rem 3.2rem !important;
     background-color: var(--ss-bg-surface) !important;
     min-height: 100vh !important;
 }
 
 .rst-content {
+    font-size: 1.05rem !important;
     color: var(--ss-text-main) !important;
 }
 
-/* Headings Colors & Dividers */
+/* Headings Colors, Sizes & Dividers */
 .rst-content h1,
 .rst-content h2,
 .rst-content h3,
@@ -70,28 +75,51 @@ body,
 .rst-content h6,
 .wy-side-nav-search>a {
     color: var(--ss-text-heading) !important;
+    line-height: 1.35 !important;
 }
 
 .rst-content h1 {
+    font-size: 2.5rem !important;      /* Prominent Chapter Title */
+    font-weight: 700 !important;
+    margin-bottom: 1.5rem !important;
+    padding-bottom: 0.6rem !important;
     border-bottom: 2px solid var(--ss-primary-light) !important;
-    padding-bottom: 0.5rem !important;
-    margin-bottom: 1.4rem !important;
 }
 
 .rst-content h2 {
+    font-size: 1.85rem !important;     /* Section Headings */
+    font-weight: 700 !important;
+    margin-top: 2.8rem !important;
+    margin-bottom: 1.1rem !important;
+    padding-bottom: 0.45rem !important;
     border-bottom: 1px solid var(--ss-border) !important;
-    padding-bottom: 0.4rem !important;
-    margin-top: 2.6rem !important;
-    margin-bottom: 1rem !important;
 }
 
 .rst-content h3 {
+    font-size: 1.45rem !important;     /* Sub-headings */
+    font-weight: 700 !important;
+    margin-top: 2.2rem !important;
+    margin-bottom: 0.9rem !important;
     color: var(--ss-primary-dark) !important;
-    margin-top: 2rem !important;
-    margin-bottom: 0.8rem !important;
+}
+
+.rst-content h4 {
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    margin-top: 1.8rem !important;
+    margin-bottom: 0.75rem !important;
+}
+
+.rst-content p,
+.rst-content li {
+    font-size: 1.05rem !important;
+    line-height: 1.82 !important;
+    margin-bottom: 1.35rem !important;
+    color: var(--ss-text-main) !important;
 }
 
 .rst-content strong {
+    font-weight: 700 !important;
     color: var(--ss-text-heading) !important;
 }
 
@@ -113,10 +141,11 @@ body,
 code.literal,
 tt.literal,
 code {
+    font-size: 0.92em !important;
     background-color: var(--ss-bg-code-inline) !important;
     background: var(--ss-bg-code-inline) !important;
     color: var(--ss-text-code-inline) !important;
-    padding: 0.18em 0.45em !important;
+    padding: 0.18em 0.48em !important;
     border-radius: 4px !important;
     border: 1px solid var(--ss-border) !important;
     font-weight: 600 !important;
@@ -140,6 +169,8 @@ code {
 }
 
 .wy-side-nav-search>a {
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
     color: var(--ss-text-heading) !important;
 }
 
@@ -149,7 +180,8 @@ code {
     border: 1px solid var(--ss-border-dark) !important;
     color: var(--ss-text-heading) !important;
     border-radius: var(--ss-radius-sm) !important;
-    padding: 0.55rem 1rem !important;
+    padding: 0.6rem 1rem !important;
+    font-size: 0.95rem !important;
     box-shadow: none !important;
     transition: all 0.2s ease !important;
 }
@@ -172,7 +204,8 @@ code {
 
 /* Level 1: Main Topics / Chapters */
 .wy-menu-vertical li.toctree-l1 > a {
-    padding: 0.6rem 1.2rem !important;
+    padding: 0.65rem 1.2rem !important;
+    font-size: 1.02rem !important;
     font-weight: 700 !important;
     color: var(--ss-text-heading) !important;
 }
@@ -181,9 +214,9 @@ code {
 .wy-menu-vertical li.toctree-l2 > a,
 .wy-menu-vertical li.toctree-l2 a {
     padding-left: 2.2rem !important;
-    padding-top: 0.45rem !important;
-    padding-bottom: 0.45rem !important;
-    font-size: 0.92rem !important;
+    padding-top: 0.48rem !important;
+    padding-bottom: 0.48rem !important;
+    font-size: 0.96rem !important;
     font-weight: 500 !important;
     color: #475569 !important;
 }
@@ -192,9 +225,9 @@ code {
 .wy-menu-vertical li.toctree-l3 > a,
 .wy-menu-vertical li.toctree-l3 a {
     padding-left: 3.2rem !important;
-    padding-top: 0.35rem !important;
-    padding-bottom: 0.35rem !important;
-    font-size: 0.88rem !important;
+    padding-top: 0.38rem !important;
+    padding-bottom: 0.38rem !important;
+    font-size: 0.92rem !important;
     color: #64748b !important;
 }
 
@@ -202,9 +235,9 @@ code {
 .wy-menu-vertical li.toctree-l4 > a,
 .wy-menu-vertical li.toctree-l4 a {
     padding-left: 4.2rem !important;
-    padding-top: 0.3rem !important;
-    padding-bottom: 0.3rem !important;
-    font-size: 0.85rem !important;
+    padding-top: 0.32rem !important;
+    padding-bottom: 0.32rem !important;
+    font-size: 0.88rem !important;
     color: #64748b !important;
 }
 
@@ -225,6 +258,7 @@ code {
     display: flex !important;
     align-items: center !important;
     gap: 0.4rem !important;
+    font-size: 0.9rem !important;
     margin-bottom: 2rem !important;
     padding-bottom: 0.75rem !important;
     border-bottom: 1px solid var(--ss-border) !important;
@@ -258,7 +292,7 @@ div.highlight {
     border: 1px solid var(--ss-border) !important;
     border-left: 4px solid var(--ss-primary) !important;
     border-radius: var(--ss-radius-sm) !important;
-    margin: 1.6rem 0 !important;
+    margin: 1.8rem 0 !important;
     box-shadow: var(--ss-shadow-sm) !important;
     overflow: hidden !important;
     position: relative !important;
@@ -278,8 +312,9 @@ pre.literal-block {
     background-color: var(--ss-bg-code) !important;
     background: var(--ss-bg-code) !important;
     color: #1e293b !important;
-    padding: 1.1rem 1.4rem !important;
-    line-height: 1.65 !important;
+    padding: 1.2rem 1.5rem !important;
+    font-size: 0.96rem !important;      /* Increased code font size */
+    line-height: 1.7 !important;
     margin: 0 !important;
     border: none !important;
     overflow-x: auto !important;
@@ -341,13 +376,13 @@ div.highlight pre * {
     color: #334155 !important; /* Dark Slate Operators */
 }
 
-/* Copy Button Integration (Sphinx CopyButton) */
+/* Copy Button Integration */
 button.copybtn {
     position: absolute !important;
-    top: 0.6rem !important;
-    right: 0.6rem !important;
-    width: 28px !important;
-    height: 28px !important;
+    top: 0.65rem !important;
+    right: 0.65rem !important;
+    width: 30px !important;
+    height: 30px !important;
     padding: 0 !important;
     display: flex !important;
     align-items: center !important;
@@ -364,8 +399,8 @@ button.copybtn {
 button.copybtn svg,
 button.copybtn img,
 button.copybtn .copybutton-icon {
-    width: 15px !important;
-    height: 15px !important;
+    width: 16px !important;
+    height: 16px !important;
     display: block !important;
     fill: #475569 !important;
     color: #475569 !important;
@@ -408,9 +443,10 @@ button.copybtn.success img {
     border-left: 4px solid #10b981 !important;
     border-radius: var(--ss-radius-sm) !important;
     color: #1e293b !important;
-    line-height: 1.6 !important;
-    padding: 1.1rem 1.4rem !important;
-    margin: 1.4rem 0 !important;
+    font-size: 0.94rem !important;
+    line-height: 1.65 !important;
+    padding: 1.2rem 1.5rem !important;
+    margin: 1.6rem 0 !important;
     box-shadow: var(--ss-shadow-sm) !important;
     position: relative !important;
 }
@@ -419,7 +455,7 @@ button.copybtn.success img {
 .rst-content .literal-block.terminal::before {
     content: "OUTPUT";
     display: block;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     color: #059669;
@@ -472,8 +508,8 @@ div.math-wrapper {
     display: table !important;
     width: auto !important;
     max-width: 100% !important;
-    margin: 1.2rem auto !important;
-    padding: 0.25rem 0 !important;
+    margin: 1.3rem auto !important;
+    padding: 0.35rem 0 !important;
     text-align: center !important;
     box-sizing: border-box !important;
 }
@@ -496,7 +532,7 @@ div.math-wrapper {
 
 .rst-content .admonition {
     border-radius: var(--ss-radius-md) !important;
-    margin: 1.8rem 0 !important;
+    margin: 2rem 0 !important;
     border: 1px solid var(--ss-border) !important;
     border-left-width: 5px !important;
     box-shadow: var(--ss-shadow-sm) !important;
@@ -506,21 +542,22 @@ div.math-wrapper {
 
 .rst-content .admonition .admonition-title {
     font-weight: 700 !important;
-    font-size: 0.95rem !important;
+    font-size: 1.05rem !important;       /* Increased admonition title size */
     letter-spacing: 0.02em !important;
-    padding: 0.7rem 1.2rem !important;
+    padding: 0.75rem 1.3rem !important;
     margin: 0 !important;
     border: none !important;
 }
 
 .rst-content .admonition>*:not(.admonition-title) {
-    padding-left: 1.25rem !important;
-    padding-right: 1.25rem !important;
+    padding-left: 1.3rem !important;
+    padding-right: 1.3rem !important;
+    font-size: 1.02rem !important;
     color: var(--ss-text-main) !important;
 }
 
 .rst-content .admonition>*:last-child {
-    padding-bottom: 1.1rem !important;
+    padding-bottom: 1.2rem !important;
 }
 
 /* Example Box (Blue) */
@@ -588,6 +625,7 @@ div.math-wrapper {
     width: 100% !important;
     border-collapse: collapse !important;
     margin: 2rem 0 !important;
+    font-size: 0.98rem !important;       /* Increased table font size */
     background-color: #ffffff !important;
     border-top: 2px solid var(--ss-text-heading) !important;
     border-bottom: 2px solid var(--ss-text-heading) !important;
@@ -599,12 +637,12 @@ div.math-wrapper {
     background-color: #f8fafc !important;
     color: var(--ss-text-heading) !important;
     font-weight: 700 !important;
-    padding: 0.85rem 1rem !important;
+    padding: 0.9rem 1.1rem !important;
     border-bottom: 1px solid var(--ss-text-heading) !important;
 }
 
 .rst-content table.docutils td {
-    padding: 0.75rem 1rem !important;
+    padding: 0.8rem 1.1rem !important;
     border-bottom: 1px solid var(--ss-border) !important;
     color: var(--ss-text-main) !important;
 }
@@ -623,7 +661,7 @@ div.math-wrapper {
 
 .rst-content figure,
 .rst-content .figure {
-    margin: 2.4rem 0 !important;
+    margin: 2.6rem 0 !important;
     text-align: center !important;
 }
 
@@ -640,8 +678,9 @@ div.math-wrapper {
 .rst-content .caption,
 .rst-content .caption-text,
 .rst-content figcaption {
+    font-size: 0.92rem !important;
     color: var(--ss-text-muted) !important;
-    margin-top: 0.75rem !important;
+    margin-top: 0.85rem !important;
     font-style: italic !important;
 }
 
@@ -650,8 +689,8 @@ div.math-wrapper {
    ========================================================================== */
 
 .rst-content .rst-footer-buttons {
-    margin-top: 3.5rem !important;
-    padding-top: 1.5rem !important;
+    margin-top: 3.8rem !important;
+    padding-top: 1.6rem !important;
     border-top: 1px solid var(--ss-border) !important;
     display: flex !important;
     justify-content: space-between !important;
@@ -662,7 +701,8 @@ div.math-wrapper {
     color: var(--ss-primary-dark) !important;
     border: 1px solid var(--ss-border) !important;
     border-radius: var(--ss-radius-md) !important;
-    padding: 0.75rem 1.4rem !important;
+    padding: 0.8rem 1.5rem !important;
+    font-size: 0.98rem !important;
     font-weight: 600 !important;
     box-shadow: var(--ss-shadow-sm) !important;
     transition: all 0.2s ease !important;

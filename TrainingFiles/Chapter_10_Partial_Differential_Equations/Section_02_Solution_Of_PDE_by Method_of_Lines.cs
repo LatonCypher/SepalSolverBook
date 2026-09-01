@@ -54,8 +54,8 @@
             /// </table>
             /// 
             /// <header 3> Parabolic and Ellipitic PDE Solver </header>
-            /// In sepalsolver, the nnumerical solution of parabolic and elliptic pde (Pdepe) is built on Ode43a: 
-            /// our differential algebraic equation solver that relies on L-stable diagonally implicit Runge Kutta. 
+            /// Sepalsolver provides an inbuilt numerical solution of parabolic and elliptic pde (Pdepe) built on 
+            /// our differential algebraic equation solver. These solvers are L-stable diagonally implicit Runge Kutta. 
             /// This allows it to handle the boundary conditions implicitly and also correct the egde values in 
             /// situation where the initial condition is not consitent with the boundary condition
             /// 
