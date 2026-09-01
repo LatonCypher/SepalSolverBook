@@ -1,72 +1,92 @@
 /* ==========================================================================
-   SEPALSOLVER BOOK - READTHEDOCS (sphinx_rtd_theme) THEME OVERHAUL
-   Modern Academic Typography, Light Green Code Theme, Polished Admonitions
+   SEPALSOLVER BOOK - MODERN DARK IDE THEME (Antigravity / VS Code Aesthetic)
+   Deep Slate Canvas, Vibrant Syntax Tokens, Glowing Admonitions & MathJax
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    /* Color Palette */
-    --ss-primary: #0284c7;
-    --ss-primary-dark: #0369a1;
-    --ss-primary-light: #e0f2fe;
+    /* Core IDE Dark Color Palette */
+    --ide-bg-canvas: #12131c;
+    /* Deep Outer Editor Canvas */
+    --ide-bg-surface: #181926;
+    /* Main Content Card */
+    --ide-bg-sidebar: #0e0f17;
+    /* Dark Explorer Sidebar */
+    --ide-bg-sidebar-active: #1e2030;
+    /* Active Tree Item */
+    --ide-bg-code: #0b0c14;
+    /* Inner Code Editor Background */
+    --ide-bg-terminal: #07080d;
+    /* Terminal Console Background */
 
-    --ss-bg-sidebar: #0f172a;
-    --ss-bg-sidebar-active: #1e293b;
-    --ss-sidebar-text: #94a3b8;
-    --ss-sidebar-text-active: #38bdf8;
+    /* Typography & Text */
+    --ide-text-heading: #f8fafc;
+    /* Crisp Pure White */
+    --ide-text-main: #cbd5e1;
+    /* Soft Readable Slate */
+    --ide-text-muted: #64748b;
+    /* Muted Gray */
+    --ide-text-code-inline: #38bdf8;
+    /* Glowing Cyan Inline Code */
 
-    --ss-bg-body: #ffffff;
-    --ss-text-main: #1e293b;
-    --ss-text-muted: #64748b;
-    --ss-text-heading: #0f172a;
+    /* Borders & Accents */
+    --ide-border: #222436;
+    /* Subtle IDE Grid Divider */
+    --ide-border-active: #3b82f6;
+    /* Active Border Highlight */
+    --ide-accent-blue: #38bdf8;
+    /* Sky Blue Accent */
+    --ide-accent-green: #34d399;
+    /* Emerald Green Accent */
+    --ide-accent-purple: #c084fc;
+    /* Violet Accent */
+    --ide-accent-amber: #fbbf24;
+    /* Amber Accent */
+    --ide-accent-rose: #f43f5e;
+    /* Crimson/Rose Accent */
 
-    /* Light Green Code Palette */
-    --ss-bg-code: #e8f5e9;           /* Soft Light Green */
-    --ss-border-code: #a5d6a7;       /* Muted Emerald Border */
-    --ss-border-code-accent: #2e7d32;/* Deep Green Accent Bar */
-    --ss-text-code: #1b5e20;         /* Dark Forest Green */
-    --ss-bg-code-inline: #e8f5e9;
-    --ss-border-code-inline: #a5d6a7;
-    --ss-text-code-inline: #1b5e20;
-
-    --ss-bg-terminal: #090d16;
-
-    --ss-border: #e2e8f0;
-    --ss-border-dark: #cbd5e1;
-
-    --ss-radius-sm: 6px;
-    --ss-radius-md: 10px;
-    --ss-radius-lg: 14px;
-
-    --ss-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-    --ss-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
-    --ss-shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    /* Radii & Shadows */
+    --ide-radius-sm: 6px;
+    --ide-radius-md: 10px;
+    --ide-radius-lg: 14px;
+    --ide-shadow-card: 0 4px 20px rgba(0, 0, 0, 0.45);
+    --ide-shadow-code: 0 8px 24px rgba(0, 0, 0, 0.55);
 }
 
 /* ==========================================================================
-   1. Typography & Global Page Layout
+   1. Global Layout & Typography
    ========================================================================== */
 
+html,
 body,
 .wy-body-for-nav {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+    background-color: var(--ide-bg-canvas) !important;
+    color: var(--ide-text-main) !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     font-size: 16.5px !important;
-    line-height: 1.75 !important;
-    color: var(--ss-text-main) !important;
-    background-color: var(--ss-bg-body) !important;
+    line-height: 1.78 !important;
     -webkit-font-smoothing: antialiased;
 }
 
-/* Expand content area from RTD default 800px to spacious 1020px */
+/* Central Content Container */
+.wy-nav-content-wrap {
+    background-color: var(--ide-bg-canvas) !important;
+}
+
 .wy-nav-content {
-    max-width: 1020px !important;
-    padding: 2.2rem 3rem 4rem 3rem !important;
-    background-color: var(--ss-bg-body) !important;
+    max-width: 1040px !important;
+    padding: 2.5rem 3.2rem 5rem 3.2rem !important;
+    background-color: var(--ide-bg-surface) !important;
+    border-left: 1px solid var(--ide-border) !important;
+    border-right: 1px solid var(--ide-border) !important;
+    box-shadow: var(--ide-shadow-card) !important;
+    min-height: 100vh !important;
 }
 
 .rst-content {
     font-size: 1.02rem !important;
+    color: var(--ide-text-main) !important;
 }
 
 /* Headings */
@@ -76,7 +96,7 @@ body,
 .rst-content h4 {
     font-family: 'Inter', sans-serif !important;
     font-weight: 700 !important;
-    color: var(--ss-text-heading) !important;
+    color: var(--ide-text-heading) !important;
     letter-spacing: -0.025em !important;
     line-height: 1.3 !important;
 }
@@ -85,38 +105,50 @@ body,
     font-size: 2.35rem !important;
     font-weight: 800 !important;
     margin-bottom: 1.4rem !important;
-    padding-bottom: 0.5rem !important;
-    border-bottom: 2px solid var(--ss-primary-light) !important;
-    color: var(--ss-text-heading) !important;
+    padding-bottom: 0.6rem !important;
+    border-bottom: 1px solid var(--ide-border) !important;
+    color: #ffffff !important;
 }
 
 .rst-content h2 {
     font-size: 1.65rem !important;
-    margin-top: 2.6rem !important;
+    margin-top: 2.8rem !important;
     margin-bottom: 1rem !important;
     padding-bottom: 0.4rem !important;
-    border-bottom: 1px solid var(--ss-border) !important;
+    border-bottom: 1px solid var(--ide-border) !important;
+    color: #f1f5f9 !important;
 }
 
 .rst-content h3 {
     font-size: 1.3rem !important;
     margin-top: 2rem !important;
     margin-bottom: 0.8rem !important;
-    color: var(--ss-primary-dark) !important;
+    color: var(--ide-accent-blue) !important;
 }
 
 .rst-content p {
     line-height: 1.8 !important;
     margin-bottom: 1.3rem !important;
-    color: var(--ss-text-main) !important;
+    color: var(--ide-text-main) !important;
 }
 
 .rst-content strong {
     font-weight: 700 !important;
-    color: var(--ss-text-heading) !important;
+    color: #ffffff !important;
 }
 
-/* Inline Code Snippets (Light Green) */
+.rst-content a {
+    color: var(--ide-accent-blue) !important;
+    text-decoration: none !important;
+    transition: color 0.15s ease !important;
+}
+
+.rst-content a:hover {
+    color: #60a5fa !important;
+    text-decoration: underline !important;
+}
+
+/* Inline Code Snippets */
 .rst-content code.literal,
 .rst-content tt.literal,
 .rst-content code,
@@ -125,44 +157,45 @@ tt.literal,
 code {
     font-family: 'Fira Code', 'Cascadia Code', Consolas, monospace !important;
     font-size: 0.88em !important;
-    background-color: var(--ss-bg-code-inline) !important;
-    background: var(--ss-bg-code-inline) !important;
-    color: var(--ss-text-code-inline) !important;
-    padding: 0.2em 0.45em !important;
+    background-color: #121420 !important;
+    background: #121420 !important;
+    color: var(--ide-text-code-inline) !important;
+    padding: 0.2em 0.5em !important;
     border-radius: 4px !important;
-    border: 1px solid var(--ss-border-code-inline) !important;
-    font-weight: 600 !important;
+    border: 1px solid #2a2c42 !important;
+    font-weight: 500 !important;
     white-space: normal !important;
 }
 
 /* ==========================================================================
-   2. Read the Docs Sidebar & Navigation
+   2. Dark Sidebar & File Explorer Navigation
    ========================================================================== */
 
 .wy-nav-side {
-    background-color: var(--ss-bg-sidebar) !important;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08) !important;
+    background-color: var(--ide-bg-sidebar) !important;
+    border-right: 1px solid var(--ide-border) !important;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5) !important;
 }
 
 .wy-side-nav-search {
-    background-color: #090d16 !important;
+    background-color: #08090f !important;
     padding: 1.8rem 1.4rem 1.4rem 1.4rem !important;
-    border-bottom: 1px solid #1e293b !important;
+    border-bottom: 1px solid var(--ide-border) !important;
 }
 
 .wy-side-nav-search>a {
     font-size: 1.15rem !important;
     font-weight: 700 !important;
-    color: #f8fafc !important;
+    color: #ffffff !important;
     letter-spacing: -0.01em !important;
 }
 
 .wy-side-nav-search .wy-dropdown>a,
 .wy-side-nav-search input[type=text] {
-    background-color: #1e293b !important;
-    border: 1px solid #334155 !important;
+    background-color: #161724 !important;
+    border: 1px solid #2d2f45 !important;
     color: #f8fafc !important;
-    border-radius: var(--ss-radius-md) !important;
+    border-radius: var(--ide-radius-md) !important;
     padding: 0.55rem 1rem !important;
     font-size: 0.9rem !important;
     box-shadow: none !important;
@@ -170,38 +203,37 @@ code {
 }
 
 .wy-side-nav-search input[type=text]:focus {
-    border-color: var(--ss-primary) !important;
-    background-color: #0f172a !important;
+    border-color: var(--ide-accent-blue) !important;
+    background-color: #1c1d2e !important;
 }
 
-/* Sidebar Links Hierarchy */
+/* Sidebar Links */
 .wy-menu-vertical a {
-    color: var(--ss-sidebar-text) !important;
+    color: var(--ide-text-muted) !important;
     font-size: 0.92rem !important;
     padding: 0.55rem 1.4rem !important;
     transition: all 0.15s ease-in-out !important;
 }
 
 .wy-menu-vertical a:hover {
-    background-color: rgba(255, 255, 255, 0.05) !important;
-    color: #38bdf8 !important;
+    background-color: rgba(255, 255, 255, 0.04) !important;
+    color: var(--ide-accent-blue) !important;
 }
 
 .wy-menu-vertical li.current>a,
 .wy-menu-vertical li.on a {
-    background-color: var(--ss-bg-sidebar-active) !important;
+    background-color: var(--ide-bg-sidebar-active) !important;
     color: #ffffff !important;
     font-weight: 600 !important;
-    border-left: 4px solid var(--ss-primary) !important;
+    border-left: 4px solid var(--ide-accent-blue) !important;
 }
 
 .wy-menu-vertical li.toctree-l1>a {
     font-weight: 600 !important;
-    letter-spacing: -0.01em !important;
 }
 
 /* ==========================================================================
-   3. Breadcrumbs & Page Header
+   3. Breadcrumbs Header
    ========================================================================== */
 
 .wy-breadcrumbs {
@@ -211,21 +243,20 @@ code {
     font-size: 0.85rem !important;
     margin-bottom: 2rem !important;
     padding-bottom: 0.75rem !important;
-    border-bottom: 1px solid var(--ss-border) !important;
+    border-bottom: 1px solid var(--ide-border) !important;
+}
+
+.wy-breadcrumbs li {
+    color: var(--ide-text-muted) !important;
 }
 
 .wy-breadcrumbs li a {
-    color: var(--ss-primary) !important;
+    color: var(--ide-accent-blue) !important;
     font-weight: 500 !important;
-    text-decoration: none !important;
-}
-
-.wy-breadcrumbs li a:hover {
-    text-decoration: underline !important;
 }
 
 /* ==========================================================================
-   4. C# Code Blocks & Syntax Highlighting (Light Green Theme)
+   4. High-Contrast IDE Code Editor (VS Code / Antigravity Style)
    ========================================================================== */
 
 /* Outer Code Block Containers */
@@ -239,13 +270,14 @@ code {
 div[class*='highlight'],
 div[class^='highlight'],
 div.highlight {
-    background-color: var(--ss-bg-code) !important;
-    background: var(--ss-bg-code) !important;
-    border: 1px solid var(--ss-border-code) !important;
-    border-left: 5px solid var(--ss-border-code-accent) !important; /* Forest Green Left Accent */
-    border-radius: var(--ss-radius-md) !important;
-    margin: 1.6rem 0 !important;
-    box-shadow: var(--ss-shadow-sm) !important;
+    background-color: var(--ide-bg-code) !important;
+    background: var(--ide-bg-code) !important;
+    border: 1px solid #282a3e !important;
+    border-left: 5px solid var(--ide-accent-blue) !important;
+    /* Glowing Blue Accent Bar */
+    border-radius: var(--ide-radius-md) !important;
+    margin: 1.8rem 0 !important;
+    box-shadow: var(--ide-shadow-code) !important;
     overflow: hidden !important;
     position: relative !important;
 }
@@ -261,19 +293,19 @@ div[class*='highlight'] pre,
 div[class^='highlight'] pre,
 div.highlight pre,
 pre.literal-block {
-    background-color: var(--ss-bg-code) !important;
-    background: var(--ss-bg-code) !important;
-    color: var(--ss-text-code) !important;
-    padding: 1.2rem 1.5rem !important;
+    background-color: var(--ide-bg-code) !important;
+    background: var(--ide-bg-code) !important;
+    color: #e2e8f0 !important;
+    padding: 1.3rem 1.6rem !important;
     font-family: 'Fira Code', 'Cascadia Code', Consolas, Monaco, monospace !important;
-    font-size: 0.9rem !important;
-    line-height: 1.65 !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
     margin: 0 !important;
     border: none !important;
     overflow-x: auto !important;
 }
 
-/* Strip out default Pygments background fills */
+/* Strip out Pygments default backgrounds */
 .rst-content div[class*='highlight'] pre *,
 .rst-content .highlight pre *,
 div.highlight pre * {
@@ -281,90 +313,94 @@ div.highlight pre * {
     background: transparent !important;
 }
 
-/* High-Contrast Syntax Colors on Light Green Background */
+/* Syntax Tokens - VS Code / Antigravity IDE Palette */
 .rst-content div[class*='highlight'] .k,
 .rst-content div[class*='highlight'] .kd,
 .rst-content div[class*='highlight'] .kn,
 .rst-content div[class*='highlight'] .kr {
-    color: #b91c1c !important; /* Deep Crimson Keywords (public, static, return, if, var) */
-    font-weight: 700 !important;
+    color: #f43f5e !important;
+    /* Crimson / Rose (public, static, return, if, var) */
+    font-weight: 600 !important;
 }
 
 .rst-content div[class*='highlight'] .kt,
 .rst-content div[class*='highlight'] .nc {
-    color: #0369a1 !important; /* Deep Royal Blue Types (double, int, ColVec, Matrix, Func) */
-    font-weight: 700 !important;
+    color: #38bdf8 !important;
+    /* Electric Cyan (double, int, ColVec, Matrix, Func, SepalSolver) */
+    font-weight: 600 !important;
 }
 
 .rst-content div[class*='highlight'] .nf,
 .rst-content div[class*='highlight'] .fm {
-    color: #6d28d9 !important; /* Deep Violet Functions (Fzero, Exp, Sqrt, Linspace) */
-    font-weight: 600 !important;
+    color: #fbbf24 !important;
+    /* Gold / Yellow Methods (Fzero, Exp, Sqrt, Linspace, Meshgrid, Solve) */
+    font-weight: 500 !important;
 }
 
 .rst-content div[class*='highlight'] .s,
 .rst-content div[class*='highlight'] .s2,
 .rst-content div[class*='highlight'] .sa,
 .rst-content div[class*='highlight'] .sb {
-    color: #047857 !important; /* Deep Emerald Strings */
-    font-weight: 600 !important;
+    color: #34d399 !important;
+    /* Emerald Mint Strings */
 }
 
 .rst-content div[class*='highlight'] .m,
 .rst-content div[class*='highlight'] .mi,
 .rst-content div[class*='highlight'] .mf {
-    color: #c2410c !important; /* Dark Amber Numbers */
-    font-weight: 700 !important;
+    color: #fb923c !important;
+    /* Peach / Orange Numbers */
 }
 
 .rst-content div[class*='highlight'] .c,
 .rst-content div[class*='highlight'] .c1,
 .rst-content div[class*='highlight'] .cm {
-    color: #64748b !important; /* Slate Comments */
+    color: #64748b !important;
+    /* Slate Comments */
     font-style: italic !important;
 }
 
 .rst-content div[class*='highlight'] .o,
 .rst-content div[class*='highlight'] .p {
-    color: #1e293b !important; /* Dark Slate Operators & Punctuation */
-    font-weight: 600 !important;
+    color: #94a3b8 !important;
+    /* Operators & Punctuation */
 }
 
 /* Copy Button Integration */
 button.copybtn {
-    opacity: 0.8 !important;
-    background-color: #ffffff !important;
-    border: 1px solid var(--ss-border-code) !important;
-    border-radius: var(--ss-radius-sm) !important;
-    color: #1b5e20 !important;
+    opacity: 0.7 !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: var(--ide-radius-sm) !important;
+    color: #e2e8f0 !important;
     padding: 4px 8px !important;
     transition: all 0.15s ease !important;
 }
 
 button.copybtn:hover {
     opacity: 1 !important;
-    background-color: #2e7d32 !important;
-    color: #ffffff !important;
-    border-color: #2e7d32 !important;
+    background-color: var(--ide-accent-blue) !important;
+    color: #0b0c14 !important;
+    font-weight: 600 !important;
 }
 
 /* ==========================================================================
-   5. Custom Terminal Directive (.terminal)
+   5. Output Terminal Console (.terminal)
    ========================================================================== */
 
 .rst-content pre.terminal,
 .rst-content .literal-block.terminal {
-    background-color: var(--ss-bg-terminal) !important;
-    border: 1px solid #1e293b !important;
-    border-left: 4px solid #10b981 !important;
-    border-radius: var(--ss-radius-md) !important;
+    background-color: var(--ide-bg-terminal) !important;
+    border: 1px solid #1e2133 !important;
+    border-left: 4px solid var(--ide-accent-green) !important;
+    border-radius: var(--ide-radius-md) !important;
     color: #e2e8f0 !important;
     font-family: 'Fira Code', Consolas, monospace !important;
     font-size: 0.88rem !important;
     line-height: 1.6 !important;
-    padding: 1.1rem 1.4rem !important;
-    margin: 1.4rem 0 !important;
-    box-shadow: var(--ss-shadow-sm) !important;
+    padding: 1.2rem 1.5rem !important;
+    margin: 1.6rem 0 !important;
+    box-shadow: var(--ide-shadow-code) !important;
     position: relative !important;
 }
 
@@ -375,26 +411,26 @@ button.copybtn:hover {
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.08em;
-    color: #10b981;
+    color: var(--ide-accent-green);
     margin-bottom: 0.5rem;
-    opacity: 0.9;
 }
 
 /* ==========================================================================
-   6. LaTeX / MathJax Equation Styling
+   6. LaTeX / MathJax Mathematical Equations
    ========================================================================== */
 
 .rst-content div.math,
 .rst-content div.math-wrapper,
 .MathJax_Display,
 .MathJax {
-    background-color: #ffffff !important;
-    color: #0f172a !important;
-    border: 1px solid var(--ss-border) !important;
-    border-radius: var(--ss-radius-md) !important;
-    padding: 1.1rem 1.5rem !important;
-    margin: 1.6rem 0 !important;
-    box-shadow: var(--ss-shadow-sm) !important;
+    background-color: #12131e !important;
+    background: #12131e !important;
+    color: #f8fafc !important;
+    border: 1px solid #282a40 !important;
+    border-radius: var(--ide-radius-md) !important;
+    padding: 1.2rem 1.6rem !important;
+    margin: 1.8rem 0 !important;
+    box-shadow: var(--ide-shadow-card) !important;
     overflow-x: auto !important;
     text-align: center !important;
 }
@@ -405,20 +441,21 @@ button.copybtn:hover {
     border: none !important;
     padding: 0 0.15em !important;
     box-shadow: none !important;
+    color: #f1f5f9 !important;
 }
 
 /* ==========================================================================
-   7. Academic Admonitions (Notes, Warnings, Examples, Tips)
+   7. Glowing Dark Admonitions & Callout Cards
    ========================================================================== */
 
 .rst-content .admonition {
-    border-radius: var(--ss-radius-md) !important;
-    margin: 1.8rem 0 !important;
-    border: 1px solid var(--ss-border) !important;
+    border-radius: var(--ide-radius-md) !important;
+    margin: 2rem 0 !important;
+    border: 1px solid #282a40 !important;
     border-left-width: 5px !important;
-    box-shadow: var(--ss-shadow-sm) !important;
+    box-shadow: var(--ide-shadow-card) !important;
     overflow: hidden !important;
-    background-color: #ffffff !important;
+    background-color: #141522 !important;
 }
 
 .rst-content .admonition .admonition-title {
@@ -426,83 +463,84 @@ button.copybtn:hover {
     font-weight: 700 !important;
     font-size: 0.95rem !important;
     letter-spacing: 0.02em !important;
-    padding: 0.7rem 1.2rem !important;
+    padding: 0.75rem 1.25rem !important;
     margin: 0 !important;
     border: none !important;
 }
 
 .rst-content .admonition>*:not(.admonition-title) {
-    padding-left: 1.25rem !important;
-    padding-right: 1.25rem !important;
+    padding-left: 1.3rem !important;
+    padding-right: 1.3rem !important;
+    color: #cbd5e1 !important;
 }
 
 .rst-content .admonition>*:last-child {
-    padding-bottom: 1.1rem !important;
+    padding-bottom: 1.2rem !important;
 }
 
-/* Example Box (Blue) */
+/* Example Box (Electric Blue) */
 .rst-content .admonition.example-box {
-    border-left-color: var(--ss-primary) !important;
-    background: linear-gradient(to right, rgba(2, 132, 199, 0.03), #ffffff) !important;
+    border-left-color: var(--ide-accent-blue) !important;
+    background: linear-gradient(to right, rgba(56, 189, 248, 0.06), #141522) !important;
 }
 
 .rst-content .admonition.example-box .admonition-title {
-    background-color: var(--ss-primary-light) !important;
-    color: var(--ss-primary-dark) !important;
+    background-color: rgba(56, 189, 248, 0.15) !important;
+    color: #7dd3fc !important;
 }
 
-/* Note (Sky Blue) */
+/* Note (Blue) */
 .rst-content .admonition.note {
-    border-left-color: #0284c7 !important;
-    background: linear-gradient(to right, rgba(2, 132, 199, 0.03), #ffffff) !important;
+    border-left-color: #3b82f6 !important;
+    background: linear-gradient(to right, rgba(59, 130, 246, 0.06), #141522) !important;
 }
 
 .rst-content .admonition.note .admonition-title {
-    background-color: #e0f2fe !important;
-    color: #0369a1 !important;
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    color: #93c5fd !important;
 }
 
-/* Tip & Hint (Emerald Green) */
+/* Tip & Hint (Emerald) */
 .rst-content .admonition.tip,
 .rst-content .admonition.hint {
-    border-left-color: #10b981 !important;
-    background: linear-gradient(to right, rgba(16, 185, 129, 0.03), #ffffff) !important;
+    border-left-color: var(--ide-accent-green) !important;
+    background: linear-gradient(to right, rgba(52, 211, 153, 0.06), #141522) !important;
 }
 
 .rst-content .admonition.tip .admonition-title,
 .rst-content .admonition.hint .admonition-title {
-    background-color: #d1fae5 !important;
-    color: #065f46 !important;
+    background-color: rgba(52, 211, 153, 0.15) !important;
+    color: #6ee7b7 !important;
 }
 
-/* Warning & Caution (Amber / Orange) */
+/* Warning & Caution (Amber) */
 .rst-content .admonition.warning,
 .rst-content .admonition.caution {
-    border-left-color: #f59e0b !important;
-    background: linear-gradient(to right, rgba(245, 158, 11, 0.03), #ffffff) !important;
+    border-left-color: var(--ide-accent-amber) !important;
+    background: linear-gradient(to right, rgba(251, 191, 36, 0.06), #141522) !important;
 }
 
 .rst-content .admonition.warning .admonition-title,
 .rst-content .admonition.caution .admonition-title {
-    background-color: #fef3c7 !important;
-    color: #92400e !important;
+    background-color: rgba(251, 191, 36, 0.15) !important;
+    color: #fde68a !important;
 }
 
-/* Danger & Error (Rose / Red) */
+/* Danger & Error (Rose) */
 .rst-content .admonition.danger,
 .rst-content .admonition.error {
-    border-left-color: #ef4444 !important;
-    background: linear-gradient(to right, rgba(239, 68, 68, 0.03), #ffffff) !important;
+    border-left-color: var(--ide-accent-rose) !important;
+    background: linear-gradient(to right, rgba(244, 63, 94, 0.06), #141522) !important;
 }
 
 .rst-content .admonition.danger .admonition-title,
 .rst-content .admonition.error .admonition-title {
-    background-color: #fee2e2 !important;
-    color: #991b1b !important;
+    background-color: rgba(244, 63, 94, 0.15) !important;
+    color: #fda4af !important;
 }
 
 /* ==========================================================================
-   8. Scientific Tables (Booktabs Style)
+   8. Scientific Tables (Dark Matrix Style)
    ========================================================================== */
 
 .rst-content table.docutils,
@@ -512,27 +550,25 @@ button.copybtn:hover {
     font-family: 'Inter', sans-serif !important;
     font-size: 0.92rem !important;
     margin: 2rem 0 !important;
-    border-top: 2px solid var(--ss-text-heading) !important;
-    border-bottom: 2px solid var(--ss-text-heading) !important;
-    box-shadow: var(--ss-shadow-sm) !important;
-    border-radius: var(--ss-radius-sm) !important;
+    background-color: #141522 !important;
+    border: 1px solid var(--ide-border) !important;
+    border-radius: var(--ide-radius-md) !important;
+    box-shadow: var(--ide-shadow-card) !important;
     overflow: hidden !important;
 }
 
 .rst-content table.docutils th {
-    background-color: #f8fafc !important;
-    color: var(--ss-text-heading) !important;
+    background-color: #1a1c2d !important;
+    color: var(--ide-accent-blue) !important;
     font-weight: 700 !important;
     padding: 0.85rem 1rem !important;
-    border-bottom: 1px solid var(--ss-text-heading) !important;
-    border-top: none !important;
+    border-bottom: 1px solid var(--ide-border) !important;
 }
 
 .rst-content table.docutils td {
     padding: 0.75rem 1rem !important;
-    border-bottom: 1px solid var(--ss-border) !important;
-    border-top: none !important;
-    color: var(--ss-text-main) !important;
+    border-bottom: 1px solid var(--ide-border) !important;
+    color: var(--ide-text-main) !important;
 }
 
 .rst-content table.docutils tbody tr:last-child td {
@@ -540,7 +576,7 @@ button.copybtn:hover {
 }
 
 .rst-content table.docutils tbody tr:hover {
-    background-color: rgba(2, 132, 199, 0.04) !important;
+    background-color: rgba(56, 189, 248, 0.05) !important;
 }
 
 /* ==========================================================================
@@ -557,10 +593,10 @@ button.copybtn:hover {
 .rst-content .figure img {
     max-width: 100% !important;
     height: auto !important;
-    border-radius: var(--ss-radius-md) !important;
-    border: 1px solid var(--ss-border) !important;
-    box-shadow: var(--ss-shadow-md) !important;
-    background-color: #ffffff !important;
+    border-radius: var(--ide-radius-md) !important;
+    border: 1px solid var(--ide-border) !important;
+    box-shadow: var(--ide-shadow-card) !important;
+    background-color: #12131e !important;
 }
 
 .rst-content .caption,
@@ -568,7 +604,7 @@ button.copybtn:hover {
 .rst-content figcaption {
     font-family: 'Inter', sans-serif !important;
     font-size: 0.88rem !important;
-    color: var(--ss-text-muted) !important;
+    color: var(--ide-text-muted) !important;
     margin-top: 0.75rem !important;
     font-style: italic !important;
 }
@@ -580,31 +616,31 @@ button.copybtn:hover {
 .rst-content .rst-footer-buttons {
     margin-top: 3.5rem !important;
     padding-top: 1.5rem !important;
-    border-top: 1px solid var(--ss-border) !important;
+    border-top: 1px solid var(--ide-border) !important;
     display: flex !important;
     justify-content: space-between !important;
 }
 
 .rst-content .rst-footer-buttons a.btn {
-    background-color: #f8fafc !important;
-    color: var(--ss-primary-dark) !important;
-    border: 1px solid var(--ss-border) !important;
-    border-radius: var(--ss-radius-md) !important;
+    background-color: #1a1c2d !important;
+    color: #ffffff !important;
+    border: 1px solid var(--ide-border) !important;
+    border-radius: var(--ide-radius-md) !important;
     padding: 0.75rem 1.4rem !important;
     font-weight: 600 !important;
     font-size: 0.92rem !important;
-    box-shadow: var(--ss-shadow-sm) !important;
+    box-shadow: var(--ide-shadow-card) !important;
     transition: all 0.2s ease !important;
 }
 
 .rst-content .rst-footer-buttons a.btn:hover {
-    background-color: var(--ss-primary) !important;
-    color: #ffffff !important;
-    border-color: var(--ss-primary) !important;
+    background-color: var(--ide-accent-blue) !important;
+    color: #0b0c14 !important;
+    border-color: var(--ide-accent-blue) !important;
     transform: translateY(-1px) !important;
-    box-shadow: var(--ss-shadow-md) !important;
+    box-shadow: 0 6px 18px rgba(56, 189, 248, 0.3) !important;
 }
 
 .rst-content .rst-footer-buttons a.btn-neutral {
-    color: var(--ss-text-main) !important;
+    color: #e2e8f0 !important;
 }
