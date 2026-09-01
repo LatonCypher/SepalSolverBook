@@ -37,7 +37,7 @@
 }
 
 /* ==========================================================================
-   1. Global Layout (Native RTD Fonts Preserved)
+   1. Global Layout & Typography
    ========================================================================== */
 
 body,
@@ -61,7 +61,7 @@ body,
     color: var(--ss-text-main) !important;
 }
 
-/* Headings Colors & Dividers (Fonts inherited natively from RTD theme) */
+/* Headings Colors & Dividers */
 .rst-content h1,
 .rst-content h2,
 .rst-content h3,
@@ -124,7 +124,7 @@ code {
 }
 
 /* ==========================================================================
-   2. 100% Light Sidebar & Navigation
+   2. Light Sidebar & Navigation (Hierarchical Indentation)
    ========================================================================== */
 
 .wy-nav-side {
@@ -159,10 +159,9 @@ code {
     outline: none !important;
 }
 
-/* Sidebar Links */
+/* General Sidebar Link Transitions */
 .wy-menu-vertical a {
     color: #475569 !important;
-    padding: 0.55rem 1.4rem !important;
     transition: all 0.15s ease-in-out !important;
 }
 
@@ -171,7 +170,46 @@ code {
     color: var(--ss-primary-dark) !important;
 }
 
-.wy-menu-vertical li.current>a,
+/* Level 1: Main Topics / Chapters */
+.wy-menu-vertical li.toctree-l1 > a {
+    padding: 0.6rem 1.2rem !important;
+    font-weight: 700 !important;
+    color: var(--ss-text-heading) !important;
+}
+
+/* Level 2: Subheadings (Indented) */
+.wy-menu-vertical li.toctree-l2 > a,
+.wy-menu-vertical li.toctree-l2 a {
+    padding-left: 2.2rem !important;
+    padding-top: 0.45rem !important;
+    padding-bottom: 0.45rem !important;
+    font-size: 0.92rem !important;
+    font-weight: 500 !important;
+    color: #475569 !important;
+}
+
+/* Level 3: Sub-subheadings (Further Indented) */
+.wy-menu-vertical li.toctree-l3 > a,
+.wy-menu-vertical li.toctree-l3 a {
+    padding-left: 3.2rem !important;
+    padding-top: 0.35rem !important;
+    padding-bottom: 0.35rem !important;
+    font-size: 0.88rem !important;
+    color: #64748b !important;
+}
+
+/* Level 4: Deep Subheadings */
+.wy-menu-vertical li.toctree-l4 > a,
+.wy-menu-vertical li.toctree-l4 a {
+    padding-left: 4.2rem !important;
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+    font-size: 0.85rem !important;
+    color: #64748b !important;
+}
+
+/* Active Highlight */
+.wy-menu-vertical li.current > a,
 .wy-menu-vertical li.on a {
     background-color: var(--ss-bg-sidebar-active) !important;
     color: var(--ss-primary-dark) !important;
