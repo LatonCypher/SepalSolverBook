@@ -323,6 +323,50 @@ button.copybtn:hover {
 .highlight .o, .highlight .ow { color: #000000 !important; font-weight: bold !important; } /* Operators */
 .highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi { color: #001a80 !important; } /* Variables */
 
+/* Code & Terminal Blocks inside Admonitions and Example Tags - Zero Margin All Sides */
+.rst-content .admonition div[class^="highlight"],
+.rst-content .admonition div[class*="highlight"],
+.rst-content .admonition div.highlight,
+.rst-content .admonition .highlight,
+.rst-content .admonition .literal-block,
+.rst-content .admonition pre.literal-block,
+.rst-content .admonition div.literal-block-wrapper,
+.rst-content .admonition .literal-block-wrapper,
+.rst-content .admonition pre,
+.rst-content .admonition .terminal,
+.rst-content .admonition div.terminal,
+.rst-content .admonition pre.terminal,
+.rst-content .example-box div[class^="highlight"],
+.rst-content .example-box div[class*="highlight"],
+.rst-content .example-box div.highlight,
+.rst-content .example-box .highlight,
+.rst-content .example-box .literal-block,
+.rst-content .example-box pre.literal-block,
+.rst-content .example-box div.literal-block-wrapper,
+.rst-content .example-box .literal-block-wrapper,
+.rst-content .example-box pre,
+.rst-content .example-box .terminal,
+.rst-content .example-box div.terminal,
+.rst-content .example-box pre.terminal,
+.rst-content .example div[class^="highlight"],
+.rst-content .example div[class*="highlight"],
+.rst-content .example div.highlight,
+.rst-content .example .highlight,
+.rst-content .example .literal-block,
+.rst-content .example pre.literal-block,
+.rst-content .example div.literal-block-wrapper,
+.rst-content .example .literal-block-wrapper,
+.rst-content .example pre,
+.rst-content .example .terminal,
+.rst-content .example div.terminal,
+.rst-content .example pre.terminal {
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+}
+
 /* ==========================================================================
    5. Terminal Directive Block (JetBrains Mono / Cascadia Code) - Zero Margin All Sides
    ========================================================================== */
