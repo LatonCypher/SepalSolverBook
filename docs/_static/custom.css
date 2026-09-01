@@ -1,76 +1,73 @@
 /* ==========================================================================
-   SEPALSOLVER BOOK - READTHEDOCS OFFICIAL DEFAULT FONTS & CLEAN LIGHT THEME
-   Fonts: Lato (Body), Roboto Slab (Headings), SFMono/Inconsolata (Code)
+   SEPALSOLVER BOOK - 100% BRIGHT LIGHT THEME
+   Pure Light Surfaces, Light Code Panels, RTD Fonts, Crisp Legibility
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700');
 
 :root {
-    /* Bright & Light Color Palette */
-    --light-bg-canvas: #f8fafc;       /* Soft Light Slate Canvas */
-    --light-bg-surface: #ffffff;      /* Pure White Reading Surface */
-    --light-bg-sidebar: #f1f5f9;      /* Soft Slate Sidebar */
-    --light-bg-sidebar-active: #e0f2fe;/* Active Item Highlight */
-    
-    /* Code Blocks */
-    --light-bg-code: #0f172a;         /* Deep Slate Code Background */
-    --light-bg-terminal: #090d16;     /* Terminal Console */
-    --light-bg-code-inline: #f1f5f9;  /* Inline Code Background */
+    /* 100% Bright Light Palette */
+    --ss-bg-canvas: #ffffff;
+    --ss-bg-surface: #ffffff;
+    --ss-bg-sidebar: #f8fafc;
+    --ss-bg-sidebar-search: #f1f5f9;
+    --ss-bg-sidebar-active: #e0f2fe;
+
+    /* Light Code & Terminal Palette */
+    --ss-bg-code: #f8fafc;            /* Clean Light Code Block */
+    --ss-border-code: #e2e8f0;
+    --ss-bg-terminal: #f8fafc;        /* Clean Light Terminal Output */
+    --ss-bg-code-inline: #f1f5f9;     /* Soft Light Inline Code */
 
     /* Typography & Text */
-    --light-text-heading: #0f172a;    /* Deep Charcoal / Near Black */
-    --light-text-main: #334155;       /* Readable Slate Gray */
-    --light-text-muted: #64748b;      /* Muted Subtitle Gray */
-    --light-text-code-inline: #0369a1;/* Deep Sky Blue Inline Code */
+    --ss-text-heading: #0f172a;       /* Deep Charcoal */
+    --ss-text-main: #334155;          /* Readable Slate */
+    --ss-text-muted: #64748b;         /* Muted Gray */
+    --ss-text-code-inline: #0369a1;   /* Deep Blue */
 
     /* Borders & Accents */
-    --light-border: #e2e8f0;          /* Clean Light Border */
-    --light-border-dark: #cbd5e1;
-    --light-primary: #0284c7;         /* Deep Sky Blue Accent */
-    --light-primary-dark: #0369a1;
+    --ss-border: #e2e8f0;
+    --ss-border-dark: #cbd5e1;
+    --ss-primary: #0284c7;            /* Deep Sky Blue Accent */
+    --ss-primary-dark: #0369a1;
+    --ss-primary-light: #e0f2fe;
 
     /* Radii & Shadows */
-    --light-radius-sm: 6px;
-    --light-radius-md: 10px;
-    --light-radius-lg: 14px;
-    --light-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
-    --light-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+    --ss-radius-sm: 6px;
+    --ss-radius-md: 8px;
+    --ss-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
 /* ==========================================================================
-   1. Global Layout & Exact ReadTheDocs Official Typography
+   1. Global Layout & Typography (Official ReadTheDocs Fonts)
    ========================================================================== */
 
 html,
 body,
 .wy-body-for-nav {
     font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif !important;
-    background-color: var(--light-bg-canvas) !important;
-    color: var(--light-text-main) !important;
+    background-color: var(--ss-bg-canvas) !important;
+    color: var(--ss-text-main) !important;
     font-size: 16px !important;
     line-height: 1.75 !important;
     -webkit-font-smoothing: antialiased;
 }
 
-/* Central Content Container */
 .wy-nav-content-wrap {
-    background-color: var(--light-bg-canvas) !important;
+    background-color: var(--ss-bg-canvas) !important;
 }
 
 .wy-nav-content {
     max-width: 1040px !important;
-    padding: 2.5rem 3.2rem 5rem 3.2rem !important;
-    background-color: var(--light-bg-surface) !important;
-    border-left: 1px solid var(--light-border) !important;
-    border-right: 1px solid var(--light-border) !important;
-    box-shadow: var(--light-shadow-sm) !important;
+    padding: 2.2rem 3rem 4.5rem 3rem !important;
+    background-color: var(--ss-bg-surface) !important;
     min-height: 100vh !important;
 }
 
 .rst-content {
     font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif !important;
     font-size: 1rem !important;
-    color: var(--light-text-main) !important;
+    color: var(--ss-text-main) !important;
 }
 
 /* Official ReadTheDocs Heading Font: Roboto Slab */
@@ -83,27 +80,27 @@ body,
 .rst-content .caption-text,
 .wy-side-nav-search>a {
     font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif !important;
-    color: var(--light-text-heading) !important;
+    color: var(--ss-text-heading) !important;
     line-height: 1.3 !important;
 }
 
 .rst-content h1 {
-    font-size: 2.35rem !important;
+    font-size: 2.3rem !important;
     font-weight: 700 !important;
     margin-bottom: 1.4rem !important;
-    padding-bottom: 0.6rem !important;
-    border-bottom: 2px solid #e0f2fe !important;
-    color: var(--light-text-heading) !important;
+    padding-bottom: 0.5rem !important;
+    border-bottom: 2px solid var(--ss-primary-light) !important;
+    color: var(--ss-text-heading) !important;
 }
 
 .rst-content h2 {
     font-size: 1.65rem !important;
     font-weight: 700 !important;
-    margin-top: 2.8rem !important;
+    margin-top: 2.6rem !important;
     margin-bottom: 1rem !important;
     padding-bottom: 0.4rem !important;
-    border-bottom: 1px solid var(--light-border) !important;
-    color: var(--light-text-heading) !important;
+    border-bottom: 1px solid var(--ss-border) !important;
+    color: var(--ss-text-heading) !important;
 }
 
 .rst-content h3 {
@@ -111,33 +108,33 @@ body,
     font-weight: 700 !important;
     margin-top: 2rem !important;
     margin-bottom: 0.8rem !important;
-    color: var(--light-primary-dark) !important;
+    color: var(--ss-primary-dark) !important;
 }
 
 .rst-content p {
     font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif !important;
     line-height: 1.75 !important;
     margin-bottom: 1.3rem !important;
-    color: var(--light-text-main) !important;
+    color: var(--ss-text-main) !important;
 }
 
 .rst-content strong {
     font-weight: 700 !important;
-    color: var(--light-text-heading) !important;
+    color: var(--ss-text-heading) !important;
 }
 
 .rst-content a {
-    color: var(--light-primary) !important;
+    color: var(--ss-primary) !important;
     text-decoration: none !important;
     transition: color 0.15s ease !important;
 }
 
 .rst-content a:hover {
-    color: var(--light-primary-dark) !important;
+    color: var(--ss-primary-dark) !important;
     text-decoration: underline !important;
 }
 
-/* Official ReadTheDocs Monospace Font Stack for Inline Code */
+/* Inline Code Snippets */
 .rst-content code.literal,
 .rst-content tt.literal,
 .rst-content code,
@@ -146,45 +143,45 @@ tt.literal,
 code {
     font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", Courier, monospace !important;
     font-size: 0.88em !important;
-    background-color: var(--light-bg-code-inline) !important;
-    background: var(--light-bg-code-inline) !important;
-    color: var(--light-text-code-inline) !important;
-    padding: 0.18em 0.48em !important;
+    background-color: var(--ss-bg-code-inline) !important;
+    background: var(--ss-bg-code-inline) !important;
+    color: var(--ss-text-code-inline) !important;
+    padding: 0.18em 0.45em !important;
     border-radius: 4px !important;
-    border: 1px solid var(--light-border) !important;
+    border: 1px solid var(--ss-border) !important;
     font-weight: 600 !important;
     white-space: normal !important;
 }
 
 /* ==========================================================================
-   2. Light Sidebar & File Explorer Navigation
+   2. 100% Light Sidebar & File Explorer Navigation
    ========================================================================== */
 
 .wy-nav-side {
-    background-color: var(--light-bg-sidebar) !important;
-    border-right: 1px solid var(--light-border) !important;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.04) !important;
+    background-color: var(--ss-bg-sidebar) !important;
+    border-right: 1px solid var(--ss-border) !important;
+    box-shadow: none !important;
 }
 
 .wy-side-nav-search {
-    background-color: #0f172a !important;
+    background-color: var(--ss-bg-sidebar-search) !important;
     padding: 1.8rem 1.4rem 1.4rem 1.4rem !important;
-    border-bottom: 1px solid #1e293b !important;
+    border-bottom: 1px solid var(--ss-border) !important;
 }
 
 .wy-side-nav-search>a {
     font-size: 1.15rem !important;
     font-weight: 700 !important;
-    color: #ffffff !important;
+    color: var(--ss-text-heading) !important;
     letter-spacing: -0.01em !important;
 }
 
 .wy-side-nav-search .wy-dropdown>a,
 .wy-side-nav-search input[type=text] {
-    background-color: #1e293b !important;
-    border: 1px solid #334155 !important;
-    color: #f8fafc !important;
-    border-radius: var(--light-radius-md) !important;
+    background-color: #ffffff !important;
+    border: 1px solid var(--ss-border-dark) !important;
+    color: var(--ss-text-heading) !important;
+    border-radius: var(--ss-radius-sm) !important;
     padding: 0.55rem 1rem !important;
     font-size: 0.9rem !important;
     box-shadow: none !important;
@@ -192,8 +189,8 @@ code {
 }
 
 .wy-side-nav-search input[type=text]:focus {
-    border-color: var(--light-primary) !important;
-    background-color: #0f172a !important;
+    border-color: var(--ss-primary) !important;
+    outline: none !important;
 }
 
 /* Sidebar Links */
@@ -207,15 +204,15 @@ code {
 
 .wy-menu-vertical a:hover {
     background-color: rgba(2, 132, 199, 0.08) !important;
-    color: var(--light-primary-dark) !important;
+    color: var(--ss-primary-dark) !important;
 }
 
 .wy-menu-vertical li.current>a,
 .wy-menu-vertical li.on a {
-    background-color: var(--light-bg-sidebar-active) !important;
-    color: var(--light-primary-dark) !important;
+    background-color: var(--ss-bg-sidebar-active) !important;
+    color: var(--ss-primary-dark) !important;
     font-weight: 700 !important;
-    border-left: 4px solid var(--light-primary) !important;
+    border-left: 4px solid var(--ss-primary) !important;
 }
 
 .wy-menu-vertical li.toctree-l1>a {
@@ -233,20 +230,20 @@ code {
     font-size: 0.85rem !important;
     margin-bottom: 2rem !important;
     padding-bottom: 0.75rem !important;
-    border-bottom: 1px solid var(--light-border) !important;
+    border-bottom: 1px solid var(--ss-border) !important;
 }
 
 .wy-breadcrumbs li {
-    color: var(--light-text-muted) !important;
+    color: var(--ss-text-muted) !important;
 }
 
 .wy-breadcrumbs li a {
-    color: var(--light-primary) !important;
+    color: var(--ss-primary) !important;
     font-weight: 500 !important;
 }
 
 /* ==========================================================================
-   4. High-Contrast Code Editor (Official RTD Monospace)
+   4. Light C# Code Blocks & High-Contrast Syntax
    ========================================================================== */
 
 /* Outer Code Block Containers */
@@ -260,13 +257,13 @@ code {
 div[class*='highlight'],
 div[class^='highlight'],
 div.highlight {
-    background-color: var(--light-bg-code) !important;
-    background: var(--light-bg-code) !important;
-    border: 1px solid #1e293b !important;
-    border-left: 5px solid var(--light-primary) !important;
-    border-radius: var(--light-radius-md) !important;
+    background-color: var(--ss-bg-code) !important;
+    background: var(--ss-bg-code) !important;
+    border: 1px solid var(--ss-border) !important;
+    border-left: 4px solid var(--ss-primary) !important;
+    border-radius: var(--ss-radius-sm) !important;
     margin: 1.6rem 0 !important;
-    box-shadow: var(--light-shadow-md) !important;
+    box-shadow: var(--ss-shadow-sm) !important;
     overflow: hidden !important;
     position: relative !important;
 }
@@ -282,13 +279,13 @@ div[class*='highlight'] pre,
 div[class^='highlight'] pre,
 div.highlight pre,
 pre.literal-block {
-    background-color: var(--light-bg-code) !important;
-    background: var(--light-bg-code) !important;
-    color: #f1f5f9 !important;
-    padding: 1.2rem 1.5rem !important;
+    background-color: var(--ss-bg-code) !important;
+    background: var(--ss-bg-code) !important;
+    color: #1e293b !important;
+    padding: 1.1rem 1.4rem !important;
     font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", Courier, monospace !important;
-    font-size: 0.92rem !important;
-    line-height: 1.68 !important;
+    font-size: 0.9rem !important;
+    line-height: 1.65 !important;
     margin: 0 !important;
     border: none !important;
     overflow-x: auto !important;
@@ -302,68 +299,70 @@ div.highlight pre * {
     background: transparent !important;
 }
 
-/* Syntax Tokens */
+/* Syntax Tokens on Light Background */
 .rst-content div[class*='highlight'] .k,
 .rst-content div[class*='highlight'] .kd,
 .rst-content div[class*='highlight'] .kn,
 .rst-content div[class*='highlight'] .kr {
-    color: #f43f5e !important; /* Crimson Rose */
-    font-weight: 600 !important;
+    color: #dc2626 !important; /* Crimson Keywords (public, static, return, if, var) */
+    font-weight: 700 !important;
 }
 
 .rst-content div[class*='highlight'] .kt,
 .rst-content div[class*='highlight'] .nc {
-    color: #38bdf8 !important; /* Electric Cyan */
-    font-weight: 600 !important;
+    color: #0284c7 !important; /* Deep Sky Blue Types (double, int, ColVec, Matrix, Func) */
+    font-weight: 700 !important;
 }
 
 .rst-content div[class*='highlight'] .nf,
 .rst-content div[class*='highlight'] .fm {
-    color: #fbbf24 !important; /* Gold / Yellow */
-    font-weight: 500 !important;
+    color: #7c3aed !important; /* Violet Functions (Fzero, Exp, Sqrt, Linspace) */
+    font-weight: 600 !important;
 }
 
 .rst-content div[class*='highlight'] .s,
 .rst-content div[class*='highlight'] .s2,
 .rst-content div[class*='highlight'] .sa,
 .rst-content div[class*='highlight'] .sb {
-    color: #4ade80 !important; /* Emerald Mint */
+    color: #059669 !important; /* Emerald Strings */
+    font-weight: 500 !important;
 }
 
 .rst-content div[class*='highlight'] .m,
 .rst-content div[class*='highlight'] .mi,
 .rst-content div[class*='highlight'] .mf {
-    color: #fb923c !important; /* Peach / Orange */
+    color: #d97706 !important; /* Warm Amber Numbers */
+    font-weight: 700 !important;
 }
 
 .rst-content div[class*='highlight'] .c,
 .rst-content div[class*='highlight'] .c1,
 .rst-content div[class*='highlight'] .cm {
-    color: #94a3b8 !important; /* Slate Gray */
+    color: #64748b !important; /* Slate Gray Comments */
     font-style: italic !important;
 }
 
 .rst-content div[class*='highlight'] .o,
 .rst-content div[class*='highlight'] .p {
-    color: #cbd5e1 !important; /* Operators */
+    color: #334155 !important; /* Dark Slate Operators */
 }
 
 /* Copy Button */
 button.copybtn {
-    opacity: 0.8 !important;
-    background-color: rgba(255, 255, 255, 0.12) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-radius: var(--light-radius-sm) !important;
-    color: #ffffff !important;
+    opacity: 0.75 !important;
+    background-color: #ffffff !important;
+    border: 1px solid var(--ss-border-dark) !important;
+    border-radius: var(--ss-radius-sm) !important;
+    color: var(--ss-text-main) !important;
     padding: 4px 8px !important;
     transition: all 0.15s ease !important;
 }
 
 button.copybtn:hover {
     opacity: 1 !important;
-    background-color: var(--light-primary) !important;
+    background-color: var(--ss-primary) !important;
     color: #ffffff !important;
-    font-weight: 600 !important;
+    border-color: var(--ss-primary) !important;
 }
 
 /* ==========================================================================
@@ -372,17 +371,17 @@ button.copybtn:hover {
 
 .rst-content pre.terminal,
 .rst-content .literal-block.terminal {
-    background-color: var(--light-bg-terminal) !important;
-    border: 1px solid #1e293b !important;
+    background-color: var(--ss-bg-terminal) !important;
+    border: 1px solid var(--ss-border) !important;
     border-left: 4px solid #10b981 !important;
-    border-radius: var(--light-radius-md) !important;
-    color: #e2e8f0 !important;
+    border-radius: var(--ss-radius-sm) !important;
+    color: #1e293b !important;
     font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", Courier, monospace !important;
     font-size: 0.88rem !important;
     line-height: 1.6 !important;
     padding: 1.1rem 1.4rem !important;
     margin: 1.4rem 0 !important;
-    box-shadow: var(--light-shadow-md) !important;
+    box-shadow: var(--ss-shadow-sm) !important;
     position: relative !important;
 }
 
@@ -393,7 +392,7 @@ button.copybtn:hover {
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.08em;
-    color: #10b981;
+    color: #059669;
     margin-bottom: 0.5rem;
 }
 
@@ -401,7 +400,7 @@ button.copybtn:hover {
    6. LaTeX / MathJax Equations (Tightly Fit to Text Exactly)
    ========================================================================== */
 
-/* INLINE Math (:math:`...`) - Flow naturally with ZERO box */
+/* INLINE Math (:math:`...`) - Zero box */
 .rst-content span.math,
 .rst-content :not(div).math,
 .rst-content p .MathJax,
@@ -415,7 +414,7 @@ mjx-container:not([display="true"]) {
     box-shadow: none !important;
     padding: 0 !important;
     margin: 0 !important;
-    color: var(--light-text-heading) !important;
+    color: var(--ss-text-heading) !important;
     display: inline !important;
 }
 
@@ -432,10 +431,10 @@ div.math-wrapper {
     padding: 0.25rem 0.65rem !important;
     background-color: #ffffff !important;
     background: #ffffff !important;
-    color: var(--light-text-heading) !important;
-    border: 1px solid var(--light-border) !important;
-    border-radius: var(--light-radius-sm) !important;
-    box-shadow: var(--light-shadow-sm) !important;
+    color: var(--ss-text-heading) !important;
+    border: 1px solid var(--ss-border) !important;
+    border-radius: var(--ss-radius-sm) !important;
+    box-shadow: var(--ss-shadow-sm) !important;
     text-align: center !important;
     box-sizing: border-box !important;
 }
@@ -461,10 +460,10 @@ mjx-container[display="true"] {
     padding: 0.25rem 0.65rem !important;
     background-color: #ffffff !important;
     background: #ffffff !important;
-    color: var(--light-text-heading) !important;
-    border: 1px solid var(--light-border) !important;
-    border-radius: var(--light-radius-sm) !important;
-    box-shadow: var(--light-shadow-sm) !important;
+    color: var(--ss-text-heading) !important;
+    border: 1px solid var(--ss-border) !important;
+    border-radius: var(--ss-radius-sm) !important;
+    box-shadow: var(--ss-shadow-sm) !important;
     box-sizing: border-box !important;
 }
 
@@ -473,11 +472,11 @@ mjx-container[display="true"] {
    ========================================================================== */
 
 .rst-content .admonition {
-    border-radius: var(--light-radius-md) !important;
+    border-radius: var(--ss-radius-md) !important;
     margin: 1.8rem 0 !important;
-    border: 1px solid var(--light-border) !important;
+    border: 1px solid var(--ss-border) !important;
     border-left-width: 5px !important;
-    box-shadow: var(--light-shadow-sm) !important;
+    box-shadow: var(--ss-shadow-sm) !important;
     overflow: hidden !important;
     background-color: #ffffff !important;
 }
@@ -495,7 +494,7 @@ mjx-container[display="true"] {
 .rst-content .admonition>*:not(.admonition-title) {
     padding-left: 1.25rem !important;
     padding-right: 1.25rem !important;
-    color: var(--light-text-main) !important;
+    color: var(--ss-text-main) !important;
 }
 
 .rst-content .admonition>*:last-child {
@@ -504,7 +503,7 @@ mjx-container[display="true"] {
 
 /* Example Box (Blue) */
 .rst-content .admonition.example-box {
-    border-left-color: var(--light-primary) !important;
+    border-left-color: var(--ss-primary) !important;
     background: linear-gradient(to right, rgba(2, 132, 199, 0.04), #ffffff) !important;
 }
 .rst-content .admonition.example-box .admonition-title {
@@ -570,24 +569,24 @@ mjx-container[display="true"] {
     font-size: 0.92rem !important;
     margin: 2rem 0 !important;
     background-color: #ffffff !important;
-    border-top: 2px solid var(--light-text-heading) !important;
-    border-bottom: 2px solid var(--light-text-heading) !important;
-    box-shadow: var(--light-shadow-sm) !important;
+    border-top: 2px solid var(--ss-text-heading) !important;
+    border-bottom: 2px solid var(--ss-text-heading) !important;
+    box-shadow: var(--ss-shadow-sm) !important;
     overflow: hidden !important;
 }
 
 .rst-content table.docutils th {
     background-color: #f8fafc !important;
-    color: var(--light-text-heading) !important;
+    color: var(--ss-text-heading) !important;
     font-weight: 700 !important;
     padding: 0.85rem 1rem !important;
-    border-bottom: 1px solid var(--light-text-heading) !important;
+    border-bottom: 1px solid var(--ss-text-heading) !important;
 }
 
 .rst-content table.docutils td {
     padding: 0.75rem 1rem !important;
-    border-bottom: 1px solid var(--light-border) !important;
-    color: var(--light-text-main) !important;
+    border-bottom: 1px solid var(--ss-border) !important;
+    color: var(--ss-text-main) !important;
 }
 
 .rst-content table.docutils tbody tr:last-child td {
@@ -612,9 +611,9 @@ mjx-container[display="true"] {
 .rst-content .figure img {
     max-width: 100% !important;
     height: auto !important;
-    border-radius: var(--light-radius-md) !important;
-    border: 1px solid var(--light-border) !important;
-    box-shadow: var(--light-shadow-md) !important;
+    border-radius: var(--ss-radius-md) !important;
+    border: 1px solid var(--ss-border) !important;
+    box-shadow: var(--ss-shadow-sm) !important;
     background-color: #ffffff !important;
 }
 
@@ -623,7 +622,7 @@ mjx-container[display="true"] {
 .rst-content figcaption {
     font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif !important;
     font-size: 0.88rem !important;
-    color: var(--light-text-muted) !important;
+    color: var(--ss-text-muted) !important;
     margin-top: 0.75rem !important;
     font-style: italic !important;
 }
@@ -635,31 +634,31 @@ mjx-container[display="true"] {
 .rst-content .rst-footer-buttons {
     margin-top: 3.5rem !important;
     padding-top: 1.5rem !important;
-    border-top: 1px solid var(--light-border) !important;
+    border-top: 1px solid var(--ss-border) !important;
     display: flex !important;
     justify-content: space-between !important;
 }
 
 .rst-content .rst-footer-buttons a.btn {
     background-color: #f8fafc !important;
-    color: var(--light-primary-dark) !important;
-    border: 1px solid var(--light-border) !important;
-    border-radius: var(--light-radius-md) !important;
+    color: var(--ss-primary-dark) !important;
+    border: 1px solid var(--ss-border) !important;
+    border-radius: var(--ss-radius-md) !important;
     padding: 0.75rem 1.4rem !important;
     font-weight: 600 !important;
     font-size: 0.92rem !important;
-    box-shadow: var(--light-shadow-sm) !important;
+    box-shadow: var(--ss-shadow-sm) !important;
     transition: all 0.2s ease !important;
 }
 
 .rst-content .rst-footer-buttons a.btn:hover {
-    background-color: var(--light-primary) !important;
+    background-color: var(--ss-primary) !important;
     color: #ffffff !important;
-    border-color: var(--light-primary) !important;
+    border-color: var(--ss-primary) !important;
     transform: translateY(-1px) !important;
-    box-shadow: var(--light-shadow-md) !important;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2) !important;
 }
 
 .rst-content .rst-footer-buttons a.btn-neutral {
-    color: var(--light-text-main) !important;
+    color: var(--ss-text-main) !important;
 }
