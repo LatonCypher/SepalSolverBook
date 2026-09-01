@@ -341,22 +341,60 @@ div.highlight pre * {
     color: #334155 !important; /* Dark Slate Operators */
 }
 
-/* Copy Button */
+/* Copy Button Integration (Sphinx CopyButton) */
 button.copybtn {
+    position: absolute !important;
+    top: 0.6rem !important;
+    right: 0.6rem !important;
+    width: 28px !important;
+    height: 28px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     opacity: 0.75 !important;
     background-color: #ffffff !important;
     border: 1px solid var(--ss-border-dark) !important;
     border-radius: var(--ss-radius-sm) !important;
-    color: var(--ss-text-main) !important;
-    padding: 4px 8px !important;
+    cursor: pointer !important;
+    z-index: 10 !important;
     transition: all 0.15s ease !important;
+}
+
+button.copybtn svg,
+button.copybtn img,
+button.copybtn .copybutton-icon {
+    width: 15px !important;
+    height: 15px !important;
+    display: block !important;
+    fill: #475569 !important;
+    color: #475569 !important;
 }
 
 button.copybtn:hover {
     opacity: 1 !important;
     background-color: var(--ss-primary) !important;
-    color: #ffffff !important;
     border-color: var(--ss-primary) !important;
+}
+
+button.copybtn:hover svg,
+button.copybtn:hover img,
+button.copybtn:hover .copybutton-icon {
+    fill: #ffffff !important;
+    color: #ffffff !important;
+}
+
+/* Success Checkmark State */
+button.copybtn.success {
+    opacity: 1 !important;
+    background-color: #10b981 !important;
+    border-color: #10b981 !important;
+}
+
+button.copybtn.success svg,
+button.copybtn.success img {
+    fill: #ffffff !important;
+    color: #ffffff !important;
 }
 
 /* ==========================================================================
@@ -543,7 +581,7 @@ div.math-wrapper {
 
 /* ==========================================================================
    8. Scientific Tables (Clean Booktabs Style)
-   ========================================================================= */
+   ========================================================================== */
 
 .rst-content table.docutils,
 .rst-content table.wy-table-responsive {
