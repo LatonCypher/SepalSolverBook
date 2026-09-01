@@ -1,61 +1,44 @@
 /* ==========================================================================
-   SEPALSOLVER BOOK - MODERN DARK IDE THEME (Antigravity / VS Code Aesthetic)
-   Deep Slate Canvas, Vibrant Syntax Tokens, Glowing Admonitions & MathJax
+   SEPALSOLVER BOOK - REFINED SLATE IDE THEME (Comfortable Dark-Dimmed)
+   Original RTD Fonts, Slate Canvas, High-Contrast Code, Clean Math & Callouts
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap');
-
 :root {
-    /* Core IDE Dark Color Palette */
-    --ide-bg-canvas: #12131c;
-    /* Deep Outer Editor Canvas */
-    --ide-bg-surface: #181926;
-    /* Main Content Card */
-    --ide-bg-sidebar: #0e0f17;
-    /* Dark Explorer Sidebar */
-    --ide-bg-sidebar-active: #1e2030;
-    /* Active Tree Item */
-    --ide-bg-code: #0b0c14;
-    /* Inner Code Editor Background */
-    --ide-bg-terminal: #07080d;
-    /* Terminal Console Background */
+    /* Lightened Slate Dark Color Palette */
+    --ide-bg-canvas: #1e222d;        /* Soft Dark Slate Outer Canvas */
+    --ide-bg-surface: #262c3a;       /* Main Content Card (Lightened & Readable) */
+    --ide-bg-sidebar: #181c24;       /* Sleek Dark Slate Sidebar */
+    --ide-bg-sidebar-active: #323b4e;/* Active Tree Item Highlight */
+    --ide-bg-code: #1a1e28;          /* Code Editor Background */
+    --ide-bg-terminal: #14171f;      /* Terminal Console Background */
 
-    /* Typography & Text */
-    --ide-text-heading: #f8fafc;
-    /* Crisp Pure White */
-    --ide-text-main: #cbd5e1;
-    /* Soft Readable Slate */
-    --ide-text-muted: #64748b;
-    /* Muted Gray */
-    --ide-text-code-inline: #38bdf8;
-    /* Glowing Cyan Inline Code */
+    /* Typography & Text (High Contrast & Legible) */
+    --ide-text-heading: #ffffff;     /* Bright Pure White */
+    --ide-text-main: #e2e8f0;        /* Crisp Soft Slate */
+    --ide-text-muted: #94a3b8;       /* Readable Medium Gray */
+    --ide-text-code-inline: #38bdf8; /* Glowing Cyan Inline Code */
 
     /* Borders & Accents */
-    --ide-border: #222436;
-    /* Subtle IDE Grid Divider */
-    --ide-border-active: #3b82f6;
-    /* Active Border Highlight */
-    --ide-accent-blue: #38bdf8;
-    /* Sky Blue Accent */
-    --ide-accent-green: #34d399;
-    /* Emerald Green Accent */
-    --ide-accent-purple: #c084fc;
-    /* Violet Accent */
-    --ide-accent-amber: #fbbf24;
-    /* Amber Accent */
-    --ide-accent-rose: #f43f5e;
-    /* Crimson/Rose Accent */
+    --ide-border: #333b4d;           /* Visible, Clean Card & Grid Divider */
+    --ide-border-light: #3e475d;
+    --ide-border-active: #38bdf8;    /* Active Border Highlight */
+    
+    --ide-accent-blue: #38bdf8;      /* Sky Blue */
+    --ide-accent-green: #34d399;     /* Emerald Mint */
+    --ide-accent-purple: #c084fc;    /* Violet */
+    --ide-accent-amber: #fbbf24;     /* Amber Gold */
+    --ide-accent-rose: #f43f5e;      /* Crimson Rose */
 
     /* Radii & Shadows */
     --ide-radius-sm: 6px;
     --ide-radius-md: 10px;
     --ide-radius-lg: 14px;
-    --ide-shadow-card: 0 4px 20px rgba(0, 0, 0, 0.45);
-    --ide-shadow-code: 0 8px 24px rgba(0, 0, 0, 0.55);
+    --ide-shadow-card: 0 4px 20px rgba(0, 0, 0, 0.25);
+    --ide-shadow-code: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
 /* ==========================================================================
-   1. Global Layout & Typography
+   1. Global Layout & Typography (Original Fonts)
    ========================================================================== */
 
 html,
@@ -63,7 +46,6 @@ body,
 .wy-body-for-nav {
     background-color: var(--ide-bg-canvas) !important;
     color: var(--ide-text-main) !important;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     font-size: 16.5px !important;
     line-height: 1.78 !important;
     -webkit-font-smoothing: antialiased;
@@ -94,7 +76,6 @@ body,
 .rst-content h2,
 .rst-content h3,
 .rst-content h4 {
-    font-family: 'Inter', sans-serif !important;
     font-weight: 700 !important;
     color: var(--ide-text-heading) !important;
     letter-spacing: -0.025em !important;
@@ -116,7 +97,7 @@ body,
     margin-bottom: 1rem !important;
     padding-bottom: 0.4rem !important;
     border-bottom: 1px solid var(--ide-border) !important;
-    color: #f1f5f9 !important;
+    color: #ffffff !important;
 }
 
 .rst-content h3 {
@@ -144,7 +125,7 @@ body,
 }
 
 .rst-content a:hover {
-    color: #60a5fa !important;
+    color: #7dd3fc !important;
     text-decoration: underline !important;
 }
 
@@ -155,14 +136,14 @@ body,
 code.literal,
 tt.literal,
 code {
-    font-family: 'Fira Code', 'Cascadia Code', Consolas, monospace !important;
+    font-family: 'Consolas', 'Fira Code', Monaco, monospace !important;
     font-size: 0.88em !important;
-    background-color: #121420 !important;
-    background: #121420 !important;
+    background-color: #1e2430 !important;
+    background: #1e2430 !important;
     color: var(--ide-text-code-inline) !important;
-    padding: 0.2em 0.5em !important;
+    padding: 0.18em 0.48em !important;
     border-radius: 4px !important;
-    border: 1px solid #2a2c42 !important;
+    border: 1px solid #333d52 !important;
     font-weight: 500 !important;
     white-space: normal !important;
 }
@@ -174,11 +155,11 @@ code {
 .wy-nav-side {
     background-color: var(--ide-bg-sidebar) !important;
     border-right: 1px solid var(--ide-border) !important;
-    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25) !important;
 }
 
 .wy-side-nav-search {
-    background-color: #08090f !important;
+    background-color: #14171f !important;
     padding: 1.8rem 1.4rem 1.4rem 1.4rem !important;
     border-bottom: 1px solid var(--ide-border) !important;
 }
@@ -192,8 +173,8 @@ code {
 
 .wy-side-nav-search .wy-dropdown>a,
 .wy-side-nav-search input[type=text] {
-    background-color: #161724 !important;
-    border: 1px solid #2d2f45 !important;
+    background-color: #212634 !important;
+    border: 1px solid var(--ide-border) !important;
     color: #f8fafc !important;
     border-radius: var(--ide-radius-md) !important;
     padding: 0.55rem 1rem !important;
@@ -204,7 +185,7 @@ code {
 
 .wy-side-nav-search input[type=text]:focus {
     border-color: var(--ide-accent-blue) !important;
-    background-color: #1c1d2e !important;
+    background-color: #262c3c !important;
 }
 
 /* Sidebar Links */
@@ -216,7 +197,7 @@ code {
 }
 
 .wy-menu-vertical a:hover {
-    background-color: rgba(255, 255, 255, 0.04) !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
     color: var(--ide-accent-blue) !important;
 }
 
@@ -272,11 +253,10 @@ div[class^='highlight'],
 div.highlight {
     background-color: var(--ide-bg-code) !important;
     background: var(--ide-bg-code) !important;
-    border: 1px solid #282a3e !important;
+    border: 1px solid var(--ide-border) !important;
     border-left: 5px solid var(--ide-accent-blue) !important;
-    /* Glowing Blue Accent Bar */
     border-radius: var(--ide-radius-md) !important;
-    margin: 1.8rem 0 !important;
+    margin: 1.6rem 0 !important;
     box-shadow: var(--ide-shadow-code) !important;
     overflow: hidden !important;
     position: relative !important;
@@ -295,11 +275,11 @@ div.highlight pre,
 pre.literal-block {
     background-color: var(--ide-bg-code) !important;
     background: var(--ide-bg-code) !important;
-    color: #e2e8f0 !important;
-    padding: 1.3rem 1.6rem !important;
-    font-family: 'Fira Code', 'Cascadia Code', Consolas, Monaco, monospace !important;
+    color: #f1f5f9 !important;
+    padding: 1.2rem 1.5rem !important;
+    font-family: 'Consolas', 'Fira Code', Monaco, monospace !important;
     font-size: 0.92rem !important;
-    line-height: 1.7 !important;
+    line-height: 1.68 !important;
     margin: 0 !important;
     border: none !important;
     overflow-x: auto !important;
@@ -313,27 +293,24 @@ div.highlight pre * {
     background: transparent !important;
 }
 
-/* Syntax Tokens - VS Code / Antigravity IDE Palette */
+/* Syntax Tokens */
 .rst-content div[class*='highlight'] .k,
 .rst-content div[class*='highlight'] .kd,
 .rst-content div[class*='highlight'] .kn,
 .rst-content div[class*='highlight'] .kr {
-    color: #f43f5e !important;
-    /* Crimson / Rose (public, static, return, if, var) */
+    color: #f43f5e !important; /* Crimson Rose */
     font-weight: 600 !important;
 }
 
 .rst-content div[class*='highlight'] .kt,
 .rst-content div[class*='highlight'] .nc {
-    color: #38bdf8 !important;
-    /* Electric Cyan (double, int, ColVec, Matrix, Func, SepalSolver) */
+    color: #38bdf8 !important; /* Electric Cyan */
     font-weight: 600 !important;
 }
 
 .rst-content div[class*='highlight'] .nf,
 .rst-content div[class*='highlight'] .fm {
-    color: #fbbf24 !important;
-    /* Gold / Yellow Methods (Fzero, Exp, Sqrt, Linspace, Meshgrid, Solve) */
+    color: #fbbf24 !important; /* Gold / Yellow */
     font-weight: 500 !important;
 }
 
@@ -341,36 +318,32 @@ div.highlight pre * {
 .rst-content div[class*='highlight'] .s2,
 .rst-content div[class*='highlight'] .sa,
 .rst-content div[class*='highlight'] .sb {
-    color: #34d399 !important;
-    /* Emerald Mint Strings */
+    color: #34d399 !important; /* Emerald Mint */
 }
 
 .rst-content div[class*='highlight'] .m,
 .rst-content div[class*='highlight'] .mi,
 .rst-content div[class*='highlight'] .mf {
-    color: #fb923c !important;
-    /* Peach / Orange Numbers */
+    color: #fb923c !important; /* Peach / Orange */
 }
 
 .rst-content div[class*='highlight'] .c,
 .rst-content div[class*='highlight'] .c1,
 .rst-content div[class*='highlight'] .cm {
-    color: #64748b !important;
-    /* Slate Comments */
+    color: #94a3b8 !important; /* Readable Slate Gray */
     font-style: italic !important;
 }
 
 .rst-content div[class*='highlight'] .o,
 .rst-content div[class*='highlight'] .p {
-    color: #94a3b8 !important;
-    /* Operators & Punctuation */
+    color: #cbd5e1 !important; /* Operators */
 }
 
-/* Copy Button Integration */
+/* Copy Button */
 button.copybtn {
-    opacity: 0.7 !important;
+    opacity: 0.75 !important;
     background-color: rgba(255, 255, 255, 0.08) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid var(--ide-border-light) !important;
     border-radius: var(--ide-radius-sm) !important;
     color: #e2e8f0 !important;
     padding: 4px 8px !important;
@@ -380,7 +353,7 @@ button.copybtn {
 button.copybtn:hover {
     opacity: 1 !important;
     background-color: var(--ide-accent-blue) !important;
-    color: #0b0c14 !important;
+    color: #14171f !important;
     font-weight: 600 !important;
 }
 
@@ -391,15 +364,15 @@ button.copybtn:hover {
 .rst-content pre.terminal,
 .rst-content .literal-block.terminal {
     background-color: var(--ide-bg-terminal) !important;
-    border: 1px solid #1e2133 !important;
+    border: 1px solid var(--ide-border) !important;
     border-left: 4px solid var(--ide-accent-green) !important;
     border-radius: var(--ide-radius-md) !important;
     color: #e2e8f0 !important;
-    font-family: 'Fira Code', Consolas, monospace !important;
+    font-family: 'Consolas', 'Fira Code', Monaco, monospace !important;
     font-size: 0.88rem !important;
     line-height: 1.6 !important;
-    padding: 1.2rem 1.5rem !important;
-    margin: 1.6rem 0 !important;
+    padding: 1.1rem 1.4rem !important;
+    margin: 1.4rem 0 !important;
     box-shadow: var(--ide-shadow-code) !important;
     position: relative !important;
 }
@@ -416,87 +389,95 @@ button.copybtn:hover {
 }
 
 /* ==========================================================================
-   6. LaTeX / MathJax Mathematical Equations
+   6. LaTeX / MathJax Equations (Clean, Natural, No Heavy Box)
    ========================================================================== */
 
+/* INLINE Math (:math:`...`) - Flow naturally with ZERO box */
+.rst-content span.math,
+.rst-content :not(div).math,
+.rst-content p .MathJax,
+.rst-content li .MathJax,
+.rst-content td .MathJax,
+.MathJax_Preview,
+mjx-container:not([display="true"]) {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: #f8fafc !important;
+    display: inline !important;
+}
+
+/* DISPLAY Block Equations (.. math::) - Sleek, Centered, Compact */
 .rst-content div.math,
 .rst-content div.math-wrapper,
-.MathJax_Display,
-.MathJax {
-    background-color: #12131e !important;
-    background: #12131e !important;
-    color: #f8fafc !important;
-    border: 1px solid #282a40 !important;
-    border-radius: var(--ide-radius-md) !important;
-    padding: 1.2rem 1.6rem !important;
-    margin: 1.8rem 0 !important;
-    box-shadow: var(--ide-shadow-card) !important;
+.rst-content .math[display="block"],
+mjx-container[display="true"],
+.MathJax_Display {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    color: #ffffff !important;
+    border: 1px solid var(--ide-border) !important;
+    border-radius: var(--ide-radius-sm) !important;
+    padding: 0.6rem 1rem !important;
+    margin: 1.2rem 0 !important;
+    box-shadow: none !important;
     overflow-x: auto !important;
     text-align: center !important;
 }
 
-/* Inline math */
-.rst-content :not(div).math {
-    background-color: transparent !important;
-    border: none !important;
-    padding: 0 0.15em !important;
-    box-shadow: none !important;
-    color: #f1f5f9 !important;
-}
-
 /* ==========================================================================
-   7. Glowing Dark Admonitions & Callout Cards
+   7. Glowing Slate Admonitions & Callout Cards
    ========================================================================== */
 
 .rst-content .admonition {
     border-radius: var(--ide-radius-md) !important;
-    margin: 2rem 0 !important;
-    border: 1px solid #282a40 !important;
+    margin: 1.8rem 0 !important;
+    border: 1px solid var(--ide-border) !important;
     border-left-width: 5px !important;
     box-shadow: var(--ide-shadow-card) !important;
     overflow: hidden !important;
-    background-color: #141522 !important;
+    background-color: #202532 !important;
 }
 
 .rst-content .admonition .admonition-title {
-    font-family: 'Inter', sans-serif !important;
     font-weight: 700 !important;
     font-size: 0.95rem !important;
     letter-spacing: 0.02em !important;
-    padding: 0.75rem 1.25rem !important;
+    padding: 0.7rem 1.2rem !important;
     margin: 0 !important;
     border: none !important;
 }
 
 .rst-content .admonition>*:not(.admonition-title) {
-    padding-left: 1.3rem !important;
-    padding-right: 1.3rem !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
     color: #cbd5e1 !important;
 }
 
 .rst-content .admonition>*:last-child {
-    padding-bottom: 1.2rem !important;
+    padding-bottom: 1.1rem !important;
 }
 
 /* Example Box (Electric Blue) */
 .rst-content .admonition.example-box {
     border-left-color: var(--ide-accent-blue) !important;
-    background: linear-gradient(to right, rgba(56, 189, 248, 0.06), #141522) !important;
+    background: linear-gradient(to right, rgba(56, 189, 248, 0.08), #202532) !important;
 }
-
 .rst-content .admonition.example-box .admonition-title {
-    background-color: rgba(56, 189, 248, 0.15) !important;
+    background-color: rgba(56, 189, 248, 0.18) !important;
     color: #7dd3fc !important;
 }
 
 /* Note (Blue) */
 .rst-content .admonition.note {
     border-left-color: #3b82f6 !important;
-    background: linear-gradient(to right, rgba(59, 130, 246, 0.06), #141522) !important;
+    background: linear-gradient(to right, rgba(59, 130, 246, 0.08), #202532) !important;
 }
-
 .rst-content .admonition.note .admonition-title {
-    background-color: rgba(59, 130, 246, 0.15) !important;
+    background-color: rgba(59, 130, 246, 0.18) !important;
     color: #93c5fd !important;
 }
 
@@ -504,12 +485,11 @@ button.copybtn:hover {
 .rst-content .admonition.tip,
 .rst-content .admonition.hint {
     border-left-color: var(--ide-accent-green) !important;
-    background: linear-gradient(to right, rgba(52, 211, 153, 0.06), #141522) !important;
+    background: linear-gradient(to right, rgba(52, 211, 153, 0.08), #202532) !important;
 }
-
 .rst-content .admonition.tip .admonition-title,
 .rst-content .admonition.hint .admonition-title {
-    background-color: rgba(52, 211, 153, 0.15) !important;
+    background-color: rgba(52, 211, 153, 0.18) !important;
     color: #6ee7b7 !important;
 }
 
@@ -517,12 +497,11 @@ button.copybtn:hover {
 .rst-content .admonition.warning,
 .rst-content .admonition.caution {
     border-left-color: var(--ide-accent-amber) !important;
-    background: linear-gradient(to right, rgba(251, 191, 36, 0.06), #141522) !important;
+    background: linear-gradient(to right, rgba(251, 191, 36, 0.08), #202532) !important;
 }
-
 .rst-content .admonition.warning .admonition-title,
 .rst-content .admonition.caution .admonition-title {
-    background-color: rgba(251, 191, 36, 0.15) !important;
+    background-color: rgba(251, 191, 36, 0.18) !important;
     color: #fde68a !important;
 }
 
@@ -530,27 +509,25 @@ button.copybtn:hover {
 .rst-content .admonition.danger,
 .rst-content .admonition.error {
     border-left-color: var(--ide-accent-rose) !important;
-    background: linear-gradient(to right, rgba(244, 63, 94, 0.06), #141522) !important;
+    background: linear-gradient(to right, rgba(244, 63, 94, 0.08), #202532) !important;
 }
-
 .rst-content .admonition.danger .admonition-title,
 .rst-content .admonition.error .admonition-title {
-    background-color: rgba(244, 63, 94, 0.15) !important;
+    background-color: rgba(244, 63, 94, 0.18) !important;
     color: #fda4af !important;
 }
 
 /* ==========================================================================
-   8. Scientific Tables (Dark Matrix Style)
+   8. Scientific Tables (Dark Slate Matrix Style)
    ========================================================================== */
 
 .rst-content table.docutils,
 .rst-content table.wy-table-responsive {
     width: 100% !important;
     border-collapse: collapse !important;
-    font-family: 'Inter', sans-serif !important;
     font-size: 0.92rem !important;
     margin: 2rem 0 !important;
-    background-color: #141522 !important;
+    background-color: #202532 !important;
     border: 1px solid var(--ide-border) !important;
     border-radius: var(--ide-radius-md) !important;
     box-shadow: var(--ide-shadow-card) !important;
@@ -558,7 +535,7 @@ button.copybtn:hover {
 }
 
 .rst-content table.docutils th {
-    background-color: #1a1c2d !important;
+    background-color: #282f40 !important;
     color: var(--ide-accent-blue) !important;
     font-weight: 700 !important;
     padding: 0.85rem 1rem !important;
@@ -576,7 +553,7 @@ button.copybtn:hover {
 }
 
 .rst-content table.docutils tbody tr:hover {
-    background-color: rgba(56, 189, 248, 0.05) !important;
+    background-color: rgba(56, 189, 248, 0.06) !important;
 }
 
 /* ==========================================================================
@@ -596,13 +573,12 @@ button.copybtn:hover {
     border-radius: var(--ide-radius-md) !important;
     border: 1px solid var(--ide-border) !important;
     box-shadow: var(--ide-shadow-card) !important;
-    background-color: #12131e !important;
+    background-color: #1e2430 !important;
 }
 
 .rst-content .caption,
 .rst-content .caption-text,
 .rst-content figcaption {
-    font-family: 'Inter', sans-serif !important;
     font-size: 0.88rem !important;
     color: var(--ide-text-muted) !important;
     margin-top: 0.75rem !important;
@@ -622,7 +598,7 @@ button.copybtn:hover {
 }
 
 .rst-content .rst-footer-buttons a.btn {
-    background-color: #1a1c2d !important;
+    background-color: #202532 !important;
     color: #ffffff !important;
     border: 1px solid var(--ide-border) !important;
     border-radius: var(--ide-radius-md) !important;
@@ -635,10 +611,10 @@ button.copybtn:hover {
 
 .rst-content .rst-footer-buttons a.btn:hover {
     background-color: var(--ide-accent-blue) !important;
-    color: #0b0c14 !important;
+    color: #14171f !important;
     border-color: var(--ide-accent-blue) !important;
     transform: translateY(-1px) !important;
-    box-shadow: 0 6px 18px rgba(56, 189, 248, 0.3) !important;
+    box-shadow: 0 6px 18px rgba(56, 189, 248, 0.25) !important;
 }
 
 .rst-content .rst-footer-buttons a.btn-neutral {
