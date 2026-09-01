@@ -253,35 +253,49 @@ div[class^="highlight"] pre,
     word-break: break-word !important;
 }
 
-/* Container Wrapper for Code Blocks */
+/* Container Wrapper for Code Blocks - Zero Margin All Sides */
 .rst-content div[class^="highlight"],
 .rst-content div[class*="highlight"],
+.rst-content div.highlight,
 .rst-content .highlight,
 .rst-content .literal-block,
 .rst-content pre.literal-block,
 .rst-content div.literal-block-wrapper,
-.literal-block-wrapper {
+.literal-block-wrapper,
+div.literal-block-wrapper,
+div[class^="highlight"],
+div[class*="highlight"] {
     background-color: var(--ss-bg-code) !important;
     border: 1px solid var(--ss-border-code) !important;
     border-radius: var(--ss-radius-md) !important;
     margin: 0 !important;
+    margin-top: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
     box-shadow: var(--ss-shadow-sm) !important;
     overflow-x: auto !important;
 }
 
-/* Pre block formatting */
+/* Pre block formatting - Zero Margin All Sides */
 .rst-content div[class^="highlight"] pre,
 .rst-content div[class*="highlight"] pre,
+.rst-content div.highlight pre,
 .rst-content .highlight pre,
 .rst-content .literal-block pre,
 .rst-content pre.literal-block,
-.rst-content pre {
+.rst-content pre,
+pre {
     background-color: var(--ss-bg-code) !important;
     color: #1e293b !important;
     padding: 1.2rem 1.4rem !important;
     font-size: 0.92rem !important;
     line-height: 1.65 !important;
     margin: 0 !important;
+    margin-top: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
     border: none !important;
 }
 
@@ -310,19 +324,25 @@ button.copybtn:hover {
 .highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi { color: #001a80 !important; } /* Variables */
 
 /* ==========================================================================
-   5. Terminal Directive Block (JetBrains Mono / Cascadia Code)
+   5. Terminal Directive Block (JetBrains Mono / Cascadia Code) - Zero Margin All Sides
    ========================================================================== */
 
 .rst-content .terminal,
 .rst-content div.terminal,
+.rst-content pre.terminal,
 div.terminal,
-pre.terminal {
+pre.terminal,
+.terminal.literal-block {
     background-color: var(--ss-bg-terminal) !important;
     border: 1px solid var(--ss-border-code) !important;
     border-left: 4px solid var(--ss-primary) !important;
     border-radius: var(--ss-radius-md) !important;
     padding: 1.1rem 1.3rem !important;
     margin: 0 !important;
+    margin-top: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
     color: #0f172a !important;
     font-size: 0.90rem !important;
     line-height: 1.6 !important;
