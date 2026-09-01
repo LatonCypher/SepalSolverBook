@@ -7,31 +7,34 @@
 
 :root {
     /* Color Palette */
-    --ss-primary: #0284c7;         /* Deep Sky Blue */
+    --ss-primary: #0284c7;
+    /* Deep Sky Blue */
     --ss-primary-dark: #0369a1;
     --ss-primary-light: #e0f2fe;
-    
-    --ss-bg-sidebar: #0f172a;      /* Deep Slate / Obsidian */
+
+    --ss-bg-sidebar: #0f172a;
+    /* Deep Slate / Obsidian */
     --ss-bg-sidebar-active: #1e293b;
     --ss-sidebar-text: #94a3b8;
     --ss-sidebar-text-active: #38bdf8;
-    
+
     --ss-bg-body: #ffffff;
     --ss-text-main: #1e293b;
     --ss-text-muted: #64748b;
     --ss-text-heading: #0f172a;
-    
-    --ss-bg-code: #0b0f19;         /* Midnight Black */
+
+    --ss-bg-code: #0b0f19;
+    /* Midnight Black */
     --ss-bg-code-header: #131824;
     --ss-bg-terminal: #090d16;
-    
+
     --ss-border: #e2e8f0;
     --ss-border-dark: #cbd5e1;
-    
+
     --ss-radius-sm: 6px;
     --ss-radius-md: 10px;
     --ss-radius-lg: 14px;
-    
+
     --ss-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
     --ss-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
     --ss-shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
@@ -41,7 +44,8 @@
    1. Typography & Global Page Layout
    ========================================================================== */
 
-body, .wy-body-for-nav {
+body,
+.wy-body-for-nav {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
     font-size: 16.5px !important;
     line-height: 1.75 !important;
@@ -62,7 +66,10 @@ body, .wy-body-for-nav {
 }
 
 /* Headings */
-.rst-content h1, .rst-content h2, .rst-content h3, .rst-content h4 {
+.rst-content h1,
+.rst-content h2,
+.rst-content h3,
+.rst-content h4 {
     font-family: 'Inter', sans-serif !important;
     font-weight: 700 !important;
     color: var(--ss-text-heading) !important;
@@ -106,7 +113,9 @@ body, .wy-body-for-nav {
 }
 
 /* Inline Code Snippets */
-.rst-content code.literal, .rst-content tt.literal, code {
+.rst-content code.literal,
+.rst-content tt.literal,
+code {
     font-family: 'Fira Code', 'Cascadia Code', Consolas, monospace !important;
     font-size: 0.88em !important;
     background-color: #f1f5f9 !important;
@@ -132,7 +141,7 @@ body, .wy-body-for-nav {
     border-bottom: 1px solid #1e293b !important;
 }
 
-.wy-side-nav-search > a {
+.wy-side-nav-search>a {
     font-size: 1.15rem !important;
     font-weight: 700 !important;
     color: #f8fafc !important;
@@ -169,7 +178,7 @@ body, .wy-body-for-nav {
     color: #38bdf8 !important;
 }
 
-.wy-menu-vertical li.current > a,
+.wy-menu-vertical li.current>a,
 .wy-menu-vertical li.on a {
     background-color: var(--ss-bg-sidebar-active) !important;
     color: #ffffff !important;
@@ -177,7 +186,7 @@ body, .wy-body-for-nav {
     border-left: 4px solid var(--ss-primary) !important;
 }
 
-.wy-menu-vertical li.toctree-l1 > a {
+.wy-menu-vertical li.toctree-l1>a {
     font-weight: 600 !important;
     letter-spacing: -0.01em !important;
 }
@@ -245,29 +254,60 @@ body, .wy-body-for-nav {
 .rst-content div[class*='highlight'] .k,
 .rst-content div[class*='highlight'] .kd,
 .rst-content div[class*='highlight'] .kn,
-.rst-content div[class*='highlight'] .kr { color: #f43f5e !important; font-weight: 600; } /* Keywords (public, static, return, if) */
+.rst-content div[class*='highlight'] .kr {
+    color: #f43f5e !important;
+    font-weight: 600;
+}
+
+/* Keywords (public, static, return, if) */
 
 .rst-content div[class*='highlight'] .kt,
-.rst-content div[class*='highlight'] .nc { color: #38bdf8 !important; font-weight: 600; } /* Types (double, int, ColVec, Matrix, Func) */
+.rst-content div[class*='highlight'] .nc {
+    color: #38bdf8 !important;
+    font-weight: 600;
+}
+
+/* Types (double, int, ColVec, Matrix, Func) */
 
 .rst-content div[class*='highlight'] .nf,
-.rst-content div[class*='highlight'] .fm { color: #c084fc !important; } /* Functions (Fzero, Exp, Sqrt, Linspace, Meshgrid) */
+.rst-content div[class*='highlight'] .fm {
+    color: #c084fc !important;
+}
+
+/* Functions (Fzero, Exp, Sqrt, Linspace, Meshgrid) */
 
 .rst-content div[class*='highlight'] .s,
 .rst-content div[class*='highlight'] .s2,
 .rst-content div[class*='highlight'] .sa,
-.rst-content div[class*='highlight'] .sb { color: #4ade80 !important; } /* Strings */
+.rst-content div[class*='highlight'] .sb {
+    color: #4ade80 !important;
+}
+
+/* Strings */
 
 .rst-content div[class*='highlight'] .m,
 .rst-content div[class*='highlight'] .mi,
-.rst-content div[class*='highlight'] .mf { color: #fb923c !important; } /* Numbers */
+.rst-content div[class*='highlight'] .mf {
+    color: #fb923c !important;
+}
+
+/* Numbers */
 
 .rst-content div[class*='highlight'] .c,
 .rst-content div[class*='highlight'] .c1,
-.rst-content div[class*='highlight'] .cm { color: #64748b !important; font-style: italic; } /* Comments */
+.rst-content div[class*='highlight'] .cm {
+    color: #64748b !important;
+    font-style: italic;
+}
+
+/* Comments */
 
 .rst-content div[class*='highlight'] .o,
-.rst-content div[class*='highlight'] .p { color: #94a3b8 !important; } /* Operators & Punctuation */
+.rst-content div[class*='highlight'] .p {
+    color: #94a3b8 !important;
+}
+
+/* Operators & Punctuation */
 
 /* Copy Button Integration */
 button.copybtn {
@@ -293,7 +333,8 @@ button.copybtn:hover {
 .rst-content .literal-block.terminal {
     background-color: var(--ss-bg-terminal) !important;
     border: 1px solid #1e293b !important;
-    border-left: 4px solid #10b981 !important; /* Terminal Emerald Left Bar */
+    border-left: 4px solid #10b981 !important;
+    /* Terminal Emerald Left Bar */
     border-radius: var(--ss-radius-md) !important;
     color: #e2e8f0 !important;
     font-family: 'Fira Code', Consolas, monospace !important;
@@ -355,7 +396,7 @@ button.copybtn:hover {
     border-left-width: 5px !important;
     box-shadow: var(--ss-shadow-sm) !important;
     overflow: hidden !important;
-    background-color: #ffffff !important;
+    background-color: #061b7c !important;
 }
 
 .rst-content .admonition .admonition-title {
@@ -368,12 +409,12 @@ button.copybtn:hover {
     border: none !important;
 }
 
-.rst-content .admonition > *:not(.admonition-title) {
+.rst-content .admonition>*:not(.admonition-title) {
     padding-left: 1.25rem !important;
     padding-right: 1.25rem !important;
 }
 
-.rst-content .admonition > *:last-child {
+.rst-content .admonition>*:last-child {
     padding-bottom: 1.1rem !important;
 }
 
@@ -382,6 +423,7 @@ button.copybtn:hover {
     border-left-color: var(--ss-primary) !important;
     background: linear-gradient(to right, rgba(2, 132, 199, 0.03), #ffffff) !important;
 }
+
 .rst-content .admonition.example-box .admonition-title {
     background-color: var(--ss-primary-light) !important;
     color: var(--ss-primary-dark) !important;
@@ -392,6 +434,7 @@ button.copybtn:hover {
     border-left-color: #0284c7 !important;
     background: linear-gradient(to right, rgba(2, 132, 199, 0.03), #ffffff) !important;
 }
+
 .rst-content .admonition.note .admonition-title {
     background-color: #e0f2fe !important;
     color: #0369a1 !important;
@@ -403,6 +446,7 @@ button.copybtn:hover {
     border-left-color: #10b981 !important;
     background: linear-gradient(to right, rgba(16, 185, 129, 0.03), #ffffff) !important;
 }
+
 .rst-content .admonition.tip .admonition-title,
 .rst-content .admonition.hint .admonition-title {
     background-color: #d1fae5 !important;
@@ -415,6 +459,7 @@ button.copybtn:hover {
     border-left-color: #f59e0b !important;
     background: linear-gradient(to right, rgba(245, 158, 11, 0.03), #ffffff) !important;
 }
+
 .rst-content .admonition.warning .admonition-title,
 .rst-content .admonition.caution .admonition-title {
     background-color: #fef3c7 !important;
@@ -427,6 +472,7 @@ button.copybtn:hover {
     border-left-color: #ef4444 !important;
     background: linear-gradient(to right, rgba(239, 68, 68, 0.03), #ffffff) !important;
 }
+
 .rst-content .admonition.danger .admonition-title,
 .rst-content .admonition.error .admonition-title {
     background-color: #fee2e2 !important;
