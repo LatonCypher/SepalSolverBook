@@ -249,22 +249,27 @@ div[class^="highlight"] pre,
 
 /* Container Wrapper for Code Blocks */
 .rst-content div[class^="highlight"],
+.rst-content div[class*="highlight"],
 .rst-content .highlight,
 .rst-content .literal-block,
-.rst-content pre.literal-block {
+.rst-content pre.literal-block,
+.rst-content div.literal-block-wrapper,
+.literal-block-wrapper {
     background-color: var(--ss-bg-code) !important;
     border: 1px solid var(--ss-border-code) !important;
     border-radius: var(--ss-radius-md) !important;
-    margin: 1.8rem 0 !important;
+    margin: 0 !important;
     box-shadow: var(--ss-shadow-sm) !important;
     overflow-x: auto !important;
 }
 
 /* Pre block formatting */
 .rst-content div[class^="highlight"] pre,
+.rst-content div[class*="highlight"] pre,
 .rst-content .highlight pre,
 .rst-content .literal-block pre,
-.rst-content pre.literal-block {
+.rst-content pre.literal-block,
+.rst-content pre {
     background-color: var(--ss-bg-code) !important;
     color: #1e293b !important;
     padding: 1.2rem 1.4rem !important;
@@ -303,13 +308,15 @@ button.copybtn:hover {
    ========================================================================== */
 
 .rst-content .terminal,
-.rst-content div.terminal {
+.rst-content div.terminal,
+div.terminal,
+pre.terminal {
     background-color: var(--ss-bg-terminal) !important;
     border: 1px solid var(--ss-border-code) !important;
     border-left: 4px solid var(--ss-primary) !important;
     border-radius: var(--ss-radius-md) !important;
     padding: 1.1rem 1.3rem !important;
-    margin: 1.8rem 0 !important;
+    margin: 0 !important;
     color: #0f172a !important;
     font-size: 0.90rem !important;
     line-height: 1.6 !important;
