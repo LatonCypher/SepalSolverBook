@@ -3,5 +3,6 @@
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.codeanalysis.analyzers\5.3.0-2.25625.1\buildTransitive\Microsoft.CodeAnalysis.Analyzers.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.codeanalysis.analyzers\5.3.0-2.25625.1\buildTransitive\Microsoft.CodeAnalysis.Analyzers.targets')" />
     <Import Project="$(NuGetPackageRoot)magick.net-q16-anycpu\14.10.0\buildTransitive\netstandard20\Magick.NET-Q16-AnyCPU.targets" Condition="Exists('$(NuGetPackageRoot)magick.net-q16-anycpu\14.10.0\buildTransitive\netstandard20\Magick.NET-Q16-AnyCPU.targets')" />
+    <Import Project="$(NuGetPackageRoot)hexa.net.imgui\2.2.9\buildTransitive\Hexa.NET.ImGui.targets" Condition="Exists('$(NuGetPackageRoot)hexa.net.imgui\2.2.9\buildTransitive\Hexa.NET.ImGui.targets')" />
   </ImportGroup>
 </Project>

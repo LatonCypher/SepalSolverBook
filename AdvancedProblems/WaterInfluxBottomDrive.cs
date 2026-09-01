@@ -34,7 +34,7 @@ namespace ConsoleApp1.TrainingFiles
             double fac = (j1x / x) * (j1x / x);
 
             double hD_x = hD * x;
-            double fun = Coth(hD_x) / s - 1.0 / (hD_x * (s + x2));
+            double fun = 1/Tanh(hD_x) / s - 1.0 / (hD_x * (s + x2));
 
             // Vectorized/unrolled iteration for high-frequency decay
             double sum = 0.0;

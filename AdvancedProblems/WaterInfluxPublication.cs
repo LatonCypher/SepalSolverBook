@@ -364,7 +364,7 @@ namespace ConsoleApp1.TrainingFiles
                     Func<double, double> Intfun = x =>
                     {
                         double fac = Pow(J1(x) / x, 2), am = 0, am2, x2 = x * x;
-                        double fun = Coth(hD * x) / s - 1 / (hD * x * (s + x2));
+                        double fun = 1/ Tanh(hD * x) / s - 1 / (hD * x * (s + x2));
                         double error = 1;
                         for (int m = 1; m < 100000; m++)
                         {
