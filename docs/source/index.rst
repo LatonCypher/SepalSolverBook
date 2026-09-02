@@ -108,4 +108,3 @@ Content
    Integration/index
    Ordinary_Differential_Equations/index
    Numerical_Optimization/index
-   Partial_Differential_Equations/index

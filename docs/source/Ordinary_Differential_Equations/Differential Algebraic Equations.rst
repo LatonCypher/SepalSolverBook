@@ -8,14 +8,16 @@ Differential-Algebraic Equations are a class of functional equations that contai
 
 A general DAE system is expressed in the implicit form: :math:`F(t, y, y') = 0`
 
-If the Jacobian :math:`\frac{\partial F}{\partial y'}` is non-singular, the system is essentially an implicit ODE. If it is singular, the system is a "true" DAE.
+If the Jacobian :math:`\cfrac{\partial F}{\partial y'}` is non-singular, the system is essentially an implicit ODE. If it is singular, the system is a "true" DAE.
 
 2. The Concept of Index
 -----------------------
 The difficulty of solving a DAE is measured by its **index**. The most common definition is the **differentiation index**: the number of times you must differentiate the algebraic constraints to express the system as a set of explicit ODEs.
-* **Index 0:** An ODE.
-* **Index 1:** The most common solvable DAE (e.g., the algebraic variables can be solved for directly).
-* **Higher Index (2+):** These are numerically unstable and usually require index reduction techniques before solving.
+| **Index 0:** An ODE.
+| **Index 1:** The most common solvable DAE (e.g., the algebraic variables can be solved for directly).
+| **Higher Index (2+):** These are numerically unstable and usually require index reduction techniques before solving.
+
+SepalSolver is able to get around this numerical instability of high index DAEs by using L-stable methods to solve them without the need for index reduction. 
 
 
 
@@ -1462,7 +1464,7 @@ Ouput
    Summary of statistics by Ode43a
            8756 successful steps
            19 failed attempts
-           282378 function evaluations
+           282374 function evaluations
            8775 partial derivatives
            35097 LU decompositions
            194608 solutions of linear systems

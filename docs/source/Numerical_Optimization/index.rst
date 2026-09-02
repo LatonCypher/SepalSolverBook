@@ -27,4 +27,3 @@ In this chapter, we will explore different optimization algorithms, their implem
    NonLinear Optimization
    Curve Fitting
    Constrained Curve Fitting
-   Exercise
