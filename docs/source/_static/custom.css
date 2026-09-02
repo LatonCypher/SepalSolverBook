@@ -492,7 +492,7 @@ mjx-container:not([display="true"]) {
 .rst-content div.math,
 .rst-content div.math-wrapper,
 .rst-content .MathJax_Display,
-.rst-content mjx-container[display="true"],
+.rst-content mjx-container:not([display="true"]),
 div.math,
 div.math-wrapper {
     display: table !important;
