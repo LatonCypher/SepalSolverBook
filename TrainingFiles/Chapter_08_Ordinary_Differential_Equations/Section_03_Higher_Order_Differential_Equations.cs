@@ -250,8 +250,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 ScatterHandle[] Stars = [..Enumerable.Range(0,7).Select(j => 
                                             Scatter(Y[0, j], Y[0, j + 7], "fo", 20))];
                 HoldOff();
-
-
                 byte[] Animfun(int i)
                 {
                     for (int j = 0; j < 7; j++)

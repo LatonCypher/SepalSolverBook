@@ -462,10 +462,10 @@ pre.terminal,
 }
 
 /* ==========================================================================
-   6. MathJax & Equations (Clean Mathematical Rendering & Strict Alignment)
+   6. MathJax & Equations (Clean Mathematical Rendering & Proper Layout)
    ========================================================================== */
 
-/* Remove any container borders, boxes, outlines, and backgrounds */
+/* Universal: Remove unwanted backgrounds, borders, or boxes */
 .rst-content div.math,
 .rst-content div.math-wrapper,
 .rst-content .MathJax_Display,
@@ -502,19 +502,8 @@ span.math {
 .rst-content mjx-container[display="true"],
 .rst-content .admonition div.math,
 .rst-content .admonition div.math-wrapper,
-.rst-content .admonition .MathJax_Display,
-.rst-content .admonition .katex-display,
-.rst-content .admonition mjx-container[display="true"],
 .rst-content .example-box div.math,
-.rst-content .example-box div.math-wrapper,
-.rst-content .example-box .MathJax_Display,
-.rst-content .example-box .katex-display,
-.rst-content .example-box mjx-container[display="true"],
 .rst-content .example div.math,
-.rst-content .example div.math-wrapper,
-.rst-content .example .MathJax_Display,
-.rst-content .example .katex-display,
-.rst-content .example mjx-container[display="true"],
 div.math,
 div.math-wrapper,
 .MathJax_Display,
@@ -522,8 +511,8 @@ div.math-wrapper,
 mjx-container[display="true"] {
     display: block !important;
     text-align: center !important;
-    margin: 1.5rem auto !important;
-    padding: 0.35rem 0 !important;
+    margin: 1.4rem auto !important;
+    padding: 0.3rem 0 !important;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
@@ -535,36 +524,26 @@ mjx-container[display="true"] {
    B. INLINE EQUATIONS (PARAGRAPHS, LISTS, HEADINGS & ADMONITION TITLES)
    -------------------------------------------------------------------------- */
 
-.rst-content .admonition-title span.math,
-.rst-content .admonition-title mjx-container,
-.rst-content .admonition-title .math,
 .rst-content span.math,
 .rst-content .math:not(div),
-.rst-content p .MathJax,
-.rst-content li .MathJax,
-.rst-content td .MathJax,
-.rst-content th .MathJax,
-.rst-content h1 .MathJax,
-.rst-content h2 .MathJax,
-.rst-content h3 .MathJax,
-.rst-content h4 .MathJax,
-.rst-content h5 .MathJax,
-.rst-content h6 .MathJax,
-.rst-content a .MathJax,
-.rst-content mjx-container:not([display="true"]),
-.rst-content mjx-container[display="false"],
-span.math,
-mjx-container:not([display="true"]),
-mjx-container[display="false"] {
-    display: inline !important;
-    width: auto !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    text-align: inherit !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    vertical-align: baseline !important;
-    white-space: normal !important;
+.rst-content .admonition-title span.math,
+.rst-content .admonition-title .math,
+span.math {
+    border: none !important;
+    background: transparent !important;
+    white-space: nowrap !important;
+}
+
+/* Ensure MathJax preserves internal formatting, matrices, and exponents */
+.MathJax,
+.MathJax_Display,
+mjx-container {
+    white-space: nowrap !important;
+}
+
+.MathJax_Display {
+    text-align: center !important;
+    margin: 1em 0 !important;
 }
 
 /* ==========================================================================

@@ -47,7 +47,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double[,] mass_f = Diag([1, 1, 0]);
 
                 double[] y0 = [1.0, 0.0, 0.0];
-                (ColVec T, Matrix Y) = Ode43a(robertson_f, mass_f, y0, [0, 1e7]);
+                (ColVec T, Matrix Y) = Ode43a(robertson_f, mass_f, y0, Logspace(-6,6.6));
                 // Plot the result
                 Y[.., 1] = 1e4*Y[.., 1];
                 SemiLogx(T, Y);

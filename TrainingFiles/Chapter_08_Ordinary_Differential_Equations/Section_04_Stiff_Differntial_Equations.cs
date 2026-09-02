@@ -87,7 +87,7 @@
                       3e7*y[1]*y[1]];
 
                 //Solve ODE
-                (ColVec T, Matrix Y) = Ode43s(robertson, [1, 0, 0], [0, 4e6]);
+                (ColVec T, Matrix Y) = Ode43s(robertson, [1, 0, 0], Logspace(-6, 6.6));
                 // Plot the result
                 Y[.., 1] = 1e4*Y[.., 1];
                 SemiLogx(T, Y);
@@ -115,7 +115,7 @@
                 //Solve ODE
                 //Now we want the results to be computed at
                 //logarithmically evenly spaced points from 1e-6 to 4e6
-                (ColVec T, Matrix Y) = Ode43s(robertson, [1, 0, 0], [0, ..Logspace(-6, 6.6)]);
+                (ColVec T, Matrix Y) = Ode43s(robertson, [1, 0, 0], Logspace(-6, 6.6));
                 // Plot the result
                 Y[.., 1] = 1e4*Y[.., 1];
                 SemiLogx(T, Y);
@@ -143,7 +143,7 @@
                 //Solve ODE
                 // Here we chose reltol = 1e-4(defult is 1e-3), abstol = 1e-7(default is 1e-6)
                 var opts = Odeset(RelTol: 1e-4, AbsTol: 1e-7);
-                (ColVec T, Matrix Y) = Ode43s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
+                (ColVec T, Matrix Y) = Ode43s(robertson, [1, 0, 0], Logspace(-6, 6.6), opts);
             }
             /// </code>
             /// 
@@ -162,7 +162,7 @@
                 //Solve ODE
                 var opts = Odeset(Stats: true);
                 Console.WriteLine("Computational Cost Using Default Tolerance Setting:");
-                Ode43s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
+                Ode43s(robertson, [1, 0, 0], Logspace(-6, 6.6), opts);
                 Console.WriteLine("\n\n");
                 opts = Odeset(Stats: true, RelTol: 1e-4, AbsTol: 1e-7);
                 Console.WriteLine("Computational Cost Using Custom Tolerance Setting");
