@@ -557,12 +557,13 @@ mjx-container[display="true"] > svg,
     background: transparent !important;
 }
 
-/* Block Equations inside Admonitions & Example Tags - Centered Display */
+/* Block Equations within Example / Admonition Blocks - Centered */
 .rst-content .admonition div.math,
 .rst-content .admonition div.math-wrapper,
 .rst-content .admonition .MathJax_Display,
 .rst-content .admonition .katex-display,
 .rst-content .admonition mjx-container[display="true"],
+.rst-content .admonition mjx-container:not([display="false"]),
 .rst-content .example-box div.math,
 .rst-content .example-box div.math-wrapper,
 .rst-content .example-box .MathJax_Display,
@@ -573,41 +574,44 @@ mjx-container[display="true"] > svg,
 .rst-content .example .MathJax_Display,
 .rst-content .example .katex-display,
 .rst-content .example mjx-container[display="true"] {
-    display: block !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
     text-align: center !important;
     width: 100% !important;
     max-width: 100% !important;
-    margin: 1.4rem auto !important;
+    margin: 1.4rem 0 !important;
     padding: 0.3rem 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
     box-sizing: border-box !important;
     border: none !important;
     background: transparent !important;
     box-shadow: none !important;
     outline: none !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
 }
 
-.rst-content .admonition div.math mjx-container,
+.rst-content .admonition div.math > *,
+.rst-content .admonition div.math-wrapper > *,
+.rst-content .admonition mjx-container,
 .rst-content .admonition mjx-container[display="true"] > mjx-math,
 .rst-content .admonition mjx-container[display="true"] > svg,
 .rst-content .admonition .MathJax_Display > span,
 .rst-content .admonition .katex-display > .katex,
-.rst-content .example-box div.math mjx-container,
+.rst-content .example-box div.math > *,
+.rst-content .example-box div.math-wrapper > *,
+.rst-content .example-box mjx-container,
 .rst-content .example-box mjx-container[display="true"] > mjx-math,
 .rst-content .example-box mjx-container[display="true"] > svg,
-.rst-content .example-box .MathJax_Display > span,
-.rst-content .example-box .katex-display > .katex,
-.rst-content .example div.math mjx-container,
+.rst-content .example div.math > *,
+.rst-content .example div.math-wrapper > *,
+.rst-content .example mjx-container,
 .rst-content .example mjx-container[display="true"] > mjx-math,
-.rst-content .example mjx-container[display="true"] > svg,
-.rst-content .example .MathJax_Display > span,
-.rst-content .example .katex-display > .katex {
-    display: inline-block !important;
+.rst-content .example mjx-container[display="true"] > svg {
+    margin-left: auto !important;
+    margin-right: auto !important;
     text-align: center !important;
-    margin: 0 auto !important;
-    border: none !important;
-    background: transparent !important;
+    display: inline-block !important;
 }
 
 /* Inline Equation Flow */
