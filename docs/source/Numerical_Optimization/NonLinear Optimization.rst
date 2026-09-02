@@ -27,9 +27,10 @@ subject to the non-linear inequality constraint restricting the domain to the un
 
 .. code-block:: csharp
 
-   Func<ColVec, double> fun = x => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
+   static double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
+   static ColVec Ineq(ColVec x) => Pow(x[0], 2) + Pow(x[1], 2) - 1;
    double[] x0 = [0, 0];
-   var result = Fmincon(fun, x0, x => Pow(x[0], 2) + Pow(x[1], 2) - 1);
+   var result = Fmincon(fun, x0, Ineq);
    Console.WriteLine($"x = {result.x.T}");
 
 
@@ -547,15 +548,15 @@ Rosenbrook funcion with constraint, Lower and Upperbound
 .. code-block:: csharp
 
    // Define the quadratic objective function
-   double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
+   static double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
 
    // Define Inequality constraint
-   ColVec Ineqconstraints(ColVec x) => Pow(x[0] - 0.333, 2) + Pow(x[1] - 0.333, 2) - 0.11111;
+   static ColVec Ineq(ColVec x) => Pow(x[0] - 0.333, 2) + Pow(x[1] - 0.333, 2) - 0.11111;
 
    double[] lb = [0.0, 0.2], ub = [0.5, 0.8], x0 = [0.25, 0.25];
 
    // Solve the optimization problem
-   var result = Fmincon(fun, x0, Ineqconstraints, null, lb, ub);
+   var result = Fmincon(fun, x0, Ineq, null, lb, ub);
    Console.WriteLine($"x = {result.x.T}");
 
 
@@ -593,9 +594,12 @@ g(\mathbf{x}) = x_0^2 + x_1^2 - 1 \le 0
 
 .. code-block:: csharp
 
-   Func<ColVec, double> fun = x => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
+   // Define the objective function
+   static double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
+   // Define Inequality constraint
+   static ColVec Ineq(ColVec x) => Pow(x[0], 2) + Pow(x[1], 2) - 1;
    double[] x0 = [0, 0];
-   var result = Fmincon(fun, x0, x => Pow(x[0], 2) + Pow(x[1], 2) - 1);
+   var result = Fmincon(fun, x0, Ineq);
    Console.WriteLine($"x = {result.x.T}");
 
 
@@ -1124,14 +1128,14 @@ g(\mathbf{x}) = (x_0 - 0.333)^2 + (x_1 - 0.333)^2 - 0.11111 \le 0
 .. code-block:: csharp
 
    // Define the objective function
-   double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
+   static double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
    // Define Inequality constraint
-   ColVec Ineqconstraints(ColVec x) => Pow(x[0] - 0.333, 2) + Pow(x[1] - 0.333, 2) - 0.11111;
+   static ColVec Ineq(ColVec x) => Pow(x[0] - 0.333, 2) + Pow(x[1] - 0.333, 2) - 0.11111;
 
    double[] lb = [0.0, 0.2], ub = [0.5, 0.8], x0 = [0.25, 0.25];
 
    // Solve the constrained optimization problem
-   var result = Fmincon(fun, x0, Ineqconstraints, null, lb, ub);
+   var result = Fmincon(fun, x0, Ineq, null, lb, ub);
    Console.WriteLine($"x = {result.x.T}");
 
 
@@ -1159,7 +1163,7 @@ When gradient information is unavailable or the objective is non-differentiable,
 .. code-block:: csharp
 
    // Define unconstrained objective function
-   Func<ColVec, double> fun = x => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
+   static double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
    double[] x0 = [-1.2, 1.0];
 
    // Solve using Nelder-Mead direct search
@@ -1188,7 +1192,7 @@ For non-convex or multimodal objective functions where gradient-based solvers ri
 .. code-block:: csharp
 
    // Define the objective function
-   Func<ColVec, double> fun = x => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
+   static double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
 
    double[] lb = [-2.0, -2.0];
    double[] ub = [2.0, 2.0];
@@ -1208,9 +1212,12 @@ Ouput
    
                                    Best             Mean             Max             Stall
     Generation   Func-count        f(x)             f(x)         Constraints      Generations
+   
+                                   Best             Mean             Max             Stall
+    Generation   Func-count        f(x)             f(x)         Constraints      Generations
    Stopping: no improvement for too long.
    x = 
-      0.9308    0.8582
+      1.0027    1.0057
    
 
 
