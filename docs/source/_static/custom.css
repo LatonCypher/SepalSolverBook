@@ -462,9 +462,10 @@ pre.terminal,
 }
 
 /* ==========================================================================
-   6. MathJax & Equations (No Borders, No Boxes, Clean Academic Flow)
+   6. MathJax & Equations (Clean Styling: No Boxes, Strict Inline/Block Separation)
    ========================================================================== */
 
+/* Universal Equation Reset (No Borders, No Boxes, No Outlines) */
 .rst-content mjx-container,
 .rst-content mjx-container *,
 .rst-content mjx-math,
@@ -499,9 +500,7 @@ span.math *,
 .MathJax *,
 .MathJax_Display,
 .MathJax_Display *,
-mjx-container,
-mjx-container[display="true"],
-mjx-container:not([display="true"]) {
+mjx-container {
     border: none !important;
     border-width: 0 !important;
     border-style: none !important;
@@ -514,56 +513,70 @@ mjx-container:not([display="true"]) {
     background-color: transparent !important;
 }
 
-/* Block Equation Centering & Clean Display */
+/* --------------------------------------------------------------------------
+   A. STRICT INLINE EQUATIONS & ADMONITION TITLE EQUATIONS
+   -------------------------------------------------------------------------- */
+
+.rst-content .admonition-title .math,
+.rst-content .admonition-title span.math,
+.rst-content .admonition-title span.math *,
+.rst-content .admonition-title mjx-container,
+.rst-content .admonition-title mjx-container *,
+.rst-content .admonition-title .MathJax,
+.rst-content .admonition-title .MathJax *,
+.rst-content span.math,
+.rst-content span.math *,
+.rst-content :not(div).math,
+.rst-content :not(div).math *,
+.rst-content p .MathJax,
+.rst-content li .MathJax,
+.rst-content td .MathJax,
+.rst-content th .MathJax,
+.rst-content h1 .MathJax,
+.rst-content h2 .MathJax,
+.rst-content h3 .MathJax,
+.rst-content h4 .MathJax,
+.rst-content h5 .MathJax,
+.rst-content h6 .MathJax,
+.rst-content a .MathJax,
+.rst-content p span.math,
+.rst-content li span.math,
+.rst-content td span.math,
+.rst-content th span.math,
+.rst-content mjx-container:not([display="true"]),
+.rst-content mjx-container[display="false"],
+mjx-container:not([display="true"]),
+mjx-container[display="false"],
+span.math {
+    display: inline !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    text-align: inherit !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+    vertical-align: baseline !important;
+    white-space: normal !important;
+}
+
+/* --------------------------------------------------------------------------
+   B. BLOCK EQUATIONS (DOCUMENT BODY & INSIDE EXAMPLES / ADMONITIONS)
+   -------------------------------------------------------------------------- */
+
 .rst-content div.math,
 .rst-content div.math-wrapper,
 .rst-content .MathJax_Display,
 .rst-content .katex-display,
 .rst-content mjx-container[display="true"],
-div.math,
-div.math-wrapper,
-.MathJax_Display,
-.katex-display,
-mjx-container[display="true"] {
-    display: block !important;
-    text-align: center !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 1.6rem auto !important;
-    padding: 0.4rem 0 !important;
-    box-sizing: border-box !important;
-    border: none !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    outline: none !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-}
-
-/* Ensure Inner Math Objects Center Horizontally */
-.rst-content div.math mjx-container[display="true"],
-.rst-content div.math .MathJax,
-.rst-content div.math-wrapper mjx-container,
-mjx-container[display="true"] > mjx-math,
-mjx-container[display="true"] > svg,
-.MathJax_Display > span,
-.katex-display > .katex,
-.rst-content div.math > table,
-.rst-content div.math-wrapper > table {
-    display: inline-block !important;
-    text-align: center !important;
-    margin: 0 auto !important;
-    border: none !important;
-    background: transparent !important;
-}
-
-/* Block Equations within Example / Admonition Blocks - Centered */
 .rst-content .admonition div.math,
 .rst-content .admonition div.math-wrapper,
 .rst-content .admonition .MathJax_Display,
 .rst-content .admonition .katex-display,
 .rst-content .admonition mjx-container[display="true"],
-.rst-content .admonition mjx-container:not([display="false"]),
 .rst-content .example-box div.math,
 .rst-content .example-box div.math-wrapper,
 .rst-content .example-box .MathJax_Display,
@@ -573,15 +586,20 @@ mjx-container[display="true"] > svg,
 .rst-content .example div.math-wrapper,
 .rst-content .example .MathJax_Display,
 .rst-content .example .katex-display,
-.rst-content .example mjx-container[display="true"] {
+.rst-content .example mjx-container[display="true"],
+div.math,
+div.math-wrapper,
+.MathJax_Display,
+.katex-display,
+mjx-container[display="true"] {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     text-align: center !important;
     width: 100% !important;
     max-width: 100% !important;
-    margin: 1.4rem 0 !important;
-    padding: 0.3rem 0 !important;
+    margin: 1.5rem 0 !important;
+    padding: 0.35rem 0 !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
     box-sizing: border-box !important;
@@ -589,45 +607,29 @@ mjx-container[display="true"] > svg,
     background: transparent !important;
     box-shadow: none !important;
     outline: none !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
 }
 
+/* Inner Block Equation Object Centering */
+.rst-content div.math > *,
+.rst-content div.math-wrapper > *,
+.rst-content .MathJax_Display > *,
+.rst-content .katex-display > *,
+.rst-content mjx-container[display="true"] > *,
 .rst-content .admonition div.math > *,
 .rst-content .admonition div.math-wrapper > *,
-.rst-content .admonition mjx-container,
-.rst-content .admonition mjx-container[display="true"] > mjx-math,
-.rst-content .admonition mjx-container[display="true"] > svg,
-.rst-content .admonition .MathJax_Display > span,
-.rst-content .admonition .katex-display > .katex,
+.rst-content .admonition mjx-container[display="true"] > *,
 .rst-content .example-box div.math > *,
 .rst-content .example-box div.math-wrapper > *,
-.rst-content .example-box mjx-container,
-.rst-content .example-box mjx-container[display="true"] > mjx-math,
-.rst-content .example-box mjx-container[display="true"] > svg,
+.rst-content .example-box mjx-container[display="true"] > *,
 .rst-content .example div.math > *,
 .rst-content .example div.math-wrapper > *,
-.rst-content .example mjx-container,
-.rst-content .example mjx-container[display="true"] > mjx-math,
-.rst-content .example mjx-container[display="true"] > svg {
+.rst-content .example mjx-container[display="true"] > * {
     margin-left: auto !important;
     margin-right: auto !important;
     text-align: center !important;
     display: inline-block !important;
-}
-
-/* Inline Equation Flow */
-.rst-content span.math,
-.rst-content :not(div).math,
-.rst-content p .MathJax,
-.rst-content li .MathJax,
-.rst-content td .MathJax,
-.rst-content mjx-container:not([display="true"]) {
-    display: inline !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    outline: none !important;
 }
 
 /* ==========================================================================
