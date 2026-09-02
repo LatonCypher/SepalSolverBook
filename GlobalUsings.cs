@@ -5,7 +5,7 @@ global using System.Threading.Tasks;
 global using System.Text.RegularExpressions;
 global using System.Diagnostics;
 global using SepalSolver;
-global using SepalPlot3D;
+//global using SepalPlot3D;
 global using SepalSolver.PlotLib;
 global using static SepalSolver.Math;
 global using static SepalSolver.PlotLib.Chart;

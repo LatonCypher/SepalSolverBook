@@ -239,7 +239,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 
                 double[] tspan = Linspace(1, 15, 200);
                 var opts = Odeset(AbsTol: 1e-15, RelTol: 1e-13);
-                Figure(600, 400);
+                Figure(600, 500);
                 (ColVec T, Matrix Y) = Ode89(pleiades, init, tspan, opts);
                 Plot(Y[.., 0..7], Y[.., 7..14], ":");
                 Title("Position of Pleiades Stars, Solved by ODE89");

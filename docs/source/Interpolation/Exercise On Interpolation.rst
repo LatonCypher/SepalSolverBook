@@ -1,4 +1,0 @@
-Exercise On Interpolation
-=========================
-
-

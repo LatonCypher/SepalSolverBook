@@ -87,16 +87,16 @@ Ouput
 
     Iteration    Func-count       f(x)      Norm of Step
         0            1          31.7962        start      
-        1           995         3.98768       7.92421     
-        2           996         0.65762       1.13502     
-        3           997         0.02943       0.22302     
-        4           998         0.00773       0.00828     
-        5           999         0.00232       0.00181     
-        6           1000      4.585e-005     7.742e-004   
-        7           1001      1.117e-005     1.109e-005   
-        8           1002      1.841e-006     2.577e-006   
-        9           1003      1.071e-007     5.041e-007   
-        10          1004      2.527e-008     1.911e-008   
+        1           999         3.98768       7.92421     
+        2           1000        0.65762       1.13502     
+        3           1001        0.02943       0.22302     
+        4           1002        0.00773       0.00828     
+        5           1003        0.00232       0.00181     
+        6           1004      4.585e-005     7.742e-004   
+        7           1005      1.117e-005     1.109e-005   
+        8           1006      1.841e-006     2.577e-006   
+        9           1007      1.071e-007     5.041e-007   
+        10          1008      2.527e-008     1.911e-008   
    x = 
      -0.5708
      -0.6819
@@ -121,7 +121,7 @@ Ouput
      -0.4164
    
    2.5270816374876195E-08
-   Elapsed time: 3.1588718 seconds
+   Elapsed time: 4.5617803 seconds
 
 While finite difference approximations are convenient, they are computationally 
 expensive, introduce numerical errors, and fail to exploit structural
@@ -196,7 +196,7 @@ Ouput
      -0.4164
    
    3.420135685938544E-15
-   Elapsed time: 0.0563641 seconds
+   Elapsed time: 0.0843634 seconds
 
 Examples 3: Solving Large Sparse Systems Using Analytical Jacobians
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -274,7 +274,7 @@ Ouput
      -0.4164
    
    7.448429925158487E-15
-   Elapsed time: 0.082334 seconds
+   Elapsed time: 0.0503203 seconds
 
 
 Examples 4: Solving Large Sparse Systems Using Analytical Jacobians
@@ -358,4 +358,4 @@ Ouput
     1 
    
    0
-   Elapsed time: 0.0160059 seconds
+   Elapsed time: 0.0187096 seconds
