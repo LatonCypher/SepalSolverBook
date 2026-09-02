@@ -21,7 +21,8 @@ subject to the non-linear inequality constraint restricting the domain to the un
    g(\mathbf{ x}) = x_0 ^ 2 + x_1 ^ 2 - 1 \le 0
 
 
-* **Initial Guess * *: :math:`\mathbf{ x}_0 = (0, 0)`
+* **Initial Guess**: 
+:math:`\mathbf{ x}_0 = (0, 0)`
 
 
 .. code-block:: csharp
@@ -29,7 +30,7 @@ subject to the non-linear inequality constraint restricting the domain to the un
    Func<ColVec, double> fun = x => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
    double[] x0 = [0, 0];
    var result = Fmincon(fun, x0, x => Pow(x[0], 2) + Pow(x[1], 2) - 1);
-   Console.WriteLine(result);
+   Console.WriteLine($"x = {result.x.T}");
 
 
 Ouput
@@ -536,10 +537,9 @@ Ouput
    Optimal solution found
    Optimal solution found
    Optimal solution found
-   (
-      0.7864
-      0.6177
-   , 0.04567344593692437, 0,    0.0000, , System.Collections.Generic.List`1[SepalSolver.IterationState])
+   x = 
+      0.7864    0.6177
+   
 
 Rosenbrook funcion with constraint, Lower and Upperbound
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -556,7 +556,7 @@ Rosenbrook funcion with constraint, Lower and Upperbound
 
    // Solve the optimization problem
    var result = Fmincon(fun, x0, Ineqconstraints, null, lb, ub);
-   Console.WriteLine(result);
+   Console.WriteLine($"x = {result.x.T}");
 
 
 Ouput
@@ -568,10 +568,9 @@ Ouput
    Optimal solution found
    Optimal solution found
    Optimal solution found
-   (
-      0.5000
-      0.2500
-   , 0.25, 1,   -0.0763, , System.Collections.Generic.List`1[SepalSolver.IterationState])
+   x = 
+      0.5000    0.2500
+   
 
 Rosenbrock function with constraint
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -597,7 +596,7 @@ g(\mathbf{x}) = x_0^2 + x_1^2 - 1 \le 0
    Func<ColVec, double> fun = x => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
    double[] x0 = [0, 0];
    var result = Fmincon(fun, x0, x => Pow(x[0], 2) + Pow(x[1], 2) - 1);
-   Console.WriteLine(result);
+   Console.WriteLine($"x = {result.x.T}");
 
 
 Ouput
@@ -1104,10 +1103,9 @@ Ouput
    Optimal solution found
    Optimal solution found
    Optimal solution found
-   (
-      0.7864
-      0.6177
-   , 0.04567344593692437, 0,    0.0000, , System.Collections.Generic.List`1[SepalSolver.IterationState])
+   x = 
+      0.7864    0.6177
+   
 
 Rosenbrock function with constraint, Lower and Upperbound
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1134,7 +1132,7 @@ g(\mathbf{x}) = (x_0 - 0.333)^2 + (x_1 - 0.333)^2 - 0.11111 \le 0
 
    // Solve the constrained optimization problem
    var result = Fmincon(fun, x0, Ineqconstraints, null, lb, ub);
-   Console.WriteLine(result);
+   Console.WriteLine($"x = {result.x.T}");
 
 
 Ouput
@@ -1146,10 +1144,9 @@ Ouput
    Optimal solution found
    Optimal solution found
    Optimal solution found
-   (
-      0.5000
-      0.2500
-   , 0.25, 1,   -0.0763, , System.Collections.Generic.List`1[SepalSolver.IterationState])
+   x = 
+      0.5000    0.2500
+   
 
 Unconstrained Derivative-Free Optimization with Fminsearch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1167,17 +1164,16 @@ When gradient information is unavailable or the objective is non-differentiable,
 
    // Solve using Nelder-Mead direct search
    var result = Fminsearch(fun, x0);
-   Console.WriteLine(result);
+   Console.WriteLine($"x = {result.x.T}");
 
 
 Ouput
 
 .. terminal::
 
-   (
-      1.0000
-      1.0000
-   , 4.4768823537358065E-13, 1, , , System.Collections.Generic.List`1[SepalSolver.IterationState])
+   x = 
+      1.0000    1.0000
+   
 
 Global Stochastic Optimization with Genetic Algorithm
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1202,7 +1198,7 @@ For non-convex or multimodal objective functions where gradient-based solvers ri
 
    // Solve for global minimum within bounds
    var result = Ga(fun, lb: lb, ub: ub, options: opts);
-   Console.WriteLine(result);
+   Console.WriteLine($"x = {result.x.T}");
 
 
 Ouput
@@ -1213,9 +1209,8 @@ Ouput
                                    Best             Mean             Max             Stall
     Generation   Func-count        f(x)             f(x)         Constraints      Generations
    Stopping: no improvement for too long.
-   (
-      1.0766
-      1.1627
-   , False, 0.007163201304853993, 0x1 empty double row vector, 0x1 empty double row vector)
+   x = 
+      0.9308    0.8582
+   
 
 

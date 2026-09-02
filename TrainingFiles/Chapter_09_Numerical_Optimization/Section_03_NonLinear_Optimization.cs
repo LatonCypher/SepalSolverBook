@@ -24,14 +24,16 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             /// g(\mathbf{ x}) = x_0 ^ 2 + x_1 ^ 2 - 1 \le 0
             /// </math>
             /// 
-            /// * **Initial Guess * *: :math:`\mathbf{ x}_0 = (0, 0)`
+            /// * **Initial Guess**: 
+            /// :math:`\mathbf{ x}_0 = (0, 0)`
             /// 
             /// <code>
             {
-                Func<ColVec, double> fun = x => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
+                static double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
+                static ColVec Ineq(ColVec x) => Pow(x[0], 2) + Pow(x[1], 2) - 1;
                 double[] x0 = [0, 0];
-                var result = Fmincon(fun, x0, x => Pow(x[0], 2) + Pow(x[1], 2) - 1);
-                Console.WriteLine(result);
+                var result = Fmincon(fun, x0, Ineq);
+                Console.WriteLine($"x = {result.x.T}");
             }
             /// </code>
             /// 
@@ -39,16 +41,16 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             /// <code>
             {
                 // Define the quadratic objective function
-                double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
+                static double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
 
                 // Define Inequality constraint
-                ColVec Ineqconstraints(ColVec x) => Pow(x[0] - 0.333, 2) + Pow(x[1] - 0.333, 2) - 0.11111;
+                static ColVec Ineq(ColVec x) => Pow(x[0] - 0.333, 2) + Pow(x[1] - 0.333, 2) - 0.11111;
 
                 double[] lb = [0.0, 0.2], ub = [0.5, 0.8], x0 = [0.25, 0.25];
 
                 // Solve the optimization problem
-                var result = Fmincon(fun, x0, Ineqconstraints, null, lb, ub);
-                Console.WriteLine(result);
+                var result = Fmincon(fun, x0, Ineq, null, lb, ub);
+                Console.WriteLine($"x = {result.x.T}");
             }
             /// </code>
             ///
@@ -71,10 +73,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             ///
             /// <code>
             {
-                Func<ColVec, double> fun = x => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
+                // Define the objective function
+                static double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
+                // Define Inequality constraint
+                static ColVec Ineq(ColVec x) => Pow(x[0], 2) + Pow(x[1], 2) - 1;
                 double[] x0 = [0, 0];
-                var result = Fmincon(fun, x0, x => Pow(x[0], 2) + Pow(x[1], 2) - 1);
-                Console.WriteLine(result);
+                var result = Fmincon(fun, x0, Ineq);
+                Console.WriteLine($"x = {result.x.T}");
             }
             /// </code> 
             ///
@@ -93,15 +98,15 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             /// <code>
             {
                 // Define the objective function
-                double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
+                static double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
                 // Define Inequality constraint
-                ColVec Ineqconstraints(ColVec x) => Pow(x[0] - 0.333, 2) + Pow(x[1] - 0.333, 2) - 0.11111;
+                static ColVec Ineq(ColVec x) => Pow(x[0] - 0.333, 2) + Pow(x[1] - 0.333, 2) - 0.11111;
 
                 double[] lb = [0.0, 0.2], ub = [0.5, 0.8], x0 = [0.25, 0.25];
 
                 // Solve the constrained optimization problem
-                var result = Fmincon(fun, x0, Ineqconstraints, null, lb, ub);
-                Console.WriteLine(result);
+                var result = Fmincon(fun, x0, Ineq, null, lb, ub);
+                Console.WriteLine($"x = {result.x.T}");
             }
             /// </code>
             ///
@@ -114,12 +119,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             /// <code>
             {
                 // Define unconstrained objective function
-                Func<ColVec, double> fun = x => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
+                static double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
                 double[] x0 = [-1.2, 1.0];
 
                 // Solve using Nelder-Mead direct search
                 var result = Fminsearch(fun, x0);
-                Console.WriteLine(result);
+                Console.WriteLine($"x = {result.x.T}");
             }
             /// </code>
             ///
@@ -134,7 +139,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
              /// <code>
             {
                 // Define the objective function
-                Func<ColVec, double> fun = x => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
+                static double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
 
                 double[] lb = [-2.0, -2.0];
                 double[] ub = [2.0, 2.0];
@@ -144,7 +149,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
 
                 // Solve for global minimum within bounds
                 var result = Ga(fun, lb: lb, ub: ub, options: opts);
-                Console.WriteLine(result);
+                Console.WriteLine($"x = {result.x.T}");
             }
             /// </code>
             ///

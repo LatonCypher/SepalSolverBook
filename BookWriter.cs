@@ -412,6 +412,9 @@ namespace ConsoleApp1
                     while (!bookContent[startIndex + Length].Contains("</code>"))
                     {
                         line = bookContent[startIndex + Length];
+                        if (line.Contains("Optimal solution found")) continue;
+                        if (line.Contains("Solving not completed")) continue;
+                        
                         if (line.Length >= space)
                             Codelines.Add(line.Substring(space));
                         else
