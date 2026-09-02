@@ -315,18 +315,78 @@ button.copybtn:hover {
     background-color: #ffffff !important;
 }
 
-/* Clean Syntax Highlighting Colors */
+/* ==========================================================================
+   Visual Studio / Antigravity Light Syntax Highlighting
+   - Identifiers, Variables & Fields: Deep Navy Blue (#001080)
+   - Keywords & Control Flow: VS Blue (#0000ff)
+   - Primitive Types & Constants: VS Blue (#0000ff)
+   - Classes, Structs, Interfaces & Builtin Types: VS Teal (#267f99)
+   - Methods & Functions: Warm Amber / Golden Brown (#795e26)
+   - Strings: Dark Crimson Red (#a31515)
+   - Numbers: Emerald Green (#098658)
+   - Comments: Forest Green Italic (#008000)
+   - Operators & Punctuation: Clean Slate (#000000 / #333333)
+   ========================================================================== */
+
+/* 1. General Names / Identifiers & Variables (Default for variables, parameters, fields in C#) */
+.highlight .n,
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi,
+.highlight .vm,
+.highlight .na,
+.highlight .no {
+    color: #001080 !important;
+}
+
+/* 2. Keywords & Control Flow */
 .highlight .k,
 .highlight .kd,
 .highlight .kn,
 .highlight .kp,
-.highlight .kr,
-.highlight .kt {
-    color: #0000ee !important;
+.highlight .kr {
+    color: #0000ff !important;
     font-weight: 600 !important;
 }
 
-/* Keywords */
+/* Primitive Type Keywords (double, int, string, bool, void, var, object, decimal) */
+.highlight .kt {
+    color: #0000ff !important;
+    font-weight: 600 !important;
+}
+
+/* Keyword Constants (true, false, null) */
+.highlight .kc {
+    color: #0000ff !important;
+    font-weight: 600 !important;
+}
+
+/* Word Operators (is, as, typeof, sizeof) */
+.highlight .ow {
+    color: #0000ff !important;
+    font-weight: 600 !important;
+}
+
+/* 3. Classes, Structs, Interfaces, Namespaces, Builtins & Exceptions (Visual Studio Teal) */
+.highlight .nc,
+.highlight .nn,
+.highlight .nb,
+.highlight .ne,
+.highlight .nd,
+.highlight .nt {
+    color: #267f99 !important;
+    font-weight: 600 !important;
+}
+
+/* 4. Methods & Functions (Visual Studio Golden Brown / Warm Amber) */
+.highlight .nf,
+.highlight .fm {
+    color: #795e26 !important;
+    font-weight: 600 !important;
+}
+
+/* 5. Strings & String Interpolation (Visual Studio Crimson) */
 .highlight .s,
 .highlight .sa,
 .highlight .sb,
@@ -341,10 +401,10 @@ button.copybtn:hover {
 .highlight .sr,
 .highlight .s1,
 .highlight .ss {
-    color: #a80000 !important;
+    color: #a31515 !important;
 }
 
-/* Strings */
+/* 6. Comments (Visual Studio Forest Green) */
 .highlight .c,
 .highlight .ch,
 .highlight .cm,
@@ -352,11 +412,11 @@ button.copybtn:hover {
 .highlight .cs,
 .highlight .cp,
 .highlight .cpf {
-    color: #006600 !important;
+    color: #008000 !important;
     font-style: italic !important;
 }
 
-/* Comments */
+/* 7. Numbers (Visual Studio Emerald Green) */
 .highlight .m,
 .highlight .mb,
 .highlight .mf,
@@ -364,40 +424,37 @@ button.copybtn:hover {
 .highlight .mi,
 .highlight .il,
 .highlight .mo {
-    color: #007a2f !important;
+    color: #098658 !important;
     font-weight: 600 !important;
 }
 
-/* Numbers */
-.highlight .nf,
-.highlight .fm {
-    color: #a63a00 !important;
-    font-weight: 600 !important;
-}
-
-/* Function Calls */
-.highlight .nc,
-.highlight .nn {
-    color: #006e74 !important;
-    font-weight: 600 !important;
-}
-
-/* Classes & Namespaces */
-.highlight .o,
-.highlight .ow {
+/* 8. Operators & Punctuation */
+.highlight .o {
     color: #000000 !important;
-    font-weight: bold !important;
+    font-weight: 600 !important;
 }
 
-/* Operators */
-.highlight .nv,
-.highlight .vc,
-.highlight .vg,
-.highlight .vi {
-    color: #001a80 !important;
+.highlight .p {
+    color: #333333 !important;
 }
 
-/* Variables */
+/* Line Numbers & Highlighted Line Styling */
+.highlight .linenos,
+.rst-content div[class^="highlight"] pre .linenos,
+.rst-content div[class*="highlight"] pre .linenos {
+    color: #94a3b8 !important;
+    margin-right: 1rem !important;
+    padding-right: 0.8rem !important;
+    border-right: 1px solid #e2e8f0 !important;
+    user-select: none !important;
+}
+
+.highlight .hll {
+    background-color: #f1f5f9 !important;
+    display: block !important;
+    margin: 0 -1.4rem !important;
+    padding: 0 1.4rem !important;
+}
 
 /* Code & Terminal Blocks inside Admonitions and Example Tags - Zero Margin All Sides */
 .rst-content .admonition div[class^="highlight"],
