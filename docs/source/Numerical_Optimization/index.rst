@@ -25,3 +25,4 @@ In this chapter, we will explore different optimization algorithms, their implem
    Linear Programming
    Mixed Integer Linear Programming
    NonLinear Optimization
+   Curve Fitting
