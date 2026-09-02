@@ -134,7 +134,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             /// Approach           | Direct row-by-column multiplication | Divide-and-conquer with recursive submatrices
             /// Multiplications for 2×2 matrices   | 8                    | 7              
             /// Additions/Subtractions      | 4                    | 18           
-            /// Time Complexity    | O(n^3)               | O(n^(log2 7)) ≈ O(n^2.81)  
+            /// Time Complexity    | :math:`O(n^3)`               | :math:`O(n^{\log_2 ^7}) \approx O(n^{2.81})`  
             /// Best Use Case      | Small matrices       | Large matrices    
             /// </table>
             /// 
@@ -177,7 +177,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
             ///     \end{array}
             /// </math>
             /// 
-            /// 4. ** Return the result
+            /// 4. **Return the result**
             /// <math>
             ///     C = \begin{bmatrix}
             ///             C_{11} & C_{12} \\

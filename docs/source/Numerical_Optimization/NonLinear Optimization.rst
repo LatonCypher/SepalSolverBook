@@ -1217,7 +1217,7 @@ Ouput
     Generation   Func-count        f(x)             f(x)         Constraints      Generations
    Stopping: no improvement for too long.
    x = 
-      1.0027    1.0057
+      0.9300    0.8647
    
 
 

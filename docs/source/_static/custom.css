@@ -538,6 +538,37 @@ button.copybtn:hover {
    5. Terminal Directive Block (JetBrains Mono / Cascadia Code) - Zero Margin All Sides
    ========================================================================== */
 
+/* Universal zero margin for all terminal elements, wrappers, containers and parent highlights */
+.rst-content .terminal,
+.rst-content div.terminal,
+.rst-content pre.terminal,
+.rst-content .literal-block.terminal,
+.rst-content pre.literal-block.terminal,
+.rst-content div.highlight-none,
+.rst-content div[class*="highlight-none"],
+.rst-content div.literal-block-wrapper:has(.terminal),
+.rst-content div[class*="highlight"]:has(.terminal),
+.rst-content div:has(> .terminal),
+.rst-content div:has(> pre.terminal),
+.rst-content div:has(> .highlight > pre.terminal),
+div.terminal,
+pre.terminal,
+.terminal,
+.terminal.literal-block,
+[class*="terminal"],
+div[class*="terminal"],
+pre[class*="terminal"],
+.terminal pre,
+div.terminal pre,
+.rst-content .terminal pre,
+.rst-content div.terminal pre {
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
 .rst-content .terminal,
 .rst-content div.terminal,
 .rst-content pre.terminal,
