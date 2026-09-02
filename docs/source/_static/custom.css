@@ -23,15 +23,20 @@
     --ss-bg-code-inline: #f1f5f9;
 
     /* Typography & Text */
-    --ss-text-heading: #0f172a;       /* Deep Slate / Charcoal */
-    --ss-text-main: #2d3748;          /* Crisp Reading Body */
-    --ss-text-muted: #64748b;         /* Muted Slate */
-    --ss-text-code-inline: #0369a1;   /* Deep Tech Blue */
+    --ss-text-heading: #0f172a;
+    /* Deep Slate / Charcoal */
+    --ss-text-main: #2d3748;
+    /* Crisp Reading Body */
+    --ss-text-muted: #64748b;
+    /* Muted Slate */
+    --ss-text-code-inline: #0369a1;
+    /* Deep Tech Blue */
 
     /* Borders & Accents */
     --ss-border: #e2e8f0;
     --ss-border-dark: #cbd5e1;
-    --ss-primary: #0284c7;            /* Blue Accent */
+    --ss-primary: #0284c7;
+    /* Blue Accent */
     --ss-primary-dark: #0369a1;
     --ss-primary-light: #e0f2fe;
 
@@ -79,7 +84,12 @@ body,
 .rst-content h4,
 .rst-content h5,
 .rst-content h6,
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "Inter", "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
     color: var(--ss-text-heading) !important;
     letter-spacing: -0.02em !important;
@@ -269,10 +279,6 @@ div[class*="highlight"] {
     border: 1px solid var(--ss-border-code) !important;
     border-radius: var(--ss-radius-md) !important;
     margin: 0 !important;
-    margin-top: 0 !important;
-    margin-right: 0 !important;
-    margin-bottom: 0 !important;
-    margin-left: 0 !important;
     box-shadow: var(--ss-shadow-sm) !important;
     overflow-x: auto !important;
 }
@@ -292,10 +298,6 @@ pre {
     font-size: 0.92rem !important;
     line-height: 1.65 !important;
     margin: 0 !important;
-    margin-top: 0 !important;
-    margin-right: 0 !important;
-    margin-bottom: 0 !important;
-    margin-left: 0 !important;
     border: none !important;
 }
 
@@ -314,14 +316,88 @@ button.copybtn:hover {
 }
 
 /* Clean Syntax Highlighting Colors */
-.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt { color: #0000ee !important; font-weight: 600 !important; } /* Keywords */
-.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .si, .highlight .sx, .highlight .sr, .highlight .s1, .highlight .ss { color: #a80000 !important; } /* Strings */
-.highlight .c, .highlight .ch, .highlight .cm, .highlight .c1, .highlight .cs, .highlight .cp, .highlight .cpf { color: #006600 !important; font-style: italic !important; } /* Comments */
-.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo { color: #007a2f !important; font-weight: 600 !important; } /* Numbers */
-.highlight .nf, .highlight .fm { color: #a63a00 !important; font-weight: 600 !important; } /* Function Calls */
-.highlight .nc, .highlight .nn { color: #006e74 !important; font-weight: 600 !important; } /* Classes & Namespaces */
-.highlight .o, .highlight .ow { color: #000000 !important; font-weight: bold !important; } /* Operators */
-.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi { color: #001a80 !important; } /* Variables */
+.highlight .k,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt {
+    color: #0000ee !important;
+    font-weight: 600 !important;
+}
+
+/* Keywords */
+.highlight .s,
+.highlight .sa,
+.highlight .sb,
+.highlight .sc,
+.highlight .dl,
+.highlight .sd,
+.highlight .s2,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .sr,
+.highlight .s1,
+.highlight .ss {
+    color: #a80000 !important;
+}
+
+/* Strings */
+.highlight .c,
+.highlight .ch,
+.highlight .cm,
+.highlight .c1,
+.highlight .cs,
+.highlight .cp,
+.highlight .cpf {
+    color: #006600 !important;
+    font-style: italic !important;
+}
+
+/* Comments */
+.highlight .m,
+.highlight .mb,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .il,
+.highlight .mo {
+    color: #007a2f !important;
+    font-weight: 600 !important;
+}
+
+/* Numbers */
+.highlight .nf,
+.highlight .fm {
+    color: #a63a00 !important;
+    font-weight: 600 !important;
+}
+
+/* Function Calls */
+.highlight .nc,
+.highlight .nn {
+    color: #006e74 !important;
+    font-weight: 600 !important;
+}
+
+/* Classes & Namespaces */
+.highlight .o,
+.highlight .ow {
+    color: #000000 !important;
+    font-weight: bold !important;
+}
+
+/* Operators */
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi {
+    color: #001a80 !important;
+}
+
+/* Variables */
 
 /* Code & Terminal Blocks inside Admonitions and Example Tags - Zero Margin All Sides */
 .rst-content .admonition div[class^="highlight"],
@@ -361,10 +437,6 @@ button.copybtn:hover {
 .rst-content .example div.terminal,
 .rst-content .example pre.terminal {
     margin: 0 !important;
-    margin-top: 0 !important;
-    margin-right: 0 !important;
-    margin-bottom: 0 !important;
-    margin-left: 0 !important;
 }
 
 /* ==========================================================================
@@ -383,10 +455,6 @@ pre.terminal,
     border-radius: var(--ss-radius-md) !important;
     padding: 1.1rem 1.3rem !important;
     margin: 0 !important;
-    margin-top: 0 !important;
-    margin-right: 0 !important;
-    margin-bottom: 0 !important;
-    margin-left: 0 !important;
     color: #0f172a !important;
     font-size: 0.90rem !important;
     line-height: 1.6 !important;
@@ -490,6 +558,7 @@ div.math-wrapper {
     border-left-color: var(--ss-primary) !important;
     background: linear-gradient(to right, rgba(2, 132, 199, 0.04), #ffffff) !important;
 }
+
 .rst-content .admonition.example-box .admonition-title {
     background-color: #e0f2fe !important;
     color: #0369a1 !important;
@@ -500,6 +569,7 @@ div.math-wrapper {
     border-left-color: #0284c7 !important;
     background: linear-gradient(to right, rgba(2, 132, 199, 0.04), #ffffff) !important;
 }
+
 .rst-content .admonition.note .admonition-title {
     background-color: #e0f2fe !important;
     color: #0369a1 !important;
@@ -511,6 +581,7 @@ div.math-wrapper {
     border-left-color: #10b981 !important;
     background: linear-gradient(to right, rgba(16, 185, 129, 0.04), #ffffff) !important;
 }
+
 .rst-content .admonition.tip .admonition-title,
 .rst-content .admonition.hint .admonition-title {
     background-color: #d1fae5 !important;
@@ -523,6 +594,7 @@ div.math-wrapper {
     border-left-color: #f59e0b !important;
     background: linear-gradient(to right, rgba(245, 158, 11, 0.04), #ffffff) !important;
 }
+
 .rst-content .admonition.warning .admonition-title,
 .rst-content .admonition.caution .admonition-title {
     background-color: #fef3c7 !important;
@@ -535,6 +607,7 @@ div.math-wrapper {
     border-left-color: #ef4444 !important;
     background: linear-gradient(to right, rgba(239, 68, 68, 0.04), #ffffff) !important;
 }
+
 .rst-content .admonition.danger .admonition-title,
 .rst-content .admonition.error .admonition-title {
     background-color: #fee2e2 !important;
