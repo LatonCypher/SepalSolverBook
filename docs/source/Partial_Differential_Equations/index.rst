@@ -23,3 +23,4 @@ In this chapter, we will explore different numerical methods for solving PDEs, t
 .. toctree::
 
    Solution Of PDE by Laplace Transform
+   Solution Of PDE by Method of Lines
