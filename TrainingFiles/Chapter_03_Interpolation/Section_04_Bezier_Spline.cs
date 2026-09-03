@@ -27,14 +27,10 @@
                 int resolution = 100, L = xControl.Length-1, N = L, M = 0;
                 double C = 0;
                 ColVec t = Linspace(0, 1, resolution), s = 1 - t;
-                double nchoosek(int n, int k) =>
-                    Exp(LnGamma(n + 1) - LnGamma(k + 1) - LnGamma(n - k));
-
                 ColVec x = xControl[0]*t.Pow(L), y = yControl[0]*t.Pow(L);
                 for (int i = 1; i < L; i++)
                 {
-                    N -= 1; M += 1;
-                    C = nchoosek(L, M);
+                    N -= 1; M += 1; C = nchoosek(L, M);
                     x += C * t.Pow(N).Times(s.Pow(M))*xControl[i];
                     y += C * t.Pow(N).Times(s.Pow(M))*yControl[i];
                 }

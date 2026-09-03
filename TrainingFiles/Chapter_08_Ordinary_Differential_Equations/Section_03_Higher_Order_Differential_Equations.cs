@@ -248,7 +248,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 
                 HoldOn();
                 ScatterHandle[] Stars = [..Enumerable.Range(0,7).Select(j => 
-                                            Scatter(Y[0, j], Y[0, j + 7], "fo", 10))];
+                                            Scatter(Y[0, j], Y[0, j + 7], "fo", 15))];
                 HoldOff();
                 byte[] Animfun(int i)
                 {
