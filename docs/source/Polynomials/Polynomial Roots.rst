@@ -19,6 +19,14 @@ For general polynomials, the most stable way to find all roots (including comple
    Console.WriteLine("Roots = \n " + string.Join("\n ", roots));
 
 
+Ouput
+
+.. terminal::
+
+   Roots = 
+      2.0000 + 0.0000i 
+      3.0000 + 0.0000i 
+
 2. Iterative Refinement (Newton-Raphson)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -42,6 +50,14 @@ Examples
       // Results will be complex: -2 + 3i and -2 - 3i
       Console.WriteLine($"Principal Root = \n " + string.Join("\n ", frequencies));
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Principal Root = 
+        -2.0000 - 3.0000i 
+        -2.0000 + 3.0000i 
 
 
 .. admonition:: Example 2 :  Intersection of a Curve and an Axis
@@ -60,6 +76,14 @@ Examples
               Console.WriteLine($"Crossing at: {r.Real}");
       }
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Crossing at: 1
+      Crossing at: -2
+      Crossing at: 3
 
 
 .. admonition:: Example 3 : 
@@ -73,6 +97,26 @@ Examples
       var roots = Roots(coeff);
       Console.WriteLine("Roots = \n " + string.Join("\n ", roots));
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Roots = 
+         0.1514 - 0.7608i 
+         0.1514 + 0.7608i 
+        -0.1111 - 0.8529i 
+        -0.1111 + 0.8529i 
+         0.8943 - 0.4616i 
+         0.8943 + 0.4616i 
+        -0.9522 - 0.5038i 
+        -0.9522 + 0.5038i 
+         0.6864 - 1.1010i 
+         0.6864 + 1.1010i 
+        -1.2464 - 0.5377i 
+        -1.2464 + 0.5377i 
+        -0.4224 - 1.2924i 
+        -0.4224 + 1.2924i 
 
 
 
@@ -93,6 +137,12 @@ Examples
       }
       Console.WriteLine($"Refined sqrt(2): {x}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Refined sqrt(2): 1.414213562373095
 
 Numerical Note: Complex Roots
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

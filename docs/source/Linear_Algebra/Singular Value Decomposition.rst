@@ -54,6 +54,24 @@ If we have a matrix $A$ representing a grayscale image, we can use **SepalSolver
    Console.WriteLine($"Matrix V = {V}");
 
 
+Ouput
+
+.. terminal::
+
+   Matrix U = 
+      0.7071   -0.7071
+      0.7071    0.7071
+   
+   Matrix S = 
+      5.0000   -0.0000    0.0000
+      0.0000    3.0000    0.0000
+   
+   Matrix V = 
+      0.7071   -0.2357   -0.6667
+      0.7071    0.2357    0.6667
+      0.0000   -0.9428    0.3333
+   
+
 **Summary of Matrix Properties**
 
 .. list-table:: 

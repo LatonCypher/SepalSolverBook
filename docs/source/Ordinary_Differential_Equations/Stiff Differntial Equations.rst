@@ -199,3 +199,29 @@ SepalSolver impelements ODE43s for stiff differential equation. This is an embed
       Console.WriteLine("Computational Cost Using Custom Tolerance Setting");
       Ode43s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Computational Cost Using Default Tolerance Setting:
+      Summary of statistics by Ode43s
+              118 successful steps
+              0 failed attempts
+              2872 function evaluations
+              118 partial derivatives
+              472 LU decompositions
+              1927 solutions of linear systems
+      
+      
+      
+      
+      Computational Cost Using Custom Tolerance Setting
+      Summary of statistics by Ode43s
+              180 successful steps
+              0 failed attempts
+              4711 function evaluations
+              180 partial derivatives
+              720 LU decompositions
+              3270 solutions of linear systems
+      

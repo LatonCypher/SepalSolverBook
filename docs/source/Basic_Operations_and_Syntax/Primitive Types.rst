@@ -171,6 +171,12 @@ Examples
       Console.WriteLine($"Sum = {sum}");
    
    
+   Ouput
+   
+   .. terminal::
+   
+      Sum = 30
+   
    
 
 
@@ -183,6 +189,12 @@ Examples
       double area = pi * radius * radius;
       Console.WriteLine($"Area = {area}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Area = 78.53981633974483
 
 
 .. admonition:: Example 3 :  Character and ASCII 
@@ -194,6 +206,12 @@ Examples
       int ascii = (int)c;
       Console.WriteLine($"Character: {c}, ASCII: {ascii}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Character: A, ASCII: 65
 
 
 .. admonition:: Example 4 :  Boolean Logic 
@@ -206,6 +224,12 @@ Examples
       bool goOut = isSunny && isWeekend;
       Console.WriteLine($"Go out? {goOut}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Go out? False
 
 
 .. admonition:: Example 5 :  Strings 
@@ -218,6 +242,12 @@ Examples
       string fullName = firstName + " " + lastName;
       Console.WriteLine($"Full Name: {fullName}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Full Name: Lateef K.
 
 Inbuilt Derived Types in C#
 ---------------------------

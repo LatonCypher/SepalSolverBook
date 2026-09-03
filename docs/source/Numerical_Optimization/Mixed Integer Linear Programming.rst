@@ -72,6 +72,15 @@ Enforcing integer restrictions on selected decision variables by providing an in
    Console.WriteLine(result);
 
 
+Ouput
+
+.. terminal::
+
+   
+      0.6667
+      1.3333
+   
+
 Example 2: MILP with Equality Constraints
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Combining integer variable restrictions with linear equality systems :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}` to model fixed discrete relationship balance equations:
@@ -101,6 +110,15 @@ Combining integer variable restrictions with linear equality systems :math:`\mat
    var result = Intlinprog(f, intCon, A, b, Aeq, beq);
    Console.WriteLine(result);
 
+
+Ouput
+
+.. terminal::
+
+   
+    0 
+    2 
+   
 
 
 Example 3: Fully Constrained MILP with Binary/Integer Variable Bounds
@@ -136,5 +154,14 @@ Solving a fully constrained MILP with explicit lower (:math:`\mathbf{Lb}`) and u
    var result = Intlinprog(f, intCon, A, b, Aeq, beq, Lb, Ub);
    Console.WriteLine(result);
 
+
+Ouput
+
+.. terminal::
+
+   
+      0.1875
+      1.2500
+   
 
 

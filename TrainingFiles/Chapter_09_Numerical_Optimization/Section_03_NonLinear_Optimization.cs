@@ -56,20 +56,20 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             ///
             /// <header 3> Rosenbrock function with constraint </header>
             ///
-            /// The goal is to find the parameter vector :math:\mathbf{x} = [x_0, x_1]^T that
+            /// The goal is to find the parameter vector :math:`\mathbf{x} = [x_0, x_1]^T` that
             /// minimizes the non-convex Rosenbrock objective function:
             ///
-            /// 
-            /// \min_{\mathbf{x}} f(x_0, x_1) = 100(x_1 - x_0^2)^2 + (1 - x_0)^2
-            /// 
+            /// <math>
+            ///     \min_{\mathbf{x}} f(x_0, x_1) = 100(x_1 - x_0^2)^2 + (1 - x_0)^2
+            /// </math>
             ///
             /// subject to the non-linear inequality constraint restricting the domain to the unit disk:
             ///
-            /// 
-            /// g(\mathbf{x}) = x_0^2 + x_1^2 - 1 \le 0
-            /// 
+            /// <math>
+            ///     g(\mathbf{x}) = x_0^2 + x_1^2 - 1 \le 0
+            /// </math>
             ///
-            /// * Initial Guess: :math:\mathbf{x}_0 = (0, 0)
+            /// * Initial Guess: :math:`\mathbf{x}_0 = (0, 0)`
             ///
             /// <code>
             {
@@ -87,12 +87,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             ///
             /// Minimizes the Rosenbrock objective subject to a shifted circular inequality constraint combined with explicit lower (lb) and upper (ub) parameter boundaries:
             ///
-            /// 
-            /// g(\mathbf{x}) = (x_0 - 0.333)^2 + (x_1 - 0.333)^2 - 0.11111 \le 0
-            /// 
+            /// <math>
+            ///     g(\mathbf{x}) = (x_0 - 0.333)^2 + (x_1 - 0.333)^2 - 0.11111 \le 0
+            /// </math>
             ///
-            /// 
-            /// 0.0 \le x_0 \le 0.5, \quad 0.2 \le x_1 \le 0.8
+            /// <math>
+            ///     0.0 \le x_0 \le 0.5, \quad 0.2 \le x_1 \le 0.8
+            /// </math>
             /// 
             ///
             /// <code>
@@ -114,7 +115,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             ///
             /// When gradient information is unavailable or the objective is non-differentiable, Fminsearch uses the Nelder-Mead Simplex algorithm to locate the unconstrained global minimum at :math:\mathbf{x}^* = (1, 1) where :math:f(\mathbf{x}^*) = 0.
             ///
-            /// * Initial Guess: :math:\mathbf{x}_0 = (-1.2, 1.0)
+            /// * Initial Guess: :math:`\mathbf{x}_0 = (-1.2, 1.0)`
             ///
             /// <code>
             {
@@ -132,9 +133,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
              ///
              /// For non-convex or multimodal objective functions where gradient-based solvers risk getting trapped in local minima, the Genetic Algorithm (GA) uses population-based operators to explore bounded search spaces without requiring an initial guess.
              ///
-             /// 
-             /// -2.0 \le x_0 \le 2.0, \quad -2.0 \le x_1 \le 2.0
-             /// 
+             /// <math>
+             ///     -2.0 \le x_0 \le 2.0, \quad -2.0 \le x_1 \le 2.0
+             /// </math>
              ///
              /// <code>
             {

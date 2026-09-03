@@ -59,6 +59,12 @@ Applied Examples (Solved via Simple Solver)
       Console.WriteLine($"I = {I:F4}");
    
    
+   Ouput
+   
+   .. terminal::
+   
+      I = 2.0000
+   
    
    Exact Analytical Result:
    
@@ -84,6 +90,12 @@ Applied Examples (Solved via Simple Solver)
       Console.WriteLine($"I = {I:F4}");
    
    
+   Ouput
+   
+   .. terminal::
+   
+      I = 2.0000
+   
    Exact Analytical Result:
    
    .. math::
@@ -108,6 +120,12 @@ Applied Examples (Solved via Simple Solver)
       var I = Integral(x => Exp(-x * x) * Pow(Log(x), 2), 0, inf);
       Console.WriteLine($"I = {I:F5}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      I = 1.94752
    
    Exact Analytical Result:
    
@@ -157,6 +175,12 @@ It is abole to compute upto 4 dimensional integrals efficiently.
       // Print the result
       Console.WriteLine($"The triple integral of x*y*z is approximately: {integral:F4}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      The triple integral of x*y*z is approximately: 1.8750
 
 
 
@@ -189,6 +213,12 @@ It is abole to compute upto 4 dimensional integrals efficiently.
       // Print the result
       Console.WriteLine($"The triple integral of x*y*z is approximately: {integral:F4}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      The triple integral of x*y*z is approximately: 0.9167
 
 
 .. admonition:: Example 6 :  Functional boundary 
@@ -224,6 +254,12 @@ It is abole to compute upto 4 dimensional integrals efficiently.
       // Print the result
       Console.WriteLine($"The triple integral of x*y*z is approximately: {integral:F4}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      The triple integral of x*y*z is approximately: 0.2083
 
 
 .. admonition:: Example 7 :  Functional boundary
@@ -259,3 +295,9 @@ It is abole to compute upto 4 dimensional integrals efficiently.
       // Print the result
       Console.WriteLine($"The triple integral of x*y*z is approximately: {integral:F4}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      The triple integral of x*y*z is approximately: 0.0641

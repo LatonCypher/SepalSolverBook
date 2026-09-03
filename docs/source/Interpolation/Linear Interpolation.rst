@@ -35,6 +35,12 @@ In SepalSolver, the Interp1 method performs 1D linear interpolation. It first se
    Console.WriteLine($"Interpolated value at {queryX} is {result}");
 
 
+Ouput
+
+.. terminal::
+
+   Interpolated value at 5 is 50
+
 Examples
 --------
 
@@ -53,6 +59,12 @@ Examples
    
       Console.WriteLine($"Estimated pressure at {currentTemp}C: :math:{pEst} kPa");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Estimated pressure at 107.5C: :math:132.05 kPa
 
 
 .. admonition:: Example 2 :  Lookup Tables in Control Systems
@@ -69,6 +81,12 @@ Examples
    
       Console.WriteLine($"Torque at {currentRPM} RPM: :math:`{tEst}` Nm");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Torque at 2500 RPM: :math:`295` Nm
 
 Exercise: Manual Implementation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -129,6 +147,12 @@ In SepalSolver, `Interp2` requires:
    Console.WriteLine($"Value at (0.5, 0.5): {result}");
 
 
+Ouput
+
+.. terminal::
+
+   Value at (0.5, 0.5): 25
+
 Examples
 --------
 
@@ -151,6 +175,12 @@ Examples
       double height = Interp2(longitude, latitude, elevation, lon, lat);
       Console.WriteLine($"Height at ({lon}, {lat}): :math:{height} m");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Height at (100.5, 50.5): :math:537.5 m
 
 
 .. admonition:: Example 2 :  Pressure Mapping
@@ -172,6 +202,12 @@ Examples
    
       Console.WriteLine($"Interpolated Z: {val}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Interpolated Z: 50
 
 
 .. admonition:: Example 3 :  Reading steam table
@@ -203,3 +239,9 @@ Examples
       double sv = Interp2(Temperature, Pressure, SpecificVolume, T, P);
       Console.WriteLine($"Specific Volume of superheated water at T = {T}, P = {P} is {sv}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Specific Volume of superheated water at T = 1350, P = 0.0373 is 20.413475

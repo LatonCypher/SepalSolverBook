@@ -71,6 +71,19 @@ Using SepalSolver, we call Chol on an instance of the matrix.
       if(A.IsPosDef)
           Console.WriteLine("A is positive definite");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Cholesky Factor L = 
+         4.7681    0.0000    0.0000    0.0000    0.0000
+         0.3955    4.6987    0.0000    0.0000    0.0000
+         0.0000    0.4355    4.7507    0.0000    0.0000
+         0.0000    0.0000    0.5179    4.7240    0.0000
+         0.2726   -0.0230    0.0021    0.4817    4.7094
+      
+      A is positive definite
 
 Like LU factors, Cholesky factors can be updated too, when the Matrix undergoes rank1 update. 
 
@@ -105,3 +118,36 @@ Like LU factors, Cholesky factors can be updated too, when the Matrix undergoes 
    Console.WriteLine($"Updated Matrix A_tilde:{A_updated}");
    Console.WriteLine($"Matrix L:{A_updated.L_chol}");
 
+
+Ouput
+
+.. terminal::
+
+   Matrix A:
+     23.7345    1.8047    0.9861   -0.1053    2.2130
+      1.8859   22.2406    1.9660    0.0085   -0.0741
+      1.0000    1.9666   23.7315    2.3568    0.9003
+      0.0000    0.0000    2.4606   22.5959    2.1807
+      2.3000   -0.0749    0.9094    2.1818   23.3189
+   
+   Matrix L:
+      4.8718    0.0000    0.0000    0.0000    0.0000
+      0.3871    4.6994    0.0000    0.0000    0.0000
+      0.2053    0.4185    4.8520    0.0000    0.0000
+      0.0000    0.0000    0.5071    4.7252    0.0000
+      0.4721   -0.0389    0.1895    0.4615    4.7971
+   
+   Updated Matrix A_tilde:
+     23.7345    1.8859    1.0000    0.0000    2.3000
+      1.8859   22.2340    2.0461    0.0000    0.0000
+      1.0000    2.0461   23.7591    2.4606    1.0000
+      0.0000    0.0000    2.4606   22.5848    2.2768
+      2.3000    0.0000    1.0000    2.2768   23.4853
+   
+   Matrix L:
+      4.8718    0.0000    0.0000    0.0000    0.0000
+      0.3871    4.6994    0.0000    0.0000    0.0000
+      0.2053    0.4185    4.8520    0.0000    0.0000
+      0.0000    0.0000    0.5071    4.7252    0.0000
+      0.4721   -0.0389    0.1895    0.4615    4.7971
+   

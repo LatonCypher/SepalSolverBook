@@ -87,6 +87,12 @@ Examples
           Console.WriteLine($"Inversion successful: {inverse}");
       }
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Inversion successful: 100000000
 
 
 .. admonition:: Example 2 :  The Switch-Condition: Solver Selection
@@ -113,6 +119,12 @@ Examples
       }
    
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Executing Runge-Kutta 4th Order...
 
 
 .. admonition:: Example 3 :  The While-Loop: Convergence Monitor
@@ -136,6 +148,12 @@ Examples
       Console.WriteLine($"Cooled to {temperature:F2}°C in {seconds} seconds.");
    
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Cooled to 25.10°C in 63 seconds.
 
 
 .. admonition:: Example 4 :  The Foreach Loop: Property Calculation
@@ -157,6 +175,12 @@ Examples
    
       Console.WriteLine($"Total System Mass: {totalMass}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Total System Mass: 19.1
 
 Pro-Tip: Nested Loops
 ~~~~~~~~~~~~~~~~~~~~~

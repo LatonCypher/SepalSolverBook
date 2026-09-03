@@ -45,6 +45,12 @@ Applied Examples
       Console.WriteLine($"I = {I:F4}");
    
    
+   Ouput
+   
+   .. terminal::
+   
+      I = 6.0000
+   
    Exact Analytical Result:
    
    .. math::
@@ -69,6 +75,12 @@ Applied Examples
       var I = GaussLag(x => x * x);
       Console.WriteLine($"I = {I:F4}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      I = 2.0000
    
    Exact Analytical Result:
    
@@ -95,6 +107,12 @@ Applied Examples
       var I = GaussLag(x => Exp(-x));
       Console.WriteLine($"I = {I:F4}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      I = 0.5000
    Exact Analytical Result:
    
    .. math::
@@ -120,6 +138,12 @@ Applied Examples
       var I = GaussLag(x => Cos(x));
       Console.WriteLine($"I = {I:F4}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      I = 0.5000
    
    Exact Analytical Result:
    

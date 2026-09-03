@@ -44,6 +44,12 @@ Examples
       SaveAs("Polyfit_Example1.png");
    
    
+   Ouput
+   
+   .. terminal::
+   
+      Coefficients: [1.0000, 0.0000, 0.0000]
+   
    .. figure:: images/Polyfit_Example1.png
       :align: center
       :alt: Polyfit_Example1.png
@@ -64,6 +70,12 @@ Examples
    
       Console.WriteLine($"Spring Constant k: {p[0]} N/m");
     
+   
+   Ouput
+   
+   .. terminal::
+   
+      Spring Constant k: 99.80000000000003 N/m
 
 
 .. admonition:: Example 3 :  Handling Noise in Experimental Data 
@@ -80,6 +92,12 @@ Examples
    
       Console.WriteLine($"Quadratic term (should be small): {p[0]}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Quadratic term (should be small): -0.04285714285714191
 
 Usage Warning
 ~~~~~~~~~~~~~
@@ -119,6 +137,15 @@ Overfitting can occur if the degree is too high, while underfitting can happen i
       HoldOff();
       SaveAs("Polyfit_Example_4.png");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Linear fit : [6.0000, -2.0000] 
+      Residual: 1008.4903581267214
+      Quaratic fit : [1.0000,-0.0000,5.0000] 
+      Residual: 846.5558445323921
    
    .. figure:: images/Polyfit_Example_4.png
       :align: center
@@ -160,6 +187,12 @@ In SepalSolver, multivariate fitting is performed by constructing an augmented m
 
    Console.WriteLine($"Model: z = {coeff[0]:f4} + {coeff[1]:f4}x + {coeff[2]:f4}y");
 
+
+Ouput
+
+.. terminal::
+
+   Model: z = 0.9083 + 1.4250x + 1.1333y
 
 Examples
 --------
@@ -245,6 +278,12 @@ Examples
       double A = x[0], C = -x[1], B = A*C-x[2];
       Console.WriteLine($"Fitted Parameters: A = {A:F4}, B = {B:F4}, C = {C:F4}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Fitted Parameters: A = 6.1681, B = 1170.7321, C = -48.0075
 
 
 .. admonition:: Example 2 :  

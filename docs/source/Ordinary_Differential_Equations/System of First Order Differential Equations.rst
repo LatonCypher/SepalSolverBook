@@ -308,6 +308,12 @@ These are examples of how to use SepalSolver to solve various systems of first-o
       SaveAs("Blasius-bounary-layer.png");
    
    
+   Ouput
+   
+   .. terminal::
+   
+      Solution is 0.33256562390833655
+   
    .. figure:: images/Blasius-bounary-layer.png
       :align: center
       :alt: Blasius-bounary-layer.png

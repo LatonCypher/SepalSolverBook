@@ -43,6 +43,27 @@ and :math:`Ux = y` using forward and backward substitution.
    Console.WriteLine($"Matrix P:{A.pi}");
 
 
+Ouput
+
+.. terminal::
+
+   Matrix A:
+    4   3   2 
+    3   2   1 
+    2   1   3 
+   
+   Matrix L:
+      1.0000    0.0000    0.0000
+      0.5000    1.0000    0.0000
+      0.7500    0.5000    1.0000
+   
+   Matrix U:
+      4.0000    3.0000    2.0000
+      0.0000   -0.5000    2.0000
+      0.0000    0.0000   -1.5000
+   
+   Matrix P:0,	2,	1
+
 2. Rank-1 Updates: Adjusting the Matrix
 ---------------------------------------
 In many real-time systems (like structural engineering or
@@ -116,6 +137,43 @@ to the standard matrix addition.
    Console.WriteLine($"Matrix P:{A_updated.pi}");
 
 
+
+Ouput
+
+.. terminal::
+
+   Matrix A:
+    6   2   2 
+    3   2   1 
+    6  -1   3 
+   
+   Matrix L:
+      1.0000    0.0000    0.0000
+      1.0000    1.0000    0.0000
+      0.5000   -0.3333    1.0000
+   
+   Matrix U:
+      6.0000    2.0000    2.0000
+      0.0000   -3.0000    1.0000
+      0.0000    0.0000    0.3333
+   
+   Matrix P:0,	2,	1
+   Updated Matrix A_tilde:
+    6   2   2 
+    3   2   1 
+    6  -1   3 
+   
+   Matrix L:
+      1.0000    0.0000    0.0000
+      1.0000    1.0000    0.0000
+      0.5000   -0.3333    1.0000
+   
+   Matrix U:
+      6.0000    2.0000    2.0000
+      0.0000   -3.0000    1.0000
+      0.0000    0.0000    0.3333
+   
+   Matrix P:0,	2,	1
 
 5. Applications in Industry
 ---------------------------

@@ -270,6 +270,19 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       SaveAs("Implicit-Robertson-ODE-Ode43i.png");
    
    
+   Ouput
+   
+   .. terminal::
+   
+      Summary of statistics by Ode43i
+              68 successful steps
+              9 failed attempts
+              2284 function evaluations
+              77 partial derivatives
+              284 LU decompositions
+              1459 solutions of linear systems
+      
+   
    .. figure:: images/Implicit-Robertson-ODE-Ode43i.png
       :align: center
       :alt: Implicit-Robertson-ODE-Ode43i.png
@@ -334,6 +347,16 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       Title("Solution of implicit Robertson's ODE with ODE43i");
       SaveAs("Implicit-Robertson-ODE-Ode43i_With_jacobian.png");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Summary of statistics by Ode43i
+              68 successful steps
+              9 failed attempts
+              1734 function evaluations
+      
    
    .. figure:: images/Implicit-Robertson-ODE-Ode43i_With_jacobian.png
       :align: center

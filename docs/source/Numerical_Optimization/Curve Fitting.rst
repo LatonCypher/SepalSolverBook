@@ -144,6 +144,49 @@ Find :math:`\hat{\theta}` minimizing the sum of squared residuals:
    CloseFig();
 
 
+Ouput
+
+.. terminal::
+
+                                               Norm of      First-order 
+    Iteration   Func-count       Resnorm          step       optimality 
+        0            5          1.7366e0                       3.6049e0 
+        1           11         7.9962e-1     2.5558e-1         1.4787e0 
+        2           17         5.2703e-1     2.3774e-1        2.9760e-1 
+        3           23         4.4835e-1     5.2822e-1        1.4612e-1 
+        4           29         2.6683e-1      2.0444e0        6.9636e-1 
+        5           35         1.0861e-1      3.0035e0        7.1312e-1 
+        6           41         5.5602e-3     5.5760e-1        5.2512e-2 
+        7           48         4.0272e-3     2.1661e-1        3.8966e-2 
+        8           55         3.7096e-3     1.6795e-1        2.1607e-2 
+        9           62         3.5352e-3     1.2449e-1        1.2679e-2 
+       10           68         3.5058e-3     2.7188e-1        5.8683e-2 
+       11           75         3.1913e-3     1.4737e-1        1.9801e-2 
+       12           82         3.1077e-3     1.1439e-1        1.2033e-2 
+       13           89         3.0575e-3     8.9834e-2        7.5597e-3 
+       14           96         3.0240e-3     7.3883e-2        5.1738e-3 
+       15          102         3.0168e-3     1.7344e-1        2.8017e-2 
+       16          109         2.9439e-3     1.1526e-1        1.2131e-2 
+       17          116         2.9189e-3     9.0133e-2        7.3999e-3 
+       18          123         2.9041e-3     7.3072e-2        4.8192e-3 
+       19          130         2.8941e-3     6.1215e-2        3.3509e-3 
+       20          137         2.8869e-3     5.2500e-2        2.4421e-3 
+       21          143         2.8858e-3     1.2542e-1        1.3773e-2 
+       22          150         2.8690e-3     9.0249e-2        6.6954e-3 
+       23          157         2.8627e-3     7.0845e-2        4.0679e-3 
+       24          164         2.8591e-3     5.7527e-2        2.6378e-3 
+       25          171         2.8568e-3     4.7939e-2        1.8052e-3 
+       26          178         2.8552e-3     4.0725e-2        1.2861e-3 
+       27          184         2.8550e-3     9.1175e-2        6.3993e-3 
+       28          191         2.8516e-3     6.3828e-2        2.9554e-3 
+       29          198         2.8505e-3     4.7400e-2        1.6102e-3 
+       30          205         2.8500e-3     3.6253e-2        9.3067e-4 
+       31          211         2.8500e-3     6.3485e-2        2.8434e-3 
+       32          217         2.8496e-3     6.0807e-2        2.5194e-3 
+       33          223         2.8492e-3     2.5880e-2        4.3707e-4 
+       34          229         2.8492e-3     3.8366e-3        9.4289e-6 
+       35          235         2.8492e-3     1.2760e-4        1.0268e-8 
+
 .. figure:: images/Bi_Exponential_Fitting.gif
    :align: center
    :alt: Bi_Exponential_Fitting.gif
@@ -176,6 +219,24 @@ Find :math:`\hat{\theta}` minimizing the sum of squared residuals:
    AnimateHistory(fun, xdata, ydata, ans.history, "CurveFitting.gif");
    CloseFig();
 
+
+Ouput
+
+.. terminal::
+
+                                               Norm of      First-order 
+    Iteration   Func-count       Resnorm          step       optimality 
+        0            3          3.5968e5                       2.8768e4 
+        1            7          2.9148e5      4.5301e1         6.3631e4 
+        2           11          1.4328e5      7.0536e1         1.8724e5 
+        3           15          5.8838e4      8.1015e1         1.7583e5 
+        4           19          2.1604e4      7.9171e1         1.3573e5 
+        5           23          2.4371e3      8.1537e1         4.6492e4 
+        6           27          6.2429e1      3.5477e1         8.8212e3 
+        7           31          9.6405e0      5.5200e0         5.2344e2 
+        8           35          9.5049e0     2.7383e-1         4.5771e0 
+        9           39          9.5049e0     3.5902e-3        1.3319e-2 
+       10           43          9.5049e0     9.0844e-6        5.6776e-6 
 
 .. figure:: images/CurveFitting.png
    :align: center
@@ -239,6 +300,32 @@ Lsqcurvefit allows the use of constraints.
    CloseFig();
 
 
+Ouput
+
+.. terminal::
+
+                                               Norm of      First-order 
+    Iteration   Func-count       Resnorm          step       optimality 
+        0            5          1.5843e3                       1.5137e3 
+        1           11          1.3036e3     2.1022e-1         1.3145e3 
+        2           17          8.0025e2     4.8434e-1         8.8920e2 
+        3           23          3.0459e2     8.0779e-1         3.3677e2 
+        4           29          6.1791e1     9.7211e-1         6.9063e1 
+        5           35          1.1110e1     6.6091e-1         3.6256e1 
+        6           41          6.0206e0     3.9976e-1         2.3955e0 
+        7           47          3.0191e0     5.5138e-1         3.3928e0 
+        8           53          2.4696e0     5.7166e-1         1.8618e0 
+        9           59          1.1735e0     2.5306e-1        3.3791e-1 
+       10           65          1.1349e0     2.6211e-1        1.9010e-1 
+       11           71          1.1313e0     9.7301e-2        2.3560e-2 
+       12           77          1.1312e0     1.2578e-2        7.2291e-4 
+       13           83          1.1312e0     5.4788e-4        2.6359e-5 
+       14           89          1.1312e0     8.7654e-6        7.0295e-7 
+   x = 
+      2.0282    4.0163    5.0024    0.4954
+   
+   c =   -0.5467
+
 .. figure:: images/Example_of_CurveFitting_using_Lsqcurvefit_with_Linear_Inequality_Constraints.png
    :align: center
    :alt: Example_of_CurveFitting_using_Lsqcurvefit_with_Linear_Inequality_Constraints.png
@@ -270,6 +357,41 @@ Lsqcurvefit allows the use of constraints.
    SaveAs("Example_of_CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.png");
    CloseFig();
 
+
+Ouput
+
+.. terminal::
+
+                                               Norm of      First-order 
+    Iteration   Func-count       Resnorm          step       optimality 
+        0            5          1.5674e3                       1.5070e3 
+        1           11          1.2859e3     2.1204e-1         1.3068e3 
+        2           17          7.8154e2     4.8909e-1         8.7979e2 
+        3           23          2.8669e2     8.1715e-1         3.2618e2 
+        4           29          5.2542e1     9.6632e-1         6.9524e1 
+        5           35          4.4807e0     6.2105e-1         3.4317e1 
+        6           41          1.8878e0     1.9265e-1         4.3009e0 
+        7           47          1.6930e0     1.5159e-1        9.1411e-1 
+        8           53          1.3831e0     3.3084e-1         1.2083e0 
+        9           59         9.9782e-1     5.8881e-1         1.2013e0 
+       10           67         9.3356e-1     1.5005e-1        4.9928e-1 
+       11           74         8.9197e-1     1.2075e-1        4.0499e-1 
+       12           84         8.9081e-1     3.7928e-3        3.8071e-1 
+       13           92         8.9058e-1     1.1992e-3        3.7873e-1 
+       14           98         8.9058e-1     1.1599e-3        2.3174e-1 
+       15          104         8.9018e-1     7.9554e-4        1.8066e-1 
+       16          110         8.9005e-1     3.6873e-4        1.8826e-1 
+       17          116         8.9003e-1     9.0660e-5        1.9199e-1 
+       18          122         8.9001e-1     2.2050e-4        1.9894e-1 
+       19          128         8.8998e-1     4.4950e-4        2.1414e-1 
+       20          134         8.8996e-1     5.1768e-4        2.3325e-1 
+       21          140         8.8996e-1     2.5053e-4        2.4301e-1 
+       22          146         8.8996e-1     4.2486e-5        2.4469e-1 
+       23          152         8.8996e-1     2.3027e-6        2.4479e-1 
+   x = 
+      1.3473    3.7663    5.0053    0.6377
+   
+   c =    0.0000
 
 .. figure:: images/Example_of_CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.png
    :align: center

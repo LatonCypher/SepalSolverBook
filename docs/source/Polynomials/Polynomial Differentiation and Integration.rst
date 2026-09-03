@@ -22,6 +22,12 @@ The derivative of a polynomial :math:`P(x) = a_0 x^n + a_1 x^{n-1} + ... + a_n` 
       double[] derivative = Polyder(p, 1); // Should represent 6x + 5
       Console.WriteLine($"Derivative: [{string.Join(", ", derivative)}]");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Derivative: [6, 5]
 
 
 2. Integration
@@ -41,3 +47,9 @@ The indefinite integral of a polynomial is computed by applying the reverse of t
       double[] integral = Polyint(p, C); // Should represent 2x^3 + 2x^2 + 2x + C
       Console.WriteLine($"Integral: [{string.Join(", ", integral)}]");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Integral: [2, 2, 2, 9]

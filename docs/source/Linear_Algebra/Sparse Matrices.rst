@@ -116,6 +116,14 @@ A SparseMatrix can be made in the following ways:
    Console.WriteLine($" Sparsity = {Asparse.sparsity}");
 
 
+Ouput
+
+.. terminal::
+
+    Total elements = 16
+    Non-zero elements  = 3
+    Sparsity = 0.1875
+
 **Rows, Columns and Values**
 
 .. code-block:: csharp
@@ -126,6 +134,14 @@ A SparseMatrix can be made in the following ways:
    Console.WriteLine($" Non-zero elements  = {Asparse.Nnz}");
    Console.WriteLine($" Sparsity = {Asparse.sparsity}");
 
+
+Ouput
+
+.. terminal::
+
+    Total elements = 16
+    Non-zero elements  = 3
+    Sparsity = 0.1875
 
 **Assigning Values**
 
@@ -139,6 +155,14 @@ A SparseMatrix can be made in the following ways:
    Console.WriteLine($" Non-zero elements  = {Asparse.Nnz}");
    Console.WriteLine($" Sparsity = {Asparse.sparsity}");
 
+
+Ouput
+
+.. terminal::
+
+    Total elements = 16
+    Non-zero elements  = 3
+    Sparsity = 0.1875
 SepalSolver also has inbuilt Sparsematrices that can be loaded without manually creating them as started above.
 examples of these are : Squid and Bucky
 
@@ -194,6 +218,32 @@ Here we look at the incomplete LU and Cholesky, since the complete form as been 
    SaveAs("U_from_Incomplete_LU_Factorization_of _B.png");
 
 
+Ouput
+
+.. terminal::
+
+   L = 
+      1.0000    0.0000    0.0000    0.0000    0.0000
+     -0.4000    1.0000    0.0000    0.0000    0.0000
+      0.0000   -0.4000    1.0000    0.0000    0.0000
+     -0.4000    0.0000   -0.4000    1.0000    0.0000
+     -0.4000    0.0000    0.0000   -0.4000    1.0000
+   
+   U = 
+    5   0   0   0   0 
+    0   5   0   0   0 
+    0   0   5   0   0 
+    0   0   0   5   0 
+    0   0   0   0   5 
+   
+   L * U = 
+    5   0   0   0   0 
+   -2   5   0   0   0 
+    0  -2   5   0   0 
+   -2   0  -2   5   0 
+   -2   0   0  -2   5 
+   
+
 .. figure:: images/L_from_Incomplete_LU_Factorization_of_B.png
    :align: center
    :alt: L_from_Incomplete_LU_Factorization_of_B.png
@@ -227,6 +277,47 @@ Here we look at the incomplete LU and Cholesky, since the complete form as been 
    SaveAs("L_from_Incomplete_Cholesky_Factorization_of_B.png");
 
 
+Ouput
+
+.. terminal::
+
+   L = 
+    (0,0)            2.2361
+    (1,0)           -0.8944
+    (3,0)           -0.8944
+    (4,0)           -0.8944
+    (1,1)            2.0494
+    (2,1)           -0.9759
+    (2,2)            2.0119
+    (3,2)           -0.9941
+    (3,3)            1.7921
+    (4,3)           -1.5624
+    (4,4)            1.3263
+   
+   L*LT = 
+    (0,0)            5.0000
+    (1,0)           -2.0000
+    (3,0)           -2.0000
+    (4,0)           -2.0000
+    (0,1)           -2.0000
+    (1,1)            5.0000
+    (2,1)           -2.0000
+    (3,1)            0.8000
+    (4,1)            0.8000
+    (1,2)           -2.0000
+    (2,2)            5.0000
+    (3,2)           -2.0000
+    (0,3)           -2.0000
+    (1,3)            0.8000
+    (2,3)           -2.0000
+    (3,3)            5.0000
+    (4,3)           -2.0000
+    (0,4)           -2.0000
+    (1,4)            0.8000
+    (3,4)           -2.0000
+    (4,4)            5.0000
+   
+
 .. figure:: images/L_from_Incomplete_Cholesky_Factorization_of_B.png
    :align: center
    :alt: L_from_Incomplete_Cholesky_Factorization_of_B.png
@@ -248,6 +339,25 @@ Here we look at the incomplete LU and Cholesky, since the complete form as been 
    B.MakeChol();
    Console.WriteLine(B.L_chol);
 
+
+Ouput
+
+.. terminal::
+
+   
+    (0,0)            4.7681
+    (1,0)            0.3955
+    (4,0)            0.2726
+    (1,1)            4.6987
+    (2,1)            0.4355
+    (4,1)           -0.0230
+    (2,2)            4.7507
+    (3,2)            0.5179
+    (4,2)            0.0021
+    (3,3)            4.7240
+    (4,3)            0.4817
+    (4,4)            4.7094
+   
 Reodering
 ---------
 Matrix rearrangement (or reordering) aims to find a permutation matrix :math:`P` such that the factorization of :math:`PAP^T` minimizes **fill-in**.

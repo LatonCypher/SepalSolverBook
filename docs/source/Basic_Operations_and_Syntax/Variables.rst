@@ -74,6 +74,12 @@ Examples
       var tolerance = 1e-6; // Implicit (compiler sees it is a double) 
       Console.WriteLine($"Precision: {precision}, Tolerance: {tolerance}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Precision: 0.0001, Tolerance: 1E-06
 
 
 .. admonition:: Example 2 :  Constant Variables 
@@ -86,6 +92,12 @@ Examples
       // This would cause a compilation error 
       Console.WriteLine($"Acceleration due to gravity: {Gravity} m/s²"); 
     
+   
+   Ouput
+   
+   .. terminal::
+   
+      Acceleration due to gravity: 9.81 m/s²
 
 
 .. admonition:: Example 3 :  Scope and Braces
@@ -101,6 +113,12 @@ Examples
       // Console.WriteLine(inner); 
       // Error: 'inner' is out of scope 
     
+   
+   Ouput
+   
+   .. terminal::
+   
+      Sum: 30
 
 
 .. admonition:: Example 4 :  Nullable Reference Types 
@@ -113,4 +131,10 @@ Examples
       name = "Sepal Solver"; 
       Console.WriteLine($"Project: {name}"); 
     
+   
+   Ouput
+   
+   .. terminal::
+   
+      Project: Sepal Solver
 

@@ -62,6 +62,12 @@ Examples
       // Print out result
       Console.WriteLine($" midvoltage = {midVoltage}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+       midvoltage = 1.0365000000000002
 
 
 .. admonition:: Example 2 :  Structural Deformation Mapping
@@ -161,3 +167,14 @@ The idea of using polynomial fits can be extended to multiple dimensions. For ex
       Console.WriteLine("Interpolation by Polynomial Fitting-Using Narrow Region");
       Console.WriteLine($"Specific volume at T = {T} and P = {P} is {sv}");
    
+   
+   Ouput
+   
+   .. terminal::
+   
+      Interpolation by Polynomial Fitting
+      Specific volume at T = 1350 and P = 0.0373 is 28.05358118503139
+      Interpolation by Bilinear Interpolation
+      Specific volume at T = 1350 and P = 0.0373 is 20.413475
+      Interpolation by Polynomial Fitting-Using Narrow Region
+      Specific volume at T = 1350 and P = 0.0373 is 20.413475000000012
