@@ -581,10 +581,73 @@ pre.terminal,
     border-radius: var(--ss-radius-md) !important;
     padding: 1.1rem 1.3rem !important;
     margin: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
     color: #0f172a !important;
     font-size: 0.90rem !important;
     line-height: 1.6 !important;
     box-shadow: var(--ss-shadow-sm) !important;
+}
+
+/* Reset inner highlight wrapper inside terminal to eliminate nested boxes and margins */
+.rst-content .terminal div[class^="highlight"],
+.rst-content .terminal div[class*="highlight"],
+.rst-content .terminal div.highlight,
+.rst-content .terminal .highlight,
+.rst-content div.terminal div[class^="highlight"],
+.rst-content div.terminal div[class*="highlight"],
+.rst-content div.terminal div.highlight,
+.rst-content div.terminal .highlight,
+div.terminal div[class^="highlight"],
+div.terminal div[class*="highlight"],
+div.terminal div.highlight,
+div.terminal .highlight {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    overflow-x: visible !important;
+}
+
+/* Reset inner pre inside terminal */
+.rst-content .terminal pre,
+.rst-content div.terminal pre,
+.rst-content .terminal .highlight pre,
+.rst-content div.terminal .highlight pre,
+div.terminal pre,
+pre.terminal,
+.terminal pre {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    color: #0f172a !important;
+    font-size: 0.90rem !important;
+    line-height: 1.6 !important;
+    font-family: "JetBrains Mono", "Cascadia Code", SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+}
+
+/* Tighten paragraph immediately preceding a terminal block (e.g. "Ouput" / "Output" labels) */
+.rst-content p:has(+ .terminal),
+.rst-content p:has(+ div.terminal),
+.rst-content p:has(+ div[class*="terminal"]) {
+    margin-bottom: 0.35rem !important;
 }
 
 /* ==========================================================================
