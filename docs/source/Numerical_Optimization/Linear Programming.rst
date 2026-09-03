@@ -30,9 +30,9 @@ Consider a standard linear program solved via the Linprog interface:
 **Constraint Types in Linprog**
 
 The Linprog solver handles three levels of constraint complexity depending on problem parameters:
-- Inequality Constraints (:math:`\mathbf{A}\mathbf{x} \le \mathbf{b}`): Defines the primary polyhedral boundary of the feasible region.
-- Equality Constraints (:math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}`): Restricts the feasible solution domain to a lower-dimensional affine subspace or hyperplane within the polyhedron.
-- Variable Bounds (:math:`\mathbf{Lb} \le \mathbf{x} \le \mathbf{Ub}`): Sets direct lower and upper box constraints on individual decision variables, improving solver efficiency.
+1.   Inequality Constraints (:math:`\mathbf{A}\mathbf{x} \le \mathbf{b}`): Defines the primary polyhedral boundary of the feasible region.
+2.   Equality Constraints (:math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}`): Restricts the feasible solution domain to a lower-dimensional affine subspace or hyperplane within the polyhedron.
+3.   Variable Bounds (:math:`\mathbf{Lb} \le \mathbf{x} \le \mathbf{Ub}`): Sets direct lower and upper box constraints on individual decision variables, improving solver efficiency.
 
 Comparison: Linprog Formulation Levels
 

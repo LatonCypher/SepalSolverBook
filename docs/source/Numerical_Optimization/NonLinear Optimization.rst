@@ -210,12 +210,9 @@ Ouput
 
 .. terminal::
 
-   
-                                   Best             Mean             Max             Stall
-    Generation   Func-count        f(x)             f(x)         Constraints      Generations
    Stopping: no improvement for too long.
    x = 
-      1.0373    1.0746
+      1.0192    1.0408
    
 
 
