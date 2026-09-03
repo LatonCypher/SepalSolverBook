@@ -1,4 +1,4 @@
-﻿using ScottPlot;
+using ScottPlot;
 using ScottPlot.Colormaps;
 using System;
 using System.Collections.Generic;
@@ -146,9 +146,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                         totalLiquid += ql;
                     }
 
-                    // g1: Total Gas <= Qg_avail  =>  Total Gas - Qg_avail <= 0
-                    // g2: Total Water <= Qw_max  =>  Total Water - Qw_max <= 0
-                    // g3: Total Liquid <= QL_max =>  Total Liquid - QL_max <= 0
                     return new ColVec([
                         totalGas - Qg_avail,
                         totalWater - Qw_max,
@@ -233,6 +230,134 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                 ]);
 
                 SaveAs("Production_Network_Gas_Lift_Optimization.png");
+            }
+            /// </code>
+            ///
+            /// <header 3> Gathering Network Topology Diagram </header>
+            /// Below is the complete gathering network topology rendered using the SepalSolver PlotLibrary.
+            /// It visually depicts the multi-level architecture: individual wells equipped with gas-lift injection,
+            /// surface flowlines subject to velocity limits, the gathering manifold node, the multiphase trunkline,
+            /// and the 3-phase separation Central Processing Facility (CPF) with gas compression recycle and water disposal.
+            ///
+            /// <code> Gathering Network Topology Diagram
+            {
+                CloseFig();
+                HoldOn();
+
+                // Define canvas boundary coordinates
+                Axis([0, 105, 0, 75]);
+                AxisOff();
+
+                // Helper method to draw a rounded block with header and subtext
+                void DrawComponentBox(double x, double y, double w, double h, string title, string sub1, string sub2, double[] fill, double[] border)
+                {
+                    var rect = Rectangle([x, y, w, h], Curvature: 0.18);
+                    rect.FillColor = fill;
+                    rect.LineColor = border;
+                    rect.LineWidth = 2;
+
+                    Text(x + 1.0, y + h * 0.70, title, 9.5f, "k");
+                    if (!string.IsNullOrEmpty(sub1))
+                        Text(x + 1.0, y + h * 0.42, sub1, 8.0f, "k");
+                    if (!string.IsNullOrEmpty(sub2))
+                        Text(x + 1.0, y + h * 0.16, sub2, 7.5f, "k");
+                }
+
+                // 1. Title Banner
+                Text(16, 71, "Production Gathering Network & Gas Lift Optimization Topology", 13.5f, "k");
+
+                // 2. Gas Lift Compressor Station (Top Left)
+                double[] compFill = [0.99, 0.94, 0.88]; // Soft peach/orange
+                double[] compLine = [0.85, 0.35, 0.12]; // Deep amber
+                DrawComponentBox(5, 58, 22, 9, "Gas Lift Compressor", "Qg_avail <= 6.0 MMscf/d", "High Pressure Supply", compFill, compLine);
+
+                // 3. Production Wells (Left Column)
+                double[] wellFill = [0.90, 0.95, 1.00]; // Soft blue
+                double[] wellLine = [0.12, 0.42, 0.75]; // Technical blue
+                double[] wellY = [44, 31, 18, 5];
+                string[] wellNames = ["Well 1 (Strong)", "Well 2 (Moderate)", "Well 3 (Weak)", "Well 4 (Deep)"];
+                string[] wellSub1  = ["WC: 10% | a: 2200", "WC: 35% | a: 1600", "WC: 60% | a: 1100", "WC: 25% | a: 1900"];
+                string[] wellSub2  = ["Opt Qg: High", "Opt Qg: Balanced", "Opt Qg: Throttled", "Opt Qg: Moderate"];
+
+                for (int i = 0; i < 4; i++)
+                {
+                    DrawComponentBox(5, wellY[i], 22, 8.5, wellNames[i], wellSub1[i], wellSub2[i], wellFill, wellLine);
+
+                    // Flowlines connecting each well to the Gathering Manifold
+                    double startX = 27;
+                    double startY = wellY[i] + 4.25;
+                    double endX   = 44;
+                    double endY   = 18 + i * 5.5;
+
+                    Arrow([startX, startY], [endX, endY], ArrowHeadWidth: 7, ArrowLineWidth: 1.8,
+                          LineColor: [0.2, 0.25, 0.3], FillColor: [0.2, 0.25, 0.3]);
+                    Text(startX + 3.0, startY + 1.2, $"FL-{i + 1}", 7.5f, "k");
+                }
+
+                // Gas Lift Injection Loop: Lines from Compressor down to Wells
+                Plot([16, 16], [58, 4], "r--", Linewidth: 2);
+                for (int i = 0; i < 4; i++)
+                {
+                    Arrow([16, wellY[i] + 4.25], [5, wellY[i] + 4.25], ArrowHeadWidth: 6, ArrowLineWidth: 1.5,
+                          LineColor: [0.85, 0.35, 0.12], FillColor: [0.85, 0.35, 0.12]);
+                }
+                Text(17, 54, "Gas Lift Header", 8.0f, "r");
+
+                // 4. Gathering Manifold Node
+                double[] maniFill = [1.00, 0.96, 0.85]; // Soft cream
+                double[] maniLine = [0.82, 0.60, 0.15]; // Gold
+                var maniBox = Rectangle([44, 15, 8, 26], Curvature: 0.25);
+                maniBox.FillColor = maniFill;
+                maniBox.LineColor = maniLine;
+                maniBox.LineWidth = 2.2;
+                Text(44.8, 30, "Gathering", 9.0f, "k");
+                Text(44.8, 26, "Manifold", 9.0f, "k");
+                Text(44.8, 20, "Node (P_m)", 7.5f, "k");
+
+                // 5. Bulk Multiphase Trunkline
+                Arrow([52, 28], [63, 28], ArrowHeadWidth: 9, ArrowLineWidth: 3.0,
+                      LineColor: [0.1, 0.1, 0.1], FillColor: [0.1, 0.1, 0.1]);
+                Text(53.2, 30.5, "Bulk Fluid Q_L", 8.0f, "k");
+                Text(53.0, 25.5, "v_min <= v <= v_e", 7.0f, "k");
+
+                // 6. Central Processing Facility (CPF) / 3-Phase Separator
+                double[] cpfFill = [0.90, 0.96, 0.92]; // Soft mint
+                double[] cpfLine = [0.15, 0.55, 0.25]; // Forest green
+                var cpfBox = Rectangle([63, 12, 22, 32], Curvature: 0.15);
+                cpfBox.FillColor = cpfFill;
+                cpfBox.LineColor = cpfLine;
+                cpfBox.LineWidth = 2.2;
+                Text(64.5, 39, "3-Phase Separator", 10.5f, "k");
+                Text(64.5, 35, "Central Facility (CPF)", 8.5f, "k");
+                Text(64.5, 27, "Capacity Limits:", 8.0f, "k");
+                Text(64.5, 23, "- Q_L <= 6200 STB/d", 7.5f, "k");
+                Text(64.5, 19, "- Q_w <= 2000 STB/d", 7.5f, "k");
+                Text(64.5, 15, "- Q_g Separation", 7.5f, "k");
+
+                // 7. Separator Outflow Streams
+                // (a) Gas Stream (Top)
+                Arrow([85, 38], [98, 48], ArrowHeadWidth: 8, ArrowLineWidth: 2.0,
+                      LineColor: [0.85, 0.35, 0.12], FillColor: [0.85, 0.35, 0.12]);
+                Text(87, 50, "Gas: Q_g -> Compressor", 8.5f, "r");
+
+                // Recycle line from separator gas back to compressor station
+                Plot([98, 98, 16], [48, 62.5, 62.5], "r:", Linewidth: 1);
+
+                // (b) Oil Stream (Middle)
+                Arrow([85, 28], [98, 28], ArrowHeadWidth: 8, ArrowLineWidth: 2.5,
+                      LineColor: [0.12, 0.55, 0.18], FillColor: [0.12, 0.55, 0.18]);
+                Text(87, 30.5, "Sales Oil: Maximize Q_o", 8.5f, "k");
+
+                // (c) Produced Water Stream (Bottom)
+                Arrow([85, 18], [98, 8], ArrowHeadWidth: 8, ArrowLineWidth: 2.0,
+                      LineColor: [0.12, 0.42, 0.75], FillColor: [0.12, 0.42, 0.75]);
+                Text(87, 10.5, "Water Disposal <= 2000 STB/d", 8.5f, "b");
+
+                // 8. Flow Assurance Footer Annotation
+                Text(20, 2, "Flow Assurance Rules: Drawdown Limit | Bubble Point p_wf >= p_b | Erosional Velocity (API 14E)", 8.2f, "k");
+
+                HoldOff();
+                SaveAs("Production_Network_Topology_Diagram.png");
             }
             /// </code>
             ///

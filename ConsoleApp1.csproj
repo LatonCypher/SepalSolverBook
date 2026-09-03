@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Folder Include="AdvancedProblems\" />
+    <Folder Include="TrainingFiles\Chapter_00_Getting_Started_with_SepalSolver_Studio\" />
   </ItemGroup>
 
 </Project>
