@@ -426,9 +426,7 @@ namespace ConsoleApp1
                         if (line.Contains("AnimateHistory"))
                             Imagelines.AddRange(GetAnimationHistoryReference(line));
                     }
-                    Codelines.AddRange([..Writer.CodeRunner([.. Codelines.Skip(2)]).
-                        Where(line => !(line.Contains("Optimal solution found") ||
-                        line.Contains("Solving not completed")))]);
+                    Codelines.AddRange(Writer.CodeRunner([.. Codelines.Skip(2)]));
                     Codelines.AddRange(Imagelines);
                 }
                 Replace(bookContent, startIndex, Length + 1, Codelines);

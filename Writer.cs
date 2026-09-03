@@ -30,8 +30,9 @@
             string[] lines = File.ReadAllLines(BookFolder + "output.txt");
             if(lines.Length == 0)
                 return [];
-            return ["", "Ouput", "", ".. terminal::", "",
-                      ..lines.Select(l => "   " + l)];
+            return ["", "\n Ouput", "", ".. terminal::", "",
+                      ..lines.Where(line=>!(line.Contains("Optimal solution found") ||
+                        line.Contains("Solving not completed"))).Select(l => "   " + l)];
         }
 
     }
