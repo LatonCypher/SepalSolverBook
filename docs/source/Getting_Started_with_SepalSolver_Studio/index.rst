@@ -26,6 +26,10 @@ SepalSolver Studio brings this same intuitive paradigm to C# and .NET. Key advan
 
 SepalSolver Studio features a clean, responsive four-panel layout arranged to support an efficient engineering workflow:
 
+.. figure:: images/Getting_Started_with_SepalSolver_Studio_Overview.png
+   :align: center
+   :alt: Getting_Started_with_SepalSolver_Studio_Overview.png
+
 .. list-table::
    :widths: 20 25 55
    :header-rows: 1
