@@ -262,6 +262,6 @@ including gradient-based methods, derivative-free methods, and global optimizati
    
       Stopping: no improvement for too long.
       x = 
-         0.9971    0.9936
+         0.9989    0.9978
       
 

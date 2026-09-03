@@ -130,6 +130,7 @@ namespace ConsoleApp1
                 {
                     writer.WriteLine("   " + relativePath.Replace(" ", "_") + "/index");
                 }
+                if (BookChapter.Contains("Getting_Started")) continue;
                 string chapterfolder = bookfolder + relativePath.Replace(" ", "_") + "\\";
                 if (!Directory.Exists(chapterfolder))
                     Directory.CreateDirectory(chapterfolder);
@@ -187,14 +188,13 @@ namespace ConsoleApp1
 
 
 
-                    .. toctree::
+                        .. toctree::
 
-                    """;
+                        """;
                         writer.WriteLine(chapterchildren);
                     }
 
                     ChapterSections = ChapterSections[1..];
-
                     foreach (string ChapterSection in ChapterSections)
                     {
                         relativePath = Path.GetRelativePath(BookChapter, ChapterSection);
