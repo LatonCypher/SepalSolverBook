@@ -154,7 +154,8 @@ Ouput
 Unconstrained Derivative-Free Optimization with Fminsearch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When gradient information is unavailable or the objective is non-differentiable, Fminsearch uses the Nelder-Mead Simplex algorithm to locate the unconstrained global minimum at :math:\mathbf{x}^* = (1, 1) where :math:f(\mathbf{x}^*) = 0.
+When gradient information is unavailable or the objective is non-differentiable, optimzation can still be performed using Fminsearch.
+Fminsearch uses the Nelder-Mead Simplex algorithm to locate the unconstrained global minimum at :math:`\mathbf{x}^* = (1, 1)` where :math:`f(\mathbf{x}^*) = 0`.
 
 * Initial Guess: :math:`\mathbf{x}_0 = (-1.2, 1.0)`
 
@@ -212,7 +213,7 @@ Ouput
 
    Stopping: no improvement for too long.
    x = 
-      1.0192    1.0408
+      1.0235    1.0453
    
 
 
