@@ -65,40 +65,40 @@ using ConsoleApp1;
     }
     Writer.Run();
     {
-        Func<double, double> J0, J1;
-        J0 = (x) => BesselJ(0, x); J1 = (x) => BesselJ(1, x);
-        double BottomInfiniteActingRadial_Wd(double tD, double hD)
-        {
-            if (tD == 0) return 0;
-            Func<double, double> lapW = s =>
-            {
-                double s3 = s * s * s;
-                Func<double, double> Intfun = x =>
-                {
-                    double fac = Pow(J1(x) / x, 2), am = 0, am2, x2 = x * x;
-                    double fun = 1/Tanh(hD * x) / s - x / hD / (x2 * (s + x2));
-                    double error = 1; int m = 0;
-                    for (m = 1; m < 10000; m++)
-                    {
-                        am = m * pi / hD; am2 = am * am;
-                        error = 2 * x / hD / ((x2 + am2) * (s + x2 + am2));
-                        fun -= error;
-                        if (error < 1e-9) break;
-                    }
-                    return fac * fun;
-                };
-                return 1 / (4 * s3 * hD * Integral(Intfun, 0, inf));
-            };
-            return NiLaplace(lapW, tD);
-        }
-        Indexer Td = 1..21;
-        double[] zD = [0.05, 0.1, 0.3, 0.5, 0.7, 0.9, 1.0]; string[] wi;
-        for (int i = 0; i < Td.Numel; i++)
-        {
-            double td = Td[i]*0.1;
-            wi = [..zD.Select(z => string.Format("{0,8:F4}", BottomInfiniteActingRadial_Wd(td, z)))];
-            Console.WriteLine($"|  {string.Format("{0,4:F1}", td)}  | {string.Join(' ', wi)}");
-        }
+        //Func<double, double> J0, J1;
+        //J0 = (x) => BesselJ(0, x); J1 = (x) => BesselJ(1, x);
+        //double BottomInfiniteActingRadial_Wd(double tD, double hD)
+        //{
+        //    if (tD == 0) return 0;
+        //    Func<double, double> lapW = s =>
+        //    {
+        //        double s3 = s * s * s;
+        //        Func<double, double> Intfun = x =>
+        //        {
+        //            double fac = Pow(J1(x) / x, 2), am = 0, am2, x2 = x * x;
+        //            double fun = 1/Tanh(hD * x) / s - x / hD / (x2 * (s + x2));
+        //            double error = 1; int m = 0;
+        //            for (m = 1; m < 10000; m++)
+        //            {
+        //                am = m * pi / hD; am2 = am * am;
+        //                error = 2 * x / hD / ((x2 + am2) * (s + x2 + am2));
+        //                fun -= error;
+        //                if (error < 1e-9) break;
+        //            }
+        //            return fac * fun;
+        //        };
+        //        return 1 / (4 * s3 * hD * Integral(Intfun, 0, inf));
+        //    };
+        //    return NiLaplace(lapW, tD);
+        //}
+        //Indexer Td = 1..21;
+        //double[] zD = [0.05, 0.1, 0.3, 0.5, 0.7, 0.9, 1.0]; string[] wi;
+        //for (int i = 0; i < Td.Numel; i++)
+        //{
+        //    double td = Td[i]*0.1;
+        //    wi = [..zD.Select(z => string.Format("{0,8:F4}", BottomInfiniteActingRadial_Wd(td, z)))];
+        //    Console.WriteLine($"|  {string.Format("{0,4:F1}", td)}  | {string.Join(' ', wi)}");
+        //}
     }
     {
         ConsoleApp1.TrainingFiles.WaterInfluxPublication.Run();

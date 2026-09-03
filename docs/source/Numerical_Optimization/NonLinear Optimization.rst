@@ -210,9 +210,21 @@ Ouput
 
 .. terminal::
 
-   Stopping: no improvement for too long.
+   
+                                   Best             Mean             Max             Stall
+    Generation   Func-count        f(x)             f(x)         Constraints      Generations
+   
+                                   Best             Mean             Max             Stall
+    Generation   Func-count        f(x)             f(x)         Constraints      Generations
+   
+                                   Best             Mean             Max             Stall
+    Generation   Func-count        f(x)             f(x)         Constraints      Generations
+   
+                                   Best             Mean             Max             Stall
+    Generation   Func-count        f(x)             f(x)         Constraints      Generations
+   average change in the fitness value is less than FuncTol
    x = 
-      0.8967    0.8164
+      1.0116    1.0234
    
 
 
