@@ -88,16 +88,6 @@ Comparison: Linprog Formulation Levels
       var result = Linprog(f, A, b);
       Console.WriteLine(result);
    
-   
-   Ouput
-   
-   .. terminal::
-   
-      Optimal solution found
-      
-         0.6667
-         1.3333
-      
 
 
 
@@ -130,16 +120,6 @@ Comparison: Linprog Formulation Levels
       var result = Linprog(f, A, b, Aeq, beq);
       Console.WriteLine(result);
    
-   
-   Ouput
-   
-   .. terminal::
-   
-      Optimal solution found
-      
-       0 
-       2 
-      
 
 
 .. admonition:: Example 3 :  Example 3: Fully Constrained Linear Program with Variable Bounds 
@@ -172,13 +152,3 @@ Comparison: Linprog Formulation Levels
       var result = Linprog(f, A, b, Aeq, beq, Lb, Ub);
       Console.WriteLine(result);
    
-   
-   Ouput
-   
-   .. terminal::
-   
-      Optimal solution found
-      
-         0.1875
-         1.2500
-      

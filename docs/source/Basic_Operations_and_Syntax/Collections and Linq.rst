@@ -91,12 +91,6 @@ Examples
    
       Console.WriteLine($"Found {convergedEntries.Length} converged steps.");
     
-   
-   Ouput
-   
-   .. terminal::
-   
-      Found 2 converged steps.
 
 
 .. admonition:: Example 2 :  Statistical Analysis of a Vector
@@ -110,12 +104,6 @@ Examples
       double totalEnergy = residuals.Sum(r => r * r); // Sum of squares
       Console.WriteLine($"Average: {averageError}, Energy: {totalEnergy}");
     
-   
-   Ouput
-   
-   .. terminal::
-   
-      Average: 0.038, Energy: 0.0103
 
 
 .. admonition:: Example 3 :  Mapping Node IDs to Coordinates
@@ -130,12 +118,6 @@ Examples
           Console.WriteLine($"Node 102 position: {value}");
       }
     
-   
-   Ouput
-   
-   .. terminal::
-   
-      Node 102 position: 0.5
 
 
 .. admonition:: Example 4 :  Generating Sequences

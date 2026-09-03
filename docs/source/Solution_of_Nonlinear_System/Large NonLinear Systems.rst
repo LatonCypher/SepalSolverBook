@@ -81,48 +81,6 @@ The equations to solve are :math:`F_i(x) = 0, 1 \leq i \leq n`.The example uses 
    Console.WriteLine($"Elapsed time: {toc()} seconds");
 
 
-Ouput
-
-.. terminal::
-
-    Iteration    Func-count       f(x)      Norm of Step
-        0            1          31.7962        start      
-        1           996         3.98768       7.92421     
-        2           997         0.65762       1.13502     
-        3           998         0.02943       0.22302     
-        4           999         0.00773       0.00828     
-        5           1000        0.00232       0.00181     
-        6           1001      4.585e-005     7.742e-004   
-        7           1002      1.117e-005     1.109e-005   
-        8           1003      1.841e-006     2.577e-006   
-        9           1004      1.071e-007     5.041e-007   
-        10          1005      2.527e-008     1.911e-008   
-   x = 
-     -0.5708
-     -0.6819
-     -0.7025
-     -0.7063
-     -0.7070
-     -0.7071
-     -0.7071
-     -0.7071
-     -0.7071
-     -0.7071
-        ... 
-     -0.7071
-     -0.7070
-     -0.7068
-     -0.7064
-     -0.7051
-     -0.7015
-     -0.6919
-     -0.6658
-     -0.5960
-     -0.4164
-   
-   2.5270816374876195E-08
-   Elapsed time: 5.1759978 seconds
-
 While finite difference approximations are convenient, they are computationally 
 expensive, introduce numerical errors, and fail to exploit structural
 properties such as sparsity. Analytic Jacobians, or those obtained via
@@ -160,43 +118,6 @@ Examples 2: Solving Large Sparse Systems Using Sparsity Pattern Exploitation
    Console.WriteLine(opts.ans.FunVal.Norm());
    Console.WriteLine($"Elapsed time: {toc()} seconds");
 
-
-Ouput
-
-.. terminal::
-
-    Iteration    Func-count       f(x)      Norm of Step
-        0            1          31.7962        start      
-        1            5          3.98769       7.92421     
-        2            9          0.11320       1.32541     
-        3            13       1.317e-004      0.03979     
-        4            17       1.002e-009     4.553e-005   
-        5            21       3.420e-015     3.361e-010   
-   x = 
-     -0.5708
-     -0.6819
-     -0.7025
-     -0.7063
-     -0.7070
-     -0.7071
-     -0.7071
-     -0.7071
-     -0.7071
-     -0.7071
-        ... 
-     -0.7071
-     -0.7070
-     -0.7068
-     -0.7064
-     -0.7051
-     -0.7015
-     -0.6919
-     -0.6658
-     -0.5960
-     -0.4164
-   
-   3.420135685938544E-15
-   Elapsed time: 0.0747475 seconds
 
 Examples 3: Solving Large Sparse Systems Using Analytical Jacobians
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -238,43 +159,6 @@ Examples 3: Solving Large Sparse Systems Using Analytical Jacobians
    Console.WriteLine(opts.ans.FunVal.Norm());
    Console.WriteLine($"Elapsed time: {toc()} seconds");
 
-
-Ouput
-
-.. terminal::
-
-    Iteration    Func-count       f(x)      Norm of Step
-        0            1          31.7962        start      
-        1            2          3.98770       7.92420     
-        2            3          0.11320       1.32541     
-        3            4        1.317e-004      0.03979     
-        4            5        1.065e-009     4.555e-005   
-        5            6        7.448e-015     3.582e-010   
-   x = 
-     -0.5708
-     -0.6819
-     -0.7025
-     -0.7063
-     -0.7070
-     -0.7071
-     -0.7071
-     -0.7071
-     -0.7071
-     -0.7071
-        ... 
-     -0.7071
-     -0.7070
-     -0.7068
-     -0.7064
-     -0.7051
-     -0.7015
-     -0.6919
-     -0.6658
-     -0.5960
-     -0.4164
-   
-   7.448429925158487E-15
-   Elapsed time: 0.070483 seconds
 
 
 Examples 4: Solving Large Sparse Systems Using Analytical Jacobians
@@ -324,38 +208,3 @@ Multirosenbrook function is another example
    Console.WriteLine(opts.ans.FunVal.Norm());
    Console.WriteLine($"Elapsed time: {toc()} seconds");
 
-
-Ouput
-
-.. terminal::
-
-    Iteration    Func-count       f(x)      Norm of Step
-        0            1          365.800        start      
-        1            2          1880.53       220.179     
-        2            3             0          188.053     
-        3            4             0             0        
-   x = 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-        ... 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-    1 
-   
-   0
-   Elapsed time: 0.0204945 seconds

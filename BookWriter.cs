@@ -412,8 +412,6 @@ namespace ConsoleApp1
                     while (!bookContent[startIndex + Length].Contains("</code>"))
                     {
                         line = bookContent[startIndex + Length];
-                        if (line.Contains("Optimal solution found")) continue;
-                        if (line.Contains("Solving not completed")) continue;
                         
                         if (line.Length >= space)
                             Codelines.Add(line.Substring(space));
@@ -428,7 +426,9 @@ namespace ConsoleApp1
                         if (line.Contains("AnimateHistory"))
                             Imagelines.AddRange(GetAnimationHistoryReference(line));
                     }
-                    Codelines.AddRange(Writer.CodeRunner([.. Codelines.Skip(2)]));
+                    Codelines.AddRange(Writer.CodeRunner([.. Codelines.Skip(2).
+                        Where(line => line.Contains("Optimal solution found") ||
+                        line.Contains("Solving not completed"))]));
                     Codelines.AddRange(Imagelines);
                 }
                 Replace(bookContent, startIndex, Length + 1, Codelines);

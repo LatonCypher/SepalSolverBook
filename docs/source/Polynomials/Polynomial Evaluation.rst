@@ -40,12 +40,6 @@ Examples
       double result = Polyval(poly, 3.0);
       Console.WriteLine($"P(3.0) = {result}");
    
-   
-   Ouput
-   
-   .. terminal::
-   
-      P(3.0) = 5
 
 
 .. admonition:: Example 2 :  Complex Evaluation (Descending) 
@@ -59,12 +53,6 @@ Examples
       Complex result = Polyval(poly, s);
       Console.WriteLine($"P(i) = {result}");
     
-   
-   Ouput
-   
-   .. terminal::
-   
-      P(i) =   0.0000 + 0.0000i 
 
 
 .. admonition:: Example 3 :  Column Vector Evaluation (Vectorized) 
@@ -80,16 +68,6 @@ In this case, we have a set of measurements in a ColVec and we want to pass them
       ColVec y = x.Select(x=>Polyval(poly, x)).ToArray();
       Console.WriteLine($"Result at x = {x.T} is: {y.T}"); // 4 + 4 + 3 = 11
     
-   
-   Ouput
-   
-   .. terminal::
-   
-      Result at x = 
-       0   1   2 
-       is: 
-       3   6  11 
-      
    
 
 Implementation Tip: Power Mapping

@@ -87,77 +87,6 @@ Examples
 
 
 
-Ouput
-
-.. terminal::
-
-   A + B = 
-   
-   10  10  10 
-   10   0  10 
-   10  10  10 
-   
-   A - B = 
-   
-   -8  -6  -4 
-   -2   0   2 
-    4   6   8 
-   
-   A * B = 
-   
-   30  14  18 
-   54  44  34 
-   138 74  90 
-   
-   B * A = 
-   
-   90  74  138
-   34  44  54 
-   18  14  30 
-   
-   B.Times(A) = 
-   
-    9  16  21 
-   24   0  24 
-   21  16   9 
-   
-   Mldivide(A, B) = 
-   
-     -6.0000   -6.0000   -5.0000
-      0.0000    1.0000    0.0000
-      5.0000    4.0000    4.0000
-   
-   Mrdivide(A, B) = 
-   
-      0.6667   -0.0000   -1.6667
-      0.6667    1.0000   -2.6667
-      1.6667   -0.0000   -2.6667
-   
-   A.Div(B) = 
-   
-      0.1111    0.2500    0.4286
-      0.6667       NaN    1.5000
-      2.3333    4.0000    9.0000
-   
-   Mod(A, B) = 
-   
-      1.0000    4.0000    1.0000
-      2.0000       NaN    0.0000
-      3.0000    2.0000    0.0000
-   
-   A.Pow(B) = 
-   1e3*
-      0.0010    0.2560    2.1870
-      4.0960    0.0010    1.2960
-      0.3430    0.0640    0.0090
-   
-   B.Pow(A) = 
-   1e3*
-      0.0090    0.0640    0.3430
-      1.2960    0.0010    4.0960
-      2.1870    0.2560    0.0010
-   
-
 
 Matrix scalar operation
 -----------------------
@@ -176,35 +105,6 @@ Division can be termwise, or the scaler times the inversion of the matrix.
    Console.WriteLine($"A - 5 = \n{A - 5}");
    Console.WriteLine($"2/A = \n{2*(A.Inverse())}");
 
-
-Ouput
-
-.. terminal::
-
-   2A = 
-   
-    2   4   6 
-    8  10  12 
-   14  16  18 
-   
-   A + 5 = 
-   
-    6   7   8 
-    9  10  11 
-   12  13  14 
-   
-   A - 5 = 
-   
-   -4  -3  -2 
-   -1   0   1 
-    2   3   4 
-   
-   2/A = 
-   1e16*
-      0.6305   -1.2610    0.6305
-     -1.2610    2.5220   -1.2610
-      0.6305   -1.2610    0.6305
-   
 
 Operation with row and column vectors
 -------------------------------------
@@ -242,77 +142,6 @@ A ``RowVec`` can be multiplied to the left of a ``ColVec`` to produce a scalar (
    Console.WriteLine($"A * U = \n{A * U}");
    Console.WriteLine($"P * A = \n{P * A}");
 
-
-Ouput
-
-.. terminal::
-
-   A + U = 
-   
-    2   3   4 
-    6   7   8 
-   10  11  12 
-   
-   A + P = 
-   
-    5   7   9 
-    8  10  12 
-   11  13  15 
-   
-   A - U = 
-   
-    0   1   2 
-    2   3   4 
-    4   5   6 
-   
-   A - P = 
-   
-   -3  -3  -3 
-    0   0   0 
-    3   3   3 
-   
-   A.Times(U) = 
-   
-    1   2   3 
-    8  10  12 
-   21  24  27 
-   
-   A.Times(P) = 
-   
-    4  10  18 
-   16  25  36 
-   28  40  54 
-   
-   A.Div(U) = 
-   
-      1.0000    2.0000    3.0000
-      2.0000    2.5000    3.0000
-      2.3333    2.6667    3.0000
-   
-   A.Div(P) = 
-   
-      0.2500    0.4000    0.5000
-      1.0000    1.0000    1.0000
-      1.7500    1.6000    1.5000
-   
-   U * P = 
-   
-    4   5   6 
-    8  10  12 
-   12  15  18 
-   
-   P * U = 
-   32
-   A * U = 
-   
-   14 
-   32 
-   50 
-   
-   P * A = 
-   
-   66  81  96 
-   
 
 Exploiting Broadcasting (Example)
 ---------------------------------
@@ -395,17 +224,6 @@ Transpose
    Console.WriteLine($"A^T = \n{A.T}");
 
 
-Ouput
-
-.. terminal::
-
-   A^T = 
-   
-    1   4   7 
-    2   5   8 
-    3   6   9 
-   
-
 Inverse
 ~~~~~~~
 * **Definition**: The inverse of a square matrix :math:`A` is another matrix :math:`A^{-1}` such that:
@@ -429,17 +247,6 @@ where :math:`I` is the identity matrix.
    Console.WriteLine($"A^-1 = \n{A.Inverse()}");
 
 
-Ouput
-
-.. terminal::
-
-   A^-1 = 
-   1e16*
-      0.3153   -0.6305    0.3153
-     -0.6305    1.2610   -0.6305
-      0.3153   -0.6305    0.3153
-   
-
 Determinant
 ~~~~~~~~~~~
 * **Definition**: A scalar value computed from a square matrix, representing scaling factor and orientation of linear transformation.
@@ -462,12 +269,6 @@ Determinant
    Console.WriteLine($"det(A) = {det}");
 
 
-Ouput
-
-.. terminal::
-
-   det(A) = 2
-
 
 .. code-block:: csharp
 
@@ -479,12 +280,6 @@ Ouput
    double det = A.Det();
    Console.WriteLine($"det(A) = {det}");
 
-
-Ouput
-
-.. terminal::
-
-   det(A) = -9.516197353929915E-16
 
 For larger matrices, determinants are computed using expansion or row-reduction methods.
 
@@ -535,32 +330,4 @@ RREF (Reduced Row Echelon Form)
                    + "\n P = \n" + P
                    + "\n N = \n" + N);
 
-
-Ouput
-
-.. terminal::
-
-   
-    A = 
-   
-    8   1   6   1  16 
-    3   5   6   1  15 
-    4   7   2   1  14 
-   
-    R = 
-   
-      1.0000    0.0000    0.0000    0.0690    1.0690
-      0.0000    1.0000    0.0000    0.0862    1.0862
-      0.0000    0.0000    1.0000    0.0603    1.0603
-   
-    P = 
-   0,	1,	2
-    N = 
-   
-     -0.0690   -1.0690
-     -0.0862   -1.0862
-     -0.0603   -1.0603
-      1.0000    0.0000
-      0.0000    1.0000
-   
 Rref in sepalsolver gives the rref, the row permutation indexer, and the null space basis matrix.

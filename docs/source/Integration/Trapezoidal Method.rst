@@ -35,13 +35,6 @@ Writing the algorithm manually allows for a deeper understanding of how the weig
    Console.WriteLine($"The approximate integral is: \n{integral_result:F4}");
 
 
-Ouput
-
-.. terminal::
-
-   The approximate integral is: 
-   1.9993
-
 Error Analysis
 ~~~~~~~~~~~~~~
 The error in the trapezoidal rule, often denoted as :math:`E_t`, is proportional to the square of the step size :math:`h`. Specifically, for a function that is twice continuously differentiable, the error is:
@@ -87,9 +80,3 @@ where :math:`\xi` is some number in the interval :math:`[a, b]`. This indicates 
    // Print the result
    Console.WriteLine($"The integral of sin(x) from {0} to pi is approximately {result:F4}");
 
-
-Ouput
-
-.. terminal::
-
-   The integral of sin(x) from 0 to pi is approximately 2.0000

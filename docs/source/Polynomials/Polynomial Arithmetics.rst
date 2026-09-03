@@ -25,15 +25,6 @@ Adding or subtracting polynomials involves summing the coefficients of correspon
    Console.WriteLine($"Diff:\n = [{string.Join(", ", diff)}]");
 
 
-Ouput
-
-.. terminal::
-
-   Sum:
-    = [1, 6, 8]
-   Diff:
-    = [1, -2, -2]
-
 2. Multiplication (Conv)
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Multiplying two polynomials is mathematically equivalent to the convolution of their coefficient arrays. If you multiply a polynomial of degree :math:`N` by one of degree :math:`M`, the resulting degree will be :math:`N + M`. We use a sliding-window approach to compute each term of the resulting array.
@@ -49,13 +40,6 @@ Multiplying two polynomials is mathematically equivalent to the convolution of t
    double[] product = Conv(p1, p2);
    Console.WriteLine($"Product:\n = [{string.Join(", ", product)}]");
 
-
-Ouput
-
-.. terminal::
-
-   Product:
-    = [1, 0, -1]
 
 3. Division and Remainder (Deconv)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -73,15 +57,6 @@ Polynomial division is implemented via deconvolution (synthetic division). Divid
    Console.WriteLine($"Quotient:\n = [{string.Join(", ", Q)}]");
    Console.WriteLine($"Remainder:\n = [{string.Join(", ", R)}]");
 
-
-Ouput
-
-.. terminal::
-
-   Quotient:
-    = [1, -1]
-   Remainder:
-    = [0, 0, 0]
 
 Examples
 --------
@@ -101,13 +76,6 @@ Examples
       Console.WriteLine($"New Degree: {combined.Length - 1}");
       Console.WriteLine($"Combined Coefficients: [{string.Join(", ", combined)}]");
    
-   
-   Ouput
-   
-   .. terminal::
-   
-      New Degree: 2
-      Combined Coefficients: [1, -4, 8]
 
 .. admonition:: Example 2 :  Expanding a Product of Factors
 
@@ -123,12 +91,6 @@ In root-finding verification, you might want to multiply factors :math:`(x - r_1
       // Result: { 1.0, -5.0, 6.0 } -> x^2 - 5x + 6
       Console.WriteLine($"Expanded = [{string.Join(", ", expanded)}]");
    
-   
-   Ouput
-   
-   .. terminal::
-   
-      Expanded = [1, -5, 6]
 
 
 .. admonition:: Example 3 :  Finding Remainders in Signal Filtering
@@ -143,12 +105,6 @@ In root-finding verification, you might want to multiply factors :math:`(x - r_1
       // Q is {1.0, 2.0} (x + 2), R is {1.0} (remainder 1)
       Console.WriteLine($"Remainder is zero? {R.All(val => val == 0)}");
    
-   
-   Ouput
-   
-   .. terminal::
-   
-      Remainder is zero? False
    
 
 Numerical Note: Array Sizing

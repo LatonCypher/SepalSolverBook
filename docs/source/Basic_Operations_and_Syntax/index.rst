@@ -52,13 +52,6 @@ In this example, we see how to declare a variable and assign it a value. In Sepa
    Console.WriteLine($"Max Iterations: {maxIter}");
  
 
-Ouput
-
-.. terminal::
-
-   Tolerance: 1E-06
-   Max Iterations: 100
-
 *Code Blocks and Scope :* 
 Variables created inside curly braces are part of a "Scope." This is  essential for solvers because it allows us to create temporary variables  (like a local residual) that disappear once the calculation is done,  keeping the computer's memory clean. 
 
@@ -128,13 +121,6 @@ In this example, we see how to declare a variable and assign it a value. In Sepa
    Console.WriteLine($"Tolerance: {tol}");
    Console.WriteLine($"Max Iterations: {maxIter}");
  
-
-Ouput
-
-.. terminal::
-
-   Tolerance: 1E-06
-   Max Iterations: 100
 
 *Code Blocks and Scope :* 
 Variables created inside curly braces are part of a "Scope." This is  essential for solvers because it allows us to create temporary variables  (like a local residual) that disappear once the calculation is done,  keeping the computer's memory clean. 

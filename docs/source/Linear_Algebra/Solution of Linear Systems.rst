@@ -38,32 +38,6 @@ matrices that are symmetric and positive-definite.
    Console.WriteLine($"b = \n{b}");
    Console.WriteLine($"x = \n{x}");
 
-
-Ouput
-
-.. terminal::
-
-   A = 
-   
-    1   1   1   1 
-    2  -1   3  -1 
-   -1   4  -1   2 
-    3   2   2  -1 
-   
-   b = 
-   
-   10 
-    5 
-    8 
-   20 
-   
-   x = 
-   
-      6.9130
-      2.2174
-     -1.4348
-      2.3043
-   
 . 2. Iterative Method
 ---------------------
 SepalSolver provides two major iterative solvers. Conjugate Gradient (`ConjGrad`) for large sparse symmetric matrices and the Generalized Minimum Residual (`GenMinRes`) for large sparse nonsymmetric matrices. 
@@ -85,19 +59,6 @@ SepalSolver provides two major iterative solvers. Conjugate Gradient (`ConjGrad`
       Console.WriteLine($"iter = {iter}");
       Console.WriteLine($"res = {res}");
    
-   
-   Ouput
-   
-   .. terminal::
-   
-      x = 
-        -0.1149   -0.0978   -0.1003   -0.1000   -0.1000   -0.1000   -0.1000   -0.1000   -0.1000   -0.1000
-      ...
-        -0.1000   -0.1000   -0.1000   -0.1000   -0.0999   -0.1002   -0.0992   -0.1027   -0.0911   -0.1298
-      
-      flag = 0
-      iter = 9
-      res = 3.6283012552149844E-07
 
 
 .. admonition:: Example 2 :  Conjugate Gradient
@@ -116,19 +77,6 @@ SepalSolver provides two major iterative solvers. Conjugate Gradient (`ConjGrad`
       Console.WriteLine($"iter = {iter}");
       Console.WriteLine($"res = {res}");
    
-   
-   Ouput
-   
-   .. terminal::
-   
-      x = 
-        -0.3660   -0.4641   -0.4904   -0.4974   -0.4994   -0.5000   -0.5000   -0.5000   -0.5000   -0.5000
-      ...
-        -0.5000   -0.5000   -0.5000   -0.5000   -0.5000   -0.4994   -0.4974   -0.4904   -0.4641   -0.3660
-      
-      flag = 0
-      iter = 6
-      res = 8.189558921548077E-07
 
 . 3. Overdetermined Systems (Least Squares)
 -------------------------------------------
@@ -167,12 +115,6 @@ Consider a phenomenon in which temperature and pressure are linearly related. i.
 
    SaveAs("LeastSquare-Solution.png");
 
-
-Ouput
-
-.. terminal::
-
-   m = 0.8099999999999999, e = 6.700000000000002
 
 .. figure:: images/LeastSquare-Solution.png
    :align: center

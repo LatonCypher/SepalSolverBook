@@ -58,12 +58,6 @@ Examples
       Console.WriteLine($"root = {root}");
    
    
-   Ouput
-   
-   .. terminal::
-   
-      root = 0.7408409563514429
-   
 
 
 .. admonition:: Example 2 :  System of Equations
@@ -96,16 +90,6 @@ Examples
       Console.WriteLine(x);
    
    
-   Ouput
-   
-   .. terminal::
-   
-      
-         0.5000
-         0.0000
-        -0.5236
-      
-   
    Just like the case of single variable nonlinear equation, nonlinear system can also be solved using automatic differentiation class
    
    
@@ -125,23 +109,6 @@ Examples
       // display the result
       Console.WriteLine(x);
    
-   
-   Ouput
-   
-   .. terminal::
-   
-       Iteration    Func-count       f(x)      Norm of Step
-           0            1             0           Start
-           1            2          0.34586       0.58656     
-           2            3          0.02588       0.01799     
-           3            4        2.012e-004      0.00157     
-           4            5        1.254e-008     1.245e-005   
-           5            6        1.776e-015     7.761e-010   
-      
-         0.5000
-         0.0000
-        -0.5236
-      
 
 Applications
 ------------
@@ -254,38 +221,6 @@ The SepalSolver also allow for easy computation of matrix equations. For instanc
       Matrix x = Fsolve(x => x*x*x - A, Ones(2, 2), opts);
       Console.WriteLine(x);
    
-   
-   Ouput
-   
-   .. terminal::
-   
-       Iteration    Func-count       f(x)      Norm of Step
-           0            1          3.74165        start      
-           1            6          0.94293       0.61237     
-           2            7          2661952       6432.80     
-           3            8          0.45614       6432.80     
-           4            9          0.39097       0.05487     
-           5            10         0.39548       0.03847     
-           6            11         0.39690       0.00219     
-           7            12         0.39702      1.712e-004   
-           8            17         263.674       6.34236     
-           9            18         0.37461       6.33363     
-           10           19         0.37411       0.00901     
-           11           20         3.91141       1.47633     
-           12           21         0.35406       1.34995     
-           13           22         0.31481       0.11135     
-           14           23         1.75353       0.89775     
-           15           24         0.22618       0.76114     
-           16           29         0.13103       0.26771     
-           17           30         0.03317       0.09820     
-           18           31         0.00338       0.01983     
-           19           32       1.047e-004      0.00225     
-           20           33       3.140e-007     6.762e-005   
-           21           34       2.926e-011     2.022e-007   
-      
-        -0.1291    0.8602
-         1.2903    1.1612
-      
 
 Summary
 -------
