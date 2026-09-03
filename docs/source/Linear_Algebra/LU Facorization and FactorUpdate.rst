@@ -43,7 +43,8 @@ and :math:`Ux = y` using forward and backward substitution.
    Console.WriteLine($"Matrix P:{A.pi}");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -138,7 +139,8 @@ to the standard matrix addition.
 
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 

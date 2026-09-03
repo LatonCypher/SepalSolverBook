@@ -308,7 +308,8 @@ These are examples of how to use SepalSolver to solve various systems of first-o
       SaveAs("Blasius-bounary-layer.png");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    

@@ -72,7 +72,8 @@ Enforcing integer restrictions on selected decision variables by providing an in
    Console.WriteLine(result);
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -111,7 +112,8 @@ Combining integer variable restrictions with linear equality systems :math:`\mat
    Console.WriteLine(result);
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -155,7 +157,8 @@ Solving a fully constrained MILP with explicit lower (:math:`\mathbf{Lb}`) and u
    Console.WriteLine(result);
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 

@@ -92,7 +92,8 @@ Examples
       Console.WriteLine($"Found {convergedEntries.Length} converged steps.");
     
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -111,7 +112,8 @@ Examples
       Console.WriteLine($"Average: {averageError}, Energy: {totalEnergy}");
     
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -131,7 +133,8 @@ Examples
       }
     
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    

@@ -87,7 +87,8 @@ Examples
 
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -177,7 +178,8 @@ Division can be termwise, or the scaler times the inversion of the matrix.
    Console.WriteLine($"2/A = \n{2*(A.Inverse())}");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -243,7 +245,8 @@ A ``RowVec`` can be multiplied to the left of a ``ColVec`` to produce a scalar (
    Console.WriteLine($"P * A = \n{P * A}");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -395,7 +398,8 @@ Transpose
    Console.WriteLine($"A^T = \n{A.T}");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -429,7 +433,8 @@ where :math:`I` is the identity matrix.
    Console.WriteLine($"A^-1 = \n{A.Inverse()}");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -462,7 +467,8 @@ Determinant
    Console.WriteLine($"det(A) = {det}");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -480,7 +486,8 @@ Ouput
    Console.WriteLine($"det(A) = {det}");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -536,7 +543,8 @@ RREF (Reduced Row Echelon Form)
                    + "\n N = \n" + N);
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 

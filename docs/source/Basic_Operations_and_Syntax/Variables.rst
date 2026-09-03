@@ -75,7 +75,8 @@ Examples
       Console.WriteLine($"Precision: {precision}, Tolerance: {tolerance}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -93,7 +94,8 @@ Examples
       Console.WriteLine($"Acceleration due to gravity: {Gravity} m/s²"); 
     
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -114,7 +116,8 @@ Examples
       // Error: 'inner' is out of scope 
     
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -132,7 +135,8 @@ Examples
       Console.WriteLine($"Project: {name}"); 
     
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    

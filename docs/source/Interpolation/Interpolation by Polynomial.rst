@@ -63,7 +63,8 @@ Examples
       Console.WriteLine($" midvoltage = {midVoltage}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -168,7 +169,8 @@ The idea of using polynomial fits can be extended to multiple dimensions. For ex
       Console.WriteLine($"Specific volume at T = {T} and P = {P} is {sv}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    

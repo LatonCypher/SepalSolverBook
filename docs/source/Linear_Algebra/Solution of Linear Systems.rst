@@ -39,7 +39,8 @@ matrices that are symmetric and positive-definite.
    Console.WriteLine($"x = \n{x}");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -86,7 +87,8 @@ SepalSolver provides two major iterative solvers. Conjugate Gradient (`ConjGrad`
       Console.WriteLine($"res = {res}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -117,7 +119,8 @@ SepalSolver provides two major iterative solvers. Conjugate Gradient (`ConjGrad`
       Console.WriteLine($"res = {res}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -168,7 +171,8 @@ Consider a phenomenon in which temperature and pressure are linearly related. i.
    SaveAs("LeastSquare-Solution.png");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 

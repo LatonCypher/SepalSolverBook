@@ -270,7 +270,8 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       SaveAs("Implicit-Robertson-ODE-Ode43i.png");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -348,7 +349,8 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       SaveAs("Implicit-Robertson-ODE-Ode43i_With_jacobian.png");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    

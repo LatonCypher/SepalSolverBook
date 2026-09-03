@@ -25,7 +25,8 @@ Adding or subtracting polynomials involves summing the coefficients of correspon
    Console.WriteLine($"Diff:\n = [{string.Join(", ", diff)}]");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -50,7 +51,8 @@ Multiplying two polynomials is mathematically equivalent to the convolution of t
    Console.WriteLine($"Product:\n = [{string.Join(", ", product)}]");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -74,7 +76,8 @@ Polynomial division is implemented via deconvolution (synthetic division). Divid
    Console.WriteLine($"Remainder:\n = [{string.Join(", ", R)}]");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -102,7 +105,8 @@ Examples
       Console.WriteLine($"Combined Coefficients: [{string.Join(", ", combined)}]");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -124,7 +128,8 @@ In root-finding verification, you might want to multiply factors :math:`(x - r_1
       Console.WriteLine($"Expanded = [{string.Join(", ", expanded)}]");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -144,7 +149,8 @@ In root-finding verification, you might want to multiply factors :math:`(x - r_1
       Console.WriteLine($"Remainder is zero? {R.All(val => val == 0)}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    

@@ -88,7 +88,8 @@ Examples
       }
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -120,7 +121,8 @@ Examples
    
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -149,7 +151,8 @@ Examples
    
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -176,7 +179,8 @@ Examples
       Console.WriteLine($"Total System Mass: {totalMass}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    

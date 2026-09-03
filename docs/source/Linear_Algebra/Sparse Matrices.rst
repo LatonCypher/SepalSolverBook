@@ -116,7 +116,8 @@ A SparseMatrix can be made in the following ways:
    Console.WriteLine($" Sparsity = {Asparse.sparsity}");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -135,7 +136,8 @@ Ouput
    Console.WriteLine($" Sparsity = {Asparse.sparsity}");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -156,7 +158,8 @@ Ouput
    Console.WriteLine($" Sparsity = {Asparse.sparsity}");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -218,7 +221,8 @@ Here we look at the incomplete LU and Cholesky, since the complete form as been 
    SaveAs("U_from_Incomplete_LU_Factorization_of _B.png");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -277,7 +281,8 @@ Ouput
    SaveAs("L_from_Incomplete_Cholesky_Factorization_of_B.png");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -340,7 +345,8 @@ Ouput
    Console.WriteLine(B.L_chol);
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 

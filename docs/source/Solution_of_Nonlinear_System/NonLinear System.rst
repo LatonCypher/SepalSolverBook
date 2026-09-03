@@ -58,7 +58,8 @@ Examples
       Console.WriteLine($"root = {root}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -96,7 +97,8 @@ Examples
       Console.WriteLine(x);
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -126,7 +128,8 @@ Examples
       Console.WriteLine(x);
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -255,7 +258,8 @@ The SepalSolver also allow for easy computation of matrix equations. For instanc
       Console.WriteLine(x);
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    

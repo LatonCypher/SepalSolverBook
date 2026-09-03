@@ -45,7 +45,8 @@ Applied Examples
       Console.WriteLine($"I = {I:F4}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -76,7 +77,8 @@ Applied Examples
       Console.WriteLine($"I = {I:F4}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -108,7 +110,8 @@ Applied Examples
       Console.WriteLine($"I = {I:F4}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -139,7 +142,8 @@ Applied Examples
       Console.WriteLine($"I = {I:F4}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    

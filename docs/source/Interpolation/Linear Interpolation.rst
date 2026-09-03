@@ -35,7 +35,8 @@ In SepalSolver, the Interp1 method performs 1D linear interpolation. It first se
    Console.WriteLine($"Interpolated value at {queryX} is {result}");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -60,7 +61,8 @@ Examples
       Console.WriteLine($"Estimated pressure at {currentTemp}C: :math:{pEst} kPa");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -82,7 +84,8 @@ Examples
       Console.WriteLine($"Torque at {currentRPM} RPM: :math:`{tEst}` Nm");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -147,7 +150,8 @@ In SepalSolver, `Interp2` requires:
    Console.WriteLine($"Value at (0.5, 0.5): {result}");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -176,7 +180,8 @@ Examples
       Console.WriteLine($"Height at ({lon}, {lat}): :math:{height} m");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -203,7 +208,8 @@ Examples
       Console.WriteLine($"Interpolated Z: {val}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -240,7 +246,8 @@ Examples
       Console.WriteLine($"Specific Volume of superheated water at T = {T}, P = {P} is {sv}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    

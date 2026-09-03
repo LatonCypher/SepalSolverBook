@@ -200,7 +200,8 @@ SepalSolver impelements ODE43s for stiff differential equation. This is an embed
       Ode43s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    

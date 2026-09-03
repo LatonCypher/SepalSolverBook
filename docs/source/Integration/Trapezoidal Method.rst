@@ -35,7 +35,8 @@ Writing the algorithm manually allows for a deeper understanding of how the weig
    Console.WriteLine($"The approximate integral is: \n{integral_result:F4}");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -88,7 +89,8 @@ where :math:`\xi` is some number in the interval :math:`[a, b]`. This indicates 
    Console.WriteLine($"The integral of sin(x) from {0} to pi is approximately {result:F4}");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 

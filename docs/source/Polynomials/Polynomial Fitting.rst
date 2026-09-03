@@ -44,7 +44,8 @@ Examples
       SaveAs("Polyfit_Example1.png");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -71,7 +72,8 @@ Examples
       Console.WriteLine($"Spring Constant k: {p[0]} N/m");
     
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -93,7 +95,8 @@ Examples
       Console.WriteLine($"Quadratic term (should be small): {p[0]}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -138,7 +141,8 @@ Overfitting can occur if the degree is too high, while underfitting can happen i
       SaveAs("Polyfit_Example_4.png");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -188,7 +192,8 @@ In SepalSolver, multivariate fitting is performed by constructing an augmented m
    Console.WriteLine($"Model: z = {coeff[0]:f4} + {coeff[1]:f4}x + {coeff[2]:f4}y");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -279,7 +284,8 @@ Examples
       Console.WriteLine($"Fitted Parameters: A = {A:F4}, B = {B:F4}, C = {C:F4}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    

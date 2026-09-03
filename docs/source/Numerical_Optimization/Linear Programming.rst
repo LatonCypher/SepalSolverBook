@@ -89,7 +89,8 @@ Comparison: Linprog Formulation Levels
       Console.WriteLine(result);
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -130,7 +131,8 @@ Comparison: Linprog Formulation Levels
       Console.WriteLine(result);
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -171,7 +173,8 @@ Comparison: Linprog Formulation Levels
       Console.WriteLine(result);
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    

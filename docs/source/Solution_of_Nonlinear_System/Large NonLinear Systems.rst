@@ -81,22 +81,23 @@ The equations to solve are :math:`F_i(x) = 0, 1 \leq i \leq n`.The example uses 
    Console.WriteLine($"Elapsed time: {toc()} seconds");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
     Iteration    Func-count       f(x)      Norm of Step
         0            1          31.7962        start      
-        1           999         3.98768       7.92421     
-        2           1000        0.65762       1.13502     
-        3           1001        0.02943       0.22302     
-        4           1002        0.00773       0.00828     
-        5           1003        0.00232       0.00181     
-        6           1004      4.585e-005     7.742e-004   
-        7           1005      1.117e-005     1.109e-005   
-        8           1006      1.841e-006     2.577e-006   
-        9           1007      1.071e-007     5.041e-007   
-        10          1008      2.527e-008     1.911e-008   
+        1           997         3.98768       7.92421     
+        2           998         0.65762       1.13502     
+        3           999         0.02943       0.22302     
+        4           1000        0.00773       0.00828     
+        5           1001        0.00232       0.00181     
+        6           1002      4.585e-005     7.742e-004   
+        7           1003      1.117e-005     1.109e-005   
+        8           1004      1.841e-006     2.577e-006   
+        9           1005      1.071e-007     5.041e-007   
+        10          1006      2.527e-008     1.911e-008   
    x = 
      -0.5708
      -0.6819
@@ -121,7 +122,7 @@ Ouput
      -0.4164
    
    2.5270816374876195E-08
-   Elapsed time: 7.8701967 seconds
+   Elapsed time: 3.9067105 seconds
 
 While finite difference approximations are convenient, they are computationally 
 expensive, introduce numerical errors, and fail to exploit structural
@@ -161,7 +162,8 @@ Examples 2: Solving Large Sparse Systems Using Sparsity Pattern Exploitation
    Console.WriteLine($"Elapsed time: {toc()} seconds");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -196,7 +198,7 @@ Ouput
      -0.4164
    
    3.420135685938544E-15
-   Elapsed time: 0.1753563 seconds
+   Elapsed time: 0.0567645 seconds
 
 Examples 3: Solving Large Sparse Systems Using Analytical Jacobians
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -239,7 +241,8 @@ Examples 3: Solving Large Sparse Systems Using Analytical Jacobians
    Console.WriteLine($"Elapsed time: {toc()} seconds");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -274,7 +277,7 @@ Ouput
      -0.4164
    
    7.448429925158487E-15
-   Elapsed time: 0.3218557 seconds
+   Elapsed time: 0.0261402 seconds
 
 
 Examples 4: Solving Large Sparse Systems Using Analytical Jacobians
@@ -325,7 +328,8 @@ Multirosenbrook function is another example
    Console.WriteLine($"Elapsed time: {toc()} seconds");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -358,4 +362,4 @@ Ouput
     1 
    
    0
-   Elapsed time: 0.0240938 seconds
+   Elapsed time: 0.0086522 seconds

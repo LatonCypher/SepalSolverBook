@@ -41,7 +41,8 @@ Examples
       Console.WriteLine($"P(3.0) = {result}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -60,7 +61,8 @@ Examples
       Console.WriteLine($"P(i) = {result}");
     
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -81,7 +83,8 @@ In this case, we have a set of measurements in a ColVec and we want to pass them
       Console.WriteLine($"Result at x = {x.T} is: {y.T}"); // 4 + 4 + 3 = 11
     
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    

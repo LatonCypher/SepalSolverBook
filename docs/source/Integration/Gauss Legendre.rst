@@ -59,7 +59,8 @@ Applied Examples (Solved via Simple Solver)
       Console.WriteLine($"I = {I:F4}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -90,7 +91,8 @@ Applied Examples (Solved via Simple Solver)
       Console.WriteLine($"I = {I:F4}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -121,7 +123,8 @@ Applied Examples (Solved via Simple Solver)
       Console.WriteLine($"I = {I:F5}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -176,7 +179,8 @@ It is abole to compute upto 4 dimensional integrals efficiently.
       Console.WriteLine($"The triple integral of x*y*z is approximately: {integral:F4}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -214,7 +218,8 @@ It is abole to compute upto 4 dimensional integrals efficiently.
       Console.WriteLine($"The triple integral of x*y*z is approximately: {integral:F4}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -255,7 +260,8 @@ It is abole to compute upto 4 dimensional integrals efficiently.
       Console.WriteLine($"The triple integral of x*y*z is approximately: {integral:F4}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -296,7 +302,8 @@ It is abole to compute upto 4 dimensional integrals efficiently.
       Console.WriteLine($"The triple integral of x*y*z is approximately: {integral:F4}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    

@@ -19,7 +19,8 @@ For general polynomials, the most stable way to find all roots (including comple
    Console.WriteLine("Roots = \n " + string.Join("\n ", roots));
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -51,7 +52,8 @@ Examples
       Console.WriteLine($"Principal Root = \n " + string.Join("\n ", frequencies));
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -77,7 +79,8 @@ Examples
       }
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -98,7 +101,8 @@ Examples
       Console.WriteLine("Roots = \n " + string.Join("\n ", roots));
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -138,7 +142,8 @@ Examples
       Console.WriteLine($"Refined sqrt(2): {x}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    

@@ -171,7 +171,8 @@ Examples
       Console.WriteLine($"Sum = {sum}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -190,7 +191,8 @@ Examples
       Console.WriteLine($"Area = {area}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -207,7 +209,8 @@ Examples
       Console.WriteLine($"Character: {c}, ASCII: {ascii}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -225,7 +228,8 @@ Examples
       Console.WriteLine($"Go out? {goOut}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -243,7 +247,8 @@ Examples
       Console.WriteLine($"Full Name: {fullName}");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    

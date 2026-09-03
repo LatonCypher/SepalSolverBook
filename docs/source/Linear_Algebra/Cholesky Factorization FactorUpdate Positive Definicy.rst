@@ -72,7 +72,8 @@ Using SepalSolver, we call Chol on an instance of the matrix.
           Console.WriteLine("A is positive definite");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -119,7 +120,8 @@ Like LU factors, Cholesky factors can be updated too, when the Matrix undergoes 
    Console.WriteLine($"Matrix L:{A_updated.L_chol}");
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 

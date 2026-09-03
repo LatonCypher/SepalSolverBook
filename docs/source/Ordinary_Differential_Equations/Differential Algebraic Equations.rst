@@ -114,7 +114,8 @@ Where :math:`M` is a singular matrix.
       SaveAs("Index_1-Pendulum-Problem-Ode43a.png");
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -383,7 +384,8 @@ Now we look at examples of index 2 DAEs
       }
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -530,7 +532,8 @@ Now we look at examples of index 2 DAEs
    
    
    
-   Ouput
+   
+ Ouput
    
    .. terminal::
    
@@ -1436,7 +1439,8 @@ The result is assessed using these errors
    CloseFig();
 
 
-Ouput
+
+ Ouput
 
 .. terminal::
 
@@ -1448,7 +1452,7 @@ Ouput
    Summary of statistics by Ode43a
            1054 successful steps
            16 failed attempts
-           30515 function evaluations
+           30517 function evaluations
            1070 partial derivatives
            4280 LU decompositions
            19799 solutions of linear systems
@@ -1456,7 +1460,7 @@ Ouput
    Summary of statistics by Ode43a
            831 successful steps
            15 failed attempts
-           31651 function evaluations
+           31650 function evaluations
            846 partial derivatives
            3384 LU decompositions
            23173 solutions of linear systems
@@ -1464,7 +1468,7 @@ Ouput
    Summary of statistics by Ode43a
            8756 successful steps
            19 failed attempts
-           282369 function evaluations
+           282375 function evaluations
            8775 partial derivatives
            35097 LU decompositions
            194608 solutions of linear systems
