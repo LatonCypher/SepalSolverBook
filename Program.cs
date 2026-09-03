@@ -2,167 +2,6 @@
 using ConsoleApp1;
 {
     currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents";
-    {
-        CloseFig();
-        HoldOn();
-        // Define canvas boundary coordinates
-        Axis([0, 105, 0, 75]);
-        AxisOff();
-        // Helper method to draw a rounded equipment block with title and subtext
-        void DrawComponentBox(double x, double y, double w, double h, string title, string sub1, string sub2, double[] fill, double[] border)
-        {
-            var rect = Rectangle([x, y, w, h], Curvature: 0.18);
-            rect.FillColor = fill;
-            rect.LineColor = border;
-            rect.LineWidth = 2;
-            Text(x + 1.0, y + h * 0.70, title, 9.5f, "k");
-            if (!string.IsNullOrEmpty(sub1))
-                Text(x + 1.0, y + h * 0.42, sub1, 8.0f, "k");
-            if (!string.IsNullOrEmpty(sub2))
-                Text(x + 1.0, y + h * 0.16, sub2, 7.5f, "k");
-        }
-        // 1. Title Banner
-        Text(16, 71, "Production Gathering Network & Gas Lift Optimization Topology", 13.5f, "k");
-        // 2. Gas Lift Compressor Station (Top Left)
-        double[] compFill = [0.99, 0.94, 0.88]; // Soft peach/amber
-        double[] compLine = [0.85, 0.35, 0.12]; // Deep amber
-        DrawComponentBox(5, 58, 22, 9, "Gas Lift Compressor", "Qg_avail <= 6.0 MMscf/d", "High Pressure Supply", compFill, compLine);
-        // 3. Production Wells (Left Column)
-        double[] wellFill = [0.90, 0.95, 1.00]; // Soft technical blue
-        double[] wellLine = [0.12, 0.42, 0.75]; // Deep blue
-        double[] wellY = [44, 31, 18, 5];
-        string[] wellNames = ["Well 1 (Strong)", "Well 2 (Moderate)", "Well 3 (Weak)", "Well 4 (Deep)"];
-        string[] wellSub1 = ["WC: 10% | a: 2200", "WC: 35% | a: 1600", "WC: 60% | a: 1100", "WC: 25% | a: 1900"];
-        string[] wellSub2 = ["Opt Qg: High", "Opt Qg: Balanced", "Opt Qg: Throttled", "Opt Qg: Moderate"];
-        for (int i = 0; i < 4; i++)
-        {
-            DrawComponentBox(5, wellY[i], 22, 8.5, wellNames[i], wellSub1[i], wellSub2[i], wellFill, wellLine);
-            // Surface flowlines connecting each wellhead to the gathering manifold
-            double startX = 27;
-            double startY = wellY[i] + 4.25;
-            double endX = 44;
-            double endY = 18 + i * 5.5;
-            Arrow([startX, startY], [endX, endY], ArrowHeadWidth: 7, ArrowLineWidth: 1.8,
-                  LineColor: [0.2, 0.25, 0.3], FillColor: [0.2, 0.25, 0.3]);
-            Text(startX + 3.0, startY + 1.2, $"FL-{i + 1}", 7.5f, "k");
-        }
-        // Gas Lift Injection Loop: Header line from Compressor down to Wells
-        Plot([16, 16], [58, 4], "r--", Linewidth: 2);
-        for (int i = 0; i < 4; i++)
-        {
-            Arrow([16, wellY[i] + 4.25], [5, wellY[i] + 4.25], ArrowHeadWidth: 6, ArrowLineWidth: 1.5,
-                  LineColor: [0.85, 0.35, 0.12], FillColor: [0.85, 0.35, 0.12]);
-        }
-        Text(17, 54, "Gas Lift Header", 8.0f, "r");
-        // 4. Gathering Manifold Node
-        double[] maniFill = [1.00, 0.96, 0.85]; // Soft cream
-        double[] maniLine = [0.82, 0.60, 0.15]; // Gold
-        var maniBox = Rectangle([44, 15, 8, 26], Curvature: 0.25);
-        maniBox.FillColor = maniFill;
-        maniBox.LineColor = maniLine;
-        maniBox.LineWidth = 2.2;
-        Text(44.8, 30, "Gathering", 9.0f, "k");
-        Text(44.8, 26, "Manifold", 9.0f, "k");
-        Text(44.8, 20, "Node (P_m)", 7.5f, "k");
-        // 5. Bulk Multiphase Trunkline to Separator
-        Arrow([52, 28], [63, 28], ArrowHeadWidth: 9, ArrowLineWidth: 3.0,
-              LineColor: [0.1, 0.1, 0.1], FillColor: [0.1, 0.1, 0.1]);
-        Text(53.2, 30.5, "Bulk Fluid Q_L", 8.0f, "k");
-        Text(53.0, 25.5, "v_min <= v <= v_e", 7.0f, "k");
-        // 6. Central Processing Facility (CPF) / 3-Phase Separator
-        double[] cpfFill = [0.90, 0.96, 0.92]; // Mint green
-        double[] cpfLine = [0.15, 0.55, 0.25]; // Forest green
-        var cpfBox = Rectangle([63, 12, 22, 32], Curvature: 0.15);
-        cpfBox.FillColor = cpfFill;
-        cpfBox.LineColor = cpfLine;
-        cpfBox.LineWidth = 2.2;
-        Text(64.5, 39, "3-Phase Separator", 10.5f, "k");
-        Text(64.5, 35, "Central Facility (CPF)", 8.5f, "k");
-        Text(64.5, 27, "Capacity Limits:", 8.0f, "k");
-        Text(64.5, 23, "- Q_L <= 6200 STB/d", 7.5f, "k");
-        Text(64.5, 19, "- Q_w <= 2000 STB/d", 7.5f, "k");
-        Text(64.5, 15, "- Q_g Separation", 7.5f, "k");
-        // 7. Separator Outflow Streams
-        // (a) Gas Stream (Top)
-        Arrow([85, 38], [98, 48], ArrowHeadWidth: 8, ArrowLineWidth: 2.0,
-              LineColor: [0.85, 0.35, 0.12], FillColor: [0.85, 0.35, 0.12]);
-        Text(87, 50, "Gas: Q_g -> Compressor", 8.5f, "r");
-        // Recycle line from separator gas back to compressor station
-        Plot([98, 98, 16], [48, 62.5, 62.5], "r:", Linewidth: 1);
-        // (b) Oil Stream (Middle)
-        Arrow([85, 28], [98, 28], ArrowHeadWidth: 8, ArrowLineWidth: 2.5,
-              LineColor: [0.12, 0.55, 0.18], FillColor: [0.12, 0.55, 0.18]);
-        Text(87, 30.5, "Sales Oil: Maximize Q_o", 8.5f, "k");
-        // (c) Produced Water Stream (Bottom)
-        Arrow([85, 18], [98, 8], ArrowHeadWidth: 8, ArrowLineWidth: 2.0,
-              LineColor: [0.12, 0.42, 0.75], FillColor: [0.12, 0.42, 0.75]);
-        Text(87, 10.5, "Water Disposal <= 2000 STB/d", 8.5f, "b");
-        // 8. Flow Assurance Footer Annotation
-        Text(20, 2, "Flow Assurance Rules: Drawdown Limit | Bubble Point p_wf >= p_b | Erosional Velocity (API 14E)", 8.2f, "k");
-        HoldOff();
-        SaveAs("Production_Network_Topology_Diagram.png");
-    }
-    {
-        //var x = Linspace(-8, 8, 40); var y = Linspace(-8, 8, 40);
-        //(Matrix X, Matrix Y) = Meshgrid(x, y);
-        //var R = Sqrt(X.Pow(2) + Y.Pow(2)) + 1e-12;
-        //var Z = Sin(R) / R;
-        //Plot3D.Clear();
-        //Plot3D.Title("3D Sombrero Sinc Surface");
-        //Plot3D.SetColormap(0); // 0: Viridis, 1: Plasma, 2: Hot, 5: Jet
-        //Plot3D.Surf(X, Y, Z, "Sombrero Mesh");
-        //Plot3D.Show();
-    }
-    {
-        ////Z factor application
-        //static double ZfactorHY(double Pr, double Tr)
-        //{
-        //    double z = 1, t, tm1, tm1e2, A, B,
-        //        C, D, r, y2, y3, y4, Den;
-        //    if (Pr != 0)
-        //    {
-        //        t = 1 / Tr;
-        //        tm1 = 1 - t; tm1e2 = tm1 * tm1;
-        //        A = 0.06125 * t * Exp(-1.2 * Pow(1 - t, 2));
-        //        B = t * (14.76 - t * (9.76 - t * 4.58));
-        //        C = t * (90.7 - t * (242.2 - t * 42.4));
-        //        D = 2.18 + 2.82 * t; r = A * Pr;
-        //        var yfunc = new Func<double, double>(y =>
-        //        {
-        //            y2 = y * y; y3 = y2 * y; y4 = y3 * y;
-        //            Den = Pow(1 - y, 3);
-        //            return -A * Pr + (y + y2 + y3 - y4) / Den -
-        //            B * y2 + C * Pow(y, D);
-        //        });
-        //        r *= Pr < 5 ? 2 : 1;
-        //        r /= Pr > 13 ? 2 : 1;
-        //        double y = Fsolve(yfunc, r);
-        //        z = A * Pr / y;
-        //    }
-        //    return z;
-        //}
-
-
-        //// set up ressure and temperature mesh
-        //ColVec Pr = Linspace(0, 15, 501);
-        //double[] Tr = [1.05,    1.10,   1.15,   1.20,   1.25,   1.30,   1.35,
-        //               1.40,    1.45,   1.50,   1.60,   1.70,   1.80,   1.90,
-        //               2.00,    2.20,   2.40,   2.60,   2.80,   3.00];
-
-        //// compute z factors and plot them
-        //List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
-        //Matrix ZHY = Meshfun(ZfactorHY, Pr, Tr);
-
-
-        //// Literature style plot
-        //Figure(640, 880);
-        //var z1 = Plot(Pr[Pr <= 8], ZHY[Pr <= 8, ..], "k"); HoldOn();
-        //var z2 = Plot(Pr[Pr >= 7], ZHY[Pr >= 7, ..], "k"); HoldOff();
-        //SetAxis(z1, X_Axis.Top, Y_Axis.Left, 0, 8, 0, 1.1);
-        //SetAxis(z2, X_Axis.Bottom, Y_Axis.Right, 7, 15, 0.9, 2.0);
-        //SaveAs("Hall_Yarborough_Chart.png");
-        //CloseFig();
-    }
     Writer.Run();
     {
         //Func<double, double> J0, J1;
@@ -762,6 +601,167 @@ using ConsoleApp1;
         //    [a =>-1, a => -Sqrt(1 - SumSq(a[..1])), a => -Sqrt(1 - SumSq(a[..1])), a => -Sqrt(1 - SumSq(a[..2]))],
         //    [a => 1, a => Sqrt(1 - SumSq(a[..1])), a => Sqrt(1 - SumSq(a[..1])), a => Sqrt(1 - SumSq(a[..2]))]);
         //Console.WriteLine($"J = {J}, {4 * pi / 3}");
+    }
+    {
+        //CloseFig();
+        //HoldOn();
+        //// Define canvas boundary coordinates
+        //Axis([0, 105, 0, 75]);
+        //AxisOff();
+        //// Helper method to draw a rounded equipment block with title and subtext
+        //void DrawComponentBox(double x, double y, double w, double h, string title, string sub1, string sub2, double[] fill, double[] border)
+        //{
+        //    var rect = Rectangle([x, y, w, h], Curvature: 0.18);
+        //    rect.FillColor = fill;
+        //    rect.LineColor = border;
+        //    rect.LineWidth = 2;
+        //    Text(x + 1.0, y + h * 0.70, title, 9.5f, "k");
+        //    if (!string.IsNullOrEmpty(sub1))
+        //        Text(x + 1.0, y + h * 0.42, sub1, 8.0f, "k");
+        //    if (!string.IsNullOrEmpty(sub2))
+        //        Text(x + 1.0, y + h * 0.16, sub2, 7.5f, "k");
+        //}
+        //// 1. Title Banner
+        //Text(16, 71, "Production Gathering Network & Gas Lift Optimization Topology", 13.5f, "k");
+        //// 2. Gas Lift Compressor Station (Top Left)
+        //double[] compFill = [0.99, 0.94, 0.88]; // Soft peach/amber
+        //double[] compLine = [0.85, 0.35, 0.12]; // Deep amber
+        //DrawComponentBox(5, 58, 22, 9, "Gas Lift Compressor", "Qg_avail <= 6.0 MMscf/d", "High Pressure Supply", compFill, compLine);
+        //// 3. Production Wells (Left Column)
+        //double[] wellFill = [0.90, 0.95, 1.00]; // Soft technical blue
+        //double[] wellLine = [0.12, 0.42, 0.75]; // Deep blue
+        //double[] wellY = [44, 31, 18, 5];
+        //string[] wellNames = ["Well 1 (Strong)", "Well 2 (Moderate)", "Well 3 (Weak)", "Well 4 (Deep)"];
+        //string[] wellSub1 = ["WC: 10% | a: 2200", "WC: 35% | a: 1600", "WC: 60% | a: 1100", "WC: 25% | a: 1900"];
+        //string[] wellSub2 = ["Opt Qg: High", "Opt Qg: Balanced", "Opt Qg: Throttled", "Opt Qg: Moderate"];
+        //for (int i = 0; i < 4; i++)
+        //{
+        //    DrawComponentBox(5, wellY[i], 22, 8.5, wellNames[i], wellSub1[i], wellSub2[i], wellFill, wellLine);
+        //    // Surface flowlines connecting each wellhead to the gathering manifold
+        //    double startX = 27;
+        //    double startY = wellY[i] + 4.25;
+        //    double endX = 44;
+        //    double endY = 18 + i * 5.5;
+        //    Arrow([startX, startY], [endX, endY], ArrowHeadWidth: 7, ArrowLineWidth: 1.8,
+        //          LineColor: [0.2, 0.25, 0.3], FillColor: [0.2, 0.25, 0.3]);
+        //    Text(startX + 3.0, startY + 1.2, $"FL-{i + 1}", 7.5f, "k");
+        //}
+        //// Gas Lift Injection Loop: Header line from Compressor down to Wells
+        //Plot([16, 16], [58, 4], "r--", Linewidth: 2);
+        //for (int i = 0; i < 4; i++)
+        //{
+        //    Arrow([16, wellY[i] + 4.25], [5, wellY[i] + 4.25], ArrowHeadWidth: 6, ArrowLineWidth: 1.5,
+        //          LineColor: [0.85, 0.35, 0.12], FillColor: [0.85, 0.35, 0.12]);
+        //}
+        //Text(17, 54, "Gas Lift Header", 8.0f, "r");
+        //// 4. Gathering Manifold Node
+        //double[] maniFill = [1.00, 0.96, 0.85]; // Soft cream
+        //double[] maniLine = [0.82, 0.60, 0.15]; // Gold
+        //var maniBox = Rectangle([44, 15, 8, 26], Curvature: 0.25);
+        //maniBox.FillColor = maniFill;
+        //maniBox.LineColor = maniLine;
+        //maniBox.LineWidth = 2.2;
+        //Text(44.8, 30, "Gathering", 9.0f, "k");
+        //Text(44.8, 26, "Manifold", 9.0f, "k");
+        //Text(44.8, 20, "Node (P_m)", 7.5f, "k");
+        //// 5. Bulk Multiphase Trunkline to Separator
+        //Arrow([52, 28], [63, 28], ArrowHeadWidth: 9, ArrowLineWidth: 3.0,
+        //      LineColor: [0.1, 0.1, 0.1], FillColor: [0.1, 0.1, 0.1]);
+        //Text(53.2, 30.5, "Bulk Fluid Q_L", 8.0f, "k");
+        //Text(53.0, 25.5, "v_min <= v <= v_e", 7.0f, "k");
+        //// 6. Central Processing Facility (CPF) / 3-Phase Separator
+        //double[] cpfFill = [0.90, 0.96, 0.92]; // Mint green
+        //double[] cpfLine = [0.15, 0.55, 0.25]; // Forest green
+        //var cpfBox = Rectangle([63, 12, 22, 32], Curvature: 0.15);
+        //cpfBox.FillColor = cpfFill;
+        //cpfBox.LineColor = cpfLine;
+        //cpfBox.LineWidth = 2.2;
+        //Text(64.5, 39, "3-Phase Separator", 10.5f, "k");
+        //Text(64.5, 35, "Central Facility (CPF)", 8.5f, "k");
+        //Text(64.5, 27, "Capacity Limits:", 8.0f, "k");
+        //Text(64.5, 23, "- Q_L <= 6200 STB/d", 7.5f, "k");
+        //Text(64.5, 19, "- Q_w <= 2000 STB/d", 7.5f, "k");
+        //Text(64.5, 15, "- Q_g Separation", 7.5f, "k");
+        //// 7. Separator Outflow Streams
+        //// (a) Gas Stream (Top)
+        //Arrow([85, 38], [98, 48], ArrowHeadWidth: 8, ArrowLineWidth: 2.0,
+        //      LineColor: [0.85, 0.35, 0.12], FillColor: [0.85, 0.35, 0.12]);
+        //Text(87, 50, "Gas: Q_g -> Compressor", 8.5f, "r");
+        //// Recycle line from separator gas back to compressor station
+        //Plot([98, 98, 16], [48, 62.5, 62.5], "r:", Linewidth: 1);
+        //// (b) Oil Stream (Middle)
+        //Arrow([85, 28], [98, 28], ArrowHeadWidth: 8, ArrowLineWidth: 2.5,
+        //      LineColor: [0.12, 0.55, 0.18], FillColor: [0.12, 0.55, 0.18]);
+        //Text(87, 30.5, "Sales Oil: Maximize Q_o", 8.5f, "k");
+        //// (c) Produced Water Stream (Bottom)
+        //Arrow([85, 18], [98, 8], ArrowHeadWidth: 8, ArrowLineWidth: 2.0,
+        //      LineColor: [0.12, 0.42, 0.75], FillColor: [0.12, 0.42, 0.75]);
+        //Text(87, 10.5, "Water Disposal <= 2000 STB/d", 8.5f, "b");
+        //// 8. Flow Assurance Footer Annotation
+        //Text(20, 2, "Flow Assurance Rules: Drawdown Limit | Bubble Point p_wf >= p_b | Erosional Velocity (API 14E)", 8.2f, "k");
+        //HoldOff();
+        //SaveAs("Production_Network_Topology_Diagram.png");
+    }
+    {
+        //var x = Linspace(-8, 8, 40); var y = Linspace(-8, 8, 40);
+        //(Matrix X, Matrix Y) = Meshgrid(x, y);
+        //var R = Sqrt(X.Pow(2) + Y.Pow(2)) + 1e-12;
+        //var Z = Sin(R) / R;
+        //Plot3D.Clear();
+        //Plot3D.Title("3D Sombrero Sinc Surface");
+        //Plot3D.SetColormap(0); // 0: Viridis, 1: Plasma, 2: Hot, 5: Jet
+        //Plot3D.Surf(X, Y, Z, "Sombrero Mesh");
+        //Plot3D.Show();
+    }
+    {
+        ////Z factor application
+        //static double ZfactorHY(double Pr, double Tr)
+        //{
+        //    double z = 1, t, tm1, tm1e2, A, B,
+        //        C, D, r, y2, y3, y4, Den;
+        //    if (Pr != 0)
+        //    {
+        //        t = 1 / Tr;
+        //        tm1 = 1 - t; tm1e2 = tm1 * tm1;
+        //        A = 0.06125 * t * Exp(-1.2 * Pow(1 - t, 2));
+        //        B = t * (14.76 - t * (9.76 - t * 4.58));
+        //        C = t * (90.7 - t * (242.2 - t * 42.4));
+        //        D = 2.18 + 2.82 * t; r = A * Pr;
+        //        var yfunc = new Func<double, double>(y =>
+        //        {
+        //            y2 = y * y; y3 = y2 * y; y4 = y3 * y;
+        //            Den = Pow(1 - y, 3);
+        //            return -A * Pr + (y + y2 + y3 - y4) / Den -
+        //            B * y2 + C * Pow(y, D);
+        //        });
+        //        r *= Pr < 5 ? 2 : 1;
+        //        r /= Pr > 13 ? 2 : 1;
+        //        double y = Fsolve(yfunc, r);
+        //        z = A * Pr / y;
+        //    }
+        //    return z;
+        //}
+
+
+        //// set up ressure and temperature mesh
+        //ColVec Pr = Linspace(0, 15, 501);
+        //double[] Tr = [1.05,    1.10,   1.15,   1.20,   1.25,   1.30,   1.35,
+        //               1.40,    1.45,   1.50,   1.60,   1.70,   1.80,   1.90,
+        //               2.00,    2.20,   2.40,   2.60,   2.80,   3.00];
+
+        //// compute z factors and plot them
+        //List<string> Tlabels = [.. Tr.Select(tr => "Tr = " + tr)];
+        //Matrix ZHY = Meshfun(ZfactorHY, Pr, Tr);
+
+
+        //// Literature style plot
+        //Figure(640, 880);
+        //var z1 = Plot(Pr[Pr <= 8], ZHY[Pr <= 8, ..], "k"); HoldOn();
+        //var z2 = Plot(Pr[Pr >= 7], ZHY[Pr >= 7, ..], "k"); HoldOff();
+        //SetAxis(z1, X_Axis.Top, Y_Axis.Left, 0, 8, 0, 1.1);
+        //SetAxis(z2, X_Axis.Bottom, Y_Axis.Right, 7, 15, 0.9, 2.0);
+        //SaveAs("Hall_Yarborough_Chart.png");
+        //CloseFig();
     }
     //{
     //    double Area(ColVec x, ColVec y)
