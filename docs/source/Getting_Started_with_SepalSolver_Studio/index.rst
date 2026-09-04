@@ -322,6 +322,11 @@ Output
      Root 3: -1.0000
      Root 4: 0.0000
 
+
+.. figure:: images/Polynomial_Root_Finding_and_Plotting.png
+   :align: center
+   :alt: Polynomial_Root_Finding_and_Plotting.png
+
 2. **In the Plot Visualizer:** A high-resolution graphic appears showing the quartic curve with its characteristic local extrema, clearly crossing the zero-axis at :math:`x = -1, 0, 1, 3`.
 3. **In the Workspace Panel:** The variables ``p``, ``roots``, ``x``, and ``y`` appear in the catalog, ready for further interactive querying or spreadsheet inspection.
 
