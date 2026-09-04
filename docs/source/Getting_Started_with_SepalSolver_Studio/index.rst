@@ -245,19 +245,17 @@ Multiple curves can be overlaid on the same canvas with custom colors, line widt
 
 .. code-block:: csharp
 
-   ColVec x = Linspace(0, 10, 300);
-   ColVec y1 = Exp(-0.2 * x) .* Cos(2 * x);
-   ColVec y2 = Exp(-0.2 * x);
-   ColVec y3 = -Exp(-0.2 * x);
+  ColVec x = Linspace(0, 10, 300), decay = Exp(-0.2*x);
+  ColVec y1 = Cos(2 * x).Times(decay);
+  ColVec y2 = decay, y3 = -decay;
 
-   Plot(x, y1, Linewidth: 2);
-   Hold(true);
-   Plot(x, y2, Linestyle: "--", Linewidth: 1.5);
-   Plot(x, y3, Linestyle: "--", Linewidth: 1.5);
-   Legend(["Response", "Upper Envelope", "Lower Envelope"]);
-   Title("Damped Harmonic Response");
-   Xlabel("Time (s)");
-   Ylabel("Displacement (m)");
+  Plot(x, y1, Linewidth: 2); HoldOn();
+  Plot(x, y2, Linestyle: "--", Linewidth: 2);
+  Plot(x, y3, Linestyle: "--", Linewidth: 2);
+  Legend(["Response", "Upper Envelope", "Lower Envelope"]);
+  Title("Damped Harmonic Response");
+  Xlabel("Time (s)");
+  Ylabel("Displacement (m)");
 
 
 6. Inspecting Variables and Matrices
@@ -285,27 +283,26 @@ Create a new script named ``PolynomialAnalysis.cs`` in the editor and enter the 
 
    // Define polynomial coefficients: f(x) = x^4 - 3x^3 - x^2 + 3x
    double[] p = [1.0, -3.0, -1.0, 3.0, 0.0];
+   int N = p.Length;
 
    // 1. Calculate polynomial roots
    Complex[] roots = Roots(p);
    Console.WriteLine("Computed Roots of Polynomial:");
-   for (int i = 0; i < roots.Length; i++)
+   for (int i = 0; i < N-1; i++)
    {
        Console.WriteLine($"  Root {i + 1}: {roots[i].Real:F4}");
    }
+   double[] realroots = [..roots.Select(r => r.Real)];
 
    // 2. Evaluate polynomial over a smooth domain
    ColVec x = Linspace(-1.5, 3.5, 400);
-   ColVec y = Polyval(p, x);
+   ColVec y = Arrayfun(x=>Polyval(p, x),x);
 
    // 3. Visualize curve and highlight zero-axis
-   Plot(x, y, Linewidth: 2);
-   Hold(true);
-   Plot(x, Zeros(x.Length), Linestyle: ":", Linewidth: 1);
+   Scatter(realroots, Zeros(N-1), "for", 15); HoldOn();
+   Plot(x, y, "b", 2); Hline(0); HoldOff();
    Title("Polynomial Function f(x) = x^4 - 3x^3 - x^2 + 3x");
-   Xlabel("x");
-   Ylabel("f(x)");
-   Grid(true);
+   Xlabel("x"); Ylabel("f(x)"); GridOn();
 
 Step 2: Run the Script
 ~~~~~~~~~~~~~~~~~~~~~~
