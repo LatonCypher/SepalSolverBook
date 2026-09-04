@@ -109,7 +109,7 @@ You can evaluate arithmetic expressions, define variables, and perform array ope
 
 .. code-block:: csharp
 
-   >> 2.5 * Sin(Pi / 4) + Sqrt(16)
+   >> 2.5 * Sin(pi / 4) + Sqrt(16)
    ans = 5.767766952966369
 
    >> double[] x = [1.0, 2.0, 3.0, 4.0, 5.0];
@@ -229,7 +229,7 @@ To generate a plot, simply prepare your independent and dependent data arrays an
 .. code-block:: csharp
 
    // Generate domain from 0 to 2*PI
-   ColVec x = Linspace(0, 2 * Pi, 200);
+   ColVec x = Linspace(0, 2 * pi, 200);
    ColVec y = Sin(x);
 
    // Render plot
@@ -237,7 +237,7 @@ To generate a plot, simply prepare your independent and dependent data arrays an
    Title("Sine Wave");
    Xlabel("Angle (radians)");
    Ylabel("Amplitude");
-   Grid(true);
+   GridOn();
 
 Multi-Curve Plots & Legends
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

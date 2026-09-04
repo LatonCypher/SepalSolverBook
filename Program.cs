@@ -1,6 +1,9 @@
 ﻿
 using ConsoleApp1;
 {
+    double[]p = [1.0, -3.0, -1.0, 3.0, 5.0];
+    var roots = Roots(p);
+    Console.WriteLine(string.Join("\n", roots));
     currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents";
     Writer.Run();
     {
