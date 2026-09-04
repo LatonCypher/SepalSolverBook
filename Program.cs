@@ -1,6 +1,44 @@
 ﻿
 using ConsoleApp1;
 {
+    currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents\\";
+    {
+        // Damping Systems
+        double stiffness = 2.5, damping = 0.2, mass = 1.0, k = stiffness / mass,
+            c = damping / mass, t = 0, dt = 1.0 / 15;
+        ColVec Dynamic(ColVec y) => new double[] { y[1], -(k * y[0] + c * y[1]) / mass };
+        ColVec Evolve(ColVec y, double t) => rk4((t, y) => Dynamic(y), t, y, dt);
+        double[] y0 = [1.5, 0]; ColVec y = y0;
+
+        HoldOn();
+        var rec = Rectangle([-4, -7, 3, 7], 0.5); rec.FillColor = [0.2, 0.2, 0.2];
+        rec = Rectangle([-0.5, -3.5, 1, 8.5], 0.1); rec.FillColor = [0.7, 0.7, 0.7];
+        rec = Rectangle([-1, -4, 2, 1], 1); rec.FillColor = [0.0, 0.0, 0.0];
+        var body = Rectangle([-0.9, y[0] - 0.5, 1.8, 3], 0.2); body.FillColor = [0.0, 0.0, 0.0];
+        var Marker = Fill([1.5, 1.5, 2], [2.2, 2.8, 2.5], "r");
+        ColVec my = Marker.Ydata - y[0], z = Linspace(-3, 1, 321), 
+            w = ((z + 3) * 4 * pi) % (2 * pi), x = 0.7 * Sin(w);
+        x[0.75 * pi < w & w < 1.25 * pi] = double.NaN;
+        var Spring = Plot(x, z, "k", 5);
+        Plot([1.5, 14], [1, 1], "k"); 
+        Plot([2, 2], [-2, 4], "k");
+        var plt = Plot([2], [2.5], "r", 3);
+        Axis([-5, 15, -8, 6]); 
+        HoldOff(); AxisOff();
+
+        byte[] AnimFunc(int i)
+        {
+            y = Evolve(y, t); t += dt;
+            body.Y = y[0] - 0.5;
+            Spring.Ydata = Linspace(-3, y[0] - 0.5, 321);
+            Marker.Ydata = my + y[0];
+            plt.Xdata = Vcart(2, plt.Xdata + 0.02);
+            plt.Ydata = Vcart(y[0] + 1, plt.Ydata);
+            return GetFrame(800, 560);
+        }
+        AnimationMaker(AnimFunc, "Damper-Simulation.gif", 30, 200);
+        CloseFig();
+    }
     {
         // Define polynomial coefficients: f(x) = x^4 - 3x^3 - x^2 + 3x
         double[] p = [1.0, -3.0, -1.0, 3.0, 0.0];
@@ -21,11 +59,11 @@ using ConsoleApp1;
 
         // 3. Visualize curve and highlight zero-axis
         Scatter(realroots, Zeros(N - 1), "for", 15); HoldOn();
-        Plot(x, y, "b", 2); Hline(0); HoldOff();
+        Plot(x, y, "b", 5); Hline(0); HoldOff();
         Title("Polynomial Function f(x) = x^4 - 3x^3 - x^2 + 3x");
         Xlabel("x"); Ylabel("f(x)"); GridOn();
+        SaveAs("Polynomial.png");
     }
-    currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents";
     Writer.Run();
     {
         //Func<double, double> J0, J1;

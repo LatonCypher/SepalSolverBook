@@ -8,8 +8,8 @@
     ".NETCoreApp,Version=v10.0": {
       "ConsoleApp1/1.0.0": {
         "dependencies": {
-          "SepalSolver": "1.1.8.3",
-          "SepalSolver.PlotLib": "1.1.8.3"
+          "SepalSolver": "1.2.5",
+          "SepalSolver.PlotLib": "1.2.5"
         },
         "runtime": {
           "ConsoleApp1.dll": {}
@@ -813,7 +813,7 @@
           }
         }
       },
-      "SepalSolver/1.1.8.3": {
+      "SepalSolver/1.2.5": {
         "dependencies": {
           "Highs.Native": "1.14.0",
           "MKL.NET": "1.6.0",
@@ -823,12 +823,12 @@
         },
         "runtime": {
           "SepalSolver.dll": {
-            "assemblyVersion": "1.1.8.3",
-            "fileVersion": "1.1.8.3"
+            "assemblyVersion": "1.2.5.0",
+            "fileVersion": "1.2.5.0"
           }
         }
       },
-      "SepalSolver.PlotLib/1.1.8.3": {
+      "SepalSolver.PlotLib/1.2.5": {
         "dependencies": {
           "CSharpMath": "0.5.1",
           "CSharpMath.SkiaSharp": "0.5.1",
@@ -836,12 +836,12 @@
           "Magick.NET-Q16-AnyCPU": "14.10.0",
           "Magick.NET.Core": "14.10.0",
           "ScottPlot": "5.1.57",
-          "SepalSolver": "1.1.8.3"
+          "SepalSolver": "1.2.5"
         },
         "runtime": {
           "SepalSolver.PlotLib.dll": {
-            "assemblyVersion": "1.1.8.3",
-            "fileVersion": "1.1.8.3"
+            "assemblyVersion": "1.2.5.0",
+            "fileVersion": "1.2.5.0"
           }
         }
       }
@@ -1035,12 +1035,12 @@
       "path": "system.drawing.common/10.0.8",
       "hashPath": "system.drawing.common.10.0.8.nupkg.sha512"
     },
-    "SepalSolver/1.1.8.3": {
+    "SepalSolver/1.2.5": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "SepalSolver.PlotLib/1.1.8.3": {
+    "SepalSolver.PlotLib/1.2.5": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
