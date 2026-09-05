@@ -2,6 +2,27 @@
 using ConsoleApp1;
 {
     currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents\\";
+    Writer.Run();
+    {
+        HoldOn();
+        var Wall = Rectangle([-0.5, -1.5, 0.5, 3], 0.2); Wall.FillColor = [0.8, 0.8, 0.8];
+        var Block = Rectangle([5, -1, 2, 2], 0.2); Block.FillColor = [0, 0.2, 1];
+        ColVec x = Linspace(0, 5, 21), y = 0.5 * Sin(2 * pi * x); y[1] = 0; y[^2] = 0;
+        var Spring = Plot(x, y, "k", 5);
+        Axis([-2, 8, -2, 2]);
+        AxisOff(); AxisEqual(); HoldOff();
+        double tn = 0, dt = 0.03;
+        ColVec xn = Zeros(2); xn[0] = Block.X - 3;
+        ColVec Dynamic(double t, ColVec x) => new double[] { x[1], -10 * x[0] };
+        byte[] AnimFunc(int i)
+        {
+            xn = rk4(Dynamic, tn, xn, dt); tn += dt;
+            Block.X = xn[0] + 3; Spring.Xdata = x * Block.X / 5;
+            return GetFrame(500, 300);
+        }
+        AnimationMaker(AnimFunc, "Vibration.gif", 30, 600);
+        CloseFig();
+    }
     {
         // Damping Systems
         double stiffness = 2.5, damping = 0.2, mass = 1.0, k = stiffness / mass,
@@ -64,7 +85,6 @@ using ConsoleApp1;
         Xlabel("x"); Ylabel("f(x)"); GridOn();
         SaveAs("Polynomial.png");
     }
-    Writer.Run();
     {
         //Func<double, double> J0, J1;
         //J0 = (x) => BesselJ(0, x); J1 = (x) => BesselJ(1, x);

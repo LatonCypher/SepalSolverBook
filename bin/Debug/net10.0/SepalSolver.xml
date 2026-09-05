@@ -809,7 +809,7 @@
              </terminal>
              </example>
         </member>
-        <member name="M:SepalSolver.Math.Fliplr(SepalSolver.Matrix)">
+        <member name="M:SepalSolver.Math.Flip(System.Double[])">
              <summary>
              Flips a matrix horizontally (left-right), reversing the order of columns while preserving the order of rows.
              This function returns a new matrix where the first column becomes the last column, the second column becomes the second-to-last column, and so on.
@@ -1132,6 +1132,13 @@
                 7.000  8.000  4.000
              </terminal>
              </example>
+        </member>
+        <member name="M:SepalSolver.Math.Compan(System.Double[])">
+            <summary>
+            Constructs the companion matrix for a given polynomial represented by its coefficients.
+            </summary>
+            <param name="A"></param>
+            <returns></returns>
         </member>
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Diag(SepalSolver.Matrix,System.Int32)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Spdiag(SepalSolver.SparseMatrix,System.Int32)" -->
