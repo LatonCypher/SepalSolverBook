@@ -282,27 +282,24 @@ Create a new script named ``PolynomialAnalysis.cs`` in the editor and enter the 
 .. code-block:: csharp
 
    // Define polynomial coefficients: f(x) = x^4 - 3x^3 - x^2 + 3x
-   double[] p = [1.0, -3.0, -1.0, 3.0, 0.0];
-   int N = p.Length;
+   double[] p = [1.0, -3.0, -1.0, 3.0, 0.0]; int N = p.Length - 1;
 
    // 1. Calculate polynomial roots
    Complex[] roots = Roots(p);
    Console.WriteLine("Computed Roots of Polynomial:");
-   for (int i = 0; i < N-1; i++)
-   {
+   for (int i = 0; i < N; i++)
        Console.WriteLine($"  Root {i + 1}: {roots[i].Real:F4}");
-   }
-   double[] realroots = [..roots.Select(r => r.Real)];
-
+    
+   double[] realroots = [.. roots.Select(r => r.Real)];
    // 2. Evaluate polynomial over a smooth domain
    ColVec x = Linspace(-1.5, 3.5, 400);
-   ColVec y = Arrayfun(x=>Polyval(p, x),x);
+   ColVec y = Arrayfun(x => Polyval(p, x), x);
 
    // 3. Visualize curve and highlight zero-axis
-   Scatter(realroots, Zeros(N-1), "for", 15); HoldOn();
-   Plot(x, y, "b", 2); Hline(0); HoldOff();
-   Title("Polynomial Function f(x) = x^4 - 3x^3 - x^2 + 3x");
-   Xlabel("x"); Ylabel("f(x)"); GridOn();
+   Scatter(realroots, Zeros(N), "for", 15); HoldOn();
+   Plot(x, y, "b", 2); Hline(0); GridOn(); HoldOff();
+   Title("f(x) = x^4 - 3x^3 - x^2 + 3x", 20, Latex);
+   Xlabel("x", 20, Latex); Ylabel("f(x)", 20, Latex); 
 
 Step 2: Run the Script
 ~~~~~~~~~~~~~~~~~~~~~~
