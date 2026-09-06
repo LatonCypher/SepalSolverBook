@@ -88,7 +88,7 @@ Examples
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -179,7 +179,7 @@ Division can be termwise, or the scaler times the inversion of the matrix.
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -246,7 +246,7 @@ A ``RowVec`` can be multiplied to the left of a ``ColVec`` to produce a scalar (
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -399,7 +399,7 @@ Transpose
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -434,7 +434,7 @@ where :math:`I` is the identity matrix.
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -468,7 +468,7 @@ Determinant
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -487,7 +487,7 @@ Determinant
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -544,7 +544,7 @@ RREF (Reduced Row Echelon Form)
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 

@@ -45,7 +45,7 @@ Examples
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -73,7 +73,7 @@ Examples
     
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -96,7 +96,7 @@ Examples
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -142,7 +142,7 @@ Overfitting can occur if the degree is too high, while underfitting can happen i
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -193,7 +193,7 @@ In SepalSolver, multivariate fitting is performed by constructing an augmented m
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -285,7 +285,7 @@ Examples
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    

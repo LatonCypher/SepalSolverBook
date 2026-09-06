@@ -55,7 +55,7 @@ If we have a matrix $A$ representing a grayscale image, we can use **SepalSolver
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 

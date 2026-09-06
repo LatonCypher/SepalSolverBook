@@ -20,7 +20,7 @@ For general polynomials, the most stable way to find all roots (including comple
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -53,7 +53,7 @@ Examples
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -80,7 +80,7 @@ Examples
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -102,7 +102,7 @@ Examples
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -143,7 +143,7 @@ Examples
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    

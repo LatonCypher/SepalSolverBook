@@ -46,7 +46,7 @@ Applied Examples
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -78,7 +78,7 @@ Applied Examples
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -111,7 +111,7 @@ Applied Examples
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -143,7 +143,7 @@ Applied Examples
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    

@@ -36,7 +36,7 @@ In SepalSolver, the Interp1 method performs 1D linear interpolation. It first se
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -62,7 +62,7 @@ Examples
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -85,7 +85,7 @@ Examples
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -151,7 +151,7 @@ In SepalSolver, `Interp2` requires:
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -181,7 +181,7 @@ Examples
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -209,7 +209,7 @@ Examples
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -247,7 +247,7 @@ Examples
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    

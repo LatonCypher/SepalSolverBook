@@ -36,7 +36,7 @@ Writing the algorithm manually allows for a deeper understanding of how the weig
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -90,7 +90,7 @@ where :math:`\xi` is some number in the interval :math:`[a, b]`. This indicates 
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 

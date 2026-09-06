@@ -3,100 +3,99 @@ using ConsoleApp1;
 {
     currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents\\";
     {
-        double L1 = 1.0, L2 = 1.0, m1 = 1.0, m2 = 1.0, g = 9.81;
-        ColVec dydt(double t, ColVec y)
-        {
-            double t1 = y[0], w1 = y[1], t2 = y[2], w2 = y[3], d = t1 - t2;
-            double den = 2 * m1 + m2 - m2 * Cos(2 * d);
-            double a1 = (-g * (2 * m1 + m2) * Sin(t1) - m2 * g * Sin(t1 - 2 * t2)
-                         - 2 * Sin(d) * m2 * (w2 * w2 * L2 + w1 * w1 * L1 * Cos(d)))
-                        / (L1 * den);
-            double a2 = (2 * Sin(d) * (w1 * w1 * L1 * (m1 + m2)
-                         + g * (m1 + m2) * Cos(t1) + w2 * w2 * L2 * m2 * Cos(d)))
-                        / (L2 * den);
-            double[] dy = [w1, a1, w2, a2];
-            return dy;
-        }
-        // 120 degrees and -10 degrees, released from rest
-        double[] y0 = [120 * pi / 180, 0, -10 * pi / 180, 0];
-        ColVec yn = y0; double tn = 0, dt = 0.03;
-        HoldOn();
-        var Wall = Rectangle([-1, 3, 2, 0.2], 0.2);
-        Wall.FillColor = [0.8, 0.8, 0.8];
-        double x1 = L1 * Sin(yn[0]), y1 = 3 - L1 * Cos(yn[0]),
-               x2 = x1 + L2 * Sin(yn[2]), y2 = y1 - L2 * Cos(yn[2]);
-        var Line = Plot([0, x1, x2], [3, y1, y2], "k", 3);
-        var B1 = Scatter(x1, y1, "for", Markersize: 30);
-        var B2 = Scatter(x2, y2, "fob", Markersize: 30);
-        HoldOff();
-        Axis([-2, 2, 0, 4]);
-        AxisEqual();
-        SaveAs("doubleP.png");
-        byte[] AnimFun(int i)
-        {
-            yn = rk4(dydt, tn, yn, dt);
-            tn += dt;
-            x1 = L1 * Sin(yn[0]); y1 = 3 - L1 * Cos(yn[0]);
-            x2 = x1 + L2 * Sin(yn[2]); y2 = y1 - L2 * Cos(yn[2]);
-            B1.Xdata = x1; B1.Ydata = y1;
-            B2.Xdata = x2; B2.Ydata = y2;
-            Line.Xdata = new double[] { 0, x1, x2 };
-            Line.Ydata = new double[] { 3, y1, y2 };
-            return GetFrame();
-        }
-        AnimationMaker(AnimFun, "doublePendulum.gif", 30, 400);
-        CloseFig();
+        //double L1 = 1.0, L2 = 1.0, m1 = 1.0, m2 = 1.0, g = 9.81;
+        //ColVec dydt(double t, ColVec y)
+        //{
+        //    double t1 = y[0], w1 = y[1], t2 = y[2], w2 = y[3], d = t1 - t2;
+        //    double den = 2 * m1 + m2 - m2 * Cos(2 * d);
+        //    double a1 = (-g * (2 * m1 + m2) * Sin(t1) - m2 * g * Sin(t1 - 2 * t2)
+        //                 - 2 * Sin(d) * m2 * (w2 * w2 * L2 + w1 * w1 * L1 * Cos(d)))
+        //                / (L1 * den);
+        //    double a2 = (2 * Sin(d) * (w1 * w1 * L1 * (m1 + m2)
+        //                 + g * (m1 + m2) * Cos(t1) + w2 * w2 * L2 * m2 * Cos(d)))
+        //                / (L2 * den);
+        //    double[] dy = [w1, a1, w2, a2];
+        //    return dy;
+        //}
+        //// 120 degrees and -10 degrees, released from rest
+        //double[] y0 = [120 * pi / 180, 0, -10 * pi / 180, 0];
+        //ColVec yn = y0; double tn = 0, dt = 0.03;
+        //HoldOn();
+        //var Wall = Rectangle([-1, 3, 2, 0.2], 0.2);
+        //Wall.FillColor = [0.8, 0.8, 0.8];
+        //double x1 = L1 * Sin(yn[0]), y1 = 3 - L1 * Cos(yn[0]),
+        //       x2 = x1 + L2 * Sin(yn[2]), y2 = y1 - L2 * Cos(yn[2]);
+        //var Line = Plot([0, x1, x2], [3, y1, y2], "k", 3);
+        //var B1 = Scatter(x1, y1, "for", Markersize: 30);
+        //var B2 = Scatter(x2, y2, "fob", Markersize: 30);
+        //HoldOff();
+        //Axis([-2, 2, 0, 4]);
+        //AxisEqual();
+        //SaveAs("doubleP.png");
+        //byte[] AnimFun(int i)
+        //{
+        //    yn = rk4(dydt, tn, yn, dt);
+        //    tn += dt;
+        //    x1 = L1 * Sin(yn[0]); y1 = 3 - L1 * Cos(yn[0]);
+        //    x2 = x1 + L2 * Sin(yn[2]); y2 = y1 - L2 * Cos(yn[2]);
+        //    B1.Xdata = x1; B1.Ydata = y1;
+        //    B2.Xdata = x2; B2.Ydata = y2;
+        //    Line.Xdata = new double[] { 0, x1, x2 };
+        //    Line.Ydata = new double[] { 3, y1, y2 };
+        //    return GetFrame();
+        //}
+        //AnimationMaker(AnimFun, "doublePendulum.gif", 30, 400);
+        //CloseFig();
 
     }
     {
-        // define masses
-        ColVec m = new double[] { 1, 2, 3, 4, 5, 6, 7 };
+        //// define masses
+        //ColVec m = new double[] { 1, 2, 3, 4, 5, 6, 7 };
 
 
-        // define function
-        ColVec pleiades(double t, ColVec q)
-        {
-            ColVec dqdt = Zeros(q.Numel);
-            dqdt[0..7] = q[14..21]; // x-velocity of stars
-            dqdt[7..14] = q[21..28]; // y-velocity of stars
-            Matrix dx = q[0..7] - q[0..7].T, dy = q[7..14] - q[7..14].T;
-            Matrix invr3 = Hypot(dx, dy).Pow(-3); invr3[(..).Step(8)] = 0;
-            dqdt[14..21] = invr3.Times(dx) * m; // x-acceleration of stars
-            dqdt[21..28] = invr3.Times(dy) * m; // y-acceleration of stars
-            return dqdt;
-        }
+        //// define function
+        //ColVec pleiades(double t, ColVec q)
+        //{
+        //    ColVec dqdt = Zeros(q.Numel);
+        //    dqdt[0..7] = q[14..21]; // x-velocity of stars
+        //    dqdt[7..14] = q[21..28]; // y-velocity of stars
+        //    Matrix dx = q[0..7] - q[0..7].T, dy = q[7..14] - q[7..14].T;
+        //    Matrix invr3 = Hypot(dx, dy).Pow(-3); invr3[(..).Step(8)] = 0;
+        //    dqdt[14..21] = invr3.Times(dx) * m; // x-acceleration of stars
+        //    dqdt[21..28] = invr3.Times(dy) * m; // y-acceleration of stars
+        //    return dqdt;
+        //}
 
-        double[] init = [3, 3,-1, -3, 2, -2, 2,
-                         3, -3, 2, 0, 0, -4, 4,
-                         0, 0, 0, 0, 0, 1.75, -1.5,
-                         0, 0, 0, -1.25, 1, 0, 0];
+        //double[] init = [3, 3,-1, -3, 2, -2, 2,
+        //                 3, -3, 2, 0, 0, -4, 4,
+        //                 0, 0, 0, 0, 0, 1.75, -1.5,
+        //                 0, 0, 0, -1.25, 1, 0, 0];
 
-        double[] tspan = Linspace(1, 15, 200);
-        var opts = Odeset(AbsTol: 1e-15, RelTol: 1e-13);
-        Figure(600, 500);
-        (ColVec T, Matrix Y) = Ode89(pleiades, init, tspan, opts);
-        Plot(Y[.., 0..7], Y[.., 7..14], ":");
-        Title("Position of Pleiades Stars, Solved by ODE89");
-        Xlabel("X Position"); Ylabel("y Position");
-        SaveAs("Position-of-Pleiades-Stars-Ode89.png");
+        //double[] tspan = Linspace(1, 15, 200);
+        //var opts = Odeset(AbsTol: 1e-15, RelTol: 1e-13);
+        //Figure(600, 500);
+        //(ColVec T, Matrix Y) = Ode89(pleiades, init, tspan, opts);
+        //Plot(Y[.., 0..7], Y[.., 7..14], ":");
+        //Title("Position of Pleiades Stars, Solved by ODE89");
+        //Xlabel("X Position"); Ylabel("y Position");
+        //SaveAs("Position-of-Pleiades-Stars-Ode89.png");
 
-        HoldOn();
-        ScatterHandle[] Stars = [..Enumerable.Range(0,7).Select(j =>
-                            Scatter(Y[0, j], Y[0, j + 7], "fo", 15))];
-        HoldOff();
-        byte[] Animfun(int i)
-        {
-            for (int j = 0; j < 7; j++)
-            {
-                Stars[j].Xdata = Y[i, j];
-                Stars[j].Ydata = Y[i, j + 7];
-            }
-            return GetFrame();
-        }
-        AnimationMaker(Animfun, "Position-of-Pleiades-Stars-CCL-Math-Ode89.gif", 10, 200);
-        CloseFig();
+        //HoldOn();
+        //ScatterHandle[] Stars = [..Enumerable.Range(0,7).Select(j =>
+        //                    Scatter(Y[0, j], Y[0, j + 7], "fo", 15))];
+        //HoldOff();
+        //byte[] Animfun(int i)
+        //{
+        //    for (int j = 0; j < 7; j++)
+        //    {
+        //        Stars[j].Xdata = Y[i, j];
+        //        Stars[j].Ydata = Y[i, j + 7];
+        //    }
+        //    return GetFrame();
+        //}
+        //AnimationMaker(Animfun, "Position-of-Pleiades-Stars-CCL-Math-Ode89.gif", 10, 200);
+        //CloseFig();
     }
-
     {
         //// A star and n small bodies under mutual gravity. State is flat:
         //// [x, y, vx, vy] per body, star first.

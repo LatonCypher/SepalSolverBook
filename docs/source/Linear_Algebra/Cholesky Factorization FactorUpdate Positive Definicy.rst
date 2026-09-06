@@ -73,7 +73,7 @@ Using SepalSolver, we call Chol on an instance of the matrix.
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -121,7 +121,7 @@ Like LU factors, Cholesky factors can be updated too, when the Matrix undergoes 
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 

@@ -16,7 +16,7 @@ To solve the equation: :math:`x\exp(x) = 2`, start with initial guess of :math:`
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -33,7 +33,7 @@ If we are sure of the interval containing the root, we can save the effort spent
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -56,7 +56,7 @@ To have window into the solution process, we can using solver setting `SolverSet
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -102,7 +102,7 @@ by setting the solver setting in the case of bracketed root, we can see how the 
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -139,7 +139,7 @@ SepalSolver also has gradient based "Fsolve", which can use finite difference, u
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -171,7 +171,7 @@ SepalSolver also has gradient based "Fsolve", which can use finite difference, u
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
@@ -201,7 +201,7 @@ SepalSolver also has gradient based "Fsolve", which can use finite difference, u
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 

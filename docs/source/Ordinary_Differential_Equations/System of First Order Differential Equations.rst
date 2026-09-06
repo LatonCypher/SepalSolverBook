@@ -309,7 +309,7 @@ These are examples of how to use SepalSolver to solve various systems of first-o
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
