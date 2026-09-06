@@ -28,3 +28,6 @@ In this chapter, we will explore different linear algebra methods, their impleme
    LU Facorization and FactorUpdate
    Solution of Linear Systems
    Cholesky Factorization FactorUpdate Positive Definicy
+   Generalized Cholesky Factorization and FactorUpdate
+   Singular Value Decomposition
+   Sparse Matrices
