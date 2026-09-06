@@ -90,7 +90,7 @@ Comparison: Linprog Formulation Levels
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -132,7 +132,7 @@ Comparison: Linprog Formulation Levels
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -174,7 +174,7 @@ Comparison: Linprog Formulation Levels
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    

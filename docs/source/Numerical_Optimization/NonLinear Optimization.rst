@@ -68,7 +68,7 @@ including gradient-based methods, derivative-free methods, and global optimizati
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -98,7 +98,7 @@ including gradient-based methods, derivative-free methods, and global optimizati
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -143,7 +143,7 @@ including gradient-based methods, derivative-free methods, and global optimizati
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -186,7 +186,7 @@ including gradient-based methods, derivative-free methods, and global optimizati
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -218,7 +218,7 @@ including gradient-based methods, derivative-free methods, and global optimizati
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
@@ -256,12 +256,12 @@ including gradient-based methods, derivative-free methods, and global optimizati
    
    
    
- Ouput
+Ouput
    
    .. terminal::
    
       Stopping: no improvement for too long.
       x = 
-         0.9887    0.9683
+         0.9938    0.9825
       
 

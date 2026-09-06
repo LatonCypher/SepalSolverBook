@@ -108,3 +108,5 @@ Content
    Solution_of_Nonlinear_System/index
    Integration/index
    Ordinary_Differential_Equations/index
+   Numerical_Optimization/index
+   Partial_Differential_Equations/index

@@ -244,7 +244,7 @@ It is important to note that pdepe can be invoked with a shothand form as shown 
 
 
 
- Ouput
+Ouput
 
 .. terminal::
 
