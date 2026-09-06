@@ -239,23 +239,31 @@ To generate a plot, simply prepare your independent and dependent data arrays an
    Ylabel("Amplitude");
    GridOn();
 
+.. figure:: images/Sine.png
+   :align: center
+   :alt: Sine.png
+
 Multi-Curve Plots & Legends
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Multiple curves can be overlaid on the same canvas with custom colors, line widths, and legend labels:
 
 .. code-block:: csharp
 
-  ColVec x = Linspace(0, 10, 300), decay = Exp(-0.2*x);
-  ColVec y1 = Cos(2 * x).Times(decay);
-  ColVec y2 = decay, y3 = -decay;
+   ColVec x = Linspace(0, 10, 300), decay = Exp(-0.2*x);
+   ColVec y1 = Cos(2 * x).Times(decay);
+   ColVec y2 = decay, y3 = -decay;
 
-  Plot(x, y1, Linewidth: 2); HoldOn();
-  Plot(x, y2, Linestyle: "--", Linewidth: 2);
-  Plot(x, y3, Linestyle: "--", Linewidth: 2);
-  Legend(["Response", "Upper Envelope", "Lower Envelope"]);
-  Title("Damped Harmonic Response");
-  Xlabel("Time (s)");
-  Ylabel("Displacement (m)");
+   Plot(x, y1, Linewidth: 2); HoldOn();
+   Plot(x, y2, Linestyle: "--", Linewidth: 2);
+   Plot(x, y3, Linestyle: "--", Linewidth: 2);
+   Legend(["Response", "Upper Envelope", "Lower Envelope"]);
+   Title("Damped Harmonic Response");
+   Xlabel("Time (s)");
+   Ylabel("Displacement (m)");
+
+.. figure:: images/DecayingSineWave.png
+   :align: center
+   :alt: DecayingSineWave.png
 
 
 6. Inspecting Variables and Matrices
