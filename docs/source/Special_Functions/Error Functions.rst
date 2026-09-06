@@ -2,8 +2,8 @@ Error Functions
 ===============
 
 
-Error Function (:math:`\text{erf}`)
------------------------------------
+Error Function (:math:`\erf(x)`)
+--------------------------------
 
 The error function :math:`\text{erf}(x)` is a non-elementary function that
 occurs in probability, statistics, and partial differential equations. It
@@ -103,12 +103,12 @@ These are the CDF and Survival functions of the Gamma distribution.
    :alt: IncGamma.png
 
 
-LnGamma :math:`\text{LnGamma}`
-------------------------------
+LnGamma :math:`\ln\Gamma(z)`
+----------------------------
 
 Definition and Purpose
 ~~~~~~~~~~~~~~~~~~~~~~
-The :math:\text{LnGamma} function, denoted as :math:`\ln\Gamma(z)`, is the natural logarithm of the Gamma function. While it might seem redundant to have a separate function for the log of an existing function, it is essential for numerical computing.
+The LnGamma function, denoted as :math:`\ln\Gamma(z)`, is the natural logarithm of the Gamma function. While it might seem redundant to have a separate function for the log of an existing function, it is essential for numerical computing.
 
 * The Overflow Problem: The Gamma function :math:`\Gamma(z)` grows at a "factorial" rate. For example, :math:`\Gamma(172)` is approximately :math:`1.24 \times 10^{307}`, which is the limit of double-precision floating-point numbers. Any value larger than 171 will result in an Inf (overflow) error.
 * The Solution: By working in "log-space," we can handle  calculations involving massive factorials without crashing the program.
@@ -132,13 +132,13 @@ Application: Bayesian Statistics
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In Bayesian inference and likelihood calculations, we often multiply many probabilities together, many of which involve Gamma functions (like in the Beta or Gamma distributions). Multiplying many tiny numbers
-leads to "underflow." Instead, we sum the :math:`\text{LnGamma}` values to stay within a safe numerical range.
+leads to "underflow." Instead, we sum the :math:`\ln\Gamma(z)` values to stay within a safe numerical range.
 
 
 .. code-block:: csharp
 
    // Demonstrate the benefit of gammaln over log(gamma)
-   
+
    ColVec x = 1..200;
 
    // This will fail/overflow after x = 171

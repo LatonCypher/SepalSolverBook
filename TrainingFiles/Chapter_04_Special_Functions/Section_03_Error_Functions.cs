@@ -6,7 +6,7 @@
         {
             /// <BookContent>
             ///
-            /// <header 2> Error Function (:math:`\text{erf}`) </header>
+            /// <header 2> Error Function (:math:`\erf(x)`)</header>
             ///
             /// The error function :math:`\text{erf}(x)` is a non-elementary function that
             /// occurs in probability, statistics, and partial differential equations. It
@@ -83,10 +83,10 @@
             }
             /// </code>
             /// 
-            /// <header 2> LnGamma :math:`\text{LnGamma}`</header>
+            /// <header 2> LnGamma :math:`\ln\Gamma(z)`</header>
             ///
             /// <header 3> Definition and Purpose </header>
-            /// The :math:\text{LnGamma} function, denoted as :math:`\ln\Gamma(z)`, is the natural logarithm of the Gamma function. While it might seem redundant to have a separate function for the log of an existing function, it is essential for numerical computing.
+            /// The LnGamma function, denoted as :math:`\ln\Gamma(z)`, is the natural logarithm of the Gamma function. While it might seem redundant to have a separate function for the log of an existing function, it is essential for numerical computing.
             ///
             /// * The Overflow Problem: The Gamma function :math:`\Gamma(z)` grows at a "factorial" rate. For example, :math:`\Gamma(172)` is approximately :math:`1.24 \times 10^{307}`, which is the limit of double-precision floating-point numbers. Any value larger than 171 will result in an Inf (overflow) error.
             /// * The Solution: By working in "log-space," we can handle  calculations involving massive factorials without crashing the program.
@@ -106,12 +106,12 @@
             /// <header 3> Application: Bayesian Statistics </header>
             ///
             /// In Bayesian inference and likelihood calculations, we often multiply many probabilities together, many of which involve Gamma functions (like in the Beta or Gamma distributions). Multiplying many tiny numbers
-            /// leads to "underflow." Instead, we sum the :math:`\text{LnGamma}` values to stay within a safe numerical range.
+            /// leads to "underflow." Instead, we sum the :math:`\ln\Gamma(z)` values to stay within a safe numerical range.
             /// 
             /// <code>
             {
                 // Demonstrate the benefit of gammaln over log(gamma)
-                
+
                 ColVec x = 1..200;
 
                 // This will fail/overflow after x = 171
