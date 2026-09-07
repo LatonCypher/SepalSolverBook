@@ -24,3 +24,5 @@ In this chapter, we will explore different numerical methods for solving ODEs, t
 
    First Order Differential Equation
    System of First Order Differential Equations
+   Higher Order Differential Equations
+   Stiff Differntial Equations
