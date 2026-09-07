@@ -105,3 +105,4 @@ Content
    Interpolation/index
    Special_Functions/index
    Linear_Algebra/index
+   Solution_of_Nonlinear_System/index

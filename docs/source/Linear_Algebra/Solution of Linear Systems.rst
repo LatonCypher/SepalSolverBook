@@ -40,7 +40,9 @@ matrices that are symmetric and positive-definite.
 
 
 
+
 Ouput
+
 
 .. terminal::
 
@@ -88,7 +90,9 @@ SepalSolver provides two major iterative solvers. Conjugate Gradient (`ConjGrad`
    
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -120,7 +124,9 @@ Ouput
    
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -172,7 +178,9 @@ Consider a phenomenon in which temperature and pressure are linearly related. i.
 
 
 
+
 Ouput
+
 
 .. terminal::
 

@@ -117,7 +117,9 @@ A SparseMatrix can be made in the following ways:
 
 
 
+
 Ouput
+
 
 .. terminal::
 
@@ -137,7 +139,9 @@ Ouput
 
 
 
+
 Ouput
+
 
 .. terminal::
 
@@ -159,7 +163,9 @@ Ouput
 
 
 
+
 Ouput
+
 
 .. terminal::
 
@@ -222,7 +228,9 @@ Here we look at the incomplete LU and Cholesky, since the complete form as been 
 
 
 
+
 Ouput
+
 
 .. terminal::
 
@@ -282,7 +290,9 @@ Ouput
 
 
 
+
 Ouput
+
 
 .. terminal::
 
@@ -346,7 +356,9 @@ Ouput
 
 
 
+
 Ouput
+
 
 .. terminal::
 

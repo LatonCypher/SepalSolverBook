@@ -44,7 +44,9 @@ and :math:`Ux = y` using forward and backward substitution.
 
 
 
+
 Ouput
+
 
 .. terminal::
 
@@ -140,7 +142,9 @@ to the standard matrix addition.
 
 
 
+
 Ouput
+
 
 .. terminal::
 
