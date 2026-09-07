@@ -93,7 +93,9 @@ Examples
     
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -113,7 +115,9 @@ Ouput
     
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -134,7 +138,9 @@ Ouput
     
    
    
+
 Ouput
+
    
    .. terminal::
    

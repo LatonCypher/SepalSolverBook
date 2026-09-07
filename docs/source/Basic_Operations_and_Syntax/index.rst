@@ -53,7 +53,9 @@ In this example, we see how to declare a variable and assign it a value. In Sepa
  
 
 
+
 Ouput
+
 
 .. terminal::
 
@@ -131,7 +133,9 @@ In this example, we see how to declare a variable and assign it a value. In Sepa
  
 
 
+
 Ouput
+
 
 .. terminal::
 

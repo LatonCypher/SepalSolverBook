@@ -26,7 +26,9 @@ Adding or subtracting polynomials involves summing the coefficients of correspon
 
 
 
+
 Ouput
+
 
 .. terminal::
 
@@ -52,7 +54,9 @@ Multiplying two polynomials is mathematically equivalent to the convolution of t
 
 
 
+
 Ouput
+
 
 .. terminal::
 
@@ -77,7 +81,9 @@ Polynomial division is implemented via deconvolution (synthetic division). Divid
 
 
 
+
 Ouput
+
 
 .. terminal::
 
@@ -106,7 +112,9 @@ Examples
    
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -129,7 +137,9 @@ In root-finding verification, you might want to multiply factors :math:`(x - r_1
    
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -150,7 +160,9 @@ Ouput
    
    
    
+
 Ouput
+
    
    .. terminal::
    

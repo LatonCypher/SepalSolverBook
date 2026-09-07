@@ -42,7 +42,9 @@ Examples
    
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -62,7 +64,9 @@ Ouput
     
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -84,7 +88,9 @@ In this case, we have a set of measurements in a ColVec and we want to pass them
     
    
    
+
 Ouput
+
    
    .. terminal::
    

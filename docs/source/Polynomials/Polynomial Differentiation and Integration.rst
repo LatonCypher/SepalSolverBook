@@ -24,7 +24,9 @@ The derivative of a polynomial :math:`P(x) = a_0 x^n + a_1 x^{n-1} + ... + a_n` 
    
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -50,7 +52,9 @@ The indefinite integral of a polynomial is computed by applying the reverse of t
    
    
    
+
 Ouput
+
    
    .. terminal::
    

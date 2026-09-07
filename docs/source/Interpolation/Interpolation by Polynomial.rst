@@ -64,7 +64,9 @@ Examples
    
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -170,7 +172,9 @@ The idea of using polynomial fits can be extended to multiple dimensions. For ex
    
    
    
+
 Ouput
+
    
    .. terminal::
    
