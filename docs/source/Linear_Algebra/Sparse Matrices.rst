@@ -127,6 +127,8 @@ Ouput
     Non-zero elements  = 3
     Sparsity = 0.1875
 
+
+
 **Rows, Columns and Values**
 
 .. code-block:: csharp
@@ -148,6 +150,8 @@ Ouput
     Total elements = 16
     Non-zero elements  = 3
     Sparsity = 0.1875
+
+
 
 **Assigning Values**
 
@@ -172,8 +176,14 @@ Ouput
     Total elements = 16
     Non-zero elements  = 3
     Sparsity = 0.1875
+
+
+Inbuilt Matrices
+~~~~~~~~~~~~~~~~
 SepalSolver also has inbuilt Sparsematrices that can be loaded without manually creating them as started above.
 examples of these are : Squid and Bucky
+
+
 
 Visualisation
 -------------
@@ -190,9 +200,12 @@ SparseMatrices sparsity partterns can be visualized using Spy in the Plotlibrary
    :align: center
    :alt: Squid-Pattern.png
 
+
+
 Arithmetic Operation
 --------------------
 All Operations supported by the Matrix class is also supported by the SparseMatrix Class. In addition to the standard matrix operation, sparse matrices can be reordered. Reordering is done to reduce fillin during matrix factorization.
+
 
 LU, iLU, Cholesky and iCholesky Factorization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -264,6 +277,7 @@ Ouput
 .. figure:: images/U_from_Incomplete_LU_Factorization_of _B.png
    :align: center
    :alt: U_from_Incomplete_LU_Factorization_of _B.png
+
 
 
 
@@ -339,6 +353,7 @@ Ouput
 
 
 
+
 .. code-block:: csharp
 
    Matrix A = new double[,] 
@@ -376,6 +391,9 @@ Ouput
     (4,3)            0.4817
     (4,4)            4.7094
    
+
+
+
 Reodering
 ---------
 Matrix rearrangement (or reordering) aims to find a permutation matrix :math:`P` such that the factorization of :math:`PAP^T` minimizes **fill-in**.
@@ -463,6 +481,8 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
 
 
 
+
+
 .. code-block:: csharp
 
    // Load squid matrix 
@@ -506,6 +526,8 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
 .. figure:: images/AMD_reordering_of_Squid.png
    :align: center
    :alt: AMD_reordering_of_Squid.png
+
+
 
 
 
@@ -578,6 +600,7 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
 
 
 
+
 .. code-block:: csharp
 
    SparseMatrix B = Bucky();
@@ -619,6 +642,7 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
 .. figure:: images/RCM_reordering_of_Bucky.png
    :align: center
    :alt: RCM_reordering_of_Bucky.png
+
 
 
 Sparse Matrix Slicing

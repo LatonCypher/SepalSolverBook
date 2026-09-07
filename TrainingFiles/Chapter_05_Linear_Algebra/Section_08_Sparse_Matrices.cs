@@ -103,6 +103,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             }
             /// </code>
             /// 
+            /// 
+            /// 
             /// **Rows, Columns and Values**
             /// <code>
             {
@@ -113,6 +115,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 Console.WriteLine($" Sparsity = {Asparse.sparsity}");
             }
             /// </code>
+            /// 
+            /// 
             /// 
             /// **Assigning Values**
             /// <code>
@@ -126,8 +130,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 Console.WriteLine($" Sparsity = {Asparse.sparsity}");
             }
             /// </code>
+            /// 
+            /// 
+            /// <header 3> Inbuilt Matrices </header>
             /// SepalSolver also has inbuilt Sparsematrices that can be loaded without manually creating them as started above.
             /// examples of these are : Squid and Bucky
+            /// 
+            /// 
             /// 
             /// <header 2> Visualisation </header>
             /// SparseMatrices sparsity partterns can be visualized using Spy in the Plotlibrary. 
@@ -138,8 +147,11 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 SaveAs("Squid-Pattern.png");
             }
             /// </code>
+            /// 
+            /// 
             /// <header 2> Arithmetic Operation </header>
             /// All Operations supported by the Matrix class is also supported by the SparseMatrix Class. In addition to the standard matrix operation, sparse matrices can be reordered. Reordering is done to reduce fillin during matrix factorization.
+            /// 
             /// 
             /// <header 3> LU, iLU, Cholesky and iCholesky Factorization </header>
             /// Just like Matrix class, LU, iLU, Cholesky and iCholesky factorization can be performed using 
@@ -173,6 +185,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             }
             /// </code>
             /// 
+            /// 
             /// <code>
             {
                 // Incomplete Cholesky Factorization of a Sparse Matrix
@@ -196,6 +209,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             }
             /// </code>
             /// 
+            /// 
             /// <code>
             {
                 Matrix A = new double[,] 
@@ -212,6 +226,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 Console.WriteLine(B.L_chol);
             }
             /// </code>
+            /// 
+            /// 
+            /// 
             /// <header 2> Reodering </header>
             /// Matrix rearrangement (or reordering) aims to find a permutation matrix :math:`P` such that the factorization of :math:`PAP^T` minimizes **fill-in**.
             /// 
@@ -278,6 +295,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             }
             /// </code>
             /// 
+            /// 
+            /// 
             /// <code>
             {
                 // Load squid matrix 
@@ -318,6 +337,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 CloseFig();
             }
             /// </code>
+            /// 
+            /// 
             /// 
             /// <code>
             {
@@ -381,7 +402,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
             }
             /// </code>
             /// 
-            /// /// <code>
+            /// 
+            /// <code>
             {
                 SparseMatrix B = Bucky();
                 B += 20 * Speye(B.Rows);
@@ -419,6 +441,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
                 CloseFig();
             }
             /// </code>
+            /// 
             /// 
             /// <header 3> Sparse Matrix Slicing </header>
             /// Like dense matrices, sparse matrices can also be sliced and this is demonstracted in the example below
