@@ -23,3 +23,4 @@ In this chapter, we will explore different numerical methods for solving ODEs, t
 .. toctree::
 
    First Order Differential Equation
+   System of First Order Differential Equations
