@@ -59,7 +59,9 @@ Examples
    
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -98,7 +100,9 @@ Ouput
    
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -129,7 +133,9 @@ Ouput
    
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -259,7 +265,9 @@ The SepalSolver also allow for easy computation of matrix equations. For instanc
    
    
    
+
 Ouput
+
    
    .. terminal::
    

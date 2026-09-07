@@ -106,3 +106,5 @@ Content
    Special_Functions/index
    Linear_Algebra/index
    Solution_of_Nonlinear_System/index
+   Integration/index
+   Ordinary_Differential_Equations/index

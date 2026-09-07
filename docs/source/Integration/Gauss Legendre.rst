@@ -60,7 +60,9 @@ Applied Examples (Solved via Simple Solver)
    
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -92,7 +94,9 @@ Ouput
    
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -124,7 +128,9 @@ Ouput
    
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -180,7 +186,9 @@ It is abole to compute upto 4 dimensional integrals efficiently.
    
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -219,7 +227,9 @@ Ouput
    
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -261,7 +271,9 @@ Ouput
    
    
    
+
 Ouput
+
    
    .. terminal::
    
@@ -303,7 +315,9 @@ Ouput
    
    
    
+
 Ouput
+
    
    .. terminal::
    
