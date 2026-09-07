@@ -73,7 +73,9 @@ Enforcing integer restrictions on selected decision variables by providing an in
 
 
 
+
 Ouput
+
 
 .. terminal::
 
@@ -113,7 +115,9 @@ Combining integer variable restrictions with linear equality systems :math:`\mat
 
 
 
+
 Ouput
+
 
 .. terminal::
 
@@ -158,7 +162,9 @@ Solving a fully constrained MILP with explicit lower (:math:`\mathbf{Lb}`) and u
 
 
 
+
 Ouput
+
 
 .. terminal::
 
