@@ -271,14 +271,16 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    
    
    
+
 Ouput
+
    
    .. terminal::
    
       Summary of statistics by Ode43i
               68 successful steps
               9 failed attempts
-              2284 function evaluations
+              2283 function evaluations
               77 partial derivatives
               284 LU decompositions
               1459 solutions of linear systems
@@ -350,7 +352,9 @@ Ouput
    
    
    
+
 Ouput
+
    
    .. terminal::
    
