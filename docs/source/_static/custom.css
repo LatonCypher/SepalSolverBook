@@ -283,6 +283,27 @@ div[class*="highlight"] {
     overflow-x: auto !important;
 }
 
+/* Reset inner highlight wrapper inside outer code block containers to eliminate double borders */
+.rst-content div[class^="highlight"] div.highlight,
+.rst-content div[class*="highlight"] div.highlight,
+.rst-content div[class^="highlight"] .highlight,
+.rst-content div[class*="highlight"] .highlight,
+.rst-content div.literal-block-wrapper div[class^="highlight"],
+.rst-content div.literal-block-wrapper div.highlight,
+div[class^="highlight"] div.highlight,
+div[class*="highlight"] div.highlight,
+div.literal-block-wrapper div[class^="highlight"],
+div.literal-block-wrapper div.highlight {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: visible !important;
+}
+
 /* Pre block formatting - Zero Margin All Sides */
 .rst-content div[class^="highlight"] pre,
 .rst-content div[class*="highlight"] pre,
@@ -532,6 +553,61 @@ button.copybtn:hover {
 .rst-content .example div.terminal,
 .rst-content .example pre.terminal {
     margin: 0 !important;
+}
+
+/* Reset inner highlight wrapper inside Example and Admonition blocks to eliminate double borders */
+.rst-content .admonition div[class^="highlight"] div.highlight,
+.rst-content .admonition div[class*="highlight"] div.highlight,
+.rst-content .admonition div[class^="highlight"] .highlight,
+.rst-content .admonition div[class*="highlight"] .highlight,
+.rst-content .admonition div.literal-block-wrapper div[class^="highlight"],
+.rst-content .admonition div.literal-block-wrapper div.highlight,
+.rst-content .admonition div.literal-block-wrapper .highlight,
+.rst-content .example-box div[class^="highlight"] div.highlight,
+.rst-content .example-box div[class*="highlight"] div.highlight,
+.rst-content .example-box div[class^="highlight"] .highlight,
+.rst-content .example-box div[class*="highlight"] .highlight,
+.rst-content .example-box div.literal-block-wrapper div[class^="highlight"],
+.rst-content .example-box div.literal-block-wrapper div.highlight,
+.rst-content .example div[class^="highlight"] div.highlight,
+.rst-content .example div[class*="highlight"] div.highlight,
+.rst-content .example div[class^="highlight"] .highlight,
+.rst-content .example div[class*="highlight"] .highlight,
+.rst-content .example div.literal-block-wrapper div[class^="highlight"],
+.rst-content .example div.literal-block-wrapper div.highlight,
+.rst-content [class*="example"] div[class^="highlight"] div.highlight,
+.rst-content [class*="example"] div[class*="highlight"] div.highlight,
+.rst-content [class*="example"] div[class^="highlight"] .highlight,
+.rst-content [class*="example"] div[class*="highlight"] .highlight,
+.rst-content [class*="example"] div.literal-block-wrapper div[class^="highlight"],
+.rst-content [class*="example"] div.literal-block-wrapper div.highlight {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: visible !important;
+}
+
+/* Ensure code block container inside Example and Admonition blocks has exactly 1 clean border and reset inherited side padding */
+.rst-content .admonition > div[class^="highlight"],
+.rst-content .admonition > div[class*="highlight"],
+.rst-content .admonition > div.literal-block-wrapper,
+.rst-content .example-box > div[class^="highlight"],
+.rst-content .example-box > div[class*="highlight"],
+.rst-content .example-box > div.literal-block-wrapper,
+.rst-content .example > div[class^="highlight"],
+.rst-content .example > div[class*="highlight"],
+.rst-content .example > div.literal-block-wrapper,
+.rst-content [class*="example"] > div[class^="highlight"],
+.rst-content [class*="example"] > div[class*="highlight"],
+.rst-content [class*="example"] > div.literal-block-wrapper {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border: 1px solid var(--ss-border-code) !important;
+    border-radius: var(--ss-radius-md) !important;
 }
 
 /* ==========================================================================

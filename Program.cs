@@ -148,7 +148,6 @@ using ConsoleApp1;
         //AxisEqual(); Title("Five bodies around a star");
         //Xlabel("x"); Ylabel("y");
     }
-
     Writer.Run();
     {
         HoldOn();

@@ -150,7 +150,7 @@ Examples
       (ColVec T, ColVec Y) = Dde45(ddefun, yhistory, tspan, dely, delyp);
    
       // Plot numerical result against exact analytical curve
-      Scatter(T, Y, "ro", 15); HoldOn();
+      Scatter(T, Y, "ro", 10); HoldOn();
       Plot(T, Cos(T), "b-"); HoldOff();
    
       Title("Neutral DDE: Comparison with Exact Solution cos(t)");
