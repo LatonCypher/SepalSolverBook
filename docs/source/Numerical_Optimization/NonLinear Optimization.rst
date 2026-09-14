@@ -274,6 +274,6 @@ Ouput
    
       Stopping: no improvement for too long.
       x = 
-         0.9416    0.8810
+         0.9832    0.9733
       
 

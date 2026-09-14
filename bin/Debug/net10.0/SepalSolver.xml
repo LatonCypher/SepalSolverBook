@@ -1772,9 +1772,9 @@
              <summary>
              Reads a two-dimensional elements in matrix from a file.
              This method loads space-separated integers from each line of the specified file and constructs a matrix representation.
-             <code>
+             <signature>
                 Matrix ReadMatrix(string filename)
-             </code>
+             </signature>
              </summary>
              <param name="filename">
              The path to the input file containing the matrix data.
@@ -1785,9 +1785,6 @@
              <example>
              Read a matrix from a file named "matrix.txt":
              <code>
-                // Import libraries
-                using System;
-                using static SepalSolver.Math
              
                 string path = "matrix.txt";
             
@@ -1797,20 +1794,15 @@
                 // Display contents
                 Console.WriteLine(matrix)
              </code>
-             <terminal>
-                1 2 3  
-                4 5 6  
-                7 8 9
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.ReadRowVec(System.String)">
             <summary>
             Reads a row vector of numbers from a file.
             This method parses a single line of space-separated values from the specified file and constructs a one-dimensional matrix representation.
-            <code>
+            <signature>
                RowVec ReadRowVec(string filename)
-            </code>
+            </signature>
             </summary>
             <param name="filename">
             The path to the input file containing the row vector data.
@@ -1833,18 +1825,15 @@
                // Display contents
                Console.WriteLine(rowVec);
             </code>
-            <terminal>
-               10 20 30 40
-            </terminal>
             </example>
         </member>
         <member name="M:SepalSolver.Math.ReadColVec(System.String)">
              <summary>
              Reads a column vector of numbers from a file.
              This method parses multiple lines of input from the specified file, with each line representing a single value in the column vector.
-             <code>
+             <signature>
                 ColVec ReadColVec(string filename)
-             </code>
+             </signature>
              </summary>
              <param name="filename">
              The path to the input file containing the column vector data.
@@ -1867,21 +1856,15 @@
                 // Output result
                 Console.WriteLine(colVec);
              </code>
-             <terminal>
-                11  
-                22  
-                33  
-                44
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.WriteMatrix(SepalSolver.Matrix,System.String)">
              <summary>
              Writes a two-dimensional matrix of integers to a file.
              This method serializes the matrix in space-separated format, with each row written on a new line in the target file.
-             <code>
+             <signature>
                 void WriteMatrix(Matrix A, string filename)
-             </code>
+             </signature>
              </summary>
              <param name="A">
              The matrix object to be written to the file.
@@ -1907,21 +1890,16 @@
                 // Write to file
                 WriteMatrix(A, path);
              </code>
-             <terminal>
-                (Contents of "matrixA.txt")
-                    12 18 3  
-                    15 25 30
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.All(System.Boolean[])">
              <summary>
              Determines whether all values in a one-dimensional or two-dimensional array are true.
              This method checks each element in the input array and returns true only if all values are true; otherwise, false.
-             <code>
+             <signature>
                 bool All(bool[] A)
                 bool All(bool[,] A)
-             </code>
+             </signature>
              </summary>
              <param name="A">
              The array of Boolean values to evaluate.
@@ -1943,19 +1921,16 @@
             
                 Console.WriteLine(result);
              </code>
-             <terminal>
-                True
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Any(System.Boolean[])">
              <summary>
              Determines whether any value in a one-dimensional or two-dimensional array is true.
              This method checks each element in the input array and returns true if at least one value is true; otherwise, false.
-             <code>
+             <signature>
                 bool Any(bool[] A)
                 bool Any(bool[,] A)
-             </code>
+             </signature>
              </summary>
              <param name="A">
              The array of Boolean values to evaluate.
@@ -1966,9 +1941,6 @@
              <example>
              Check if any value in an array or matrix is true
              <code>
-                // import libraries 
-                using System;
-                using static SepalSolver.Math;
                   
                 bool[] flags = { false, false, true };
             
@@ -1977,19 +1949,16 @@
             
                 Console.WriteLine(result);
              </code>
-             <terminal>
-                True
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Find(System.Boolean[],System.Int32)">
              <summary>
              Returns the indices of true values in a Boolean array or matrix, up to a maximum of k matches.
              This method scans the input array and collects the positions of all values that evaluate to true, up to the specified limit.
-             <code>
+             <signature>
                 Indexer Find(bool[] A, int k = int.MaxValue)
                 Indexer Find(bool[,] A, int k = int.MaxValue)
-             </code>
+             </signature>
              </summary>
              <param name="A">
              The Boolean array to search for matching true entries.
@@ -2003,9 +1972,6 @@
              <example>
              Find up to 3 indices where values are true:
              <code>
-                // import libraries 
-                using System;
-                using static SepalSolver.Math;
                 
                 bool[] mask = { false, true, false, true, true, true };
             
@@ -2016,18 +1982,15 @@
                 foreach (int i in result)
                     Console.Write(i + " ");
              </code>
-             <terminal>
-                1 3 4
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.DivRem(System.Int32,System.Int32)">
              <summary>
              Computes the quotient and remainder of integer division.
              This method performs an integer division of a dividend, a by a divisor, b and returns both the quotient and remainder as a tuple.
-             <code>
+             <signature>
                 (int, int) DivRem(int a, int b)
-             </code>
+             </signature>
              </summary>
              <param name="a">
              The dividend—value to be divided.
@@ -2041,29 +2004,23 @@
              <example>
              Divide 17 by 5 and get both the quotient and remainder:
              <code>
-                // import libraries 
-                using System;
-                using static SepalSolver.Math;
             
                 // Perform division
                 (int q, int r) = DivRem(17, 5);
             
                 Console.WriteLine($"Quotient: {q}, Remainder: {r}");
              </code>
-             <terminal>
-                Quotient: 3, Remainder: 2
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Num2Str(System.Double)">
              <summary>
              Converts a double-precision floating-point number to its string representation.
              This method transforms the numeric input into a human-readable string format, suitable for display or formatting purposes.
-             <code>
+             <signature>
                 string Num2Str(double num)
                 string Num2Str(int num)
                 string Num2Str(Complex num)
-             </code>
+             </signature>
              </summary>
              <param name="num">
              The <c>double</c> value to be converted.
@@ -2074,21 +2031,15 @@
              <example>
              Convert a double value to a string:
              <code>
-                // import libraries 
-                using System;
-                using static SepalSolver.Math;
-            
                 double pi = 3.14159;
                 string result = Num2Str(pi);
             
                 Console.WriteLine($"Pi as string: {result}");
              </code>
-             <terminal>
-                Pi as string: 3.14159
-             </terminal>
              </example>
         </member>
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Arrayfun(System.Func{System.Double,System.Double},SepalSolver.ColVec)" -->
+        <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Meshfun(System.Func{System.Double,System.Double,System.Double},SepalSolver.ColVec,SepalSolver.RowVec)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Reshape(System.Double[],System.Int32[])" -->
         <member name="M:SepalSolver.Math.Hypot(System.Double,System.Double)">
             <summary>
@@ -2096,7 +2047,7 @@
             .. math::
                \text{hypot}(x,y) = \sqrt{x^2 + y^2}
                
-            <code>
+            <signature>
                double Hypot(double x, double y)
                ColVec Hypot(ColVec x, double y)
                ColVec Hypot(double x, ColVec y)
@@ -2113,7 +2064,7 @@
                Matrix Hypot(Matrix x, RowVec y)
                Matrix Hypot(Matrix x, ColVec y)
                Matrix Hypot(ColVec x, Matrix y)
-            </code>
+            </signature>
             </summary>
             <param name="x">
             The length of one side of the triangle.
@@ -2127,44 +2078,27 @@
             <example>
             Compute the hypotenus of a triangle with sides 3 and 4
             <code>
-               // Import libraries
-               using System;
-               using SepalSolver;
-               using static SepalSolver.Math;
-               
                // Compute the hypotenus
                var hypotenuse = Hypot(3, 4);
                Console.WriteLine(hypotenuse);
             </code>
-            <terminal>
-               5
-            </terminal>
             </example>
             <example>
             Compute the hypotenus of a triangle with sides :math:`[2,3,4,5]` and :math:`[7,6]^T`
             <code>
-               // Import libraries
-               using System;
-               using SepalSolver;
-               using static SepalSolver.Math;
-               
                // Compute the hypotenus
                RowVec X = new double[]{2,3,4,5};
                ColVec Y = new double[]{7,6};
                var hypotenuse = Hypot(X, Y);
                Console.WriteLine(hypotenuse); 
             </code>
-            <terminal>
-               7.2801    7.6158    8.0623    8.6023
-               6.3246    6.7082    7.2111    7.8102
-            </terminal>
             </example>
         </member>
         <member name="M:SepalSolver.Math.Abs(System.Int32)">
             <summary>
             Calculates the absolute value of an input.
             This method returns the absolute value of the given input, which is the non-negative value of the input without regard to its sign.
-            <code>
+            <signature>
                int Abs(int x)
                double Abs(double x)
                double Abs(Complex x)
@@ -2174,7 +2108,7 @@
                SparseColVec Abs(SparseColVec x)
                SparseRowVec Abs(SparseRowVec x)
                SparseMatrix Abs(SparseMatrix x)
-            </code>
+            </signature>
             </summary>
             <param name="x">
             The input value for which the absolute value is to be calculated.
@@ -2185,18 +2119,10 @@
             <example>
             Compute the absolute value of -5
             <code>
-               // import libraries
-               using System;
-               using SepalSolver;
-               using static SepalSolver.Math;
-            
                // Compute Absolute
                var result = Abs(-5);
                Console.WriteLine(result);
             </code>
-            <terminal>
-               5
-            </terminal>
             </example>
         </member>
         <member name="M:SepalSolver.Math.Flatten(System.Double[0:,0:])">
@@ -2210,11 +2136,11 @@
              <summary>
              Generates a one-dimensional  0r two-dimensional array of zeros with specified dimensions.
              This method creates a vector of M rows or matrix of M rows and N columns, where every element is initialized to zero.
-             <code>
+             <signature>
                 double[] Zeros(int N)
                 double[,] Zeros(int M, int N)
                 double[,] Zeros(int[] S)
-             </code>
+             </signature>
              </summary>
              <param name="M">
              The number of rows in the resulting matrix.
@@ -2231,33 +2157,23 @@
              <example>
              Create a 3x4 matrix of zeros:
              <code>
-                // import libraries 
-                using System;
-                using static SepalSolver.Math;
-                
                 // Generate 4 by 3 matrix 
                 Matrix zeros = Zeros(3, 4);
             
                 // Display matrix
                 Console.WriteLine(zeros);
-                
              </code>
-             <terminal>
-                 0.0000    0.0000    0.0000    0.0000
-                 0.0000    0.0000    0.0000    0.0000
-                 0.0000    0.0000    0.0000    0.0000
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Ones(System.Int32)">
              <summary>
              Generates a two-dimensional array of ones with specified dimensions.
              This method creates a matrix of M rows and N columns, where every element is initialized to 1.0.
-             <code>
+             <signature>
                 double[] Ones(int M)
                 double[,] Ones(int M, int N)
                 double[,] Ones(int[] S) 
-             </code>
+             </signature>
              </summary>
              <param name="M">
              The number of rows in the resulting matrix.
@@ -2274,10 +2190,6 @@
              <example>
              Create a 2x3 matrix of ones:
              <code>
-                // import libraries 
-                using System;
-                using static SepalSolver.Math;
-                  
                 //Generate Matrix 2 by 3 with all the element has 1.0
                 Matrix ones = Ones(2, 3);
             
@@ -2285,21 +2197,17 @@
                 Console.WriteLine(ones);
                 
              </code>
-             <terminal>
-                1.0000    1.0000    1.0000
-                1.0000    1.0000    1.0000
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.NaNs(System.Int32)">
              <summary>
              Generates a two-dimensional array of NaN with specified dimensions.
              This method creates a matrix of M rows and N columns, where every element is initialized to 1.0.
-             <code>
+             <signature>
                 double[] NaNs(int M)
                 double[,] NaNs(int M, int N)
                 double[,] NaNs(int[] S) 
-             </code>
+             </signature>
              </summary>
              <param name="M">
              The number of rows in the resulting matrix.
@@ -2316,10 +2224,6 @@
              <example>
              Create a 2x3 matrix of ones:
              <code>
-                // import libraries 
-                using System;
-                using static SepalSolver.Math;
-                  
                 //Generate Matrix 2 by 3 with all the element has NaN
                 Matrix nans = NaNs(2, 3);
             
@@ -2327,10 +2231,6 @@
                 Console.WriteLine(nans);
                 
              </code>
-             <terminal>
-                1.0000    1.0000    1.0000
-                1.0000    1.0000    1.0000
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Repmat(System.Double,System.Int32)">
@@ -2363,10 +2263,6 @@
              <example>
              Create a 2x4 matrix filled with the value 3.14:
              <code>
-                // import libraries 
-                using System;
-                using static SepalSolver.Math;
-                
                 // Replicate all elements of a matrix same.
                 Matrix replicated = Repmat(pi, 2, 4);
             
@@ -2374,19 +2270,15 @@
                 Console.WriteLine(replicated);
                 
              </code>
-             <terminal>
-                3.1416    3.1416    3.1416    3.1416
-                3.1416    3.1416    3.1416    3.1416
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Repelem(SepalSolver.Matrix,System.Int32,System.Int32)">
              <summary>
              Replicates each element of a matrix a specified number of times along both axes.
              This method expands the input matrix by repeating each element M times row-wise (vertically) and N times column-wise (horizontally), returning the result as a new Matrix with repetitive elements.
-             <code>
+             <signature>
                 Matrix Repelem(Matrix A, int M, int N)
-             </code>
+             </signature>
              </summary>
              <param name="A">
              The input matrix whose elements will be replicated.
@@ -2403,9 +2295,6 @@
              <example>
              Create a 4x6 matrix by replicating a 2x2 matrix:
              <code>
-                // import libraries 
-                using System;
-                using static SepalSolver.Math;
                 
                 // Create a 2 by 2 matrix
                 Matrix A  = new double[,]{{1, 2},{3,4}};
@@ -2416,21 +2305,15 @@
                 // Display result
                 Console.WriteLine(expanded);
              </code>
-             <terminal>
-                1.0000    1.0000    1.0000    2.0000    2.0000    2.0000
-                1.0000    1.0000    1.0000    2.0000    2.0000    2.0000
-                3.0000    3.0000    3.0000    4.0000    4.0000    4.0000
-                3.0000    3.0000    3.0000    4.0000    4.0000    4.0000
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Kron(SepalSolver.Matrix,SepalSolver.Matrix)">
              <summary>
              Computes the Kronecker product of two matrices.
              This method generates a block matrix by multiplying each element of matrix X by the entire matrix Y, preserving the structure of X.
-             <code>
+             <signature>
                 Matrix Kron(Matrix X, Matrix Y)
-             </code>
+             </signature>
              </summary>
              <param name="X">
              The first matrix (left operand) of the Kronecker product.
@@ -2444,10 +2327,6 @@
              <example>
              Compute the Kronecker product of two 2x2 matrices:
              <code>
-                // import libraries 
-                using System;
-                using static SepalSolver.Math;
-                 
                 // create a 2 by 2 matrix
                 Matrix A = new double[,]{{1, 2},{3, 4}};;
                   
@@ -2460,23 +2339,17 @@
                 // Display result
                 Console.WriteLine(result);
              </code>
-             <terminal>
-                 0.0000    5.0000    0.0000   10.0000
-                 6.0000    7.0000   12.0000   14.0000
-                 0.0000   15.0000    0.0000   20.0000
-                18.0000   21.0000   24.0000   28.0000
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Rand(System.Int32)">
              <summary>
              Generates a one-dimensional or two-dimensional matrix of random double-precision values between 0.0 (inclusive) and 1.0 (exclusive).
              This method creates a matrix with M rows and N columns, where each element is independently sampled from a uniform distribution.
-             <code>
+             <signature>
                 double[] Rand(int N)
                 double[,] Rand(int M, int N)
                 double[,] Rand(int[] Size)
-             </code>
+             </signature>
              </summary>
              <param name="M">
              The number of rows in the output matrix.
@@ -2493,31 +2366,22 @@
              <example>
              Create a 3x3 matrix of random doubles:
              <code>
-                // import libraries 
-                using System;
-                using static SepalSolver.Math;
-                 
                 Matrix randomMatrix = Rand(3, 3);
             
                 // Print matrix contents
                 Console.WriteLine(randomMatrix);
              </code>
-             <terminal>
-                0.7258    0.2380    0.9046
-                0.4605    0.5800    0.3383
-                0.5736    0.5158    0.6105
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Randn(System.Int32,System.Double,System.Double)">
              <summary>
              Generates an array (Vector) or matrix of normally distributed random double values.
              This method creates a vector of size M or M * N matrix with each element independently sampled from a normal distribution characterized by the specified <c>mean</c> and <c>standard deviation</c>.
-             <code>
+             <signature>
                 double[] Randn(int N, double mean = 0, double std = 1)
                 double[,] Randn(int M, int N, double mean = 0, double standardDeviation = 1)
                 double[,] Randn(int[] Size, double mean = 0, double std = 1) => Randn(Size[0], Size[1], mean, std);
-             </code>
+             </signature>
              </summary>
              <param name="M">
              The number of rows in the resulting matrix.
@@ -2537,31 +2401,22 @@
              <example>
              Create a 2x3 matrix sampled from N(5, 2²):
              <code>
-                // import libraries 
-                using System;
-                using static SepalSolver.Math;
-                  
                 Matrix randval = Randn(2, 3, 5.0, 2.0);
             
                 // Display result
                 Console.WriteLine(randval)
              </code>
-             <terminal>
-                7.0471    4.1810    1.8153
-                3.1696    3.8715    4.8268
-                7.8102    3.7101    6.7009
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Randt(System.Int32,System.Double,System.Double,System.Double)">
              <summary>
              Generates a matrix of random double values from a triangular distribution.
              This method creates an M x N matrix where each element is independently sampled from a triangular distribution defined by minimum bound value, mode of distribution likely, and maximum bound value.
-             <code>
+             <signature>
                 double[] Randt(int N, double min = 0.0, double likely = 0.5, double max = 1.0)
                 double[,] Randt(int M, int N, double min = 0.0, double likely = 0.5, double max = 1.0)
                 double[,] Randt(int[] Size, double min = 0.0, double likely = 0.5, double max = 1.0) => RandTri(Size[0], Size[1], min, likely, max)
-             </code>
+             </signature>
              </summary>
              <param name="M">
              The number of rows in the resulting matrix.
@@ -2584,10 +2439,6 @@
              <example>
              Create a 2x3 matrix sampled from a triangular distribution between 10 and 20 with a peak at 15:
              <code>
-                // import libraries 
-                using System;
-                using static SepalSolver.Math;
-                
                 Matrix triMatrix = Randt(2, 3, 10, 15, 20);
             
                 // Display result// Display result
@@ -2603,9 +2454,9 @@
              <summary>
              Generates a linearly spaced array of double values between two endpoints.
              This method produces a one-dimensional array of N evenly spaced values from a to b, inclusive. If N is 1, the array contains just a.
-             <code>
+             <signature>
                 double[] Linspace(double a, double b, int N = 100)
-             </code>
+             </signature>
              </summary>
              <param name="a">
              The starting value of the range.
@@ -2622,10 +2473,6 @@
              <example>
              Generate 10 points from -1 to 1:
              <code>
-                // import libraries 
-                using System;
-                using static SepalSolver.Math;
-                
                 //Generate point from -1 to 1
                 RowVec line = Linspace(-1.0, 1.0, 10);
             
@@ -2641,9 +2488,9 @@
              <summary>
              Generates a logarithmically spaced array of double values between powers of 10.
              This method creates a one-dimensional array with N values spaced evenly on a logarithmic scale, ranging from <c>10^a</c> to <c>10^b</c>, inclusive.
-             <code>
+             <signature>
                 double[] Logspace(double a, double b, int N = 100)
-             </code>
+             </signature>
              </summary>
              <param name="a">
              The base-10 exponent of the starting value (10^a).
@@ -2660,190 +2507,15 @@
              <example>
              Generate 5 values from 10⁰ to 10²:
              <code>
-                // import libraries 
-                using System;
-                using static SepalSolver.Math;
-                
                 // Generate logarithmically space between 1 and 100 inclusive
                 RowVec freqs = Logspace(0, 2, 5);
             
                 // Display result,
                 Console.WriteLine(freqs);
              </code>
-             <terminal>
-                1.0000    3.1623   10.0000   31.6228  100.0000
-             </terminal>
              </example>
         </member>
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Interp1(System.Double[],System.Double[],System.Double)" -->
-        <member name="M:SepalSolver.Math.Getcol(System.Int32,System.Double[0:,0:])">
-             <summary>
-             Extracts a specified column from a two-dimensional array.
-             This method retrieves the column at index j from the input matrix data and returns it as a one-dimensional array.
-             <code>
-                double[] Getcol(int j, double[,] data)
-             </code>
-             </summary>
-             <param name="j">
-             The zero-based index of the column to extract.
-             </param>
-             <param name="data">
-             The two-dimensional array from which the column will be retrieved.
-             </param>
-             <returns>
-             An array representing the j_th column of the matrix data.
-             </returns>
-             <example>
-             Extract the first column from a 3x3 matrix:
-             <code>
-                // import libraries 
-                using System;
-            
-                using static SepalSolver.Math;
-                
-                // Create 3 by 3 matrix
-                double[,] matrix = new double[,] {{ 1.0, 2.0, 3.0 },{ 4.0, 5.0, 6.0 }, { 7.0, 8.0, 9.0 }};
-            
-                // Get column 0 (first column)
-                ColVec col = Getcol(0, matrix);
-            
-                // Display
-                Console.WriteLine(col);
-             </code>
-             <terminal>
-                   1.0000
-                   4.0000
-                   7.0000
-             </terminal>
-             </example>
-        </member>
-        <member name="M:SepalSolver.Math.Getrow(System.Int32,System.Double[0:,0:])">
-             <summary>
-             Extracts a specified row from a two-dimensional array.
-             This method retrieves the row at index i from the input matrix data and returns it as a one-dimensional array.
-             <code>
-                double[] Getrow(int i, double[,] data)
-             </code>
-             </summary>
-             <param name="i">
-             The index of the row to extract.
-             </param>
-             <param name="data">
-             The two-dimensional array from which the row will be retrieved.
-             </param>
-             <returns>
-             An array representing the i-th row of matrix data element.
-             </returns>
-             <example>
-             Extract the third row from a 4x3 matrix:
-             <code>
-                // import libraries 
-                using System;
-                using static SepalSolver.Math;
-                
-                // Create a 4 by 3 matrix
-                double[,] matrix = {{ 1.0, 2.0, 3.0 },{ 4.0, 5.0, 6.0 },{ 7.0, 8.0, 9.0 },{ 10.0, 11.0, 12.0 }};
-            
-                // Get row 2 (third row)
-                RowVec row = Getrow(2, matrix);
-                
-                // Output the matrix
-                Console.WriteLine(row);
-             </code>
-             <terminal>
-                7.0000    8.0000    9.0000
-             </terminal>
-             </example>
-        </member>
-        <member name="M:SepalSolver.Math.Getcols(SepalSolver.Indexer,System.Double[0:,0:])">
-            <summary>
-            Extracts specified columns from a two-dimensional array using an indexer.
-            This method returns a new Matrix containing only the columns of data specified by the I-indexer.
-            <code>
-               Matrix Getcols(indexer I, double[,] data)
-            </code>
-            </summary>
-            <param name="I">
-            An indexer object specifying the zero-based column indices to select.
-            </param>
-            <param name="data">
-            The two-dimensional array from which columns are extracted.
-            </param>
-            <returns>
-            A Matrix composed of the selected columns from the input matrix data, in the order defined by I-indexer.
-            </returns>
-            <example>
-            Extract columns 1 and 3 from a 3x4 matrix:
-            <code>
-               // import libraries
-               using System;
-               using static SepalSolver.Math;
-               
-               // Create a 3 by 4 matrix
-               double[,] matrix = new double[,]
-               {
-                   { 10, 20,  30,  40  },
-                   { 50, 60,  70,  80  },
-                   { 90, 100, 110, 120 }
-               };
-               
-               // Extract the 2nd and 4th columns
-               Matrix cols = Getcols([1,3], matrix);
-               
-               // Output the extracted matrix
-               Console.WriteLine(cols);
-            </code>
-            <terminal>
-                20.0000   40.0000
-                60.0000   80.0000
-               100.0000  120.0000
-            </terminal>
-            </example>
-        </member>
-        <member name="M:SepalSolver.Math.Getrows(SepalSolver.Indexer,System.Double[0:,0:])">
-             <summary>
-             Extracts specified rows from a two-dimensional array using an indexer.
-             This method returns a new Matrix data composed of the rows from matrix data that correspond to the indices specified by I-indexer.
-             <code>
-                Matrix Getrows(indexer I, double[,] data)
-             </code>
-             </summary>
-             <param name="I">
-             An indexer object that specifies the zero-based indices of the rows to extract.
-             </param>
-             <param name="data">
-             The two-dimensional array from which rows will be selected.
-             </param>
-             <returns>
-             A Matrix containing the rows of data specified by I-indexer, in the same order.
-             </returns>
-             <example>
-             Extract the 1st and 3rd rows from a 4x3 matrix:
-             <code>
-                // import libraries
-                using System;
-                using static SepalSolver.Math;
-                  
-                // Create a 4 by 3 matrix
-                double[,] matrix = new double[,]
-                {
-                    { 10, 20,  30,  40  },
-                    { 50, 60,  70,  80  },
-                    { 90, 100, 110, 120 }
-                };
-                
-                // Extract the first and third rows
-                Matrix rows = Getrows([0, 2], matrix);
-            
-                // Output the extracted matrix
-                Console.WriteLine(rows);
-             </code>
-             <terminal>
-                10.0000   20.0000   30.0000   40.0000
-                90.0000  100.0000  110.0000  120.0000
-             </terminal>
-             </example>
-        </member>
         <member name="M:SepalSolver.Math.Hcart(System.Double,SepalSolver.RowVec)">
              <summary>
              Horizontally concatenates a scalar with a row vector. Also concatenates a matrix with a matrix. The two matrices must have equal row count.
@@ -2869,12 +2541,8 @@
              <example>
              Concatenate the value 1.0 to a row vector:
              <code>
-                // import libraries
-                using System;
-                using static SepalSolver.Math;
-            
                 // Create a row vector
-                RowVec B = new RowVec(new double[] { 2.0, 3.0, 4.0 });
+                RowVec B = new double[] { 2.0, 3.0, 4.0 };
                 
                 // Concatenate the scaler value and the vector together.
                 RowVec result = Hcart(1.0, B);
@@ -2882,16 +2550,10 @@
                 // Output the result
                 console.writeline($"The concatenated matrix is: {rows}")
              </code>
-             <terminal>
-                1 2 3 4
-             </terminal>
              </example>
              <example>
              Horizontally concatenate two 2x2 matrices:
              <code>
-                // import libraries
-                using System;
-                using static SepalSolver.Math;
                 
                 // Create a 2 by 2 matrix
                 Matrix A = new double[,] {
@@ -2910,24 +2572,20 @@
                 // Output the result
                 console.writeline($"The concatenated matrix is: {result}")
              </code>
-             <terminal>
-                1 2 5 6  
-                3 4 7 8
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Vcart(System.Double,SepalSolver.ColVec)">
              <summary>
              Vertically concatenates a scalar with a column vector or concatenates a matrix with a matrix. The two matrices must equal column count.
              concatenate a scalar value to a vector or matrix to a matrix and other combination returning a new vector or matrix with an additional leading element. 
-             <code>
+             <signature>
                 ColVec Vcart(double a, ColVec B)
                 ColVec Vcart(ColVec A, double b)
                 ColVec Vcart(ColVec A, ColVec B)
                 ColVec Vcart(ColVec A, params ColVec[] ColVecs)
                 Matrix Vcart(Matrix A, Matrix B)
                 Matrix Vcart(Matrix A, params Matrix[] Matrices)
-             </code>
+             </signature>
              </summary>
              <param name="a, b,b">
              The scalar value to be placed at the top or below of the resulting vector.
@@ -2941,10 +2599,6 @@
              <example>
              Prepend a scalar to a column vector:
              <code>
-                // import libraries
-                using System;
-                using static SepalSolver.Math;
-                  
                 // Create a vector
                 ColVec B = new double[] { 2.0, 3.0, 4.0 };
                 
@@ -2954,19 +2608,10 @@
                 // Output the result
                 console.writeline($"The concatenated matrix is: {result}")
              </code>
-             <terminal>
-                1  
-                2  
-                3  
-                4
-             </terminal>
              </example>
              <example>
              Vertically concatenate two 2x2 matrices:
              <code>
-                // import libraries
-                using System;
-                using static SepalSolver.Math;
                  
                 // Create 2 by 2 matrix
                 Matrix A = new Matrix(new double[,] {
@@ -2984,62 +2629,57 @@
             
                 // Output the result
                 console.writeline($"The concatenated matrix is: {result}")
-             </code>
-             <terminal>
-                1 2  
-                3 4  
-                5 6  
-                7 8
-             </terminal>
+             </code>7
              </example>
         </member>
         <member name="M:SepalSolver.Math.Pow(System.Int32,System.Int32)">
-             <summary>
-             Raises a real or complex numbers or elements in a vector or matrix to the power of another.
-             This method computes the result of raising x to the power n, returning x^n.
-             <code>
-                Pow(double x, double n)
-                Pow(Complex x, double n)
-                Pow(double x, Complex n)
-                Pow(Complex x, Complex n)
-             </code>
-             </summary>
-             <param name="x">
-             The base value.
-             </param>
-             <param name="n">
-             The exponent value (can be negative, fractional, or zero).
-             </param>
-             <returns>
-             A value(s) representing x raised to the power n.
-             </returns>
-             <example>
-             Compute 2 raised to the power 3:
-             <code>
-                // import libraries
-                using System;
-                using static SepalSolver.Math;
+            <summary>
+            Raises a real or complex numbers or elements in a vector or matrix to the power of another.
+            This method computes the result of raising x to the power n, returning x^n.
+            <signature>
+               Pow(double x, double n)
+               Pow(Complex x, double n)
+               Pow(double x, Complex n)
+               Pow(Complex x, Complex n)
+            </signature>
+            </summary>
+            <param name="x">
+            The base value.
+            </param>
+            <param name="n">
+            The exponent value (can be negative, fractional, or zero).
+            </param>
+            <returns>
+            A value(s) representing x raised to the power n.
+            </returns>
+            <example>
+            Compute 2 raised to the power 3:
+            <code>
+               // Raise 2 to the power of 3
+               double result = Pow(2.0, 3.0);
+               Console.WriteLine($"2³ = {result}");
+            </code>
+            </example>
+        </member>
+        <member name="M:SepalSolver.Math.Div(System.Double,System.Double)">
+            <summary>
             
-                // Raise 2 to the power of 3
-                double result = Pow(2.0, 3.0);
-                Console.WriteLine($"2³ = {result}");
-             </code>
-             <terminal>
-                2³ = 8
-             </terminal>
-             </example>
+            </summary>
+            <param name="x"></param>
+            <param name="n"></param>
+            <returns></returns>
         </member>
         <member name="M:SepalSolver.Math.Diff(System.Double[])">
              <summary>
              Computes the first-order discrete difference of a one-dimensional or two-dimensional array.
              This method returns a new array where each element is the difference between consecutive elements of the input array X.
-             <code>
+             <signature>
                 double[] Diff(double[] X)
                 ColVec Diff(ColVec X) 
                 RowVec Diff(RowVec X) 
                 double[,] Diff(double[,] X, int dim = 0)
                 Matrix Diff(Matrix X, int dim = 0)
-             </code>
+             </signature>
              </summary>
              <param name="X">
              A one-dimensional or two-dimensional array of double values. Must contain at least two elements.
@@ -3050,10 +2690,6 @@
              <example>
              Compute differences in a numeric sequence:'[ 1.0, 4.0, 9.0, 16.0]'
              <code>
-                // import libraries
-                using System;
-                using static SepalSolver.Math;
-                  
                 // Create a vector
                 double[] values = new double[] { 1.0, 4.0, 9.0, 16.0 };
                 
@@ -3063,9 +2699,6 @@
                 foreach (double d in delta)
                     Console.Write(d + " ");
              </code>
-             <terminal>
-                3 5 7
-             </terminal>
              </example>
         </member>
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Fft(System.Double[],System.Int32)" -->
@@ -6854,6 +6487,199 @@
             Exception from the Matrix Class
             </summary>
             <param name="Message">Message to be displayed</param>
+        </member>
+        <member name="P:SepalSolver.Dde.Set.RelTol">
+            <summary>
+            Tolerance used in determining the step size of auto step control methods
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Set.MaxStepVal">
+            <summary>
+            Maximum Step Value
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Set.AbsTol">
+            <summary>
+            Tolerance used in determining the threshold of solution to be subjected to relative tolerance criteria
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Set.MinStepDownFactor">
+            <summary>
+            Minimum Step Factor used in auto step control schemes
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Set.MaxStepUpFactor">
+            <summary>
+            Maximum Step Factor used in auto step control schemes
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Set.Stats">
+            <summary>
+            Used to set the odesolver tokeep statics of the process
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Set.UseParallel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Set.MaxSteps">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Set.UserDefinedJacobian">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Set.UserDefinedMassJacobian">
+            <summary>
+            Differentiation of the mass with respect to each component of ynp1. 
+            Note that this is necessay only when M is stronly nonlienar in ynp1
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.InnerSet.RelTol">
+            <summary>
+            Tolerance used in determining the step size of auto step control methods
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.InnerSet.AbsTol">
+            <summary>
+            Tolerance used in determining the threshold of solution to be subjected to relative tolerance criteria
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.InnerSet.MaxStepVal">
+            <summary>
+            Maximum Step Value
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.InnerSet.MinStepDownFactor">
+            <summary>
+            Minimum Step Factor used in auto step control schemes
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.InnerSet.MaxStepUpFactor">
+            <summary>
+            Maximum Step Factor used in auto step control schemes
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.InnerSet.Stats">
+            <summary>
+            Used to set the odesolver tokeep statics of the process
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.InnerSet.MaxSteps">
+            <summary>
+            Maximum number of steps allowed
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.InnerSet.UserDefinedJacobian">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.InnerSet.UserDefinedMassJacobian">
+            <summary>
+            Differentiation of the mass with respect to each component of ynp1. 
+            Note that this is necessay only when M is stronly nonlienar in ynp1
+            </summary>
+        </member>
+        <member name="T:SepalSolver.Dde.Jacobian">
+            <summary>
+            Jacobian of the function with respoect to the variables sort
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Jacobian.Jac">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Jacobian.Jac_y">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Jacobian.Jac_yp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SepalSolver.Dde.Jacobian.#ctor(System.Func{System.Double,System.Double,System.Double})">
+            <summary>
+            
+            </summary>
+            <param name="fun"></param>
+        </member>
+        <member name="M:SepalSolver.Dde.Jacobian.#ctor(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.Matrix})">
+            <summary>
+            
+            </summary>
+            <param name="fun"></param>
+        </member>
+        <member name="M:SepalSolver.Dde.Jacobian.#ctor(System.Func{System.Double,System.Double,System.Double,System.Double},System.Func{System.Double,System.Double,System.Double,System.Double})">
+            <summary>
+            
+            </summary>
+            <param name="fun1"></param>
+            <param name="fun2"></param>
+        </member>
+        <member name="M:SepalSolver.Dde.Jacobian.#ctor(System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec,SepalSolver.Matrix},System.Func{System.Double,SepalSolver.ColVec,SepalSolver.ColVec,SepalSolver.Matrix})">
+            <summary>
+            
+            </summary>
+            <param name="fun1"></param>
+            <param name="fun2"></param>
+        </member>
+        <member name="T:SepalSolver.Dde.InterpolatingFunction">
+            <summary>
+            Interpolating Function that computes the dependent valirable given the inpendent varaible
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Result.Odefun">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Result.SolverName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Result.FunEvals">
+            <summary>
+            Number of function call
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Result.X">
+            <summary>
+            ColVec of the independent variable
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Result.Y">
+            <summary>
+            ColVec or Matrix of dependent variable-each row correspond to a value of the independent variable
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Result.Yp">
+            <summary>
+            ColVec or Matrix of derivative of dependent variable-each row correspond to a value of the independent variable
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Result.IsComplete">
+            <summary>
+            Determines whether the solution process ran to completion or not
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Result.ErrorMessage">
+            <summary>
+            Contains message about the situation in event when the algorithm encounters a problem
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Dde.Result.Suggestion">
+            <summary>
+            Suggest a better solver based on the behaviour of the previous one.
+            </summary>
         </member>
         <member name="M:SepalSolver.DelaunayTriangulation.Triangle.#ctor(System.Int32[])">
             <summary>
