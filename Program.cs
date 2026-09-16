@@ -59,51 +59,31 @@ using ConsoleApp1;
         //CloseFig();
     }
     {
-        //// define masses
-        //ColVec m = new double[] { 1, 2, 3, 4, 5, 6, 7 };
-
-
-        //// define function
+        //ColVec m = new double[] { 1, 2, 3, 4, 5, 6, 7 }, x, y, T;
+        //Matrix dx, dy, invr3, Y;
         //ColVec pleiades(double t, ColVec q)
         //{
-        //    ColVec dqdt = Zeros(q.Numel);
-        //    dqdt[0..7] = q[14..21]; // x-velocity of stars
-        //    dqdt[7..14] = q[21..28]; // y-velocity of stars
-        //    Matrix dx = q[0..7] - q[0..7].T, dy = q[7..14] - q[7..14].T;
-        //    Matrix invr3 = Hypot(dx, dy).Pow(-3); invr3[(..).Step(8)] = 0;
-        //    dqdt[14..21] = invr3.Times(dx) * m; // x-acceleration of stars
-        //    dqdt[21..28] = invr3.Times(dy) * m; // y-acceleration of stars
-        //    return dqdt;
+        //    x = q[0..7]; dx = x.T - x; y = q[7..14]; dy = y.T - y;
+        //    invr3 = Hypot(dx, dy).Pow(-3); invr3[(..).Step(8)] = 0;
+        //    return Vcart(q[14..], invr3.Times(dx) * m, invr3.Times(dy) * m);
         //}
-
-        //double[] init = [3, 3,-1, -3, 2, -2, 2,
-        //                 3, -3, 2, 0, 0, -4, 4,
-        //                 0, 0, 0, 0, 0, 1.75, -1.5,
-        //                 0, 0, 0, -1.25, 1, 0, 0];
-
-        //double[] tspan = Linspace(1, 15, 200);
+        //double[] init = [3, 3, -1, -3, 2, -2, 2, 3, -3, 2, 0, 0, -4, 4,
+        //         0, 0, 0, 0, 0, 1.75, -1.5, 0, 0, 0, -1.25, 1, 0, 0];
+        //double[] tspan = Linspace(0, 15, 151);
         //var opts = Odeset(AbsTol: 1e-15, RelTol: 1e-13);
         //Figure(600, 500);
-        //(ColVec T, Matrix Y) = Ode89(pleiades, init, tspan, opts);
-        //Plot(Y[.., 0..7], Y[.., 7..14], ":");
-        //Title("Position of Pleiades Stars, Solved by ODE89");
-        //Xlabel("X Position"); Ylabel("y Position");
-        //SaveAs("Position-of-Pleiades-Stars-Ode89.png");
-
-        //HoldOn();
+        //(T, Y) = Ode89(pleiades, init, tspan, opts);
+        //Plot(Y[.., 0..7], Y[.., 7..14], ":"); HoldOn();
         //ScatterHandle[] Stars = [..Enumerable.Range(0,7).Select(j =>
-        //                    Scatter(Y[0, j], Y[0, j + 7], "fo", 15))];
+        //            Scatter(Y[0, j], Y[0, j + 7], "fo", 20))];
         //HoldOff();
         //byte[] Animfun(int i)
         //{
         //    for (int j = 0; j < 7; j++)
-        //    {
-        //        Stars[j].Xdata = Y[i, j];
-        //        Stars[j].Ydata = Y[i, j + 7];
-        //    }
+        //    { Stars[j].Xdata = Y[i, j]; Stars[j].Ydata = Y[i, j + 7]; }
         //    return GetFrame();
         //}
-        //AnimationMaker(Animfun, "Position-of-Pleiades-Stars-CCL-Math-Ode89.gif", 10, 200);
+        //AnimationMaker(Animfun, "Position-of-Pleiades-Stars-Ode89.gif", 10, 151);
         //CloseFig();
     }
     {

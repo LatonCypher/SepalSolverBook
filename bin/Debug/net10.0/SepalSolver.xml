@@ -6681,6 +6681,26 @@
             Suggest a better solver based on the behaviour of the previous one.
             </summary>
         </member>
+        <member name="F:SepalSolver.Dde.Coefficients.alpha">
+            <summary>
+            alpha, psi and chi
+            </summary>
+        </member>
+        <member name="F:SepalSolver.Dde.Coefficients.psi">
+            <summary>
+            alpha, psi and chi
+            </summary>
+        </member>
+        <member name="F:SepalSolver.Dde.Coefficients.chi">
+            <summary>
+            alpha, psi and chi
+            </summary>
+        </member>
+        <member name="F:SepalSolver.Dde.Coefficients.beta">
+            <summary>
+            beta
+            </summary>
+        </member>
         <member name="M:SepalSolver.DelaunayTriangulation.Triangle.#ctor(System.Int32[])">
             <summary>
             Constructs a triangle node

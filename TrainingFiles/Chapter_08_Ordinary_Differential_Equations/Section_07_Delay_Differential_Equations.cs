@@ -112,7 +112,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// | :math:`\cfrac{dy}{dt} = 1 + y(t) - 2\left[y\left(\cfrac{t}{2}\right)\right]^2 - y'(t - \pi)`,
             /// | with functional history: :math:`y(t) = \cos(t)` for :math:`t \le 0`,
             /// | over the interval: :math:`t \in [0, 3\pi]`.
-            /// | *(Analytical exact solution: :math:`y(t) = \cos(t)`)*
+            /// | *Analytical exact solution:* :math:`y(t) = \cos(t)`
             /// <code>
             {
                 // Dynamic state delay: tau1(t) = t / 2
@@ -216,7 +216,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 (ColVec T, ColVec Y) = Dde45(ddefun, yhistory, tspan, dely: tau, options: opts);
 
                 // Plot chaotic time-series
-                Scatter(T, Y, "for"); 
+                Plot(T, Y, "-or"); 
                 Title("Mackey-Glass Chaotic Attractor: tau = 17");
                 Xlabel("Time t");
                 Ylabel("Concentration y(t)");
