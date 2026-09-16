@@ -203,24 +203,32 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double tau = 17.0;
 
                 // Mackey-Glass equation
-                double ddefun(double t, double y, double ydel, double ypdel) 
+                double ddefun(double t, double y, double ydel, double ypdel)
                     => (beta0 * ydel) / (1.0 + Pow(ydel, n)) - gamma * y;
 
                 double yhistory = 0.5;
                 double[] tspan = [0, 300];
 
                 // Solver options with statistics enabled
-                var opts = Ddeset(Stats: true);
+                var opts = Ddeset(Stats: true, RelTol: 1e-6, AbsTol: 1e-8);
 
                 // Solve using Dde45
                 (ColVec T, ColVec Y) = Dde45(ddefun, yhistory, tspan, dely: tau, options: opts);
 
                 // Plot chaotic time-series
-                Plot(T, Y, "-or"); 
+                Subplot(2, 1, 0);
+                Plot(T, Y, "r", 3);
                 Title("Mackey-Glass Chaotic Attractor: tau = 17");
                 Xlabel("Time t");
                 Ylabel("Concentration y(t)");
-                SaveAs("Mackey_Glass_Chaotic.png");
+                // Phase-space reconstruction using delay embedding
+                Subplot(2, 1, 1);
+                ColVec Ydel = Interp1(T, Y, T - tau);
+                Plot(Ydel, Y, "b", 2);
+                Title("Phase-Space Reconstruction");
+                Xlabel("y(t - tau)");
+                Ylabel("y(t)");
+                SaveAs("Mackey_Glass_Chaotic.png", 600, 1000);
             }
             /// </code>
             /// </example>
