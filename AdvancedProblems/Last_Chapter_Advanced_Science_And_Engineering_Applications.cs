@@ -802,7 +802,7 @@ namespace ConsoleApp1.TrainingFiles
                 ColVec? T = null; Matrix? Y = null;
                 double fun(double y3_0)
                 {
-                    (T, Y) = Ode45(dydt, [0, 0, y3_0], [0, 6]);
+                    (T, Y, _) = Ode45(dydt, [0, 0, y3_0], [0, 6]);
                     return Y[^1, 1] - 1;
                 }
 
@@ -851,11 +851,8 @@ namespace ConsoleApp1.TrainingFiles
                     {
                         rhomu_h = rhomu(y[3]);
                         drhomu_h_eta = drhomu(y[3], y[4]);
-                        double[] dy = [y[1],
-                       y[2],
-                       -(2*drhomu_h_eta + y[0])*y[2]/(2*rhomu_h),
-                       y[4],
-                       -(drhomu_h_eta*y[4] + Pr*y[0]*y[4] + C*rhomu_h*y[2]*y[2])/rhomu_h ];
+                        double[] dy = [y[1], y[2], -(2*drhomu_h_eta + y[0])*y[2]/(2*rhomu_h), y[4],
+                                       -(drhomu_h_eta*y[4] + Pr*y[0]*y[4] + C*rhomu_h*y[2]*y[2])/rhomu_h ];
                         return dy;
                     }
 
@@ -867,7 +864,7 @@ namespace ConsoleApp1.TrainingFiles
                     ColVec fun(ColVec y35_0)
                     {
                         y0 = [0, 0, y35_0[0], 2, y35_0[1]];
-                        (T, Y) = Ode45(dydt, y0, tspan);
+                        (T, Y, _) = Ode45(dydt, y0, tspan);
                         return Y[^1, [1,3]].T - 1;
                     }
 
@@ -901,7 +898,7 @@ namespace ConsoleApp1.TrainingFiles
                     [y[1], mu*(1 - y[0]*y[0])*y[1] - y[0]];
 
                 var options = Odeset(Stats: true);
-                (ColVec T, Matrix Y) = 
+                (ColVec T, Matrix Y, _) = 
                     Ode45(vdp, [2, 0], [0, 20], options);
 
                 Plot(T, Y, "-o");
@@ -946,7 +943,7 @@ namespace ConsoleApp1.TrainingFiles
 
                 var opts = Odeset(Stats: true, RelTol: 1e-3);
 
-                (ColVec T, Matrix Y) = 
+                (ColVec T, Matrix Y, _) = 
                     Ode43a(dudt, Mass, y0, tspan, opts);
                 ColVec X = T, U5 = Y["", 4];
                 Scatter(X, input(X), "o"); HoldOn();
@@ -1003,7 +1000,7 @@ namespace ConsoleApp1.TrainingFiles
                 double[] tspan = Linspace(1, 15, 200);
                 var opts = Odeset(AbsTol: 1e-15, RelTol: 1e-13);
 
-                (ColVec T, Matrix Y) = Ode89(pleiades, init, tspan, opts);
+                (ColVec T, Matrix Y, _) = Ode89(pleiades, init, tspan, opts);
                 Plot(Y["", I], Y["", J], "--");
                 Title("Position of Pleiades Stars, Solved by ODE89");
                 Xlabel("X Position"); Ylabel("y Position"); AxisEqual();
@@ -1013,8 +1010,7 @@ namespace ConsoleApp1.TrainingFiles
                 byte[] AnimFun(int i)
                 {
                     int j = 0;
-                    Stars.ForEach(s => { s.Xdata = Y[i, j];
-                        s.Ydata = Y[i, j + 7]; j++; });
+                    Stars.ForEach(s => { s.Xdata = Y[i, j]; s.Ydata = Y[i, j + 7]; j++; });
                     return GetFrame();
                 }
                 AnimationMaker(AnimFun, 
@@ -1104,7 +1100,7 @@ namespace ConsoleApp1.TrainingFiles
                 double[] tspan = [.. Linspace(0, 4, 121)];
                 double[] y0 = [0, 4, L, 20, -pi / 2, 2];
                 var options = Odeset(Stats: true, AbsTol: 1e-10, RelTol: 1e-4);
-                (ColVec T, Matrix Z) = Ode43a(dydt, Mass, y0, tspan, options);
+                (ColVec T, Matrix Z, _) = Ode43a(dydt, Mass, y0, tspan, options);
                 ColVec X = Z["", 0], Y = Z["", 2], theta = Z["", 4];
                 ColVec s = Sin(theta), c = Cos(theta);
                 Matrix xvals = Hcart(X, X + L * c).T, 
@@ -1172,7 +1168,7 @@ namespace ConsoleApp1.TrainingFiles
                 double[] tspan = [.. Linspace(0, 4, 121)];
                 double[] y0 = [0, 4, L, 20, -pi / 2, 2];
                 var options = Odeset(Stats: true, AbsTol: 1e-10, RelTol: 1e-4);
-                (ColVec T, Matrix Z) = Ode45(dydt, y0, tspan, options);
+                (ColVec T, Matrix Z, _) = Ode45(dydt, y0, tspan, options);
                 ColVec X = Z["", 0], Y = Z["", 2], theta = Z["", 4];
                 ColVec s = Sin(theta), c = Cos(theta);
                 Matrix xvals = Hcart(X, X + L * c).T, 
@@ -1233,7 +1229,7 @@ namespace ConsoleApp1.TrainingFiles
                 double[] tspan = Linspace(0, 4, 25);
                 double[] y0 = [0, L, -pi/2, 4, 20, 2];
                 var options = Odeset(Stats: true, AbsTol: 1e-10, RelTol: 1e-4);
-                (ColVec T, Matrix Z) = Ode45(dydt, y0, tspan, options);
+                (ColVec T, Matrix Z, _) = Ode45(dydt, y0, tspan, options);
                 Console.WriteLine(Z);
                 ColVec X = Z["", 0], Y = Z["", 1], theta = Z["", 2];
                 ColVec s = Sin(theta), c = Cos(theta);
@@ -1463,13 +1459,13 @@ namespace ConsoleApp1.TrainingFiles
 
                 int N = (int)(2*T*framerate + 1); double[] s0; double noise = 0.1;
                 s0 = [th1 * f, th2 * f, w1 * f, w2 * f];
-                (_, Matrix Y1) = Ode45((t, s) => derivs(s), s0, Linspace(0, T, N));
+                (_, Matrix Y1, _) = Ode45((t, s) => derivs(s), s0, Linspace(0, T, N));
 
                 s0 = [th1 * f, th2 * f, w1 * f + noise * rand(), w2 * f - noise * rand()];
-                (_, Matrix Y2) = Ode45((t, s) => derivs(s), s0, Linspace(0, T, N));
+                (_, Matrix Y2, _) = Ode45((t, s) => derivs(s), s0, Linspace(0, T, N));
 
                 s0 = [th1 * f, th2 * f, w1 * f - noise * rand(), w2 * f + noise * rand()];
-                (_, Matrix Y3) = Ode45((t, s) => derivs(s), s0, Linspace(0, T, N));
+                (_, Matrix Y3, _) = Ode45((t, s) => derivs(s), s0, Linspace(0, T, N));
 
                 (ColVec X, ColVec Y) BarsTrans(double s, double x, double y)
                 {
@@ -1577,7 +1573,7 @@ namespace ConsoleApp1.TrainingFiles
                 double[] tspan = Linspace(0, 15, 451);
                 var opts = Odeset(AbsTol: 1e-15, RelTol: 1e-13);
 
-                (ColVec T, Matrix Y) = Ode89(pleiades, init, tspan, opts);
+                (ColVec T, Matrix Y, _) = Ode89(pleiades, init, tspan, opts);
                 Plot(Y["", I], Y["", J], "--");
                 Title("Position of Pleiades Stars, Solved by ODE89");
                 Xlabel("X Position"); Ylabel("y Position");

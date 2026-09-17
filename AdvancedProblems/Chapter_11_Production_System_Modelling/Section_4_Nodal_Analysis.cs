@@ -85,7 +85,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                 }
                 double pfun(double q_g)
                 {
-                    var (Z, P) = Ode45((z, p) => pressureGradient(z, p, q_g), p_surf, [0, depth]);
+                    var (Z, P, _) = Ode45((z, p) => pressureGradient(z, p, q_g), p_surf, [0, depth]);
                     double p_wf = P[^1]; // extract the pressure at the bottom
                     return p_wf;
                 }
@@ -194,7 +194,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                 }
                 double pfun(double q_o)
                 {
-                    var (Z, P) = Ode45((z, p) => pressureGradient(z, p, q_o), p_surf, [0, depth]);
+                    var (Z, P, _) = Ode45((z, p) => pressureGradient(z, p, q_o), p_surf, [0, depth]);
                     double p_wf = P[^1]; // extract the pressure at the bottom
                     return p_wf;
                 }
@@ -247,7 +247,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                 }
                 double pfun(double q_o)
                 {
-                    var (Z, P) = Ode45((z, p) => pressureGradient(z, p, q_o), p_surf, [0, depth]);
+                    var (Z, P, _) = Ode45((z, p) => pressureGradient(z, p, q_o), p_surf, [0, depth]);
                     double p_wf = P[^1]; // extract the pressure at the bottom
                     return p_wf;
                 }
@@ -311,7 +311,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                 }
                 double pfun(double q_o)
                 {
-                    var (Z, P) = Ode45((z, p) => pressureGradient(z, p, q_o), p_surf, [0, depth]);
+                    var (Z, P, _) = Ode45((z, p) => pressureGradient(z, p, q_o), p_surf, [0, depth]);
                     double p_wf = P[^1]; // extract the pressure at the bottom
                     return p_wf;
                 }

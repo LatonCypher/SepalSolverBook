@@ -67,7 +67,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double[] tspan = [0, 20];
 
                 // Solve using Dde45 (retarded DDE, so delyp is null)
-                (ColVec T, ColVec Y) = Dde45(ddefun, yhistory, tspan, dely: tau);
+                (ColVec T, ColVec Y, _) = Dde45(ddefun, yhistory, tspan, dely: tau);
 
                 // Plot results
                 Plot(T, Y, Linewidth: 2);
@@ -95,7 +95,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double[] tspan = [0, 15];
 
                 // Solve using Dde45
-                (ColVec T, ColVec Y) = Dde45(ddefun, yhistory, tspan, dely: tau);
+                (ColVec T, ColVec Y, _) = Dde45(ddefun, yhistory, tspan, dely: tau);
 
                 // Plot the results
                 Plot(T, Y, Linewidth: 2);
@@ -131,7 +131,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double[] tspan = [0, 3 * pi];
 
                 // Solve using Dde45
-                (ColVec T, ColVec Y) = Dde45(ddefun, yhistory, tspan, dely, delyp);
+                (ColVec T, ColVec Y, _) = Dde45(ddefun, yhistory, tspan, dely, delyp);
 
                 // Plot numerical result against exact analytical curve
                 Scatter(T, Y, "ro", 10); HoldOn();
@@ -176,7 +176,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 
                 // 4. Solve using vector Dde45
                 double[] tspan = [0, 10];
-                (ColVec T, Matrix Y) = Dde45(ddefun, YHistory, tspan, dely, delyp);
+                (ColVec T, Matrix Y, _) = Dde45(ddefun, YHistory, tspan, dely, delyp);
 
                 // 5. Plot state trajectories
                 Plot(T, Y, Linewidth: 2);
@@ -188,9 +188,16 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             }
             /// </code>
             /// </example>
+            /// All ode and dde solvers return a third argument (fourth argument in case of Ode32i, Ode43i, and Ode85i) which can be used to 
+            /// obtain a denser solution using the Deval function. The Deval function evaluates the solution at specified time points, providing 
+            /// a smooth representation of the solution trajectory. The Deval function is particularly useful for plotting and analyzing the 
+            /// solution in greater detail, especially when the solver's output is sparse or when specific time points of interest are required.
             /// 
+            /// This is demonstrated in the following example.
             /// <example 5> Mackey-Glass Physiological Delay Equation
-            /// | Solve the classic Mackey-Glass model of hematopoiesis (blood cell production):
+            /// | The following example demonstrates a classic application of delay differential 
+            /// | equations in modeling physiological processes, specifically the Mackey-Glass equation, 
+            /// | which is known for exhibiting chaotic behavior due to the presence of delays.
             /// | :math:`\cfrac{dy}{dt} = \cfrac{\beta_0\,y(t - \tau)}{1 + [y(t - \tau)]^n} - \gamma\,y(t)`,
             /// | with parameters :math:`\beta_0 = 0.2`, :math:`\gamma = 0.1`, :math:`n = 10`, delay :math:`\tau = 17.0`,
             /// | constant history: :math:`y(t) = 0.5` for :math:`t \le 0`,
@@ -213,22 +220,36 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 var opts = Ddeset(Stats: true, RelTol: 1e-6, AbsTol: 1e-8);
 
                 // Solve using Dde45
-                (ColVec T, ColVec Y) = Dde45(ddefun, yhistory, tspan, dely: tau, options: opts);
+                (var T, var Y, var result) = Dde45(ddefun, yhistory, tspan, dely: tau, options: opts);
+                var Ydel = Interp1(T, Y, T - tau);
 
                 // Plot chaotic time-series
-                Subplot(2, 1, 0);
-                Plot(T, Y, "r", 3);
+                Subplot(2, 2, 0);
+                Plot(T, Y, "r", 3); GridOn();
                 Title("Mackey-Glass Chaotic Attractor: tau = 17");
-                Xlabel("Time t");
-                Ylabel("Concentration y(t)");
+                Xlabel("Time t"); Ylabel("Concentration y(t)");
                 // Phase-space reconstruction using delay embedding
-                Subplot(2, 1, 1);
-                ColVec Ydel = Interp1(T, Y, T - tau);
-                Plot(Ydel, Y, "b", 2);
+                Subplot(2, 2, 1);
+                Plot(Ydel, Y, "b", 2); GridOn();
                 Title("Phase-Space Reconstruction");
-                Xlabel("y(t - tau)");
-                Ylabel("y(t)");
-                SaveAs("Mackey_Glass_Chaotic.png", 600, 1000);
+                Xlabel("y(t - tau)"); Ylabel("y(t)");
+
+
+                ColVec Tsmooth = Linspace(0, tspan[^1], 3000);
+                (var Ysmooth, _) = Deval(result, Tsmooth);
+                (var Ydelsmooth, _) = Deval(result, Tsmooth - tau);
+                Subplot(2, 2, 2);
+                Plot(Tsmooth, Ysmooth, "r", 3); GridOn();
+                Title("Mackey-Glass Chaotic Attractor: tau = 17");
+                Xlabel("Time t"); Ylabel("Concentration y(t)");
+                // Phase-space reconstruction using delay embedding
+                Subplot(2, 2, 3);
+                Plot(Ydelsmooth, Ysmooth, "b", 2); GridOn();
+                Title("Phase-Space Reconstruction");
+                Xlabel("y(t - tau)"); Ylabel("y(t)");
+
+
+                SaveAs("Mackey_Glass_Chaotic.png", 1000, 1000);
             }
             /// </code>
             /// </example>

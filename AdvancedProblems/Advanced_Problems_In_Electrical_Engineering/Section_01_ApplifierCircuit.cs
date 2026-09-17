@@ -36,7 +36,7 @@ namespace ConsoleApp1.TrainingFiles.Summary_and_Conclusion.Advanced_Problems_In_
                 double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
 
                 var opts = Odeset(RelTol: 1e-5);
-                (ColVec T, Matrix Y) = Ode43a(dudt, Mass, y0, tspan, opts);
+                (ColVec T, Matrix Y, _) = Ode43a(dudt, Mass, y0, tspan, opts);
                 Scatter(T, Arrayfun(Ue, T), "o"); HoldOn();
                 Plot(T, Y[.., 4], "--r"); HoldOff();
                 Legend(["Input", "Output"], UpperLeft);

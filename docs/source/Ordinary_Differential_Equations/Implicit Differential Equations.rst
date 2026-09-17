@@ -77,7 +77,7 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    
    
       // Now solve the implicit ODE using Ode43i
-      var (T, Y, Yp) = Ode43i(F, (y0, yp0), [0, 5], opts);
+      var (T, Y, Yp, _) = Ode43i(F, (y0, yp0), [0, 5], opts);
    
       // Plot the results
       Scatter(T, Y, "fob"); HoldOn();
@@ -182,7 +182,7 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       (y0, yp0) = decic(F, t0, y0, 1, yp0, 0);
    
       // Now solve the implicit ODE using Ode43i
-      var (T, Y, Yp) = Ode43i(F, (y0, yp0), [t0, 5], opts);
+      var (T, Y, Yp, _) = Ode43i(F, (y0, yp0), [t0, 5], opts);
    
       // Plot the results
       Scatter(T, Y, "fob"); HoldOn();
@@ -260,7 +260,7 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    
       var opts = Odeset(Stats: true);
       //Solve ODE
-      (ColVec T, Matrix Y, Matrix Yp) = Ode43i(robertsonimplicit, (y0, yp0), [0, 4e6], opts);
+      (ColVec T, Matrix Y, Matrix Yp, _) = Ode43i(robertsonimplicit, (y0, yp0), [0, 4e6], opts);
       // Plot the result
       Y[.., 1] = 1e4 * Y[.., 1];
       SemiLogx(T, Y);
@@ -280,7 +280,7 @@ Ouput
       Summary of statistics by Ode43i
               68 successful steps
               9 failed attempts
-              2283 function evaluations
+              2282 function evaluations
               77 partial derivatives
               284 LU decompositions
               1459 solutions of linear systems
@@ -341,7 +341,7 @@ Ouput
       // Solve for yp0, Truth array for y0 = [1,1,1] but for yp0 it is [0,0,0]. 
       (y0, yp0) = decic(robertsonimplicit, 0, y0, [1, 1, 0], yp0, [0, 0, 0]);
       //Solve ODE
-      (ColVec T, Matrix Y, Matrix Yp) = Ode43i(robertsonimplicit, (y0, yp0), [0, 4e6], opts);
+      (ColVec T, Matrix Y, Matrix Yp, _) = Ode43i(robertsonimplicit, (y0, yp0), [0, 4e6], opts);
       // Plot the result
       Y[.., 1] = 1e4 * Y[.., 1];
       SemiLogx(T, Y);

@@ -49,7 +49,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double[,] mass_f = Diag([1, 1, 0]);
 
                 double[] y0 = [1.0, 0.0, 0.0];
-                (ColVec T, Matrix Y) = Ode43a(robertson_f, mass_f, y0, Logspace(-6,6.6));
+                (ColVec T, Matrix Y, _) = Ode43a(robertson_f, mass_f, y0, Logspace(-6,6.6));
                 // Plot the result
                 Y[.., 1] = 1e4*Y[.., 1];
                 SemiLogx(T, Y);
@@ -98,7 +98,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 
                 double[] y0 = [0, 1, 1, 0, 1 - g];
                 var opts = Odeset(Stats: true, RelTol: 1e-6);
-                (ColVec T, Matrix Y) = Ode43a(pendulum_f, mass_f, y0, [0, 6], opts);
+                (ColVec T, Matrix Y, _) = Ode43a(pendulum_f, mass_f, y0, [0, 6], opts);
                 Plot(T, Y, Linewidth: 2); Xlabel("x"); Ylabel("y");
                 Legend(["x", "y", "u", "v", "λ"]);
                 Title("Pendulum Trajectory (DAE)");
@@ -184,7 +184,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
 
                 var opts = Odeset(RelTol: 1e-5);
-                (ColVec T, Matrix Y) = Ode43a(dudt, Mass, y0, tspan, opts);
+                (ColVec T, Matrix Y, _) = Ode43a(dudt, Mass, y0, tspan, opts);
                 Scatter(T, Arrayfun(Ue, T), "o"); HoldOn();
                 Plot(T, Y[.., 4], "--r"); HoldOff();
                 Legend(["Input", "Output"], UpperLeft);
@@ -254,7 +254,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 
                 double[,] mass_f = Diag([1, 1, 1, 1, 1, 1, 0, 0]);
                 double[] y0 = [0.444, 0.0012, 0.0, 0.0037, 0.0, 0.0, 0.0, 0.0];
-                (ColVec T, Matrix Y) = Ode43a(akzo_f, mass_f, y0, [0, 180]);
+                (ColVec T, Matrix Y, _) = Ode43a(akzo_f, mass_f, y0, [0, 180]);
                 Plot(T, Y);
                 Xlabel("Time"); Ylabel("Concentration");
                 Title("Akzo Nobel Chemical Kinetics (DAE)");
@@ -294,7 +294,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double[,] mass_f = Diag([1, 1, 0]);
                 double[] y0 = [1, 1, 0]; // only the differential variables need initial conditions
                 var opts = Odeset(Stats: true);
-                (ColVec T, Matrix Y) = Ode43a(Ercan, mass_f, y0, [0, 1], opts);
+                (ColVec T, Matrix Y, _) = Ode43a(Ercan, mass_f, y0, [0, 1], opts);
                 Scatter(T, Hcart(Exp(T), Exp(T), -Exp(T).Div(2-T)), "o"); HoldOn();
                 Plot(T, Y); HoldOff();
                 Xlabel("Time t"); Ylabel("Solution x");
@@ -317,7 +317,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 // We can compute the solution to a higher accuracy 
                 Console.WriteLine("\n\nNow we compute the solution to a higher accuracy (RelTol = 1e-5):\n");
                 opts = Odeset(Stats: true, RelTol: 1e-5);
-                (T, Y) = Ode43a(Ercan, mass_f, y0, [0, 1], opts);
+                (T, Y, _) = Ode43a(Ercan, mass_f, y0, [0, 1], opts);
                 Console.WriteLine("""
                         t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
                     --------++-----------------+----------------++-----------------+----------------++-----------------+---------------
@@ -365,7 +365,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 
                 double[] y0 = [0, 1, 1, 0, -1];
                 var opts = Odeset(Stats: true);
-                (ColVec T, Matrix Y) = Ode43a(pendulum_f, mass_f, y0, [0, 6], opts);
+                (ColVec T, Matrix Y, _) = Ode43a(pendulum_f, mass_f, y0, [0, 6], opts);
                 Plot(T, Y, Linewidth: 2); Xlabel("x"); Ylabel("y");
                 Legend(["x", "y", "u", "v", "λ"]);
                 Title("Pendulum Trajectory (DAE)");
@@ -461,19 +461,19 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 }
 
                 // Index 0
-                (T, Y) = Ode45((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+                (T, Y, _) = Ode45((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
                         -2 * y[4] * (y[0] * y[2] + y[1] * y[3]) - 3 * g * y[3]],
                         y0, interval, opts); ResultPloter(T, Y, 0);
                 // Index 1
-                (T, Y) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+                (T, Y, _) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
                          y[2]*y[2] + y[3]*y[3] - y[1] * g - y[4]], Mass, 
                          y0, interval, opts); ResultPloter(T, Y, 1);
                 // Index 2
-                (T, Y) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+                (T, Y, _) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
                          y[0]*y[2] + y[1]*y[3]], Mass, 
                          y0, interval, opts); ResultPloter(T, Y, 2);
                 // Index 3
-                (T, Y) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+                (T, Y, _) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
                          y[0]*y[0] + y[1]*y[1] - 1], Mass, 
                          y0, interval, opts); ResultPloter(T, Y, 3);
 

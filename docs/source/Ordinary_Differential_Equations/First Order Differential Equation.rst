@@ -58,7 +58,7 @@ Examples
       // Time span
       double[] tspan = [0, 5];
       // Solve the ODE using Ode45
-      (ColVec T, ColVec Y) = Ode45(dydt, y0, tspan);
+      (ColVec T, ColVec Y, _) = Ode45(dydt, y0, tspan);
       // Plot the results
       Plot(T, Y, Linewidth: 2);
       Title("Exponential Growth: y' = 0.5y");
@@ -88,7 +88,7 @@ Examples
       // Time span
       double[] tspan = [0, 10];
       // Solve the ODE using Ode45
-      (ColVec T, ColVec Y) = Ode45(dydt, y0, tspan);
+      (ColVec T, ColVec Y, _) = Ode45(dydt, y0, tspan);
       // Plot the results
       Plot(T, Y, Linewidth: 2);
       Title("Linear Decay with Forcing, y' = -2*y + sin(t)");
@@ -119,7 +119,7 @@ Examples
       // Time span
       double[] tspan = [0, 50];
       // Solve the ODE using Ode45
-      (ColVec T, ColVec Y) = Ode45(dydt, y0, tspan);
+      (ColVec T, ColVec Y, _) = Ode45(dydt, y0, tspan);
       // Plot the results
       Plot(T, Y, Linewidth: 2);
       Title("Logistic Growth, y' = ry(1 - y / K)");
@@ -150,7 +150,7 @@ Examples
       // Time span
       double[] tspan = [0, 20];
       // Solve the ODE using Ode45
-      (ColVec T, ColVec Y) = Ode45(dydt, y0, tspan);
+      (ColVec T, ColVec Y, _) = Ode45(dydt, y0, tspan);
       // Plot the results
       Plot(T, Y, Linewidth: 2);
       Title("Michaelis–Menten Type ODE");
@@ -181,7 +181,7 @@ Examples
       // Time span
       double[] tspan = [0, 20];
       // Solve the ODE using Ode45
-      (ColVec T, ColVec Y) = Ode45(dydt, y0, tspan);
+      (ColVec T, ColVec Y, _) = Ode45(dydt, y0, tspan);
       // Plot the results
       Plot(T, Y, Linewidth: 2);
       Title("Nonlinear damping: y' = -0.1 y^3 + cos(t)");

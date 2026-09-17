@@ -50,7 +50,7 @@ Where :math:`M` is a singular matrix.
       double[,] mass_f = Diag([1, 1, 0]);
    
       double[] y0 = [1.0, 0.0, 0.0];
-      (ColVec T, Matrix Y) = Ode43a(robertson_f, mass_f, y0, Logspace(-6,6.6));
+      (ColVec T, Matrix Y, _) = Ode43a(robertson_f, mass_f, y0, Logspace(-6,6.6));
       // Plot the result
       Y[.., 1] = 1e4*Y[.., 1];
       SemiLogx(T, Y);
@@ -107,7 +107,7 @@ Where :math:`M` is a singular matrix.
    
       double[] y0 = [0, 1, 1, 0, 1 - g];
       var opts = Odeset(Stats: true, RelTol: 1e-6);
-      (ColVec T, Matrix Y) = Ode43a(pendulum_f, mass_f, y0, [0, 6], opts);
+      (ColVec T, Matrix Y, _) = Ode43a(pendulum_f, mass_f, y0, [0, 6], opts);
       Plot(T, Y, Linewidth: 2); Xlabel("x"); Ylabel("y");
       Legend(["x", "y", "u", "v", "λ"]);
       Title("Pendulum Trajectory (DAE)");
@@ -124,7 +124,7 @@ Ouput
       Summary of statistics by Ode43a
               1054 successful steps
               16 failed attempts
-              30516 function evaluations
+              30515 function evaluations
               1070 partial derivatives
               4280 LU decompositions
               19799 solutions of linear systems
@@ -219,7 +219,7 @@ this initial condition y0 = [1, 0, 0, 1, 1];
       double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
    
       var opts = Odeset(RelTol: 1e-5);
-      (ColVec T, Matrix Y) = Ode43a(dudt, Mass, y0, tspan, opts);
+      (ColVec T, Matrix Y, _) = Ode43a(dudt, Mass, y0, tspan, opts);
       Scatter(T, Arrayfun(Ue, T), "o"); HoldOn();
       Plot(T, Y[.., 4], "--r"); HoldOff();
       Legend(["Input", "Output"], UpperLeft);
@@ -301,7 +301,7 @@ this initial condition y0 = [1, 0, 0, 1, 1];
    
       double[,] mass_f = Diag([1, 1, 1, 1, 1, 1, 0, 0]);
       double[] y0 = [0.444, 0.0012, 0.0, 0.0037, 0.0, 0.0, 0.0, 0.0];
-      (ColVec T, Matrix Y) = Ode43a(akzo_f, mass_f, y0, [0, 180]);
+      (ColVec T, Matrix Y, _) = Ode43a(akzo_f, mass_f, y0, [0, 180]);
       Plot(T, Y);
       Xlabel("Time"); Ylabel("Concentration");
       Title("Akzo Nobel Chemical Kinetics (DAE)");
@@ -350,7 +350,7 @@ Now we look at examples of index 2 DAEs
       double[,] mass_f = Diag([1, 1, 0]);
       double[] y0 = [1, 1, 0]; // only the differential variables need initial conditions
       var opts = Odeset(Stats: true);
-      (ColVec T, Matrix Y) = Ode43a(Ercan, mass_f, y0, [0, 1], opts);
+      (ColVec T, Matrix Y, _) = Ode43a(Ercan, mass_f, y0, [0, 1], opts);
       Scatter(T, Hcart(Exp(T), Exp(T), -Exp(T).Div(2-T)), "o"); HoldOn();
       Plot(T, Y); HoldOff();
       Xlabel("Time t"); Ylabel("Solution x");
@@ -373,7 +373,7 @@ Now we look at examples of index 2 DAEs
       // We can compute the solution to a higher accuracy 
       Console.WriteLine("\n\nNow we compute the solution to a higher accuracy (RelTol = 1e-5):\n");
       opts = Odeset(Stats: true, RelTol: 1e-5);
-      (T, Y) = Ode43a(Ercan, mass_f, y0, [0, 1], opts);
+      (T, Y, _) = Ode43a(Ercan, mass_f, y0, [0, 1], opts);
       Console.WriteLine("""
               t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
           --------++-----------------+----------------++-----------------+----------------++-----------------+---------------
@@ -525,7 +525,7 @@ Ouput
    
       double[] y0 = [0, 1, 1, 0, -1];
       var opts = Odeset(Stats: true);
-      (ColVec T, Matrix Y) = Ode43a(pendulum_f, mass_f, y0, [0, 6], opts);
+      (ColVec T, Matrix Y, _) = Ode43a(pendulum_f, mass_f, y0, [0, 6], opts);
       Plot(T, Y, Linewidth: 2); Xlabel("x"); Ylabel("y");
       Legend(["x", "y", "u", "v", "λ"]);
       Title("Pendulum Trajectory (DAE)");
@@ -546,7 +546,7 @@ Ouput
       Summary of statistics by Ode43a
               768 successful steps
               744 failed attempts
-              45115 function evaluations
+              45118 function evaluations
               1512 partial derivatives
               4671 LU decompositions
               31359 solutions of linear systems
@@ -1425,19 +1425,19 @@ The result is assessed using these errors
    }
 
    // Index 0
-   (T, Y) = Ode45((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+   (T, Y, _) = Ode45((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
            -2 * y[4] * (y[0] * y[2] + y[1] * y[3]) - 3 * g * y[3]],
            y0, interval, opts); ResultPloter(T, Y, 0);
    // Index 1
-   (T, Y) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+   (T, Y, _) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
             y[2]*y[2] + y[3]*y[3] - y[1] * g - y[4]], Mass, 
             y0, interval, opts); ResultPloter(T, Y, 1);
    // Index 2
-   (T, Y) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+   (T, Y, _) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
             y[0]*y[2] + y[1]*y[3]], Mass, 
             y0, interval, opts); ResultPloter(T, Y, 2);
    // Index 3
-   (T, Y) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+   (T, Y, _) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
             y[0]*y[0] + y[1]*y[1] - 1], Mass, 
             y0, interval, opts); ResultPloter(T, Y, 3);
 
@@ -1468,7 +1468,7 @@ Ouput
    Summary of statistics by Ode43a
            831 successful steps
            15 failed attempts
-           31651 function evaluations
+           31649 function evaluations
            846 partial derivatives
            3384 LU decompositions
            23173 solutions of linear systems
@@ -1476,7 +1476,7 @@ Ouput
    Summary of statistics by Ode43a
            8756 successful steps
            19 failed attempts
-           282372 function evaluations
+           282370 function evaluations
            8775 partial derivatives
            35097 LU decompositions
            194608 solutions of linear systems

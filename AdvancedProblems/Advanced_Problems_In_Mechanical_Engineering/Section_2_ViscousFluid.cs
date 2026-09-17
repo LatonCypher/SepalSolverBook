@@ -15,7 +15,7 @@ namespace ConsoleApp1.TrainingFiles.Summary_and_Conclusion.Advanced_Problems_In_
                 ColVec? T = null; Matrix? Y = null;
                 double err(double alp)
                 {
-                    (T, Y) = Ode45((t, y) => [y[1], y[2], -0.5 * y[0] * y[2]], [0, 0, alp], [0, 6]);
+                    (T, Y, _) = Ode45((t, y) => [y[1], y[2], -0.5 * y[0] * y[2]], [0, 0, alp], [0, 6]);
                     return Y[^1, 1] - 1;
                 }
                 //Use a root finding method to find the value of alp that satisfies the boundary condition at t = 6
@@ -82,7 +82,7 @@ namespace ConsoleApp1.TrainingFiles.Summary_and_Conclusion.Advanced_Problems_In_
                     ColVec fun(ColVec y35_0)
                     {
                         y0 = [0, 0, y35_0[0], 2, y35_0[1]];
-                        (T, Y) = Ode45(dydt, y0, tspan);
+                        (T, Y, _) = Ode45(dydt, y0, tspan);
                         return Y[^1, [1,3]].T - 1;
                     }
 

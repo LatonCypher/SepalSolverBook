@@ -59,7 +59,7 @@
                 // Time span
                 double[] tspan = [0, 20];
                 // Solve the ODE using Ode45
-                (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+                (ColVec T, Matrix Y, _) = Ode45(dydt, y0, tspan);
                 // Plot the results
                 Plot(T, Y, Linewidth: 2);
                 Xlabel("Time t");
@@ -92,7 +92,7 @@
                 // Time span
                 double[] tspan = [0, 15];
                 // Solve the ODE using Ode45
-                (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+                (ColVec T, Matrix Y, _) = Ode45(dydt, y0, tspan);
                 // Plot the results
                 Plot(T, Y, Linewidth: 2);
                 Legend(["Prey", "Predator"], UpperLeft);
@@ -125,7 +125,7 @@
                 // Time span
                 double[] tspan = [ 0, 30 ];
                 // Solve the ODE using Ode45
-                (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+                (ColVec T, Matrix Y, _) = Ode45(dydt, y0, tspan);
                 //  Plot the results
                 Plot(T, Y, Linewidth: 2);
                 Legend(["x", "y", "z"], UpperLeft);
@@ -159,7 +159,7 @@
                 // Time span
                 double[] tspan = [0, 160];
                 // Solve the ODE using Ode45
-                (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+                (ColVec T, Matrix Y, _) = Ode45(dydt, y0, tspan);
                 //  Plot the results
                 Plot(T, Y, Linewidth: 2);
                 Legend(["S", "I", "R"], UpperLeft);
@@ -193,7 +193,7 @@
                 // Time span
                 double[] tspan = [0, 15];
                 // Solve the ODE using Ode45
-                (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
+                (ColVec T, Matrix Y, _) = Ode45(dydt, y0, tspan);
                 //  Plot the results
                 Plot(T, Y, Linewidth: 2);
                 Legend(["X", "Y"], UpperLeft);
@@ -242,7 +242,7 @@
                 ColVec T = null; Matrix Y = null;
                 double err(double alp)
                 {
-                    (T, Y) = Ode45((t, y) => [y[1], y[2], -0.5*y[0]*y[2]], [0, 0, alp], [0, 6]);
+                    (T, Y, _) = Ode45((t, y) => [y[1], y[2], -0.5*y[0]*y[2]], [0, 0, alp], [0, 6]);
                     return Y[^1, 1] - 1;
                 }
                 //Use a root finding method to find the value of alp that satisfies the boundary condition at t = 6
