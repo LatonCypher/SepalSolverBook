@@ -264,8 +264,8 @@ This is demonstrated in the following example.
    
    
       ColVec Tsmooth = Linspace(0, tspan[^1], 3000);
-      (var Ysmooth, _) = Deval(result, Tsmooth);
-      (var Ydelsmooth, _) = Deval(result, Tsmooth - tau);
+      var Ysmooth = Deval(result, Tsmooth);
+      var Ydelsmooth = Deval(result, Tsmooth - tau);
       Subplot(2, 2, 2);
       Plot(Tsmooth, Ysmooth, "r", 3); GridOn();
       Title("Mackey-Glass Chaotic Attractor: tau = 17");

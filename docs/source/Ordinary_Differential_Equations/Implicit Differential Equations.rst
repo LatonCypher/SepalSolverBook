@@ -260,7 +260,7 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    
       var opts = Odeset(Stats: true);
       //Solve ODE
-      (ColVec T, Matrix Y, Matrix Yp, _) = Ode43i(robertsonimplicit, (y0, yp0), [0, 4e6], opts);
+      (ColVec T, Matrix Y, Matrix Yp, _) = Ode43i(robertsonimplicit, (y0, yp0), Logspace(-6,6.6), opts);
       // Plot the result
       Y[.., 1] = 1e4 * Y[.., 1];
       SemiLogx(T, Y);
@@ -278,12 +278,12 @@ Ouput
    .. terminal::
    
       Summary of statistics by Ode43i
-              68 successful steps
-              9 failed attempts
-              2284 function evaluations
-              77 partial derivatives
-              284 LU decompositions
-              1459 solutions of linear systems
+              118 successful steps
+              0 failed attempts
+              3226 function evaluations
+              118 partial derivatives
+              472 LU decompositions
+              1919 solutions of linear systems
       
    
    .. figure:: images/Implicit-Robertson-ODE-Ode43i.png
@@ -341,7 +341,7 @@ Ouput
       // Solve for yp0, Truth array for y0 = [1,1,1] but for yp0 it is [0,0,0]. 
       (y0, yp0) = decic(robertsonimplicit, 0, y0, [1, 1, 0], yp0, [0, 0, 0]);
       //Solve ODE
-      (ColVec T, Matrix Y, Matrix Yp, _) = Ode43i(robertsonimplicit, (y0, yp0), [0, 4e6], opts);
+      (ColVec T, Matrix Y, Matrix Yp, _) = Ode43i(robertsonimplicit, (y0, yp0), Logspace(-6, 6.6), opts);
       // Plot the result
       Y[.., 1] = 1e4 * Y[.., 1];
       SemiLogx(T, Y);
@@ -359,9 +359,9 @@ Ouput
    .. terminal::
    
       Summary of statistics by Ode43i
-              68 successful steps
-              9 failed attempts
-              1734 function evaluations
+              118 successful steps
+              0 failed attempts
+              2388 function evaluations
       
    
    .. figure:: images/Implicit-Robertson-ODE-Ode43i_With_jacobian.png

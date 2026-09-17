@@ -6636,7 +6636,7 @@
             Interpolating Function that computes the dependent valirable given the inpendent varaible
             </summary>
         </member>
-        <member name="P:SepalSolver.Dde.Result.Odefun">
+        <member name="P:SepalSolver.Dde.Result.Ddefun">
             <summary>
             
             </summary>

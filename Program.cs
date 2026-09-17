@@ -3,53 +3,6 @@ using ConsoleApp1;
 {
     currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents\\";
     {
-        //// Model parameters
-        //double beta0 = 0.2, gamma = 0.1, n = 10.0;
-        //double tau = 17.0;
-
-        //// Mackey-Glass equation
-        //double ddefun(double t, double y, double ydel, double ypdel)
-        //    => (beta0 * ydel) / (1.0 + Pow(ydel, n)) - gamma * y;
-
-        //double yhistory = 0.5;
-        //double[] tspan = [0, 300];
-
-        //// Solver options with statistics enabled
-        //var opts = Ddeset(Stats: true, RelTol: 1e-6, AbsTol: 1e-8);
-
-        //// Solve using Dde45
-        //(var T, var Y, var result) = Dde45(ddefun, yhistory, tspan, dely: tau, options: opts);
-        //var Ydel = Interp1(T, Y, T - tau);
-
-        //// Plot chaotic time-series
-        //Subplot(2, 2, 0);
-        //Plot(T, Y, "r", 3); GridOn();
-        //Title("Mackey-Glass Chaotic Attractor: tau = 17");
-        //Xlabel("Time t"); Ylabel("Concentration y(t)");
-        //// Phase-space reconstruction using delay embedding
-        //Subplot(2, 2, 1);
-        //Plot(Ydel, Y, "b", 2); GridOn();
-        //Title("Phase-Space Reconstruction");
-        //Xlabel("y(t - tau)"); Ylabel("y(t)");
-
-
-        //ColVec Tsmooth = Linspace(0, tspan[^1], 3000);
-        //(var Ysmooth, _) = Deval(result, Tsmooth);
-        //(var Ydelsmooth, _) = Deval(result, Tsmooth - tau);
-        //Subplot(2, 2, 2);
-        //Plot(Tsmooth, Ysmooth, "r", 3); GridOn();
-        //Title("Mackey-Glass Chaotic Attractor: tau = 17");
-        //Xlabel("Time t"); Ylabel("Concentration y(t)");
-        //// Phase-space reconstruction using delay embedding
-        //Subplot(2, 2, 3);
-        //Plot(Ydelsmooth, Ysmooth, "b", 2); GridOn();
-        //Title("Phase-Space Reconstruction");
-        //Xlabel("y(t - tau)"); Ylabel("y(t)");
-
-
-        //SaveAs("Mackey_Glass_Chaotic.png", 1000, 1000);
-    }
-    {
         //double[] dydt(double t, double[] y) => [y[1], -y[0] + Cos(t)];
         //double[] y0 = [0.0, 0.0];
         //double[] tspan = [0, 20];

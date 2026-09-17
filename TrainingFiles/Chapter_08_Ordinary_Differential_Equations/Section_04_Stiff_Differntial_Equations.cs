@@ -166,7 +166,7 @@
                 Console.WriteLine("\n\n");
                 opts = Odeset(Stats: true, RelTol: 1e-4, AbsTol: 1e-7);
                 Console.WriteLine("Computational Cost Using Custom Tolerance Setting");
-                Ode43s(robertson, [1, 0, 0], [0, .. Logspace(-6, 6.6)], opts);
+                Ode43s(robertson, [1, 0, 0], Logspace(-6, 6.6), opts);
             }
             /// </code>
             /// </example>
