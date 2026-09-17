@@ -212,7 +212,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                  0, 0, 0, 0, 0, 1.75, -1.5, 0, 0, 0, -1.25, 1, 0, 0];
                 double[] tspan = Linspace(0, 15, 151);
                 var opts = Odeset(AbsTol: 1e-15, RelTol: 1e-13);
-                Figure(600, 400);
+                Figure(750, 500);
                 (T, Y, _) = Ode89(pleiades, init, tspan, opts);
                 Plot(Y[.., 0..7], Y[.., 7..14], ":"); GridOn(); HoldOn();
                 ScatterHandle[] Stars = [..Enumerable.Range(0,7).Select(j =>
