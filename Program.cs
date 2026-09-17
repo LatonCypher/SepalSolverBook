@@ -583,7 +583,7 @@ using ConsoleApp1;
             foreach (var chunk in chunks)
                 sb.Add(string.Join(", ", chunk.Select(x => x.ToString("F2"))));
             return string.Join(", \n", sb);
-        }
+       }
 
         // =========================================================================
         // STAGE 5: RUNTIME EXECUTION MANAGEMENT LOOP & SENSITIVITY DESIGN
