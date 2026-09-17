@@ -144,14 +144,14 @@ Examples
       double ddefun(double t, double y, double ydel, double ypdel)
           => 1.0 + y - 2.0 * Pow(ydel, 2) - ypdel;
    
-      double[] tspan = [0, 3 * pi];
+      double[] tspan = [0, 2 * pi];
    
       // Solve using Dde45
       (ColVec T, ColVec Y, _) = Dde45(ddefun, yhistory, tspan, dely, delyp);
    
       // Plot numerical result against exact analytical curve
       Scatter(T, Y, "ro", 10); HoldOn();
-      Plot(T, Cos(T), "b-"); HoldOff();
+      Plot(T = Vcart(Linspace(-pi, 0), T), Cos(T), "b-"); HoldOff();
    
       Title("Neutral DDE: Comparison with Exact Solution cos(t)");
       Xlabel("Time t");
