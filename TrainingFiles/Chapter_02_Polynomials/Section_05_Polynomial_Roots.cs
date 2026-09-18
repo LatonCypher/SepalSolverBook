@@ -35,7 +35,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
             /// <code>
             {
                 // Characteristic Equation: s^2 + 4s + 13 = 0
-                double[] characteristic = { 1.0, 4.0, 13.0 };
+                double[] characteristic = [1.0, 4.0, 13.0 ];
                 var frequencies = Roots(characteristic);
 
                 // Results will be complex: -2 + 3i and -2 - 3i
@@ -78,7 +78,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_02_Polynomials
             /// When high precision is required for a specific physical boundary, we take a rough estimate from a graph and refine it. By combining Evaluate and Polyder, we can implement a custom search that converges in just a few iterations.
             /// <code>
             {
-                double[] p = { 1.0, 0.0, -2.0 }; // x^2 - 2 (Roots are ±sqrt(2))
+                double[] p = [1.0, 0.0, -2.0 ]; // x^2 - 2 (Roots are ±sqrt(2))
                 double x = 1.5; // Initial guess
                 var dp = Polyder(p, 1);
                 for (int i = 0; i < 5; i++)

@@ -126,7 +126,7 @@ Examples
    | Solve the neutral DDE with both state and derivative lags:
    | :math:`\cfrac{dy}{dt} = 1 + y(t) - 2\left[y\left(\cfrac{t}{2}\right)\right]^2 - y'(t - \pi)`,
    | with functional history: :math:`y(t) = \cos(t)` for :math:`t \le 0`,
-   | over the interval: :math:`t \in [0, 3\pi]`.
+   | over the interval: :math:`t \in [0, 2\pi]`.
    | *Analytical exact solution:* :math:`y(t) = \cos(t)`
    
    .. code-block:: csharp

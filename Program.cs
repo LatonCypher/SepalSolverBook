@@ -1,5 +1,7 @@
 ﻿
 using ConsoleApp1;
+using ScottPlot;
+using System.Data.SqlTypes;
 {
     currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents\\";
     {
@@ -87,46 +89,75 @@ using ConsoleApp1;
         //CloseFig();
     }
     {
-        //// A star and n small bodies under mutual gravity. State is flat:
-        //// [x, y, vx, vy] per body, star first.
-        //int n = 5;
-        //double G = 1.0, starMass = 200, bodyMass = 0.05, spread = 3.0;
+        //int n = 5; double G = 1.0, starMass = 200, bodyMass = 0.05, spread = 3.0;
         //double[] masses = [starMass, .. Enumerable.Repeat(bodyMass, n)];
+        //Indexer idx = 0..4; double massratio = bodyMass / starMass, maxR = 0;
+        //ColVec InitialConditions(int n, double G, double starMass, double spread)
+        //{
+        //    int N = n + 1; ColVec y0 = new double[4 * N];
+        //    for (int i = 1; i <= n; i++)
+        //    {
+        //        double r = spread * (0.2 + 0.8 * ((double)i / n));
+        //        double theta = rgn.NextDouble() * 2.0 * pi, 
+        //            ecc = 0.1+0.8* rgn.NextDouble();
+        //        double x = r * Cos(theta), y = r * Sin(theta);
+        //        double v = Sqrt(G* starMass *(1.0 + ecc) / r);
+        //        double vx = -v * Sin(theta), vy = v * Cos(theta);
+        //        y0[4 * i + idx] = new([x, y, vx, vy]);
+        //        y0[2] -= massratio * vx; y0[3] -= massratio * vy;
+        //        double ra = r * (1.0 + ecc) / (1.0 - ecc);
+        //        maxR = Max(maxR, ra); 
+        //    }
+        //    return y0;
+        //}
 
-        //ColVec f(double t, ColVec y)
+        //ColVec f(double t, ColVec q)
         //{
         //    int N = masses.Length;
-        //    ColVec dy = Zeros(y.Numel);
-
-        //    dy[(0..).Step(4)] = y[(2..).Step(4)];    // dx/dt = vx
-        //    dy[(1..).Step(4)] = y[(3..).Step(4)];    // dy/dt = vy
-
+        //    ColVec dq = Zeros(q.Numel);
+        //    dq[(0..).Step(4)] = q[(2..).Step(4)];
+        //    dq[(1..).Step(4)] = q[(3..).Step(4)];
         //    for (int i = 0; i < N; i++)
         //    {
         //        for (int j = i + 1; j < N; j++)
         //        {
-        //            double dx = y[4 * j] - y[4 * i],
-        //                   dz = y[4 * j + 1] - y[4 * i + 1];
-        //            double d2 = dx * dx + dz * dz;
-        //            double inv = G / (d2 * Sqrt(d2));
-
-        //            dy[4 * i + 2] += inv * masses[j] * dx;
-        //            dy[4 * i + 3] += inv * masses[j] * dz;
-        //            dy[4 * j + 2] -= inv * masses[i] * dx;
-        //            dy[4 * j + 3] -= inv * masses[i] * dz;
+        //            double dx = q[4 * j] - q[4 * i],
+        //                   dy = q[4 * j + 1] - q[4 * i + 1];
+        //            double inv = G / Pow(dx * dx + dy * dy, 1.5);
+        //            dq[4 * i + 2] += inv * masses[j] * dx;
+        //            dq[4 * i + 3] += inv * masses[j] * dy;
+        //            dq[4 * j + 2] -= inv * masses[i] * dx;
+        //            dq[4 * j + 3] -= inv * masses[i] * dy;
         //        }
         //    }
-        //    return dy;
+        //    return dq;
         //}
 
         //// Circular orbits, then the momentum removed so nothing drifts away
-        //double[] y0 = InitialConditions(n, G, starMass, spread);
-        //(ColVec T, Matrix Y) = Ode45(f, y0, [0, 60]);
+        //ColVec Y = InitialConditions(n, G, starMass, spread); maxR *= 0.7; 
 
-        //// Every body's path, drawn on one figure
-        //Plot(Y[.., (0..).Step(4)], Y[.., (1..).Step(4)]);
-        //AxisEqual(); Title("Five bodies around a star");
-        //Xlabel("x"); Ylabel("y");
+        //Figure(800, 800);
+        //var myPlot = GetCurrentAxis(); SetDarkTheme(myPlot);
+        //Title("Five bodies around a star"); Xlabel("x"); Ylabel("y");
+
+        //var Sun = Scatter(Y[0], Y[1], "foy", 40); HoldOn(); GridOn();
+        //ScatterHandle[] Planets = [..Enumerable.Range(1,n).Select(j =>
+        //    Scatter(Y[4*j], Y[4*j+1], "fo", 15))];
+        //Axis([-maxR, maxR, -maxR, maxR]); HoldOff();
+
+        //byte[] Animfun(int i)
+        //{
+        //    Y = rk4(f, 0, Y, 0.03);
+        //    Sun.Xdata = Y[0]; Sun.Ydata = Y[1];
+        //    for (int j = 1; j <= n; j++)
+        //    {
+        //        Planets[j - 1].Xdata = Y[4 * j + 0];
+        //        Planets[j - 1].Ydata = Y[4 * j + 1];
+        //    }
+        //    return GetFrame();
+        //}
+        //AnimationMaker(Animfun, "N-Panet_Solar_System.gif", 30, 901);
+        //CloseFig();
     }
     Writer.Run();
     {

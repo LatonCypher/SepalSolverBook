@@ -47,7 +47,7 @@ Examples
    .. code-block:: csharp
    
       // Characteristic Equation: s^2 + 4s + 13 = 0
-      double[] characteristic = { 1.0, 4.0, 13.0 };
+      double[] characteristic = [1.0, 4.0, 13.0 ];
       var frequencies = Roots(characteristic);
    
       // Results will be complex: -2 + 3i and -2 - 3i
@@ -138,7 +138,7 @@ Ouput
    
    .. code-block:: csharp
    
-      double[] p = { 1.0, 0.0, -2.0 }; // x^2 - 2 (Roots are ±sqrt(2))
+      double[] p = [1.0, 0.0, -2.0 ]; // x^2 - 2 (Roots are ±sqrt(2))
       double x = 1.5; // Initial guess
       var dp = Polyder(p, 1);
       for (int i = 0; i < 5; i++)

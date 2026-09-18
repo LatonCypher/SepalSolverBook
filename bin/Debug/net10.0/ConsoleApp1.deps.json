@@ -57,11 +57,11 @@
           }
         }
       },
-      "FFmpeg.AutoGen/8.0.0": {
+      "FFmpeg.AutoGen/9.0.1.1": {
         "runtime": {
-          "lib/netstandard2.1/FFmpeg.AutoGen.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.0.0"
+          "lib/net8.0/FFmpeg.AutoGen.dll": {
+            "assemblyVersion": "9.0.1.1",
+            "fileVersion": "9.0.1.1"
           }
         }
       },
@@ -204,14 +204,14 @@
           }
         }
       },
-      "Magick.NET-Q16-AnyCPU/14.10.0": {
+      "Magick.NET-Q16-AnyCPU/14.17.1": {
         "dependencies": {
-          "Magick.NET.Core": "14.10.0"
+          "Magick.NET.Core": "14.17.1"
         },
         "runtime": {
           "lib/net8.0/Magick.NET-Q16-AnyCPU.dll": {
-            "assemblyVersion": "14.10.0.0",
-            "fileVersion": "14.10.0.0"
+            "assemblyVersion": "14.17.0.0",
+            "fileVersion": "14.17.1.0"
           }
         },
         "runtimeTargets": {
@@ -243,25 +243,25 @@
           "runtimes/win-arm64/native/Magick.Native-Q16-arm64.dll": {
             "rid": "win-arm64",
             "assetType": "native",
-            "fileVersion": "10.2.0.0"
+            "fileVersion": "7.1.2.31"
           },
           "runtimes/win-x64/native/Magick.Native-Q16-x64.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "10.2.0.0"
+            "fileVersion": "7.1.2.31"
           },
           "runtimes/win-x86/native/Magick.Native-Q16-x86.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "10.2.0.0"
+            "fileVersion": "7.1.2.31"
           }
         }
       },
-      "Magick.NET.Core/14.10.0": {
+      "Magick.NET.Core/14.17.1": {
         "runtime": {
           "lib/net8.0/Magick.NET.Core.dll": {
-            "assemblyVersion": "14.10.0.0",
-            "fileVersion": "14.10.0.0"
+            "assemblyVersion": "14.17.0.0",
+            "fileVersion": "14.17.1.0"
           }
         }
       },
@@ -669,7 +669,7 @@
           }
         }
       },
-      "ScottPlot/5.1.57": {
+      "ScottPlot/5.1.59": {
         "dependencies": {
           "HarfBuzzSharp.NativeAssets.Linux": "8.3.1.1",
           "SkiaSharp": "3.119.0",
@@ -677,9 +677,9 @@
           "SkiaSharp.NativeAssets.Linux.NoDependencies": "3.119.0"
         },
         "runtime": {
-          "lib/net9.0/ScottPlot.dll": {
-            "assemblyVersion": "5.1.57.0",
-            "fileVersion": "5.1.57.0"
+          "lib/net10.0/ScottPlot.dll": {
+            "assemblyVersion": "5.1.59.0",
+            "fileVersion": "5.1.59.0"
           }
         }
       },
@@ -832,10 +832,10 @@
         "dependencies": {
           "CSharpMath": "0.5.1",
           "CSharpMath.SkiaSharp": "0.5.1",
-          "FFmpeg.AutoGen": "8.0.0",
-          "Magick.NET-Q16-AnyCPU": "14.10.0",
-          "Magick.NET.Core": "14.10.0",
-          "ScottPlot": "5.1.57",
+          "FFmpeg.AutoGen": "9.0.1.1",
+          "Magick.NET-Q16-AnyCPU": "14.17.1",
+          "Magick.NET.Core": "14.17.1",
+          "ScottPlot": "5.1.59",
           "SepalSolver": "1.2.8"
         },
         "runtime": {
@@ -881,12 +881,12 @@
       "path": "csharpmath.skiasharp/0.5.1",
       "hashPath": "csharpmath.skiasharp.0.5.1.nupkg.sha512"
     },
-    "FFmpeg.AutoGen/8.0.0": {
+    "FFmpeg.AutoGen/9.0.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-GgMk5O74HAyPkAb+EC1QbxF32OISwjQE8u252SjHUAd9b5m6nRNrkQ/T8pMMccsRHIDdToDQc4Xp6pWgf/PE/A==",
-      "path": "ffmpeg.autogen/8.0.0",
-      "hashPath": "ffmpeg.autogen.8.0.0.nupkg.sha512"
+      "sha512": "sha512-+BLh0C8VET4aMUorxr/LMZAgmKl2PYSoY7Qm4PJ4eePx/LT2gIHkxOUnlGM91QETgfsnSZajHx9rK0d67ilpgw==",
+      "path": "ffmpeg.autogen/9.0.1.1",
+      "hashPath": "ffmpeg.autogen.9.0.1.1.nupkg.sha512"
     },
     "HarfBuzzSharp/8.3.1.1": {
       "type": "package",
@@ -923,19 +923,19 @@
       "path": "highs.native/1.14.0",
       "hashPath": "highs.native.1.14.0.nupkg.sha512"
     },
-    "Magick.NET-Q16-AnyCPU/14.10.0": {
+    "Magick.NET-Q16-AnyCPU/14.17.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-yqUoE/2GUPVu8NCbDhl6qmgXXKh2xUpvI22HO0nEf0oZNZ6TadcX3SO0FF3UIKgrBRCyXBx5SJwjrjc4auTcTg==",
-      "path": "magick.net-q16-anycpu/14.10.0",
-      "hashPath": "magick.net-q16-anycpu.14.10.0.nupkg.sha512"
+      "sha512": "sha512-m7NksccmpXQiQoSsDyBpXkOFC3XV9/cM3chZp2bHPdi1QPTzSicljNwrKmGZiQnQUyOBznvzv+A3ROT3/eIqUg==",
+      "path": "magick.net-q16-anycpu/14.17.1",
+      "hashPath": "magick.net-q16-anycpu.14.17.1.nupkg.sha512"
     },
-    "Magick.NET.Core/14.10.0": {
+    "Magick.NET.Core/14.17.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-MgL24O4CWdPB3VOzsJF/npYjv1frFd43R4HsCGVA3QZc6UkMZNtXf8y8ecUIi62EkCtZR2nvN/fu3Yqdwi6uxQ==",
-      "path": "magick.net.core/14.10.0",
-      "hashPath": "magick.net.core.14.10.0.nupkg.sha512"
+      "sha512": "sha512-4BBbU5l5DmdT9isSNGrIE/0VwAh29SoKMSDMiIvFBDqz6vQfG6EYBFJQOemdCH3xkMfesSzImOVPjnyMf/PIqA==",
+      "path": "magick.net.core/14.17.1",
+      "hashPath": "magick.net.core.14.17.1.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.Common/5.3.0": {
       "type": "package",
@@ -986,12 +986,12 @@
       "path": "mkl.net.win-x64/2022.0.0.115",
       "hashPath": "mkl.net.win-x64.2022.0.0.115.nupkg.sha512"
     },
-    "ScottPlot/5.1.57": {
+    "ScottPlot/5.1.59": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-x/4nH1T6ILZyVhCsJDd3GYE3DW4xnXk1q1KOHDBOXld8+BooNtjUlE3wPI6Un82/VYQ2h1J6E4wGC8GdN62B+w==",
-      "path": "scottplot/5.1.57",
-      "hashPath": "scottplot.5.1.57.nupkg.sha512"
+      "sha512": "sha512-a2xnmMNfhspakKobDfAX5s1GPLFgmEXtRewR9p6bWM91QuCxF5SjHnDbixAcZoU50LPicrCe04sWzIVzdSrmNw==",
+      "path": "scottplot/5.1.59",
+      "hashPath": "scottplot.5.1.59.nupkg.sha512"
     },
     "SkiaSharp/3.119.0": {
       "type": "package",
