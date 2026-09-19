@@ -45,7 +45,7 @@ Numerical solvers like SepalSolver's ``Dde23`` and ``Dde45`` solve DDEs by exten
 
 
 Examples
-~~~~~~~~
+^^^^^^^^
 
 .. admonition:: Example 1 :  Delayed Logistic Equation (Hutchinson's Equation)
 

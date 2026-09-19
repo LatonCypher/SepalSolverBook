@@ -4,7 +4,7 @@ Cholesky Factorization FactorUpdate Positive Definicy
 The **Cholesky factorization** (also called Cholesky decomposition) is a matrix decomposition technique used in linear algebra. It applies to Hermitian, positive-definite matrices (in the real case, symmetric positive-definite matrices).
 
 Definition
-~~~~~~~~~~
+^^^^^^^^^^
 Given a Hermitian positive-definite matrix ``A``, the Cholesky decomposition expresses ``A`` as:
 
 .. math::
@@ -16,7 +16,7 @@ where:
 - :math:`L^*` denotes the conjugate transpose of :math:`L` (for real matrices, this is simply the transpose).
 
 Properties
-~~~~~~~~~~
+^^^^^^^^^^
 - **Existence**: Every Hermitian positive-definite matrix has a Cholesky decomposition.
 - **Uniqueness**: The decomposition is unique.
 - **Efficiency**: Roughly twice as efficient as LU decomposition for solving systems of linear equations. 

@@ -56,7 +56,7 @@ Then the system becomes:
 
 
 Examples
-~~~~~~~~
+^^^^^^^^
 Here are examples of converting and solving various higher‑order ODEs using SepalSolver.
 
 

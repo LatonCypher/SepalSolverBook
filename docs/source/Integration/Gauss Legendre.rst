@@ -41,7 +41,7 @@ The transformation yields:
 ---
 
 Applied Examples (Solved via Simple Solver)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. admonition:: Example 1 :  Exact Polynomial Integration (2-Point Rule)
@@ -146,7 +146,7 @@ Ouput
 
 
 Multiple Integral
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 SepalSolver can handle multiple integral via `IntegralN`. IntegralN is built on Integral running over multiply direction recursively. 
 It is abole to compute upto 4 dimensional integrals efficiently.
 

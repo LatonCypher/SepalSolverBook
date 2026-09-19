@@ -6,13 +6,13 @@ Curve Fitting
 Curve fitting is a mathematical technique used to construct a curve that best fits a series of data points. It is widely applied in data analysis, statistics, and machine learning to model relationships between variables.
 
 Types of Curve Fitting:
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 1. Linear Regression: Fits a straight line to the data points.
 2. Polynomial Regression: Fits a polynomial curve of degree n to the data points.
 3. Nonlinear Regression: Fits a nonlinear model to the data points.
 
 Example: Polynomial Curve Fitting
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Given a set of data points, we can fit a polynomial curve using least squares optimization.
 
 
@@ -76,7 +76,8 @@ Polynomial curve fitting constructs an :math:`n`-th degree polynomial model whos
    :alt: Polynomial_Fitting.png
 
 
-<header 4> Mathematical Theory: Vandermonde System and Horner Evaluation </header 4>
+Mathematical Theory: Vandermonde System and Horner Evaluation
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 An :math:`n`-th degree polynomial is expressed in descending powers as:
 
 
@@ -130,7 +131,7 @@ reducing computation from :math:`O(n^2)` arithmetic operations to :math:`n` mult
 
 
 Example: Fourier Series Fitting
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Evaluating a Fourier series numerically involves transforming an infinite 
 sum of trigonometric terms into a computationally stable, finite calculation
 while controlling truncation errors, floating-point precision loss, and
@@ -258,7 +259,8 @@ The harmonic design matrix :math:`A` contains columns for the DC offset alongsid
    :alt: FourierFitting.gif
 
 
-<header 4> Mathematical Theory: Discrete Orthogonal Projection and Gibbs Phenomenon </header 4>
+Mathematical Theory: Discrete Orthogonal Projection and Gibbs Phenomenon
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 A continuous periodic function :math:`f(x)` with period :math:`T = 2\pi` has exact analytical Fourier coefficients given by:
 
 
@@ -306,7 +308,7 @@ resulting in an asymptotic overshoot of approximately :math:`8.95\%` of the jump
 
 
 Example: Bi-Exponential Curve Fitting
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This exercise covers non-linear parameter estimation using least-squares optimization 
 to fit a bi-exponential model to noisy data while visualizing optimizer convergence.
 
@@ -415,27 +417,28 @@ Ouput
 
                                                Norm of      First-order 
     Iteration   Func-count       Resnorm          step       optimality 
-        0            5          1.7331e0                       3.5900e0 
-        1           11         7.9799e-1     2.5565e-1         1.4759e0 
-        2           17         5.2607e-1     2.3661e-1        2.9729e-1 
-        3           23         4.4875e-1     5.2177e-1        1.4341e-1 
-        4           29         2.6853e-1      2.0188e0        6.8824e-1 
-        5           35         1.1258e-1      3.0296e0        7.2798e-1 
-        6           41         5.8226e-3     4.6053e-1        8.5774e-2 
-        7           47         5.2104e-3     4.8238e-1        1.5168e-1 
-        8           53         4.6288e-3     4.0519e-1        1.3213e-1 
-        9           59         3.8643e-3     3.0650e-1        8.3895e-2 
-       10           65         3.4436e-3     1.8464e-1        3.1017e-2 
-       11           71         3.3791e-3     6.9337e-2        4.3037e-3 
-       12           77         3.3779e-3     1.1297e-2        1.1383e-4 
-       13           83         3.3779e-3     5.5212e-4        2.7520e-7 
+        0            5          1.7083e0                       3.6003e0 
+        1           11         7.7514e-1     2.5529e-1         1.4760e0 
+        2           17         5.0467e-1     2.3360e-1        2.9713e-1 
+        3           23         4.3089e-1     5.0557e-1        1.3670e-1 
+        4           29         2.5790e-1      1.9438e0        6.6564e-1 
+        5           35         1.1231e-1      2.9915e0        7.3349e-1 
+        6           41         5.2441e-3     3.9750e-1        9.8860e-2 
+        7           47         3.9008e-3     3.9328e-1        9.9899e-2 
+        8           53         3.5916e-3     3.3773e-1        8.6577e-2 
+        9           59         3.1743e-3     2.1844e-1        4.1132e-2 
+       10           65         3.0628e-3     9.5761e-2        8.2710e-3 
+       11           71         3.0581e-3     2.0487e-2        3.8200e-4 
+       12           77         3.0581e-3     1.4518e-3        1.9168e-6 
+       13           83         3.0581e-3     1.9456e-5       5.1731e-10 
 
 .. figure:: images/
    :align: center
    :alt: 
 
 
-<header 4> Mathematical Theory: Gauss-Newton, Levenberg-Marquardt, and Ill-Conditioning </header 4>
+Mathematical Theory: Gauss-Newton, Levenberg-Marquardt, and Ill-Conditioning
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 The objective is to minimize the sum of squared residuals:
 
 
@@ -479,7 +482,7 @@ Bi-exponential sums are ill-conditioned because the basis vectors :math:`e^{\the
 
 
 Example: Non-Linear Regression with Confidence Shading
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Fitting single-exponential decay models to experimental measurements requires quantifying the uncertainty associated with the estimated curve. In this example, `Lsqcurvefit` computes optimal decay parameters, and the point-wise prediction error :math:`\sigma_y` is interpolated over the observation domain with `Interp1`. A continuous confidence region is constructed via closed-polygon vertex concatenation using `Vcart` and shaded using `Fill`.
 
 
@@ -600,7 +603,8 @@ Ouput
    :alt: CurveFitting.gif
 
 
-<header 4> Mathematical Theory: Covariance Estimation and Error Propagation </header 4>
+Mathematical Theory: Covariance Estimation and Error Propagation
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 At the converged parameter vector :math:`\hat{\mathbf{x}} \in \mathbb{R}^P`, the unbiased estimate of measurement error variance :math:`s^2` is computed from the residual vector :math:`\mathbf{r}` across :math:`M` data points:
 
 
@@ -638,7 +642,7 @@ For :math:`f(t; \mathbf{x}) = x_0 e^{x_1 t}`, the gradient vector is:
 Pointwise standard deviations :math:`\sigma_y = \sqrt{\sigma_y^2(t)}` form the uncertainty envelope :math:`\hat{y}(t) \pm k \sigma_y(t)`, representing confidence bounds on the expected response curve.
 
 Example: Generating Seeded Synthetic Datasets
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Deterministic synthetic data generation guarantees reproducibility across benchmarks and case studies. This snippet defines a non-linear forward model combining an arc-tangent transition with linear drift:
 
 
@@ -701,7 +705,8 @@ A fixed seed ensures that the synthetic Gaussian white noise generated by `Randn
    :alt: Seeded_Curve_Fitting_Data.png
 
 
-<header 4> Mathematical Theory: Sigmoidal Response and Gaussian Noise Injection </header 4>
+Mathematical Theory: Sigmoidal Response and Gaussian Noise Injection
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 The benchmark forward model exhibits a sigmoidal inflection at :math:`x = x_2^*` superimposed on a linear background trend:
 
 

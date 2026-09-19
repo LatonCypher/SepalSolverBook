@@ -7,12 +7,12 @@ Interpolation via Polynomial Fitting
 While standard interpolation (like linear or Hermite) forces a curve to pass through every single data point, Polynomial Fit Interpolation uses a global model to approximate the data. This is particularly useful when you have many data points that might contain noise, or when you want a single mathematical expression to describe the entire dataset.
 
 1. The Strategy
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 - Modeling: Use Polyfit to find the coefficients of a polynomial of degree :math:N that best represents the data.
 - Estimation: Use Evaluate to calculate the value of that polynomial at any arbitrary point :math:`x`.
 
 2. Global vs. Local Interpolation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Unlike linear interpolation, which only looks at the two closest points, a polynomial fit considers the entire trend. 
 This results in a much smoother curve, but it can be prone to "swinging" if the polynomial degree is too high for the amount of data provided.
 
@@ -98,7 +98,7 @@ Ouput
    
 
 Exercise: Choosing the Degree
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Task: Determine which degree :math:N is most appropriate for the data and evaluate.
 
 .. code-block:: csharp
@@ -116,7 +116,7 @@ Task: Determine which degree :math:N is most appropriate for the data and evalua
 
 
 Multivariate Application
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^
 The idea of using polynomial fits can be extended to multiple dimensions. For example, if you have data points in 2D space (x, y) with corresponding values z, you can fit a polynomial surface to approximate z as a function of x and y. This is particularly useful in fields like geostatistics or thermodynamic property evaluation, where you want to model complex surfaces based on scattered data.
 
 

@@ -6,7 +6,7 @@ Collections and LINQ in C#
 In numerical programming, we rarely work with single values.Collections allow us to group related data—such as a vector of residuals or a list of material properties.LINQ(Language Integrated Query) provides a powerful, declarative way to filter, transform, and analyze these collections without writing complex loops.
 
 1.Core Collection Types
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 C# provides several specialized collections. While arrays are the standard for fixed-size mathematical data, other collections offer dynamic resizing and key-based lookups.
 
 .. list-table:: List of Essential Collections 
@@ -50,7 +50,7 @@ C# provides several specialized collections. While arrays are the standard for f
  
 
 2.Introduction to LINQ
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
 LINQ allows you to perform "query" operations on collections.It simplifies tasks like finding the maximum error in a vector or extracting specific nodes from a mesh.
 
 
@@ -72,7 +72,7 @@ LINQ allows you to perform "query" operations on collections.It simplifies tasks
  
 
 3.Deferred Execution
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 A vital concept in LINQ is that queries are not executed when they are defined.They are executed when you "materialize" them(by using foreach, .ToArray(), or.ToList()). This allows for efficient query building but can lead to multiple executions if not handled carefully.
 
 Examples

@@ -8,7 +8,7 @@ are categorized into two main types based on how they store data in memory:
 Value Types and Reference Types.
 
 1. Value Types
-~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^
 Value types store the actual data directly in the location where the variable 
 is declared (usually on the stack). When you copy a value type, a complete 
 independent copy of the data is made.
@@ -22,7 +22,7 @@ independent copy of the data is made.
 
 
 2. Reference Types
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 Reference types do not store the actual data. Instead, they store a **reference** 
 (a pointer) to the memory address where the data is kept (usually on the heap). 
 When you copy a reference type, you are only copying the pointer, not the data itself. 
@@ -62,7 +62,7 @@ before you use it. You can also use the var keyword for implicit typing,
 where the compiler determines the type based on the value assigned. 
 
 Examples
-~~~~~~~~
+^^^^^^^^
 
 
 .. admonition:: Example 1 :  Explicit vs Implicit Typing 

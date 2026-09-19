@@ -8,7 +8,7 @@ The Mixed-Integer Linear Programming (MILP) method extends linear programming by
 While pure Linear Programming problems can be solved efficiently in polynomial time, forcing variables to be integers introduces discrete combinations, making MILP NP-hard. Solvers utilize Branch-and-Bound, Branch-and-Cut, or Cutting-Plane algorithms to navigate the solution tree while leveraging LP relaxations at each node.
 
 Fundamental Components of Mixed-Integer Linear Programming:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The 3-Step Formulation Process
 Consider an optimization problem solved via the Linprog interface with integer constraints:
@@ -41,7 +41,7 @@ Solver Method | Simplex / Interior-Point | Branch-and-Bound / Cutting Planes
 Converted Function | Linprog(f, A, b, ...) | Linprog(f, intCon, A, b, ...)
 
 Example 1: Basic Mixed-Integer Linear Program (MILP)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Enforcing integer restrictions on selected decision variables by providing an integer variable index array intCon:
 
 .. math::
@@ -85,7 +85,7 @@ Ouput
    
 
 Example 2: MILP with Equality Constraints
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Combining integer variable restrictions with linear equality systems :math:`\mathbf{A}_{eq}\mathbf{x} = \mathbf{b}_{eq}` to model fixed discrete relationship balance equations:
 
 \min \quad \mathbf{f}^T \mathbf{x} \quad \text{s.t.} \quad \mathbf{A}\mathbf{x} \le \mathbf{b}, \quad \mathbf{A}{eq}\mathbf{x} = \mathbf{b}{eq}, \quad x_1, x_2 \in \mathbb{Z}
@@ -128,7 +128,7 @@ Ouput
 
 
 Example 3: Fully Constrained MILP with Binary/Integer Variable Bounds
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Solving a fully constrained MILP with explicit lower (:math:`\mathbf{Lb}`) and upper (:math:`\mathbf{Ub}`) variable bounds, commonly used to model binary 0-1 decision variables (:math:`\mathbf{Lb} = 0, \mathbf{Ub} = 1`):
 
 

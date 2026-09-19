@@ -8,7 +8,7 @@ The Linear Programming (LP) method approaches optimization problems where both t
 LP seeks to maximize or minimize a linear objective function subject to linear inequality constraints, equality constraints, and variable bounds—guaranteeing that any local optimum is also a global optimum due to the convexity of the feasible region.
 
 Fundamental Components of a Linear Program:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The 3-Step Formulation Process
 Consider a standard linear program solved via the Linprog interface:

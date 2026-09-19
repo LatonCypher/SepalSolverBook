@@ -107,7 +107,7 @@ LnGamma :math:`\ln\Gamma(z)`
 ----------------------------
 
 Definition and Purpose
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
 The LnGamma function, denoted as :math:`\ln\Gamma(z)`, is the natural logarithm of the Gamma function. While it might seem redundant to have a separate function for the log of an existing function, it is essential for numerical computing.
 
 * The Overflow Problem: The Gamma function :math:`\Gamma(z)` grows at a "factorial" rate. For example, :math:`\Gamma(172)` is approximately :math:`1.24 \times 10^{307}`, which is the limit of double-precision floating-point numbers. Any value larger than 171 will result in an Inf (overflow) error.
@@ -116,7 +116,7 @@ The LnGamma function, denoted as :math:`\ln\Gamma(z)`, is the natural logarithm 
 
 
 Mathematical Properties
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 
 * Stirling's Approximation: For large :math:`z`, :math:`\text{LnGamma}` is often approximated as:
 
@@ -129,7 +129,7 @@ Mathematical Properties
 * Derivatives: The first derivative of :math:`\ln\Gamma(z)` is called the Digamma function (:math:`\psi`), and the second  derivative is the Trigamma function. The general derivative of order n is the Polygamma function. 
 
 Application: Bayesian Statistics
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In Bayesian inference and likelihood calculations, we often multiply many probabilities together, many of which involve Gamma functions (like in the Beta or Gamma distributions). Multiplying many tiny numbers
 leads to "underflow." Instead, we sum the :math:`\ln\Gamma(z)` values to stay within a safe numerical range.

@@ -8,7 +8,7 @@ Linear Interpolation
 Linear Interpolation is the simplest form of interpolation used to estimate a value between two known data points. It assumes that the change between the points follows a straight line. While :math:Polyfit seeks to find a single curve for an entire dataset, linear interpolation works "locally" between adjacent coordinates.
 
 1. The Mathematical Formula
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Given two points :math:`(x_0, y_0)` and :math:`(x_1, y_1)`, the value :math:y for any :math:x in the interval :math:`[x_0, x_1]` is calculated as:
 
 :math:`y = y_0 + (x - x_0) \cfrac{y_1 - y_0}{x_1 - x_0}`
@@ -18,7 +18,7 @@ This formula represents the weighted average of the two endpoints based on how c
 
 
 2. Implementation in SepalSolver
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In SepalSolver, the Interp1 method performs 1D linear interpolation. It first searches the input array to find the correct "bin" (the two closest :math:x values) and then applies the linear formula.
 
 
@@ -98,7 +98,7 @@ Ouput
       Torque at 2500 RPM: :math:`295` Nm
 
 Exercise: Manual Implementation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Task**: Implement the core logic of a linear interpolator between two specific points.
 
 .. code-block:: csharp
@@ -123,7 +123,7 @@ Exercise: Manual Implementation
 2D Interpolation, or Bilinear Interpolation, is used to estimate values of a function :math:`z = f(x, y)` when the data is provided as a grid. This is essential in fields like meteorology (mapping temperatures across a geographic area) or structural engineering (calculating stress over a surface).
 
 1. How it Works
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 Bilinear interpolation is essentially a two-step linear interpolation. To find the value at a point :math:`(x, y)` inside a rectangular cell defined by four points:
 
 1.  Interpolate along X: Perform linear interpolation between the points in the :math:`x`-direction to find two intermediate values at the target :math:`x` coordinate.
@@ -132,7 +132,7 @@ Bilinear interpolation is essentially a two-step linear interpolation. To find t
 
 
 2. Data Structure
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 In SepalSolver, `Interp2` requires:
 * `double[] X`: A vector of coordinates for the columns.
 * `double[] Y`: A vector of coordinates for the rows.

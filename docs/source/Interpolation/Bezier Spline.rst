@@ -7,14 +7,14 @@ Bézier Splines
 Unlike linear interpolation, which creates a jagged path between data points, Bézier Splines create smooth, continuous curves. They are defined by "control points" that influence the shape of the curve without the curve necessarily passing through them (except for the endpoints). This makes them ideal for computer graphics, path planning for robotics, and aerodynamic smoothing. 
 
 1. The Mathematical Formula (Quadratic)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The most common form is the Quadratic Bézier curve, defined by three points: :math:`P_0` (start), :math:`P_1` (control), and :math:`P_2` (end). The curve is parameterized by :math:`t`, where :math:`t` ranges from 0 to 1: 
 :math:`B(t) = (1 - t)^2 P_0 + 2(1 - t)t P_1 + t^2 P_2`
 
 As :math:`t` moves from 0 to 1, the formula calculates a weighted blend of the three points, resulting in a smooth arc that "leans" toward the control point :math:`P_1`. 
 
 2. Implementation in SepalSolver
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In SepalSolver, the BezierCurve method generates a series of points along a spline. You provide the array of control points and the number of segments (resolution) you wish to generate for the final path. 
 
 

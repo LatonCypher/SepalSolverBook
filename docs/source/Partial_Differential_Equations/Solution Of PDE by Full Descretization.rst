@@ -7,7 +7,7 @@ The Full Discretization Method (often referred to as direct Finite Difference Me
 Unlike the Method of Lines—which retains continuous time to yield an ODE system—full discretization converts the PDE directly into a system of algebraic equations that can be solved step-by-step or via matrix inversion.
 
 How It Works:
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
 The 3-Step Process 
 Consider the 1D transient heat equation:
@@ -40,7 +40,7 @@ Error Control | Automated adaptive time-stepping | Manual step size selection (:
 Implementation | Abstract function interfaces | Direct matrix-vector operations
 
 Example 1: Explicit Method (FTCS Scheme)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The Forward-Time Central-Space (FTCS) scheme explicitly updates each grid point based on its immediate neighbors at the previous time level:
 
 .. math::
@@ -100,7 +100,7 @@ Stability Warning: The 1D explicit FTCS scheme is stable if and only if :math:`r
 
 
 Example 2: Implicit Crank-Nicolson Scheme
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The Crank-Nicolson scheme is a second-order accurate implicit method formed by averaging the central differences at time steps :math:`n` and :math:`n+1`:
 
 .. math::
@@ -178,7 +178,7 @@ where :math:`\mathbf{A}` and :math:`\mathbf{B}` are tridiagonal matrices. This s
 
 
 Example 3: Implicit Scheme, with Finite Element for Spatial derivatives
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When applying the Finite Element Method to time-dependent problems such as the 1D heat equation:
 
 
@@ -279,7 +279,7 @@ Using an implicit time-integration scheme (Backward Euler) for stability:
 
 
 Example 4: Implicit Scheme with Chebyshev Spectral Differentiation for Spatial Derivative
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Constructing a Chebyshev differentiation matrix :math:`\mathbf{D}_N` to compute high-accuracy spatial derivatives on Gauss-Lobatto collocation points :math:`x_k = \cos\left(\cfrac{k\pi}{N}\right)`:
 
 

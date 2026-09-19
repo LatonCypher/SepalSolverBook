@@ -9,7 +9,7 @@ Flow control allows us to dictate the path our code takes using conditional
 logic and iterative loops.
 
 1. Conditional Logic (if-else and switch)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Decisions in C# are handled primarily by `if` and `switch` statements.
 While `if` is perfect for range-based checks (like error tolerances),
 `switch` is ideal for choosing between discrete "modes" or "states"
@@ -37,7 +37,7 @@ of an algorithm.
 
 
 2. Iterative Loops
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 Loops allow us to repeat a block of code. For numerical methods, the `for`
 loop is king when we know the number of iterations, while the `while`
 loop is used when we wait for a specific condition to be met.
@@ -195,7 +195,7 @@ Ouput
       Total System Mass: 19.1
 
 Pro-Tip: Nested Loops
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 When working with 2D Matrices, you will often nest a `for` loop inside
 another. Remember that C# stores arrays in row-major order; iterating
 through rows in the outer loop and columns in the inner loop is

@@ -7,7 +7,7 @@ The **Method of Lines (MOL)** is a powerful numerical technique used to solve pa
 Instead of discretizing all dimensions(space and time) simultaneously, the core idea is to discretize the spatial variables while leaving the time variable continuous. This transforms a single PDE into a system of coupled **Ordinary Differential Equations(ODEs)**.
 
 How It Works: The 3-Step Process
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Imagine you are solving the heat equation: 
 
@@ -67,7 +67,7 @@ Imagine you are solving the heat equation:
      - Uses off-the-shelf ODE solvers
 
 Parabolic and Ellipitic PDE Solver
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Sepalsolver provides an inbuilt numerical solution of parabolic and elliptic pde (Pdepe) built on 
 our differential algebraic equation solver. These solvers are L-stable diagonally implicit Runge Kutta. 
 This allows it to handle the boundary conditions implicitly and also correct the egde values in 
@@ -85,7 +85,7 @@ In the foolwing example, we show how to use the Pdepe function to solve PDEs.
 
 
 Example 1: Solving the Heat Equation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Consider the one-dimensional heat equation:
 
 
@@ -141,7 +141,7 @@ with initial condition :math:`u(x,0) = \sin(\pi x)` and boundary conditions :mat
 
 
 Example 2: Solving Reactive Diffusion Equation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The Fisher-KPP reaction-diffusion model transformed into a cylindrical coordinate system (:math:`m = 1`).
 In cylindrical coordinates, the model represents radial population dispersion or chemical wavefront propagation 
 outward from a central core (e.g., cell growth in a Petri dish or cylindrical tissue scaffold).
@@ -264,7 +264,7 @@ Ouput
    :alt: Cylindrical_FisherKPP.png
 
 Example 3: System of Partial Differential Equations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Here is a classic engineering problem: Coupled Transient Heat and Mass Transfer in a 
 Cylindrical Reactor / Packed Bed (with :math:`m = 1`). This models fluid flowing axially 
 through a cylindrical pipe where a chemical reaction occurs, generating heat and 
@@ -397,7 +397,7 @@ Sources :math:`\mathbf{s}`:
 
 
 Example 4: Higher Order in time: Wave Equation 1D
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This is haneld using the system of PDE just like we use system of ode to handle higher oder odes. 
 We first convert the higher oder derivative in time to system of first order time pdes. 
 
@@ -527,7 +527,7 @@ boundary condition
 
 
 Example 5: Higher Dimension: Wave Equation Example
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 For higher dimensions, the same method can be applied. This will be demonstrated using wave equation
 assume :math:`c > 0`
 

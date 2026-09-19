@@ -8,25 +8,25 @@ learning because many real-world problems naturally produce matrices with lots
 of zeros.
 
 Key Characteristics
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 - **Definition**: A matrix with significantly more zero elements than non-zero ones.
 - **Sparsity**: The proportion of zero elements in the matrix.
 - **Density**: The proportion of non-zero elements. For example, a matrix with 74% zeros has 26% density.
 
 Why Sparse Matrices Matter
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 - **Memory Efficiency**: Storing only non-zero elements saves space.
 - **Computational Speed**: Operations can skip zeros, reducing processing time.
 
 Applications
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 * Graph algorithms (adjacency matrices often sparse).
 * Machine learning (e.g., text data represented as word-frequency matrices).
 * Finite element analysis in engineering.
 
 
 Common Representations
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
 Instead of storing all elements, sparse matrices are represented using specialized data structures:
 
 .. list-table:: 
@@ -59,7 +59,7 @@ SepalSolver represents sparse matrices using a **Dictionary**:
 This dictionary-based approach makes construction and updates simple,while providing fast element lookups.
 
 Dynamic Conversion
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 Although the dictionary form is flexible, SepalSolver transforms the
 matrix into specialized formats during computation for efficiency:
 
@@ -74,7 +74,7 @@ matrix into specialized formats during computation for efficiency:
 * Example: In multiplication ``A * B``, matrix ``B`` is converted to CSC.
 
 Hybrid Approach
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 This design combines the strengths of both representations:
 * **Flexibility**: Dictionary form is intuitive for construction and updates.
 * **Performance**: CSR and CSC conversions ensure efficient heavy operations.
@@ -179,7 +179,7 @@ Ouput
 
 
 Inbuilt Matrices
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 SepalSolver also has inbuilt Sparsematrices that can be loaded without manually creating them as started above.
 examples of these are : Squid and Bucky
 
@@ -208,7 +208,7 @@ All Operations supported by the Matrix class is also supported by the SparseMatr
 
 
 LU, iLU, Cholesky and iCholesky Factorization
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Just like Matrix class, LU, iLU, Cholesky and iCholesky factorization can be performed using 
 ``MakeLU()``, ``MakeiLU()``, ``MakeChol()``, ``MakeiChol()`` rspectively. 
 
@@ -646,7 +646,7 @@ The fill-in is governed by the elimination tree of the matrix.A "bushy" tree all
 
 
 Sparse Matrix Slicing
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 Like dense matrices, sparse matrices can also be sliced and this is demonstracted in the example below
 
 

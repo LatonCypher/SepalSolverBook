@@ -6,7 +6,7 @@ Trapezoidal Integration in SepalSolver
 The Trapezoidal Rule is a numerical method used to approximate the definiintegral of a function. It works by approximating the region under the graph of the function :math: f(x) as a trapezoid and calculating its area.
 
 Mathematical Definition
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 To compute the integral over the interval :math:`[a, b]`, we partition the interval into :math:`n` sub-intervals, each of width :math:`h = \cfrac{b-a}{n}`. The composite trapezoidal rule is defined as:
 
 .. math::
@@ -46,7 +46,7 @@ Ouput
    1.9993
 
 Error Analysis
-~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^
 The error in the trapezoidal rule, often denoted as :math:`E_t`, is proportional to the square of the step size :math:`h`. Specifically, for a function that is twice continuously differentiable, the error is:
 
 .. math::

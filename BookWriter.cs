@@ -242,6 +242,7 @@ namespace ConsoleApp1
             TreatHeader1(bookContent);
             TreatHeader2(bookContent);
             TreatHeader3(bookContent);
+            TreatHeader4(bookContent);
             TreatFigure(bookContent);
             TreatMathTag(bookContent);
             TreatNoteTag(bookContent);
@@ -335,7 +336,34 @@ namespace ConsoleApp1
                 {
                     string header3 = match.Groups[1].Value;
                     header3 = header3.TrimStart().Trim();
-                    List<string> header3lines = [header3, new string('~', header3.Length)];
+                    List<string> header3lines = [header3, new string('^', header3.Length)];
+                    Replace(bookContent, startIndex, 1, header3lines);
+                }
+
+            }
+        }
+        static void TreatHeader4(List<string> bookContent)
+        {
+            while (bookContent.Any(line => line.Contains("<header 4>")))
+            {
+                int startIndex = -1;
+                // replace code blocks with rst format
+                for (int i = 0; i < bookContent.Count; i++)
+                {
+                    if (bookContent[i].Contains("<header 4>"))
+                    {
+                        startIndex = i;
+                        break;
+                    }
+                }
+                string line = bookContent[startIndex];
+                var match = Regex.Match(line, @"<header 4>(.*?)</header");
+
+                if (match.Success)
+                {
+                    string header4 = match.Groups[1].Value;
+                    header4 = header4.TrimStart().Trim();
+                    List<string> header3lines = [header4, new string('"', header4.Length)];
                     Replace(bookContent, startIndex, 1, header3lines);
                 }
 

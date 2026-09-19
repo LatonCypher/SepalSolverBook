@@ -7,7 +7,7 @@ Root Finding for Polynomials
 Finding the roots of a polynomial—the values of :math:`x` for which :math:`P(x) = 0`—is a fundamental task in engineering. Whether you are finding the natural frequencies of a structure or the break-even point in a cost model, SepalSolver provides robust methods to extract these critical values from the coefficient array.
 
 1. The Companion Matrix Method
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 For general polynomials, the most stable way to find all roots (including complex ones) is to construct a Companion Matrix. The eigenvalues of this matrix are exactly the roots of the polynomial. By transforming a polynomial problem into an eigenvalue problem, we leverage the power of our linear algebra engine.
 
 
@@ -31,7 +31,7 @@ Ouput
       3.0000 + 0.0000i 
 
 2. Iterative Refinement (Newton-Raphson)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you only need a single real root near a specific guess, the Newton-Raphson method is incredibly fast. It uses the polynomial and its derivative (Polyder) to "walk" toward the zero-crossing: :math:`x_{next} = x - \frac{P(x)}{P'(x)}`
 
@@ -160,5 +160,5 @@ Ouput
       Refined sqrt(2): 1.414213562373095
 
 Numerical Note: Complex Roots
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Even if your input coefficients are real, the roots can be complex. SepalSolver always returns roots as an array of Complex numbers to prevent data loss. If you only care about real solutions, you can filter the results by checking if the imaginary part is below a small tolerance (e.g., Math.Abs(r.Imaginary) < 1e-12).

@@ -48,7 +48,7 @@ This table provides the list of operators in Matlab and the corresponding operat
      - ``A % B``
 
 Examples
-~~~~~~~~
+^^^^^^^^
 
 .. code-block:: csharp
 
@@ -372,7 +372,7 @@ Transpose, Inverse, Determinant, Rref
 -------------------------------------
 
 Transpose
-~~~~~~~~~
+^^^^^^^^^
 * **Definition**: The transpose of a matrix is obtained by flipping it over its diagonal, turning rows into columns and columns into rows.
 * **Column Vector**: A column vector becomes a row vector when transposed.
 
@@ -419,7 +419,7 @@ Ouput
    
 
 Inverse
-~~~~~~~
+^^^^^^^
 * **Definition**: The inverse of a square matrix :math:`A` is another matrix :math:`A^{-1}` such that:
 
 .. math::
@@ -456,7 +456,7 @@ Ouput
    
 
 Determinant
-~~~~~~~~~~~
+^^^^^^^^^^^
 * **Definition**: A scalar value computed from a square matrix, representing scaling factor and orientation of linear transformation.
 * **Column/Row Vectors**: Not square, so determinant is not defined.
 * **Matrix**: For a :math:`2 \times 2` matrix:
@@ -510,7 +510,7 @@ Ouput
 For larger matrices, determinants are computed using expansion or row-reduction methods.
 
 RREF (Reduced Row Echelon Form)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 * **Definition**: A matrix is in RREF if:
 - Each leading entry is 1.
 - Each leading 1 is the only non-zero entry in its column.

@@ -6,12 +6,12 @@ Polynomial Fitting (Polyfit)
 In engineering and data science, we often encounter discrete data points that represent a physical process. Polynomial Fitting is the mathematical technique used to find a continuous function—specifically a polynomial—that minimizes the discrepancy between the curve and the observed data. In SepalSolver, we use the Least Squares approach to determine these coefficients. 
 
 1. Mathematical Objective
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
 The goal of ``Polyfit`` is to find a set of coefficients for a polynomial of degree :math:`N`:, :math:`P(x) = a_0 x^N + a_1 x^{N-1} + \dots + a_N` such that the sum of the squares of the residuals (the vertical distance between the data points and the curve) is minimized. 
 
 
 2. Coefficient Order
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 Note that while the internal math often builds from the constant term up, SepalSolver returns the resulting `double[] array` in descending order. This means the first element in the array is the coefficient for the highest power :math:`x^N`. 
 
 Examples
@@ -109,7 +109,7 @@ Ouput
       Quadratic term (should be small): -0.04285714285714191
 
 Usage Warning
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 Ensure that the length of arrays :math:`X` and :math:`Y` are identical. Additionally, to find a unique solution for a degree :math:`N` polynomial, you must provide at least :math:`N+1` data points. Providing fewer points will result in an underdetermined system and numerical instability. 
 It is also important to choose the correct degree of the polynomial to get a good fit. 
 Overfitting can occur if the degree is too high, while underfitting can happen if the degree is too low.
@@ -173,13 +173,13 @@ This is known as Multivariate Fitting or Surface Fitting. While a standard Polyf
 that minimizes the residuals across multiple dimensions.
 
 1. The Mathematical Model
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
 For two variables :math:`x` and :math:`y`, a second-order multivariate polynomial takes the form: :math:`z(x, y) = a_0 + a_1x + a_2y + a_3x^2 + a_4xy + a_5y^2`.
 The "cross term" :math:`xy` is vital because it accounts for the interaction between the two variables—how the influence of :math:`x` might change depending on 
 the current value of :math:`y`.
 
 2. Implementation Logic
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 In SepalSolver, multivariate fitting is performed by constructing an augmented matrix where each column represents a term in the polynomial expansion 
 (1, :math:`x`, :math:`y`, :math:`x^2`, etc.) and solving the resulting linear system.
 

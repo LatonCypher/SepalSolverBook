@@ -41,7 +41,7 @@ where :math:`f(t, y)` is a function that defines the rate of change of :math:`y`
 
 
 Examples
-~~~~~~~~
+^^^^^^^^
 
 .. admonition:: Example 1 :  Exponential Growth
 

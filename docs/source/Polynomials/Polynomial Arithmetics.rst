@@ -6,7 +6,7 @@ Polynomial Arithmetic
 In SepalSolver, polynomials are not just static formulas; they are dynamic objects that can be added, subtracted, multiplied, and divided. By representing polynomials as an array of doubles in descending order, we can leverage classical signal processing algorithms, such as convolution, to perform these operations with high numerical efficiency.
 
 1. Addition and Subtraction (PolyAdd / PolySub)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Adding or subtracting polynomials involves summing the coefficients of corresponding powers. Since our arrays are in descending order, we must carefully align the "tails" of the arrays (the constant terms) before performing the operation, especially if the polynomials have different degrees.
 
 
@@ -38,7 +38,7 @@ Ouput
     = [1, -2, -2]
 
 2. Multiplication (Conv)
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^
 Multiplying two polynomials is mathematically equivalent to the convolution of their coefficient arrays. If you multiply a polynomial of degree :math:`N` by one of degree :math:`M`, the resulting degree will be :math:`N + M`. We use a sliding-window approach to compute each term of the resulting array.
 
 
@@ -64,7 +64,7 @@ Ouput
     = [1, 0, -1]
 
 3. Division and Remainder (Deconv)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Polynomial division is implemented via deconvolution (synthetic division). Dividing :math:`P_1` by :math:`P_2` yields two results: the Quotient :math:`(Q)` and the Remainder :math:`(R)`. This is vital for operations like partial fraction expansion or checking for factorability.
 
 
@@ -170,6 +170,6 @@ Ouput
    
 
 Numerical Note: Array Sizing
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 During PolyAdd and PolySub, SepalSolver creates a result array equal to the size of the largest input. During Conv, the result size is always p1.Length + p2.Length - 1. Understanding these allocation rules helps in managing memory when performing recursive polynomial arithmetic.
 

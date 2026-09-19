@@ -108,14 +108,14 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    In many contexts, particularly in the study of aerodynamics(where Weissinger’s name is prominent due to his work on lifting-line theory), you might see specialized versions of this.However, in pure mathematics, it is often treated as a generalization of d'Alembert’s equation.
    
    1. Structure and Characteristics
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    Unlike a standard ODE, the Weissinger equation is **nonlinear in the derivative**.
    
    * **Relationship to Clairaut:** If you set :math:`n = 1` and :math:`f(y') = y'`, you essentially return to the Clairaut form.
    * **The Power of x:** The :math:`x^n` term dictates how the geometry of the solution curves scales as you move away from the origin.
    
    2. The Solution Strategy: Parameterization
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    To solve a Weissinger equation, we rarely try to isolate  algebraically.Instead, we use a parameter, where:
    :math:`p = y' = \cfrac{dy}{dx}`
    substituting :math:`p` into the equation gives:
@@ -137,19 +137,19 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    This transformation is powerful because it turns a difficult implicit equation into a linear one(usually of the Bernoulli type or similar), which we can solve to get :math:`x(p)`. Once you have :math:`x(p)` and :math:`y(fp)`, you have a** parametric solution** to the original ODE.
    
    3. Why Weissinger Equations Matter
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    Weissinger's work is most famous in **fluid dynamics**, specifically the **Weissinger Area Rule** and his "L-method" for calculating lift distribution on swept wings.
    In these engineering contexts, implicit equations arise because the induced downwash(the change in airflow direction) depends on the lift, but the lift itself is a function of that downwash.
    
    Applications include:
-   ~~~~~~~~~~~~~~~~~~~~~
+   ^^^^^^^^^^^^^^^^^^^^^
    * **Aerodynamics:** Modeling the circulation around wings with non-rectangular shapes.
    * **Classical Mechanics:** Describing trajectories where the velocity constraint is non-linear.
    * **Singularities:** Just like Clairaut equations, Weissinger equations often have "envelope" solutions where the uniqueness of the solution breaks down.
    
    
    Using user defined derivative
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    We can also specify the derivative of the function with respect to :math:`y` and :math:`y'`. TO demonstrate this, 
    
    Consider :math:`F(t, y, y') = ty^2(y')^3 - y^3(y')^2 + t(t^2 + 1)y' - t^2y = 0`
@@ -280,7 +280,7 @@ Ouput
       Summary of statistics by Ode43i
               118 successful steps
               0 failed attempts
-              3222 function evaluations
+              3226 function evaluations
               118 partial derivatives
               472 LU decompositions
               1919 solutions of linear systems

@@ -28,7 +28,7 @@ For integrals lacking an explicit :math:`e^{-x}` weight or evaluated over :math:
 
 
 Applied Examples
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
 .. admonition:: Example 1 :  Example 1: Standard Exponential-Weighted Polynomial Integration
 

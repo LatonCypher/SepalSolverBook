@@ -8,7 +8,7 @@ Constrained curve fitting is a mathematical optimization technique used to const
 While classical unconstrained regression seeks parameters that minimize residual variance across uninhibited Euclidean space :math:`\mathbb{R}^P`, real-world systems operate under strict physical laws, thermodynamic limits, and operational realities. Unconstrained non-linear solvers frequently fall prey to non-physical solutions—such as negative absolute temperatures, negative mass fractions, unbounded growth rates, or violated conservation laws. Constrained curve fitting integrates prior domain knowledge directly into the objective framework, guaranteeing that the converged parameter vector remains physically meaningful, statistically stable, and within operational limits.
 
 The General Constrained Optimization Problem
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Formally, constrained non-linear curve fitting formulates the parameter search as a constrained non-linear least-squares (NLLS) optimization problem:
 
 
@@ -21,7 +21,8 @@ where :math:`\mathbf{y} \in \mathbb{R}^M` denotes measured responses, :math:`f(x
 
 The feasible domain :math:`\Omega` is governed by three primary classes of mathematical conditions:
 
-<header 4> 1. Box Bounds (Simple Upper and Lower Limits) </header 4>
+1. Box Bounds (Simple Upper and Lower Limits)
+"""""""""""""""""""""""""""""""""""""""""""""
 Parameter box limits enforce explicit coordinate-wise intervals:
 
 
@@ -32,7 +33,8 @@ Parameter box limits enforce explicit coordinate-wise intervals:
 
 Box constraints enforce fundamental physical constants and non-negativity rules, such as ensuring half-lives, decay constants, or diffusion coefficients satisfy :math:`p_j > 0`.
 
-<header 4> 2. Linear Inequality and Equality Constraints </header 4>
+2. Linear Inequality and Equality Constraints
+"""""""""""""""""""""""""""""""""""""""""""""
 Linear restrictions model affine dependencies, mass/energy conservation, and monotonic parameter relationships:
 
 
@@ -43,7 +45,8 @@ Linear restrictions model affine dependencies, mass/energy conservation, and mon
 
 In canonical inequality form, linear conditions are written as :math:`g_k(\mathbf{p}) = A_k \mathbf{p} - b_k \le 0`. Common engineering examples include component mass fractions summing to unity (:math:`\sum p_j = 1`) or total amplitude bounds (:math:`p_0 + p_2 \le p_{\text{max}}`).
 
-<header 4> 3. Non-Linear Inequality and Equality Constraints </header 4>
+3. Non-Linear Inequality and Equality Constraints
+"""""""""""""""""""""""""""""""""""""""""""""""""
 Non-linear constraints define arbitrary smooth geometries that parameters must satisfy:
 
 
@@ -55,7 +58,7 @@ Non-linear constraints define arbitrary smooth geometries that parameters must s
 These model coupled physical interactions, such as enforcing multi-component thermodynamic phase equilibria, stability criteria in dynamical systems (e.g., eigenvalue boundaries), or geometric energy thresholds (such as limiting the Euclidean parameter radius :math:`p_0^2 + p_1^2 \le R^2`).
 
 Optimality and Algorithmic Mechanics
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Constrained least squares introduces trade-offs between objective minimization (residual goodness of fit) and boundary feasibility. The solution is governed by the Karush-Kuhn-Tucker (KKT) conditions:
 
 
@@ -77,7 +80,7 @@ When the unconstrained optimum lies outside :math:`\Omega`, the constraint becom
 In SepalSolver, constrained problems are resolved using algorithms such as Subspace Trust-Region Reflective methods and Sequential Quadratic Programming (SQP). These methods compute feasible descent steps by projecting search directions onto the null space of active constraint normals and reflecting trajectories off boundary limits, guaranteeing numerical robustness and preventing divergence.
 
 Example: Curve Fitting with Linear Inequality Constraints
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In physical parameter estimation, models often require parameters to satisfy linear relationships, such as conservation balances or monotonic thresholds. This example fits a multi-parameter model subject to parameter box bounds :math:`\mathbf{lb} \le \mathbf{x} \le \mathbf{ub}` and a coupled linear inequality constraint:
 
 
@@ -212,7 +215,8 @@ Ouput
    :alt: Example_of_CurveFitting_using_Lsqcurvefit_with_Linear_Inequality_Constraints.png
 
 
-<header 4> Mathematical Theory: Karush-Kuhn-Tucker (KKT) Conditions for Linear Constraints </header 4>
+Mathematical Theory: Karush-Kuhn-Tucker (KKT) Conditions for Linear Constraints
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 The optimization problem combines box limits and linear inequality constraints:
 
 
@@ -264,7 +268,7 @@ For the target solution :math:`\mathbf{x}^* = [2.0, 4.0, 5.0, 0.5]^T`, evaluatio
 Because the constraint is strictly negative (:math:`A \mathbf{x}^* < 0`), the constraint is **inactive**. Complementary slackness requires :math:`\mu = 0`, meaning the gradient of the objective function vanishes directly: :math:`\nabla f_0(\hat{\mathbf{x}}) = \mathbf{0}`.
 
 Example: Curve Fitting with Non-Linear Inequality Constraints
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When parameter boundaries involve non-linear dependencies, such as radial or volumetric constraints, non-linear inequality functions are used. In this example, the two primary parameters are restricted to lie within a circle of radius 4:
 
 
@@ -426,7 +430,8 @@ Ouput
    :alt: Example_of_CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.png
 
 
-<header 4> Mathematical Theory: Active Boundary Projections and Sequential Quadratic Programming </header 4>
+Mathematical Theory: Active Boundary Projections and Sequential Quadratic Programming
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 When an unconstrained parameter minimum :math:`\mathbf{x}^*` lies in the infeasible domain:
 
 
@@ -470,7 +475,7 @@ The Lagrange multiplier :math:`\mu^*` acts as a shadow price, quantifying the de
 
 
 Example: Damped Harmonic Model with Coupled Inequality Bounds
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Parameter bounds are frequently paired with coupled linear constraints to reflect physical operational envelopes. This example fits a 4-parameter damped harmonic model:
 
 
@@ -566,7 +571,8 @@ Ouput
    Inequality Residual:      -0.2431
    Exit Flag:              1
 
-<header 4> Mathematical Theory: Box-Constrained Trust-Region Reflective Mechanics </header 4>
+Mathematical Theory: Box-Constrained Trust-Region Reflective Mechanics
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 In SepalSolver, constrained least-squares with box bounds :math:`\mathbf{lb} \le \mathbf{p} \le \mathbf{ub}` and coupled constraints :math:`\mathbf{g}(\mathbf{p}) \le \mathbf{0}` is solved using a subspace trust-region reflective algorithm.
 
 To handle parameter bounds, the parameter vector :math:`\mathbf{p}` is mapped to a scaled coordinate system via the diagonal scaling matrix :math:`D(\mathbf{p})`:

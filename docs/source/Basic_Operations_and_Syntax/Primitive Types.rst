@@ -157,7 +157,7 @@ These primitive types are the building blocks for more complex data structures
 and are essential for various operations in C#.
 
 Examples
-~~~~~~~~
+^^^^^^^^
 
 
 .. admonition:: Example 1 :  Integer Arithmetic 

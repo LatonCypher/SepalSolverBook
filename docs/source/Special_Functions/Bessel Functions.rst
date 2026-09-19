@@ -7,7 +7,7 @@ Bessel Functions
 Bessel functions are a family of solutions to Bessel's differential equation, which appears in many physical problems involving cylindrical or spherical symmetry. They are named after the German mathematician Friedrich Wilhelm Bessel, who first studied them in the early 19th century.
 
 Bessel's Differential Equation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The general form of Bessel's differential equation is: 
 
 
@@ -18,7 +18,7 @@ The general form of Bessel's differential equation is:
 where: math:`n`  is a parameter that determines the order of the Bessel function.
 
 Types of Bessel Functions
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
 #  **Bessel Functions of the First Kind** :math:`(J_n(x))` These functions are denoted by :math:`(J_n(x))` and are solutions to Bessel's differential equation that are finite at the origin (for non-negative integer orders). They are commonly used in problems involving wave propagation, static potentials and flow in porous media.
 
 .. math::
@@ -130,7 +130,7 @@ Application of some Special Functions
 There are several applications of special functions: from function approximation using chebysheve polynomial, to quadrature using Legendre and Laguerre Polynomials, and solution of laplace equation in cylindrical coordinate using Bessel functions.
 
 Water Influx Estimation
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 One example of application of special functions in the use of bessel function in the estimation of water influx in cylindrical coordinates. 
 Water influx in an oil reservoir is the migration of water from an aquifer into the pore spaces of the reservoir rock containing oil.  This water movement is primarily driven by pressure differences between the aquifer and the reservoir as the oil is produced and reservoir pressure declines.  The water influx can provide pressure support, helping to maintain reservoir pressure and sustain oil production. Hence, understanding and accurate estimation of water influx is crucial for optimizing oil recovery strategies and the long-term economic viability of an oil field.
 For use in material balance computation in edge drive configuration, reservoir engneering books provide plots for Wd as a function of dimensionless radius and time
@@ -248,7 +248,7 @@ Lets see how to compute water influx, and generate the started water influx plot
 
 
 Cooling a Nuclear Fuel Rod
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 Imagine a long, solid cylindrical fuel rod of radius :math:`R`. Initially, the rod is at a uniform temperature :math:`T_0`. At :math:`t = 0`, the rod is plunged into a cooling bath that keeps the outer surface at exactly :math:`0^\circ C`. We want to find the temperature :math:`T(r, t)` at any radial distance r and any time :math:`t`.
 
 * **1.The Governing Equation** The heat conduction in the rod(assuming no variation along the length) is governed by: 

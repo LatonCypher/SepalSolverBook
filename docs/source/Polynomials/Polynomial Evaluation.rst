@@ -6,7 +6,7 @@ Polynomial Representation and Order
 As in other numerical analysis and engineering software, SepalSolver uses the standard convention of represent polynomials with coefficients in Descending Order. This means the first element of the array corresponds to the highest power of :math:`x`, making it easier to read and align with long-hand mathematical notation.
 
 1. The Descending Order Convention
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 A polynomial :math:`P(x)= a_{n}x^{n} + a_{n-1}x^{n-1} + a_{n-2}x^{n-2} + \cdots + a_{1}x + a_{0}` is stored in an array where coeffs[0] is :math:`a_n`, coeffs[1] is :math:`a_{n-1}`, and so on, down to coeffs[n] which is :math:`a_0`. This ordering simplifies both the evaluation and manipulation of polynomials in code.
 
 .. code-block:: csharp
@@ -21,7 +21,7 @@ A polynomial :math:`P(x)= a_{n}x^{n} + a_{n-1}x^{n-1} + a_{n-2}x^{n-2} + \cdots 
 
 
 2. Horner's Method (Descending)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When coefficients are in descending order, Horner's method becomes particularly elegant. We start with the first coefficient and repeatedly multiply by x and add the next coefficient: 
 :math:`P(x) = ( \cdot ((a_{n}x + a_{n-1})x + a_{n-2})x + \cdots + a_{1})x + a_{0}` 
 
@@ -102,5 +102,5 @@ Ouput
    
 
 Implementation Tip: Power Mapping
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Because we use descending order, the power associated with a coefficient at index i is calculated as Degree - i. This is important when performing differentiation, as the derivative of the term at coeffs[i] involves multiplying by (Degree - i).

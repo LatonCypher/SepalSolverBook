@@ -9,7 +9,7 @@ material properties. LINQ (Language Integrated Query) provides a powerful,
 declarative way to filter, transform, and analyze these collections.
 
 1. Common Collection Types
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 C# provides several specialized collections. While arrays are the standard
 for fixed-size mathematical data, other collections offer dynamic resizing
 and key-based lookups.
@@ -58,7 +58,7 @@ and key-based lookups.
 
 
 2. Introduction to LINQ
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 LINQ allows you to perform query operations directly on collections.
 It simplifies tasks like finding the maximum error in a vector or
 extracting specific nodes from a mesh using a functional approach.
@@ -85,7 +85,7 @@ extracting specific nodes from a mesh using a functional approach.
 
 
 3. Deferred Execution
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 A vital concept in LINQ is that queries are not executed when they are
 defined. They are executed when you "materialize" them (by using
 foreach, .ToArray(), or .ToList()). This is known as lazy evaluation.
@@ -199,7 +199,7 @@ Ouput
    
 
 Performance Note
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 While LINQ is expressive, it can introduce overhead due to allocations.
 For the "hot-path" of a numerical solver (like inner loops of matrix
 multiplication), traditional for-loops remain the preferred choice.

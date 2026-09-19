@@ -8,7 +8,7 @@ Hermite Interpolation
 Hermite Interpolation is a method of interpolating data points that accounts for not only the values of the function but also the values of its derivatives. While standard linear or polynomial interpolation only ensures the curve passes through the points :math:`(x_i, y_i)`. Hermite interpolation ensures the curve matches the "slope"(tangent) at those points as well. This results in a much smoother and more physically realistic transition between points, particularly in motion planning or structural deflection models where velocity or tangency must be continuous. 
 
 1. The Cubic Hermite Spline
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The most common form is the Cubic Hermite Spline. For a single interval between :math:`x_0` and :math:`x_1`
 the interpolant is a third-degree polynomial.To construct it, we need four pieces of information: 
 * The starting and ending values: :math:`y_0` and :math:`y_1` 
@@ -37,7 +37,7 @@ The resulting curve is expressed using Hermite Basis Functions, which act as wei
    :alt: hermite_modes.png
 
 2. Implementation in SepalSolver
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In SepalSolver, Hermite interpolation is often used when the user provides a "slope vector" alongside their dataset. This is common in trajectory generation where you know where a robot should be and how fast it should be moving at that specific moment. 
 
 .. code-block:: csharp
@@ -133,7 +133,7 @@ Examples
    
 
 Key Difference: Hermite vs. Cubic Spline
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -153,7 +153,7 @@ Key Difference: Hermite vs. Cubic Spline
      - 
 
 Exercise: Animation of Slope Impact
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Task**: Observe how changing the slope :math:`dy` at the first point affects the plot of the function. 
 
 .. code-block:: csharp
@@ -296,23 +296,23 @@ Ouput
    
         Angle  |  Sineapprox  |    Sine
       ---------+--------------+-------------
-        65.11  |   0.907110   |  0.907119
-        66.63  |   0.917951   |  0.917962
-        42.41  |   0.674446   |  0.674449
-        71.21  |   0.946725   |  0.946731
-        64.80  |   0.904793   |  0.904801
-        31.96  |   0.529301   |  0.529302
-        37.25  |   0.605271   |  0.605279
-        52.01  |   0.788140   |  0.788150
-        28.73  |   0.480616   |  0.480616
-        42.93  |   0.681063   |  0.681064
-        20.09  |   0.343573   |  0.343577
-        79.45  |   0.983096   |  0.983105
-        39.35  |   0.634017   |  0.634023
-        27.04  |   0.454594   |  0.454596
-        75.96  |   0.970146   |  0.970147
-        72.58  |   0.954121   |  0.954125
-        77.04  |   0.974519   |  0.974522
-        31.78  |   0.526602   |  0.526604
-        80.91  |   0.987441   |  0.987452
-        86.28  |   0.997884   |  0.997891
+        73.33  |   0.957959   |  0.957960
+        27.52  |   0.462090   |  0.462091
+        13.44  |   0.232360   |  0.232360
+        51.75  |   0.785260   |  0.785269
+        81.35  |   0.988611   |  0.988622
+        46.56  |   0.726118   |  0.726119
+        30.57  |   0.508607   |  0.508607
+        61.26  |   0.876824   |  0.876825
+        86.17  |   0.997765   |  0.997772
+        19.27  |   0.330005   |  0.330008
+        62.27  |   0.885128   |  0.885131
+        89.80  |   0.999994   |  0.999994
+        87.37  |   0.998940   |  0.998944
+        78.97  |   0.981535   |  0.981542
+        82.46  |   0.991343   |  0.991355
+        53.07  |   0.799404   |  0.799414
+        67.24  |   0.922131   |  0.922142
+        18.50  |   0.317347   |  0.317349
+        53.02  |   0.798868   |  0.798877
+        83.34  |   0.993245   |  0.993257

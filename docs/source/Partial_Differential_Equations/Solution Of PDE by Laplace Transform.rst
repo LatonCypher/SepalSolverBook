@@ -11,7 +11,7 @@ we have decided to included it in this because of its similarity to method of li
 laplace space is too difficult to invert by any other means.
 
 1. Definition of the Laplace Transform
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The Laplace Transform of a function :math:`f(t)` is defined as:
 
 
@@ -23,7 +23,7 @@ The Laplace Transform of a function :math:`f(t)` is defined as:
 where :math:`s` is a complex number frequency parameter.
 
 2. Applying the Laplace Transform to PDEs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To solve a PDE using the Laplace Transform, we follow these steps:
 
 1. Take the Laplace Transform of both sides of the PDE with respect to time variable :math:`t`.
@@ -31,7 +31,7 @@ To solve a PDE using the Laplace Transform, we follow these steps:
 3. Apply the inverse Laplace Transform to obtain the solution in the time domain.
 
 3. Example: Solving the Heat Equation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Consider the one-dimensional heat equation:
 
 
@@ -168,7 +168,7 @@ Step 5: Apply the inverse Laplace Transform to find :math:`u(x,t)`
 
 
 Numerical Inversion of Laplace Transform
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Sepalsolver has inbuilt numerical laplace transform inversion routine that allows the invesion of the solution fron Laplace space. 
 We cn demonstrate this ability using the last example. 
 
@@ -193,7 +193,7 @@ We cn demonstrate this ability using the last example.
    :alt: Temperature_Using_Numerical_Inversion_Laplace.png
 
 Numerical Inversion Laplace Transform : Dimensionless Water Influx Estimation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Water influx in an oil reservoir is the migration of water from an aquifer into the pore spaces of the reservoir rock containing oil.  This water movement is primarily driven by pressure differences between the aquifer and the reservoir as the oil is produced and reservoir pressure declines.  The water influx can provide pressure support, helping to maintain reservoir pressure and sustain oil production. Hence, understanding and accurate estimation of water influx is crucial for optimizing oil recovery strategies and the long-term economic viability of an oil field.
 For use in material balance computation in edge drive configuration, reservoir engneering books provide plots for Wd as a function of dimensionless radius and time
 
