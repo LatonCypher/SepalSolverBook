@@ -21,20 +21,52 @@ Given a set of data points, we can fit a polynomial curve using least squares op
    \min_{\mathbf{p}} \sum_{i=1}^{n} (y_i - P(x_i; \mathbf{p}))^2
 
 
+Polynomial curve fitting constructs an :math:`n`-th degree polynomial model whose coefficients minimize the squared discrepancy between observed values and model predictions. Using `Polyfit`, SepalSolver constructs and solves the underlying Vandermonde matrix in a linear least-squares sense, returning the polynomial coefficients in descending order of power. The resulting curve is evaluated across the domain using `Polyval` and plotted against the discrete sample points.
+
 
 .. code-block:: csharp
 
-   // Sample data points
-   double[] xData = [1, 2, 3, 4, 5];
+   // -------------------------------------------------------------------------
+   // 1. Observed Experimental Data Points
+   // -------------------------------------------------------------------------
+   // Sample discrete measurements exhibiting parabolic curvature (inverted peak)
+   double[] xData = [1.0, 2.0, 3.0, 4.0, 5.0];
    double[] yData = [2.2, 3.0, 3.2, 2.5, 1.1];
-   // Fit a polynomial of degree 2
+
+   // -------------------------------------------------------------------------
+   // 2. Linear Least-Squares Polynomial Regression
+   // -------------------------------------------------------------------------
+   // Specify polynomial degree n = 2: p(x) = c0*x^2 + c1*x + c2
    int degree = 2;
+
+   // Polyfit constructs and solves the Vandermonde matrix in least-squares sense
+   // Returns coefficient vector in descending powers: [c0, c1, c2]
    var coefficients = Polyfit(xData, yData, degree);
-   Scatter(xData, yData, "*", 15); HoldOn();
-   // Generate fitted curve
-   double[] xFit = Linspace(1, 5, 100);
+
+   // -------------------------------------------------------------------------
+   // 3. Observed Data Plotting
+   // -------------------------------------------------------------------------
+   // Render experimental discrete points using asterisk markers ("*") with size 15
+   Scatter(xData, yData, "*", 15);
+   HoldOn();
+
+   // -------------------------------------------------------------------------
+   // 4. Smooth Fitted Trajectory Evaluation
+   // -------------------------------------------------------------------------
+   // Discretize continuous evaluation domain across [1, 5] with 100 points
+   double[] xFit = Linspace(1.0, 5.0, 100);
+
+   // Polyval evaluates the polynomial using Horner's method at each point in xFit:
+   // yFit[k] = c0 * xFit[k]^2 + c1 * xFit[k] + c2
    double[] yFit = Polyval(coefficients, xFit);
+
+   // Overlay the smooth quadratic fit as a solid curve (linewidth = 2)
    Plot(xFit, yFit, Linewidth: 2);
+
+   // -------------------------------------------------------------------------
+   // 5. Figure Export & Resource Cleanup
+   // -------------------------------------------------------------------------
+   // Save graphic to file and release plotting canvas context
    SaveAs("Polynomial_Fitting.png");
    CloseFig();
 
@@ -42,6 +74,59 @@ Given a set of data points, we can fit a polynomial curve using least squares op
 .. figure:: images/Polynomial_Fitting.png
    :align: center
    :alt: Polynomial_Fitting.png
+
+
+<header 4> Mathematical Theory: Vandermonde System and Horner Evaluation </header 4>
+An :math:`n`-th degree polynomial is expressed in descending powers as:
+
+
+.. math::
+
+   P(x; \mathbf{c}) = c_0 x^n + c_1 x^{n-1} + \dots + c_{n-1} x + c_n
+
+
+For :math:`M` data pairs :math:`(x_i, y_i)`, the condition :math:`P(x_i; \mathbf{c}) \approx y_i` establishes the overdetermined linear matrix equation:
+
+
+.. math::
+
+   V \mathbf{c} \approx \mathbf{y}
+
+
+where :math:`V \in \mathbb{R}^{M \times (n+1)}` is the Vandermonde matrix:
+
+
+.. math::
+
+   V = \begin{bmatrix}
+   x_1^n & x_1^{n-1} & \cdots & x_1 & 1 \\
+   x_2^n & x_2^{n-1} & \cdots & x_2 & 1 \\
+   \vdots & \vdots & \ddots & \vdots & \vdots \\
+   x_M^n & x_M^{n-1} & \cdots & x_M & 1
+   \end{bmatrix}, \quad
+   \mathbf{c} = \begin{bmatrix} c_0 \\ c_1 \\ \vdots \\ c_n \end{bmatrix}, \quad
+   \mathbf{y} = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_M \end{bmatrix}
+
+
+The unique least-squares solution satisfies the normal equations :math:`V^T V \mathbf{c} = V^T \mathbf{y}`. In `Polyfit`, numerical instability associated with squaring the condition number :math:`\kappa(V^T V) = (\kappa(V))^2` is avoided by computing a QR decomposition:
+
+
+.. math::
+
+   V = Q R = \begin{bmatrix} Q_1 & Q_2 \end{bmatrix} \begin{bmatrix} R_1 \\ 0 \end{bmatrix}
+
+
+which reduces the problem to back-substitution on the upper-triangular factor :math:`R_1 \mathbf{c} = Q_1^T \mathbf{y}`.
+
+In `Polyval`, the resulting polynomial is evaluated via Horner's algorithmic nesting:
+
+
+.. math::
+
+   P(x) = \left(\dots\left((c_0 x + c_1)x + c_2\right)x + \dots + c_{n-1}\right)x + c_n
+
+
+reducing computation from :math:`O(n^2)` arithmetic operations to :math:`n` multiplications and :math:`n` additions while minimizing rounding errors.
 
 
 Example: Fourier Series Fitting
@@ -79,34 +164,145 @@ where the complex coefficients :math:`c_n` relate to the real coefficients via:
    c_0 = \frac{a_0}{2}, \quad c_n = \frac{a_n - i b_n}{2}, \quad c_{-n} = \frac{a_n + i b_n}{2}
 
 
+In this implementation, the Fourier approximation of a periodic square wave is solved as a linear least-squares problem:
+
+
+.. math::
+
+   A \mathbf{p} \approx \mathbf{y}
+
+
+The harmonic design matrix :math:`A` contains columns for the DC offset alongside pairs of sine and cosine terms up to harmonic order :math:`N + 1`. The optimal coefficients :math:`\mathbf{p}` are obtained through matrix left division (`Mldivide`). Progressive reconstruction frames are captured iteratively via `GetFrame()` to compile an animated demonstration of harmonic synthesis using `AnimationMaker`.
+
+
 .. code-block:: csharp
 
+   // -------------------------------------------------------------------------
+   // 1. Target Signal Definition (Square Wave)
+   // -------------------------------------------------------------------------
+   // Create an odd-count grid spanning [-10, 10] with 1001 discrete points
    ColVec x = Linspace(-10, 10, 1001);
+
+   // Generate periodic square wave via the signum function applied to sin(x):
+   // Rect(x) = +1 when sin(x) > 0, -1 when sin(x) < 0
    ColVec Rect = Sign(Sin(x));
-   Plot(x, Rect, Linewidth: 2); HoldOn();
+
+   // -------------------------------------------------------------------------
+   // 2. Base Plot Setup
+   // -------------------------------------------------------------------------
+   // Plot the true target square wave as the static background curve
+   Plot(x, Rect, Linewidth: 2);
+   HoldOn();
+
+   // Instantiate dynamic curve object for Fourier approximation (initialized to zero)
+   // Storing the handle in 'fourier' enables fast in-place Ydata updates per frame
    var fourier = Plot(x, 0 * x, "r", Linewidth: 2);
+
+   // Lock coordinate axes bounds: x from start to end, y from -1.5 to +1.5
    Axis([x[0], x[^1], -1.5, 1.5]);
-   
+
+   // -------------------------------------------------------------------------
+   // 3. Animation Frame Generator (Progressive Harmonic Synthesis)
+   // -------------------------------------------------------------------------
+   // Evaluated iteratively for harmonic orders N = 0, 1, 2, ...
    byte[] Animfun(int N)
    {
+       // Number of harmonic basis functions:
+       // Constant term (1) + pairs of cos/sin harmonics up to order (N + 1)
+       // Total columns = 1 + 2 * (N + 1) = 2 * N + 3
        Matrix A = Zeros(1001, 2 * N + 3);
+
+       // Column 0: Constant DC bias basis vector (a0)
        A[.., 0] = Ones(1001);
+
+       // Populate trigonometric basis matrix columns
        for (int n = 1; n <= (N + 1); n++)
        {
-           A[.., 2 * n-1] = Cos(n * x); 
-           A[.., 2 * n] = Sin(n * x);
+           A[.., 2 * n - 1] = Cos(n * x); // Even basis: cos(n * x)
+           A[.., 2 * n] = Sin(n * x); // Odd basis:  sin(n * x)
        }
+
+       // ---------------------------------------------------------------------
+       // Solve Linear Least Squares: A * p ~= Rect
+       // ---------------------------------------------------------------------
+       // Mldivide (equivalent to MATLAB's backslash '\') solves:
+       // p = (A^T * A)^(-1) * A^T * Rect
+       // Yielding optimal Fourier coefficients: [a0, a1, b1, a2, b2, ...]
        ColVec p = Mldivide(A, Rect);
+
+       // Reconstruct approximation curve and update line object in-place
        fourier.Ydata = A * p;
+
+       // Capture current canvas buffer as raw image bytes for GIF encoding
        return GetFrame();
    }
+
+   // -------------------------------------------------------------------------
+   // 4. Compile and Export Animated GIF
+   // -------------------------------------------------------------------------
+   // AnimationMaker iterates N over [0, frameCount), calling Animfun for each frame
+   // Parameters: frameCallback, filename, frameRate (fps), loopCount/duration
    AnimationMaker(Animfun, "FourierFitting.gif", 5, 100);
+
+   // Release graphic context and memory handles
    CloseFig();
+
+
+.. figure:: images/
+   :align: center
+   :alt: 
 
 
 .. figure:: images/FourierFitting.gif
    :align: center
    :alt: FourierFitting.gif
+
+
+<header 4> Mathematical Theory: Discrete Orthogonal Projection and Gibbs Phenomenon </header 4>
+A continuous periodic function :math:`f(x)` with period :math:`T = 2\pi` has exact analytical Fourier coefficients given by:
+
+
+.. math::
+
+   a_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos(nx) \, dx, \quad b_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \sin(nx) \, dx
+
+
+When discretizing over an :math:`M`-point vector :math:`\mathbf{x}`, numerical quadrature is replaced by projection onto a discrete trigonometric basis matrix:
+
+
+.. math::
+
+   A = \begin{bmatrix} \mathbf{1} & \cos(\mathbf{x}) & \sin(\mathbf{x}) & \cdots & \cos((N+1)\mathbf{x}) & \sin((N+1)\mathbf{x}) \end{bmatrix} \in \mathbb{R}^{M \times (2N+3)}
+
+
+The coefficients :math:`\mathbf{p}` are obtained by minimizing the Euclidean norm of the residual vector :math:`\mathbf{r} = A\mathbf{p} - \text{Rect}(\mathbf{x})`:
+
+
+.. math::
+
+   \min_{\mathbf{p}} \| A \mathbf{p} - \text{Rect}(\mathbf{x}) \|_2^2 \implies \mathbf{p} = (A^T A)^{-1} A^T \text{Rect}(\mathbf{x})
+
+
+Because the columns of :math:`A` are mutually orthogonal under uniform sampling:
+
+
+.. math::
+
+   \sum_{k=1}^M \cos(j x_k) \sin(l x_k) = 0, \quad \sum_{k=1}^M \cos(j x_k) \cos(l x_k) \approx \frac{M}{2} \delta_{jl}
+
+
+the Gram matrix :math:`A^T A` remains well-conditioned and diagonally dominant.
+
+Near the step transitions where :math:`\sin(x) = 0`, the partial Fourier sum exhibits the **Gibbs phenomenon**. For a unit step discontinuity :math:`\Delta y = 2`, the limiting overshoot value as :math:`N \to \infty` does not tend to zero:
+
+
+.. math::
+
+   \lim_{N \to \infty} f_N\left(\frac{\pi}{N}\right) = \frac{2}{\pi} \int_0^{\pi} \frac{\sin(t)}{t} \, dt = \frac{2}{\pi} \text{Si}(\pi) \approx 1.17898
+
+
+resulting in an asymptotic overshoot of approximately :math:`8.95\%` of the jump magnitude.
+
 
 
 Example: Bi-Exponential Curve Fitting
@@ -120,7 +316,7 @@ The objective is to fit data points :math:`(x_d, y_d)` to a bi - exponential mod
 
    f(x; \theta) = \theta_2 e^{\theta_0 x} + \theta_3 e^{\theta_1 x}
 
-where  math:`\theta = [\theta_0, \theta_1, \theta_2, \theta_3]^T` represents the unknown parameters.
+where :math:`\theta = [\theta_0, \theta_1, \theta_2, \theta_3]^T` represents the unknown parameters.
 
 Find :math:`\hat{\theta}` minimizing the sum of squared residuals:
 
@@ -130,17 +326,83 @@ Find :math:`\hat{\theta}` minimizing the sum of squared residuals:
    \hat{\theta} = \arg\min_{\theta} \sum_{d=1}^D (y_d - f(x_d; \theta))^2
 
 
+Bi-exponential models represent dual-rate decay processes commonly encountered in fluid relaxation and chemical dynamics. Because these models are sensitive to parameter correlation, visualizing solver progress helps monitor convergence behavior. This example configures `Lsqcurvefit` with stopping tolerances and exports the iterative parameter descent to an animated GIF using `AnimateHistory`.
+
 
 .. code-block:: csharp
 
-   ColVec noise, weight = new double[100]; double[] x0;
-   static ColVec fun(ColVec x, ColVec xdata) => x[2] * Exp(x[0] * xdata) + x[3] * Exp(x[1] * xdata);
-   ColVec xdata = Linspace(0, 1); noise = Rand(xdata.Numel);
-   ColVec ydata = fun(x0 = [-4, -5, 4, -4], xdata) + 0.02 * noise;
-   x0 = [-1, -2, 1, -1]; weight[xdata < 0.5] = 1;
-   var opts = OptimSet(Display: true, MaxIter: 200, StepTol: 1e-6, OptimalityTol: 1e-6);
-   var ans = Lsqcurvefit(fun, x0, xdata, ydata, options: opts);
-   AnimateHistory(fun, xdata, ydata, ans.history, "Bi_Exponential_Fitting.gif");
+   // -------------------------------------------------------------------------
+   // 1. Array & Vector Preallocations
+   // -------------------------------------------------------------------------
+   ColVec noise;
+   ColVec weight = new double[100]; // Pre-allocate weight vector of length 100
+   double[] x0;                     // Parameter vector placeholder
+
+   // -------------------------------------------------------------------------
+   // 2. Forward Bi-Exponential Model Definition
+   // -------------------------------------------------------------------------
+   // Model: f(x, xdata) = x[2]*exp(x[0]*xdata) + x[3]*exp(x[1]*xdata)
+   // Represents dual-decay / dual-relaxation processes common in physics/PVT:
+   // x[0], x[1]: Decay rate constants
+   // x[2], x[3]: Component amplitudes
+   static ColVec Fun(ColVec x, ColVec xdata) =>
+       x[2] * Exp(x[0] * xdata) + x[3] * Exp(x[1] * xdata);
+
+   // -------------------------------------------------------------------------
+   // 3. Synthetic Data Synthesis with Uniform Noise
+   // -------------------------------------------------------------------------
+   // Create 100 uniformly spaced samples over [0, 1]
+   ColVec xdata = Linspace(0, 1);
+   noise = Rand(xdata.Numel); // Uniform noise distribution on [0, 1)
+
+   // True parameter ground truth: x0 = [-4, -5, 4, -4]
+   // y(t) = 4*exp(-4*t) - 4*exp(-5*t) + 0.02 * noise
+   ColVec ydata = Fun(x0 = [-4.0, -5.0, 4.0, -4.0], xdata) + 0.02 * noise;
+
+   // -------------------------------------------------------------------------
+   // 4. Initial Estimate & Domain-Selective Weight Mask
+   // -------------------------------------------------------------------------
+   // Reset x0 to serve as the initial parameter guess for the solver
+   x0 = [-1.0, -2.0, 1.0, -1.0];
+
+   // Boolean indexing: assign higher weight priority (1.0) where xdata < 0.5
+   weight[xdata < 0.5] = 1.0;
+
+   // -------------------------------------------------------------------------
+   // 5. Solver Setup
+   // -------------------------------------------------------------------------
+   var opts = OptimSet(
+       Display: true,
+       MaxIter: 200,
+       StepTol: 1e-6,
+       OptimalityTol: 1e-6
+   );
+
+   // -------------------------------------------------------------------------
+   // 6. Execute Least Squares Optimization
+   // -------------------------------------------------------------------------
+   // Optimizes parameters x starting from x0 to minimize ||Fun(x, xdata) - ydata||^2
+   var ans = Lsqcurvefit(
+       Fun,
+       x0,
+       xdata,
+       ydata,
+       options: opts
+   );
+
+   // -------------------------------------------------------------------------
+   // 7. Dynamic Convergence Animation & Cleanup
+   // -------------------------------------------------------------------------
+   // Creates an animated GIF rendering the model fit at every iteration recorded in ans.history
+   AnimateHistory(
+       Fun,
+       xdata,
+       ydata,
+       ans.history,
+       "Bi_Exponential_Fitting.gif"
+   );
+
+   // Close the graphics context and release resources
    CloseFig();
 
 
@@ -153,51 +415,157 @@ Ouput
 
                                                Norm of      First-order 
     Iteration   Func-count       Resnorm          step       optimality 
-        0            5          1.7220e0                       3.5695e0 
-        1           11         7.9123e-1     2.5537e-1         1.4712e0 
-        2           17         5.2061e-1     2.3540e-1        2.9664e-1 
-        3           23         4.4447e-1     5.1630e-1        1.4110e-1 
-        4           29         2.6608e-1      1.9936e0        6.8029e-1 
-        5           35         1.1331e-1      3.0267e0        7.3299e-1 
-        6           41         5.4477e-3     4.3191e-1        9.3670e-2 
-        7           47         4.3968e-3     4.4407e-1        1.2698e-1 
-        8           53         3.9331e-3     3.7329e-1        1.0879e-1 
-        9           59         3.3302e-3     2.6013e-1        5.9299e-2 
-       10           65         3.1048e-3     1.3283e-1        1.5996e-2 
-       11           71         3.0874e-3     3.6815e-2        1.2297e-3 
-       12           77         3.0873e-3     3.7270e-3        1.2640e-5 
-       13           83         3.0873e-3     8.2560e-5        6.2736e-9 
+        0            5          1.7331e0                       3.5900e0 
+        1           11         7.9799e-1     2.5565e-1         1.4759e0 
+        2           17         5.2607e-1     2.3661e-1        2.9729e-1 
+        3           23         4.4875e-1     5.2177e-1        1.4341e-1 
+        4           29         2.6853e-1      2.0188e0        6.8824e-1 
+        5           35         1.1258e-1      3.0296e0        7.2798e-1 
+        6           41         5.8226e-3     4.6053e-1        8.5774e-2 
+        7           47         5.2104e-3     4.8238e-1        1.5168e-1 
+        8           53         4.6288e-3     4.0519e-1        1.3213e-1 
+        9           59         3.8643e-3     3.0650e-1        8.3895e-2 
+       10           65         3.4436e-3     1.8464e-1        3.1017e-2 
+       11           71         3.3791e-3     6.9337e-2        4.3037e-3 
+       12           77         3.3779e-3     1.1297e-2        1.1383e-4 
+       13           83         3.3779e-3     5.5212e-4        2.7520e-7 
 
-.. figure:: images/Bi_Exponential_Fitting.gif
+.. figure:: images/
    :align: center
-   :alt: Bi_Exponential_Fitting.gif
+   :alt: 
+
+
+<header 4> Mathematical Theory: Gauss-Newton, Levenberg-Marquardt, and Ill-Conditioning </header 4>
+The objective is to minimize the sum of squared residuals:
+
+
+.. math::
+
+   S(\boldsymbol{\theta}) = \frac{1}{2} \sum_{i=1}^M r_i(\boldsymbol{\theta})^2 = \frac{1}{2} \|\mathbf{r}(\boldsymbol{\theta})\|_2^2
+
+
+where the scalar residual is :math:`r_i(\boldsymbol{\theta}) = f(x_i; \boldsymbol{\theta}) - y_i`.
+
+The gradient :math:`\nabla S` and Hessian :math:`\nabla^2 S` are:
+
+
+.. math::
+
+   \nabla S(\boldsymbol{\theta}) = J(\boldsymbol{\theta})^T \mathbf{r}(\boldsymbol{\theta}), \quad \nabla^2 S(\boldsymbol{\theta}) = J(\boldsymbol{\theta})^T J(\boldsymbol{\theta}) + \sum_{i=1}^M r_i(\boldsymbol{\theta}) \nabla^2 r_i(\boldsymbol{\theta})
+
+
+where :math:`J \in \mathbb{R}^{M \times 4}` is the Jacobian matrix containing partial derivatives:
+
+
+.. math::
+
+   J_{i,:} = \begin{bmatrix}
+   \frac{\partial f}{\partial \theta_0} & \frac{\partial f}{\partial \theta_1} & \frac{\partial f}{\partial \theta_2} & \frac{\partial f}{\partial \theta_3}
+   \end{bmatrix} = \begin{bmatrix}
+   \theta_2 x_i e^{\theta_0 x_i} & \theta_3 x_i e^{\theta_1 x_i} & e^{\theta_0 x_i} & e^{\theta_1 x_i}
+   \end{bmatrix}
+
+
+The Levenberg-Marquardt algorithm computes parameter step updates :math:`\Delta \boldsymbol{\theta}` by regularizing the Gauss-Newton approximation:
+
+
+.. math::
+
+   \left( J^T J + \lambda \, \text{diag}(J^T J) \right) \Delta \boldsymbol{\theta} = -J^T \mathbf{r}
+
+
+Bi-exponential sums are ill-conditioned because the basis vectors :math:`e^{\theta_0 x}` and :math:`e^{\theta_1 x}` become linearly dependent when :math:`\theta_0 \approx \theta_1`. Consequently, the matrix :math:`J^T J` develops a condition number :math:`\kappa(J^T J) \gg 1`, producing an elongated valley in parameter space where small shifts in decay rates can be compensated by large shifts in amplitudes.
+
+
+
+Example: Non-Linear Regression with Confidence Shading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Fitting single-exponential decay models to experimental measurements requires quantifying the uncertainty associated with the estimated curve. In this example, `Lsqcurvefit` computes optimal decay parameters, and the point-wise prediction error :math:`\sigma_y` is interpolated over the observation domain with `Interp1`. A continuous confidence region is constructed via closed-polygon vertex concatenation using `Vcart` and shaded using `Fill`.
+
+
+.. math::
+
+   f(x; \mathbf{x}) = x_0 e^{x_1 x}
 
 
 
 .. code-block:: csharp
 
-   ColVec xdata, ydata, times, y_est, filltime, sgy, filly, lower, upper;
+   // -------------------------------------------------------------------------
+   // 1. Observed Data Setup
+   // -------------------------------------------------------------------------
+   // Raw experimental time series and decaying response measurements
+   ColVec xdata = new([0.9, 1.5, 13.8, 19.8, 24.1, 28.2, 35.2, 60.3, 74.6, 81.3]);
+   ColVec ydata = new([455.2, 428.6, 124.1, 67.3, 43.2, 28.1, 13.1, -0.4, -1.3, -1.5]);
 
-   double[] x_dat = [0.9, 1.5, 13.8, 19.8, 24.1, 28.2, 35.2, 60.3, 74.6, 81.3];
-   double[] y_dat = [455.2, 428.6, 124.1, 67.3, 43.2, 28.1, 13.1, -0.4, -1.3, -1.5];
-   xdata = x_dat; ydata = y_dat; times = Linspace(x_dat[0], x_dat[9]);
-   double[] x0 = [100, -1];
+   // Smooth evaluation grid spanning from min to max observed times
+   // xdata[^1] accesses the last element using C# index from end
+   ColVec times = Linspace(xdata[0], xdata[^1]);
 
-   static ColVec fun(ColVec x, ColVec xdata) => x[0] * Exp(x[1] * xdata);
-   var opts = OptimSet(Display: true, MaxIter: 200, StepTol: 1e-6, OptimalityTol: 1e-6);
-   var ans = Lsqcurvefit(fun, x0, xdata, ydata, options: opts);
+   // -------------------------------------------------------------------------
+   // 2. Model & Initial Estimates
+   // -------------------------------------------------------------------------
+   // Single-exponential decay model: f(x, t) = x[0] * exp(x[1] * t)
+   // x[0]: Initial amplitude / scale factor
+   // x[1]: Decay rate constant (expected to be negative)
+   static ColVec Fun(ColVec x, ColVec xdata) => x[0] * Exp(x[1] * xdata);
 
-   Scatter(xdata, ydata); HoldOn();
-   Plot(times, y_est = fun(ans.x, times), "r", Linewidth: 2);
-   filltime = Vcart(times, times.Reverse().ToList());
-   sgy = Interp1(xdata, ans.sigma_y, times);
-   lower = y_est - 20 * sgy; upper = y_est + 20 * sgy;
-   filly = Vcart(lower, upper.Reverse().ToList());
-   Fill(filltime, filly, "g", 0.2); HoldOff();
-   Axis([xdata.Min()-0.01*xdata.Range(), xdata.Max()+0.01*xdata.Range(),
-   ydata.Min()-0.1*ydata.Range(), ydata.Max()+0.1*ydata.Range()]);
+   // Initial parameter estimates: x0 = [amplitude, decay_rate]
+   ColVec x0 = new([100.0, -1.0]);
+
+   // -------------------------------------------------------------------------
+   // 3. Solver Configuration & Optimization
+   // -------------------------------------------------------------------------
+   var opts = OptimSet(
+       Display: true,
+       MaxIter: 200,
+       StepTol: 1e-6,
+       OptimalityTol: 1e-6
+   );
+
+   // Fit unconstrained model using non-linear least squares
+   var ans = Lsqcurvefit(Fun, x0, xdata, ydata, options: opts);
+
+   // -------------------------------------------------------------------------
+   // 4. Uncertainty Band & Shading Polygon Construction
+   // -------------------------------------------------------------------------
+   // Evaluate fitted curve across the smooth evaluation grid
+   ColVec y_est = Fun(ans.x, times);
+
+   // Interpolate point-wise standard errors (sigma_y) across smooth evaluation grid
+   ColVec sgy = Interp1(xdata, ans.sigma_y, times);
+
+   // Define lower and upper uncertainty bounds (scaled error envelope)
+   ColVec lower = y_est - 20.0 * sgy;
+   ColVec upper = y_est + 20.0 * sgy;
+
+   // Build closed 2D polygon vertices for Fill():
+   // Traverse forward along upper bound, then reverse along lower bound
+   ColVec filltime = Vcart(times, times.Reverse().ToList());
+   ColVec filly = Vcart(lower, upper.Reverse().ToList());
+
+   // -------------------------------------------------------------------------
+   // 5. Visualization & Plot Stacking
+   // -------------------------------------------------------------------------
+   Scatter(xdata, ydata); // Plot measured data points
+   HoldOn();
+
+   // Plot continuous fitted curve as a solid red line
+   Plot(times, y_est, "r", Linewidth: 2);
+
+   // Fill uncertainty polygon with semi-transparent green (alpha = 0.2)
+   Fill(filltime, filly, "g", 0.2);
+   HoldOff();
+
+   // Save high-resolution chart
    SaveAs("CurveFitting.png");
-   AnimateHistory(fun, xdata, ydata, ans.history, "CurveFitting.gif");
+
+   // -------------------------------------------------------------------------
+   // 6. Animated Convergence & Cleanup
+   // -------------------------------------------------------------------------
+   // Export iterative fitting convergence to an animated GIF
+   AnimateHistory(Fun, xdata, ydata, ans.history, "CurveFitting.gif");
+
    CloseFig();
 
 
@@ -232,21 +600,98 @@ Ouput
    :alt: CurveFitting.gif
 
 
-Lsqcurvefit allows the use of constraints. 
-1. Seed data for reproducability
+<header 4> Mathematical Theory: Covariance Estimation and Error Propagation </header 4>
+At the converged parameter vector :math:`\hat{\mathbf{x}} \in \mathbb{R}^P`, the unbiased estimate of measurement error variance :math:`s^2` is computed from the residual vector :math:`\mathbf{r}` across :math:`M` data points:
+
+
+.. math::
+
+   s^2 = \frac{\|\mathbf{y} - f(\mathbf{x}_{\text{data}}; \hat{\mathbf{x}})\|_2^2}{M - P} = \frac{\sum_{i=1}^M (y_i - \hat{y}_i)^2}{M - P}
+
+
+where :math:`M - P` denotes the degrees of freedom (:math:`10 - 2 = 8`).
+
+The parameter covariance matrix :math:`\Sigma_{\hat{\mathbf{x}}}` is derived by linearizing about the optimum using the converged Jacobian :math:`J = \nabla_{\mathbf{x}} f`:
+
+
+.. math::
+
+   \Sigma_{\hat{\mathbf{x}}} = s^2 \left( J^T J \right)^{-1}
+
+
+By first-order Taylor series error propagation, the variance of the model prediction at any point :math:`t` is:
+
+
+.. math::
+
+   \sigma_y^2(t) = \nabla_{\mathbf{x}} f(t; \hat{\mathbf{x}})^T \, \Sigma_{\hat{\mathbf{x}}} \, \nabla_{\mathbf{x}} f(t; \hat{\mathbf{x}})
+
+
+For :math:`f(t; \mathbf{x}) = x_0 e^{x_1 t}`, the gradient vector is:
+
+
+.. math::
+
+   \nabla_{\mathbf{x}} f(t; \hat{\mathbf{x}}) = \begin{bmatrix} e^{\hat{x}_1 t} \\ \hat{x}_0 t e^{\hat{x}_1 t} \end{bmatrix}
+
+
+Pointwise standard deviations :math:`\sigma_y = \sqrt{\sigma_y^2(t)}` form the uncertainty envelope :math:`\hat{y}(t) \pm k \sigma_y(t)`, representing confidence bounds on the expected response curve.
+
+Example: Generating Seeded Synthetic Datasets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Deterministic synthetic data generation guarantees reproducibility across benchmarks and case studies. This snippet defines a non-linear forward model combining an arc-tangent transition with linear drift:
+
+
+.. math::
+
+   f(x; \mathbf{x}^*) = x_0^* + x_1^* \arctan(x - x_2^*) + x_3^* x
+
+
+A fixed seed ensures that the synthetic Gaussian white noise generated by `Randn` produces identical numerical observations every time the script is executed.
+
 
 .. code-block:: csharp
 
-   int seed = 23;
-   Random rng = new(seed);
-   ColVec xdata, ydata, noise = Randn(100);
-   double[] xstar = [2, 4, 5, 0.5];
+   // -------------------------------------------------------------------------
+   // 1. Reproducible Random Number Generation Setup
+   // -------------------------------------------------------------------------
+   int seed = 23; rgn = new(seed); // Fixes the pseudo-random generator state
 
-   ColVec model(ColVec x, ColVec xdata) => x[0] + x[1] * Atan(xdata - x[2]) + x[3] * xdata;
-   xdata = Linspace(2,7); ydata = model(xstar, xdata) + noise/10;
+   // generate 100 Gaussian white noise samples
+   // Randn draws from a standard normal distribution: N(0, 1)
+   ColVec noise = Randn(100);
+
+   // -------------------------------------------------------------------------
+   // 2. Ground Truth Parameters & Model Definition
+   // -------------------------------------------------------------------------
+   // True physical parameter vector: [x0, x1, x2, x3]
+   ColVec xstar = new([2.0, 4.0, 5.0, 0.5]);
+
+   // Non-linear forward model:
+   // f(x, xdata) = x[0] + x[1] * Atan(xdata - x[2]) + x[3] * xdata
+   // Represents a sigmoid transition (inflection point at x[2]) plus a linear baseline drift (x[3])
+   static ColVec Model(ColVec x, ColVec xdata) =>
+       x[0] + x[1] * Atan(xdata - x[2]) + x[3] * xdata;
+
+   // -------------------------------------------------------------------------
+   // 3. Synthetic Observation Synthesis
+   // -------------------------------------------------------------------------
+   // Discretize independent domain into 100 uniform points from 2.0 to 7.0
+   ColVec xdata = Linspace(2.0, 7.0);
+
+   // Generate synthetic measurements: true response + scaled noise (std dev = 0.1)
+   ColVec ydata = Model(xstar, xdata) + noise / 10.0;
+
+   // -------------------------------------------------------------------------
+   // 4. Data Visualization and Image Export
+   // -------------------------------------------------------------------------
+   // Plot raw observations as red circular markers ("ro")
    Scatter(xdata, ydata, "ro");
 
-   Xlabel("x"); Ylabel("y"); 
+   // Axis labeling for clear publication figure output
+   Xlabel("x"); Ylabel("y");
+
+   // Save high-resolution graphic to disk and clear the figure buffer
    SaveAs("Seeded_Curve_Fitting_Data.png");
    CloseFig();
 
@@ -256,142 +701,39 @@ Lsqcurvefit allows the use of constraints.
    :alt: Seeded_Curve_Fitting_Data.png
 
 
-2. Fitting with Linear constraint
-
-.. code-block:: csharp
-
-   int seed = 23;
-   Random rng = new(seed);
-   ColVec xdata, ydata, noise = Randn(100);
-   double[] xstar = [2, 4, 5, 0.5], startpt = [1, 2, 3, 1];
-
-   ColVec model(ColVec x, ColVec xdata) => x[0] + x[1] * Atan(xdata - x[2]) + x[3] * xdata;
-   RowVec A = new double[] { -1, -1, 1, 1 };
-   ColVec fineq(ColVec x) => A * x; ColVec lb = Zeros(4), ub = 7 + lb;
-   xdata = Linspace(2, 7); ydata = model(xstar, xdata) + noise / 10;
-
-   var opts = OptimSet(Display: true, MaxIter: 200, StepTol: 1e-6, OptimalityTol: 1e-6);
-   var ans = Lsqcurvefit(model, startpt, xdata, ydata, fineq, null, lb, ub, options: opts);
-   Console.WriteLine($"x = {ans.x.T}");
-   Console.WriteLine($"c = {fineq(ans.x)}");
-
-   Scatter(xdata, ydata, "ro"); HoldOn();
-   Plot(xdata, ans.y_hat, "-b", Linewidth: 2);
-
-   Xlabel("x"); Ylabel("y");
-   Legend(["Measured Data", "Model Estimate"], UpperRight);
-   SaveAs("Example_of_CurveFitting_using_Lsqcurvefit_with_Linear_Inequality_Constraints.png");
-   CloseFig();
+<header 4> Mathematical Theory: Sigmoidal Response and Gaussian Noise Injection </header 4>
+The benchmark forward model exhibits a sigmoidal inflection at :math:`x = x_2^*` superimposed on a linear background trend:
 
 
+.. math::
+
+   y(x) = x_0^* + x_1^* \arctan(x - x_2^*) + x_3^* x
 
 
-Ouput
+Key analytical characteristics include:
 
 
-.. terminal::
+.. math::
 
-                                               Norm of      First-order 
-    Iteration   Func-count       Resnorm          step       optimality 
-        0            5          1.5658e3                       1.5038e3 
-        1           11          1.2887e3     2.0891e-1         1.3059e3 
-        2           17          7.9148e2     4.8132e-1         8.8331e2 
-        3           23          3.0209e2     8.0247e-1         3.3466e2 
-        4           29          6.1479e1     9.6587e-1         6.8922e1 
-        5           35          1.1063e1     6.5909e-1         3.7520e1 
-        6           41          5.8488e0     4.0441e-1         2.5086e0 
-        7           47          2.8135e0     5.5469e-1         3.3881e0 
-        8           53          2.2281e0     5.7444e-1         1.8848e0 
-        9           59         9.5043e-1     2.5134e-1        3.4117e-1 
-       10           65         9.0584e-1     2.8188e-1        2.1541e-1 
-       11           71         9.0163e-1     1.0431e-1        2.6367e-2 
-       12           77         9.0157e-1     1.3380e-2        6.9387e-4 
-       13           83         9.0157e-1     5.6887e-4        1.4700e-5 
-       14           89         9.0157e-1     8.3030e-6        2.8551e-7 
-   x = 
-      2.0683    4.0154    5.0038    0.4921
-   
-   c =   -0.5879
-
-.. figure:: images/Example_of_CurveFitting_using_Lsqcurvefit_with_Linear_Inequality_Constraints.png
-   :align: center
-   :alt: Example_of_CurveFitting_using_Lsqcurvefit_with_Linear_Inequality_Constraints.png
+   \lim_{x \to \pm \infty} \arctan(x - x_2^*) = \pm \frac{\pi}{2}, \quad \left. \frac{d^2 y}{dx^2} \right|_{x = x_2^*} = \left. \frac{-2 x_1^* (x - x_2^*)}{(1 + (x - x_2^*)^2)^2} \right|_{x = x_2^*} = 0
 
 
-3. Fitting with nonlinear constraint.
-
-.. code-block:: csharp
-
-   int seed = 23;
-   Random rng = new(seed);
-   ColVec xdata, ydata, noise = Randn(100);
-   double[] xstar = [2, 4, 5, 0.5], startpt = [1, 2, 3, 1];
-
-   ColVec model(ColVec x, ColVec xdata) => x[0] + x[1] * Atan(xdata - x[2]) + x[3] * xdata;
-   ColVec fineq(ColVec x) => x[0] * x[0] + x[1] * x[1] - 16; ColVec lb = Zeros(4), ub = 7 + lb;
-   xdata = Linspace(2, 7); ydata = model(xstar, xdata) + noise / 10;
-
-   var opts = OptimSet(Display: true, MaxIter: 200, StepTol: 1e-6, OptimalityTol: 1e-6);
-   var ans = Lsqcurvefit(model, startpt, xdata, ydata, fineq, null, lb, ub, options: opts);
-   Console.WriteLine($"x = {ans.x.T}");
-   Console.WriteLine($"c = {fineq(ans.x)}");
-
-   Scatter(xdata, ydata, "ro"); HoldOn();
-   Plot(xdata, ans.y_hat, "-b", Linewidth: 2);
-
-   Xlabel("x"); Ylabel("y");
-   Legend(["Measured Data", "Model Estimate"], UpperRight);
-   SaveAs("Example_of_CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.png");
-   CloseFig();
+Measurement corruption is modeled by independent, identically distributed (i.i.d.) zero-mean Gaussian perturbations:
 
 
+.. math::
+
+   y_i = y(x_i) + \epsilon_i, \quad \epsilon_i \sim \mathcal{N}(0, \sigma^2)
 
 
-Ouput
+With scale factor :math:`\sigma = \frac{1}{10} = 0.1`, the probability density of an observation :math:`y_i` conditioned on ground truth :math:`\mathbf{x}^*` is:
 
 
-.. terminal::
+.. math::
 
-                                               Norm of      First-order 
-    Iteration   Func-count       Resnorm          step       optimality 
-        0            5          1.5777e3                       1.5100e3 
-        1           11          1.2948e3     2.1259e-1         1.3093e3 
-        2           17          7.8779e2     4.9052e-1         8.8129e2 
-        3           23          2.8982e2     8.2041e-1         3.2635e2 
-        4           29          5.3476e1     9.7144e-1         6.9584e1 
-        5           35          4.9129e0     6.2611e-1         3.6947e1 
-        6           41          2.2333e0     1.9926e-1         4.2410e0 
-        7           47          1.9962e0     1.7005e-1         1.1003e0 
-        8           53          1.5898e0     3.7861e-1         1.4280e0 
-        9           59          1.0865e0     6.7295e-1         1.4749e0 
-       10           68          1.0536e0     6.2725e-2        6.2323e-1 
-       11           76          1.0440e0     1.9319e-2        6.0950e-1 
-       12           83          1.0349e0     1.8810e-2        5.9689e-1 
-       13           94          1.0348e0     1.8801e-4        5.9641e-1 
-       14          100          1.0348e0     1.1702e-4        4.7869e-1 
-       15          106          1.0347e0     3.4220e-4        3.5128e-1 
-       16          112          1.0343e0     7.5520e-4        2.7136e-1 
-       17          118          1.0342e0     8.5742e-4        2.3915e-1 
-       18          124          1.0342e0     3.8687e-4        2.4156e-1 
-       19          130          1.0342e0     5.3640e-5        2.4295e-1 
-       20          136          1.0342e0     1.2970e-5        2.4301e-1 
-       21          142          1.0341e0     4.0565e-5        2.4299e-1 
-       22          148          1.0341e0     1.2553e-4        2.4306e-1 
-       23          154          1.0340e0     2.0346e-4        2.4352e-1 
-       24          160          1.0338e0     5.7644e-4        2.4722e-1 
-       25          166          1.0335e0     1.3330e-3        2.6826e-1 
-       26          172          1.0332e0     1.9489e-3        3.2339e-1 
-       27          178          1.0331e0     1.3154e-3        3.7136e-1 
-       28          184          1.0331e0     3.2632e-4        3.8421e-1 
-       29          190          1.0331e0     2.6032e-5        3.8526e-1 
-       30          196          1.0331e0     8.8328e-7        3.8529e-1 
-   x = 
-      1.3364    3.7702    5.0132    0.6417
-   
-   c =    0.0000
+   p(y_i \mid x_i; \mathbf{x}^*) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left( -\frac{(y_i - f(x_i; \mathbf{x}^*))^2}{2\sigma^2} \right)
 
-.. figure:: images/Example_of_CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.png
-   :align: center
-   :alt: Example_of_CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.png
+
+Under this Gaussian distribution, minimizing the least-squares objective :math:`\sum (y_i - f(x_i; \mathbf{x}))^2` is equivalent to Maximum Likelihood Estimation (MLE) of parameter vector :math:`\mathbf{x}`.
 
 
