@@ -278,6 +278,7 @@ This is demonstrated in the following example.
    
    
       SaveAs("Mackey_Glass_Chaotic.png", 1000, 1000);
+      CloseFig();
    
    
    

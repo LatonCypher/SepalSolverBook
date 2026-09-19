@@ -1,3 +1,5 @@
+using System.Threading.Channels;
+
 namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 {
     internal class Section_07_Delay_Differential_Equations
@@ -250,6 +252,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 
 
                 SaveAs("Mackey_Glass_Chaotic.png", 1000, 1000);
+                CloseFig();
             }
             /// </code>
             /// </example>
