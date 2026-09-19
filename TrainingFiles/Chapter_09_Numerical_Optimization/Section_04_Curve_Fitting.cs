@@ -343,13 +343,7 @@
                 // 7. Dynamic Convergence Animation & Cleanup
                 // -------------------------------------------------------------------------
                 // Creates an animated GIF rendering the model fit at every iteration recorded in ans.history
-                AnimateHistory(
-                    Fun,
-                    xdata,
-                    ydata,
-                    ans.history,
-                    "Bi_Exponential_Fitting.gif"
-                );
+                AnimateHistory(Fun, xdata, ydata, ans.history, "Bi_Exponential_Fitting.gif" );
 
                 // Close the graphics context and release resources
                 CloseFig();
@@ -561,6 +555,31 @@
                 // Save high-resolution graphic to disk and clear the figure buffer
                 SaveAs("Seeded_Curve_Fitting_Data.png");
                 CloseFig();
+
+
+                // -------------------------------------------------------------------------
+                // 5. Solver Configuration via OptimSet
+                // -------------------------------------------------------------------------
+                var opts = OptimSet(
+                    Display: true,
+                    MaxIter: 200,
+                    StepTol: 1e-6,
+                    OptimalityTol: 1e-6
+                );
+
+                // -------------------------------------------------------------------------
+                // 6. Execute UnConstrained Least Squares
+                // -------------------------------------------------------------------------
+                ColVec startpt = new([1.0, 2.0, 3.0, 1.0]);
+                var ans = Lsqcurvefit(
+                    Model,
+                    startpt,
+                    xdata,
+                    ydata,
+                    options: opts
+                );
+
+                AnimateHistory(Model, xdata, ydata, ans.history, "Unconstrained_CurveFitting_using_Lsqcurvefit.gif");
             }
             /// </code>
             ///

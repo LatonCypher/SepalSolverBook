@@ -313,15 +313,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
 
                 // Export high-resolution chart and release plotting resources
                 SaveAs("Example_of_CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.png");
-
-                AnimateHistory(
-                    Model,
-                    xdata,
-                    ydata,
-                    ans.history,
-                    "CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.gif"
-                );
                 CloseFig();
+
+                AnimateHistory(Model, xdata, ydata, ans.history, "CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.gif");
             }
             /// </code>
             ///
@@ -421,13 +415,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
                 Console.WriteLine($"Inequality Residual:    {ans.fineq.T}");
                 Console.WriteLine($"Exit Flag:              {ans.exitflag}");
 
-                AnimateHistory(
-                    Model,
-                    xdata,
-                    ydata,
-                    ans.history,
-                    "Damped Harmonic Model with Coupled Inequality Bounds.gif"
-                );
+                AnimateHistory(Model, xdata, ydata, ans.history, "Damped_Harmonic_Model_with_Coupled_Inequality_Bounds.gif");
             }
             /// </code>
             ///
@@ -565,13 +553,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
                 // 7. Visual Inspection & Plotting
                 // -------------------------------------------------------------------------
 
-                AnimateHistory(
-                    Model,
-                    xdata,
-                    ydata,
-                    ans.history,
-                    "CurveFitting_with_Equality_Constraints.gif"
-                );
+                AnimateHistory(Model, xdata, ydata, ans.history, "CurveFitting_with_Equality_Constraints.gif");
                 CloseFig();
             }
             /// </code>

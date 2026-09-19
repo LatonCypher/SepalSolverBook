@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_09_numerical_optimization\\section_05_constrained_curve_fitting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_09_numerical_optimization\\section_05_constrained_curve_fitting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_09_numerical_optimization\\section_04_curve_fitting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_09_numerical_optimization\\section_04_curve_fitting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\trainingfiles\\chapter_09_numerical_optimization\\section_05_constrained_curve_fitting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|solutionrelative:trainingfiles\\chapter_09_numerical_optimization\\section_05_constrained_curve_fitting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B7973652-B3AC-4169-A421-6B9EC073CA8E}|ConsoleApp1.csproj|c:\\users\\lateef.a.kareem\\documents\\github\\sepalsolverbook\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -101,7 +101,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 456,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
@@ -111,7 +111,7 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAJwAAAAAAAAAAAAAAKIAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAEwKIAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-25T11:41:47.712Z",
               "IsPinned": true,
@@ -143,28 +143,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Section_05_Constrained_Curve_Fitting.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_09_Numerical_Optimization\\Section_05_Constrained_Curve_Fitting.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_09_Numerical_Optimization\\Section_05_Constrained_Curve_Fitting.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_09_Numerical_Optimization\\Section_05_Constrained_Curve_Fitting.cs",
               "RelativeToolTip": "TrainingFiles\\Chapter_09_Numerical_Optimization\\Section_05_Constrained_Curve_Fitting.cs",
-              "ViewState": "AgIAAOcBAAAAAAAAAADwvzUCAABcAAAAAAAAAA==",
+              "ViewState": "AgIAABsBAAAAAAAAAAAQwDsBAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-19T06:47:54.97Z",
+              "WhenOpened": "2026-09-19T10:29:51.529Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Section_04_Curve_Fitting.cs",
               "DocumentMoniker": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_09_Numerical_Optimization\\Section_04_Curve_Fitting.cs",
               "RelativeDocumentMoniker": "TrainingFiles\\Chapter_09_Numerical_Optimization\\Section_04_Curve_Fitting.cs",
-              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_09_Numerical_Optimization\\Section_04_Curve_Fitting.cs",
-              "RelativeToolTip": "TrainingFiles\\Chapter_09_Numerical_Optimization\\Section_04_Curve_Fitting.cs",
-              "ViewState": "AgIAAHcBAAAAAAAAAAAAAFkBAAAQAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\TrainingFiles\\Chapter_09_Numerical_Optimization\\Section_04_Curve_Fitting.cs*",
+              "RelativeToolTip": "TrainingFiles\\Chapter_09_Numerical_Optimization\\Section_04_Curve_Fitting.cs*",
+              "ViewState": "AgIAAC4CAAAAAAAAAAAUwEUCAABuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-18T16:25:26.618Z",
+              "WhenOpened": "2026-09-19T10:24:02.271Z",
               "EditorCaption": ""
             },
             {
@@ -199,7 +199,7 @@
               "RelativeDocumentMoniker": "BookWriter.cs",
               "ToolTip": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\BookWriter.cs",
               "RelativeToolTip": "BookWriter.cs",
-              "ViewState": "AgIAAN0AAAAAAAAAAAAgwPQAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAHwBAAAAAAAAAAAUwMYBAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-30T11:42:31.583Z",
               "EditorCaption": ""

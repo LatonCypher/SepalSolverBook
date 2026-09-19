@@ -375,15 +375,9 @@ the constraint is actively enforced, leading `Lsqcurvefit` to converge along the
 
    // Export high-resolution chart and release plotting resources
    SaveAs("Example_of_CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.png");
-
-   AnimateHistory(
-       Model,
-       xdata,
-       ydata,
-       ans.history,
-       "CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.gif"
-   );
    CloseFig();
+
+   AnimateHistory(Model, xdata, ydata, ans.history, "CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.gif");
 
 
 
@@ -438,9 +432,9 @@ Ouput
    :alt: Example_of_CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.png
 
 
-.. figure:: images/
+.. figure:: images/CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.gif
    :align: center
-   :alt: 
+   :alt: CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.gif
 
 
 Mathematical Theory: Active Boundary Projections and Sequential Quadratic Programming
@@ -556,13 +550,7 @@ The routine executes using `Lsqcurvefit`, reporting parameter outcomes alongside
    Console.WriteLine($"Inequality Residual:    {ans.fineq.T}");
    Console.WriteLine($"Exit Flag:              {ans.exitflag}");
 
-   AnimateHistory(
-       Model,
-       xdata,
-       ydata,
-       ans.history,
-       "Damped Harmonic Model with Coupled Inequality Bounds.gif"
-   );
+   AnimateHistory(Model, xdata, ydata, ans.history, "Damped_Harmonic_Model_with_Coupled_Inequality_Bounds.gif");
 
 
 
@@ -592,9 +580,9 @@ Ouput
    Inequality Residual:      -0.2431
    Exit Flag:              1
 
-.. figure:: images/
+.. figure:: images/Damped_Harmonic_Model_with_Coupled_Inequality_Bounds.gif
    :align: center
-   :alt: 
+   :alt: Damped_Harmonic_Model_with_Coupled_Inequality_Bounds.gif
 
 
 Mathematical Theory: Box-Constrained Trust-Region Reflective Mechanics
@@ -748,13 +736,7 @@ In SepalSolver, equality constraints are passed via the `funEq` delegate in stan
    // 7. Visual Inspection & Plotting
    // -------------------------------------------------------------------------
 
-   AnimateHistory(
-       Model,
-       xdata,
-       ydata,
-       ans.history,
-       "CurveFitting_with_Equality_Constraints.gif"
-   );
+   AnimateHistory(Model, xdata, ydata, ans.history, "CurveFitting_with_Equality_Constraints.gif");
    CloseFig();
 
 
@@ -786,9 +768,9 @@ Ouput
    Residual Norm (resnorm): 1.3019E-001
    Convergence ExitFlag:  1
 
-.. figure:: images/
+.. figure:: images/CurveFitting_with_Equality_Constraints.gif
    :align: center
-   :alt: 
+   :alt: CurveFitting_with_Equality_Constraints.gif
 
 
 Mathematical Theory: Lagrange Multipliers and Manifold Projection
