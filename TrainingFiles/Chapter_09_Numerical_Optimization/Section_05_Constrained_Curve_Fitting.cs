@@ -263,7 +263,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
                 // -------------------------------------------------------------------------
                 // Constrains the vector norm of the first two parameters to lie within a circle of radius 4:
                 // x[0]^2 + x[1]^2 <= 16  -->  x[0]^2 + x[1]^2 - 16 <= 0
-                static ColVec Fineq(ColVec x) => new([x[0] * x[0] + x[1] * x[1] - 16.0]);
+                static ColVec Fineq(ColVec x) => new([x[..2].SumSq() - 16.0]);
 
                 // -------------------------------------------------------------------------
                 // 4. Solver Configuration via OptimSet
@@ -313,6 +313,14 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
 
                 // Export high-resolution chart and release plotting resources
                 SaveAs("Example_of_CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.png");
+
+                AnimateHistory(
+                    Model,
+                    xdata,
+                    ydata,
+                    ans.history,
+                    "CurveFitting_using_Lsqcurvefit_with_NonLinear_Inequality_Constraints.gif"
+                );
                 CloseFig();
             }
             /// </code>
@@ -412,6 +420,14 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
                 Console.WriteLine($"Residual Norm (resnorm): {ans.resnorm:E4}");
                 Console.WriteLine($"Inequality Residual:    {ans.fineq.T}");
                 Console.WriteLine($"Exit Flag:              {ans.exitflag}");
+
+                AnimateHistory(
+                    Model,
+                    xdata,
+                    ydata,
+                    ans.history,
+                    "Damped Harmonic Model with Coupled Inequality Bounds.gif"
+                );
             }
             /// </code>
             ///
@@ -449,6 +465,158 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             /// </math>
             ///
             /// This reflective mechanism allows the optimizer to follow valleys along physical constraint edges (such as :math:`p_1 \ge 0.01` and :math:`p_0 + p_2 \le 5.0`) without getting trapped at the boundaries, guaranteeing both feasibility and asymptotic convergence.
+            /// 
+            /// /// <header 3> Example: Curve Fitting with Equality Constraints </header 3>
+            /// In many engineering and physical problems, parameters must obey exact equality relationships derived from conservation laws, known boundary conditions, or normalization requirements.
+            /// 
+            /// Consider fitting a two-component mixture or fractional partition model:
+            /// 
+            /// <math>
+            /// f(\mathbf{x}, t) = x_0 e^{-x_1 t} + x_2 e^{-x_3 t}
+            /// </math>
+            /// 
+            /// where the initial total response at :math:`t = 0` must strictly match a known baseline value :math:`Y_0 = 5.0`:
+            /// 
+            /// <math>
+            /// f(\mathbf{x}, 0) = x_0 + x_2 = 5.0
+            /// </math>
+            /// 
+            /// In SepalSolver, equality constraints are passed via the `funEq` delegate in standard canonical form :math:`\mathbf{h}(\mathbf{x}) = \mathbf{0}`:
+            /// 
+            /// <math>
+            /// h(\mathbf{x}) = x_0 + x_2 - 5.0 = 0
+            /// </math>
+            /// 
+            /// <code>
+            {
+                // -------------------------------------------------------------------------
+                // 1. Synthetic Observation Data Generation
+                // -------------------------------------------------------------------------
+                int seed = 42;
+                var rgn = new Random(seed);
+
+                // True underlying parameters: [x0, x1, x2, x3]
+                // Note that xstar[0] + xstar[2] = 3.0 + 2.0 = 5.0 (satisfies equality)
+                ColVec xstar = new([3.0, 0.8, 2.0, 0.1]);
+
+                // Forward bi-exponential decay model:
+                // f(x, t) = x[0]*exp(-x[1]*t) + x[2]*exp(-x[3]*t)
+                static ColVec Model(ColVec x, ColVec t) =>
+                    x[0] * Exp(-x[1] * t) + x[2] * Exp(-x[3] * t);
+
+                // Independent time points across [0, 10]
+                ColVec xdata = Linspace(0.0, 10.0, 50);
+
+                // Additive Gaussian noise (standard deviation = 0.05)
+                ColVec noise = Randn(50);
+                ColVec ydata = Model(xstar, xdata) + noise * 0.05;
+
+                // -------------------------------------------------------------------------
+                // 2. Initial Estimates & Box Constraints
+                // -------------------------------------------------------------------------
+                // Initial guess does NOT satisfy the equality constraint: 1.5 + 1.5 = 3.0 != 5.0
+                ColVec startpt = new([1.5, 0.5, 1.5, 0.2]);
+
+                // Physical box bounds: non-negative amplitudes and decay rates
+                ColVec lb = new([0.0, 0.01, 0.0, 0.001]);
+                ColVec ub = new([10.0, 5.00, 10.0, 2.000]);
+
+                // -------------------------------------------------------------------------
+                // 3. Equality Constraint Definition: h(x) = 0
+                // -------------------------------------------------------------------------
+                // Exact requirement: x[0] + x[2] == 5.0  -->  (x[0] + x[2] - 5.0) == 0
+                Func<ColVec, ColVec> feq = x => new([x[0] + x[2] - 5.0]);
+
+                // -------------------------------------------------------------------------
+                // 4. Solver Configuration via OptimSet
+                // -------------------------------------------------------------------------
+                var opts = OptimSet(
+                    Display: true,
+                    MaxIter: 200,
+                    StepTol: 1e-7,
+                    OptimalityTol: 1e-7
+                );
+
+                // -------------------------------------------------------------------------
+                // 5. Execute Equality-Constrained Least Squares
+                // -------------------------------------------------------------------------
+                var ans = Lsqcurvefit(
+                    Model,
+                    startpt,
+                    xdata,
+                    ydata,
+                    funInEq: null, // No inequality constraints
+                    funEq: feq,    // Equality constraint delegate
+                    lb: lb,
+                    ub: ub,
+                    options: opts
+                );
+
+                // -------------------------------------------------------------------------
+                // 6. Diagnostics & Verification
+                // -------------------------------------------------------------------------
+                Console.WriteLine($"Recovered Parameters: x = {ans.x.T}");
+                Console.WriteLine($"Amplitude Sum (x0+x2): {ans.x[0] + ans.x[2]:F6}");
+                Console.WriteLine($"Equality Residual:    h = {ans.feq.T}");
+                Console.WriteLine($"Residual Norm (resnorm): {ans.resnorm:E4}");
+                Console.WriteLine($"Convergence ExitFlag:  {ans.exitflag}");
+
+                // -------------------------------------------------------------------------
+                // 7. Visual Inspection & Plotting
+                // -------------------------------------------------------------------------
+
+                AnimateHistory(
+                    Model,
+                    xdata,
+                    ydata,
+                    ans.history,
+                    "CurveFitting_with_Equality_Constraints.gif"
+                );
+                CloseFig();
+            }
+            /// </code>
+            /// 
+            /// <header 4> Mathematical Theory: Lagrange Multipliers and Manifold Projection </header 4>
+            /// An equality-constrained non-linear least-squares problem has the general form:
+            /// 
+            /// <math>
+            /// \min_{\mathbf{x}} f_0(\mathbf{x}) = \frac{1}{2} \|\mathbf{y} - \mathbf{f}(\mathbf{x}_{\text{data}}; \mathbf{x})\|_2^2 \quad \text{subject to} \quad \mathbf{h}(\mathbf{x}) = \mathbf{0}
+            /// </math>
+            /// 
+            /// The equality constraints restrict the feasible parameter search space to a lower-dimensional Riemannian submanifold :math:`\mathcal{M} = \{ \mathbf{x} \in \mathbb{R}^P \mid \mathbf{h}(\mathbf{x}) = \mathbf{0} \}`.
+            /// 
+            /// The Lagrangian function associated with the system is:
+            /// 
+            /// <math>
+            /// \mathcal{L}(\mathbf{x}, \boldsymbol{\lambda}) = f_0(\mathbf{x}) + \boldsymbol{\lambda}^T \mathbf{h}(\mathbf{x})
+            /// </math>
+            /// 
+            /// where :math:`\boldsymbol{\lambda} \in \mathbb{R}^K` is the vector of unconstrained Lagrange multipliers. First-order stationarity requires:
+            /// 
+            /// <math>
+            /// \nabla_{\mathbf{x}} \mathcal{L}(\mathbf{x}^*, \boldsymbol{\lambda}^*) = \nabla f_0(\mathbf{x}^*) + J_h(\mathbf{x}^*)^T \boldsymbol{\lambda}^* = \mathbf{0}
+            /// </math>
+            /// 
+            /// along with strict primal feasibility:
+            /// 
+            /// <math>
+            /// \mathbf{h}(\mathbf{x}^*) = \mathbf{0}
+            /// </math>
+            /// 
+            /// where :math:`J_h(\mathbf{x}) = \nabla_{\mathbf{x}} \mathbf{h}(\mathbf{x})` is the constraint Jacobian. For the linear sum constraint :math:`h(\mathbf{x}) = x_0 + x_2 - 5.0 = 0`, the gradient is constant:
+            /// 
+            /// <math>
+            /// \nabla h(\mathbf{x}) = \begin{bmatrix} 1 & 0 & 1 & 0 \end{bmatrix}^T
+            /// </math>
+            /// 
+            /// In SepalSolver, rather than penalizing violations with large penalty weights (which ill-conditions the Hessian), the algorithm projects trial Gauss-Newton search steps :math:`\mathbf{d}` onto the null space of :math:`J_h`:
+            /// 
+            /// <math>
+            /// J_h(\mathbf{x}_k) \mathbf{d}_k = -\mathbf{h}(\mathbf{x}_k)
+            /// </math>
+            /// 
+            /// This guarantees that every accepted step remains tangential to the constraint surface, enforcing :math:`\|\mathbf{h}(\mathbf{x}^*)\| \le \text{Tol}` while driving the residual sum of squares to its constrained minimum.
+            /// 
             /// </BookContent>
         }
     }
