@@ -79,9 +79,7 @@ Ouput
 
 .. terminal::
 
-   
-      0.6667
-      1.3333
+   Intlinprog stopped because no integer points satisfy the constraints..
    
 
 Example 2: MILP with Equality Constraints
@@ -168,9 +166,7 @@ Ouput
 
 .. terminal::
 
-   
-      0.1875
-      1.2500
+   Intlinprog stopped because no integer points satisfy the constraints..
    
 
 

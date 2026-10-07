@@ -452,12 +452,6 @@
                 // Output the result
                 Console.WriteLine($"Full matrix:\n{result}")
              </code>
-             <terminal>
-                Full matrix:
-                1 0 0
-                0 0 5
-                0 3 0
-             </terminal>
              </example>
              <example>
              Convert a sparse column vector to full matrix:
@@ -477,13 +471,6 @@
                 // Output the result
                 Console.WriteLine($"Full matrix from sparse vector:\n{result}")
              </code>
-             <terminal>
-                Full matrix from sparse vector:
-                2.5
-                0
-                7.8
-                0
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Sparse(SepalSolver.Matrix)">
@@ -531,12 +518,6 @@
                 // Output the result
                 Console.WriteLine($"Sparse matrix:\n{result}")
              </code>
-             <terminal>
-                Sparse matrix:
-                (0,0) = 1
-                (1,2) = 5
-                (2,1) = 3
-             </terminal>
              </example>
              <example>
              Create a 3x3 sparse matrix from triplet format:
@@ -546,8 +527,8 @@
                 using static SepalSolver.Math;
                   
                 // Define triplet arrays for a 3x3 matrix
-                int[] I = new int[] { 0, 1, 2 };      // row indices
-                int[] J = new int[] { 0, 2, 1 };      // column indices
+                int[] I = [0, 1, 2];      // row indices
+                int[] J = [0, 2, 1];      // column indices
                 double[] V = new double[] { 1, 5, 3 };      // values
                 
                 // Create sparse matrix from triplet format
@@ -556,12 +537,6 @@
                 // Output the result
                 Console.WriteLine($"Sparse matrix from triplets:\n{result}")
              </code>
-             <terminal>
-                Sparse matrix from triplets:
-                (0,0) = 1
-                (1,2) = 5
-                (2,1) = 3
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Eye(System.Int32)">
@@ -596,12 +571,6 @@
                 // Output the result
                 Console.WriteLine($"3x3 Identity matrix:\n{result}")
              </code>
-             <terminal>
-                3x3 Identity matrix:
-                1 0 0
-                0 1 0
-                0 0 1
-             </terminal>
              </example>
              <example>
              Create a 4x4 identity matrix:
@@ -619,13 +588,6 @@
                 // Output the result
                 Console.WriteLine($"4x4 Identity matrix:\n{result}")
              </code>
-             <terminal>
-                4x4 Identity matrix:
-                1 0 0 0
-                0 1 0 0
-                0 0 1 0
-                0 0 0 1
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Triu(SepalSolver.Matrix,System.Int32)">
@@ -667,17 +629,6 @@
                 Console.WriteLine("Upper triangular part:");
                 Console.WriteLine(result);
              </code>
-             <terminal>
-                Original matrix A:
-                1  2  3
-                4  5  6
-                7  8  9
-                
-                Upper triangular part:
-                1  2  3
-                0  5  6
-                0  0  9
-             </terminal>
              </example>
              <example>
              Extract the upper triangular part of a rectangular 4×3 matrix:
@@ -703,19 +654,6 @@
                 Console.WriteLine("Upper triangular part:");
                 Console.WriteLine(result);
              </code>
-             <terminal>
-                Original matrix A:
-                1   2   3
-                4   5   6
-                7   8   9
-                10  11  12
-                
-                Upper triangular part:
-                1  2  3
-                0  5  6
-                0  0  9
-                0  0  0
-             </terminal>
              </example>
         </member>
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Tril(SepalSolver.Matrix,System.Int32)" -->
@@ -758,17 +696,6 @@
                 Console.WriteLine("Vertically flipped matrix:");
                 Console.WriteLine(result);
              </code>
-             <terminal>
-                Original matrix A:
-                1  2  3
-                4  5  6
-                7  8  9
-                
-                Vertically flipped matrix:
-                7  8  9
-                4  5  6
-                1  2  3
-             </terminal>
              </example>
              <example>
              Flip a rectangular 4×2 matrix vertically:
@@ -794,19 +721,6 @@
                 Console.WriteLine("Vertically flipped matrix:");
                 Console.WriteLine(result);
              </code>
-             <terminal>
-                Original matrix A:
-                1  2
-                3  4
-                5  6
-                7  8
-                
-                Vertically flipped matrix:
-                7  8
-                5  6
-                3  4
-                1  2
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Flip(System.Double[])">
@@ -848,17 +762,6 @@
                 Console.WriteLine("Horizontally flipped matrix:");
                 Console.WriteLine(result);
              </code>
-             <terminal>
-                Original matrix A:
-                1  2  3
-                4  5  6
-                7  8  9
-                
-                Horizontally flipped matrix:
-                3  2  1
-                6  5  4
-                9  8  7
-             </terminal>
              </example>
              <example>
              Flip a rectangular 2×4 matrix horizontally:
@@ -882,15 +785,6 @@
                 Console.WriteLine("Horizontally flipped matrix:");
                 Console.WriteLine(result);
              </code>
-             <terminal>
-                Original matrix A:
-                1  2  3  4
-                5  6  7  8
-                
-                Horizontally flipped matrix:
-                4  3  2  1
-                8  7  6  5
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Trireduce(SepalSolver.Matrix)">
@@ -941,27 +835,6 @@
                 Console.WriteLine("Orthogonal matrix V:");
                 Console.WriteLine(V);
              </code>
-             <terminal>
-                Original symmetric matrix A:
-                4  1  2
-                1  3  1
-                2  1  5
-                
-                Orthogonal matrix U:
-                1.000   0.000   0.000
-                0.000  -0.447  -0.894
-                0.000  -0.894   0.447
-                
-                Tridiagonal matrix T:
-                4.000  -2.236   0.000
-               -2.236   3.800  -0.894
-                0.000  -0.894   4.200
-                
-                Orthogonal matrix V:
-                1.000   0.000   0.000
-                0.000  -0.447  -0.894
-                0.000  -0.894   0.447
-             </terminal>
              </example>
              <example>
              Perform tridiagonal reduction on a 4×4 symmetric matrix and verify reconstruction:
@@ -992,25 +865,6 @@
                 Console.WriteLine("Reconstructed matrix A:");
                 Console.WriteLine(A_reconstructed);
              </code>
-             <terminal>
-                Original symmetric matrix A:
-                2  1  0  1
-                1  3  1  0
-                0  1  2  1
-                1  0  1  4
-                
-                Tridiagonal matrix T:
-                2.000  -1.414   0.000   0.000
-               -1.414   3.500  -1.155   0.000
-                0.000  -1.155   1.667  -0.577
-                0.000   0.000  -0.577   3.833
-                
-                Reconstructed matrix A:
-                2.000  1.000  0.000  1.000
-                1.000  3.000  1.000  0.000
-                0.000  1.000  2.000  1.000
-                1.000  0.000  1.000  4.000
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Bireduce(SepalSolver.Matrix)">
@@ -1061,27 +915,6 @@
                 Console.WriteLine("Right orthogonal matrix V:");
                 Console.WriteLine(V);
              </code>
-             <terminal>
-                Original matrix A:
-                1  2  3
-                4  5  6
-                7  8  9
-                
-                Left orthogonal matrix U:
-                -0.1231    0.9045    0.4082
-                -0.4924    0.3015   -0.8165
-                -0.8616   -0.3015    0.4082
-                
-                Bidiagonal matrix B:
-                -8.1240   14.6598    0.0000
-                -0.0000   -1.9595    0.5013
-                -0.0000   -0.0000    0.0000
-                
-                Right orthogonal matrix V:
-                1.0000    0.0000    0.0000
-                0.0000   -0.6549   -0.7557
-                0.0000   -0.7557    0.6549
-             </terminal>
              </example>
              <example>
              Perform bidiagonal reduction on a rectangular 4×3 matrix:
@@ -1112,33 +945,16 @@
                 Console.WriteLine("Reconstructed matrix A:");
                 Console.WriteLine(A_reconstructed);
              </code>
-             <terminal>
-                Original matrix A:
-                1  2  1
-                3  4  2
-                5  6  3
-                7  8  4
-                
-                Bidiagonal matrix B:
-                -9.1652   12.1988    0.0000
-                -0.0000    1.0911    0.0000
-                0.0000   -0.0000   -0.0000
-                -0.0000   -0.0000    0.0000
-                
-                Reconstructed matrix A:
-                1.000  2.000  1.000
-                3.000  4.000  2.000
-                5.000  6.000  3.000
-                7.000  8.000  4.000
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Compan(System.Double[])">
             <summary>
             Constructs the companion matrix for a given polynomial represented by its coefficients.
             </summary>
-            <param name="A"></param>
-            <returns></returns>
+            <param name="A">
+            </param>
+            <returns>
+            </returns>
         </member>
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Diag(SepalSolver.Matrix,System.Int32)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Spdiag(SepalSolver.SparseMatrix,System.Int32)" -->
@@ -1191,25 +1007,6 @@
                 Console.WriteLine("Permutation indexer P:");
                 Console.WriteLine(P);
              </code>
-             <terminal>
-                Original matrix A:
-                2  1  3
-                4  5  6
-                1  2  1
-                
-                Lower triangular matrix L:
-                1.000  0.000  0.000
-                0.500  1.000  0.000
-                0.250  0.429  1.000
-                
-                Upper triangular matrix U:
-                4.000  5.000  6.000
-                0.000 -1.500  0.000
-                0.000  0.000  0.714
-                
-                Permutation indexer P:
-                [1, 0, 2]
-             </terminal>
              </example>
              <example>
              Perform LU decomposition and verify reconstruction:
@@ -1241,25 +1038,6 @@
                 Console.WriteLine("P * A (permuted A):");
                 Console.WriteLine(PA);
              </code>
-             <terminal>
-                Original matrix A:
-                1   2   3   4
-                5   6   7   8
-                9   10  11  12
-                13  14  15  16
-                
-                L * U reconstruction:
-                13.000  14.000  15.000  16.000
-                5.000   6.000   7.000   8.000
-                9.000   10.000  11.000  12.000
-                1.000   2.000   3.000   4.000
-                
-                P * A (permuted A):
-                13.000  14.000  15.000  16.000
-                5.000   6.000   7.000   8.000
-                9.000   10.000  11.000  12.000
-                1.000   2.000   3.000   4.000
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Chol(SepalSolver.Matrix)">
@@ -1305,16 +1083,6 @@
                 Console.WriteLine("Cholesky factor L:");
                 Console.WriteLine(L.ToString());
              </code>
-             <terminal>
-                Original matrix A:
-                 4.000   2.000   1.000 
-                 2.000   3.000   0.500 
-                 1.000   0.500   2.000 
-                Cholesky factor L:
-                 2.000   0.000   0.000
-                 1.000   1.414   0.000
-                 0.500  -0.354   1.336
-             </terminal>
              </example>
              <example>
              Verify the Cholesky decomposition by reconstructing the original matrix:
@@ -1342,16 +1110,6 @@
                 Console.WriteLine("Reconstructed A = L * L^T:");
                 Console.WriteLine(reconstructed.ToString());
              </code>
-             <terminal>
-                Cholesky factor L:
-                  3.0000   0.0000   0.0000 
-                  1.0000   2.0000   0.0000 
-                  0.3333   0.3333   1.2467 
-                Reconstructed A = L * L^T:
-                  9.0000   3.0000   1.0000 
-                  3.0000   5.0000   1.0000 
-                  1.0000   1.0000   2.0000 
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Qr(SepalSolver.Matrix)">
@@ -1399,20 +1157,6 @@
                 Console.WriteLine("Upper triangular matrix R:");
                 Console.WriteLine(R.ToString());
              </code>
-             <terminal>
-                Original matrix A:
-                  1.000   2.000   3.000 
-                  4.000   5.000   6.000 
-                  7.000   8.000   9.000 
-                Orthogonal matrix Q:
-                 -0.123  -0.904   0.408 
-                 -0.492  -0.301  -0.816 
-                 -0.862   0.301   0.408 
-                Upper triangular matrix R:
-                 -8.124  -9.601 -11.079 
-                  0.000   0.904   1.809 
-                  0.000   0.000   0.000 
-             </terminal>
              </example>
              <example>
              Verify the QR decomposition by reconstructing the original matrix:
@@ -1443,19 +1187,6 @@
                 Console.WriteLine("Reconstructed A = Q * R:");
                 Console.WriteLine(reconstructed.ToString());
              </code>
-             <terminal>
-                Orthogonal matrix Q:
-                 -0.894  -0.447 
-                 -0.447   0.894 
-                  0.000   0.000 
-                Upper triangular matrix R:
-                 -2.236  -2.236 
-                  0.000   2.683 
-                Reconstructed A = Q * R:
-                  2.000   1.000 
-                  1.000   3.000 
-                  0.000   1.000 
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Ldl(SepalSolver.Matrix)">
@@ -1509,27 +1240,6 @@
                 Console.WriteLine("\nReconstructed A = L * D * L^T:");
                 Console.WriteLine(reconstructed);
              </code>
-             <terminal>
-                Original matrix A:
-                  4,   2,   1
-                  2,   3, 0.5
-                  1, 0.5,   2
-                
-                Lower triangular matrix L:
-                   1,     0,    0
-                0. 5,     1,    0
-                0.25, 0.125,    1
-                
-                Diagonal matrix D:
-                4,   0,    0
-                0,   2,    0
-                0,   0, 1.75
-                
-                Reconstructed A = L * D * L^T:
-                4,   2,   1
-                2,   3, 0.5
-                1, 0.5,   2
-             </terminal>
              </example>
              <example>
              Use LDL decomposition to solve a linear system Ax = b:
@@ -1565,10 +1275,6 @@
                 Console.WriteLine($"Solution x = {x}");
                 Console.WriteLine($"Verification Ax = {A * x}");
              </code>
-             <terminal>
-                Solution x = [1, 1, 1]
-                Verification Ax = [13, 10, 7]
-             </terminal>
              </example>
         </member>
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Svd(SepalSolver.Matrix,System.Nullable{System.Int32})" -->
@@ -1623,11 +1329,6 @@
                 Console.WriteLine($"Verification Ax = {verification}");
                 Console.WriteLine($"Original b = {b}");
              </code>
-             <terminal>
-                Solution x = [-0.2, 0.6, 1.2]
-                Verification Ax = [1, 2, 3]
-                Original b = [1, 2, 3]
-             </terminal>
              </example>
              <example>
              Solve an overdetermined system using least-squares:
@@ -1659,12 +1360,6 @@
                 Console.WriteLine($"Ax = {A * x}");
                 Console.WriteLine($"b = {b}");
              </code>
-             <terminal>
-                Least-squares solution x = [0.857143, 1.428571, 1.142857]
-                Residual ||Ax - b|| = 0.816497
-                Ax = [5.428571, 8.571429, 5.428571, 7.142857]
-                b = [6, 8, 5, 7]
-             </terminal>
              </example>
         </member>
         <member name="M:SepalSolver.Math.Mrdivide(SepalSolver.RowVec,SepalSolver.Matrix)">
@@ -1720,11 +1415,6 @@
                 Console.WriteLine($"Verification xA = {verification}");
                 Console.WriteLine($"Original b = {b}");
              </code>
-             <terminal>
-                Solution x = [2, 3, 1]
-                Verification xA = [14, 12, 16]
-                Original b = [14, 12, 16]
-             </terminal>
              </example>
              <example>
              Solve an underdetermined system using minimum-norm solution:
@@ -1757,12 +1447,6 @@
                 Console.WriteLine($"Verification xA = {verification}");
                 Console.WriteLine($"Original b = {b}");
              </code>
-             <terminal>
-                Minimum-norm solution x = [1.4, 1.2, 1.0]
-                Solution norm ||x|| = 2.140093
-                Verification xA = [5, 7]
-                Original b = [5, 7]
-             </terminal>
              </example>
         </member>
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.ConjGrad(SepalSolver.Matrix,SepalSolver.ColVec,System.Double,System.Int32)" -->
@@ -1783,10 +1467,10 @@
              A two-dimensional integer array containing the values read from the file.
              </returns>
              <example>
-             Read a matrix from a file named "matrix.txt":
+             Read a matrix from a file named "matrix_dat.txt":
              <code>
              
-                string path = "matrix.txt";
+                string path = "matrix_dat.txt";
             
                 // Load matrix
                 Matrix matrix = ReadMatrix(path);
@@ -1811,13 +1495,13 @@
             A one-dimensional matrix representing the row vector read from the file.
             </returns>
             <example>
-            Read a row vector from a file named "vector.txt":
+            Read a row vector from a file named "rowvector_dat.txt":
             <code>
                // import libraries 
                using System;
                using static SepalSolver.Math;
                  
-               string path = "vector.txt";
+               string path = "rowvector_dat.txt";
             
                // Load row vector
                RowVec rowVec = ReadRowVec(path);
@@ -1842,13 +1526,13 @@
              A one-dimensional matrix representing the column vector read from the file.
              </returns>
              <example>
-             Read a column vector from a file named "colvec.txt":
+             Read a column vector from a file named "colvector_dat.txt":
              <code>
                 // import libraries 
                 using System;
                 using static SepalSolver.Math;
                   
-                string path = "colvec.txt";
+                string path = "colvector_dat.txt";
             
                 // Load column vector
                 ColVec colVec = ReadColVec(path);
@@ -2087,50 +1771,68 @@
             Compute the hypotenus of a triangle with sides :math:`[2,3,4,5]` and :math:`[7,6]^T`
             <code>
                // Compute the hypotenus
-               RowVec X = new double[]{2,3,4,5};
-               ColVec Y = new double[]{7,6};
+               RowVec X = new([2,3,4,5]);
+               ColVec Y = new([7,6]);
                var hypotenuse = Hypot(X, Y);
                Console.WriteLine(hypotenuse); 
             </code>
             </example>
         </member>
-        <member name="M:SepalSolver.Math.Abs(System.Int32)">
-            <summary>
-            Calculates the absolute value of an input.
-            This method returns the absolute value of the given input, which is the non-negative value of the input without regard to its sign.
-            <signature>
-               int Abs(int x)
-               double Abs(double x)
-               double Abs(Complex x)
-               ColVec Abs(ColVec x)
-               RowVec Abs(RowVec x)
-               Matrix Abs(Matrix x)
-               SparseColVec Abs(SparseColVec x)
-               SparseRowVec Abs(SparseRowVec x)
-               SparseMatrix Abs(SparseMatrix x)
-            </signature>
-            </summary>
-            <param name="x">
-            The input value for which the absolute value is to be calculated.
-            </param>
-            <returns>
-            The absolute value of the input.
-            </returns>
-            <example>
-            Compute the absolute value of -5
-            <code>
-               // Compute Absolute
-               var result = Abs(-5);
-               Console.WriteLine(result);
-            </code>
-            </example>
+        <member name="M:SepalSolver.Math.Abs(System.Double)">
+             <summary>
+             Calculates the absolute value of an input.
+             This method returns the absolute value of the given input, which is the non-negative value of the input without regard to its sign.
+             <signature>
+                int Abs(int x)
+                double Abs(double x)
+                double Abs(Complex x)
+                Matrix Abs(Matrix x)
+                ColVec Abs(ColVec x)
+                RowVec Abs(RowVec x)
+                SparseMatrix Abs(SparseMatrix x)
+                SparseColVec Abs(SparseColVec x)
+                SparseRowVec Abs(SparseRowVec x)
+             </signature>
+             </summary>
+             <param name="x">
+             The scalar, complex number, vector, or matrix to evaluate.
+             </param>
+             <returns>
+             The computed absolute value, complex magnitude, or transformed collection.
+             </returns>
+             <example>
+             <code>
+             // 1. Scalar &amp; Complex
+             double val = -12.34;
+             Console.WriteLine($"Abs(val) = {Abs(val)}");
+            
+             Complex z = new(3, -4);
+             Console.WriteLine($"Abs(z) = {Abs(z)}");
+            
+             // 2. Dense Vector &amp; Matrix
+             ColVec v = new([ -1.0, 2.5, -7.2 ]);
+             Console.WriteLine($"Abs(v) = {Abs(v)}");
+            
+             Matrix A = new([
+                 [-1.5,  2.0],
+                 [ 3.2, -4.8]
+             ]);
+             Console.WriteLine($"Abs(A) = {Abs(A)}");
+            
+             // 3. Sparse Matrix
+             SparseMatrix S = SparseMatrix.Eye(1000) * -5.0;
+             Console.WriteLine($"Abs(S) = {Abs(S)}");
+             </code>
+             </example>
         </member>
         <member name="M:SepalSolver.Math.Flatten(System.Double[0:,0:])">
             <summary>
-            
             </summary>
-            <param name="A"></param>
-            <returns></returns>
+            <param name="A">
+            2D array to be flattened
+            </param>
+            <returns>
+            </returns>
         </member>
         <member name="M:SepalSolver.Math.Zeros(System.Int32)">
              <summary>
@@ -2703,69 +2405,78 @@
         </member>
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Fft(System.Double[],System.Int32)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Ifft(System.Double[],System.Int32)" -->
+        <member name="M:SepalSolver.Math.SampleCollocationPoints(System.Int32,System.Single,System.Single,System.Boolean,TorchSharp.torch.Device)">
+            <summary>
+            Generates uniform random collocation points within [minVal, maxVal].
+            Set <paramref name="requiresGrad"/> to true only if this tensor will be differentiated directly as a leaf.
+            </summary>
+        </member>
+        <member name="M:SepalSolver.Math.SampleConstantPoints(System.Int32,System.Single,System.Boolean,TorchSharp.torch.Device)">
+            <summary>
+            Generates constant-value column tensors (e.g., initial condition t=0 or boundary x=0/1).
+            </summary>
+        </member>
+        <member name="M:SepalSolver.Math.ComputeGradient(TorchSharp.torch.Tensor,TorchSharp.torch.Tensor,System.Boolean,System.Boolean)">
+            <summary>
+            Computes the full spatial/temporal gradient vector ∇u with respect to all columns of x.
+            Returns a tensor of shape [N, D] matching the columns of x.
+            </summary>
+        </member>
         <member name="M:SepalSolver.Math.decic(System.Func{System.Double,System.Double,System.Double,System.Double},System.Double,System.Double,System.Int32,System.Double,System.Int32)">
-             <summary>
-             Compute consistent initial conditions for ODE32I, ODE43I and ODE85I.
-             </summary>
-             <param name="fun">
-             The function that represents the implicit ODE. The function should accept three doubles (time, state, and its derivative) and return a double representing the derivative of the state.
-             </param>
-             <param name="t0">
-             An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
-             </param>
-             <param name="y0">
-             The initial value of the dependent variable (state).
-             </param>
-             <param name="ytruth">
-             An array of intergers indicating which component of y0 is fixed and which is not.
-             </param>
-             <param name="yp0">
-             The initial time derivative of the dependent variable (state).
-             </param>
-             <param name="yptruth">
-             An array of intergers indicating which component yp0 is fixed and which is not.
-             </param>
-             <param name="options">
-             Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
-             </param>
-             <returns>
-             A tuple containing two elements:
-                * double y0: modified initial state.
-                * double yp0: modified initial rate of change.
-             </returns>
-             <remarks>
-             decic changes as few components of the guess as possible. You can specify that certain components are to be held fixed by setting ytruth(i) = 1 if no change is permitted 
-             in the guess for Y0(i) and 0 otherwise.An empty array for yptruth is interpreted as allowing changes in all entries.yptruth is handled similarly. 
-             You cannot fix more than length(Y0) components.Depending on the problem, it may not be possible to fix this many.It also may not be possible to fix certain components of Y0 or YP0.
-             It is recommended that you fix no more components than necessary.
-             </remarks>
-             <example>
-              Determine the consistent initial condition for the implicit ODE :math:`~ty^2y'^3 - y^3y'^2 + t(t^2 + 1)y' - t^2y = 0~` with initial condition :math:`~y(0) = \sqrt{1.5}~`.
-                
-             <code>
-               // import libraries
-               using System;
-               using SepalSolver.Math;
+            <summary>
+            Compute consistent initial conditions for ODE32I, ODE43I and ODE85I.
+            </summary>
+            <param name="fun">
+            The function that represents the implicit ODE. The function should accept three doubles (time, state, and its derivative) and return a double representing the derivative of the state.
+            </param>
+            <param name="t0">
+            An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+            </param>
+            <param name="y0">
+            The initial value of the dependent variable (state).
+            </param>
+            <param name="ytruth">
+            An array of intergers indicating which component of y0 is fixed and which is not.
+            </param>
+            <param name="yp0">
+            The initial time derivative of the dependent variable (state).
+            </param>
+            <param name="yptruth">
+            An array of intergers indicating which component yp0 is fixed and which is not.
+            </param>
+            <param name="options">
+            Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+            </param>
+            <returns>
+            A tuple containing two elements:
+               * double y0: modified initial state.
+               * double yp0: modified initial rate of change.
+            </returns>
+            <remarks>
+            decic changes as few components of the guess as possible. You can specify that certain components are to be held fixed by setting ytruth(i) = 1 if no change is permitted 
+            in the guess for Y0(i) and 0 otherwise.An empty array for yptruth is interpreted as allowing changes in all entries.yptruth is handled similarly. 
+            You cannot fix more than length(Y0) components.Depending on the problem, it may not be possible to fix this many.It also may not be possible to fix certain components of Y0 or YP0.
+            It is recommended that you fix no more components than necessary.
+            </remarks>
+            <example>
+             Determine the consistent initial condition for the implicit ODE :math:`~ty^2y'^3 - y^3y'^2 + t(t^2 + 1)y' - t^2y = 0~` with initial condition :math:`~y(0) = \sqrt{1.5}~`.
+               
+            <code>
+              //define ODE
+              static double fun(double t, double y, double yp) =>
+                 t * y * y * yp * yp * yp - y * y * y * yp * yp + t * (t * t + 1) * yp - t * t * y;
+                 var opts = Odeset(Stats: true);
+                 double t0 = 1, y0 = Sqrt(t0 * t0 + 1 / 2.0), yp0 = 0;
+                 (y0, yp0) = decic(fun, t0, y0, 1, yp0, 0);
+                  
+              // print result to console
+              Console.WriteLine($"y0 = {y0}");
+              Console.WriteLine($"yp0 = {yp0}");
+            </code>
+            </example>
+            <exception cref="T:System.ArgumentNullException">Thrown when the <paramref name="dydx"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when the <paramref name="tspan"/> array has less than two elements.</exception>
             
-               //define ODE
-               static double fun(double t, double y, double yp) =>
-                  t * y * y * yp * yp * yp - y * y * y * yp * yp + t * (t * t + 1) * yp - t * t * y;
-                  var opts = Odeset(Stats: true);
-                  double t0 = 1, y0 = Sqrt(t0 * t0 + 1 / 2.0), yp0 = 0;
-                  (y0, yp0) = decic(fun, t0, y0, 1, yp0, 0);
-                   
-               // print result to console
-               Console.WriteLine($"y0 = {y0}");
-               Console.WriteLine($"yp0 = {yp0}");
-             </code>
-             <terminal>
-               y0 = 1.2247
-               yp0 = 0.8165
-             </terminal>
-             </example>
-             <exception cref="T:System.ArgumentNullException">Thrown when the <paramref name="dydx"/> is null.</exception>
-             <exception cref="T:System.ArgumentException">Thrown when the <paramref name="tspan"/> array has less than two elements.</exception>
-             
         </member>
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Ode23(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
         <!-- Badly formed XML comment ignored for member "M:SepalSolver.Math.Ode45(System.Func{System.Double,System.Double,System.Double},System.Double,System.Double[],SepalSolver.Ode.Set)" -->
@@ -8504,6 +8215,45 @@
             <param name="x"></param>
             <param name="y"></param>
             <returns></returns>
+        </member>
+        <member name="M:SepalSolver.NeuralNet.#ctor(System.String,System.Int32[],SepalSolver.ActivationType,SepalSolver.WeightInit)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="layerSizes"></param>
+            <param name="activation"></param>
+            <param name="init"></param>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:SepalSolver.NeuralNet.#ctor(System.String,System.Int32[],System.Collections.Generic.IReadOnlyList{SepalSolver.ActivationType},SepalSolver.WeightInit)">
+            <summary>
+            Initializes a feedforward neural network with a custom activation function per hidden layer.
+            </summary>
+            <param name="name">Module identifier name.</param>
+            <param name="layerSizes">Dimensions from input through all hidden layers to output.</param>
+            <param name="activations">
+            List of activation types. Length must equal (layerSizes.Length - 2), 
+            corresponding to each hidden layer.
+            </param>
+            <param name="init">Weight initialization strategy.</param>
+        </member>
+        <member name="M:SepalSolver.NeuralNet.ComputeGrad(TorchSharp.torch.Tensor,TorchSharp.torch.Tensor)">
+            <summary>
+            Computes ∂y/∂x using autograd for PINN differential equations.
+            </summary>
+        </member>
+        <member name="M:SepalSolver.NeuralNet.FitPINN(TorchSharp.torch.Tensor,TorchSharp.torch.Tensor,TorchSharp.torch.Tensor[],System.Func{TorchSharp.torch.Tensor,TorchSharp.torch.Tensor,TorchSharp.torch.Tensor[],TorchSharp.torch.Tensor},SepalSolver.TrainSet)">
+            <summary>
+            Trains the model using Physics-Informed objectives.
+            Caller receives (NeuralNet net, Tensor xRes, Tensor xInit, Tensor[] xBounds)
+            to allow computing exact analytical derivatives with respect to coordinates.
+            </summary>
+        </member>
+        <member name="M:SepalSolver.NeuralNet.FitPINN_LBFGS(TorchSharp.torch.Tensor,TorchSharp.torch.Tensor,TorchSharp.torch.Tensor[],System.Func{TorchSharp.torch.Tensor,TorchSharp.torch.Tensor,TorchSharp.torch.Tensor[],TorchSharp.torch.Tensor},SepalSolver.TrainSet)">
+            <summary>
+            Fine-tunes the PINN using the quasi-Newton L-BFGS optimizer with Strong Wolfe line search.
+            </summary>
         </member>
         <member name="T:SepalSolver.Ode">
             <summary>

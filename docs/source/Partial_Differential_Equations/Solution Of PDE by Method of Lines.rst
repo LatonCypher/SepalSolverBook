@@ -633,13 +633,21 @@ we can do so for :math:`\partial u/\partial t` too
    double dt = CFL * (dx * dy) / (c * Hypot(dx, dy));
    double dx2 = dx * dx, dy2 = dy * dy, c2 = c * c;
 
+   // Range Indexing
+   var center = (1..Nx, 1..Ny);
+   var north = (1..Nx, 0..(Ny - 1));
+   var south = (1..Nx, 2..(Ny + 1));
+   var east = (2..(Nx+1), 1..Ny);
+   var west = (0..(Nx-1), 1..Ny);
+
+
    // Set the function the computes the derivatives
    (Matrix du, Matrix dv) duvdt(Matrix u, Matrix v)
    {
        Matrix du = v, dv = Zeros(Nx + 1, Ny + 1);
-       Matrix d2udx2 = (u[..^2, 1..^1] - 2 * u[1..^1, 1..^1] + u[2.., 1..^1]) / dx2;
-       Matrix d2udy2 = (u[1..^1, ..^2] - 2 * u[1..^1, 1..^1] + u[1..^1, 2..]) / dy2;
-       dv[1..^1, 1..^1] = c2 * (d2udx2 + d2udy2);
+       Matrix d2udx2 = (u[west] - 2 * u[center] + u[east]) / dx2;
+       Matrix d2udy2 = (u[north] - 2 * u[center] + u[south]) / dy2;
+       dv[center] = c2 * (d2udx2 + d2udy2);
        return (du, dv);
    }
 

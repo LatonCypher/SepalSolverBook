@@ -14,7 +14,7 @@ namespace ConsoleApp1
         {
             string book_indexfile = bookfolder + "index.rst";
             string indexmessage = """
-                Welcome to Numerical Methods with SepalSolver!
+                Welcome to Scientific Computing with SepalSolver!
                 #################################################
 
                 Preface

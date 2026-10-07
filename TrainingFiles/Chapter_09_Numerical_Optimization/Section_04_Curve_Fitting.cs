@@ -516,7 +516,7 @@
                 // -------------------------------------------------------------------------
                 // 1. Reproducible Random Number Generation Setup
                 // -------------------------------------------------------------------------
-                int seed = 23; rgn = new(seed); // Fixes the pseudo-random generator state
+                rgnseed = 23; // Fixes the pseudo-random generator state
 
                 // generate 100 Gaussian white noise samples
                 // Randn draws from a standard normal distribution: N(0, 1)

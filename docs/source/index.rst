@@ -1,4 +1,4 @@
-Welcome to Numerical Methods with SepalSolver!
+Welcome to Scientific Computing with SepalSolver!
 #################################################
 
 Preface

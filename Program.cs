@@ -1,9 +1,302 @@
-﻿
-using ConsoleApp1;
-using ScottPlot;
-using System.Data.SqlTypes;
+﻿using ConsoleApp1;
+using ScottPlot.Plottables;
+using System.Drawing;
 {
-    currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents\\";
+    currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents\\AbimbolaPeter\\";
+    {
+        //Matrix AcademyData = new double[,] {
+        //    { 601215.1090, 811788.8810, 220.1030},
+        //    { 601250.1630, 811802.4260, 220.1030},
+        //    { 601262.8060, 811807.5760, 220.1030},
+        //    { 601310.4750, 811831.7880, 220.1030},
+        //    { 601346.0960, 811854.9850, 220.1030},
+        //    { 601381.5550, 811882.1010, 220.1030},
+        //    { 601407.4080, 811905.8370, 220.1030},
+        //    { 601429.4530, 811929.2120, 220.1030}
+        //};
+
+        //ColVec Xa = AcademyData[.., 0], Ya = AcademyData[.., 1], One = Ones(Xa.Numel);
+        //Matrix A = Hcart(One, Xa, Ya); ColVec b = Xa.Pow(2) + Ya.Pow(2);
+        //ColVec P = Mldivide(A, -b);
+        //double xc = -0.5 * P[1], yc = -0.5 * P[2];
+        //double R = Sqrt(xc * xc + yc * yc - P[0]);
+        //int N = Xa.Numel/2, L = Xa.Numel - 1;
+        //double t0 = Atan2(Ya[0] - yc, Xa[0] - xc),
+        //       tn = Atan2(Ya[N] - yc, Xa[N] - xc), 
+        //       tl = Atan2(Ya[L] - yc, Xa[L] - xc);
+
+        //double twoPi = 2.0 * pi;
+        //// Helper: Standard mathematical modulo that is always positive in [0, m)
+        //double Mod(double val, double m) => (val % m + m) % m;
+        //// Compute counter-clockwise offsets relative to t0
+        //double tStart = t0, dMid = Mod(tn - t0, twoPi), dEnd = Mod(tl - t0, twoPi);
+        //// Determine the unwrapped end angle
+        //double tEnd = (dMid < dEnd) ? (t0 + dEnd) : (t0 + dEnd - twoPi);
+        //// Generate parametric circle points
+        //int numArcPoints = 100;
+        //ColVec tArc = Linspace(tStart, tEnd, numArcPoints);
+        //ColVec xArc = xc + R * Cos(tArc), yArc = yc + R * Sin(tArc);
+
+
+        //Plot(xArc, yArc, "r", 2); HoldOn();
+        //Scatter(Xa, Ya, "fob"); AxisEqual();
+        //Scatter(xc, yc, "xk"); HoldOff(); GridOn();
+        //Legend(["Fitted Circle Arc", "AcademyData Points", "Center(xc, yc)"], LowerRight);
+        //SaveAs("AcademyData.png");
+
+        //// --- Model Parameters (Table 3.1 & Section 3.4.1) ---
+        //double ml = 12000.0;     // Liquid cargo mass (kg)
+        //double aml = 1.15;       // Elliptical trajectory semi-major axis (m)
+        //double bml = 0.75;       // Elliptical trajectory semi-minor axis (m)
+        //double cl = 850.0;       // Damping / viscosity parameter (N*s/m)
+        //double g = 9.81;         // Gravitational acceleration (m/s^2)
+
+        //// Turning kinematics: ay = v^2 / R
+        //double v = 100.0 / 3.6;        // Truck forward speed (m/s)
+        //double R_turn = R;             // Turning radius (m)
+        //double ay = (v * v) / R_turn;  // Lateral acceleration (m/s^2)
+
+        //// --- State-Space Derivative Function: d[theta, omega]/dt ---
+        //// t: time, x: state vector [theta (rad), theta_dot (rad/s)]
+        //double[] dydt(double t, double[] x)
+        //{
+        //    double theta = x[0], omega = x[1];
+        //    double sth = Sin(theta), cth = Cos(theta), s2th = Sin(2 * theta);
+
+        //    // Numerator terms of the Trammel Pendulum Equation of Motion (Eq. 3.40)
+        //    double inertiaMoment = ml * (Pow(aml * cth, 2) + Pow(bml * sth, 2));
+        //    double centrifugalTerm = 0.5 * ml * (Pow(aml, 2) - Pow(bml, 2)) * Pow(omega, 2) * s2th;
+        //    double gravityTerm = ml * g * bml * sth;
+        //    double dampingTerm = cl * omega;
+        //    double drivingForce = ml * ay * cth;
+
+        //    // Angular acceleration: d^2(theta)/dt^2
+        //    double alpha = (drivingForce + centrifugalTerm - gravityTerm - dampingTerm) / inertiaMoment;
+
+        //    return [omega, alpha];
+        //}
+        
+
+        //// Initial conditions: theta(0) = 0 rad, omega(0) = 0 rad/s
+        //double[] x0 = [0.0, 0.0];
+
+        //// Integration time span [0, 15] seconds
+        //double[] tspan = [0.0, 15.0];
+
+        //// Solve system using Dormand-Prince Ode45
+        //var (T, Y, result) = Ode45(dydt, x0, tspan);
+
+        //// Display results
+        //Console.WriteLine("---------------------------------------------------------");
+        //Console.WriteLine("  Time (s)  |  Slosh Angle (rad)  |  Angular Vel (rad/s) ");
+        //Console.WriteLine("---------------------------------------------------------");
+        //for (int i = 0; i < T.Rows; i ++)
+        //{
+        //    Console.WriteLine($"   {T[i],6:F3}   |      {Y[i, 0],8:F4}       |    {Y[i, 1], 10:F4}");
+        //}
+        //Console.WriteLine("---------------------------------------------------------");
+
+        //// Evaluate roll moment at steady state (Equation 3.55)
+        //double finalTheta = Y[^1, 0], Fl = ml * ay;
+        //Console.WriteLine($"\nFinal steady-state liquid displacement angle: {finalTheta * (180.0 / pi):F2}°");
+        //Console.WriteLine($"Lateral liquid force Fl: {Fl:F1} N");
+
+        //Plot(T, Y, Linewidth: 2); GridOn();
+        //Xlabel("t", 16, interpreter: Latex);
+        //Legend(["\\theta", "\\omega"], Latex, LowerRight);
+        //SaveAs("Sloshing.png", 800, 400);
+
+
+        //double ms = 13000, mu = 7000;              
+        //double hl = 2.05, hr = 0.85, hs = 1.50, hu = 0.53;
+        //double Tw = 2.05, Ts = 0.8*Tw;
+        //double k = 1.2e6, M = mu + ms + ml;
+
+        //double phi_s = Atan(((hl - hr) * ml + (hs - hr) * ms) * ay / (0.5 * Ts * Ts * k));
+        //double[] loadtransfer = Zeros(T.Numel);
+        //for (int i = 0; i < loadtransfer.Length; i++)
+        //{
+        //    double theta = Y[i, 0];
+        //    double sth = Sin(theta);
+        //    double cth = Cos(theta);
+        //    double Num = (mu * hu + ms * hs) * ay +
+        //                 (ml * ay + ml * g * sth) * hl +
+        //                 (ms * hs + ml * hl * cth) * g * phi_s;
+        //    double Den = 0.5 * Tw * M * g;
+        //    loadtransfer[i] = Abs(Num / Den);
+        //}
+        //Plot(T, loadtransfer, Linewidth:2); 
+        //HoldOn(); Hline(1); HoldOff();
+        //SaveAs("LoadTransfer.png");
+    }
+    {
+        //Matrix SokaData = new double[,] {
+        //    { 598269.4060, 810797.2160, 166.1960 },
+        //    { 598305.5150, 810813.8480, 166.1960 },
+        //    { 598352.8090, 810834.8940, 166.1960 },
+        //    { 598458.0790, 810885.9570, 166.1960 },
+        //    { 598478.7020, 810895.1330, 166.1960 },
+        //    { 598539.9770, 810919.4400, 166.1960 },
+        //    { 598595.4410, 810944.5260, 166.1960 }
+        //};
+        //Plot(SokaData[.., 0], SokaData[.., 1], Linewidth: 2);
+        //AxisEqual();
+        //SaveAs("SokaData.png");
+
+        //Matrix BolujiData = new double[,] {
+        //    { 600021.6030, 811298.6000, 193.8410 },
+        //    { 600062.7830, 811324.2110, 193.8410 },
+        //    { 600117.6140, 811356.6960, 193.8410 },
+        //    { 600161.0940, 811384.3590, 193.8410 }
+        //};
+        //Plot(BolujiData[.., 0], BolujiData[.., 1], Linewidth: 2);
+        //AxisEqual();
+        //SaveAs("BolujiData.png");
+    }
+    {
+        //// Vehicle parameters
+        //double ms = 320.0;   // Sprung quarter-chassis mass (kg)
+        //double mu = 45.0;    // Unsprung wheel assembly mass (kg)
+        //double ks = 16000.0; // Suspension spring rate (N/m)
+        //double kt = 120000.0;// Tire stiffness (N/m)
+        //double cs = 1350.0;  // Shock absorber damping rate (N.s/m)
+
+        //// State vector y: [zs (m), vs (m/s), zu (m), vu (m/s)]
+        //Func<double, double[], double[]> quarterCarODE = (t, y) =>
+        //{
+        //    // Road obstacle profile: 10cm pothole bump between 0.4s and 0.6s
+        //    double z_road = (t >= 0.4 && t <= 0.6) ? 0.10 : 0.0;
+
+        //    double zs = y[0], vs = y[1];
+        //    double zu = y[2], vu = y[3];
+
+        //    double d2zs_dt2 = (-ks * (zs - zu) - cs * (vs - vu)) / ms;
+        //    double d2zu_dt2 = (ks * (zs - zu) + cs * (vs - vu) - kt * (zu - z_road)) / mu;
+
+        //    return [ vs, d2zs_dt2, vu, d2zu_dt2 ];
+        //};
+
+        //double[] y0 = Zeros(4);
+        //double[] tSpan = Linspace(0.0, 3.0, 400);
+
+        //var sol = Ode45(quarterCarODE, y0, tSpan);
+
+        //// Plot vehicle response
+        //Figure(width: 850, height: 450);
+        //Plot(sol.T, sol.Y[.., [0,2]], Linewidth: 2);
+        //Title("Quarter-Car Suspension Dynamic Response");
+        //Xlabel("Time (s)"); Ylabel("Displacement (m)");
+        //Legend(["Cabin Chassis Displacement (zs)", "Wheel Hub Displacement (zu)"]);
+        //GridOn();
+        //SaveAs("suspension_response.png");
+        //Console.WriteLine("[Solved] Quarter-car suspension simulation complete.");
+    }
+    {
+        //// Grid and domain discretization
+        //int nx = 60, ny = 20;
+        //double Lx = 3.0, Ly = 1.0;
+        //double dx = Lx / nx; // 0.025 m
+        //double dy = Ly / ny; // 0.025 m
+        //double h2 = dx * dx;
+
+        //// Stable physical parameters
+        //double dt = 0.00002;  // Small time-step satisfying the CFL condition
+        //double nu = 1.0e-3;   // Effective laminar viscosity for grid scale stability
+        //double rho = 1.225;   // Air density (kg/m^3)
+        //double uInlet = 5.0;  // Inlet velocity (m/s)
+
+        //// State fields (node dimension: (nx + 1) x (ny + 1))
+        //Matrix u = Zeros(nx + 1, ny + 1);
+        //Matrix v = Zeros(nx + 1, ny + 1);
+        //Matrix p = Zeros(nx + 1, ny + 1);
+
+        //// Open-range full domain initialization
+        //u[.., ..] = uInlet;
+
+        //// Coordinate generation for declarative geometry
+        //var (X, Y) = Meshgrid(Linspace(0.0, Lx, nx + 1), Linspace(0.0, Ly, ny + 1));
+
+        //// Geometry Mask via SepalSolver.Logical
+        //Logical chassis = (X >= 0.6) & (X <= 1.4) & (Y >= 0.125) & (Y <= 0.50);
+        //Logical slant = (X > 1.4) & (X <= 1.75) & (Y >= 0.125) & (Y <= (0.50 - 0.714 * (X - 1.4)));
+        //Logical solidMask = chassis | slant;
+
+        //// Precomputed static interior stencils
+        //var center = (1..nx, 1..ny);
+        //var east = (2..(nx + 1), 1..ny);
+        //var west = (0..(nx - 1), 1..ny);
+        //var north = (1..nx, 2..(ny + 1));
+        //var south = (1..nx, 0..(ny - 1));
+
+        //int steps = 50;
+        //for (int step = 0; step < steps; step++)
+        //{
+        //    // 1. Stable Upwind Convective Advection
+        //    // For positive u and v: backward difference ensures numerical stability
+        //    Matrix u_adv = u[center].Times((u[center] - u[west]) / dx)
+        //                 + v[center].Times((u[center] - u[south]) / dy);
+
+        //    Matrix v_adv = u[center].Times((v[center] - v[west]) / dx)
+        //                 + v[center].Times((v[center] - v[south]) / dy);
+
+        //    // 2. Vectorized Viscous Diffusion
+        //    Matrix u_diff = nu * (((u[east] - 2.0 * u[center] + u[west]) / (dx * dx))
+        //                        + ((u[north] - 2.0 * u[center] + u[south]) / (dy * dy)));
+
+        //    Matrix v_diff = nu * (((v[east] - 2.0 * v[center] + v[west]) / (dx * dx))
+        //                        + ((v[north] - 2.0 * v[center] + v[south]) / (dy * dy)));
+
+        //    Matrix uStar = u.Duplicate(), vStar = v.Duplicate();
+
+        //    uStar[center] = u[center] + dt * (-u_adv + u_diff);
+        //    vStar[center] = v[center] + dt * (-v_adv + v_diff);
+
+        //    // Enforce intermediate boundaries on the body
+        //    uStar[solidMask] = 0.0; vStar[solidMask] = 0.0;
+
+        //    // 3. Divergence of Intermediate Velocity
+        //    Matrix divStar = ((uStar[east] - uStar[west]) / (2.0 * dx))
+        //                   + ((vStar[north] - vStar[south]) / (2.0 * dy));
+
+        //    // 4. Pressure-Poisson Relaxation (Guaranteed Convergence)
+        //    for (int it = 0; it < 15; it++)
+        //    {
+        //        p[center] = 0.25 * (p[east] + p[west] + p[north] + p[south] - (rho / dt) * divStar * h2);
+
+        //        // Perimeter Pressure Boundary Conditions
+        //        p[0, ..] = p[1, ..];    // Upstream Neumann
+        //        p[^1, ..] = 0.0;        // Downstream Dirichlet (atmospheric)
+        //        p[.., 0] = p[.., 1];    // Floor Neumann
+        //        p[.., ^1] = p[.., ^2];  // Ceiling Neumann
+
+        //        // Ground solid obstacle interior pressure
+        //        p[solidMask] = 0.0;
+        //    }
+
+        //    // 5. Velocity Correction Step
+        //    u[center] = uStar[center] - (dt / (2.0 * rho * dx)) * (p[east] - p[west]);
+        //    v[center] = vStar[center] - (dt / (2.0 * rho * dy)) * (p[north] - p[south]);
+
+        //    // 6. Solid Obstacle No-Slip BCs
+        //    u[solidMask] = 0.0; v[solidMask] = 0.0;
+
+        //    // Domain Far-Field BCs
+        //    u[0, ..] = uInlet; u[^1, ..] = u[^2, ..];
+        //    v[0, ..] = 0.0; v[^1, ..] = v[^2, ..];
+
+        //    // Floor and Ceiling Impermeability
+        //    v[.., 0] = 0.0; v[.., ^1] = 0.0;
+        //}
+
+
+        //VectorField(X, Y, u, v);
+        ////// Export high-resolution flow visualization
+        ////Figure(width: 950, height: 420);
+        ////Contour(u, title: "Ahmed Body Rear Slant Flow Separation & Wake Deficit");
+        ////VectorField(u, v, stride: 3, scale: 0.75);
+        //SaveAs("ahmed_body_flow.png");
+        //Console.WriteLine("[Solved] Ahmed Body wake simulation completed successfully.");
+    }
     {
         //double[] dydt(double t, double[] y) => [y[1], -y[0] + Cos(t)];
         //double[] y0 = [0.0, 0.0];
