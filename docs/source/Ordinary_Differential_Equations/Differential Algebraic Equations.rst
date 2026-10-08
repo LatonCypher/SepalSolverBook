@@ -302,7 +302,7 @@ this initial condition y0 = [1, 0, 0, 1, 1];
       double[,] mass_f = Diag([1, 1, 1, 1, 1, 1, 0, 0]);
       double[] y0 = [0.444, 0.0012, 0.0, 0.0037, 0.0, 0.0, 0.0, 0.0];
       (ColVec T, Matrix Y, _) = Ode43a(akzo_f, mass_f, y0, [0, 180]);
-      Plot(T, Y);
+      Plot(T, Y); Axis([0, 180, -0.01, 0.5]);
       Xlabel("Time"); Ylabel("Concentration");
       Title("Akzo Nobel Chemical Kinetics (DAE)");
       SaveAs("Akzo-Nobel-Ode43a.png");
@@ -354,7 +354,7 @@ Now we look at examples of index 2 DAEs
       Scatter(T, Hcart(Exp(T), Exp(T), -Exp(T).Div(2-T)), "o"); HoldOn();
       Plot(T, Y); HoldOff();
       Xlabel("Time t"); Ylabel("Solution x");
-      Legend(["x_1_Exact", "x_2_Exact", "z_Exact", "x_1_NumSol", "x_2_NumSol", "z_NumSol"]);
+      Legend(["x_1_Exact", "x_2_Exact", "z_Exact", "x_1_NumSol", "x_2_NumSol", "z_NumSol"], MiddleRight);
       Title("Index-2 DAE Example (Ercan Celık)");
       SaveAs("Index-2-DAE-Ercan-Celik.png");
    
@@ -1122,7 +1122,7 @@ Ouput
       Summary of statistics by Ode43a
               768 successful steps
               744 failed attempts
-              45117 function evaluations
+              45120 function evaluations
               1512 partial derivatives
               4671 LU decompositions
               31359 solutions of linear systems
@@ -2092,7 +2092,7 @@ Ouput
    Summary of statistics by Ode43a
            1054 successful steps
            16 failed attempts
-           30516 function evaluations
+           30517 function evaluations
            1070 partial derivatives
            4280 LU decompositions
            19799 solutions of linear systems
@@ -2100,7 +2100,7 @@ Ouput
    Summary of statistics by Ode43a
            831 successful steps
            15 failed attempts
-           31650 function evaluations
+           31651 function evaluations
            846 partial derivatives
            3384 LU decompositions
            23173 solutions of linear systems
@@ -2108,7 +2108,7 @@ Ouput
    Summary of statistics by Ode43a
            8756 successful steps
            19 failed attempts
-           282377 function evaluations
+           282381 function evaluations
            8775 partial derivatives
            35097 LU decompositions
            194608 solutions of linear systems

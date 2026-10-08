@@ -156,7 +156,7 @@ Examples
       Title("Neutral DDE: Comparison with Exact Solution cos(t)");
       Xlabel("Time t");
       Ylabel("Solution y(t)");
-      Legend(["Dde45", "Exact cos(t)"]);
+      Legend(["Dde45", "Exact cos(t)"], UpperLeft);
       SaveAs("Neutral_DDE_Verification.png");
    
    
@@ -205,7 +205,7 @@ Examples
       Title("Coupled 2D Delay System with Multiple Lags");
       Xlabel("Time t");
       Ylabel("State Variables");
-      Legend(["y_1(t)", "y_2(t)"]);
+      Legend(["y_1(t)", "y_2(t)"], UpperLeft);
       SaveAs("Coupled_2D_Delay_System.png");
    
    

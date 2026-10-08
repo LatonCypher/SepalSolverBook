@@ -162,7 +162,7 @@
                 (ColVec T, Matrix Y, _) = Ode45(dydt, y0, tspan);
                 //  Plot the results
                 Plot(T, Y, Linewidth: 2);
-                Legend(["S", "I", "R"], UpperLeft);
+                Legend(["S", "I", "R"], MiddleLeft);
                 Title("SIR Epidemic Model");
                 Xlabel("t");
                 Ylabel("population");

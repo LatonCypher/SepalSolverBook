@@ -255,7 +255,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double[,] mass_f = Diag([1, 1, 1, 1, 1, 1, 0, 0]);
                 double[] y0 = [0.444, 0.0012, 0.0, 0.0037, 0.0, 0.0, 0.0, 0.0];
                 (ColVec T, Matrix Y, _) = Ode43a(akzo_f, mass_f, y0, [0, 180]);
-                Plot(T, Y);
+                Plot(T, Y); Axis([0, 180, -0.01, 0.5]);
                 Xlabel("Time"); Ylabel("Concentration");
                 Title("Akzo Nobel Chemical Kinetics (DAE)");
                 SaveAs("Akzo-Nobel-Ode43a.png");
@@ -298,7 +298,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 Scatter(T, Hcart(Exp(T), Exp(T), -Exp(T).Div(2-T)), "o"); HoldOn();
                 Plot(T, Y); HoldOff();
                 Xlabel("Time t"); Ylabel("Solution x");
-                Legend(["x_1_Exact", "x_2_Exact", "z_Exact", "x_1_NumSol", "x_2_NumSol", "z_NumSol"]);
+                Legend(["x_1_Exact", "x_2_Exact", "z_Exact", "x_1_NumSol", "x_2_NumSol", "z_NumSol"], MiddleRight);
                 Title("Index-2 DAE Example (Ercan Celık)");
                 SaveAs("Index-2-DAE-Ercan-Celik.png");
 
