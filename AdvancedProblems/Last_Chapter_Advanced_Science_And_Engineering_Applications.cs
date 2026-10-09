@@ -799,10 +799,10 @@ namespace ConsoleApp1.TrainingFiles
 
                 // define nonlinear function to
                 // shooting for terminal boundary
-                ColVec? T = null; Matrix? Y = null;
+                ColVec T = null; Matrix Y = null;
                 double fun(double y3_0)
                 {
-                    (T, Y, _) = Ode45(dydt, [0, 0, y3_0], [0, 6]);
+                    (ColVec T, Matrix Y) = Ode45(dydt, [0, 0, y3_0], [0, 6]);
                     return Y[^1, 1] - 1;
                 }
 

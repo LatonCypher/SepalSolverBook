@@ -197,7 +197,7 @@
                 //  Plot the results
                 Plot(T, Y, Linewidth: 2);
                 Legend(["X", "Y"], UpperLeft);
-                Title("Brusselator (A=1, B=3)");
+                Title("Brusselator (A = 1, B = 3)", interpreter: Latex);
                 Xlabel("t");
                 Ylabel("concentration");
                 SaveAs("Brusselator_Model.png");
@@ -242,7 +242,7 @@
                 ColVec T = null; Matrix Y = null;
                 double err(double alp)
                 {
-                    (T, Y, _) = Ode45((t, y) => [y[1], y[2], -0.5*y[0]*y[2]], [0, 0, alp], [0, 6]);
+                    (T, Y) = Ode45((t, y) => [y[1], y[2], -0.5*y[0]*y[2]], [0, 0, alp], [0, 6]);
                     return Y[^1, 1] - 1;
                 }
                 //Use a root finding method to find the value of alp that satisfies the boundary condition at t = 6

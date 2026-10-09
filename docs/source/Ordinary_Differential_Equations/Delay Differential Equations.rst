@@ -71,7 +71,7 @@ Examples
       double[] tspan = [0, 20];
    
       // Solve using Dde45 (retarded DDE, so delyp is null)
-      (ColVec T, ColVec Y, _) = Dde45(ddefun, yhistory, tspan, dely: tau);
+      var (T, Y) = Dde45(ddefun, yhistory, tspan, dely: tau);
    
       // Plot results
       Plot(T, Y, Linewidth: 2);
@@ -105,7 +105,7 @@ Examples
       double[] tspan = [0, 15];
    
       // Solve using Dde45
-      (ColVec T, ColVec Y, _) = Dde45(ddefun, yhistory, tspan, dely: tau);
+      var (T, Y) = Dde45(ddefun, yhistory, tspan, dely: tau);
    
       // Plot the results
       Plot(T, Y, Linewidth: 2);
@@ -147,7 +147,7 @@ Examples
       double[] tspan = [0, 2 * pi];
    
       // Solve using Dde45
-      (ColVec T, ColVec Y, _) = Dde45(ddefun, yhistory, tspan, dely, delyp);
+      var (T, Y) = Dde45(ddefun, yhistory, tspan, dely, delyp);
    
       // Plot numerical result against exact analytical curve
       Scatter(T, Y, "ro", 10); HoldOn();
@@ -248,17 +248,17 @@ This is demonstrated in the following example.
       var opts = Ddeset(Stats: true, RelTol: 1e-6, AbsTol: 1e-8);
    
       // Solve using Dde45
-      (var T, var Y, var result) = Dde45(ddefun, yhistory, tspan, dely: tau, options: opts);
-      var Ydel = Interp1(T, Y, T - tau);
+      var result = Dde45(ddefun, yhistory, tspan, dely: tau, options: opts);
+      var Ydel = Interp1(result.X, result.Y, result.X - tau);
    
       // Plot chaotic time-series
       Subplot(2, 2, 0);
-      Plot(T, Y, "r", 3); GridOn();
+      Plot(result.X, result.Y, "r", 3); GridOn();
       Title("Mackey-Glass Chaotic Attractor: tau = 17");
       Xlabel("Time t"); Ylabel("Concentration y(t)");
       // Phase-space reconstruction using delay embedding
       Subplot(2, 2, 1);
-      Plot(Ydel, Y, "b", 2); GridOn();
+      Plot(Ydel, result.Y, "b", 2); GridOn();
       Title("Phase-Space Reconstruction");
       Xlabel("y(t - tau)"); Ylabel("y(t)");
    

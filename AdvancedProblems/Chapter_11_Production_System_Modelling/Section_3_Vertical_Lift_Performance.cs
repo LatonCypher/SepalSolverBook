@@ -53,7 +53,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                 }
                 // Solve using SepalSolver Ode45
                 // Integrate from z=0 (surface) to z=8000 (bottom-hole)
-                var (Z, P, _) = Ode45((z, p) => pressureGradient(z, p, q_o), p_surf, [0, depth]);
+                var (Z, P) = Ode45((z, p) => pressureGradient(z, p, q_o), p_surf, [0, depth]);
                 double p_wf = P[^1]; // extract the pressure at the bottom
                 Console.WriteLine($"Bottom-hole Flowing Pressure (Pwf) = {p_wf:F2} psi");
 
@@ -62,7 +62,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                 //FullRange
                 double pfun(double q_g)
                 {
-                    var (Z, P, _) = Ode45((z, p) => pressureGradient(z, p, q_g), p_surf, [0, depth]);
+                    var (Z, P) = Ode45((z, p) => pressureGradient(z, p, q_g), p_surf, [0, depth]);
                     double p_wf = P[^1]; // extract the pressure at the bottom
                     return p_wf;
                 }
