@@ -16,7 +16,7 @@ namespace ConsoleApp1.TrainingFiles
                 double stiffness = 2.5, damping = 0.2,
                     mass = 1.0, k = stiffness/mass,
                     c = damping/mass, t = 0, dt = 1.0/15;
-                double[] Dynamic(ColVec y) =>
+                ColVec Dynamic(ColVec y) =>
                     [y[1], -(k*y[0]+c*y[1])/mass];
                 ColVec Evolve(ColVec y, double t) =>
                     rk4((t, y) => Dynamic(y), t, y, dt);
@@ -39,16 +39,15 @@ namespace ConsoleApp1.TrainingFiles
                 rec.FillColor = [0.0, 0.0, 0.0];
                 var body = Rectangle([-0.9, y[0]-0.5, 1.8, 3], 0.2);
                 body.FillColor = [0.0, 0.0, 0.0];
-                var Marker = Fill([1.5, 1.5, 2], [2.2, 2.8, 2.5], "r");
-                ColVec my = Marker.Ydata - y[0];
-                ColVec z = Linspace(-3, 1, 321),
+                double[] mx, my, lx, ly;
+                var Marker = Fill(mx = [1.5, 1.5, 2], my = [2.2, 2.8, 2.5], "r");
+                ColVec my0 = Marker.Ydata - y[0], z = Linspace(-3, 1, 321),
                     w = ((z+3)*4*pi)%(2*pi), x = 0.7*Sin(w);
                 x[0.75 * pi < w & w < 1.25 * pi] = double.NaN;
                 var Spring = Plot(x, z, "k", 3);
-
-                Plot([1.5, 14], [1, 1], "k");
-                Plot([2, 2], [-1, 3], "k");
-                var plt = Plot([2], [2.5], "r", 2);
+                Plot(lx = [1.5, 14], ly = [1, 1], "k");
+                Plot(lx = [2, 2], ly = [-1, 3], "k");
+                var plt = Plot(lx = [2], [2.5], "r", 2);
                 Axis([-5, 15, -8, 6]); HoldOff();
                 //AxisOff();
                 SaveAs("Damping System.png");
@@ -59,7 +58,7 @@ namespace ConsoleApp1.TrainingFiles
                     y = Evolve(y, t); t += dt;
                     body.Y = y[0] - 0.5;
                     Spring.Ydata = Linspace(-3, y[0]-0.5, 321);
-                    Marker.Ydata = my + y[0];
+                    Marker.Ydata = my0 + y[0];
                     plt.Xdata = Vcart(2, plt.Xdata + 0.02);
                     plt.Ydata = Vcart(y[0] + 1, plt.Ydata);
                     return GetFrame(800, 560);
@@ -70,10 +69,9 @@ namespace ConsoleApp1.TrainingFiles
 
             {
                 // Park Transformation
-
-                double[] clr1 = [1, 0, 0]; // ColorOrder[0];
+                double[] clr1 = [1, 0, 0]; // ColorOrder[1];
                 double[] clr2 = [0, 0, 1]; // ColorOrder[2];
-                double[] clr3 = [0, 0, 0];
+                double[] clr3 = [0, 0, 0]; // ColorOrder[3];
                 //Park Transform :Ref to q-axis transformation
                 double vq = 1.3, vd = 2.0, vs = Hypot(vq, vd),
                     vα = vq, vβ = vd, lq = 2.5, ld = 2.5, offset = 0.2;
@@ -339,9 +337,9 @@ namespace ConsoleApp1.TrainingFiles
             {
                 //X Grid, Ship Structure and Dynamics Parameters
                 double nan = double.NaN;
-                double[] Xs = [-3,-4,0,0,nan,3,4,0,0,nan,-3,-2.5,2.5,3,
+                ColVec Xs = [-3,-4,0,0,nan,3,4,0,0,nan,-3,-2.5,2.5,3,
                     nan,-1.5,-1.5,1.5,1.5,nan,-0.5,-0.5,0.5,0.5];
-                double[] Ys = [-5,-1,0,-5,nan,-5,-1,0,-5,nan,-1,2,2,-1,
+                ColVec Ys = [-5,-1,0,-5,nan,-5,-1,0,-5,nan,-1,2,2,-1,
                     nan,2,3,3,2,nan,3,5,5,3];
 
                 double I = 1.2e5, c = 1e5, k = 3e5, alp = 1.5e6, M = 5e4;
@@ -376,7 +374,7 @@ namespace ConsoleApp1.TrainingFiles
                 var Ship = Plot(Xs, Ys, "k", 2); HoldOn();
                 ColVec X = Linspace(-10, 10, 501); double dx = 20.0/500;
                 ColVec D = X.Select(x => -4 < x && x < 4 ? -x : 0).ToArray();
-                double[] Xw = [-10, .. X, 10], Yw = [-10, .. Wave(X, 0), -10];
+                ColVec Xw = [-10, .. X, 10], Yw = [-10, .. Wave(X, 0), -10];
                 var Water = Fill(Xw, Yw, [0.5294, 0.8078, 0.9216]);
                 HoldOff(); Axis([-10, 10, -6, 6]); AspectRatio(1, 1);
 
@@ -411,14 +409,14 @@ namespace ConsoleApp1.TrainingFiles
                 double L1 = 1.0;     // length of pendulum 1 in m
                 double L2 = 0.5;     // length of pendulum 1 in m
                 ColVec t1 = Linspace(0, pi), t2 = t1 + pi,
-                    Bar1X = new List<ColVec> { 0.1*Cos(t1), 0.1*Cos(t2) },
-                    Bar1Y = new List<ColVec> { 0.1*Sin(t1), 0.1*Sin(t2) - L1 },
-                    Bar2X = new List<ColVec> { 0.1*Cos(t1), 0.1*Cos(t2) },
-                    Bar2Y = new List<ColVec> { 0.1*Sin(t1), 0.1*Sin(t2) - L2 };
+                    Bar1X = Vcart(0.1*Cos(t1), 0.1*Cos(t2) ),
+                    Bar1Y = Vcart(0.1*Sin(t1), 0.1*Sin(t2) - L1 ),
+                    Bar2X = Vcart(0.1*Cos(t1), 0.1*Cos(t2) ),
+                    Bar2Y = Vcart(0.1*Sin(t1), 0.1*Sin(t2) - L2 );
 
 
                 //Dynamics of double pendulum
-                Indexer i = new(0, 2), j = new(2, 4);
+                Indexer i = 0..2, j = 2..4;
                 ColVec derivs(ColVec state)
                 {
                     ColVec y = state[i], yp = state[j];
@@ -428,10 +426,10 @@ namespace ConsoleApp1.TrainingFiles
                         { L1*cd/2, L2/3 },
                         { L1*L1/3 + L1*L2, L2*L2*cd/2 }
                     };
-                    ColVec b = new double[] {
+                    ColVec b = [
                         (L1*sd*yp[0]*yp[0] - G*Sin(y[1]))/2,
                         -(L2*L2*sd*yp[1]*yp[1] + (L1 + 2*L2)*G*Sin(y[0]))/2
-                    };
+                    ];
                     ColVec[] dydx = [yp, Mldivide(A, b)];
                     return dydx;
                 }
@@ -794,7 +792,7 @@ namespace ConsoleApp1.TrainingFiles
             {
                 // Blausius Boundary Layer
                 // define function
-                double[] dydt(double t, double[] y) 
+                ColVec dydt(double t, ColVec y) 
                     => [y[1], y[2], -0.5 * y[2] * y[0]];
 
                 // define nonlinear function to
@@ -894,11 +892,11 @@ namespace ConsoleApp1.TrainingFiles
 
             {
                 double mu = 1;
-                double[] vdp(double t, double[] y) =>
+                ColVec vdp(double t, ColVec y) =>
                     [y[1], mu*(1 - y[0]*y[0])*y[1] - y[0]];
 
                 var options = Odeset(Stats: true);
-                (ColVec T, Matrix Y, _) = 
+                (ColVec T, Matrix Y) = 
                     Ode45(vdp, [2, 0], [0, 20], options);
 
                 Plot(T, Y, "-o");

@@ -21,7 +21,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_03_Interpolation
             /// <code>
             {
                 // Measured data points
-                double[] X = [0.0, 1.0, 2.0, 3.0, 4.0], Y = [1.2, 1.9, 4.3, 8.8, 17.1];
+                ColVec X = [0.0, 1.0, 2.0, 3.0, 4.0], Y = [1.2, 1.9, 4.3, 8.8, 17.1];
 
                 // Stage 1: Fit a quadratic (N=2) to create the model
                 double[] model = Polyfit(X, Y, 2);
@@ -45,7 +45,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_03_Interpolation
             /// 
             /// <code>
             {
-                double[] time = [0.1, 0.2, 0.3, 0.4, 0.5], volts = [1.02, 1.05, 1.01, 1.08, 1.04];
+                ColVec time = [0.1, 0.2, 0.3, 0.4, 0.5], volts = [1.02, 1.05, 1.01, 1.08, 1.04];
                 // Fit a line (N=1) to find the steady trend
                 double[] trend = Polyfit(time, volts, 1);
 
@@ -65,7 +65,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_03_Interpolation
             /// <code>
             {
 
-                double[] x = Linspace(0,10, 5), y = [0, 0, -0.03, -0.05, -0.02];
+                ColVec x = Linspace(0,10, 5), y = [0, 0, -0.03, -0.05, -0.02];
                 ColVec xc = x, yc = y;
                 double[] coeffs = Polyfit(x, y, 3); //degree2
                 ColVec xq = Linspace(0, 10);
@@ -102,7 +102,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_03_Interpolation
             {
                 double[] Temperature = [1000, 1100, 1200, 1300, 1400, 1500, 1600, 1800, 2000],
                     Pressure = [0.01, 0.02, 0.03, 0.04, 0.05, 0.06];
-                double[,] SpecificVolume = new double[,]
+                Matrix SpecificVolume = new double[,]
                 {
                     {58.758, 29.379, 19.586, 14.689, 11.751, 9.7927},
                     {63.373, 31.686, 21.124, 15.843, 12.674, 10.562},

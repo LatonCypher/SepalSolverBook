@@ -14,7 +14,7 @@ namespace ConsoleApp1.TrainingFiles.Summary_and_Conclusion.Advanced_Problems_In_
             {
                 double Ub = 6, R0 = 1000, R15 = 9000, alpha = 0.99,
                     beta = 1e-6, Uf = 0.026, c1 = 1e-6, c2 = 2e-6, c3 = 3e-6;
-                double[,] Mass(double t, double[] y) => new double[,]
+                Matrix Mass(double t, ColVec y) => new double[,]
                 {
                     {-c1,  c1,  0,   0,   0 },
                     { c1, -c1,  0,   0,   0 },
@@ -23,7 +23,7 @@ namespace ConsoleApp1.TrainingFiles.Summary_and_Conclusion.Advanced_Problems_In_
                     { 0,   0,   0,   c3, -c3}
                 };
                 double Ue(double t) => 0.4 * Sin(200 * pi * t);
-                double[] dudt(double t, double[] u)
+                ColVec dudt(double t, ColVec u)
                 {
                     double f23 = beta * (Exp((u[1] - u[2]) / Uf) - 1);
                     return [ -(Ue(t) - u[0])/R0,
@@ -36,7 +36,7 @@ namespace ConsoleApp1.TrainingFiles.Summary_and_Conclusion.Advanced_Problems_In_
                 double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
 
                 var opts = Odeset(RelTol: 1e-5);
-                (ColVec T, Matrix Y, _) = Ode43a(dudt, Mass, y0, tspan, opts);
+                (ColVec T, Matrix Y) = Ode43a(dudt, Mass, y0, tspan, opts);
                 Scatter(T, Arrayfun(Ue, T), "o"); HoldOn();
                 Plot(T, Y[.., 4], "--r"); HoldOff();
                 Legend(["Input", "Output"], UpperLeft);

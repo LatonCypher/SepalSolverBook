@@ -90,7 +90,7 @@
                 double L = 1;             // Length of the rod
                 double t_final = 0.5;     // Final simulation time
 
-                double[] x = Linspace(0, L, 101);        // 51 spatial grid points
+                ColVec x = Linspace(0, L, 101);        // 51 spatial grid points
                 double[] t = Linspace(0, t_final, 6);   // 6 time steps
 
                 // 2. Defines the PDE components: c* du/ dt = x ^ (-m) * d / dx(x ^ m * f) + s
@@ -147,8 +147,8 @@
                 int m = 1; // cylindrical geometry
                 double D = 0.01; // Diffusion coefficient
                 double growthRate = 1.0; // Growth rate
-                double[] r = Linspace(0, 5, 101);  // [0, 5]
-                double[] t = Linspace(0, 6, 7);    // [0, 6]
+                ColVec r = Linspace(0, 5, 101);  // [0, 5]
+                ColVec t = Linspace(0, 6, 7);    // [0, 6]
 
                 // 2. Defines the PDE components: du/dt = D/r*d/dr(r*du/dr) + g*u*(1 - u);
                 (double c, double f, double s) PdeFun(double r, double t, double u, double dudr)
@@ -186,8 +186,8 @@
                 double growthRate = 1.0;          // Growth rate
                 double C_ambient = 0.0;           // Ambient/Boundary concentration
 
-                double[] r = Linspace(0, 5, 101); // Spatial grid [0, 5]
-                double[] t = Linspace(0, 6, 7);   // Time output points [0, 6]
+                ColVec r = Linspace(0, 5, 101); // Spatial grid [0, 5]
+                ColVec t = Linspace(0, 6, 7);   // Time output points [0, 6]
 
                 (ColVec T, Matrix U) = Pdepe(
                     m: 1,                                                                     // Geometry: 0 = Cartesian, 1 = Cylindrical, 2 = Spherical
@@ -298,8 +298,8 @@
 
                 // 4. Execution Call
                 int m = 1; // Cylindrical coordinates
-                double[] rMesh = Linspace(0.0, 0.05, 51); // Cylinder radius = 5 cm
-                double[] tMesh = Linspace(0.0, 100.0, 6);
+                ColVec rMesh = Linspace(0.0, 0.05, 51); // Cylinder radius = 5 cm
+                ColVec tMesh = Linspace(0.0, 100.0, 6);
 
                 // Solves and returns Ys[0] for T(r,t) and Ys[1] for C(r,t)
                 (ColVec t, Matrix[] Ys) = Pdepe(m, PdeFun, IcFun, BcFun, rMesh, tMesh);
@@ -409,15 +409,15 @@
 
                 // 4. Execution Call
                 int m = 0; // Cartesian coordinates
-                double[] x = Linspace(0, 1, 101);
-                double[] t = Linspace(0, 2, 101);
+                ColVec x = Linspace(0, 1, 101);
+                ColVec t = Linspace(0, 2, 101);
 
                 (ColVec T, Matrix[] Ys) = Pdepe(m, PdeFun, IcFun, BcFun, x, t);
 
                 Matrix U = Ys[0]; // [TimeSteps x SpatialNodes] for Position
                 Matrix V = Ys[1]; // [TimeSteps x SpatialNodes] for Velocity
 
-                var wave = Plot(x, U[0, ..], Linewidth: 2);
+                var wave = Plot(x, U[0, ..].T, Linewidth: 2);
                 Axis([x[0], x[^1], -5, 5]);
                 // Animation
                 byte[] Animfun(int i)

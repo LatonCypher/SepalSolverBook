@@ -480,18 +480,18 @@ namespace ConsoleApp1.TrainingFiles.Chapter_12_Reservoir_Simulation
 
                     // Spatial Profile Schematic setup for the moving Water Saturation Front
                     Subplot(7, 4, [24, 25, 26, 27]);
-                    double[] xpf = [0.3, 0.7], ypf = Linspace(0.3, 0.7, 5);
-                    var (xperf, yperf) = Meshgrid(xpf, ypf);
+                    ColVec xpf = [0.3, 0.7], ypf = Linspace(0.3, 0.7, 5);
+                    var (xperf, yperf) = Meshgrid(xpf, ypf.T);
                     Rectangle([Producer.Index + 0.45, 0.2, 0.1, 1.6]); HoldOn();
                     Plot(Producer.Index + xperf, yperf, "k", 2);
                     Rectangle([Injector.Index + 0.45, 0.2, 0.1, 1.6]);
                     Plot(Injector.Index + xperf, yperf, "k", 2);
-                    double[] xres = [0, 0, Nblocks, Nblocks], yres = [0, 1, 1, 0];
+                    ColVec xres = [0, 0, Nblocks, Nblocks], yres = [0, 1, 1, 0];
                     Fill(xres, yres, [1, 0, 0], 0.5);
                     xpf = Linspace(0.5, Nblocks - 0.5, Nblocks);
                     ypf = Repmat(Sinit, Nblocks + 2);
-                    double[] xplot = [0, 0, .. xpf, Nblocks, Nblocks];
-                    double[] yplot = [0, .. ypf, 0];
+                    ColVec xplot = [0, 0, .. xpf, Nblocks, Nblocks];
+                    ColVec yplot = [0, .. ypf, 0];
                     var Water = Fill(xplot, yplot, [0, 0, 1], 0.5, 0);
                     Axis([0, Nblocks, 0, 2.5]);
                     Title("Water Saturation Front");

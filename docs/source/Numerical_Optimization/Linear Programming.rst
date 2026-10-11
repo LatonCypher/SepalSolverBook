@@ -74,7 +74,7 @@ Comparison: Linprog Formulation Levels
    .. code-block:: csharp
    
       // SOLVE_LP_SIMPLEX Solves 2D Linear Program using standard Linear Programming solver
-      double[,] A = new double[,]{
+      Matrix A = new double[,]{
           { 1.00,  1.00 },
           { 1.00,  0.25 },
           { 1.00, -1.00 },
@@ -83,8 +83,8 @@ Comparison: Linprog Formulation Levels
           {-1.00,  1.00 }
       };
    
-      double[] b = [2, 1, 2, 1, -1, 2];
-      double[] f = [-1, -1.0 / 3];
+      ColVec b = [2, 1, 2, 1, -1, 2];
+      RowVec f = [-1, -1.0 / 3];
       var result = Linprog(f, A, b);
       Console.WriteLine(result);
    
@@ -116,7 +116,7 @@ Ouput
    
    .. code-block:: csharp
    
-      double[,] A = new double[,]{
+      Matrix A = new double[,]{
           { 1.00,  1.00 },
           { 1.00,  0.25 },
           { 1.00, -1.00 },
@@ -125,10 +125,10 @@ Ouput
           {-1.00,  1.00 }
       };
    
-      double[] b = [2, 1, 2, 1, -1, 2];
-      double[] f = [-1, -1.0 / 3];
-      double[,] Aeq = new double[,] { { 1, 1.0 / 4 } };
-      double[] beq = [1.0 / 2];
+      ColVec b = [2, 1, 2, 1, -1, 2];
+      RowVec f = [-1, -1.0 / 3];
+      Matrix Aeq = new double[,] { { 1, 1.0 / 4 } };
+      ColVec beq = [1.0 / 2];
       var result = Linprog(f, A, b, Aeq, beq);
       Console.WriteLine(result);
    
@@ -159,7 +159,7 @@ Ouput
    
    .. code-block:: csharp
    
-      double[,] A = new double[,]{
+      Matrix A = new double[,]{
           { 1.00,  1.00 },
           { 1.00,  0.25 },
           { 1.00, -1.00 },
@@ -168,11 +168,11 @@ Ouput
           {-1.00,  1.00 }
       };
    
-      double[] b = [2, 1, 2, 1, -1, 2];
-      double[] f = [-1, -1.0/3];
-      double[,] Aeq = new double[,] { { 1, 1.0 / 4 } };
-      double[] beq = [1.0 / 2];
-      double[] Lb = [-1, -0.5], Ub = [1.5, 1.25];
+      ColVec b = [2, 1, 2, 1, -1, 2];
+      RowVec f = [-1, -1.0/3];
+      Matrix Aeq = new double[,] { { 1, 1.0 / 4 } };
+      ColVec beq = [1.0 / 2];
+      ColVec Lb = [-1, -0.5], Ub = [1.5, 1.25];
       var result = Linprog(f, A, b, Aeq, beq, Lb, Ub);
       Console.WriteLine(result);
    

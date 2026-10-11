@@ -23,7 +23,7 @@ namespace ConsoleApp1.TrainingFiles.Summary_and_Conclusion.Advanced_Problems_In_
                 y1 = 10 - L1 * Cos(yn[0]); y2 = 10 - L2 * Cos(yn[1]);
                 double theta = Atan2(y2 - y1, x2 - x1);
                 double springlength = Hypot(y2 - y1, x2 - x1), f = springlength / 30;
-                ColVec Offset = new double[] { x1, y1 };
+                ColVec Offset = [x1, y1];
                 Matrix Rot = new double[,]
                 {
                     { f*Cos(theta), -Sin(theta)  },
@@ -32,7 +32,7 @@ namespace ConsoleApp1.TrainingFiles.Summary_and_Conclusion.Advanced_Problems_In_
 
                 Plot([-10, 10], [10, 10], "k", 10); HoldOn();
                 coord = Rot * springcoord + Offset;
-                var spring = Plot(coord[0, ..], coord[1, ..], "k", 3);
+                var spring = Plot(coord[0, ..].T, coord[1, ..].T, "k", 3);
                 var B1 = Fill(R1 * c + x1, R1 * s + y1, "r");
                 var B2 = Fill(R2 * c + x2, R2 * s + y2, "b");
                 var P1 = Plot([-5, x1], [10, y1], "r", 5);
@@ -53,7 +53,7 @@ namespace ConsoleApp1.TrainingFiles.Summary_and_Conclusion.Advanced_Problems_In_
                     y1 = 10 - L1 * Cos(yn[0]); y2 = 10 - L2 * Cos(yn[1]);
                     theta = Atan2(y2 - y1, x2 - x1);
                     springlength = Hypot(y2 - y1, x2 - x1); f = springlength / 30;
-                    Offset = new double[] { x1, y1 };
+                    Offset = [x1, y1];
                     Rot = new double[,]
                     {
                         { f*Cos(theta), -Sin(theta)  },

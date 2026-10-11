@@ -2610,35 +2610,6 @@
                 Ylabel("Solution y");
                 SaveAs("Weissinger-Ode43i.png");
              </code>
-             <terminal>
-                 Summary of statistics by Ode43i
-                         13 successful steps
-                         0 failed attempts
-                         335 function evaluations
-                         52 partial derivatives
-                         52 LU decompositions
-                         174 solutions of linear systems
-            
-                 1.2247    1.2247
-                 1.2993    1.2993
-                 1.4536    1.4536
-                 1.7767    1.7768
-                 2.3227    2.3229
-                 3.1865    3.1869
-                 4.0689    4.0694
-                 4.9575    4.9582
-                 5.8496    5.8504
-                 6.7437    6.7447
-                 7.6392    7.6403
-                 8.5357    8.5368
-                 9.4327    9.4340
-                10.0236   10.0250
-             </terminal>
-             <figure>
-             .. figure:: images/Weissinger-Ode43i.png
-                :align: center
-                :alt: Weissinger-Ode43i.png
-             </figure>
              </example>
              <exception cref="T:System.ArgumentNullException">Thrown when the <paramref name="dydx"/> is null.</exception>
              <exception cref="T:System.ArgumentException">Thrown when the <paramref name="tspan"/> array has less than two elements.</exception>
@@ -2702,7 +2673,7 @@
             using an adaptive diagonally implicit Runge-Kutta method of 8th and 5th Order Local Truncation Error (Ode85a).
             </summary>
         </member>
-        <member name="M:SepalSolver.Math.Pdepe(System.Int32,System.Func{System.Double,System.Double,System.Double,System.Double,System.ValueTuple{System.Double,System.Double,System.Double}},System.Func{System.Double,System.Double},System.Func{System.Double,System.Double,System.Double,System.Double,System.Double,System.ValueTuple{System.Double,System.Double,System.Double,System.Double}},System.Double[],System.Double[],SepalSolver.Ode.Set)">
+        <member name="M:SepalSolver.Math.Pdepe(System.Int32,System.Func{System.Double,System.Double,System.Double,System.Double,System.ValueTuple{System.Double,System.Double,System.Double}},System.Func{System.Double,System.Double},System.Func{System.Double,System.Double,System.Double,System.Double,System.Double,System.ValueTuple{System.Double,System.Double,System.Double,System.Double}},SepalSolver.ColVec,SepalSolver.ColVec,SepalSolver.Ode.Set)">
             <summary>
             Solves 1D systems of parabolic and elliptic partial differential equations (PDEs) of the form
             .. math::

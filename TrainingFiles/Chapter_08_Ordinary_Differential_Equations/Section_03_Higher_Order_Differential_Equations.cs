@@ -71,10 +71,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// </math>
             /// <code>
             {
-                 double[] dydt(double t, double[] y) => [ y[1], -y[0] ];
+                 ColVec dydt(double t, ColVec y) => [ y[1], -y[0] ];
                  double[] y0 = [1.0, 0.0]; // y(0)=1, y'(0)=0
                  double[] tspan = [0, 20];
-                 (ColVec T, Matrix Y, _) = Ode45(dydt, y0, tspan);
+                 (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
                  Plot(T, Y, Linewidth: 2);
                  Legend(["y", "y'"], UpperLeft);
                  Title("Simple Harmonic Oscillator");
@@ -95,7 +95,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// <code>
             {
                  double beta = 0.1, omega = 2.0;
-                 double[] dydt(double t, double[] y) => [ y[1], -2*beta*y[1] - omega*omega*y[0] ];
+                 ColVec dydt(double t, ColVec y) => [ y[1], -2*beta*y[1] - omega*omega*y[0] ];
                  double[] y0 = [1.0, 0.0];
                  double[] tspan = [0, 20];
                  (ColVec T, Matrix Y, _) = Ode45(dydt, y0, tspan);
@@ -118,10 +118,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// </math>
             /// <code>
             {
-                 double[] dydt(double t, double[] y) => [ y[1], -y[0] + Cos(t) ];
+                ColVec dydt(double t, ColVec y) => [ y[1], -y[0] + Cos(t) ];
                  double[] y0 = [0.0, 0.0];
                  double[] tspan = [0, 20];
-                 (ColVec T, Matrix Y, _) = Ode45(dydt, y0, tspan);
+                 (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
                  Plot(T, Y, Linewidth: 2);
                  Legend(["y", "y'"], UpperLeft);
                  Title("Forced Oscillator");
@@ -142,7 +142,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// <code>
             {
                  double L = 1.0, R = 0.5, C = 0.2;
-                 double[] dydt(double t, double[] i) => [ i[1], -(R/L)*i[1] - (1.0/(L*C))*i[0] ];
+                ColVec dydt(double t, ColVec i) => [ i[1], -(R/L)*i[1] - (1.0/(L*C))*i[0] ];
                  double[] i0 = [1.0, 0.0];
                  double[] tspan = [0, 20];
                  (ColVec T, Matrix Y, _) = Ode45(dydt, i0, tspan);
@@ -166,10 +166,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// </math>
             /// <code>
             {
-                 double[] dydt(double t, double[] y) => [ y[1], y[2], y[0] ];
+                 ColVec dydt(double t, ColVec y) => [ y[1], y[2], y[0] ];
                  double[] y0 = [1.0, 0.0, 0.0];
                  double[] tspan = [0, 3];
-                 (ColVec T, Matrix Y, _) = Ode45(dydt, y0, tspan);
+                 (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
                  Plot(T, Y, Linewidth: 2);
                  Legend(["y", "y'", "y''"], UpperLeft);
                  Title("Third‑Order Example");

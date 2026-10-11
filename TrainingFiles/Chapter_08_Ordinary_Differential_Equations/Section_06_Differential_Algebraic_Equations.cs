@@ -41,15 +41,15 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             ///
             /// <code>
             {
-                double[] robertson_f(double t, double[] y) =>
+                ColVec robertson_f(double t, ColVec y) =>
                     [(-0.04 * y[0] + 1e4 * y[1] * y[2]),
                      (0.04 * y[0] - 1e4 * y[1] * y[2] - 3e7 * y[1]*y[1]),
                      y[0] + y[1] + y[2] - 1.0];
 
-                double[,] mass_f = Diag([1, 1, 0]);
+                Matrix mass_f = Diag([1, 1, 0]);
 
                 double[] y0 = [1.0, 0.0, 0.0];
-                (ColVec T, Matrix Y, _) = Ode43a(robertson_f, mass_f, y0, Logspace(-6,6.6));
+                (ColVec T, Matrix Y) = Ode43a(robertson_f, mass_f, y0, Logspace(-6,6.6));
                 // Plot the result
                 Y[.., 1] = 1e4*Y[.., 1];
                 SemiLogx(T, Y);
@@ -87,18 +87,18 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double g = 9.81;
 
                 // State vector y = [x, y, u, v, λ]
-                double[] pendulum_f(double t, double[] y) =>
-                    [y[2],
-                     y[3],
-                     -y[0] * y[4],
-                     -y[1] * y[4] - g,
+                ColVec pendulum_f(double t, ColVec y) =>
+                    [y[2], 
+                     y[3], 
+                    -y[0] * y[4], 
+                    -y[1] * y[4] - g,
                      y[2]*y[2] + y[3]*y[3] - y[1] * g - y[4]];
 
-                double[,] mass_f = Diag([1, 1, 1, 1, 0]);
+                Matrix mass_f = Diag([1, 1, 1, 1, 0]);
 
                 double[] y0 = [0, 1, 1, 0, 1 - g];
                 var opts = Odeset(Stats: true, RelTol: 1e-6);
-                (ColVec T, Matrix Y, _) = Ode43a(pendulum_f, mass_f, y0, [0, 6], opts);
+                (ColVec T, Matrix Y) = Ode43a(pendulum_f, mass_f, y0, [0, 6], opts);
                 Plot(T, Y, Linewidth: 2); Xlabel("x"); Ylabel("y");
                 Legend(["x", "y", "u", "v", "λ"]);
                 Title("Pendulum Trajectory (DAE)");
@@ -162,16 +162,15 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             {
                 double Ub = 6, R0 = 1000, R15 = 9000, alpha = 0.99,
                     beta = 1e-6, Uf = 0.026, c1 = 1e-6, c2 = 2e-6, c3 = 3e-6;
-                double[,] Mass = new double[,]
-                {
-                    {-c1,  c1,  0,   0,   0 },
-                    { c1, -c1,  0,   0,   0 },
-                    { 0,   0,  -c2,  0,   0 },
-                    { 0,   0,   0,  -c3,  c3},
-                    { 0,   0,   0,   c3, -c3}
-                };
+                Matrix Mass = Zeros(5, 5);
+                Mass[0, 0] = -c1; Mass[0, 1] = c1;
+                Mass[1, 0] = c1; Mass[1, 1] = -c1;
+                Mass[2, 2] = -c2;
+                Mass[3, 3] = -c3; Mass[3, 4] = c3;
+                Mass[4, 3] = c3; Mass[4, 4] = -c3;
+
                 double Ue(double t) => 0.4 * Sin(200 * pi * t);
-                double[] dudt(double t, double[] u)
+                ColVec dudt(double t, ColVec u)
                 {
                     double f23 = beta * (Exp((u[1] - u[2]) / Uf) - 1);
                     return [ -(Ue(t) - u[0])/R0,
@@ -184,7 +183,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
 
                 var opts = Odeset(RelTol: 1e-5);
-                (ColVec T, Matrix Y, _) = Ode43a(dudt, Mass, y0, tspan, opts);
+                (ColVec T, Matrix Y) = Ode43a(dudt, Mass, y0, tspan, opts);
                 Scatter(T, Arrayfun(Ue, T), "o"); HoldOn();
                 Plot(T, Y[.., 4], "--r"); HoldOff();
                 Legend(["Input", "Output"], UpperLeft);
@@ -234,13 +233,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// <code>
             {
                 double k1 = 18.7, k2 = 0.58, k3 = 0.09, k4 = 0.42, K = 34.4, Fin = 0.012;
-                double r1(double[] y) => k1 * Pow(y[0], 4) * Pow(y[1], 0.5);
-                double r2(double[] y) => k2 * y[2] * y[3];
-                double r3(double[] y) => (k2 / K) * y[0] * y[4];
-                double r4(double[] y) => k3 * y[0] * Pow(y[3], 2);
-                double r5(double[] y) => k4 * Pow(y[5], 2) * Pow(y[1], 0.5);
+                double r1(ColVec y) => k1 * Pow(y[0], 4) * Pow(y[1], 0.5);
+                double r2(ColVec y) => k2 * y[2] * y[3];
+                double r3(ColVec y) => (k2 / K) * y[0] * y[4];
+                double r4(ColVec y) => k3 * y[0] * Pow(y[3], 2);
+                double r5(ColVec y) => k4 * Pow(y[5], 2) * Pow(y[1], 0.5);
 
-                double[] akzo_f(double t, double[] y) =>
+                ColVec akzo_f(double t, ColVec y) =>
                     [
                         -2*r1(y) + r2(y) - r3(y) - r4(y),
                         -0.5*r1(y) - r5(y) + 0.5*Fin,
@@ -252,9 +251,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                         y[3] * y[4] - y[7]
                     ];
 
-                double[,] mass_f = Diag([1, 1, 1, 1, 1, 1, 0, 0]);
+                Matrix mass_f = Diag([1, 1, 1, 1, 1, 1, 0, 0]);
                 double[] y0 = [0.444, 0.0012, 0.0, 0.0037, 0.0, 0.0, 0.0, 0.0];
-                (ColVec T, Matrix Y, _) = Ode43a(akzo_f, mass_f, y0, [0, 180]);
+                (ColVec T, Matrix Y) = Ode43a(akzo_f, mass_f, y0, [0, 180]);
                 Plot(T, Y); Axis([0, 180, -0.01, 0.5]);
                 Xlabel("Time"); Ylabel("Concentration");
                 Title("Akzo Nobel Chemical Kinetics (DAE)");
@@ -286,12 +285,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             {
                 // define the DAE
                 double alpha = 10;
-                double[] Ercan(double t, double[] x) =>
+                ColVec Ercan(double t, ColVec x) =>
                     [ (alpha - 1/(2-t))*x[0] + (2-t)*alpha*x[2] + (3-t)/(2-t)*x[1],
                       (1-alpha)/(t-2)*x[0] - x[1] + (alpha-1)*x[2] + 2*Exp(t),
                       (t+2)*x[0] + (t*t-4)*x[1] - (t*t+t-2)*Exp(t) ];
 
-                double[,] mass_f = Diag([1, 1, 0]);
+                Matrix mass_f = Diag([1, 1, 0]);
                 double[] y0 = [1, 1, 0]; // only the differential variables need initial conditions
                 var opts = Odeset(Stats: true);
                 (ColVec T, Matrix Y, _) = Ode43a(Ercan, mass_f, y0, [0, 1], opts);
@@ -354,15 +353,14 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double g = 9.81;
 
                 // State vector y = [x, y, u, v, λ]
-                double[] pendulum_f(double t, double[] y) =>
+                ColVec pendulum_f(double t, ColVec y) =>
                     [y[2],
                      y[3],
                      -y[0] * y[4],
                      -y[1] * y[4] - g,
                      y[0]*y[2] + y[1]*y[3]];
 
-                double[,] mass_f = Diag([1, 1, 1, 1, 0]);
-
+                Matrix mass_f = Diag([1, 1, 1, 1, 0]);
                 double[] y0 = [0, 1, 1, 0, -1];
                 var opts = Odeset(Stats: true);
                 (ColVec T, Matrix Y, _) = Ode43a(pendulum_f, mass_f, y0, [0, 6], opts);
@@ -442,7 +440,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double g = 9.81; ColVec T; Matrix Y;
                 double[] y0 = [0, 1, 1, 0, 1 - g], interval = [0, 6];
                 var opts = Odeset(Stats: true, RelTol: 1e-6);
-                double[,] Mass = Diag([1, 1, 1, 1, 0]);
+                Matrix Mass = Diag([1, 1, 1, 1, 0]);
                 Matrix Error(Matrix Y) => Hcart(Abs(Y[.., 0].Pow(2) + Y[.., 1].Pow(2) - 1),
                                                 Abs(Y[.., 0].Times(Y[.., 2]) + Y[.., 1].Times(Y[.., 3])));
                 void ResultPloter(ColVec T, Matrix Y, int index)
@@ -461,19 +459,19 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 }
 
                 // Index 0
-                (T, Y, _) = Ode45((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+                (T, Y) = Ode45((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
                         -2 * y[4] * (y[0] * y[2] + y[1] * y[3]) - 3 * g * y[3]],
                         y0, interval, opts); ResultPloter(T, Y, 0);
                 // Index 1
-                (T, Y, _) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+                (T, Y) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
                          y[2]*y[2] + y[3]*y[3] - y[1] * g - y[4]], Mass, 
                          y0, interval, opts); ResultPloter(T, Y, 1);
                 // Index 2
-                (T, Y, _) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+                (T, Y) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
                          y[0]*y[2] + y[1]*y[3]], Mass, 
                          y0, interval, opts); ResultPloter(T, Y, 2);
                 // Index 3
-                (T, Y, _) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
+                (T, Y) = Ode43a((t, y) => [y[2], y[3], -y[0] * y[4], -y[1] * y[4] - g,
                          y[0]*y[0] + y[1]*y[1] - 1], Mass, 
                          y0, interval, opts); ResultPloter(T, Y, 3);
 

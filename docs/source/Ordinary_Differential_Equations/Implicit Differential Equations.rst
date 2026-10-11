@@ -77,7 +77,7 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    
    
       // Now solve the implicit ODE using Ode43i
-      var (T, Y, Yp, _) = Ode43i(F, (y0, yp0), [0, 5], opts);
+      var (T, Y, Yp) = Ode43i(F, (y0, yp0), [0, 5], opts);
    
       // Plot the results
       Scatter(T, Y, "fob"); HoldOn();
@@ -182,7 +182,7 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
       (y0, yp0) = decic(F, t0, y0, 1, yp0, 0);
    
       // Now solve the implicit ODE using Ode43i
-      var (T, Y, Yp, _) = Ode43i(F, (y0, yp0), [t0, 5], opts);
+      var (T, Y, Yp) = Ode43i(F, (y0, yp0), [t0, 5], opts);
    
       // Plot the results
       Scatter(T, Y, "fob"); HoldOn();
@@ -247,20 +247,20 @@ To solve the clairaut's equation, we can rearrange it to fit the form :math:`F(x
    .. code-block:: csharp
    
       //define ODE
-      double[] robertsonimplicit(double t, double[] y, double[] yp) =>
+      ColVec robertsonimplicit(double t, ColVec y, ColVec yp) =>
           [yp[0] + 0.04 * y[0] - 1e4 * y[1]*y[2],
            yp[1] - 0.04 * y[0] + 1e4 * y[1]*y[2] + 3e7*y[1]*y[1],
            y[0] + y[1] + y[2] - 1];
    
       // Set intial conditions for y0 and guess values for yp0
-      double[] y0 = [1, 0, 0], yp0 = [0, 0, 0];
+      ColVec y0 = [1, 0, 0], yp0 = [0, 0, 0];
    
       // Solve for yp0, Truth array for y0 = [1,1,1] but for yp0 it is [0,0,0]. 
       (y0, yp0) = decic(robertsonimplicit, 0, y0, [1, 1, 0], yp0, [0, 0, 0]);
    
       var opts = Odeset(Stats: true);
       //Solve ODE
-      (ColVec T, Matrix Y, Matrix Yp, _) = Ode43i(robertsonimplicit, (y0, yp0), Logspace(-6,6.6), opts);
+      (ColVec T, Matrix Y, Matrix Yp) = Ode43i(robertsonimplicit, (y0, yp0), Logspace(-6,6.6), opts);
       // Plot the result
       Y[.., 1] = 1e4 * Y[.., 1];
       SemiLogx(T, Y);
@@ -280,7 +280,7 @@ Ouput
       Summary of statistics by Ode43i
               118 successful steps
               0 failed attempts
-              3224 function evaluations
+              3225 function evaluations
               118 partial derivatives
               472 LU decompositions
               1919 solutions of linear systems
@@ -316,7 +316,7 @@ Ouput
    .. code-block:: csharp
    
       //define ODE
-      double[] robertsonimplicit(double t, double[] y, double[] yp) =>
+      ColVec robertsonimplicit(double t, ColVec y, ColVec yp) =>
           [yp[0] + 0.04 * y[0] - 1e4 * y[1]*y[2],
            yp[1] - 0.04 * y[0] + 1e4 * y[1]*y[2] + 3e7*y[1]*y[1],
            y[0] + y[1] + y[2] - 1];
@@ -336,12 +336,12 @@ Ouput
           }));
    
       // Set intial conditions for y0 and guess values for yp0
-      double[] y0 = [1, 0, 0], yp0 = [0, 0, 0];
+      ColVec y0 = [1, 0, 0], yp0 = [0, 0, 0];
    
       // Solve for yp0, Truth array for y0 = [1,1,1] but for yp0 it is [0,0,0]. 
       (y0, yp0) = decic(robertsonimplicit, 0, y0, [1, 1, 0], yp0, [0, 0, 0]);
       //Solve ODE
-      (ColVec T, Matrix Y, Matrix Yp, _) = Ode43i(robertsonimplicit, (y0, yp0), Logspace(-6, 6.6), opts);
+      (ColVec T, Matrix Y, Matrix Yp) = Ode43i(robertsonimplicit, (y0, yp0), Logspace(-6, 6.6), opts);
       // Plot the result
       Y[.., 1] = 1e4 * Y[.., 1];
       SemiLogx(T, Y);

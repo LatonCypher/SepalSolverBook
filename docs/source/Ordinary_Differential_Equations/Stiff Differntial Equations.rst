@@ -50,11 +50,11 @@ SepalSolver impelements ODE43s for stiff differential equation. This is an embed
    .. code-block:: csharp
    
       //define ODE
-      double[] vdp2(double t, double[] y)=>
+      ColVec vdp2(double t, ColVec y)=>
           [y[1], 1e5*((1 - y[0] * y[0]) * y[1] - y[0])];
    
       //Solve ODE
-      (ColVec T, Matrix Y, _) = Ode43s(vdp2, [2, 0], [0, 6.3]);
+      (ColVec T, Matrix Y) = Ode43s(vdp2, [2, 0], [0, 6.3]);
       // Plot the result
       Plot(T, Y);
       Axis([0, 6.3, -10, 10]);
@@ -95,13 +95,13 @@ SepalSolver impelements ODE43s for stiff differential equation. This is an embed
    .. code-block:: csharp
    
       //define ODE
-      double[] robertson(double t, double[] y) =>
+      ColVec robertson(double t, ColVec y) =>
           [-0.04 * y[0] + 1e4 * y[1]*y[2],
             0.04 * y[0] - 1e4 * y[1]*y[2] - 3e7*y[1]*y[1],
             3e7*y[1]*y[1]];
    
       //Solve ODE
-      (ColVec T, Matrix Y, _) = Ode43s(robertson, [1, 0, 0], Logspace(-6, 6.6));
+      (ColVec T, Matrix Y) = Ode43s(robertson, [1, 0, 0], Logspace(-6, 6.6));
       // Plot the result
       Y[.., 1] = 1e4*Y[.., 1];
       SemiLogx(T, Y);
@@ -127,7 +127,7 @@ SepalSolver impelements ODE43s for stiff differential equation. This is an embed
 .. code-block:: csharp
 
    //define ODE
-   double[] robertson(double t, double[] y) =>
+   ColVec robertson(double t, ColVec y) =>
        [-0.04 * y[0] + 1e4 * y[1]*y[2],
          0.04 * y[0] - 1e4 * y[1]*y[2] - 3e7*y[1]*y[1],
          3e7*y[1]*y[1]];
@@ -164,7 +164,7 @@ SepalSolver impelements ODE43s for stiff differential equation. This is an embed
    .. code-block:: csharp
    
       //define ODE
-      double[] robertson(double t, double[] y) =>
+      ColVec robertson(double t, ColVec y) =>
           [-0.04 * y[0] + 1e4 * y[1]*y[2],
             0.04 * y[0] - 1e4 * y[1]*y[2] - 3e7*y[1]*y[1],
             3e7*y[1]*y[1]];
@@ -172,7 +172,7 @@ SepalSolver impelements ODE43s for stiff differential equation. This is an embed
       //Solve ODE
       // Here we chose reltol = 1e-4(defult is 1e-3), abstol = 1e-7(default is 1e-6)
       var opts = Odeset(RelTol: 1e-4, AbsTol: 1e-7);
-      (ColVec T, Matrix Y, _) = Ode43s(robertson, [1, 0, 0], Logspace(-6, 6.6), opts);
+      (ColVec T, Matrix Y) = Ode43s(robertson, [1, 0, 0], Logspace(-6, 6.6), opts);
    
    
    
@@ -185,7 +185,7 @@ SepalSolver impelements ODE43s for stiff differential equation. This is an embed
    .. code-block:: csharp
    
       //define ODE
-      double[] robertson(double t, double[] y) =>
+      ColVec robertson(double t, ColVec y) =>
           [-0.04 * y[0] + 1e4 * y[1]*y[2],
             0.04 * y[0] - 1e4 * y[1]*y[2] - 3e7*y[1]*y[1],
             3e7*y[1]*y[1]];

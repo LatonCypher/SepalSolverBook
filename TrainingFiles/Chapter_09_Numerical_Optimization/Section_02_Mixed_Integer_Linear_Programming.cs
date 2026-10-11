@@ -55,7 +55,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             /// <code>      
             {
                 // SOLVE_MILP Solves Mixed-Integer LP where specific variables are constrained to integers
-                double[,] A = new double[,]{
+                Matrix A = new double[,]{
                     { 1.00,  1.00 },
                     { 1.00,  0.25 },
                     { 1.00, -1.00 },
@@ -64,8 +64,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
                     {-1.00,  1.00 }
                 };
 
-                double[] b = [2, 1, 2, 1, -1, 2];
-                double[] f = [-1, -1.0 / 3];
+                ColVec b = [2, 1, 2, 1, -1, 2];
+                RowVec f = [-1, -1.0 / 3];
 
                 // Define 1-based or 0-based indices of variables that must be integers (e.g., x1 is integer)
                 int[] intCon = [0];
@@ -83,7 +83,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             ///
             /// <code>
             {
-                double[,] A = new double[,]{
+                Matrix A = new double[,]{
                     { 1.00,  1.00 },
                     { 1.00,  0.25 },
                     { 1.00, -1.00 },
@@ -92,12 +92,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
                     {-1.00,  1.00 }
                 };
 
-                double[] b = [2, 1, 2, 1, -1, 2];
-                double[] f = [-1, -1.0 / 3];
+                ColVec b = [2, 1, 2, 1, -1, 2];
+                RowVec f = [-1, -1.0 / 3];
                 int[] intCon = [0, 1]; // Both x1 and x2 must be integer values
 
-                double[,] Aeq = new double[,] { { 1, 1.0 / 4 } };
-                double[] beq = [1.0 / 2];
+                Matrix Aeq = new double[,] { { 1, 1.0 / 4 } };
+                ColVec beq = [1.0 / 2];
 
                 var result = Intlinprog(f, intCon, A, b, Aeq, beq);
                 Console.WriteLine(result);
@@ -114,7 +114,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
             ///
             /// <code>
             {
-                double[,] A = new double[,]{
+                Matrix A = new double[,]{
                     { 1.00,  1.00 },
                     { 1.00,  0.25 },
                     { 1.00, -1.00 },
@@ -123,13 +123,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_09_Numerical_Optimization
                     {-1.00,  1.00 }
                 };
 
-                double[] b = [2, 1, 2, 1, -1, 2];
-                double[] f = [-1, -1.0 / 3];
+                ColVec b = [2, 1, 2, 1, -1, 2];
+                RowVec f = [-1, -1.0 / 3];
                 int[] intCon = [0, 1];
 
-                double[,] Aeq = new double[,] { { 1, 1.0 / 4 } };
-                double[] beq = [1.0 / 2];
-                double[] Lb = [-1, -0.5], Ub = [1.5, 1.25];
+                Matrix Aeq = new double[,] { { 1, 1.0 / 4 } };
+                ColVec beq = [1.0 / 2];
+                ColVec Lb = [-1, -0.5], Ub = [1.5, 1.25];
 
                 var result = Intlinprog(f, intCon, A, b, Aeq, beq, Lb, Ub);
                 Console.WriteLine(result);

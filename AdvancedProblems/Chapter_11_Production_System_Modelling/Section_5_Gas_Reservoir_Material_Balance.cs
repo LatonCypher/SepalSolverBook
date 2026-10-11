@@ -192,11 +192,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             /// Given the production history of Gas Reservoir below
             /// <code>
             {
-                double[] P = [2500, 2100, 1700, 1300, 900, 500];
-                double[] G = [14.2314, 24.9498, 37.6355, 51.0163, 63.4889, 74.2625];
-                double[] Z = [0.7027, 0.6949, 0.7120, 0.7564, 0.8219, 0.8988];
-
-                double[] PZ = [.. P.Zip(Z, (p, z) => p/z)];
+                ColVec P = [2500, 2100, 1700, 1300, 900, 500];
+                ColVec G = [14.2314, 24.9498, 37.6355, 51.0163, 63.4889, 74.2625];
+                ColVec Z = [0.7027, 0.6949, 0.7120, 0.7564, 0.8219, 0.8988];
+                ColVec PZ = [.. P.Zip(Z, (p, z) => p/z)];
 
                 var p = Polyfit(G, PZ, 1);
                 double GIIP = -p[1]/p[0];

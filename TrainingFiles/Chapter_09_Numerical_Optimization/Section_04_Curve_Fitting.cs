@@ -28,8 +28,8 @@
                 // 1. Observed Experimental Data Points
                 // -------------------------------------------------------------------------
                 // Sample discrete measurements exhibiting parabolic curvature (inverted peak)
-                double[] xData = [1.0, 2.0, 3.0, 4.0, 5.0];
-                double[] yData = [2.2, 3.0, 3.2, 2.5, 1.1];
+                ColVec xData = [1.0, 2.0, 3.0, 4.0, 5.0];
+                ColVec yData = [2.2, 3.0, 3.2, 2.5, 1.1];
 
                 // -------------------------------------------------------------------------
                 // 2. Linear Least-Squares Polynomial Regression
@@ -285,7 +285,7 @@
                 // -------------------------------------------------------------------------
                 ColVec noise;
                 ColVec weight = new double[100]; // Pre-allocate weight vector of length 100
-                double[] x0;                     // Parameter vector placeholder
+                ColVec x0;                       // Parameter vector placeholder
 
                 // -------------------------------------------------------------------------
                 // 2. Forward Bi-Exponential Model Definition
@@ -398,8 +398,8 @@
                 // 1. Observed Data Setup
                 // -------------------------------------------------------------------------
                 // Raw experimental time series and decaying response measurements
-                ColVec xdata = new([0.9, 1.5, 13.8, 19.8, 24.1, 28.2, 35.2, 60.3, 74.6, 81.3]);
-                ColVec ydata = new([455.2, 428.6, 124.1, 67.3, 43.2, 28.1, 13.1, -0.4, -1.3, -1.5]);
+                ColVec xdata = [0.9, 1.5, 13.8, 19.8, 24.1, 28.2, 35.2, 60.3, 74.6, 81.3];
+                ColVec ydata = [455.2, 428.6, 124.1, 67.3, 43.2, 28.1, 13.1, -0.4, -1.3, -1.5];
 
                 // Smooth evaluation grid spanning from min to max observed times
                 // xdata[^1] accesses the last element using C# index from end
@@ -414,7 +414,7 @@
                 static ColVec Fun(ColVec x, ColVec xdata) => x[0] * Exp(x[1] * xdata);
 
                 // Initial parameter estimates: x0 = [amplitude, decay_rate]
-                ColVec x0 = new([100.0, -1.0]);
+                ColVec x0 = [100.0, -1.0];
 
                 // -------------------------------------------------------------------------
                 // 3. Solver Configuration & Optimization

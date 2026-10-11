@@ -86,11 +86,11 @@ Ouput
    
    .. code-block:: csharp
    
-      double[] fun(double[] x) => [3 * x[0] - Cos(x[1] * x[2]) - 0.5,
+      ColVec fun(ColVec x) => [3 * x[0] - Cos(x[1] * x[2]) - 0.5,
                                    x[0] * x[0] - 81*Pow(x[1] + 0.1, 2) + Sin(x[2]) + 1.06,
                                    Exp(-x[0] * x[1]) + 20 * x[2] + (10 * pi - 3) / 3];
       // set initial guess
-      double[] x0 = [0.1, 0.1, -0.1];
+      ColVec x0 = [0.1, 0.1, -0.1];
    
       // call the solver
       var x = Fsolve(fun, x0);
@@ -214,7 +214,7 @@ This parameter(s) can be exploited to provide means to guarantee that a good ini
    .. code-block:: csharp
    
       // Parameterized nonlinear equations
-      double[] paramfun(ColVec x, double c)
+      ColVec paramfun(ColVec x, double c)
       {
           return [ 2*x[0] + x[1]  - Exp(-c*x[0]),
           -x[0] + 2*x[1]  - Exp(-c*x[1])];
@@ -224,7 +224,7 @@ This parameter(s) can be exploited to provide means to guarantee that a good ini
       RowVec C = Linspace(0, 20, 200);
    
       // initial guess as solution of linear system when c = 0.
-      ColVec x = new double[] { 0.2, 0.6 };
+      ColVec x = [ 0.2, 0.6 ];
    
       // setting maximum iteration number
       var opts = SolverSet(MaxIter: 1000);

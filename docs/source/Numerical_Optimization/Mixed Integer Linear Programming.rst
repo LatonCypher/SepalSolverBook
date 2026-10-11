@@ -53,7 +53,7 @@ Enforcing integer restrictions on selected decision variables by providing an in
 .. code-block:: csharp
 
    // SOLVE_MILP Solves Mixed-Integer LP where specific variables are constrained to integers
-   double[,] A = new double[,]{
+   Matrix A = new double[,]{
        { 1.00,  1.00 },
        { 1.00,  0.25 },
        { 1.00, -1.00 },
@@ -62,8 +62,8 @@ Enforcing integer restrictions on selected decision variables by providing an in
        {-1.00,  1.00 }
    };
 
-   double[] b = [2, 1, 2, 1, -1, 2];
-   double[] f = [-1, -1.0 / 3];
+   ColVec b = [2, 1, 2, 1, -1, 2];
+   RowVec f = [-1, -1.0 / 3];
 
    // Define 1-based or 0-based indices of variables that must be integers (e.g., x1 is integer)
    int[] intCon = [0];

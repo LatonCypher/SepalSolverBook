@@ -59,13 +59,13 @@ These are examples of how to use SepalSolver to solve various systems of first-o
    .. code-block:: csharp
    
       // Define the ODE as a function
-      double[] dydt(double t, double[] y) => [ y[1], -y[0] ];
+      ColVec dydt(double t, ColVec y) => [ y[1], -y[0] ];
       // Initial condition
       double[] y0 = [1.0, 0.0];
       // Time span
       double[] tspan = [0, 20];
       // Solve the ODE using Ode45
-      (ColVec T, Matrix Y, _) = Ode45(dydt, y0, tspan);
+      (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
       // Plot the results
       Plot(T, Y, Linewidth: 2);
       Xlabel("Time t");
@@ -98,7 +98,7 @@ These are examples of how to use SepalSolver to solve various systems of first-o
    
       // Define the ODE as a function
       double alpha = 1.0, beta = 0.01, delta = 0.02, gamma = 1.0;
-      double[] dydt(double t, double[] y) => [
+      ColVec dydt(double t, ColVec y) => [
           alpha * y[0] - beta * y[0] * y[1],
           delta * y[0] * y[1] - gamma * y[1]];
       // Initial condition
@@ -138,7 +138,7 @@ These are examples of how to use SepalSolver to solve various systems of first-o
    
       // Define the ODE as a function
       double sigma = 10.0, rho = 28.0, beta = 8.0 / 3.0;
-      double[] dydt(double t, double[] y) => [
+      ColVec dydt(double t, ColVec y) => [
           sigma * (y[1] - y[0]),
           y[0] * (rho - y[2]) - y[1],
           y[0] * y[1] - beta * y[2]];
@@ -147,7 +147,7 @@ These are examples of how to use SepalSolver to solve various systems of first-o
       // Time span
       double[] tspan = [ 0, 30 ];
       // Solve the ODE using Ode45
-      (ColVec T, Matrix Y, _) = Ode45(dydt, y0, tspan);
+      (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
       //  Plot the results
       Plot(T, Y, Linewidth: 2);
       Legend(["x", "y", "z"], UpperLeft);
@@ -180,7 +180,7 @@ These are examples of how to use SepalSolver to solve various systems of first-o
    
       // Define the ODE as a function
       double betaSIR = 0.3, gammaSIR = 0.1, N = 1000.0;
-      double[] dydt(double t, double[] y) => [
+      ColVec dydt(double t, ColVec y) => [
           -betaSIR * y[0] * y[1] / N,
            betaSIR * y[0] * y[1] / N - gammaSIR * y[1],
            gammaSIR * y[1]];
@@ -189,7 +189,7 @@ These are examples of how to use SepalSolver to solve various systems of first-o
       // Time span
       double[] tspan = [0, 160];
       // Solve the ODE using Ode45
-      (ColVec T, Matrix Y, _) = Ode45(dydt, y0, tspan);
+      (ColVec T, Matrix Y) = Ode45(dydt, y0, tspan);
       //  Plot the results
       Plot(T, Y, Linewidth: 2);
       Legend(["S", "I", "R"], MiddleLeft);
@@ -222,7 +222,7 @@ These are examples of how to use SepalSolver to solve various systems of first-o
    
       // Define the ODE as a function
       double A = 1.0, B = 3.0;
-      double[] dydt(double t, double[] y) => [
+      ColVec dydt(double t, ColVec y) => [
           A - (B + 1.0) * y[0] + y[0] * y[0] * y[1],
           B * y[0] - y[0] * y[0] * y[1]];
    

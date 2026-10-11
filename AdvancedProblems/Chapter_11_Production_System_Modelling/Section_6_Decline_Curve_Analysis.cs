@@ -85,10 +85,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             /// <code>
             {
                 // Data: t (months), q (STB/day)
-                double[] t = [1, 2, 3, 4, 5];
-                double[] q = [950, 905, 860, 820, 780];
+                ColVec t = [1, 2, 3, 4, 5];
+                ColVec q = [950, 905, 860, 820, 780];
 
-                double[] Lnq = [..q.Select(Log)];
+                ColVec Lnq = [..q.Select(Log)];
 
                 var p = Polyfit(t, Lnq, 1);
 
@@ -98,8 +98,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
                 Console.WriteLine($"D = {D} per month");
                 Console.WriteLine($"q_i = {q_i} STB/day");
 
-                double[] T = Linspace(t[0], t[^1]);
-                double[] Q = [.. T.Select(t => q_i * Exp(-D*t))];
+                ColVec T = Linspace(t[0], t[^1]);
+                ColVec Q = [.. T.Select(t => q_i * Exp(-D*t))];
 
                 Scatter(t, q, "fob"); HoldOn();
                 Plot(T, Q, "r"); HoldOff();
@@ -119,11 +119,11 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             /// Practical Example:
             /// <code>
             {
-                double[] t = [1, 2, 3, 4, 5];
-                double[] q = [1000, 909, 833, 769, 714];
+                ColVec t = [1, 2, 3, 4, 5];
+                ColVec q = [1000, 909, 833, 769, 714];
 
 
-                double[] iq = [.. q.Select(q=>1/q)];
+                ColVec iq = [.. q.Select(q=>1/q)];
 
                 var p = Polyfit(t, iq, 1);
 
@@ -184,8 +184,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             /// <code>
             {
                 // Loss Ratio (a) calculated from historical data
-                double[] t = { 1, 2, 3, 4, 5 };
-                double[] loss_ratio = { 10.5, 11.0, 11.5, 12.0, 12.5 };
+                ColVec t = [1, 2, 3, 4, 5];
+                ColVec loss_ratio = [10.5, 11.0, 11.5, 12.0, 12.5];
 
             }
             /// </code>
@@ -212,8 +212,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             /// Using the given data
             /// <code>
             {
-                double[] t = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90];
-                double[] qt = [double.NaN, 990.05, 980.20, 970.45, 960.78, 951.23, 941.76, 932.39, 923.12, 913.93];
+                ColVec t = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90];
+                ColVec qt = [double.NaN, 990.05, 980.20, 970.45, 960.78, 951.23, 941.76, 932.39, 923.12, 913.93];
             }
             /// </code>
             /// 
@@ -223,11 +223,11 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             /// - 3. intercept is the :math:`q_i` and slope is the :math:`D`
             /// <code>
             {
-                double[] t = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90];
-                double[] qt = [double.NaN, 990.05, 980.20, 970.45, 960.78, 951.23, 941.76, 932.39, 923.12, 913.93];
+                ColVec t = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90];
+                ColVec qt = [double.NaN, 990.05, 980.20, 970.45, 960.78, 951.23, 941.76, 932.39, 923.12, 913.93];
                 // Compute Cumulative
-                double[] Np = Zeros(t.Length);
-                for (int i = 1; i < t.Length; i++)
+                ColVec Np = Zeros(t.Numel);
+                for (int i = 1; i < t.Numel; i++)
                     Np[i] = Np[i-1] + qt[i]*(t[i] - t[i-1]);
                 // Compute Slope and Intercept
                 double[] coeffs = Polyfit(Np[1..], qt[1..], 1);
@@ -249,13 +249,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_11_Production_System_Modelling
             /// Given this production history with shutdown
             /// <code>
             {
-                double[] qt = [990, 0, 980, 970, 0, 961, 951, 942, 0, 0, 932, 923, 914, 905];
-                double[] t = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140];
+                ColVec qt = [990, 0, 980, 970, 0, 961, 951, 942, 0, 0, 932, 923, 914, 905];
+                ColVec t = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140];
 
                 
 
-                double[] Np = Zeros(t.Length);
-                for (int i = 1; i < t.Length; i++)
+                ColVec Np = Zeros(t.Numel);
+                for (int i = 1; i < t.Numel; i++)
                     Np[i] = Np[i-1] + qt[i]*(t[i] - t[i-1]);
 
                 //filter

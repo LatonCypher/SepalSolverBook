@@ -23,8 +23,8 @@
             /// <code> 
             { 
                 // Define data points
-                double[] X = [1, 2, 3, 4]; 
-                double[] Y = [1, 4, 9, 16]; 
+                ColVec X = [1, 2, 3, 4]; 
+                ColVec Y = [1, 4, 9, 16]; 
                 int N = 2;
 
                 // Perform the fit
@@ -83,10 +83,10 @@
             /// <code> 
             {
                 // Example of polynomial fitting
-                double[] x = [1, 2, 3, 4, 5], y = [6, 9, 14, 21, 30];
+                ColVec x = [1, 2, 3, 4, 5], y = [6, 9, 14, 21, 30];
                 Scatter(x, y, "fob"); HoldOn();
 
-                double[] xp = Linspace(1, 5);
+                ColVec xp = Linspace(1, 5);
                 double[] fit1 = Polyfit(x, y, 1);
                 double[] yp1 = [.. xp.Select(x => Polyval(fit1, x))];
                 Plot(xp, yp1, "r");
