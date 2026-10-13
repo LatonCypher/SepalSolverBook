@@ -21,10 +21,10 @@ In SepalSolver, the BezierCurve method generates a series of points along a spli
 .. code-block:: csharp
 
    // Define three control points (X, Y)
-   double[] xControl = [0.0, 5.0, 10.0], yControl = [0.0, 10.0, 0.0];
+   ColVec xControl = [0.0, 5.0, 10.0], yControl = [0.0, 10.0, 0.0];
 
    // Generate 100 points along the smooth curve
-   int resolution = 100, L = xControl.Length-1, N = L, M = 0;
+   int resolution = 100, L = xControl.Numel-1, N = L, M = 0;
    double C = 0;
    ColVec t = Linspace(0, 1, resolution), s = 1 - t;
    ColVec x = xControl[0]*t.Pow(L), y = yControl[0]*t.Pow(L);

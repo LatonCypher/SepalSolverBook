@@ -234,7 +234,7 @@ Using an implicit time-integration scheme (Backward Euler) for stability:
    // Global assembly over elements
    for (int e = 0; e < numElements; e++)
    {
-       int[] nodes = [e, e + 1];
+       var nodes = e..(e + 2);
        K[nodes, nodes] += ke;
        M[nodes, nodes] += me;
    }
@@ -298,7 +298,7 @@ Constructing a Chebyshev differentiation matrix :math:`\mathbf{D}_N` to compute 
    // 1. Construct Chebyshev Differentiation Matrix D
    Matrix D = Zeros(N + 1, N + 1);
    ColVec c = Ones(N + 1);
-   c[[0, N]] = 2.0;
+   c[0] = 2.0; c[N] = 2.0;
 
    for (int i = 0; i <= N; i++)
    {

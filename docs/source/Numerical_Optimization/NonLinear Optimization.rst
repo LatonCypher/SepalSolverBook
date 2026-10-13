@@ -62,7 +62,7 @@ including gradient-based methods, derivative-free methods, and global optimizati
    
       static double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
       static ColVec Ineq(ColVec x) => Pow(x[0], 2) + Pow(x[1], 2) - 1;
-      double[] x0 = [0, 0];
+      ColVec x0 = [0, 0];
       var result = Fmincon(fun, x0, Ineq);
       Console.WriteLine($"x = {result.x.T}");
    
@@ -92,7 +92,7 @@ Ouput
       // Define Inequality constraint
       static ColVec Ineq(ColVec x) => Pow(x[0] - 0.333, 2) + Pow(x[1] - 0.333, 2) - 0.11111;
    
-      double[] lb = [0.0, 0.2], ub = [0.5, 0.8], x0 = [0.25, 0.25];
+      ColVec lb = [0.0, 0.2], ub = [0.5, 0.8], x0 = [0.25, 0.25];
    
       // Solve the optimization problem
       var result = Fmincon(fun, x0, Ineq, null, lb, ub);
@@ -141,7 +141,7 @@ Ouput
       static double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
       // Define Inequality constraint
       static ColVec Ineq(ColVec x) => Pow(x[0], 2) + Pow(x[1], 2) - 1;
-      double[] x0 = [0, 0];
+      ColVec x0 = [0, 0];
       var result = Fmincon(fun, x0, Ineq);
       Console.WriteLine($"x = {result.x.T}");
    
@@ -184,7 +184,7 @@ Ouput
       // Define Inequality constraint
       static ColVec Ineq(ColVec x) => Pow(x[0] - 0.333, 2) + Pow(x[1] - 0.333, 2) - 0.11111;
    
-      double[] lb = [0.0, 0.2], ub = [0.5, 0.8], x0 = [0.25, 0.25];
+      ColVec lb = [0.0, 0.2], ub = [0.5, 0.8], x0 = [0.25, 0.25];
    
       // Solve the constrained optimization problem
       var result = Fmincon(fun, x0, Ineq, null, lb, ub);
@@ -218,7 +218,7 @@ Ouput
    
       // Define unconstrained objective function
       static double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
-      double[] x0 = [-1.2, 1.0];
+      ColVec x0 = [-1.2, 1.0];
    
       // Solve using Nelder-Mead direct search
       var result = Fminsearch(fun, x0);
@@ -254,8 +254,7 @@ Ouput
       // Define the objective function
       static double fun(ColVec x) => 100 * Pow(x[1] - x[0] * x[0], 2) + Pow(1 - x[0], 2);
    
-      double[] lb = [-2.0, -2.0];
-      double[] ub = [2.0, 2.0];
+      ColVec lb = [-2.0, -2.0], ub = [2.0, 2.0];
    
       // Configure GA options
       var opts = OptimSet(PopulationSize: 100, MaxIter: 200);
@@ -274,6 +273,6 @@ Ouput
    
       Stopping: no improvement for too long.
       x = 
-         1.0189    1.0418
+         1.0572    1.1213
       
 

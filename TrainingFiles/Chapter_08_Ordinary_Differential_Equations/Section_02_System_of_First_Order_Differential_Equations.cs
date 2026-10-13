@@ -242,7 +242,7 @@
                 ColVec T = null; Matrix Y = null;
                 double err(double alp)
                 {
-                    (T, Y) = Ode45((t, y) => [y[1], y[2], -0.5*y[0]*y[2]], [0, 0, alp], [0, 6]);
+                    (T, Y) = Ode45((t, y) => [y[1], y[2], -0.5 * y[0] * y[2]], [0, 0, alp], [0, 6]);
                     return Y[^1, 1] - 1;
                 }
                 //Use a root finding method to find the value of alp that satisfies the boundary condition at t = 6
@@ -252,13 +252,13 @@
                 //Plot the solution
                 Plot(T, Y, Linewidth: 2);
                 Legend(["f", "f'", "f''"]);
-                Axis([0, 6, 0, 1.5]); 
-                Xlabel("$\\eta$", interpreter: Latex ); Ylabel("f and its derivatives");
+                Axis([0, 6, 0, 1.5]);
+                Xlabel("$\\eta$", interpreter: Latex); Ylabel("f and its derivatives");
                 Title("Blasius Equation With Estimated f''(0)");
                 SaveAs("Blasius-bounary-layer.png");
             }
             /// </code> 
-            /// </example>
+            /// </example>c
             /// </BookContent>
         }
     }

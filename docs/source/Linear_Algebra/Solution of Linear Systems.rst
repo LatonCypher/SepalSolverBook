@@ -160,8 +160,7 @@ Consider a phenomenon in which temperature and pressure are linearly related. i.
 .. code-block:: csharp
 
    // Data
-   double[] T = [10, 20, 30, 40, 50];
-   double[] P = [15, 23, 31, 38, 48];
+   ColVec T = [10, 20, 30, 40, 50], P = [15, 23, 31, 38, 48];
 
    // Construct least square problem
    Matrix A = T.Select(t => new RowVec([t, 1])).ToList();

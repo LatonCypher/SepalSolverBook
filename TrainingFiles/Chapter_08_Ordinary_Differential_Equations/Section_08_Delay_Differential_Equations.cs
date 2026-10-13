@@ -2,7 +2,7 @@ using System.Threading.Channels;
 
 namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 {
-    internal class Section_07_Delay_Differential_Equations
+    internal class Section_08_Delay_Differential_Equations
     {
         public static void Run()
         {

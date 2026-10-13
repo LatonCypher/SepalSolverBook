@@ -38,30 +38,6 @@
             <returns></returns>
             <exception cref="T:System.IndexOutOfRangeException"></exception>
         </member>
-        <member name="P:SepalSolver.ColVec.Item(SepalSolver.StepRange)">
-            <summary>
-            Indexes the column vector with a StepRange
-            </summary>
-            <param name="irange"></param>
-            <returns></returns>
-            <exception cref="T:System.Exception"></exception>
-        </member>
-        <member name="P:SepalSolver.ColVec.Item(SepalSolver.Indexer)">
-            <summary>
-            Indexes the column vector with an Indexer
-            </summary>
-            <param name="I"></param>
-            <returns></returns>
-            <exception cref="T:System.Exception"></exception>
-        </member>
-        <member name="P:SepalSolver.ColVec.Item(System.Index[])">
-            <summary>
-            Indexes the column vector with an array of Index
-            </summary>
-            <param name="iarray"></param>
-            <returns></returns>
-            <exception cref="T:System.Exception"></exception>
-        </member>
         <member name="M:SepalSolver.ColVec.op_Implicit(System.Double[])~SepalSolver.ColVec">
             <summary>
             
@@ -7415,14 +7391,6 @@
             <param name="iCol"></param>
             <returns></returns>
         </member>
-        <member name="P:SepalSolver.Matrix.Item(SepalSolver.Indexer,System.Int32[])">
-            <summary>
-            
-            </summary>
-            <param name="row"></param>
-            <param name="col"></param>
-            <returns></returns>
-        </member>
         <member name="P:SepalSolver.Matrix.Item(System.Int32[],SepalSolver.Indexer)">
             <summary>
             
@@ -7431,7 +7399,7 @@
             <param name="col"></param>
             <returns></returns>
         </member>
-        <member name="P:SepalSolver.Matrix.Item(System.Int32[],System.Int32[])">
+        <member name="P:SepalSolver.Matrix.Item(SepalSolver.Indexer,System.Int32[])">
             <summary>
             
             </summary>
@@ -7440,14 +7408,6 @@
             <returns></returns>
         </member>
         <member name="P:SepalSolver.Matrix.Item(System.Index,SepalSolver.Indexer)">
-            <summary>
-            
-            </summary>
-            <param name="row"></param>
-            <param name="col"></param>
-            <returns></returns>
-        </member>
-        <member name="P:SepalSolver.Matrix.Item(System.Index,System.Int32[])">
             <summary>
             
             </summary>
@@ -9551,22 +9511,6 @@
             </summary>
             <param name="col"></param>
             <returns></returns>
-        </member>
-        <member name="P:SepalSolver.RowVec.Item(SepalSolver.StepRange)">
-            <summary>
-            Indexes the row vector using a StepRange.
-            </summary>
-            <param name="jrange"></param>
-            <returns></returns>
-            <exception cref="T:System.Exception"></exception>
-        </member>
-        <member name="P:SepalSolver.RowVec.Item(System.Int32[])">
-            <summary>
-            Indexes the row vector with an Indexer
-            </summary>
-            <param name="J"></param>
-            <returns></returns>
-            <exception cref="T:System.Exception"></exception>
         </member>
         <member name="M:SepalSolver.RowVec.op_Implicit(System.Double[])~SepalSolver.RowVec">
             <summary>

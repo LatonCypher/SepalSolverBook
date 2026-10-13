@@ -344,7 +344,7 @@ We can take advantage of this broadcasting to easily make animation as shown bel
    
    // Add scatter points to circles
    HoldOn();
-   double[] scx = [], scy = [];
+   List<double> scx = [], scy = [];
    var sc = Scatter(scx, scy, "kof");
    HoldOff(); 
    

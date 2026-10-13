@@ -147,7 +147,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
                 
                 // Add scatter points to circles
                 HoldOn();
-                double[] scx = [], scy = [];
+                List<double> scx = [], scy = [];
                 var sc = Scatter(scx, scy, "kof");
                 HoldOff(); 
                 

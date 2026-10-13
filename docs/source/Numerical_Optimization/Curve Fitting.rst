@@ -30,8 +30,8 @@ Polynomial curve fitting constructs an :math:`n`-th degree polynomial model whos
    // 1. Observed Experimental Data Points
    // -------------------------------------------------------------------------
    // Sample discrete measurements exhibiting parabolic curvature (inverted peak)
-   double[] xData = [1.0, 2.0, 3.0, 4.0, 5.0];
-   double[] yData = [2.2, 3.0, 3.2, 2.5, 1.1];
+   ColVec xData = [1.0, 2.0, 3.0, 4.0, 5.0];
+   ColVec yData = [2.2, 3.0, 3.2, 2.5, 1.1];
 
    // -------------------------------------------------------------------------
    // 2. Linear Least-Squares Polynomial Regression
@@ -338,7 +338,7 @@ Bi-exponential models represent dual-rate decay processes commonly encountered i
    // -------------------------------------------------------------------------
    ColVec noise;
    ColVec weight = new double[100]; // Pre-allocate weight vector of length 100
-   double[] x0;                     // Parameter vector placeholder
+   ColVec x0;                       // Parameter vector placeholder
 
    // -------------------------------------------------------------------------
    // 2. Forward Bi-Exponential Model Definition
@@ -411,19 +411,20 @@ Ouput
 
                                                Norm of      First-order 
     Iteration   Func-count       Resnorm          step       optimality 
-        0            5          1.7216e0                       3.5719e0 
-        1           11         7.8432e-1     2.5668e-1         1.4749e0 
-        2           17         5.1237e-1     2.3438e-1        2.9734e-1 
-        3           23         4.3870e-1     5.0493e-1        1.3631e-1 
-        4           29         2.6439e-1      1.9503e0        6.6542e-1 
-        5           35         1.1764e-1      3.0454e0        7.4519e-1 
-        6           41         5.6204e-3     4.0455e-1        1.0547e-1 
-        7           47         4.0108e-3     3.8048e-1        9.1413e-2 
-        8           53         3.7104e-3     3.2237e-1        7.6100e-2 
-        9           59         3.3678e-3     1.9689e-1        3.2312e-2 
-       10           65         3.2974e-3     7.7743e-2        5.2889e-3 
-       11           71         3.2954e-3     1.4275e-2        1.8001e-4 
-       12           77         3.2954e-3     8.7372e-4        6.6978e-7 
+        0            5          1.6931e0                       3.5235e0 
+        1           11         7.7478e-1     2.5416e-1         1.4592e0 
+        2           17         5.0753e-1     2.3365e-1        2.9487e-1 
+        3           23         4.3245e-1     5.1169e-1        1.3906e-1 
+        4           29         2.5734e-1      1.9626e0        6.7044e-1 
+        5           35         1.0936e-1      2.9658e0        7.2107e-1 
+        6           41         5.9005e-3     4.1458e-1        9.0820e-2 
+        7           47         4.9806e-3     4.3848e-1        1.2680e-1 
+        8           53         4.6035e-3     3.7937e-1        1.1487e-1 
+        9           59         3.9850e-3     2.7624e-1        6.8401e-2 
+       10           65         3.6960e-3     1.5324e-1        2.1697e-2 
+       11           71         3.6643e-3     4.9285e-2        2.2346e-3 
+       12           77         3.6640e-3     6.3481e-3        3.7133e-5 
+       13           83         3.6640e-3     2.2406e-4        4.6243e-8 
 
 .. figure:: images/Bi_Exponential_Fitting.gif
    :align: center
@@ -491,8 +492,8 @@ Fitting single-exponential decay models to experimental measurements requires qu
    // 1. Observed Data Setup
    // -------------------------------------------------------------------------
    // Raw experimental time series and decaying response measurements
-   ColVec xdata = new([0.9, 1.5, 13.8, 19.8, 24.1, 28.2, 35.2, 60.3, 74.6, 81.3]);
-   ColVec ydata = new([455.2, 428.6, 124.1, 67.3, 43.2, 28.1, 13.1, -0.4, -1.3, -1.5]);
+   ColVec xdata = [0.9, 1.5, 13.8, 19.8, 24.1, 28.2, 35.2, 60.3, 74.6, 81.3];
+   ColVec ydata = [455.2, 428.6, 124.1, 67.3, 43.2, 28.1, 13.1, -0.4, -1.3, -1.5];
 
    // Smooth evaluation grid spanning from min to max observed times
    // xdata[^1] accesses the last element using C# index from end
@@ -507,7 +508,7 @@ Fitting single-exponential decay models to experimental measurements requires qu
    static ColVec Fun(ColVec x, ColVec xdata) => x[0] * Exp(x[1] * xdata);
 
    // Initial parameter estimates: x0 = [amplitude, decay_rate]
-   ColVec x0 = new([100.0, -1.0]);
+   ColVec x0 = [100.0, -1.0];
 
    // -------------------------------------------------------------------------
    // 3. Solver Configuration & Optimization
