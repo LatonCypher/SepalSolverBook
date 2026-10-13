@@ -19,10 +19,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// Where :math:`y \in \mathbb{R}^n` represents the state vector and :math:`g: \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}^n` represents a system of :math:`n` linear or non-linear boundary conditions.
             ///
             /// Boundary conditions generally fall into three structural categories:
-            /// | **Dirichlet (Essential):** Values of the state are prescribed directly at boundaries, :math:`y(a) = \alpha`.
-            /// | **Neumann (Natural):** Gradient fluxes are prescribed at boundaries, :math:`y'(a) = \beta`.
-            /// | **Robin / Mixed:** A linear or non-linear combination of state and gradient values is enforced, :math:`c_1 y(a) + c_2 y'(a) = \gamma`.
-            /// | **Asymptotic / Far-Field:** The domain is semi-infinite :math:`[0, \infty)`, and boundary conditions decay to free-stream limits: :math:`\lim_{x \to \infty} y(x) = y_\infty`.
+            ///     | **Dirichlet (Essential):** Values of the state are prescribed directly at boundaries, :math:`y(a) = \alpha`.
+            ///     | **Neumann (Natural):** Gradient fluxes are prescribed at boundaries, :math:`y'(a) = \beta`.
+            ///     | **Robin / Mixed:** A linear or non-linear combination of state and gradient values is enforced, :math:`c_1 y(a) + c_2 y'(a) = \gamma`.
+            ///     | **Asymptotic / Far-Field:** The domain is semi-infinite :math:`[0, \infty)`, and boundary conditions decay to free-stream limits: :math:`\lim_{x \to \infty} y(x) = y_\infty`.
             ///
             ///
             /// <header 2> 2. The Shooting Method </header>
