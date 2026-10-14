@@ -17,6 +17,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             ///
             /// <header 2> 2. The Concept of Index </header>
             /// The difficulty of solving a DAE is measured by its **index**. The most common definition is the **differentiation index**: the number of times you must differentiate the algebraic constraints to express the system as a set of explicit ODEs.
+            ///     
             ///     | **Index 0:** An ODE.
             ///     | **Index 1:** The most common solvable DAE (e.g., the algebraic variables can be solved for directly).
             ///     | **Higher Index (2+):** These are numerically unstable and usually require index reduction techniques before solving.

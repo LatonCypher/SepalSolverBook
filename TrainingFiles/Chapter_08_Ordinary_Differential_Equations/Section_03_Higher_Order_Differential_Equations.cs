@@ -1,8 +1,4 @@
-﻿using CSharpMath.Atom.Atoms;
-using HarfBuzzSharp;
-using SepalSolver;
-using System.Diagnostics.Metrics;
-using System.Security.Cryptography;
+﻿
 
 namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 {

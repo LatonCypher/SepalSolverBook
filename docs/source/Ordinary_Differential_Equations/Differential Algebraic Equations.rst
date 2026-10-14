@@ -13,10 +13,10 @@ If the Jacobian :math:`\cfrac{\partial F}{\partial y'}` is non-singular, the sys
 2. The Concept of Index
 -----------------------
 The difficulty of solving a DAE is measured by its **index**. The most common definition is the **differentiation index**: the number of times you must differentiate the algebraic constraints to express the system as a set of explicit ODEs.
-   
-   | **Index 0:** An ODE.
-   | **Index 1:** The most common solvable DAE (e.g., the algebraic variables can be solved for directly).
-   | **Higher Index (2+):** These are numerically unstable and usually require index reduction techniques before solving.
+
+| **Index 0:** An ODE.
+| **Index 1:** The most common solvable DAE (e.g., the algebraic variables can be solved for directly).
+| **Higher Index (2+):** These are numerically unstable and usually require index reduction techniques before solving.
 
 SepalSolver is able to get around this numerical instability of high index DAEs by using L-stable methods to solve them without the need for index reduction. 
 
@@ -125,7 +125,7 @@ Ouput
       Summary of statistics by Ode43a
               1054 successful steps
               16 failed attempts
-              30515 function evaluations
+              30516 function evaluations
               1070 partial derivatives
               4280 LU decompositions
               19799 solutions of linear systems
@@ -2091,7 +2091,7 @@ Ouput
    Summary of statistics by Ode43a
            1054 successful steps
            16 failed attempts
-           30516 function evaluations
+           30517 function evaluations
            1070 partial derivatives
            4280 LU decompositions
            19799 solutions of linear systems
@@ -2099,7 +2099,7 @@ Ouput
    Summary of statistics by Ode43a
            831 successful steps
            15 failed attempts
-           31650 function evaluations
+           31651 function evaluations
            846 partial derivatives
            3384 LU decompositions
            23173 solutions of linear systems

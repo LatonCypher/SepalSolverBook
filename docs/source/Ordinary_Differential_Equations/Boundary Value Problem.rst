@@ -12,6 +12,7 @@ The canonical two-point boundary value problem for a first-order system of ordin
 Where :math:`y \in \mathbb{R}^n` represents the state vector and :math:`g: \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}^n` represents a system of :math:`n` linear or non-linear boundary conditions.
 
 Boundary conditions generally fall into three structural categories:
+
 | **Dirichlet (Essential):** Values of the state are prescribed directly at boundaries, :math:`y(a) = \alpha`.
 | **Neumann (Natural):** Gradient fluxes are prescribed at boundaries, :math:`y'(a) = \beta`.
 | **Robin / Mixed:** A linear or non-linear combination of state and gradient values is enforced, :math:`c_1 y(a) + c_2 y'(a) = \gamma`.
@@ -311,7 +312,7 @@ Ouput
       Legend(["f' (M=0)", "h-1 (M=0)", "f' (M=5)", "h-1 (M=5)"], UpperRight, interpreter: Latex);
       Xlabel(@"\eta", fontsize: 16, interpreter: Latex);
       Title("Howarth Compressible Boundary Layer with Thermal Coupling");
-      Axis([0, 5, -0.5, 3.5]); GridOn();
+      Axis([0, 5, -0.1, 2.0]); GridOn();
       SaveAs("Howarth-Transformation-Compressible.png");
    
    
