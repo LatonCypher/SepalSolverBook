@@ -323,7 +323,287 @@
             }
             /// </code>
             /// 
-            /// <header 3> Example 4: Higher Order in time: Wave Equation 1D </header 3>
+            /// 
+            /// <header 3> Example 4: Coupled PDE-ODE System (Tubular Reactor with Lumped Pipe Wall) </header 3>
+            /// In chemical and thermal process engineering, distributed field variables across a continuous domain 
+            /// frequently couple with lumped, non-spatially varying components. A classic benchmark is a 
+            /// **Continuous Non-Isothermal Plug-Flow Reactor (PFR)** encased in a **lumped, high-conductivity metal pipe wall**.
+            ///
+            /// **Problem Description**
+            /// Fluid containing a reactant :math:`A` flows axially through a pipe of length :math:`L` at velocity :math:`u`. 
+            /// The reactant undergoes an irreversible, exothermic, first-order reaction:
+            ///
+            /// <math>
+            /// A \xrightarrow{k(T_w)} \text{Products} + (-\Delta H_{rxn})
+            /// </math>
+            ///
+            /// Due to convective flow, axial dispersion, and consumption, the concentration :math:`C(z, t)` varies across 
+            /// space and time, governed by an advection-dispersion-reaction PDE.
+            ///
+            /// Conversely, because the metal pipe wall has high thermal conductivity (low Biot number, :math:`\text{Bi} \ll 0.1`), 
+            /// spatial temperature gradients across the pipe wall are negligible. The pipe wall temperature :math:`T_w(t)` 
+            /// is spatially uniform and evolves over time according to an ODE that balances the total heat generated along the 
+            /// pipe against external convective cooling.
+            ///
+            /// **Governing Equations**
+            ///
+            /// 1. Reactant Concentration :math:`C(z, t)` (Distributed PDE in :math:`z \in [0, L]`):
+            ///
+            /// <math>
+            /// \frac{\partial C}{\partial t} = D_{ax} \frac{\partial^2 C}{\partial z^2} - u \frac{\partial C}{\partial z} - k_0 C \exp\left(-\frac{E_a}{R_g T_w}\right)
+            /// </math>
+            ///
+            /// Boundary conditions (Danckwerts type):
+            ///
+            /// <math>
+            /// \begin{aligned}
+            /// C(0, t) &= C_{in} \\
+            /// \left.\frac{\partial C}{\partial z}\right|_{z = L} &= 0
+            /// \end{aligned}
+            /// </math>
+            ///
+            /// 2. Lumped Pipe Wall Temperature :math:`T_w(t)` (Lumped ODE):
+            ///
+            /// <math>
+            /// M_w c_{p,w} \frac{d T_w}{d t} = (-\Delta H_{rxn}) A_c \int_{0}^{L} k_0 C(z, t) \exp\left(-\frac{E_a}{R_g T_w}\right) dz - U_{cool} A_{ext} (T_w - T_{cool})
+            /// </math>
+            ///
+            /// **Solving Coupled PDE-ODEs with `Pdepe`**
+            /// To embed the lumped ODE into `Pdepe`, we formulate a two-component state vector :math:`\mathbf{u} = \begin{bmatrix} C \\ T_w \end{bmatrix}`:
+            /// - Component 0 (:math:`C`): Standard PDE with diffusive flux :math:`f_0 = D_{ax} \frac{\partial C}{\partial z}` and convective-reaction source :math:`s_0 = -u \frac{\partial C}{\partial z} - r`.
+            /// - Component 1 (:math:`T_w`): By assigning zero spatial flux (:math:`f_1 = 0`), the spatial derivative drops out identically (:math:`\frac{\partial f_1}{\partial z} = 0`). The source term :math:`s_1` distributes the net thermal balance evenly across the domain, maintaining a spatially uniform temperature profile.
+            ///
+            /// <code>
+            {
+                // 1. Model, Geometric, and Thermal Parameters
+                double L = 1.0;                 // Pipe length (m)
+                double u_vel = 0.1;             // Axial convective velocity (m/s)
+                double D_ax = 0.005;            // Axial dispersion coefficient (m^2/s)
+                double k0 = 1.5e6;              // Arrhenius pre-exponential factor (1/s)
+                double Ea = 4.5e4;              // Activation energy (J/mol)
+                double Rg = 8.314;              // Universal gas constant (J/(mol*K))
+                double dH = -8.0e4;             // Exothermic heat of reaction (J/mol)
+                double C_in = 1000.0;           // Inlet feed concentration (mol/m^3)
+
+                // Lumped Pipe Wall Parameters
+                double r_pipe = 0.025;               // Pipe inner radius (m)
+                double Ac = pi * r_pipe * r_pipe;    // Pipe flow area (m^2)
+                double A_ext = 2.0 * pi * 0.03 * L;  // Casing cooling surface area (m^2)
+                double U_cool = 120.0;               // Heat transfer coefficient (W/(m^2*K))
+                double T_cool = 300.15;              // Coolant ambient temperature (K)
+                double Mw_cpw = 2.5e4;               // Wall thermal capacitance M_w * c_p,w (J/K)
+
+                // 2. PDE System Definition: c * du/dt = d/dz(f) + s
+                (ColVec c, ColVec f, ColVec s) PdeFun(double z, double t, ColVec u, ColVec dudz)
+                {
+                    double C = u[0], Tw = u[1];
+                    double dCdz = dudz[0];
+
+                    // Reaction rate
+                    double rate = k0 * C * Exp(-Ea / (Rg * Tw));
+
+                    // Capacities: c_C = 1, c_Tw = 1
+                    double[] cVec = [1.0, 1.0];
+
+                    // Fluxes: f_C has physical diffusion; f_Tw = 0 eliminates spatial gradients
+                    double[] fVec = [D_ax * dCdz, 0.0];
+
+                    // Sources: s_C includes advection + reaction; s_Tw accounts for net heat exchange
+                    double q_gen = (-dH) * Ac * L * rate;
+                    double q_loss = U_cool * A_ext * (Tw - T_cool);
+                    double s_Tw = (q_gen - q_loss) / Mw_cpw;
+
+                    double[] sVec = [-u_vel * dCdz - rate, s_Tw];
+
+                    return (cVec, fVec, sVec);
+                }
+
+                // 3. Initial Conditions: C(z, 0) = C_in, Tw(0) = T_cool
+                ColVec IcFun(double z) => [C_in, T_cool];
+
+                // 4. Boundary Conditions: p + q * f = 0
+                (ColVec pl, ColVec ql, ColVec pr, ColVec qr) BcFun(double zl, ColVec ul, double zr, ColVec ur, double t)
+                {
+                    // Left boundary (z = 0): Dirichlet for C, zero flux for Tw
+                    double[] pl = [ul[0] - C_in, 0.0], ql = [0.0, 1.0];
+
+                    // Right boundary (z = L): Zero diffusive flux for both C and Tw
+                    double[] pr = [0.0, 0.0], qr = [1.0, 1.0];
+
+                    return (pl, ql, pr, qr);
+                }
+
+                // 5. Mesh Discretization and Solver Execution
+                int m = 0; // Cartesian coordinate system
+                ColVec zMesh = Linspace(0.0, L, 51);
+                ColVec tMesh = Linspace(0.0, 30.0, 6);
+
+                // Solves and returns Ys[0] for C(z,t) and Ys[1] for Tw(z,t)
+                (ColVec t, Matrix[] Ys) = Pdepe(m, PdeFun, IcFun, BcFun, zMesh, tMesh);
+
+                Matrix C_sol = Ys[0];             // [TimeSteps x SpatialNodes] for Concentration
+                Matrix Tw_sol = Ys[1] - 273.15;   // [TimeSteps x SpatialNodes] for Temperature (°C)
+
+                Subplot(1, 2, 0);
+                Plot(zMesh, C_sol, Linewidth: 2); GridOn();
+                Title("Axial Concentration Profile C(z,t)");
+                Xlabel("Position z (m)"); Ylabel("Concentration (mol/m³)");
+                Legend(t.Select(time => $"t = {time:0.00} s"), UpperRight);
+
+                Subplot(1, 2, 1);
+                Plot(zMesh, Tw_sol, Linewidth: 2); GridOn();
+                Title("Lumped Wall Temperature T_w(t)");
+                Xlabel("Position z (m)"); Ylabel("Temperature (°C)");
+                Legend(t.Select(time => $"t = {time:0.00} s"), LowerRight);
+
+                SaveAs("Coupled_PDE_ODE_Reactor.png");
+                CloseFig();
+            }
+            /// </code>
+            /// 
+            /// <header 3> Example 5: Coupled PDE-ODE System (Cylindrical Battery Multi-Stage Thermal Runaway) </header 3>
+            /// In electrochemical safety engineering, thermal degradation within cylindrical lithium-ion cells 
+            /// (such as 18650 or 21700 form factors) presents a coupled thermo-chemical system. 
+            /// Heat generated by electrical abuse and chemical degradation diffuses radially through the jelly roll, 
+            /// while the degradation reactions themselves are governed by immobile, solid-phase chemical kinetics.
+            ///
+            /// **Problem Description**
+            /// Consider an 18650 cylindrical cell of radius :math:`R`. Under sustained abusive heating (such as a localized 
+            /// internal short circuit), the core temperature rises until it initiates a sequential cascade of exothermic chemical reactions:
+            /// 
+            /// | **1. Solid Electrolyte Interphase (SEI) Decomposition:** Breakdown of the protective passivating film at :math:`\sim 80\text{--}120^\circ\text{C}`.
+            /// | **2. Anode-Solvent Reaction:** Intercalated lithium within the graphite anode directly reduces the organic solvent at :math:`\sim 120\text{--}150^\circ\text{C}`.
+            /// | **3. Cathode-Electrolyte Decomposition:** Transition-metal oxide cathode breakdown releasing oxygen and igniting the electrolyte at :math:`>180^\circ\text{C}`.
+            ///
+            /// Because the chemical species are bound to the solid electrode matrix, they cannot diffuse through the cell. 
+            /// Their localized mass fractions :math:`c_1(r, t), c_2(r, t), c_3(r, t)` evolve purely in time at each radial position via ordinary differential equations. 
+            /// In contrast, the temperature field :math:`T(r, t)` is a distributed parabolic PDE governed by Fourier heat conduction in cylindrical coordinates.
+            ///
+            /// **Governing Equations**
+            ///
+            /// 1. Radial Temperature Field :math:`T(r, t)` (Distributed Parabolic PDE in :math:`r \in [0, R]`):
+            /// <math>
+            /// \rho c_p \frac{\partial T}{\partial t} = \frac{1}{r} \frac{\partial}{\partial r} \left( r \cdot k_{th} \frac{\partial T}{\partial r} \right) + \dot{q}_{joule} + \sum_{i=1}^{3} Q_i \dot{\omega}_i
+            /// </math>
+            ///
+            /// Boundary conditions (Centerline symmetry and casing convective cooling):
+            /// <math>
+            /// \begin{aligned}
+            /// \left.\frac{\partial T}{\partial r}\right|_{r=0} &= 0 \\
+            /// -k_{th} \left.\frac{\partial T}{\partial r}\right|_{r=R} &= h_{conv} \left( T(R, t) - T_{amb} \right)
+            /// \end{aligned}
+            /// </math>
+            ///
+            /// 2. Immobile Solid-State Reactants :math:`c_1, c_2, c_3` (Point-wise ODEs in time):
+            /// <math>
+            /// \begin{aligned}
+            /// \frac{\partial c_1}{\partial t} &= -\dot{\omega}_1 = -A_1 c_1 \exp\left(-\frac{E_{a,1}}{R_u T}\right) \\
+            /// \frac{\partial c_2}{\partial t} &= -\dot{\omega}_2 = -A_2 c_2 \exp\left(-\frac{E_{a,2}}{R_u T}\right) \\
+            /// \frac{\partial c_3}{\partial t} &= -\dot{\omega}_3 = -A_3 c_3 (1 - c_3) \exp\left(-\frac{E_{a,3}}{R_u T}\right)
+            /// \end{aligned}
+            /// </math>
+            ///
+            /// **Solving Coupled PDE-ODEs with `Pdepe`**
+            /// Setting the cylindrical geometry flag :math:`m = 1` evaluates the divergence operator in radial coordinates :math:`r^{-1}\frac{\partial}{\partial r}(r \cdot f)`. 
+            /// We define a 4-component state vector :math:`\mathbf{u} = [T, c_1, c_2, c_3]^T`:
+            /// | **Component 0 (:math:`T`):** Parabolic PDE with conductive flux :math:`f_0 = k_{th} \frac{\partial T}{\partial r}`, thermal capacitance :math:`c_0 = \rho c_p`, and combined source :math:`s_0 = \dot{q}_{joule} + \sum Q_i \dot{\omega}_i`.
+            /// | **Components 1, 2, 3 (:math:`c_1, c_2, c_3`):** Zero spatial flux (:math:`f_i = 0`), which reduces the radial divergence term to zero identically. With unit capacity :math:`c_i = 1`, these components evolve purely as local chemical kinetics ODEs coupled directly to the local temperature :math:`T(r, t)`.
+            ///
+            /// <code>
+            {
+                // 1. Geometric, Thermal, and Physical Parameters
+                int m = 1;                              // Cylindrical coordinate system (18650 cell)
+                double R = 0.009;                       // Cell outer radius (m) (9 mm)
+                double rho = 2300.0;                    // Effective cell density (kg/m^3)
+                double cp = 1100.0;                     // Specific heat capacity (J/(kg*K))
+                double kth = 3.5;                       // Thermal conductivity (W/(m*K))
+                double h_conv = 20.0;                   // Casing convective heat transfer coefficient (W/(m^2*K))
+                double T_amb = 300.15;                  // Ambient temperature (K) (27 °C)
+                double q_joule = 8.0e5;                 // Sustained internal abuse/short heat (W/m^3)
+                double Ru = 8.314;                      // Universal gas constant (J/(mol*K))
+
+                // Multi-Stage Arrhenius Reaction Parameters (SEI, Anode, Cathode)
+                double A1 = 1.667e15, Ea1 = 1.35e5, Q1 = 2.57e5 * rho; // SEI decomposition
+                double A2 = 2.500e13, Ea2 = 1.25e5, Q2 = 1.71e5 * rho; // Anode-solvent reaction
+                double A3 = 6.667e13, Ea3 = 1.40e5, Q3 = 3.14e5 * rho; // Cathode breakdown
+
+                // 2. Coupled PDE-ODE System Definition: c * du/dt = r^(-1) * d/dr(r * f) + s
+                (ColVec c, ColVec f, ColVec s) PdeFun(double r, double t, ColVec u, ColVec dudr)
+                {
+                    double T = u[0], c1 = u[1], c2 = u[2], c3 = u[3];
+                    double dTdr = dudr[0];
+
+                    // Reaction rates via Arrhenius kinetics
+                    double r1 = A1 * c1 * Exp(-Ea1 / (Ru * T));
+                    double r2 = A2 * c2 * Exp(-Ea2 / (Ru * T));
+                    double r3 = A3 * c3 * (1.0 - c3) * Exp(-Ea3 / (Ru * T));
+
+                    double q_chem = Q1 * r1 + Q2 * r2 + Q3 * r3;
+
+                    // Capacities: c_T = rho*cp, c_ci = 1
+                    double[] cVec = [rho * cp, 1.0, 1.0, 1.0];
+
+                    // Fluxes: f_T has physical diffusion; f_ci = 0 eliminates spatial transport
+                    double[] fVec = [kth * dTdr, 0.0, 0.0, 0.0];
+
+                    // Sources: thermal energy source and reactant consumption sinks
+                    double[] sVec = [q_joule + q_chem, -r1, -r2, -r3];
+
+                    return (cVec, fVec, sVec);
+                }
+
+                // 3. Initial Conditions: T(r, 0) = 100 °C, c1 = 1.0, c2 = 1.0, c3 = 0.04
+                ColVec IcFun(double r) => [373.15, 1.0, 1.0, 0.04];
+
+                // 4. Boundary Conditions: p + q * f = 0
+                (ColVec pl, ColVec ql, ColVec pr, ColVec qr) BcFun(double rl, ColVec ul, double rr, ColVec ur, double t)
+                {
+                    // Centerline (r = 0): Radial symmetry (zero flux for all components)
+                    double[] pl = [0.0, 0.0, 0.0, 0.0];
+                    double[] ql = [1.0, 1.0, 1.0, 1.0];
+
+                    // Surface (r = R): Convective cooling for T, zero flux for immobile reactants
+                    // -kth * dTdr = h_conv * (T - T_amb) ==> h_conv * (T - T_amb) + 1.0 * f_0 = 0
+                    double[] pr = [h_conv * (ur[0] - T_amb), 0.0, 0.0, 0.0];
+                    double[] qr = [1.0, 1.0, 1.0, 1.0];
+
+                    return (pl, ql, pr, qr);
+                }
+
+                // 5. Mesh Discretization and Solver Execution
+                ColVec rMesh = Linspace(0.0, R, 41);
+                ColVec tMesh = Linspace(0.0, 120.0, 13); // 120 s simulation tracking runaway
+
+                // Solves and returns Ys[0] for T, Ys[1] for c1, Ys[2] for c2, Ys[3] for c3
+                (ColVec t, Matrix[] Ys) = Pdepe(m, PdeFun, IcFun, BcFun, rMesh, tMesh);
+
+                Matrix T_sol = Ys[0] - 273.15; // Temperature across radius over time (°C)
+                Matrix c1_sol = Ys[1];         // SEI concentration field
+                Matrix c2_sol = Ys[2];         // Anode concentration field
+                Matrix c3_sol = Ys[3];         // Cathode concentration field
+
+                Subplot(1, 2, 0);
+                Plot(rMesh * 1000.0, T_sol, Linewidth: 2); GridOn();
+                Title("Radial Temperature Profiles T(r, t)");
+                Xlabel("Radial Position r (mm)"); Ylabel("Temperature (°C)");
+                Legend(t.Select(time => $"t = {time:0.0} s"), UpperRight);
+
+                Subplot(1, 2, 1);
+                // Plot core temporal history (node 0) of reactants undergoing rapid ignition
+                Plot(t, c1_sol[.., 0], "g-", Linewidth: 2); HoldOn();
+                Plot(t, c2_sol[.., 0], "m-", Linewidth: 2);
+                Plot(t, c3_sol[.., 0], "k-", Linewidth: 2); GridOn();
+                Title("Reactant Depletion at Cell Core (r = 0)");
+                Xlabel("Time t (s)"); Ylabel("Reactant Remaining Fraction");
+                Legend(["SEI Layer (c_1)", "Anode Solid (c_2)", "Cathode Active (c_3)"], UpperRight);
+                Axis([0, t[^1], -0.05, 1.05]);
+
+                SaveAs("Coupled_PDE_ODE_Battery_Runaway.png");
+                CloseFig();
+            }
+            /// </code>
+            /// 
+            /// <header 3> Example 5: Higher Order in time: Wave Equation 1D </header 3>
             /// This is haneld using the system of PDE just like we use system of ode to handle higher oder odes. 
             /// We first convert the higher oder derivative in time to system of first order time pdes. 
             /// 
@@ -431,7 +711,7 @@
             /// </code>
             /// 
             /// 
-            /// <header 3> Example 5: Higher Dimension: Wave Equation Example </header 3>
+            /// <header 3> Example 6: Higher Dimension: Wave Equation Example </header 3>
             /// For higher dimensions, the same method can be applied. This will be demonstrated using wave equation
             /// assume :math:`c > 0`
             ///  <math>
