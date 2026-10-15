@@ -17,10 +17,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             ///
             /// <header 2> 2. The Concept of Index </header>
             /// The difficulty of solving a DAE is measured by its **index**. The most common definition is the **differentiation index**: the number of times you must differentiate the algebraic constraints to express the system as a set of explicit ODEs.
-            ///     
-            ///     | **Index 0:** An ODE.
-            ///     | **Index 1:** The most common solvable DAE (e.g., the algebraic variables can be solved for directly).
-            ///     | **Higher Index (2+):** These are numerically unstable and usually require index reduction techniques before solving.
+            /// - **Index 0:** An ODE.
+            /// - **Index 1:** The most common solvable DAE (e.g., the algebraic variables can be solved for directly).
+            /// - **Higher Index (2+):** These are numerically unstable and usually require index reduction techniques before solving.
             /// 
             /// SepalSolver is able to get around this numerical instability of high index DAEs by using L-stable methods to solve them without the need for index reduction. 
             ///
@@ -43,14 +42,14 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// <code>
             {
                 ColVec robertson_f(double t, ColVec y) =>
-                    [(-0.04 * y[0] + 1e4 * y[1] * y[2]),
-                     (0.04 * y[0] - 1e4 * y[1] * y[2] - 3e7 * y[1]*y[1]),
+                    [-0.04 * y[0] + 1e4 * y[1] * y[2],
+                     0.04 * y[0] - 1e4 * y[1] * y[2] - 3e7 * y[1]*y[1],
                      y[0] + y[1] + y[2] - 1.0];
 
                 Matrix mass_f = Diag([1, 1, 0]);
-
                 double[] y0 = [1.0, 0.0, 0.0];
                 (ColVec T, Matrix Y) = Ode43a(robertson_f, mass_f, y0, Logspace(-6,6.6));
+                
                 // Plot the result
                 Y[.., 1] = 1e4*Y[.., 1];
                 SemiLogx(T, Y);
@@ -96,7 +95,6 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                      y[2]*y[2] + y[3]*y[3] - y[1] * g - y[4]];
 
                 Matrix mass_f = Diag([1, 1, 1, 1, 0]);
-
                 double[] y0 = [0, 1, 1, 0, 1 - g];
                 var opts = Odeset(Stats: true, RelTol: 1e-6);
                 (ColVec T, Matrix Y) = Ode43a(pendulum_f, mass_f, y0, [0, 6], opts);
@@ -163,12 +161,14 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             {
                 double Ub = 6, R0 = 1000, R15 = 9000, alpha = 0.99,
                     beta = 1e-6, Uf = 0.026, c1 = 1e-6, c2 = 2e-6, c3 = 3e-6;
-                Matrix Mass = Zeros(5, 5);
-                Mass[0, 0] = -c1; Mass[0, 1] = c1;
-                Mass[1, 0] = c1; Mass[1, 1] = -c1;
-                Mass[2, 2] = -c2;
-                Mass[3, 3] = -c3; Mass[3, 4] = c3;
-                Mass[4, 3] = c3; Mass[4, 4] = -c3;
+                Matrix Mass = new double[,]
+                {
+                    {-c1,  c1,   0,   0,   0},
+                    { c1, -c1,   0,   0,   0},
+                    {  0,   0, -c2,   0,   0},
+                    {  0,   0,   0, -c3,  c3},
+                    {  0,   0,   0,  c3, -c3}
+                };
 
                 double Ue(double t) => 0.4 * Sin(200 * pi * t);
                 ColVec dudt(double t, ColVec u)

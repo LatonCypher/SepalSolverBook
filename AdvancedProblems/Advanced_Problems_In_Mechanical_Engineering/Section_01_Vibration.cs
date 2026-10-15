@@ -30,7 +30,7 @@ namespace ConsoleApp1.TrainingFiles.Summary_and_Conclusion.Advanced_Problems_In_
                     { f*Sin(theta), Cos(theta) }
                 };
 
-                Plot([-10, 10], [10, 10], "k", 10); HoldOn();
+                Plot([-10.0, 10.0], [10.0, 10.0], "k", 10); HoldOn();
                 coord = Rot * springcoord + Offset;
                 var spring = Plot(coord[0, ..].T, coord[1, ..].T, "k", 3);
                 var B1 = Fill(R1 * c + x1, R1 * s + y1, "r");
