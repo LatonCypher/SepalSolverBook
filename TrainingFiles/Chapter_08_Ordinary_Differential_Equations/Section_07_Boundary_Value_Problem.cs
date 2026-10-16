@@ -314,22 +314,18 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 // Branch 1: Lower (stable) solution branch
                 double s1 = Fsolve(fun, 0.5);
                 (ColVec X1, Matrix U1) = Ode45(bratu_f, [0.0, s1], tspan);
+                Console.WriteLine($"Branch 1 Wall Slope u'(0): {s1:F6}");
 
                 // Branch 2: Upper (unstable) solution branch
                 double s2 = Fsolve(fun, 4.0);
                 (ColVec X2, Matrix U2) = Ode45(bratu_f, [0.0, s2], tspan);
-
+                Console.WriteLine($"Branch 2 Wall Slope u'(0): {s2:F6}");
                 Plot(X1, U1[.., 0], "b", Linewidth: 2);
                 HoldOn();
                 Plot(X2, U2[.., 0], "r--", Linewidth: 2);
-
-                Console.WriteLine($"Branch 1 Wall Slope u'(0): {s1:F6}");
-                Console.WriteLine($"Branch 2 Wall Slope u'(0): {s2:F6}");
-
                 Legend(["Lower Branch (Stable)", "Upper Branch (Unstable)"], LowerCenter);
-                Xlabel("Coordinate x"); Ylabel("Temperature u(x)");
+                Xlabel("Coordinate x"); Ylabel("Temperature u(x)");  GridOn();
                 Title(@$"Bratu Problem Dual Solutions (\lambda = {lambda})", interpreter: Latex);
-                GridOn();
                 SaveAs("Bratu-Problem-Dual-Branches.png");
                 CloseFig();
             }
