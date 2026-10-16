@@ -7204,6 +7204,18 @@
             <param name="value">Matrix to be converted</param>
             <returns>array of integers</returns>
         </member>
+        <member name="M:SepalSolver.Matrix.GetEnumerator">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SepalSolver.Matrix.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:SepalSolver.Matrix.ToString">
             <summary>
             Converts Matrix to String for Console WriteLine. 

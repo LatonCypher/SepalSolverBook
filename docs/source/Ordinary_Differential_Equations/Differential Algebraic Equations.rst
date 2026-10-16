@@ -13,6 +13,7 @@ If the Jacobian :math:`\cfrac{\partial F}{\partial y'}` is non-singular, the sys
 2. The Concept of Index
 -----------------------
 The difficulty of solving a DAE is measured by its **index**. The most common definition is the **differentiation index**: the number of times you must differentiate the algebraic constraints to express the system as a set of explicit ODEs.
+
 - **Index 0:** An ODE.
 - **Index 1:** The most common solvable DAE (e.g., the algebraic variables can be solved for directly).
 - **Higher Index (2+):** These are numerically unstable and usually require index reduction techniques before solving.
@@ -48,9 +49,9 @@ Where :math:`M` is a singular matrix.
            y[0] + y[1] + y[2] - 1.0];
    
       Matrix mass_f = Diag([1, 1, 0]);
-   
       double[] y0 = [1.0, 0.0, 0.0];
       (ColVec T, Matrix Y) = Ode43a(robertson_f, mass_f, y0, Logspace(-6,6.6));
+      
       // Plot the result
       Y[.., 1] = 1e4*Y[.., 1];
       SemiLogx(T, Y);
@@ -104,7 +105,6 @@ Where :math:`M` is a singular matrix.
            y[2]*y[2] + y[3]*y[3] - y[1] * g - y[4]];
    
       Matrix mass_f = Diag([1, 1, 1, 1, 0]);
-   
       double[] y0 = [0, 1, 1, 0, 1 - g];
       var opts = Odeset(Stats: true, RelTol: 1e-6);
       (ColVec T, Matrix Y) = Ode43a(pendulum_f, mass_f, y0, [0, 6], opts);
@@ -197,23 +197,24 @@ this initial condition y0 = [1, 0, 0, 1, 1];
    
       double Ub = 6, R0 = 1000, R15 = 9000, alpha = 0.99,
           beta = 1e-6, Uf = 0.026, c1 = 1e-6, c2 = 2e-6, c3 = 3e-6;
-      Matrix Mass = Zeros(5, 5);
-      Mass[0, 0] = -c1; Mass[0, 1] = c1;
-      Mass[1, 0] = c1; Mass[1, 1] = -c1;
-      Mass[2, 2] = -c2;
-      Mass[3, 3] = -c3; Mass[3, 4] = c3;
-      Mass[4, 3] = c3; Mass[4, 4] = -c3;
+      Matrix Mass = new double[,]
+      {
+          {-c1,  c1,   0,   0,   0},
+          { c1, -c1,   0,   0,   0},
+          {  0,   0, -c2,   0,   0},
+          {  0,   0,   0, -c3,  c3},
+          {  0,   0,   0,  c3, -c3}
+      };
    
       double Ue(double t) => 0.4 * Sin(200 * pi * t);
-      ColVec dudt(double t, ColVec u)
-      {
-          double f23 = beta * (Exp((u[1] - u[2]) / Uf) - 1);
-          return [ -(Ue(t) - u[0])/R0,
-                   -(Ub/R15 - u[1]*2/R15 - (1-alpha)*f23),
-                   -(f23 - u[2]/R15),
-                   -((Ub - u[3])/R15 - alpha*f23),
-                   u[4]/R15 ];
-      }
+      double f12(ColVec u) => beta * (Exp((u[1] - u[2]) / Uf) - 1);
+      ColVec dudt(double t, ColVec u) =>
+          [-(Ue(t) - u[0])/R0,
+           -(Ub/R15 - u[1]*2/R15 - (1-alpha)*f12(u)),
+           -(f12(u) - u[2]/R15),
+           -((Ub - u[3])/R15 - alpha*f12(u)),
+           u[4]/R15 ];
+      
       double[] tspan = [0, 0.1];
       double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
    
@@ -2090,7 +2091,7 @@ Ouput
    Summary of statistics by Ode43a
            1054 successful steps
            16 failed attempts
-           30517 function evaluations
+           30514 function evaluations
            1070 partial derivatives
            4280 LU decompositions
            19799 solutions of linear systems
@@ -2106,7 +2107,7 @@ Ouput
    Summary of statistics by Ode43a
            8756 successful steps
            19 failed attempts
-           282375 function evaluations
+           282376 function evaluations
            8775 partial derivatives
            35097 LU decompositions
            194608 solutions of linear systems

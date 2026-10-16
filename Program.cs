@@ -1,10 +1,6 @@
 ﻿using ConsoleApp1;
-using ScottPlot.AxisLimitManagers;
-using TorchSharp.Modules;
-using static SepalSolver.Statistics;
 {
     currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents\\AbimbolaPeter\\";
-    
     Writer.Run();
     {
         // BLASIUS_HERMITE_BVP Solves the Blasius boundary layer equation

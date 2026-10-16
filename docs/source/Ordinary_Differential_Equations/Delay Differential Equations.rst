@@ -79,6 +79,7 @@ Examples
       Xlabel("Time t");
       Ylabel("Population y(t)");
       SaveAs("Delayed_Logistic_Model.png");
+      CloseFig();
    
    
    .. figure:: images/Delayed_Logistic_Model.png
@@ -113,6 +114,7 @@ Examples
       Xlabel("Time t");
       Ylabel("State y(t)");
       SaveAs("Delayed_Linear_Feedback.png");
+      CloseFig();
    
    
    .. figure:: images/Delayed_Linear_Feedback.png
@@ -158,6 +160,7 @@ Examples
       Ylabel("Solution y(t)");
       Legend(["Dde45", "Exact cos(t)"], UpperLeft);
       SaveAs("Neutral_DDE_Verification.png");
+      CloseFig();
    
    
    .. figure:: images/Neutral_DDE_Verification.png
@@ -207,6 +210,7 @@ Examples
       Ylabel("State Variables");
       Legend(["y_1(t)", "y_2(t)"], UpperLeft);
       SaveAs("Coupled_2D_Delay_System.png");
+      CloseFig();
    
    
    .. figure:: images/Coupled_2D_Delay_System.png

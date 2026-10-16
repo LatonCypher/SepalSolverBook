@@ -172,15 +172,14 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 };
 
                 double Ue(double t) => 0.4 * Sin(200 * pi * t);
-                ColVec dudt(double t, ColVec u)
-                {
-                    double f23 = beta * (Exp((u[1] - u[2]) / Uf) - 1);
-                    return [ -(Ue(t) - u[0])/R0,
-                             -(Ub/R15 - u[1]*2/R15 - (1-alpha)*f23),
-                             -(f23 - u[2]/R15),
-                             -((Ub - u[3])/R15 - alpha*f23),
-                             u[4]/R15 ];
-                }
+                double f12(ColVec u) => beta * (Exp((u[1] - u[2]) / Uf) - 1);
+                ColVec dudt(double t, ColVec u) =>
+                    [-(Ue(t) - u[0])/R0,
+                     -(Ub/R15 - u[1]*2/R15 - (1-alpha)*f12(u)),
+                     -(f12(u) - u[2]/R15),
+                     -((Ub - u[3])/R15 - alpha*f12(u)),
+                     u[4]/R15 ];
+                
                 double[] tspan = [0, 0.1];
                 double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
 

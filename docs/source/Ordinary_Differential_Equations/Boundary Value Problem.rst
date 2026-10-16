@@ -109,6 +109,7 @@ In `SepalSolver`, this architecture couples the adaptive integrators (`Ode45`, `
       Title("Incompressible Blasius Boundary Layer", fontsize: 20);
       Axis([0, 10, 0, 1.1]); GridOn();
       SaveAs("Blasius-Incompressible-Shooting.png");
+      CloseFig();
    
    
    
@@ -194,6 +195,7 @@ Ouput
       Title("Blasius Profile via Non-Iterative Töpfer Scaling", fontsize: 20);
       Axis([0, Eta[^1], 0, 1.1]); GridOn();
       SaveAs("Blasius-Incompressible-Topfer.png");
+      CloseFig();
    
    
    
@@ -306,6 +308,7 @@ Ouput
       Title("Howarth Compressible Boundary Layer with Thermal Coupling");
       Axis([0, eta_inf, -0.1, 2.0]); GridOn();
       SaveAs("Howarth-Transformation-Compressible.png");
+      CloseFig();
    
    
    .. figure:: images/Howarth-Transformation-Compressible.png
@@ -358,11 +361,12 @@ Ouput
       Console.WriteLine($"Branch 1 Wall Slope u'(0): {s1:F6}");
       Console.WriteLine($"Branch 2 Wall Slope u'(0): {s2:F6}");
    
-      Legend(["Lower Branch (Stable)", "Upper Branch (Unstable)"], UpperCenter);
+      Legend(["Lower Branch (Stable)", "Upper Branch (Unstable)"], LowerCenter);
       Xlabel("Coordinate x"); Ylabel("Temperature u(x)");
-      Title($"Bratu Problem Dual Solutions (\\lambda = {lambda})");
+      Title(@$"Bratu Problem Dual Solutions (\lambda = {lambda})", interpreter: Latex);
       GridOn();
       SaveAs("Bratu-Problem-Dual-Branches.png");
+      CloseFig();
    
    
    

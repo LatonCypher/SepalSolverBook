@@ -77,6 +77,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 Xlabel("Time t");
                 Ylabel("Population y(t)");
                 SaveAs("Delayed_Logistic_Model.png");
+                CloseFig();
             }
             /// </code>
             /// </example>
@@ -105,6 +106,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 Xlabel("Time t");
                 Ylabel("State y(t)");
                 SaveAs("Delayed_Linear_Feedback.png");
+                CloseFig();
             }
             /// </code>
             /// </example>
@@ -144,6 +146,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 Ylabel("Solution y(t)");
                 Legend(["Dde45", "Exact cos(t)"], UpperLeft);
                 SaveAs("Neutral_DDE_Verification.png");
+                CloseFig();
             }
             /// </code>
             /// </example>
@@ -187,6 +190,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 Ylabel("State Variables");
                 Legend(["y_1(t)", "y_2(t)"], UpperLeft);
                 SaveAs("Coupled_2D_Delay_System.png");
+                CloseFig();
             }
             /// </code>
             /// </example>

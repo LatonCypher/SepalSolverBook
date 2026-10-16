@@ -37,13 +37,15 @@ Imagine you are solving the heat equation:
 
 
 
-## Why Use It? (Advantages)
+Why Use It? (Advantages)
+""""""""""""""""""""""""
 
 - **Leverages Existing Tech**: You can use sophisticated, pre-built ODE solvers(like `Ode45`/`Ode43a` in SepalSolver or `ode45` in MATLAB) that automatically handle error control and adaptive time-stepping.
 - **Flexibility**: You can use different spatial discretization methods, such as finite differences, finite elements, or spectral methods, depending on the geometry of your problem
 - **Simplification**: It breaks a complex multi-dimensional problem into a more manageable "line-by-line" temporal evolution.
 
-## Limitations
+Limitations
+"""""""""""
 
 - **Stiffness**: The resulting system of ODEs is often "stiff," meaning you may need implicit solvers to avoid tiny, inefficient time steps.
 - **Not for All PDEs**: It is designed for "evolutionary" problems (parabolic and hyperbolic). It cannot be used directly for purely "steady-state" elliptic equations(like Laplace’s equation) without adding a "pseudo-time" variable.
