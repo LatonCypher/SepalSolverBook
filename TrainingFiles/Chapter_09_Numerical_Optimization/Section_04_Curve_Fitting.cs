@@ -444,8 +444,8 @@
 
                 // Build closed 2D polygon vertices for Fill():
                 // Traverse forward along upper bound, then reverse along lower bound
-                ColVec filltime = Vcart(times, times.Reverse().ToList());
-                ColVec filly = Vcart(lower, upper.Reverse().ToList());
+                ColVec filltime = [..times, ..times.Reverse()];
+                ColVec filly = [..lower, ..upper.Reverse()];
 
                 // -------------------------------------------------------------------------
                 // 5. Visualization & Plot Stacking
@@ -526,7 +526,7 @@
                 // 2. Ground Truth Parameters & Model Definition
                 // -------------------------------------------------------------------------
                 // True physical parameter vector: [x0, x1, x2, x3]
-                ColVec xstar = new([2.0, 4.0, 5.0, 0.5]);
+                ColVec xstar = [2.0, 4.0, 5.0, 0.5];
 
                 // Non-linear forward model:
                 // f(x, xdata) = x[0] + x[1] * Atan(xdata - x[2]) + x[3] * xdata

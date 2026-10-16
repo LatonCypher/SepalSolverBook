@@ -117,7 +117,7 @@ specified via a `RowVec` inner product delegate (`funInEq`). The resulting fit i
    // -------------------------------------------------------------------------
    // 2. Initial Estimates and Box Constraints
    // -------------------------------------------------------------------------
-   ColVec startpt = new([1.0, 2.0, 3.0, 1.0]);
+   ColVec startpt = [1.0, 2.0, 3.0, 1.0];
 
    // Parameter bounds: 0.0 <= x[i] <= 7.0 for all parameters
    ColVec lb = Zeros(4);
@@ -129,7 +129,7 @@ specified via a `RowVec` inner product delegate (`funInEq`). The resulting fit i
    // Defined via the row vector A = [-1, -1, 1, 1].
    // Matrix formulation: A * x <= 0  -->  -x[0] - x[1] + x[2] + x[3] <= 0
    // Rearranged: (x[2] + x[3]) <= (x[0] + x[1])
-   RowVec A = new([-1.0, -1.0, 1.0, 1.0]);
+   RowVec A = [-1.0, -1.0, 1.0, 1.0];
    ColVec Fineq(ColVec x) => A * x;
 
    // -------------------------------------------------------------------------
@@ -314,7 +314,7 @@ the constraint is actively enforced, leading `Lsqcurvefit` to converge along the
    // 2. Initial Estimates and Boundary Constraints
    // -------------------------------------------------------------------------
    // Initial parameter estimate far from xstar
-   ColVec startpt = new([1.0, 2.0, 3.0, 1.0]);
+   ColVec startpt = [1.0, 2.0, 3.0, 1.0];
 
    // Box constraints: 0.0 <= x[i] <= 7.0 for all parameters
    ColVec lb = Zeros(4);
@@ -325,7 +325,7 @@ the constraint is actively enforced, leading `Lsqcurvefit` to converge along the
    // -------------------------------------------------------------------------
    // Constrains the vector norm of the first two parameters to lie within a circle of radius 4:
    // x[0]^2 + x[1]^2 <= 16  -->  x[0]^2 + x[1]^2 - 16 <= 0
-   static ColVec Fineq(ColVec x) => new([x[..2].SumSq() - 16.0]);
+   static ColVec Fineq(ColVec x) => x[..2].SumSq() - 16.0;
 
    // -------------------------------------------------------------------------
    // 4. Solver Configuration via OptimSet
@@ -505,11 +505,11 @@ The routine executes using `Lsqcurvefit`, reporting parameter outcomes alongside
 .. code-block:: csharp
 
    // 1. Experimental observation vectors
-   ColVec xdata = new([0.1, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0]);
-   ColVec ydata = new([3.8, 2.9, 2.1, 1.8, 1.4, 1.2, 0.9, 0.7, 0.5]);
+   ColVec xdata = [0.1, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0];
+   ColVec ydata = [3.8, 2.9, 2.1, 1.8, 1.4, 1.2, 0.9, 0.7, 0.5];
 
    // 2. Initial parameter guess: [p0, p1, p2, p3]
-   ColVec startpt = new([2.0, 0.5, 1.0, 1.0]);
+   ColVec startpt = [2.0, 0.5, 1.0, 1.0];
 
    // 3. Parameterized model function: f(p, x) = p[0]*exp(-p[1]*x) + p[2]*sin(p[3]*x)
    static ColVec Model(ColVec p, ColVec x) =>
@@ -517,11 +517,11 @@ The routine executes using `Lsqcurvefit`, reporting parameter outcomes alongside
 
 
    // 4. Physical parameter box bounds (lb <= p <= ub)
-   ColVec lb = new([0.0, 0.01, 0.0, 0.0]); // Non-negative rates and amplitudes
-   ColVec ub = new([10.0, 5.00, 5.0, 10.0]);
+   ColVec lb = [0.0, 0.01, 0.0, 0.0]; // Non-negative rates and amplitudes
+   ColVec ub = [10.0, 5.00, 5.0, 10.0];
 
    // 5. Inequality constraint: p[0] + p[2] <= 5.0  --> (p[0] + p[2] - 5.0 <= 0)
-   Func<ColVec, ColVec> fineq = p => new([p[0] + p[2] - 5.0]);
+   Func<ColVec, ColVec> fineq = p => p[0] + p[2] - 5.0;
 
    // 6. Solver configuration via OptimSet
    var opts = OptimSet(
@@ -668,7 +668,7 @@ In SepalSolver, equality constraints are passed via the `funEq` delegate in stan
 
    // True underlying parameters: [x0, x1, x2, x3]
    // Note that xstar[0] + xstar[2] = 3.0 + 2.0 = 5.0 (satisfies equality)
-   ColVec xstar = new([3.0, 0.8, 2.0, 0.1]);
+   ColVec xstar = [3.0, 0.8, 2.0, 0.1];
 
    // Forward bi-exponential decay model:
    // f(x, t) = x[0]*exp(-x[1]*t) + x[2]*exp(-x[3]*t)
@@ -686,17 +686,17 @@ In SepalSolver, equality constraints are passed via the `funEq` delegate in stan
    // 2. Initial Estimates & Box Constraints
    // -------------------------------------------------------------------------
    // Initial guess does NOT satisfy the equality constraint: 1.5 + 1.5 = 3.0 != 5.0
-   ColVec startpt = new([1.5, 0.5, 1.5, 0.2]);
+   ColVec startpt = [1.5, 0.5, 1.5, 0.2];
 
    // Physical box bounds: non-negative amplitudes and decay rates
-   ColVec lb = new([0.0, 0.01, 0.0, 0.001]);
-   ColVec ub = new([10.0, 5.00, 10.0, 2.000]);
+   ColVec lb = [0.0, 0.01, 0.0, 0.001];
+   ColVec ub = [10.0, 5.00, 10.0, 2.000];
 
    // -------------------------------------------------------------------------
    // 3. Equality Constraint Definition: h(x) = 0
    // -------------------------------------------------------------------------
    // Exact requirement: x[0] + x[2] == 5.0  -->  (x[0] + x[2] - 5.0) == 0
-   Func<ColVec, ColVec> feq = x => new([x[0] + x[2] - 5.0]);
+   Func<ColVec, ColVec> feq = x => x[0] + x[2] - 5.0;
 
    // -------------------------------------------------------------------------
    // 4. Solver Configuration via OptimSet
