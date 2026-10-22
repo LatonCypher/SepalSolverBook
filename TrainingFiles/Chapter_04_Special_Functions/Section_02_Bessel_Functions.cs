@@ -147,7 +147,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_04_Special_Functions
             /// <math>
             ///     W(t) = \mathcal{L}^{ -1}\left(\frac{1} { s\sqrt{ s} } \cfrac{ I_1(r_D\sqrt{ s}) K_1(\sqrt{ s}) -K_1(r_D\sqrt{ s}) I_1(\sqrt{ s})} { (I_1(r_D\sqrt{ s}) K_0(\sqrt{ s}) +K_1(r_D\sqrt{ s}) I_0(\sqrt{ s}))} \right)
             /// </math>
-            /// Lets see how to compute water influx, and generate the started water influx plot as shown above
+            /// Lets see how to compute water influx, and generate the water influx plot found in literature as shown above
             /// <code>
             {
                 double I0(double x) => BesselI(0, x); double I1(double x) => BesselI(1, x);

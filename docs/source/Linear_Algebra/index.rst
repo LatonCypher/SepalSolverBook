@@ -30,6 +30,7 @@ In this chapter, we will explore different linear algebra methods, their impleme
    Cholesky Factorization FactorUpdate Positive Definicy
    Generalized Cholesky Factorization and FactorUpdate
    Singular Value Decomposition
+   Eigen Decomposition
    Sparse Matrices
    Solution Of Sparse Linear System
    Exercise

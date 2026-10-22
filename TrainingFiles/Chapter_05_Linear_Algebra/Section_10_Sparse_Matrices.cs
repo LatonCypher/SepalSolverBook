@@ -2,7 +2,7 @@
 
 namespace ConsoleApp1.TrainingFiles.Chapter_4_Linear_Algebra
 {
-    internal class Section_08_Sparse_Matrices
+    internal class Section_10_Sparse_Matrices
     {
         public static void Run()
         {

@@ -253,12 +253,12 @@ Ouput
 .. terminal::
 
    Summary of statistics by Ode32a
-           948 successful steps
+           1062 successful steps
            3 failed attempts
-           10480 function evaluations
-           951 partial derivatives
-           1902 LU decompositions
-           3807 solutions of linear systems
+           11734 function evaluations
+           1065 partial derivatives
+           2130 LU decompositions
+           4263 solutions of linear systems
    
 
 .. figure:: images/Cylindrical_FisherKPP.png

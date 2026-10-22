@@ -128,13 +128,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// Using Kirchoff's law to equalize the current through each node (1 through 5), you can obtain a system of five equations describing the circuit:
             /// 
             /// Node 1: :math:`C_1(U'_2 - U'_1) = (U_1 - U_e(t))/R_0`
-            /// 
-            /// Node 2: :math:`C_1(U'_1 - U'_2) = (U_2 - U_b)/R_1 + U_2/R_1 + 0.01f(U_2 - U_3)`
-            /// 
+            /// Node 2: :math:`C_1(U'_1 - U'_2) = (U_2 - U_b)/R_1 + U_2/R_2 + 0.01f(U_2 - U_3)`
             /// Node 3: :math:`-C_2U'_3 = U_3/R_3 - f(U_2 - U_3)`
-            /// 
             /// Node 4: :math:`C_3(U'_5 - U'_4) = (U_4 - U_b)/R_4 + 0.99f(U_2 - U_3)`
-            /// 
             /// Node 5: :math:`C_3(U'_4 - U'_5) = U_5/R_5`
             /// 
             /// By extracting the coeeficients of the derivatives into a matrix, we have:
@@ -160,8 +156,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             ///
             /// <code>
             {
-                double Ub = 6, R0 = 1000, R15 = 9000, alpha = 0.99,
-                    beta = 1e-6, Uf = 0.026, c1 = 1e-6, c2 = 2e-6, c3 = 3e-6;
+                double Ub = 6, R0 = 1000, R1 = 9000, R2 = R1, R3 = R2, R4 = R3, R5 = R4, 
+                    alpha = 0.99, beta = 1e-6, Uf = 0.026, c1 = 1e-6, c2 = 2e-6, c3 = 3e-6;
                 Matrix Mass = new double[,]
                 {
                     {-c1,  c1,   0,   0,   0},
@@ -172,13 +168,16 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 };
 
                 double Ue(double t) => 0.4 * Sin(200 * pi * t);
-                double f12(ColVec u) => beta * (Exp((u[1] - u[2]) / Uf) - 1);
-                ColVec dudt(double t, ColVec u) =>
-                    [-(Ue(t) - u[0])/R0,
-                     -(Ub/R15 - u[1]*2/R15 - (1-alpha)*f12(u)),
-                     -(f12(u) - u[2]/R15),
-                     -((Ub - u[3])/R15 - alpha*f12(u)),
-                     u[4]/R15 ];
+                double f(double du23) => beta * (Exp(du23 / Uf) - 1);
+                ColVec dudt(double t, ColVec u)
+                {
+                    double U1 = u[0], U2 = u[1], U3 = u[2], U4 = u[3], U5 = u[4];
+                    return [(U1 -  Ue(t)) / R0,
+                            (U2 - Ub) / R1 + U2 / R2 +  (1 - alpha) * f(U2 - U3),
+                            U3/R3 - f(U2 - U3),
+                            (U4 - Ub) / R4 + alpha * f(U2 - U3), 
+                            U5 / R5 ];
+                }
                 
                 double[] tspan = [0, 0.1];
                 double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
@@ -379,6 +378,77 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// Observe that the initial condition supplied for :math:`\lambda` was :math:`-1`; but the result returned shown that the correct initial condition for the algebraic variable :math:`\lambda` is :math:`-8.81`.
             /// Sending in a wrong initial condition was done on purpose, to test the ability of sepalsolver to compute the initial condition of the algebraic variable. 
             /// 
+            /// </example>
+            ///
+            /// <example 6> Constrained Multibody System (Gear-Gupta-Leimkuhler Formulation)
+            /// Here we look at a constrained multibody system presented in "Approximate Analytical Solution of Index-2 DAEs Arising from Constrained Multibody Systems" by Brahim Benhammouda.
+            ///
+            /// The equations of motion for constrained mechanical multibody systems in the stabilized Gear-Gupta-Leimkuhler (GGL) form are given by:
+            /// <math>
+            ///     \begin{cases}
+            ///         u' = v - G^T(u)\mu, \\
+            ///         M(u)v' = f(u, v) - G^T(u)\lambda, \\
+            ///         0 = g(u), \\
+            ///         0 = G(u)v
+            ///     \end{cases}
+            /// </math>
+            ///
+            /// This model describes a two-link planar robotic manipulator where:
+            /// <math>
+            ///     \begin{aligned}
+            ///         M(u) &= \begin{pmatrix} 5 + 3\cos(u_2) & 1 + 1.5\cos(u_2) \\ 1 + 1.5\cos(u_2) & 1 \end{pmatrix}, \\
+            ///         f(u, v) &= \begin{pmatrix} v_1\cos(u_1) + v_1\cos(u_1 + u_2) - 3u_1 \\ v_1\cos(u_1 + u_2) + (1 - 1.5\cos(u_2))u_1 \end{pmatrix}, \\
+            ///         g(u) &= \sin(u_1) + \sin(u_1 + u_2), \\
+            ///         G(u) &= \begin{pmatrix} \cos(u_1) + \cos(u_1 + u_2) & \cos(u_1 + u_2) \end{pmatrix}
+            ///     \end{aligned}
+            /// </math>
+            ///
+            /// The physical initial conditions are:
+            /// :math:`u(0) = (0, 0)^T, \quad v(0) = (1, -2)^T`
+            ///
+            /// Because the mass matrix :math:`M(u)` is state-dependent, we formulate the mass matrix as a function of the state vector :math:`y`, yielding a state-dependent singular mass matrix :math:`\mathcal{M}(t, y) y' = F(t, y)`.
+            ///
+            /// <code>
+            {
+                Matrix M(ColVec u) => new double[,]
+                {
+                    { 5 + 3 * Cos(u[1]), 1 + 1.5 * Cos(u[1]) },
+                    { 1 + 1.5 * Cos(u[1]), 1 },
+                };
+
+                ColVec f(ColVec u, ColVec v) => [
+                    v[0] * Cos(u[0]) + v[0] * Cos(u[0] + u[1]) - 3 * u[0],
+                    v[0] * Cos(u[0] + u[1]) + (1 - 1.5 * Cos(u[1])) * u[0],
+                ];
+
+                double g(ColVec u) => Sin(u[0]) + Sin(u[0] + u[1]);
+                RowVec G(ColVec u) => [Cos(u[0]) + Cos(u[0] + u[1]), Cos(u[0] + u[1])];
+
+                Matrix Mass(double t, ColVec y)
+                {
+                    ColVec u = y[0..2];
+                    Matrix mass = Zeros(6, 6);
+                    mass[0..2, 0..2] = Eye(2);
+                    mass[2..4, 2..4] = M(u);
+                    return mass;
+                }
+
+                ColVec Fun(double t, ColVec y)
+                {
+                    ColVec u = y[0..2], v = y[2..4], µ = y[4], λ = y[5];
+                    return [.. (v - G(u).T * µ), .. (f(u, v) - G(u).T * λ), g(u), G(u) * v];
+                }
+
+                var opts = Odeset(Stats: true, RelTol: 1e-5);
+                (ColVec T, Matrix Y) = Ode43a(Fun, Mass, [0, 0, 1, -2, 0, 1], [0, 20], opts);
+
+                var plt = Plot(T, Y, Linewidth: 2); AspectRatio(1, 1.5);
+                Title("Constrained Mechanical System Index 2 DAE Problem");
+                Xlabel("Time t"); Ylabel("Solution z");
+                Legend(["u1", "u2", "v1", "v2", "µ", "λ"]);
+                SaveAs("Constrained Mechanical System Index 2 DAE.png", 1000, 500);
+            }
+            /// </code>
             /// </example>
             /// 
             /// <header> Solving Index 3 </header>

@@ -209,22 +209,22 @@ Ouput
    
       Computational Cost Using Default Tolerance Setting:
       Summary of statistics by Ode43s
-              118 successful steps
+              141 successful steps
               0 failed attempts
-              2872 function evaluations
-              118 partial derivatives
-              472 LU decompositions
-              1927 solutions of linear systems
+              3404 function evaluations
+              141 partial derivatives
+              564 LU decompositions
+              2275 solutions of linear systems
       
       
       
       
       Computational Cost Using Custom Tolerance Setting
       Summary of statistics by Ode43s
-              179 successful steps
+              209 successful steps
               0 failed attempts
-              4696 function evaluations
-              179 partial derivatives
-              716 LU decompositions
-              3263 solutions of linear systems
+              5474 function evaluations
+              209 partial derivatives
+              836 LU decompositions
+              3801 solutions of linear systems
       

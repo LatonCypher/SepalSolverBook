@@ -278,12 +278,12 @@ Ouput
    .. terminal::
    
       Summary of statistics by Ode43i
-              118 successful steps
+              141 successful steps
               0 failed attempts
-              3225 function evaluations
-              118 partial derivatives
-              472 LU decompositions
-              1919 solutions of linear systems
+              3825 function evaluations
+              141 partial derivatives
+              564 LU decompositions
+              2266 solutions of linear systems
       
    
    .. figure:: images/Implicit-Robertson-ODE-Ode43i.png
@@ -359,9 +359,9 @@ Ouput
    .. terminal::
    
       Summary of statistics by Ode43i
-              118 successful steps
+              141 successful steps
               0 failed attempts
-              2388 function evaluations
+              2829 function evaluations
       
    
    .. figure:: images/Implicit-Robertson-ODE-Ode43i_With_jacobian.png
