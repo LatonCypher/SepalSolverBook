@@ -13,41 +13,44 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algebra
             /// Also called Spectral Decomposition, Eigen Decomposition is the foundational cornerstone of matrix theory and dynamic systems analysis. It provides an intrinsic coordinate system where a linear transformation behaves simply as independent scalar stretchings along fixed spatial directions.
             /// 
             /// **Definition**
-            /// For a square matrix $A$, an eigenvalue $\lambda$ and its corresponding eigenvector $v$ satisfy the equation:
+            /// For a square matrix :math:`A`, an eigenvalue :math:`\lambda` and its corresponding eigenvector :math:`v` satisfy the equation:
             /// <math>
             ///     A v = \lambda v
             /// </math>
             /// 
             /// Where:
-            /// * **:math:`\lambda`**: The eigenvalue, a scalar that indicates how much the eigenvector is stretched or compressed during the transformation.
-            /// * **:math:`v`**: The eigenvector, a non-zero vector that remains in the same direction after the transformation by $A$.
+            /// 
+            /// - **:math:`\lambda`**: The eigenvalue, a scalar that indicates how much the eigenvector is stretched or compressed during the transformation.
+            /// - **:math:`v`**: The eigenvector, a non-zero vector that remains in the same direction after the transformation by :math:`A`.
             /// 
             /// **Eigen Decomposition**
-            /// If a matrix $A$ has $n$ linearly independent eigenvectors, it can be decomposed as:
+            /// If a matrix :math:`A` has :math:`n` linearly independent eigenvectors, it can be decomposed as:
             /// <math>
             ///     A = V \Lambda V^{-1}
             /// </math>
             /// 
             /// Where:
-            /// - **:math:`V**`: An $n \times n$ matrix whose columns $v_i$ are the **eigenvectors** of $A$. These define the invariant axes where transformation under $A$ does not rotate the vector.
-            /// - **:math:`\Lambda**`: An $n \times n$ **diagonal** matrix containing the **eigenvalues** ($\lambda_i$). Each entry specifies the scale factor by which the corresponding eigenvector is dilated, compressed, or flipped.
-            /// - **:math:`V^{-1}**`: The inverse matrix of eigenvectors, projecting general vectors from the original basis into the eigenspace coordinates. (For symmetric matrices, $V$ is orthogonal, yielding $V^{-1} = V^T$).
+            /// 
+            /// - **:math:`V`**: An :math:`n \times n` matrix whose columns :math:`v_i` are the **eigenvectors** of :math:`A`. These define the invariant axes where transformation under :math:`A` does not rotate the vector.
+            /// - **:math:`\Lambda`**: An :math:`n \times n` **diagonal** matrix containing the **eigenvalues** (:math:`\lambda_i`). Each entry specifies the scale factor by which the corresponding eigenvector is dilated, compressed, or flipped.
+            /// - **:math:`V^{-1}`**: The inverse matrix of eigenvectors, projecting general vectors from the original basis into the eigenspace coordinates. (For symmetric matrices, :math:`V` is orthogonal, yielding :math:`V^{-1} = V^T`).
             ///
             /// **Geometric Interpretation**
             /// Applying an arbitrary linear transformation typically rotates and scales a vector simultaneously. Eigen decomposition reveals the unique directions where the transformation acts strictly as an axis-aligned stretch:
-            /// 1. **Change of Basis:** Map the coordinate system from the standard Cartesian basis into the eigenspace (via $V^{-1}$).
-            /// 2. **Independent Scaling:** Scale each coordinate independently along its eigen-axis by factor $\lambda_i$ (via $\Lambda$).
-            /// 3. **Reconstruction:** Map coordinates back to the original physical space (via $V$).
+            /// 
+            /// 1. **Change of Basis:** Map the coordinate system from the standard Cartesian basis into the eigenspace (via :math:`V^{-1}`).
+            /// 2. **Independent Scaling:** Scale each coordinate independently along its eigen-axis by factor :math:`\lambda_i` (via :math:`\Lambda`).
+            /// 3. **Reconstruction:** Map coordinates back to the original physical space (via :math:`V`).
             ///
             /// **Applications in Technology**
             /// **1. Modal Analysis and Structural Dynamics**
             /// In mechanical and civil engineering, complex multi-degree-of-freedom vibrations reduce to independent natural frequencies. The eigenvalues of the stiffness-mass pencil define natural frequencies (resonance points), while the eigenvectors represent the corresponding physical mode shapes.
             ///
             /// **2. State-Space Stability and Differential Equations**
-            /// For continuous linear dynamic systems $\dot{x}(t) = A x(t)$, the solution expands as $x(t) = V e^{\Lambda t} V^{-1} x(0)$. The real parts of the eigenvalues ($\text{Re}(\lambda_i)$) strictly dictate asymptotic stability, damping, or explosive divergence.
+            /// For continuous linear dynamic systems :math:`\dot{x}(t) = A x(t)`, the solution expands as :math:`x(t) = V e^{\Lambda t} V^{-1} x(0)`. The real parts of the eigenvalues (:math:`\text{Re}(\lambda_i)`) strictly dictate asymptotic stability, damping, or explosive divergence.
             ///
             /// **3. Graph Algorithms and PageRank**
-            /// Google's PageRank algorithm computes the stationary distribution of web-surfer transition matrices via the dominant eigenvector ($\lambda = 1$). Spectral graph theory leverages the eigenvalues of graph Laplacian matrices to cluster networks and partition graphs.
+            /// Google's PageRank algorithm computes the stationary distribution of web-surfer transition matrices via the dominant eigenvector (:math:`\lambda = 1`). Spectral graph theory leverages the eigenvalues of graph Laplacian matrices to cluster networks and partition graphs.
             ///
             /// **Numerical Example**
             /// Using **SepalSolver**, we compute the spectral decomposition of a square matrix to evaluate modal directions and characteristic values:
@@ -91,12 +94,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algebra
             }
             /// </code>
             /// **Summary of Matrix Properties**
-            /// 
+            /// <table>
             /// Component | Property | Geometric Meaning
             /// **:math:`V**` | Linearly Independent Columns | Modal directions (invariant axes)
             /// **:math:`\Lambda**` | Diagonal Matrix | Scaling along invariant axes
             /// **:math:`V^{-1}**` | :math:`V^{-1}V = I` (or :math:`V^T` if symmetric) | Projection into the modal coordinate system
-            /// 
+            /// </table>
             /// </BookContent>
         }
     }

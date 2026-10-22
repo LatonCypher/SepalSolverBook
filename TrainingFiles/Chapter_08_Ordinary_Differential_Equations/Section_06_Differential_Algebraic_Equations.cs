@@ -128,9 +128,13 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// Using Kirchoff's law to equalize the current through each node (1 through 5), you can obtain a system of five equations describing the circuit:
             /// 
             /// Node 1: :math:`C_1(U'_2 - U'_1) = (U_1 - U_e(t))/R_0`
+            /// 
             /// Node 2: :math:`C_1(U'_1 - U'_2) = (U_2 - U_b)/R_1 + U_2/R_2 + 0.01f(U_2 - U_3)`
+            /// 
             /// Node 3: :math:`-C_2U'_3 = U_3/R_3 - f(U_2 - U_3)`
+            /// 
             /// Node 4: :math:`C_3(U'_5 - U'_4) = (U_4 - U_b)/R_4 + 0.99f(U_2 - U_3)`
+            /// 
             /// Node 5: :math:`C_3(U'_4 - U'_5) = U_5/R_5`
             /// 
             /// By extracting the coeeficients of the derivatives into a matrix, we have:
@@ -169,15 +173,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 
                 double Ue(double t) => 0.4 * Sin(200 * pi * t);
                 double f(double du23) => beta * (Exp(du23 / Uf) - 1);
-                ColVec dudt(double t, ColVec u)
-                {
-                    double U1 = u[0], U2 = u[1], U3 = u[2], U4 = u[3], U5 = u[4];
-                    return [(U1 -  Ue(t)) / R0,
-                            (U2 - Ub) / R1 + U2 / R2 +  (1 - alpha) * f(U2 - U3),
-                            U3/R3 - f(U2 - U3),
-                            (U4 - Ub) / R4 + alpha * f(U2 - U3), 
-                            U5 / R5 ];
-                }
+                ColVec dudt(double t, ColVec u) =>
+                    [(u[0] -  Ue(t)) / R0,
+                     (u[1] - Ub) / R1 + u[1] / R2 +  (1 - alpha) * f(u[1] - u[2]),
+                     u[2]/R3 - f(u[1] - u[2]),
+                     (u[3] - Ub) / R4 + alpha * f(u[1] - u[2]), 
+                     u[4] / R5];
                 
                 double[] tspan = [0, 0.1];
                 double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
@@ -309,7 +310,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 for (int i = 0; i < T.Numel; i++)
                 {
                     Console.WriteLine($"""
-                          {T[i]:F2}  ||     {Y[i, 0]:F6}    |    {Exp(T[i]):F6}    ||     {Y[i, 1]:F6}    |    {Exp(T[i]):F6}    ||     {Y[i, 2]:F6}   |  {-Exp(T[i])/(2-T[i]):F6}
+                          {T[i]:F3}  ||     {Y[i, 0]:F6}    |    {Exp(T[i]):F6}    ||     {Y[i, 1]:F6}    |    {Exp(T[i]):F6}    ||     {Y[i, 2]:F6}   |  {-Exp(T[i])/(2-T[i]):F6}
                         """);
                 }
 
@@ -324,7 +325,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 for (int i = 0; i < T.Numel; i++)
                 {
                     Console.WriteLine($"""
-                          {T[i]:F2}  ||     {Y[i, 0]:F6}    |    {Exp(T[i]):F6}    ||     {Y[i, 1]:F6}    |    {Exp(T[i]):F6}    ||     {Y[i, 2]:F6}   |  {-Exp(T[i])/(2-T[i]):F6}
+                          {T[i]:F3}  ||     {Y[i, 0]:F6}    |    {Exp(T[i]):F6}    ||     {Y[i, 1]:F6}    |    {Exp(T[i]):F6}    ||     {Y[i, 2]:F6}   |  {-Exp(T[i])/(2-T[i]):F6}
                         """);
                 }
             }
