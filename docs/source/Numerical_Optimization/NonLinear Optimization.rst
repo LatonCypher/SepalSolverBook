@@ -271,8 +271,8 @@ Ouput
    
    .. terminal::
    
-      average change in the fitness value is less than FuncTol
+      Stopping: no improvement for too long.
       x = 
-         1.0000    1.0001
+         0.9072    0.8206
       
 

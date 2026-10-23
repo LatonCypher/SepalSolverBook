@@ -172,7 +172,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 };
 
                 double Ue(double t) => 0.4 * Sin(200 * pi * t);
-                double f(double du23) => beta * (Exp(du23 / Uf) - 1);
+                double f(double du) => beta * (Exp(du / Uf) - 1);
                 ColVec dudt(double t, ColVec u) =>
                     [(u[0] -  Ue(t)) / R0,
                      (u[1] - Ub) / R1 + u[1] / R2 +  (1 - alpha) * f(u[1] - u[2]),
@@ -183,7 +183,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 double[] tspan = [0, 0.1];
                 double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
 
-                var opts = Odeset(RelTol: 1e-5);
+                var opts = Odeset(Stats: true);
                 (ColVec T, Matrix Y) = Ode43a(dudt, Mass, y0, tspan, opts);
                 Scatter(T, Arrayfun(Ue, T), "o"); HoldOn();
                 Plot(T, Y[.., 4], "--r"); HoldOff();
@@ -294,7 +294,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 Matrix mass_f = Diag([1, 1, 0]);
                 double[] y0 = [1, 1, 0]; // only the differential variables need initial conditions
                 var opts = Odeset(Stats: true);
-                (ColVec T, Matrix Y, _) = Ode43a(Ercan, mass_f, y0, Linspace(0,1,21), opts);
+                (ColVec T, Matrix Y) = Ode43a(Ercan, mass_f, y0, Linspace(0,1,21), opts);
                 Scatter(T, Hcart(Exp(T), Exp(T), -Exp(T).Div(2-T)), "o"); HoldOn();
                 Plot(T, Y); HoldOff();
                 Xlabel("Time t"); Ylabel("Solution x");
@@ -317,7 +317,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 // We can compute the solution to a higher accuracy 
                 Console.WriteLine("\n\nNow we compute the solution to a higher accuracy (RelTol = 1e-5):\n");
                 opts = Odeset(Stats: true, RelTol: 1e-5);
-                (T, Y, _) = Ode43a(Ercan, mass_f, y0, Linspace(0, 1, 21), opts);
+                (T, Y) = Ode43a(Ercan, mass_f, y0, Linspace(0, 1, 21), opts);
                 Console.WriteLine("""
                          t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
                     ---------++-----------------+----------------++-----------------+----------------++-----------------+---------------

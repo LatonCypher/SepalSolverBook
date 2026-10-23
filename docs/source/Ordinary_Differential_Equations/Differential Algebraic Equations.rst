@@ -124,7 +124,7 @@ Ouput
       Summary of statistics by Ode43a
               1054 successful steps
               12 failed attempts
-              30417 function evaluations
+              30416 function evaluations
               1066 partial derivatives
               4264 LU decompositions
               19739 solutions of linear systems
@@ -207,7 +207,7 @@ this initial condition y0 = [1, 0, 0, 1, 1];
       };
    
       double Ue(double t) => 0.4 * Sin(200 * pi * t);
-      double f(double du23) => beta * (Exp(du23 / Uf) - 1);
+      double f(double du) => beta * (Exp(du / Uf) - 1);
       ColVec dudt(double t, ColVec u) =>
           [(u[0] -  Ue(t)) / R0,
            (u[1] - Ub) / R1 + u[1] / R2 +  (1 - alpha) * f(u[1] - u[2]),
@@ -218,7 +218,7 @@ this initial condition y0 = [1, 0, 0, 1, 1];
       double[] tspan = [0, 0.1];
       double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
    
-      var opts = Odeset(RelTol: 1e-5);
+      var opts = Odeset(Stats: true);
       (ColVec T, Matrix Y) = Ode43a(dudt, Mass, y0, tspan, opts);
       Scatter(T, Arrayfun(Ue, T), "o"); HoldOn();
       Plot(T, Y[.., 4], "--r"); HoldOff();
@@ -227,6 +227,22 @@ this initial condition y0 = [1, 0, 0, 1, 1];
       Title("One Transistor Amplifier DAE Problem-Ode43a");
       SaveAs("One-Transistor-Amplifier-DAE-Problem-Ode43a.png");
    
+   
+   
+
+Ouput
+
+   
+   .. terminal::
+   
+      Summary of statistics by Ode43a
+              305 successful steps
+              90 failed attempts
+              7769 function evaluations
+              395 partial derivatives
+              1551 LU decompositions
+              3832 solutions of linear systems
+      
    
    .. figure:: images/One-Transistor-Amplifier-DAE-Problem-Ode43a.png
       :align: center
@@ -350,7 +366,7 @@ Now we look at examples of index 2 DAEs
       Matrix mass_f = Diag([1, 1, 0]);
       double[] y0 = [1, 1, 0]; // only the differential variables need initial conditions
       var opts = Odeset(Stats: true);
-      (ColVec T, Matrix Y, _) = Ode43a(Ercan, mass_f, y0, Linspace(0,1,21), opts);
+      (ColVec T, Matrix Y) = Ode43a(Ercan, mass_f, y0, Linspace(0,1,21), opts);
       Scatter(T, Hcart(Exp(T), Exp(T), -Exp(T).Div(2-T)), "o"); HoldOn();
       Plot(T, Y); HoldOff();
       Xlabel("Time t"); Ylabel("Solution x");
@@ -360,8 +376,8 @@ Now we look at examples of index 2 DAEs
    
       // We can actually print out the result to compare with the analytical solution
       Console.WriteLine("""
-              t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
-          --------++-----------------+----------------++-----------------+----------------++-----------------+---------------
+               t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
+          ---------++-----------------+----------------++-----------------+----------------++-----------------+---------------
           """);
       for (int i = 0; i < T.Numel; i++)
       {
@@ -373,10 +389,10 @@ Now we look at examples of index 2 DAEs
       // We can compute the solution to a higher accuracy 
       Console.WriteLine("\n\nNow we compute the solution to a higher accuracy (RelTol = 1e-5):\n");
       opts = Odeset(Stats: true, RelTol: 1e-5);
-      (T, Y, _) = Ode43a(Ercan, mass_f, y0, Linspace(0, 1, 21), opts);
+      (T, Y) = Ode43a(Ercan, mass_f, y0, Linspace(0, 1, 21), opts);
       Console.WriteLine("""
-              t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
-          --------++-----------------+----------------++-----------------+----------------++-----------------+---------------
+               t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
+          ---------++-----------------+----------------++-----------------+----------------++-----------------+---------------
           """);
       for (int i = 0; i < T.Numel; i++)
       {
@@ -401,8 +417,8 @@ Ouput
               160 LU decompositions
               905 solutions of linear systems
       
-          t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
-      --------++-----------------+----------------++-----------------+----------------++-----------------+---------------
+           t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
+      ---------++-----------------+----------------++-----------------+----------------++-----------------+---------------
         0.000  ||     1.000000    |    1.000000    ||     1.000000    |    1.000000    ||     -0.500000   |  -0.500000
         0.050  ||     1.051268    |    1.051271    ||     1.051270    |    1.051271    ||     -0.539164   |  -0.539113
         0.100  ||     1.105167    |    1.105171    ||     1.105169    |    1.105171    ||     -0.581664   |  -0.581669
@@ -436,8 +452,8 @@ Ouput
               164 LU decompositions
               1153 solutions of linear systems
       
-          t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
-      --------++-----------------+----------------++-----------------+----------------++-----------------+---------------
+           t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
+      ---------++-----------------+----------------++-----------------+----------------++-----------------+---------------
         0.000  ||     1.000000    |    1.000000    ||     1.000000    |    1.000000    ||     -0.500000   |  -0.500000
         0.050  ||     1.051269    |    1.051271    ||     1.051270    |    1.051271    ||     -0.539110   |  -0.539113
         0.100  ||     1.105168    |    1.105171    ||     1.105169    |    1.105171    ||     -0.581665   |  -0.581669
@@ -523,7 +539,7 @@ Ouput
       Summary of statistics by Ode43a
               548 successful steps
               468 failed attempts
-              31290 function evaluations
+              31289 function evaluations
               1016 partial derivatives
               3198 LU decompositions
               21978 solutions of linear systems
@@ -816,7 +832,7 @@ Ouput
    Summary of statistics by Ode43a
            1082 successful steps
            47 failed attempts
-           32153 function evaluations
+           32151 function evaluations
            1129 partial derivatives
            4516 LU decompositions
            20845 solutions of linear systems
@@ -824,7 +840,7 @@ Ouput
    Summary of statistics by Ode43a
            871 successful steps
            50 failed attempts
-           34085 function evaluations
+           34084 function evaluations
            921 partial derivatives
            3654 LU decompositions
            24887 solutions of linear systems
@@ -832,7 +848,7 @@ Ouput
    Summary of statistics by Ode43a
            8772 successful steps
            71 failed attempts
-           284567 function evaluations
+           284560 function evaluations
            8843 partial derivatives
            35372 LU decompositions
            196112 solutions of linear systems
@@ -841,3 +857,5 @@ Ouput
 .. figure:: images/Pendulum-Problem-Ode43a.png
    :align: center
    :alt: Pendulum-Problem-Ode43a.png
+
+
