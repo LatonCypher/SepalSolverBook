@@ -41,14 +41,14 @@
             /// 
             /// 1. **Encapsulated Solution Object (`OdeResult` / `DdeResult`):**
             /// Calling an integrator with a single return assignment yields an encapsulated result structure containing the discrete trajectory, internal stage slopes, solver performance diagnostics, and continuous interpolating machinery:
-            /// <code>
+            /// <signature>
             /// OdeResult res = Ode45(odefun, y0, tspan, opts);
             /// DdeResult ddeRes = Dde23(ddefun, delays, history, tspan, opts);
-            /// </code>
+            /// </signature>
             /// 
             /// 2. **Explicit Tuple Deconstruction (Explicit ODEs, Stiff Systems, and Mass-Matrix DAEs):**
             /// For standard explicit ODEs, stiff ODEs, mass-matrix DAEs (:math:`M y' = f(t, y)`), and delay differential equations, the output can be deconstructed directly into the time vector :math:`T` and solution matrix :math:`Y`:
-            /// <code>
+            /// <signature>
             /// (ColVec T, Matrix Y) = Ode45(odefun, y0, tspan, opts);
             /// 
             /// // Mass-matrix DAEs:
@@ -56,14 +56,14 @@
             /// 
             /// // Delay Differential Equations:
             /// (ColVec T, Matrix Y) = Dde23(ddefun, delays, history, tspan, opts);
-            /// </code>
+            /// </signature>
             /// In the solution matrix :math:`Y`, rows correspond to individual time points in :math:`T`, and columns correspond to the respective state variables :math:`y_i`.
             /// 
             /// 3. **Implicit Differential Equations (`*i` Family):**
             /// For fully implicit differential systems (:math:`F(t, y, y') = 0`), the derivative trajectory :math:`y'(t)` is also a primary dependent variable. Solvers in the implicit family (`Ode32i`, `Ode43i`, `Ode85i`) deconstruct into a 3-tuple returning :math:`T`, :math:`Y`, and the derivative matrix :math:`Y_p`:
-            /// <code>
+            /// <signature>
             /// (ColVec T, Matrix Y, Matrix Yp) = Ode43i(impidfun, y0, yp0, tspan, opts);
-            /// </code>
+            /// </signature>
             /// 
             /// ---
             /// 
@@ -73,9 +73,9 @@
             /// 
             /// Both `OdeResult` and `DdeResult` package discrete solution vectors alongside internally evaluated derivatives and stage slopes. This enables :math:`C^1`-continuous Hermite spline interpolation over the entire integration domain via the `Deval` function without re-integrating the equations.
             /// 
-            /// * **Continuous Evaluation of States :math:`y(t)`:**
+            /// * **Continuous Evaluation of States** :math:`\mathbf{y(t)}`:
             /// Pass the solution object and query times (either a scalar `double` or a collection/vector of points) into `Deval`:
-            /// <code>
+            /// <signature>
             /// OdeResult sol = Ode45(odefun, y0, [0.0, 10.0], opts);
             /// 
             /// // Query at a specific time point:
@@ -84,16 +84,16 @@
             /// // Query over a uniformly dense grid:
             /// ColVec tQuery = Linspace(0, 10, 500);
             /// Matrix yQuery = Deval(sol, tQuery);
-            /// </code>
+            /// </signature>
             /// 
             /// * **Hermite Splines and Second-Order Slopes for Implicit Systems (`*i` Family):**
             /// For fully implicit differential systems (:math:`F(t, y, y') = 0`), `OdeResult` retains second-order derivative slopes (:math:`y''`). This provides smooth, stable Hermite interpolation for both the state trajectory :math:`y(t)` and its time-derivative trajectory :math:`y'(t)`:
-            /// <code>
+            /// <signature>
             /// OdeResult impSol = Ode43i(impidfun, y0, yp0, [0.0, 5.0], opts);
             /// 
             /// // Joint evaluation of interpolated state and derivative matrices:
             /// (Matrix Y_eval, Matrix Yp_eval) = Deval(impSol, Linspace(0, 5, 200));
-            /// </code>
+            /// </signature>
             /// 
             /// ---
             /// 
@@ -103,17 +103,17 @@
             /// 
             /// * **Adaptive Step Output (Interval Endpoints):**
             /// When `tspan` is supplied as a two-element array `[t0, tf]`, the integrator steps adaptively according to the specified error tolerances (`RelTol`, `AbsTol`) and returns the solution at every internally accepted time step:
-            /// <code>
+            /// <signature>
             /// double[] tspan = [0.0, 10.0];
             /// (ColVec T, Matrix Y) = Ode45(odefun, y0, tspan, opts);
-            /// </code>
+            /// </signature>
             /// 
             /// * **Fixed Query Points (Dense Output / Specific Evaluation Points):**
             /// When `tspan` contains three or more monotonically spaced points, the integrator continues to step adaptively behind the scenes to preserve stability and accuracy, but internally calls dense interpolation to evaluate and return the solution exactly at the requested nodes:
-            /// <code>
+            /// <signature>
             /// double[] tspan = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0];
             /// (ColVec T, Matrix Y) = Ode45(odefun, y0, tspan, opts);
-            /// </code>
+            /// </signature>
             /// This eliminates the need for manual post-process interpolation when generating uniform plots, comparing numerical solutions against analytical benchmarks, or interfacing with discrete digital control loops.
             /// 
             /// </BookContent>

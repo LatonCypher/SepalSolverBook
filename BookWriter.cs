@@ -247,6 +247,7 @@ namespace ConsoleApp1
             TreatMathTag(bookContent);
             TreatNoteTag(bookContent);
             TreatCodeBlock(bookContent);
+            TreatSignatureTag(bookContent);
             TreatTableBlock(bookContent);
             TreatExampleBlock(bookContent);
             TreatDocSlashed(bookContent);
@@ -398,6 +399,34 @@ namespace ConsoleApp1
                     Replace(bookContent, startIndex, 1, figurelines);
 
                 }
+            }
+        }
+        static void TreatSignatureTag(List<string> bookContent)
+        {
+            while (bookContent.Any(line => line.Contains("<signature>")))
+            {
+                int startIndex = -1;
+                // replace code blocks with rst format
+                for (int i = 0; i < bookContent.Count; i++)
+                {
+                    if (bookContent[i].Contains("<signature>"))
+                    {
+                        startIndex = i;
+                        break;
+                    }
+                }
+                int Length = 1;
+                List<string> Codelines = ["", ".. code-block:: csharp"];
+                string line = bookContent[startIndex + Length];
+                int space = line.TakeWhile(c => c == ' ').Count() + 1;
+                while (!bookContent[startIndex + Length].Contains("</signature>"))
+                {
+                    line = bookContent[startIndex + Length].Trim();
+                    Codelines.Add("   " + line[3..]);
+                    Length++;
+                }
+                Codelines.Add("");
+                Replace(bookContent, startIndex, Length + 1, Codelines);
             }
         }
         static void TreatCodeBlock(List<string> bookContent)

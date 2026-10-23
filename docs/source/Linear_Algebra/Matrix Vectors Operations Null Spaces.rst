@@ -334,7 +334,7 @@ We can take advantage of this broadcasting to easily make animation as shown bel
 
    // mesh of centers
    (Matrix x, Matrix y) = Meshgrid(Linspace(0, 30, 21));
-   ColVec X = x.ToArray(), Y = y.ToArray(), T = 0.1*pi*(X-Y);
+   ColVec X = x[..], Y = y[..], T = 0.1*pi*(X-Y);
    double r = 1.35; 
 
    // Broadcasting circles of radius r

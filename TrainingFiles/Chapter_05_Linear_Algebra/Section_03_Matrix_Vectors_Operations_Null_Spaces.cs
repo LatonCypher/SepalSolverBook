@@ -137,7 +137,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algerba
 
                 // mesh of centers
                 (Matrix x, Matrix y) = Meshgrid(Linspace(0, 30, 21));
-                ColVec X = x.ToArray(), Y = y.ToArray(), T = 0.1*pi*(X-Y);
+                ColVec X = x[..], Y = y[..], T = 0.1*pi*(X-Y);
                 double r = 1.35; 
 
                 // Broadcasting circles of radius r
