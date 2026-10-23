@@ -39,14 +39,14 @@
             /// 
             /// The integrators in SepalSolver provide flexible output signatures depending on whether you require an encapsulated solution object, explicit state matrices, or derivative trajectories for implicit equations.
             /// 
-            /// 1. **Encapsulated Solution Object (`OdeResult` / `DdeResult`):**
+            /// 1. **Encapsulated Solution Object** (`OdeResult` / `DdeResult`):
             /// Calling an integrator with a single return assignment yields an encapsulated result structure containing the discrete trajectory, internal stage slopes, solver performance diagnostics, and continuous interpolating machinery:
             /// <signature>
             /// OdeResult res = Ode45(odefun, y0, tspan, opts);
             /// DdeResult ddeRes = Dde23(ddefun, delays, history, tspan, opts);
             /// </signature>
             /// 
-            /// 2. **Explicit Tuple Deconstruction (Explicit ODEs, Stiff Systems, and Mass-Matrix DAEs):**
+            /// 2. **Explicit Tuple Deconstruction** (Explicit ODEs, Stiff Systems, and Mass-Matrix DAEs):
             /// For standard explicit ODEs, stiff ODEs, mass-matrix DAEs (:math:`M y' = f(t, y)`), and delay differential equations, the output can be deconstructed directly into the time vector :math:`T` and solution matrix :math:`Y`:
             /// <signature>
             /// (ColVec T, Matrix Y) = Ode45(odefun, y0, tspan, opts);
@@ -59,7 +59,7 @@
             /// </signature>
             /// In the solution matrix :math:`Y`, rows correspond to individual time points in :math:`T`, and columns correspond to the respective state variables :math:`y_i`.
             /// 
-            /// 3. **Implicit Differential Equations (`*i` Family):**
+            /// 3. **Implicit Differential Equations** (`i` **Family**):
             /// For fully implicit differential systems (:math:`F(t, y, y') = 0`), the derivative trajectory :math:`y'(t)` is also a primary dependent variable. Solvers in the implicit family (`Ode32i`, `Ode43i`, `Ode85i`) deconstruct into a 3-tuple returning :math:`T`, :math:`Y`, and the derivative matrix :math:`Y_p`:
             /// <signature>
             /// (ColVec T, Matrix Y, Matrix Yp) = Ode43i(impidfun, y0, yp0, tspan, opts);
@@ -86,7 +86,7 @@
             /// Matrix yQuery = Deval(sol, tQuery);
             /// </signature>
             /// 
-            /// * **Hermite Splines and Second-Order Slopes for Implicit Systems (`*i` Family):**
+            /// * **Hermite Splines and Second-Order Slopes for Implicit Systems** (`i` **Family**):
             /// For fully implicit differential systems (:math:`F(t, y, y') = 0`), `OdeResult` retains second-order derivative slopes (:math:`y''`). This provides smooth, stable Hermite interpolation for both the state trajectory :math:`y(t)` and its time-derivative trajectory :math:`y'(t)`:
             /// <signature>
             /// OdeResult impSol = Ode43i(impidfun, y0, yp0, [0.0, 5.0], opts);
@@ -108,7 +108,7 @@
             /// (ColVec T, Matrix Y) = Ode45(odefun, y0, tspan, opts);
             /// </signature>
             /// 
-            /// * **Fixed Query Points (Dense Output / Specific Evaluation Points):**
+            /// * **Fixed Query Points** (Dense Output / Specific Evaluation Points):
             /// When `tspan` contains three or more monotonically spaced points, the integrator continues to step adaptively behind the scenes to preserve stability and accuracy, but internally calls dense interpolation to evaluate and return the solution exactly at the requested nodes:
             /// <signature>
             /// double[] tspan = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0];

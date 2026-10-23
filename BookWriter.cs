@@ -416,13 +416,13 @@ namespace ConsoleApp1
                     }
                 }
                 int Length = 1;
-                List<string> Codelines = ["", ".. code-block:: csharp"];
+                List<string> Codelines = ["", ".. code-block:: csharp", ""];
                 string line = bookContent[startIndex + Length];
                 int space = line.TakeWhile(c => c == ' ').Count() + 1;
                 while (!bookContent[startIndex + Length].Contains("</signature>"))
                 {
                     line = bookContent[startIndex + Length].Trim();
-                    Codelines.Add("   " + line[3..]);
+                    Codelines.Add("  " + line[3..]);
                     Length++;
                 }
                 Codelines.Add("");
