@@ -20,8 +20,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algebra
             /// 
             /// Where:
             /// 
-            /// - **:math:`\lambda`**: The eigenvalue, a scalar that indicates how much the eigenvector is stretched or compressed during the transformation.
-            /// - **:math:`v`**: The eigenvector, a non-zero vector that remains in the same direction after the transformation by :math:`A`.
+            /// - :math:`\mathbf{\lambda}`: The eigenvalue, a scalar that indicates how much the eigenvector is stretched or compressed during the transformation.
+            /// - :math:`\mathbf{v}`: The eigenvector, a non-zero vector that remains in the same direction after the transformation by :math:`A`.
             /// 
             /// **Eigen Decomposition**
             /// If a matrix :math:`A` has :math:`n` linearly independent eigenvectors, it can be decomposed as:
@@ -31,9 +31,9 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algebra
             /// 
             /// Where:
             /// 
-            /// - **:math:`V`**: An :math:`n \times n` matrix whose columns :math:`v_i` are the **eigenvectors** of :math:`A`. These define the invariant axes where transformation under :math:`A` does not rotate the vector.
-            /// - **:math:`\Lambda`**: An :math:`n \times n` **diagonal** matrix containing the **eigenvalues** (:math:`\lambda_i`). Each entry specifies the scale factor by which the corresponding eigenvector is dilated, compressed, or flipped.
-            /// - **:math:`V^{-1}`**: The inverse matrix of eigenvectors, projecting general vectors from the original basis into the eigenspace coordinates. (For symmetric matrices, :math:`V` is orthogonal, yielding :math:`V^{-1} = V^T`).
+            /// - :math:`\mathbf{V}`: An :math:`n \times n` matrix whose columns :math:`v_i` are the **eigenvectors** of :math:`A`. These define the invariant axes where transformation under :math:`A` does not rotate the vector.
+            /// - :math:`\mathbf{\Lambda}`: An :math:`n \times n` **diagonal** matrix containing the **eigenvalues** (:math:`\lambda_i`). Each entry specifies the scale factor by which the corresponding eigenvector is dilated, compressed, or flipped.
+            /// - :math:`\mathbf{V^{-1}}`: The inverse matrix of eigenvectors, projecting general vectors from the original basis into the eigenspace coordinates. (For symmetric matrices, :math:`V` is orthogonal, yielding :math:`V^{-1} = V^T`).
             ///
             /// **Geometric Interpretation**
             /// Applying an arbitrary linear transformation typically rotates and scales a vector simultaneously. Eigen decomposition reveals the unique directions where the transformation acts strictly as an axis-aligned stretch:
@@ -93,12 +93,12 @@ namespace ConsoleApp1.TrainingFiles.Chapter_05_Linear_Algebra
                 Console.WriteLine($"EigVals = {EigVals}");
             }
             /// </code>
-            /// **Summary of Matrix Properties**
-            /// <table>
+            /// 
+            /// <table> **Summary of Matrix Properties**
             /// Component | Property | Geometric Meaning
-            /// **:math:`V**` | Linearly Independent Columns | Modal directions (invariant axes)
-            /// **:math:`\Lambda**` | Diagonal Matrix | Scaling along invariant axes
-            /// **:math:`V^{-1}**` | :math:`V^{-1}V = I` (or :math:`V^T` if symmetric) | Projection into the modal coordinate system
+            /// :math:`\mathbf{V}` | Linearly Independent Columns | Modal directions (invariant axes)
+            /// :math:`\mathbf{\Lambda}` | Diagonal Matrix | Scaling along invariant axes
+            /// :math:`\mathbf{V^{-1}}` | :math:`V^{-1}V = I` (or :math:`V^T` if symmetric) | Projection into the modal coordinate system
             /// </table>
             /// </BookContent>
         }

@@ -14,8 +14,8 @@ For a square matrix :math:`A`, an eigenvalue :math:`\lambda` and its correspondi
 
 Where:
 
-- **:math:`\lambda`**: The eigenvalue, a scalar that indicates how much the eigenvector is stretched or compressed during the transformation.
-- **:math:`v`**: The eigenvector, a non-zero vector that remains in the same direction after the transformation by :math:`A`.
+- :math:`\mathbf{\lambda}`: The eigenvalue, a scalar that indicates how much the eigenvector is stretched or compressed during the transformation.
+- :math:`\mathbf{v}`: The eigenvector, a non-zero vector that remains in the same direction after the transformation by :math:`A`.
 
 **Eigen Decomposition**
 If a matrix :math:`A` has :math:`n` linearly independent eigenvectors, it can be decomposed as:
@@ -27,9 +27,9 @@ If a matrix :math:`A` has :math:`n` linearly independent eigenvectors, it can be
 
 Where:
 
-- **:math:`V`**: An :math:`n \times n` matrix whose columns :math:`v_i` are the **eigenvectors** of :math:`A`. These define the invariant axes where transformation under :math:`A` does not rotate the vector.
-- **:math:`\Lambda`**: An :math:`n \times n` **diagonal** matrix containing the **eigenvalues** (:math:`\lambda_i`). Each entry specifies the scale factor by which the corresponding eigenvector is dilated, compressed, or flipped.
-- **:math:`V^{-1}`**: The inverse matrix of eigenvectors, projecting general vectors from the original basis into the eigenspace coordinates. (For symmetric matrices, :math:`V` is orthogonal, yielding :math:`V^{-1} = V^T`).
+- :math:`\mathbf{V}`: An :math:`n \times n` matrix whose columns :math:`v_i` are the **eigenvectors** of :math:`A`. These define the invariant axes where transformation under :math:`A` does not rotate the vector.
+- :math:`\mathbf{\Lambda}`: An :math:`n \times n` **diagonal** matrix containing the **eigenvalues** (:math:`\lambda_i`). Each entry specifies the scale factor by which the corresponding eigenvector is dilated, compressed, or flipped.
+- :math:`\mathbf{V^{-1}}`: The inverse matrix of eigenvectors, projecting general vectors from the original basis into the eigenspace coordinates. (For symmetric matrices, :math:`V` is orthogonal, yielding :math:`V^{-1} = V^T`).
 
 **Geometric Interpretation**
 Applying an arbitrary linear transformation typically rotates and scales a vector simultaneously. Eigen decomposition reveals the unique directions where the transformation acts strictly as an axis-aligned stretch:
@@ -102,25 +102,25 @@ Ouput
 .. terminal::
 
    
-      0.9343    0.8833    0.2119    0.6102    0.1499
-      0.4364    0.0890    0.2295    0.8897    0.4150
-      0.8583    0.3779    0.4287    0.7690    0.6499
-      0.5687    0.3694    0.3974    0.6329    0.1389
-      0.5970    0.0021    0.0853    0.0858    0.4044
+      0.1759    0.4362    0.6546    0.9387    0.7693
+      0.3979    0.2175    0.8957    0.1647    0.5961
+      0.2375    0.1416    0.3194    0.3131    0.5810
+      0.0895    0.6870    0.2481    0.3717    0.2648
+      0.5753    0.1969    0.2279    0.4088    0.6129
    
    EigVecs = 
-     0.5461 + 0.0000i , -0.2313 + 0.3507i , -0.3507 + 0.2313i , -0.4820 + 0.1114i ,  0.1114 - 0.4820i 
-     0.3784 - 0.0000i ,  0.0178 - 0.1726i ,  0.1726 - 0.0178i ,  0.5109 - 0.3447i , -0.3447 + 0.5109i 
-     0.5756 - 0.0000i ,  0.4103 - 0.4024i ,  0.4024 - 0.4103i ,  0.0213 - 0.3039i , -0.3039 + 0.0213i 
-     0.4245 - 0.0000i , -0.2243 - 0.1341i ,  0.1341 + 0.2243i , -0.0457 + 0.2055i ,  0.2055 - 0.0457i 
-     0.2171 - 0.0000i ,  0.6223 + 0.0873i , -0.0873 - 0.6223i ,  0.4798 + 0.0905i ,  0.0905 + 0.4798i 
+     0.0513 - 0.5841i ,  0.3150 + 0.2109i , -0.6472 + 0.2275i , -0.3670 - 0.5796i , -0.3696 - 0.0845i 
+     0.0411 - 0.4682i , -0.4882 - 0.1404i ,  0.1912 + 0.1761i ,  0.2592 - 0.0198i ,  0.4370 + 0.2590i 
+     0.0292 - 0.3329i , -0.0926 - 0.1865i , -0.1519 - 0.1672i , -0.2229 + 0.0371i ,  0.1992 - 0.0606i 
+     0.0302 - 0.3441i , -0.0221 + 0.6179i , -0.1947 - 0.2982i , -0.3376 + 0.1134i , -0.4344 + 0.4399i 
+     0.0395 - 0.4503i ,  0.1964 - 0.3661i ,  0.5185 + 0.1224i ,  0.4828 + 0.2253i ,  0.1316 - 0.3941i 
    
    EigVals = 
-     2.3037 + 0.0000i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i 
-     0.0000 + 0.0000i ,  0.2478 + 0.2842i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i 
-     0.0000 + 0.0000i ,  0.0000 + 0.0000i ,  0.2478 - 0.2842i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i 
-     0.0000 + 0.0000i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i , -0.1550 + 0.2253i ,  0.0000 + 0.0000i 
-     0.0000 + 0.0000i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i , -0.1550 - 0.2253i 
+     2.0448 + 0.0000i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i 
+     0.0000 + 0.0000i ,  0.0311 + 0.4623i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i 
+     0.0000 + 0.0000i ,  0.0000 + 0.0000i , -0.2048 + 0.2036i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i 
+     0.0000 + 0.0000i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i , -0.2048 - 0.2036i ,  0.0000 + 0.0000i 
+     0.0000 + 0.0000i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i ,  0.0000 + 0.0000i ,  0.0311 - 0.4623i 
    
 The decomposition of a symmetric matrix is shown below 
 Notice that all eigenvalues and eigenvectors are real.
@@ -143,40 +143,40 @@ Ouput
 .. terminal::
 
    
-      2.1793    1.3980    1.1536    1.5885    2.0165
-      1.3980    1.2642    1.0530    1.0167    1.3034
-      1.1536    1.0530    0.9947    1.0623    1.1759
-      1.5885    1.0167    1.0623    1.7636    1.7331
-      2.0165    1.3034    1.1759    1.7331    2.0719
+      1.5940    1.5071    1.0120    0.7863    0.9946
+      1.5071    1.5630    1.2399    0.9388    1.0131
+      1.0120    1.2399    2.1049    1.2273    1.2016
+      0.7863    0.9388    1.2273    0.8635    0.8614
+      0.9946    1.0131    1.2016    0.8614    1.0201
    
    EigVecs = 
-      0.2534    0.4902   -0.6468   -0.0320   -0.5255
-     -0.6268    0.0277    0.1101   -0.6759   -0.3708
-      0.6912   -0.0586    0.5157   -0.3765   -0.3333
-     -0.2532    0.3651    0.5139    0.5801   -0.4495
-     -0.0331   -0.7888   -0.1985    0.2528   -0.5228
+     -0.4924    0.4380   -0.0158   -0.5990   -0.4546
+      0.5411   -0.4368   -0.3637   -0.3876   -0.4836
+      0.0221    0.3615   -0.4007    0.6565   -0.5267
+     -0.5594   -0.6771    0.2121    0.2323   -0.3600
+      0.3890    0.1678    0.8136    0.0778   -0.3905
    
    EigVals = 
-      0.0173    0.0000    0.0000    0.0000    0.0000
-      0.0000    0.0583    0.0000    0.0000    0.0000
-      0.0000    0.0000    0.3785    0.0000    0.0000
-      0.0000    0.0000    0.0000    0.5570    0.0000
-      0.0000    0.0000    0.0000    0.0000    7.2625
+      0.0000    0.0000    0.0000    0.0000    0.0000
+      0.0000    0.0918    0.0000    0.0000    0.0000
+      0.0000    0.0000    0.1807    0.0000    0.0000
+      0.0000    0.0000    0.0000    1.0261    0.0000
+      0.0000    0.0000    0.0000    0.0000    5.8469
    
-**Summary of Matrix Properties**
 
-.. list-table:: 
+
+.. list-table:: **Summary of Matrix Properties**
    :header-rows: 1
 
    * - Component
      - Property
      - Geometric Meaning
-   * - **:math:`V**`
+   * - :math:`\mathbf{V}`
      - Linearly Independent Columns
      - Modal directions (invariant axes)
-   * - **:math:`\Lambda**`
+   * - :math:`\mathbf{\Lambda}`
      - Diagonal Matrix
      - Scaling along invariant axes
-   * - **:math:`V^{-1}**`
+   * - :math:`\mathbf{V^{-1}}`
      - :math:`V^{-1}V = I` (or :math:`V^T` if symmetric)
      - Projection into the modal coordinate system

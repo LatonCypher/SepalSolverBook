@@ -294,7 +294,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 Matrix mass_f = Diag([1, 1, 0]);
                 double[] y0 = [1, 1, 0]; // only the differential variables need initial conditions
                 var opts = Odeset(Stats: true);
-                (ColVec T, Matrix Y, _) = Ode43a(Ercan, mass_f, y0, [0, 1], opts);
+                (ColVec T, Matrix Y, _) = Ode43a(Ercan, mass_f, y0, Linspace(0,1,21), opts);
                 Scatter(T, Hcart(Exp(T), Exp(T), -Exp(T).Div(2-T)), "o"); HoldOn();
                 Plot(T, Y); HoldOff();
                 Xlabel("Time t"); Ylabel("Solution x");
@@ -304,8 +304,8 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
 
                 // We can actually print out the result to compare with the analytical solution
                 Console.WriteLine("""
-                        t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
-                    --------++-----------------+----------------++-----------------+----------------++-----------------+---------------
+                         t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
+                    ---------++-----------------+----------------++-----------------+----------------++-----------------+---------------
                     """);
                 for (int i = 0; i < T.Numel; i++)
                 {
@@ -317,10 +317,10 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 // We can compute the solution to a higher accuracy 
                 Console.WriteLine("\n\nNow we compute the solution to a higher accuracy (RelTol = 1e-5):\n");
                 opts = Odeset(Stats: true, RelTol: 1e-5);
-                (T, Y, _) = Ode43a(Ercan, mass_f, y0, [0, 1], opts);
+                (T, Y, _) = Ode43a(Ercan, mass_f, y0, Linspace(0, 1, 21), opts);
                 Console.WriteLine("""
-                        t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
-                    --------++-----------------+----------------++-----------------+----------------++-----------------+---------------
+                         t   ||  x_1_NumSol(t)  |  x_1_Exact(t)  ||  x_2_NumSol(t)  |  x_2_Exact(t)  ||   z_NumSol(t)   |   z_Exact(t) 
+                    ---------++-----------------+----------------++-----------------+----------------++-----------------+---------------
                     """);
                 for (int i = 0; i < T.Numel; i++)
                 {
@@ -364,7 +364,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 Matrix mass_f = Diag([1, 1, 1, 1, 0]);
                 double[] y0 = [0, 1, 1, 0, -1];
                 var opts = Odeset(Stats: true);
-                (ColVec T, Matrix Y, _) = Ode43a(pendulum_f, mass_f, y0, [0, 6], opts);
+                (ColVec T, Matrix Y, _) = Ode43a(pendulum_f, mass_f, y0, Linspace(0, 6, 51), opts);
                 Plot(T, Y, Linewidth: 2); Xlabel("x"); Ylabel("y");
                 Legend(["x", "y", "u", "v", "λ"]);
                 Title("Pendulum Trajectory (DAE)");
@@ -447,7 +447,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
                 Title("Constrained Mechanical System Index 2 DAE Problem");
                 Xlabel("Time t"); Ylabel("Solution z");
                 Legend(["u1", "u2", "v1", "v2", "µ", "λ"]);
-                SaveAs("Constrained Mechanical System Index 2 DAE.png", 1000, 500);
+                SaveAs("Constrained_Mechanical_System_Index_2_DAE.png", 1000, 500);
             }
             /// </code>
             /// </example>
@@ -510,7 +510,7 @@ namespace ConsoleApp1.TrainingFiles.Chapter_08_Ordinary_Differential_Equations
             /// <code>
             {
                 double g = 9.81; ColVec T; Matrix Y;
-                double[] y0 = [0, 1, 1, 0, 1 - g], interval = [0, 6];
+                double[] y0 = [0, 1, 1, 0, 1 - g], interval = Linspace(0, 6, 51);
                 var opts = Odeset(Stats: true, RelTol: 1e-6);
                 Matrix Mass = Diag([1, 1, 1, 1, 0]);
                 Matrix Error(Matrix Y) => Hcart(Abs(Y[.., 0].Pow(2) + Y[.., 1].Pow(2) - 1),
