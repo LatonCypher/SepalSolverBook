@@ -43,7 +43,7 @@
             /// Calling an integrator with a single return assignment yields an encapsulated result structure containing the discrete trajectory, internal stage slopes, solver performance diagnostics, and continuous interpolating machinery:
             /// <signature>
             /// OdeResult res = Ode45(odefun, y0, tspan, opts);
-            /// DdeResult ddeRes = Dde23(ddefun, delays, history, tspan, opts);
+            /// DdeResult ddeRes = Dde23(ddefun, history, tspan, delays, opts);
             /// </signature>
             /// 
             /// 2. **Explicit Tuple Deconstruction** (Explicit ODEs, Stiff Systems, and Mass-Matrix DAEs):
@@ -55,7 +55,7 @@
             /// (ColVec T, Matrix Y) = Ode43a(odefun, Mass, y0, tspan, opts);
             /// 
             /// // Delay Differential Equations:
-            /// (ColVec T, Matrix Y) = Dde23(ddefun, delays, history, tspan, opts);
+            /// (ColVec T, Matrix Y) = Dde23(ddefun, history, tspan, delays, opts);
             /// </signature>
             /// In the solution matrix :math:`Y`, rows correspond to individual time points in :math:`T`, and columns correspond to the respective state variables :math:`y_i`.
             /// 

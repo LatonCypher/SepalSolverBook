@@ -59,7 +59,7 @@ Calling an integrator with a single return assignment yields an encapsulated res
 .. code-block:: csharp
 
    OdeResult res = Ode45(odefun, y0, tspan, opts);
-   DdeResult ddeRes = Dde23(ddefun, delays, history, tspan, opts);
+   DdeResult ddeRes = Dde23(ddefun, history, tspan, delays, opts);
 
 
 2. **Explicit Tuple Deconstruction** (Explicit ODEs, Stiff Systems, and Mass-Matrix DAEs):
@@ -73,7 +73,7 @@ For standard explicit ODEs, stiff ODEs, mass-matrix DAEs (:math:`M y' = f(t, y)`
    (ColVec T, Matrix Y) = Ode43a(odefun, Mass, y0, tspan, opts);
   
    // Delay Differential Equations:
-   (ColVec T, Matrix Y) = Dde23(ddefun, delays, history, tspan, opts);
+   (ColVec T, Matrix Y) = Dde23(ddefun, history, tspan, delays, opts);
 
 In the solution matrix :math:`Y`, rows correspond to individual time points in :math:`T`, and columns correspond to the respective state variables :math:`y_i`.
 
@@ -203,7 +203,7 @@ Calling an integrator with a single return assignment yields an encapsulated res
 .. code-block:: csharp
 
    OdeResult res = Ode45(odefun, y0, tspan, opts);
-   DdeResult ddeRes = Dde23(ddefun, delays, history, tspan, opts);
+   DdeResult ddeRes = Dde23(ddefun, history, tspan, delays, opts);
 
 
 2. **Explicit Tuple Deconstruction** (Explicit ODEs, Stiff Systems, and Mass-Matrix DAEs):
@@ -217,7 +217,7 @@ For standard explicit ODEs, stiff ODEs, mass-matrix DAEs (:math:`M y' = f(t, y)`
    (ColVec T, Matrix Y) = Ode43a(odefun, Mass, y0, tspan, opts);
   
    // Delay Differential Equations:
-   (ColVec T, Matrix Y) = Dde23(ddefun, delays, history, tspan, opts);
+   (ColVec T, Matrix Y) = Dde23(ddefun, history, tspan, delays, opts);
 
 In the solution matrix :math:`Y`, rows correspond to individual time points in :math:`T`, and columns correspond to the respective state variables :math:`y_i`.
 
