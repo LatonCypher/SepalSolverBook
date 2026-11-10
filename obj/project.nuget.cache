@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1746cqlR4DE=",
+  "dgSpecHash": "fYb6OLs1tXI=",
   "success": true,
   "projectFilePath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\SepalSolverBook\\ConsoleApp1.csproj",
   "expectedPackageFiles": [
@@ -64,8 +64,8 @@
     "C:\\Users\\lateef.a.kareem\\.nuget\\packages\\tensorflow.net\\0.100.2\\tensorflow.net.0.100.2.nupkg.sha512",
     "C:\\Users\\lateef.a.kareem\\.nuget\\packages\\torchsharp\\0.107.0\\torchsharp.0.107.0.nupkg.sha512",
     "C:\\Users\\lateef.a.kareem\\.nuget\\packages\\torchsharp-cpu\\0.107.0\\torchsharp-cpu.0.107.0.nupkg.sha512",
-    "C:\\Users\\lateef.a.kareem\\.nuget\\packages\\sepalsolver\\1.2.9\\sepalsolver.1.2.9.nupkg.sha512",
-    "C:\\Users\\lateef.a.kareem\\.nuget\\packages\\sepalsolver.plotlib\\1.2.9\\sepalsolver.plotlib.1.2.9.nupkg.sha512"
+    "C:\\Users\\lateef.a.kareem\\.nuget\\packages\\sepalsolver\\1.3.2\\sepalsolver.1.3.2.nupkg.sha512",
+    "C:\\Users\\lateef.a.kareem\\.nuget\\packages\\sepalsolver.plotlib\\1.3.2\\sepalsolver.plotlib.1.3.2.nupkg.sha512"
   ],
   "logs": [
     {

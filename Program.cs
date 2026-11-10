@@ -1,6 +1,1070 @@
 ﻿using ConsoleApp1;
+using Google.Protobuf;
+using Microsoft.ML.Tokenizers;
+using Microsoft.ML.Trainers.FastTree;
+
 {
-    currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents\\AbimbolaPeter\\";
+    currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents";
+    {
+        Matrix SWOF = new double[,]
+        {
+            { 0.2000,  0.000000,  0.900000,  5.00 },
+            { 0.2500,  0.003444,  0.743802,  3.20 },
+            { 0.3000,  0.019484,  0.598017,  2.10 },
+            { 0.3500,  0.053685,  0.463223,  1.45 },
+            { 0.4000,  0.110214,  0.340083,  1.00 },
+            { 0.4500,  0.192451,  0.230165,  0.70 },
+            { 0.5000,  0.303102,  0.136364,  0.45 },
+            { 0.5500,  0.444256,  0.062810,  0.25 },
+            { 0.6000,  0.617502,  0.015702,  0.10 },
+            { 0.6500,  0.650000,  0.001963,  0.02 },
+            { 0.7500,  0.650000,  0.000000,  0.00 },
+            { 1.0000,  0.650000,  0.000000,  0.00 }
+        },
+        SGOF = new double[,]
+        {
+            { 0.0000,  0.000000,  0.900000,  0.00 },
+            { 0.0500,  0.000000,  0.900000,  0.00 },
+            { 0.1000,  0.002231,  0.760000,  0.15 },
+            { 0.1500,  0.010892,  0.627200,  0.35 },
+            { 0.2000,  0.027582,  0.502400,  0.60 },
+            { 0.3000,  0.091386,  0.284800,  1.20 },
+            { 0.4000,  0.206584,  0.124800,  2.10 },
+            { 0.5000,  0.385391,  0.027200,  3.40 },
+            { 0.5500,  0.500479,  0.004800,  4.20 },
+            { 0.6000,  0.633190,  0.000000,  5.10 },
+            { 0.7500,  0.850000,  0.000000,  8.00 },
+            { 0.8000,  0.850000,  0.000000,  9.00 }
+        },
+        PVTO_Sat = new double[,]
+        {
+            { 1000.0,   245.8,  1.1210,  1.4820 },
+            { 1800.0,   450.2,  1.2180,  1.3120 },
+            { 2200.0,   564.7,  1.2720,  1.2400 },
+            { 2800.0,   728.5,  1.3540,  1.1550 },
+            { 3400.0,   898.4,  1.4390,  1.0850 },
+            { 4200.0,  1135.0,  1.5580,  1.0100 }
+        },
+        PVTG = new double[,]
+        {
+            {  500.0,  0.0012e-3,  5.8250e-3,  0.0139 },
+            { 1000.0,  0.0035e-3,  2.8540e-3,  0.0148 },
+            { 1800.0,  0.0084e-3,  1.5620e-3,  0.0162 },
+            { 2200.0,  0.0118e-3,  1.2650e-3,  0.0170 },
+            { 2800.0,  0.0182e-3,  0.9850e-3,  0.0180 },
+            { 3400.0,  0.0264e-3,  0.8040e-3,  0.0191 },
+            { 4200.0,  0.0400e-3,  0.6530e-3,  0.0205 },
+            { 4600.0,  0.0450e-3,  0.6010e-3,  0.0213 },
+            { 5000.0,  0.0495e-3,  0.5580e-3,  0.0220 },
+        };
+
+        var deck = new
+        {
+            // 1. SWOF Table [Sw, krw, krow, Pcow]
+            swof = SWOF,
+
+            // 2. SGOF Table [Sg, krg, krog, Pcog]
+            sgof = SGOF,
+
+            // 3. PVTG Table [P, Rv, Bg (rb/scf), mu_g]
+            // Note: Bg converted to rb/ scf(divided by 1000)
+            pvtg = PVTG,
+
+            // 4. PVTO Saturated Line [P, Rs (scf/STB), Bo (rb/STB), mu_o (cp)]
+            pvto_sat = PVTO_Sat,
+
+            //5. PVTW Constants
+            pvtw = new
+            {
+                pref_w = 4200.0,
+                Bw_ref = 1.0250,
+                cw = 3.20e-6,
+                mu_w_ref = 0.450
+            },
+        };
+
+        (double krw, double kro, double krg) lookup_relperm(double Sw, double Sg)
+        {
+            // LOOKUP_RELPERM Computes 3-phase relative permeabilities via Stone II
+            var Sw_tab = deck.swof[.., 0];
+            Sw = Max(Sw_tab.Min(), Min(Sw_tab.Max(), Sw));
+            double krw = Interp1(Sw_tab, deck.swof[.., 1], Sw);
+            double krow = Interp1(Sw_tab, deck.swof[.., 2], Sw);
+
+            var Sg_tab = deck.sgof[.., 0];
+            Sg = Max(Sg_tab.Min(), Min(Sg_tab.Max(), Sg));
+            double krg = Interp1(Sg_tab, deck.sgof[.., 1], Sg);
+            double krog = Interp1(Sg_tab, deck.sgof[.., 2], Sg);
+
+            //  Stone's Model II for 3-Phase kro
+            double kroc = 0.90; // kro at connate water(Sw = Swc, Sg = 0)
+            double kro = Max(0.0, kroc * ((krow / kroc + krw) * (krog / kroc + krg) - (krw + krg)));
+            return (krw, kro, krg);
+        }
+
+        (double Bg, double mu_g, double Rv, double Bo, double mu_o, double Rs, double Bw, double mu_w, double Pb) lookup_pvt(double p)
+        {
+            // LOOKUP_PVT Evaluates Bo, Bg, Bw, Rs, Rv, and viscosities at current pressure p
+            var p_pvtg = deck.pvtg[.., 0];
+            double Rv = Interp1(p_pvtg, deck.pvtg[.., 1], p);
+            double Bg = Interp1(p_pvtg, deck.pvtg[.., 2], p);
+            double mu_g = Interp1(p_pvtg, deck.pvtg[.., 3], p);
+
+            // Saturated Oil Line(p <= pb = 4200 psia)
+            var p_pvto = deck.pvto_sat[.., 0];
+            double Rs, Bo, mu_o;
+            double Pb = p_pvto.Last(); // Bubble point, psia
+            if (p <= Pb)
+            {
+                Rs = Interp1(p_pvto, deck.pvto_sat[.., 1], p);
+                Bo = Interp1(p_pvto, deck.pvto_sat[.., 2], p);
+                mu_o = Interp1(p_pvto, deck.pvto_sat[.., 3], p);
+            }
+            else
+            {
+                // Undersaturated expansion above 4200 psia
+                Rs = 1135.0;
+                Bo = 1.5580 * Exp(-1.5e-5 * (p - 4200.0));
+                mu_o = 1.0100 + 3.75e-5 * (p - 4200.0);
+            }
+
+            //Water PVT
+            double Bw = deck.pvtw.Bw_ref * (1.0 - deck.pvtw.cw * (p - deck.pvtw.pref_w));
+            double mu_w = deck.pvtw.mu_w_ref;
+            return (Bg, mu_g, Rv, Bo, mu_o, Rs, Bw, mu_w, Pb);
+        }
+
+        #region 3. RESERVOIR CONSTANTS & CONSISTENT INITIALIZATION
+        double N = 50.0e6;       // Initial STOIIP, STB
+        double m = 0.40;         // Initial gas cap ratio
+        double Pi = 4200.0;      // Initial reservoir pressure, psia
+        double Pwf = 2200.0;     // Flowing BHP, psia (Pwf < Pb)
+        double Swi_o = 0.20;     // Connate water in oil zone
+        double Swi_g = 0.18;     // Connate water in gas cap
+        double cf = 4.5e-6;      // Rock compressibility, 1/psi
+        double cw = deck.pvtw.cw;// Water compressibility, 1/psi
+
+        double Jo = 3.5;         // Well PI, STB/day/psi
+        double Jaq = 120.0;      // Schilthuis aquifer index, res bbl/day/psi
+        double qw_inj_rate = 0.0;
+        double qg_inj_rate = 0.0;
+
+        // Initial PVT values at discovery
+        var (Bgi, _, Rvi, Boi, _, Rsi, Bwi, _, Pb) = lookup_pvt(Pi);
+
+        // Zonal Initial Pore Volumes
+        double Vpo_i = (N * Boi) / (1.0 - Swi_o);
+        double Vpg_i = (m * N * Boi) / (1.0 - Swi_g);
+        double Vpi = Vpo_i + Vpg_i;
+        double Vwi = Vpo_i * Swi_o + Vpg_i * Swi_g;
+        double Vp_hc_i = N * Boi * (1.0 + m);
+
+
+        // Composite Matrix/Connate Water Compressibility referenced to Vp_hc_i
+        double num_ce = (1.0 / (1.0 - Swi_o) + m / (1.0 - Swi_g)) * cf +
+                        (Swi_o / (1.0 - Swi_o) + m * Swi_g / (1.0 - Swi_g)) * cw;
+        double ce_bar = num_ce / (1.0 + m);
+
+        // Total Surface Equivalent Stocks
+        double N_total_i = N * (1.0 + (m * Rvi * Boi) / Bgi);
+        double G_total_i = N * ((m * Boi) / Bgi + Rsi);
+
+        // Residual Function g(y) == 0
+        double Residual(double p, ColVec y)
+        {
+            double Np = y[0], Gp = y[1], Wp = y[2], Winj = y[3], Ginj = y[4], We = y[5];
+
+            var (Bg, _, Rv, Bo, _, Rs, Bw, _, _) = lookup_pvt(p);
+
+            double Vp_hc = Vp_hc_i * (1.0 - ce_bar * (Pi - p)) - We + Bw * Wp - Bw * Winj;
+            double N_res = N_total_i - Np, G_res = G_total_i - Gp + Ginj;
+
+            double det_mbo = 1.0 - Rs * Rv;
+            double V_hc_req = ((N_res - Rv * G_res) * Bo + (G_res - Rs * N_res) * Bg) / det_mbo;
+
+            return Vp_hc - V_hc_req;
+        }
+
+        double p = Pi, qo = 0.0, qg = 0.0, qw = 0.0, qw_inj = 0.0, qg_inj = 0.0, ew = 0.0;
+        List<RowVec> Flows = [], Pressure = [];
+        void SaveFun()
+        {
+            Flows.Add([qo, qg, qw, qw_inj, qg_inj, ew]);
+            Pressure.Add(p);
+        }
+
+        // Verify Discovery Equilibrium
+        double[] y0 = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
+        double g0 = Residual(Pi, y0);
+        Console.WriteLine($"[SepalSolver] Residual check at discovery g(Pi, y0) = {g0:E6} res bbl");
+        if (Abs(g0) > 1e-3)
+            throw new InvalidOperationException("Inconsistent initial algebraic residual detected!");
+        #endregion
+        
+
+        #region 4. ODE RHS FUNCTION DEFINITION
+        ColVec Fun(double t, ColVec y)
+        {
+            
+            double Np = y[0], Gp = y[1], Wp = y[2], Winj = y[3], Ginj = y[4], We = y[5];
+            p = Fsolve(x => Residual(x, y), p);
+
+            // 1. Thermodynamic Properties
+            var (Bg, mu_g, Rv, Bo, mu_o, Rs, Bw, mu_w, Pb) = lookup_pvt(p);
+
+            // 2. Pore & Fluid Volumes
+            double Vp = Vpi * (1.0 - cf * (Pi - p));
+            double Vw = Vwi * (1.0 + cw * (Pi - p)) + We - Bw * Wp + Bw * Winj;
+
+            double N_res = N_total_i - Np;
+            double G_res = G_total_i - Gp + Ginj;
+
+            double det_mbo = 1.0 - Rs * Rv;
+            double N_res_o = (N_res - Rv * G_res) / det_mbo;
+            double G_res_g = (G_res - Rs * N_res) / det_mbo;
+
+            double Vo = Max(0.0, N_res_o * Bo);
+            double Vg = Max(0.0, G_res_g * Bg);
+
+            // 3. Dynamic Saturations
+            double Sw = Max(0.0, Min(1.0, Vw / Vp));
+            double So = Max(0.0, Min(1.0, Vo / Vp));
+            double Sg = Max(0.0, Min(1.0, 1.0 - Sw - So));
+
+            // 4. Relative Permeabilities
+            var (krw, kro, krg) = lookup_relperm(Sw, Sg);
+
+            // 5. Inflow Performance (IPR - Vogel below bubble-point)
+            qo = 0.0;
+            if (p > Pwf)
+            {
+                double qo_max = (Jo * p) / 1.8;
+                qo = qo_max * (1.0 - 0.2 * (Pwf / p) - 0.8 * Pow(Pwf / p, 2));
+            }
+
+            // 6. Dynamic Producing Ratios via Phase Mobility Ratios
+            double WOR = 100, Rp = 5e4;
+            if (kro > 1e-6)
+            {
+                double M_wo = (krw / kro) * (mu_o / mu_w);
+                WOR = M_wo * (Bo / Bw);
+
+                double M_go = (krg / kro) * (mu_o / mu_g);
+                Rp = (M_go * (Bo / Bg) + Rs) / (1.0 + Rv * M_go * (Bo / Bg));
+            }
+
+            qw = WOR * qo;
+            qg = Rp * qo;
+
+            // 7. Aquifer Encroachment & Injection Rates
+            ew = Jaq * Max(0.0, Pi - p);
+            qw_inj = qw_inj_rate;
+            qg_inj = qg_inj_rate;
+
+            // Return RHS: [dNp/dt; dGp/dt; dWp/dt; dWinj/dt; dGinj/dt; dWe/dt]
+            return [qo, qg, qw, qw_inj, qg_inj, ew];
+        }
+        #endregion
+
+        #region 5. SOLVE VIA SEPALSOLVER ODE45
+
+        double tStart = 0.0;
+        double tEnd = 365.25 * 5.0; // 10-year production timeline
+        double[] tspan = Linspace(tStart, tEnd, 240);
+        var Opts = Odeset(OutputFun: () => SaveFun());
+        Console.WriteLine("[SepalSolver] Integrating 6-state ODE system with Ode45...");
+        (var T, var Y) = Ode45(Fun, y0, tspan, Opts);
+
+        Console.WriteLine($"[SepalSolver] Integration complete across {T.Numel} accepted steps.");
+        Console.WriteLine($"[SepalSolver] Final Pressure at Year {T[^1]/365.25}: {Pressure[^1]:F2} psia");
+        Console.WriteLine($"[SepalSolver] Final Cumulative Oil Produced (Np): {Y[^1, 0] / 1e6:F3} MMSTB");
+        Console.WriteLine($"[SepalSolver] Final Cumulative Gas Produced (Gp): {Y[^1, 1] / 1e9:F3} Bscf");
+        Console.WriteLine($"[SepalSolver] Final Cumulative Water Influx (We): {Y[^1, 5] / 1e6:F3} MM res bbl");
+        #endregion
+
+        Subplot(3, 2, 0); Plot(T, Y[.., 0], Linewidth: 2);
+        Xlabel("Time (days)", interpreter: Latex);
+        Ylabel("Cumulative Oil Produced (STB)", interpreter: Latex);
+
+        Subplot(3, 2, 1); Plot(T, Y[.., 1], Linewidth: 2);
+        Xlabel("Time (days)", interpreter: Latex);
+        Ylabel("Cumulative Gas Produced (scf)", interpreter: Latex);
+
+        Subplot(3, 2, 2); Plot(T, Y[.., 2], Linewidth: 2);
+        Xlabel("Time (days)", interpreter: Latex);
+        Ylabel("Cumulative Water Produced (STB)", interpreter: Latex);
+
+        Subplot(3, 2, 3); Plot(T, Y[.., 5], Linewidth: 2);
+        Xlabel("Time (days)", interpreter: Latex);
+        Ylabel("Cumulative Water Influx (STB)", interpreter: Latex);
+
+        Subplot(3, 2, [4, 5]); Plot(T, Pressure, Linewidth: 2);
+        Xlabel("Time (days)", interpreter: Latex);
+        Ylabel("Pressure", interpreter: Latex);
+
+        SaveAs("MaterialBalanceOde.png", 800, 1200);
+    }
+    {
+        Matrix SWOF = new double[,]
+        {
+            { 0.2000,  0.000000,  0.900000,  5.00 },
+            { 0.2500,  0.003444,  0.743802,  3.20 },
+            { 0.3000,  0.019484,  0.598017,  2.10 },
+            { 0.3500,  0.053685,  0.463223,  1.45 },
+            { 0.4000,  0.110214,  0.340083,  1.00 },
+            { 0.4500,  0.192451,  0.230165,  0.70 },
+            { 0.5000,  0.303102,  0.136364,  0.45 },
+            { 0.5500,  0.444256,  0.062810,  0.25 },
+            { 0.6000,  0.617502,  0.015702,  0.10 },
+            { 0.6500,  0.650000,  0.001963,  0.02 },
+            { 0.7500,  0.650000,  0.000000,  0.00 },
+            { 1.0000,  0.650000,  0.000000,  0.00 }
+        },
+        SGOF = new double[,]
+        {
+            { 0.0000,  0.000000,  0.900000,  0.00 },
+            { 0.0500,  0.000000,  0.900000,  0.00 },
+            { 0.1000,  0.002231,  0.760000,  0.15 },
+            { 0.1500,  0.010892,  0.627200,  0.35 },
+            { 0.2000,  0.027582,  0.502400,  0.60 },
+            { 0.3000,  0.091386,  0.284800,  1.20 },
+            { 0.4000,  0.206584,  0.124800,  2.10 },
+            { 0.5000,  0.385391,  0.027200,  3.40 },
+            { 0.5500,  0.500479,  0.004800,  4.20 },
+            { 0.6000,  0.633190,  0.000000,  5.10 },
+            { 0.7500,  0.850000,  0.000000,  8.00 },
+            { 0.8000,  0.850000,  0.000000,  9.00 }
+        },
+        PVTO_Sat = new double[,]
+        {
+            { 1000.0,   245.8,  1.1210,  1.4820 },
+            { 1800.0,   450.2,  1.2180,  1.3120 },
+            { 2200.0,   564.7,  1.2720,  1.2400 },
+            { 2800.0,   728.5,  1.3540,  1.1550 },
+            { 3400.0,   898.4,  1.4390,  1.0850 },
+            { 4200.0,  1135.0,  1.5580,  1.0100 }
+        },
+        PVTG = new double[,]
+        {
+            {  500.0,  0.0012e-3,  5.8250e-3,  0.0139 },
+            { 1000.0,  0.0035e-3,  2.8540e-3,  0.0148 },
+            { 1800.0,  0.0084e-3,  1.5620e-3,  0.0162 },
+            { 2200.0,  0.0118e-3,  1.2650e-3,  0.0170 },
+            { 2800.0,  0.0182e-3,  0.9850e-3,  0.0180 },
+            { 3400.0,  0.0264e-3,  0.8040e-3,  0.0191 },
+            { 4200.0,  0.0400e-3,  0.6530e-3,  0.0205 },
+            { 4600.0,  0.0450e-3,  0.6010e-3,  0.0213 },
+            { 5000.0,  0.0495e-3,  0.5580e-3,  0.0220 },
+        };
+
+        var deck = new
+        {
+            // 1. SWOF Table [Sw, krw, krow, Pcow]
+            swof = SWOF,
+
+            // 2. SGOF Table [Sg, krg, krog, Pcog]
+            sgof = SGOF,
+
+            // 3. PVTG Table [P, Rv, Bg (rb/scf), mu_g]
+            // Note: Bg converted to rb/ scf(divided by 1000)
+            pvtg = PVTG,
+
+            // 4. PVTO Saturated Line [P, Rs (scf/STB), Bo (rb/STB), mu_o (cp)]
+            pvto_sat = PVTO_Sat,
+
+            //5. PVTW Constants
+            pvtw = new
+            {
+                pref_w = 4200.0,
+                Bw_ref = 1.0250,
+                cw = 3.20e-6,
+                mu_w_ref = 0.450
+            },
+        };
+
+        (double krw, double kro, double krg) lookup_relperm(double Sw, double Sg)
+        {
+            // LOOKUP_RELPERM Computes 3-phase relative permeabilities via Stone II
+            var Sw_tab = deck.swof[.., 0];
+            Sw = Max(Sw_tab.Min(), Min(Sw_tab.Max(), Sw));
+            double krw = Interp1(Sw_tab, deck.swof[.., 1], Sw);
+            double krow = Interp1(Sw_tab, deck.swof[.., 2], Sw);
+
+            var Sg_tab = deck.sgof[.., 0];
+            Sg = Max(Sg_tab.Min(), Min(Sg_tab.Max(), Sg));
+            double krg = Interp1(Sg_tab, deck.sgof[.., 1], Sg);
+            double krog = Interp1(Sg_tab, deck.sgof[.., 2], Sg);
+
+            //  Stone's Model II for 3-Phase kro
+            double kroc = 0.90; // kro at connate water(Sw = Swc, Sg = 0)
+            double kro = Max(0.0, kroc * ((krow / kroc + krw) * (krog / kroc + krg) - (krw + krg)));
+            return (krw, kro, krg);
+        }
+
+        (double Bg, double mu_g, double Rv, double Bo, double mu_o, double Rs, double Bw, double mu_w, double Pb) lookup_pvt(double p)
+        {
+            // LOOKUP_PVT Evaluates Bo, Bg, Bw, Rs, Rv, and viscosities at current pressure p
+            var p_pvtg = deck.pvtg[.., 0];
+            double Rv = Interp1(p_pvtg, deck.pvtg[.., 1], p);
+            double Bg = Interp1(p_pvtg, deck.pvtg[.., 2], p);
+            double mu_g = Interp1(p_pvtg, deck.pvtg[.., 3], p);
+
+            // Saturated Oil Line(p <= pb = 4200 psia)
+            var p_pvto = deck.pvto_sat[.., 0];
+            double Rs, Bo, mu_o;
+            double Pb = p_pvto.Last(); // Bubble point, psia
+            if (p <= Pb)
+            {
+                Rs = Interp1(p_pvto, deck.pvto_sat[.., 1], p);
+                Bo = Interp1(p_pvto, deck.pvto_sat[.., 2], p);
+                mu_o = Interp1(p_pvto, deck.pvto_sat[.., 3], p);
+            }
+            else
+            {
+                // Undersaturated expansion above 4200 psia
+                Rs = 1135.0;
+                Bo = 1.5580 * Exp(-1.5e-5 * (p - 4200.0));
+                mu_o = 1.0100 + 3.75e-5 * (p - 4200.0);
+            }
+
+            //Water PVT
+            double Bw = deck.pvtw.Bw_ref * (1.0 - deck.pvtw.cw * (p - deck.pvtw.pref_w));
+            double mu_w = deck.pvtw.mu_w_ref;
+            return (Bg, mu_g, Rv, Bo, mu_o, Rs, Bw, mu_w, Pb);
+        }
+
+        #region 3. RESERVOIR CONSTANTS & CONSISTENT INITIALIZATION
+        double N = 50.0e6;       // Initial STOIIP, STB
+        double m = 0.40;         // Initial gas cap ratio
+        double Pi = 4200.0;      // Initial reservoir pressure, psia
+        double Pwf = 2200.0;     // Flowing BHP, psia (Pwf < Pb)
+        double Swi_o = 0.20;     // Connate water in oil zone
+        double Swi_g = 0.18;     // Connate water in gas cap
+        double cf = 4.5e-6;      // Rock compressibility, 1/psi
+        double cw = deck.pvtw.cw;// Water compressibility, 1/psi
+
+        double Jo = 3.5;         // Well PI, STB/day/psi
+        double Jaq = 120.0;      // Schilthuis aquifer index, res bbl/day/psi
+        double qw_inj_rate = 0.0;
+        double qg_inj_rate = 0.0;
+
+        // Initial PVT values at discovery
+        var (Bgi, _, Rvi, Boi, _, Rsi, Bwi, _, Pb) = lookup_pvt(Pi);
+
+        // Zonal Initial Pore Volumes
+        double Vpo_i = (N * Boi) / (1.0 - Swi_o);
+        double Vpg_i = (m * N * Boi) / (1.0 - Swi_g);
+        double Vpi = Vpo_i + Vpg_i;
+        double Vwi = Vpo_i * Swi_o + Vpg_i * Swi_g;
+        double Vp_hc_i = N * Boi * (1.0 + m);
+
+
+        // Composite Matrix/Connate Water Compressibility referenced to Vp_hc_i
+        double num_ce = (1.0 / (1.0 - Swi_o) + m / (1.0 - Swi_g)) * cf +
+                        (Swi_o / (1.0 - Swi_o) + m * Swi_g / (1.0 - Swi_g)) * cw;
+        double ce_bar = num_ce / (1.0 + m);
+
+        // Total Surface Equivalent Stocks
+        double N_total_i = N * (1.0 + (m * Rvi * Boi) / Bgi);
+        double G_total_i = N * ((m * Boi) / Bgi + Rsi);
+
+        // Residual Function g(y) == 0
+        double Residual(ColVec y)
+        {
+            double Np = y[0], Gp = y[1], Wp = y[2], Winj = y[3], Ginj = y[4], We = y[5], p = y[6];
+
+            var (Bg, _, Rv, Bo, _, Rs, Bw, _, _) = lookup_pvt(p);
+
+            double Vp_hc = Vp_hc_i * (1.0 - ce_bar * (Pi - p)) - We + Bw * Wp - Bw * Winj;
+            double N_res = N_total_i - Np;
+            double G_res = G_total_i - Gp + Ginj;
+
+            double det_mbo = 1.0 - Rs * Rv;
+            double V_hc_req = ((N_res - Rv * G_res) * Bo + (G_res - Rs * N_res) * Bg) / det_mbo;
+
+            return Vp_hc - V_hc_req;
+        }
+
+        // Verify Discovery Equilibrium
+        double[] y0 = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Pi];
+        double g0 = Residual(y0);
+        Console.WriteLine($"[SepalSolver] Residual check at discovery g(y0) = {g0:E6} res bbl");
+        if (Abs(g0) > 1e-3)
+            throw new InvalidOperationException("Inconsistent initial algebraic residual detected!");
+        #endregion
+
+        #region 4. DAE RHS FUNCTION DEFINITION
+        ColVec Fun(double t, ColVec y)
+        {
+            double Np = y[0], Gp = y[1], Wp = y[2], Winj = y[3], Ginj = y[4], We = y[5], p = y[6];
+
+            // 1. Thermodynamic Properties
+            var (Bg, mu_g, Rv, Bo, mu_o, Rs, Bw, mu_w, Pb) = lookup_pvt(p);
+
+            // 2. Pore & Fluid Volumes
+            double Vp = Vpi * (1.0 - cf * (Pi - p));
+            double Vw = Vwi * (1.0 + cw * (Pi - p)) + We - Bw * Wp + Bw * Winj;
+
+            double N_res = N_total_i - Np;
+            double G_res = G_total_i - Gp + Ginj;
+
+            double det_mbo = 1.0 - Rs * Rv;
+            double N_res_o = (N_res - Rv * G_res) / det_mbo;
+            double G_res_g = (G_res - Rs * N_res) / det_mbo;
+
+            double Vo = Max(0.0, N_res_o * Bo);
+            double Vg = Max(0.0, G_res_g * Bg);
+
+            // 3. Dynamic Saturations
+            double Sw = Max(0.0, Min(1.0, Vw / Vp));
+            double So = Max(0.0, Min(1.0, Vo / Vp));
+            double Sg = Max(0.0, Min(1.0, 1.0 - Sw - So));
+
+            // 4. Relative Permeabilities
+            var (krw, kro, krg) = lookup_relperm(Sw, Sg);
+
+            // 5. Inflow Performance (IPR - Vogel below bubble-point)
+            double qo = 0.0;
+            if (p > Pwf)
+            {
+                double qo_max = (Jo * p) / 1.8;
+                qo = qo_max * (1.0 - 0.2 * (Pwf / p) - 0.8 * Pow(Pwf / p, 2));
+            }
+
+            // 6. Dynamic Producing Ratios via Phase Mobility Ratios
+            double WOR = 100, Rp = 5e4;
+            if (kro > 1e-6)
+            {
+                double M_wo = (krw / kro) * (mu_o / mu_w);
+                WOR = M_wo * (Bo / Bw);
+
+                double M_go = (krg / kro) * (mu_o / mu_g);
+                Rp = (M_go * (Bo / Bg) + Rs) / (1.0 + Rv * M_go * (Bo / Bg));
+            }
+
+            double qw = WOR * qo;
+            double qg = Rp * qo;
+
+            // 7. Aquifer Encroachment & Injection Rates
+            double ew = Jaq * Max(0.0, Pi - p);
+            double qw_inj = qw_inj_rate;
+            double qg_inj = qg_inj_rate;
+
+            // 8. Algebraic Volume Balance Residual
+            double Vp_hc = Vp_hc_i * (1.0 - ce_bar * (Pi - p)) - We + Bw * Wp - Bw * Winj;
+            double V_hc_req = (Vo + Vg);
+            double g_res = Vp_hc - V_hc_req;
+
+            // Return RHS: [dNp/dt; dGp/dt; dWp/dt; dWinj/dt; dGinj/dt; dWe/dt; g(y)]
+            return [qo, qg, qw, qw_inj, qg_inj, ew, g_res];
+        }
+        #endregion
+
+        #region 5. SOLVE VIA SEPALSOLVER ODE43a
+        // Singular Mass Matrix: diag([1, 1, 1, 1, 1, 1, 0])
+        Matrix Mass = Matrix.Eye(7);
+        Mass[6, 6] = 0.0;
+
+        double tStart = 0.0;
+        double tEnd = 365.25 * 5.0; // 10-year production timeline
+
+        Console.WriteLine("[SepalSolver] Integrating 7-state DAE system with Ode43a...");
+        (var T, var Y) = Ode43a(Fun, Mass, y0, Linspace(tStart, tEnd, 240));
+
+        Console.WriteLine($"[SepalSolver] Integration complete across {T.Numel} accepted steps.");
+        Console.WriteLine($"[SepalSolver] Final Pressure at Year {T[^1]/365.25}: {Y[^1, 6]:F2} psia");
+        Console.WriteLine($"[SepalSolver] Final Cumulative Oil Produced (Np): {Y[^1, 0] / 1e6:F3} MMSTB");
+        Console.WriteLine($"[SepalSolver] Final Cumulative Gas Produced (Gp): {Y[^1, 1] / 1e9:F3} Bscf");
+        Console.WriteLine($"[SepalSolver] Final Cumulative Water Influx (We): {Y[^1, 5] / 1e6:F3} MM res bbl");
+        #endregion
+
+        Subplot(3, 2, 0); Plot(T, Y[.., 0], Linewidth: 2);
+        Xlabel("Time (days)", interpreter: Latex);
+        Ylabel("Cumulative Oil Produced (STB)", interpreter: Latex);
+
+        Subplot(3, 2, 1); Plot(T, Y[.., 1], Linewidth: 2);
+        Xlabel("Time (days)", interpreter: Latex);
+        Ylabel("Cumulative Gas Produced (scf)", interpreter: Latex);
+
+        Subplot(3, 2, 2); Plot(T, Y[.., 2], Linewidth: 2);
+        Xlabel("Time (days)", interpreter: Latex);
+        Ylabel("Cumulative Water Produced (STB)", interpreter: Latex);
+
+        Subplot(3, 2, 3); Plot(T, Y[.., 5], Linewidth: 2);
+        Xlabel("Time (days)", interpreter: Latex);
+        Ylabel("Cumulative Water Influx (STB)", interpreter: Latex);
+
+        Subplot(3, 2, [4, 5]); Plot(T, Y[.., 6], Linewidth: 2);
+        Xlabel("Time (days)", interpreter: Latex);
+        Ylabel("Pressure", interpreter: Latex);
+
+        SaveAs("MaterialBalanceDAE.png", 800, 1200);
+    }
+    {
+        // =========================================================================
+        // Pipeline Staggered Pure ODE Formulation for SepalSolver (Index 0)
+        // Integrated via Stiff Implicit Solver: Ode43s
+        // =========================================================================
+        int N = 30; // 30 spatial cells
+        double L = 3000.0, D = 0.254, A = pi * D * D / 4.0, g = 9.81, theta = 0.0;
+        double roughness = 4.57e-5;
+        double rho_o = 860.0, rho_c = 720.0, c_o = 1300.0, c_c = 1050.0;
+        double mu_o = 12.0e-3, mu_c = 0.6e-3, Ks = 0.065;
+        double p_inlet = 5.0e6, p_sep = 1.8e6, Cv_base = 0.0055, valve_closure_time = 45.0;
+        double psi_c_base = 0.15, psi_c_slug = 0.45;
+        double dx = L / N;
+
+        int totalVars = 3 * N; // Pure ODE: N pressures, N compositions, N face flows (q_0 .. q_{N-1})
+
+        // 1. Initial State Vector Setup
+        double[] y0 = Zeros(totalVars);
+        for (int i = 0; i < N; i++)
+        {
+            y0[i] = p_inlet - (1.2e6) * ((i + 0.5) / N); // Cell pressure p_i
+            y0[N + i] = psi_c_base;                      // Cell condensate fraction psi_i
+            y0[2 * N + i] = 0.052;                       // Interface volumetric flow q_i
+        }
+
+        // 2. Pure ODE Right-Hand Side
+        ColVec RhsFun(double t, ColVec y)
+        {
+            ColVec dy = Zeros(totalVars);
+            double psi_in = (t >= 20.0 && t <= 60.0) ? psi_c_slug : psi_c_base;
+
+            // Dynamic outlet valve flow explicitly computed at Face N
+            double tau = Min(t / valve_closure_time, 1.0);
+            double Cv_t = Cv_base * (1.0 - 0.70 * tau);
+            double delta_p = Max(y[N - 1] - p_sep, 0.0);
+            double q_outlet = Cv_t * Sqrt(delta_p);
+
+            // ---------------------------------------------------------------------
+            // A. Cell Centers (0 .. N-1): Mass Conservation & Upwind Convection
+            // ---------------------------------------------------------------------
+            for (int i = 0; i < N; i++)
+            {
+                double psi_i = Clamp(y[N + i], 0.0, 1.0);
+                double volC = psi_i / rho_c;
+                double volO = (1.0 - psi_i) / rho_o;
+                double phi_c = volC / (volC + volO);
+                double Sv = Ks * phi_c * (1.0 - phi_c) * Pow((rho_o - rho_c) / rho_o, 2.0);
+                double rho_m = (1.0 / (volC + volO)) / (1.0 - Sv);
+                double cm_speed = psi_i * c_c + (1.0 - psi_i) * c_o;
+                double Cm = 1.0 / (rho_m * cm_speed * cm_speed);
+
+                // Interface flows bounding cell i
+                double q_left = y[2 * N + i];
+                double q_right = (i == N - 1) ? q_outlet : y[2 * N + i + 1];
+
+                // dp/dt = -(1 / (A * Cm)) * dq/dx
+                double dq_dx = (q_right - q_left) / dx;
+                dy[i] = -(1.0 / (A * Cm)) * dq_dx;
+
+                // Upwind Convective Species Transport: dpsi/dt = -(u) * dpsi/dx
+                double q_avg = 0.5 * (q_left + q_right);
+                double psi_up = (i == 0) ? psi_in : y[N + i - 1];
+                double dpsi_dx = (psi_i - psi_up) / dx;
+                dy[N + i] = -(q_avg / A) * dpsi_dx;
+            }
+
+            // ---------------------------------------------------------------------
+            // B. Interface Momentum Balance (Faces 0 .. N-1)
+            // ---------------------------------------------------------------------
+            for (int j = 0; j < N; j++)
+            {
+                double dp_dx;
+                double psi_f;
+
+                if (j == 0)
+                {
+                    // Inlet Face 0: Pressure gradient from p_inlet to center of cell 0 (dx/2)
+                    dp_dx = (y[0] - p_inlet) / (0.5 * dx);
+                    psi_f = y[N];
+                }
+                else
+                {
+                    // Interior Faces 1 .. N-1: Gradient between cell centers (dx)
+                    dp_dx = (y[j] - y[j - 1]) / dx;
+                    psi_f = 0.5 * (y[N + j - 1] + y[N + j]);
+                }
+
+                double volC = psi_f / rho_c;
+                double volO = (1.0 - psi_f) / rho_o;
+                double phi_c = volC / (volC + volO);
+                double Sv = Ks * phi_c * (1.0 - phi_c) * Pow((rho_o - rho_c) / rho_o, 2.0);
+                double rho_mf = (1.0 / (volC + volO)) / (1.0 - Sv);
+                double mu_mf = Pow(psi_f * Cbrt(mu_c) + (1.0 - psi_f) * Cbrt(mu_o), 3.0);
+
+                double q_val = y[2 * N + j];
+                double vel = Abs(q_val) / A;
+                double Re = Max(rho_mf * vel * D / mu_mf, 10.0);
+
+                double th1 = Pow(-2.457 * Log(Pow(7.0 / Re, 0.9) + 0.27 * (roughness / D)), 16.0);
+                double th2 = Pow(37530.0 / Re, 16.0);
+                double fm = 8.0 * Pow(Pow(8.0 / Re, 12.0) + Pow(th1 + th2, -1.5), 1.0 / 12.0);
+
+                double friction = (fm / (2.0 * D * A)) * Abs(q_val) * q_val;
+                double gravity = A * g * Sin(theta);
+
+                // dq/dt = -(A / rho_m) * dp/dx - friction - gravity
+                dy[2 * N + j] = -(A / rho_mf) * dp_dx - friction - gravity;
+            }
+
+            return dy;
+        }
+
+        // 3. Solve Stiff Pure ODE System via Ode43s
+        double[] tSpan = Linspace(0.0, 150.0, 151);
+        var opt = Odeset( RelTol: 1e-4, AbsTol: 1e-5, Stats: true);
+        (ColVec T, Matrix Y) = Ode43s(RhsFun, y0, tSpan, opt);
+
+        // 4. Post-Processing: Extract Profiles
+        Matrix P_bar = Y[.., 0..N] * 1e-5;       // Pressure in bar
+        Matrix Psi_sol = Y[.., N..(2 * N)];      // Condensate mass fraction [-]
+        ColVec Q_inlet = Y[.., 2 * N] * 3600.0;  // Inlet flow rate [m^3/h]
+
+        // Reconstruct outlet flow rate history via valve equation
+        ColVec Q_outlet = Zeros(T.Numel);
+        for (int k = 0; k < T.Numel; k++)
+        {
+            double tau = Min(T[k] / valve_closure_time, 1.0);
+            double Cv_t = Cv_base * (1.0 - 0.70 * tau);
+            double delta_p = Max(Y[k, N - 1] - p_sep, 0.0);
+            Q_outlet[k] = (Cv_t * Sqrt(delta_p)) * 3600.0;
+        }
+
+        // 5. Visualization: 3 Subplots (Matching MATLAB styling)
+        Subplot(1, 3, 0);
+        Plot(tSpan, P_bar[.., 0], "b", Linewidth: 2); GridOn(); HoldOn();
+        Plot(tSpan, P_bar[.., N - 1], "--r", Linewidth: 2);
+        Title("Pressure Response"); Xlabel("Time (s)"); Ylabel("Pressure (bar)");
+        Legend(["Inlet Cell", "Outlet Cell"], UpperRight);
+
+        Subplot(1, 3, 1);
+        Plot(tSpan, Psi_sol[.., 0], "b", Linewidth: 2); GridOn(); HoldOn();
+        Plot(tSpan, Psi_sol[.., N / 2], "k", Linewidth: 2);
+        Plot(tSpan, Psi_sol[.., N - 1], "--r", Linewidth: 2);
+        Title("Condensate Slug Advection"); Xlabel("Time (s)"); Ylabel("\\psi_c (-)");
+        Legend(["x \\approx 0", "x \\approx L/2", "x \\approx L"], UpperRight);
+
+        Subplot(1, 3, 2);
+        Plot(tSpan, Q_inlet, "b", Linewidth: 2); GridOn(); HoldOn();
+        Plot(tSpan, Q_outlet, "--r", Linewidth: 2);
+        Title("Volumetric Flow Rates"); Xlabel("Time (s)"); Ylabel("Flow Rate (m^3/h)");
+        Legend(["Inlet Rate", "Outlet Delivery"], UpperRight);
+
+        SaveAs("Staggered_Pipeline_PureODE_3Plots.png");
+        CloseFig();
+    }
+    {
+        // =========================================================================
+        // Pipeline Staggered DAE Formulation for SepalSolver
+        // =========================================================================
+        int N = 30; // 30 spatial cells
+        double L = 3000.0, D = 0.254, A = pi * D * D / 4.0, g = 9.81, theta = 0.0;
+        double roughness = 4.57e-5;
+        double rho_o = 860.0, rho_c = 720.0, c_o = 1300.0, c_c = 1050.0;
+        double mu_o = 12.0e-3, mu_c = 0.6e-3, Ks = 0.065;
+        double p_inlet = 5.0e6, p_sep = 1.8e6, Cv_base = 0.0055, valve_closure_time = 45.0;
+        double psi_c_base = 0.15, psi_c_slug = 0.45;
+        double dx = L / N;
+
+        int totalVars = 2 * N + (N + 1);
+
+        // Build Initial States
+        double[] y0 = Zeros(totalVars);
+        for (int i = 0; i < N; i++)
+        {
+            y0[i] = p_inlet - (1.2e6) * ((i + 0.5) / N); // p_i
+            y0[N + i] = psi_c_base;                       // psi_i
+        }
+        for (int j = 0; j <= N; j++)
+        {
+            y0[2 * N + j] = 0.052;                        // q_j
+        }
+
+        // Build Singular Mass Matrix (Index-1 DAE)
+        Matrix Mass = Eye(totalVars);
+        Mass[2 * N, 2 * N] = 0.0;           // Inlet face algebraic
+        Mass[totalVars - 1, totalVars - 1] = 0.0; // Outlet face algebraic
+
+        // RHS Function
+        ColVec RhsFun(double t, ColVec y)
+        {
+            ColVec dy = Zeros(totalVars);
+            double psi_in = (t >= 20.0 && t <= 60.0) ? psi_c_slug : psi_c_base;
+
+            // 1. Continuity & Upwind Species (Cells 0..N-1)
+            for (int i = 0; i < N; i++)
+            {
+                double psi_i = Clamp(y[N + i], 0.0, 1.0);
+                double volC = psi_i / rho_c;
+                double volO = (1.0 - psi_i) / rho_o;
+                double phi_c = volC / (volC + volO);
+                double Sv = Ks * phi_c * (1.0 - phi_c) * Pow((rho_o - rho_c) / rho_o, 2.0);
+                double rho_m = (1.0 / (volC + volO)) / (1.0 - Sv);
+                double cm_speed = psi_i * c_c + (1.0 - psi_i) * c_o;
+                double Cm = 1.0 / (rho_m * cm_speed * cm_speed);
+
+                double q_left = y[2 * N + i];
+                double q_right = y[2 * N + i + 1];
+                double dq_dx = (q_right - q_left) / dx;
+                dy[i] = -(1.0 / (A * Cm)) * dq_dx;
+
+                double q_avg = 0.5 * (q_left + q_right);
+                double psi_up = (i == 0) ? psi_in : y[N + i - 1];
+                double dpsi_dx = (psi_i - psi_up) / dx;
+                dy[N + i] = -(q_avg / A) * dpsi_dx;
+            }
+
+            // 2. Inlet Boundary Algebraic Condition
+            dy[2 * N] = y[0] - p_inlet;
+
+            // 3. Interior Interface Momentum (Faces 1..N-1)
+            for (int j = 1; j < N; j++)
+            {
+                double dp_dx = (y[j] - y[j - 1]) / dx;
+                double psi_f = 0.5 * (y[N + j - 1] + y[N + j]);
+                double volC = psi_f / rho_c;
+                double volO = (1.0 - psi_f) / rho_o;
+                double phi_c = volC / (volC + volO);
+                double Sv = Ks * phi_c * (1.0 - phi_c) * Pow((rho_o - rho_c) / rho_o, 2.0);
+                double rho_mf = (1.0 / (volC + volO)) / (1.0 - Sv);
+                double mu_mf = Pow(psi_f * Cbrt(mu_c) + (1.0 - psi_f) * Cbrt(mu_o), 3.0);
+
+                double q_val = y[2 * N + j];
+                double vel = Abs(q_val) / A;
+                double Re = Max(rho_mf * vel * D / mu_mf, 10.0);
+
+                double th1 = Pow(-2.457 * Log(Pow(7.0 / Re, 0.9) + 0.27 * (roughness / D)), 16.0);
+                double th2 = Pow(37530.0 / Re, 16.0);
+                double fm = 8.0 * Pow(Pow(8.0 / Re, 12.0) + Pow(th1 + th2, -1.5), 1.0 / 12.0);
+
+                double friction = (fm / (2.0 * D * A)) * Abs(q_val) * q_val;
+                double gravity = A * g * Sin(theta);
+
+                dy[2 * N + j] = -(A / rho_mf) * dp_dx - friction - gravity;
+            }
+
+            // 4. Outlet Valve Boundary Algebraic Condition
+            double tau = Min(t / valve_closure_time, 1.0);
+            double Cv_t = Cv_base * (1.0 - 0.70 * tau);
+            double delta_p = Max(y[N - 1] - p_sep, 0.0);
+            double q_valve = Cv_t * Sqrt(delta_p);
+
+            dy[totalVars - 1] = y[totalVars - 1] - q_valve;
+
+            return dy;
+        }
+
+        // Integrate using SepalSolver DAE engine
+        double[] tSpan = Linspace(0.0, 150.0, 151);
+        (ColVec T, Matrix Y) = Ode43a(RhsFun, Mass, y0, tSpan);
+
+        // Visualizing
+        ColVec xCell = Linspace(dx / 2.0, L - dx / 2.0, N);
+        Matrix P_bar = Y[.., 0..(N - 1)] * 1e-5;
+
+        Subplot(1, 2, 0);
+        Plot(tSpan, P_bar[.., 0], Linewidth: 2); GridOn();
+        Title("Inlet Pressure [bar]"); Xlabel("Time (s)");
+
+        Subplot(1, 2, 1);
+        Plot(tSpan, Y[.., totalVars - 1] * 3600, Linewidth: 2); GridOn();
+        Title("Delivery Rate [m^3/h]"); Xlabel("Time (s)");
+        SaveAs("Staggered_Pipeline_Results.png");
+        CloseFig();
+    }
+    {
+        // =========================================================================
+        // 1. Pipeline Physical & Fluid Parameters
+        // =========================================================================
+        double L = 3000.0;                  // Pipeline length [m]
+        double D = 0.254;                   // 10-inch diameter [m]
+        double A = pi * D * D / 4.0;        // Area [m^2]
+        double g = 9.81;                    // Gravity [m/s^2]
+        double theta = 0.0;                 // Horizontal inclination [rad]
+        double roughness = 4.57e-5;         // Steel absolute roughness [m]
+
+        // Fluid physical properties
+        double rho_o = 860.0;               // Crude oil density [kg/m^3]
+        double rho_c = 720.0;               // Condensate density [kg/m^3]
+        double c_o = 1300.0;                // Sound speed in crude [m/s]
+        double c_c = 1050.0;                // Sound speed in condensate [m/s]
+        double mu_o = 12.0e-3;              // Crude dynamic viscosity [Pa.s]
+        double mu_c = 0.6e-3;               // Condensate viscosity [Pa.s]
+        double Ks = 0.065;                  // API MPMS 12.3 shrinkage coefficient
+
+        // Operational & Boundary parameters
+        double p_inlet = 5.0e6;             // Inlet pressure: 50 bar [Pa]
+        double p_sep = 1.8e6;               // Delivery separator pressure: 18 bar [Pa]
+        double Cv_base = 0.0055;            // Valve flow coefficient
+        double valve_closure_time = 45.0;   // Valve stroke duration [s]
+        double psi_c_base = 0.15;           // Baseline condensate fraction
+        double psi_c_slug = 0.45;           // Condensate slug fraction
+
+        // Grid Setup
+        int m = 0;                          // Slab / Cartesian coordinates
+        int nNodes = 61;                    // 61 nodes
+        double dx = L / (nNodes - 1);       // Mesh spacing [m]
+        ColVec xMesh = Linspace(0.0, L, nNodes);
+        ColVec tMesh = Linspace(0.0, 150.0, 7); // Time snapshots
+
+        // =========================================================================
+        // 2. Auxiliary Thermodynamic & Friction Routines
+        // =========================================================================
+        (double rho_m, double cm_speed, double Cm, double mu_m) BlendProperties(double psi_c)
+        {
+            psi_c = Clamp(psi_c, 0.0, 1.0);
+            double volC = psi_c / rho_c;
+            double volO = (1.0 - psi_c) / rho_o;
+            double phi_c = volC / (volC + volO);
+
+            // API MPMS 12.3 shrinkage factor
+            double densityContrast = Pow((rho_o - rho_c) / rho_o, 2.0);
+            double Sv = Ks * phi_c * (1.0 - phi_c) * densityContrast;
+
+            // Actual blended density
+            double rho_ideal = 1.0 / (volC + volO);
+            double rho_m = rho_ideal / (1.0 - Sv);
+
+            // Effective sonic velocity & compressibility
+            double cm_speed = psi_c * c_c + (1.0 - psi_c) * c_o;
+            double Cm = 1.0 / (rho_m * cm_speed * cm_speed);
+
+            // Kendall-Monroe 1/3 blending viscosity
+            double mu_m = Pow(psi_c * Cbrt(mu_c) + (1.0 - psi_c) * Cbrt(mu_o), 3.0);
+
+            return (rho_m, cm_speed, Cm, mu_m);
+        }
+
+        double ChurchillFriction(double Re, double rel_rough)
+        {
+            double th1 = Pow(-2.457 * Log(Pow(7.0 / Re, 0.9) + 0.27 * rel_rough), 16.0);
+            double th2 = Pow(37530.0 / Re, 16.0);
+            return 8.0 * Pow(Pow(8.0 / Re, 12.0) + Pow(th1 + th2, -1.5), 1.0 / 12.0);
+        }
+
+        // =========================================================================
+        // 3. Robust PDE System with Characteristic Numerical Dissipation
+        // =========================================================================
+        (ColVec c, ColVec f, ColVec s) PdeFun(double x, double t, ColVec u, ColVec dudx)
+        {
+            double press = u[0];
+            double psi_c = Clamp(u[1], 0.0, 1.0);
+            double q = u[2];
+
+            double dpdx = dudx[0];
+            double dpsi_cdx = dudx[1];
+            double dqdx = dudx[2];
+
+            var (rho_m, cm_speed, Cm, mu_m) = BlendProperties(psi_c);
+
+            double vel = Abs(q) / A;
+            double Re = Max(rho_m * vel * D / mu_m, 10.0);
+            double fm = ChurchillFriction(Re, roughness / D);
+
+            // Characteristic acoustic dissipation (Rusanov / Lax-Friedrichs scaling)
+            double eps_p_char = (dx * cm_speed) / (2.0 * rho_m * cm_speed * cm_speed);
+            double eps_q_char = (dx * cm_speed) / 2.0;
+
+            // Upwind numerical diffusion for species transport to satisfy grid Peclet limit
+            double D_upwind = Max(0.05, 0.5 * vel * dx);
+
+            // Capacity vector c: [Cm, 1, 1]'
+            ColVec cVec = [Cm, 1.0, 1.0];
+
+            // Regularized acoustic flux vector f
+            ColVec fVec = [ -q / A + eps_p_char * dpdx,
+                            D_upwind * dpsi_cdx,
+                            -(A / rho_m) * press + eps_q_char * dqdx];
+
+            // Momentum friction and gravity source terms
+            double frictionHead = (fm / (2.0 * D * A)) * Abs(q) * q;
+            double gravityHead = A * g * Sin(theta);
+
+            // Source vector s
+            ColVec sVec = [ 0.0,
+                            -(q / A) * dpsi_cdx,
+                            -frictionHead - gravityHead];
+
+            return (cVec, fVec, sVec);
+        }
+
+        // =========================================================================
+        // 4. Consistent Initial Conditions
+        // =========================================================================
+        ColVec IcFun(double x)
+        {
+            // Hydrostatic / Steady frictional drop
+            double p_init = p_inlet - (1.1e6) * (x / L);
+            double psi_init = psi_c_base;
+            double q_init = 0.052; // ~52 L/s (~187 m^3/h)
+
+            double[] ic = [p_init, psi_init, q_init];
+            return ic;
+        }
+
+        // =========================================================================
+        // 5. Well-Posed Acoustic Boundary Conditions
+        // =========================================================================
+        (ColVec pl, ColVec ql, ColVec pr, ColVec qr) BcFun(double xLeft, ColVec uLeft, double xRight, ColVec uRight, double t)
+        {
+            // Left Boundary (x = 0):
+            // Prescribe inlet pressure and incoming condensate composition
+            double psi_inlet_t = (t >= 20.0 && t <= 60.0) ? psi_c_slug : psi_c_base;
+
+            // Dirichlet on p and psi_c; momentum balance passes through interior flux
+            double[] pl = [uLeft[0] - p_inlet, uLeft[1] - psi_inlet_t, 0.0];
+            double[] ql = [0.0, 0.0, 1.0];
+
+            // Right Boundary (x = L):
+            // Downstream choke valve throttling
+            double tau = Min(t / valve_closure_time, 1.0);
+            double Cv_t = Cv_base * (1.0 - 0.70 * tau);
+            double delta_p = Max(uRight[0] - p_sep, 0.0);
+            double q_valve = Cv_t * Sqrt(delta_p);
+
+            // Zero gradient for pressure and composition; Dirichlet on valve flow rate q
+            double[] pr = [0.0, 0.0, uRight[2] - q_valve];
+            double[] qr = [1.0, 1.0, 0.0];
+
+            return (pl, ql, pr, qr);
+        }
+
+        // =========================================================================
+        // 6. Execution Call
+        // =========================================================================
+        (ColVec t, Matrix[] Ys) = Pdepe(m, PdeFun, IcFun, BcFun, xMesh, tMesh);
+
+        Matrix P_sol = Ys[0] * 1e-5; // Convert Pa -> bar
+        Matrix Psi_sol = Ys[1];        // Condensate mass fraction [-]
+        Matrix Q_sol = Ys[2] * 3600; // Convert m^3/s -> m^3/h
+
+        // =========================================================================
+        // 7. Subplots & Visualization
+        // =========================================================================
+        Subplot(1, 3, 0);
+        Plot(xMesh, P_sol, Linewidth: 2); GridOn();
+        Title("Acoustic Pressure Transients p(x,t)");
+        Xlabel("Distance along Pipeline (m)"); Ylabel("Pressure (bar)");
+        Legend(t.Select(ti => $"t = {ti:0.0} s"), UpperRight);
+
+        Subplot(1, 3, 1);
+        Plot(xMesh, Psi_sol, Linewidth: 2); GridOn();
+        Title("Condensate Slug Transport \\psi_c(x,t)");
+        Xlabel("Distance along Pipeline (m)"); Ylabel("Mass Fraction (-)");
+        Legend(t.Select(ti => $"t = {ti:0.0} s"), UpperRight);
+
+        Subplot(1, 3, 2);
+        Plot(xMesh, Q_sol, Linewidth: 2); GridOn();
+        Title("In-Situ Volumetric Flow Rate q(x,t)");
+        Xlabel("Distance along Pipeline (m)"); Ylabel("Flow Rate (m^3/h)");
+        Legend(t.Select(ti => $"t = {ti:0.0} s"), UpperRight);
+
+        SaveAs("Pipeline_Shrinkage_Pdepe_Stabilized.png");
+        CloseFig();
+    }
+  
     Writer.Run();
     {
         //// Damping Systems
@@ -554,30 +1618,30 @@
         CloseFig();
     }
     {
-        // Define polynomial coefficients: f(x) = x^4 - 3x^3 - x^2 + 3x
-        double[] p = [1.0, -3.0, -1.0, 3.0, 0.0];
-        int N = p.Length;
+        //// Define polynomial coefficients: f(x) = x^4 - 3x^3 - x^2 + 3x
+        //double[] p = [1.0, -3.0, -1.0, 3.0, 0.0];
+        //int N = p.Length;
 
-        // 1. Calculate polynomial roots
-        Complex[] roots = Roots(p);
-        Console.WriteLine("Computed Roots of Polynomial:");
-        for (int i = 0; i < N - 1; i++)
-        {
-            Console.WriteLine($"  Root {i + 1}: {roots[i].Real:F4}");
-        }
-        ColVec realxroots = [.. roots.Select(r => r.Real)];
-        ColVec realyroots = Zeros(N - 1);
+        //// 1. Calculate polynomial roots
+        //Complex[] roots = Roots(p);
+        //Console.WriteLine("Computed Roots of Polynomial:");
+        //for (int i = 0; i < N - 1; i++)
+        //{
+        //    Console.WriteLine($"  Root {i + 1}: {roots[i].Real:F4}");
+        //}
+        //ColVec realxroots = [.. roots.Select(r => r.Real)];
+        //ColVec realyroots = Zeros(N - 1);
 
-        // 2. Evaluate polynomial over a smooth domain
-        ColVec x = Linspace(-1.5, 3.5, 400);
-        ColVec y = Arrayfun(x => Polyval(p, x), x);
+        //// 2. Evaluate polynomial over a smooth domain
+        //ColVec x = Linspace(-1.5, 3.5, 400);
+        //ColVec y = Arrayfun(x => Polyval(p, x), x);
 
-        // 3. Visualize curve and highlight zero-axis
-        Scatter(realxroots, realyroots, "for", 15); HoldOn();
-        Plot(x, y, "b", 5); Hline(0); HoldOff();
-        Title("Polynomial Function f(x) = x^4 - 3x^3 - x^2 + 3x");
-        Xlabel("x"); Ylabel("f(x)"); GridOn();
-        SaveAs("Polynomial.png");
+        //// 3. Visualize curve and highlight zero-axis
+        //Scatter(realxroots, realyroots, "for", 15); HoldOn();
+        //Plot(x, y, "b", 5); Hline(0); HoldOff();
+        //Title("Polynomial Function f(x) = x^4 - 3x^3 - x^2 + 3x");
+        //Xlabel("x"); Ylabel("f(x)"); GridOn();
+        //SaveAs("Polynomial.png");
     }
     {
         //Func<double, double> J0, J1;
@@ -657,7 +1721,7 @@
 
         // Unpacks a monolithic 1D solver array back into distinct,
         // physically meaningful array fields
-        (double[], double[], double[], double[]) Unpack(double[] x)
+        (double[], double[], double[], double[]) Unpack(ColVec x)
         {
             int indx = 0;
             double[] Po = Zeros(Nblocks), Sw = Zeros(Nblocks),
@@ -767,7 +1831,7 @@
         // =========================================================================
         // STAGE 4: NONLINEAR RESIDUAL FORMULATION (MASS CONSERVATION & WELL EQUATIONS)
         // =========================================================================
-        double[] Residual(double[] xnp1)
+        ColVec Residual(ColVec xnp1)
         {
             double Po_up, Pw_up, So_up, Sw_up, Tr, Tw, To;
 

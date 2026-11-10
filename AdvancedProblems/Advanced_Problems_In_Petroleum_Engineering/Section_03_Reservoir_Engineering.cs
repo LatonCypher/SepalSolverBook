@@ -176,7 +176,7 @@ namespace ConsoleApp1.TrainingFiles.Summary_and_Conclusion.Advanced_Problems_In_
 
                 // Unpacks a monolithic 1D solver array back into distinct,
                 // physically meaningful array fields
-                (double[], double[], double[], double[]) Unpack(double[] x)
+                (double[], double[], double[], double[]) Unpack(ColVec x)
                 {
                     int indx = 0;
                     double[] Po = Zeros(Nblocks), Sw = Zeros(Nblocks),
@@ -286,7 +286,7 @@ namespace ConsoleApp1.TrainingFiles.Summary_and_Conclusion.Advanced_Problems_In_
                 // =========================================================================
                 // STAGE 4: NONLINEAR RESIDUAL FORMULATION (MASS CONSERVATION & WELL EQUATIONS)
                 // =========================================================================
-                double[] Residual(double[] xnp1)
+                ColVec Residual(ColVec xnp1)
                 {
                     double Po_up, Pw_up, So_up, Sw_up, Tr, Tw, To;
 

@@ -4436,6 +4436,13 @@
              </terminal>
              </example>
         </member>
+        <member name="M:SepalSolver.Math.Cbrt(System.Double)">
+            <summary>
+            
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
         <member name="M:SepalSolver.Math.Sqr(System.Double)">
              <summary>
              Calculates the square of a specified number.
@@ -8238,6 +8245,11 @@
             </summary>
         </member>
         <member name="P:SepalSolver.Ode.Set.MaxSteps">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SepalSolver.Ode.Set.OutputFun">
             <summary>
             
             </summary>
