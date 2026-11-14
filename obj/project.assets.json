@@ -1339,6 +1339,53 @@
           }
         }
       },
+      "SepalSolver/1.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Highs.Native": "1.15.1",
+          "MKL.NET": "1.7.0",
+          "MKL.NET.win-x64": "2022.0.0.115",
+          "Microsoft.CodeAnalysis.CSharp.Scripting": "5.9.0",
+          "Microsoft.Data.Analysis": "0.23.0",
+          "Microsoft.ML": "5.0.0",
+          "Microsoft.ML.CpuMath": "5.0.0",
+          "Microsoft.ML.FastTree": "5.0.0",
+          "Microsoft.ML.ImageAnalytics": "5.0.0",
+          "Microsoft.ML.LightGbm": "5.0.0",
+          "Microsoft.ML.TensorFlow": "5.0.0",
+          "Microsoft.ML.TorchSharp": "0.23.0",
+          "System.Drawing.Common": "10.0.12",
+          "TorchSharp-cpu": "0.107.0"
+        },
+        "compile": {
+          "lib/net10.0/SepalSolver.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/SepalSolver.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SepalSolver.PlotLib/1.3.0": {
+        "type": "package",
+        "dependencies": {
+          "CSharpMath": "0.5.1",
+          "CSharpMath.SkiaSharp": "0.5.1",
+          "FFmpeg.AutoGen": "9.0.1.1",
+          "Magick.NET-Q16-AnyCPU": "14.17.1",
+          "Magick.NET.Core": "14.17.1",
+          "ScottPlot": "5.1.59",
+          "SepalSolver": "1.3.0"
+        },
+        "compile": {
+          "lib/net10.0/SepalSolver.PlotLib.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SepalSolver.PlotLib.dll": {}
+        }
+      },
       "Serilog/2.10.0": {
         "type": "package",
         "compile": {
@@ -1652,51 +1699,6 @@
         "build": {
           "buildTransitive/net8.0/TorchSharp-cpu.props": {},
           "buildTransitive/net8.0/TorchSharp-cpu.targets": {}
-        }
-      },
-      "SepalSolver/1.3.2": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v10.0",
-        "dependencies": {
-          "Highs.Native": "1.15.1",
-          "MKL.NET": "1.7.0",
-          "MKL.NET.win-x64": "2022.0.0.115",
-          "Microsoft.CodeAnalysis.CSharp.Scripting": "5.9.0",
-          "Microsoft.Data.Analysis": "0.23.0",
-          "Microsoft.ML": "5.0.0",
-          "Microsoft.ML.CpuMath": "5.0.0",
-          "Microsoft.ML.FastTree": "5.0.0",
-          "Microsoft.ML.ImageAnalytics": "5.0.0",
-          "Microsoft.ML.LightGbm": "5.0.0",
-          "Microsoft.ML.TensorFlow": "5.0.0",
-          "Microsoft.ML.TorchSharp": "0.23.0",
-          "System.Drawing.Common": "10.0.12",
-          "TorchSharp-cpu": "0.107.0"
-        },
-        "compile": {
-          "bin/placeholder/SepalSolver.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SepalSolver.dll": {}
-        }
-      },
-      "SepalSolver.PlotLib/1.3.2": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v10.0",
-        "dependencies": {
-          "CSharpMath": "0.5.1",
-          "CSharpMath.SkiaSharp": "0.5.1",
-          "FFmpeg.AutoGen": "9.0.1.1",
-          "Magick.NET-Q16-AnyCPU": "14.17.1",
-          "Magick.NET.Core": "14.17.1",
-          "ScottPlot": "5.1.59",
-          "SepalSolver": "1.3.2"
-        },
-        "compile": {
-          "bin/placeholder/SepalSolver.PlotLib.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SepalSolver.PlotLib.dll": {}
         }
       }
     }
@@ -2898,6 +2900,34 @@
         "scottplot.nuspec"
       ]
     },
+    "SepalSolver/1.3.0": {
+      "sha512": "Luro1DQSnbfeBLCyipSNWxFL6OItOCFVtGNjL+SjqA3yjNGMC9Wa/WsUtG37UZAEJPEuxtp66WnUuDy9t1RXjQ==",
+      "type": "package",
+      "path": "sepalsolver/1.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net10.0/SepalSolver.dll",
+        "lib/net10.0/SepalSolver.xml",
+        "sepalsolver.1.3.0.nupkg.sha512",
+        "sepalsolver.nuspec",
+        "sepalsolver.png"
+      ]
+    },
+    "SepalSolver.PlotLib/1.3.0": {
+      "sha512": "GqbW4QxyY1ndp+4NKBEmsJjckgxyhyxxiIEvSRgWgFU/cKcu/G/fblu9+e8KX79j2xHyv2h4//FNggJlGqZHMg==",
+      "type": "package",
+      "path": "sepalsolver.plotlib/1.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net10.0/SepalSolver.PlotLib.dll",
+        "sepalsolver.plotlib.1.3.0.nupkg.sha512",
+        "sepalsolver.plotlib.nuspec"
+      ]
+    },
     "Serilog/2.10.0": {
       "sha512": "+QX0hmf37a0/OZLxM3wL7V6/ADvC1XihXN4Kq/p6d8lCPfgkRdiuhbWlMaFjR9Av0dy5F0+MBeDmDdRZN/YwQA==",
       "type": "package",
@@ -3331,22 +3361,12 @@
         "torchsharp-cpu.0.107.0.nupkg.sha512",
         "torchsharp-cpu.nuspec"
       ]
-    },
-    "SepalSolver/1.3.2": {
-      "type": "project",
-      "path": "../sepalsolver/SepalSolver/SepalSolver.csproj",
-      "msbuildProject": "../sepalsolver/SepalSolver/SepalSolver.csproj"
-    },
-    "SepalSolver.PlotLib/1.3.2": {
-      "type": "project",
-      "path": "../sepalsolver/SepalSolver.PlotLib/SepalSolver.PlotLib.csproj",
-      "msbuildProject": "../sepalsolver/SepalSolver.PlotLib/SepalSolver.PlotLib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "SepalSolver >= 1.3.2",
-      "SepalSolver.PlotLib >= 1.3.2"
+      "SepalSolver >= 1.3.0",
+      "SepalSolver.PlotLib >= 1.3.0"
     ]
   },
   "packageFolders": {
@@ -3375,22 +3395,13 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
-        "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\Packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
           "framework": "net10.0",
           "targetAlias": "net10.0",
-          "projectReferences": {
-            "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver.PlotLib\\SepalSolver.PlotLib.csproj": {
-              "projectPath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver.PlotLib\\SepalSolver.PlotLib.csproj"
-            },
-            "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\SepalSolver.csproj": {
-              "projectPath": "C:\\Users\\lateef.a.kareem\\Documents\\GitHub\\sepalsolver\\SepalSolver\\SepalSolver.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -3403,12 +3414,22 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.400"
+      "SdkAnalysisLevel": "11.0.100"
     },
     "frameworks": {
       "net10.0": {
         "framework": "net10.0",
         "targetAlias": "net10.0",
+        "dependencies": {
+          "SepalSolver": {
+            "target": "Package",
+            "version": "[1.3.0, )"
+          },
+          "SepalSolver.PlotLib": {
+            "target": "Package",
+            "version": "[1.3.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -3425,7 +3446,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.403/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\11.0.100/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

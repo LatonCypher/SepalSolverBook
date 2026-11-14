@@ -139,7 +139,6 @@ namespace ConsoleApp1
                 if (!Directory.Exists(currenctdirectory))
                     Directory.CreateDirectory(currenctdirectory);
 
-
                 string chapter_indexfile = chapterfolder + "index.rst";
                 string chaptermessage = $"""
                     
@@ -173,16 +172,8 @@ namespace ConsoleApp1
                     relativePath = Path.GetRelativePath(BookChapter, ChapterSections[0]);
                     var sectionname = string.Join(' ', relativePath.Split(['_']).Skip(2));
                     string outputPath = chapterfolder + sectionname + ".rst";
-                    Content = File.ReadAllLines(ChapterSections[0]);
-                    bookContent = [..Content.SkipWhile(line=> !line.Contains("/// <BookContent>")).
-                                              TakeWhile(line=>!line.Contains("/// </BookContent>"))];
-                    if (bookContent.Count > 0)
-                        bookContent = processBookContent(bookContent[1..]);
                     using (StreamWriter writer = new(chapter_indexfile, true))
                     {
-                        foreach (var line in bookContent)
-                            writer.WriteLine(line);
-
                         string chapterchildren = $"""
                     
 

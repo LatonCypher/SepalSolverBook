@@ -9,12 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\sepalsolver\SepalSolver.PlotLib\SepalSolver.PlotLib.csproj" />
-    <ProjectReference Include="..\sepalsolver\SepalSolver\SepalSolver.csproj" />
+    <Folder Include="AdvancedProblems\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AdvancedProblems\" />
+    <PackageReference Include="SepalSolver" Version="1.3.0" />
+    <PackageReference Include="SepalSolver.PlotLib" Version="1.3.0" />
   </ItemGroup>
 
 </Project>

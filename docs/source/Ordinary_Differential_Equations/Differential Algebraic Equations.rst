@@ -238,10 +238,10 @@ Ouput
       Summary of statistics by Ode43a
               305 successful steps
               90 failed attempts
-              7769 function evaluations
+              7766 function evaluations
               395 partial derivatives
               1551 LU decompositions
-              3832 solutions of linear systems
+              3829 solutions of linear systems
       
    
    .. figure:: images/One-Transistor-Amplifier-DAE-Problem-Ode43a.png
@@ -696,10 +696,10 @@ Ouput
       Summary of statistics by Ode43a
               691 successful steps
               436 failed attempts
-              40844 function evaluations
+              40854 function evaluations
               1127 partial derivatives
               4085 LU decompositions
-              28859 solutions of linear systems
+              28861 solutions of linear systems
       
    
    .. figure:: images/Constrained_Mechanical_System_Index_2_DAE.png
@@ -832,7 +832,7 @@ Ouput
    Summary of statistics by Ode43a
            1082 successful steps
            47 failed attempts
-           32151 function evaluations
+           32153 function evaluations
            1129 partial derivatives
            4516 LU decompositions
            20845 solutions of linear systems
@@ -840,18 +840,18 @@ Ouput
    Summary of statistics by Ode43a
            871 successful steps
            50 failed attempts
-           34085 function evaluations
+           34084 function evaluations
            921 partial derivatives
            3654 LU decompositions
-           24887 solutions of linear systems
+           24886 solutions of linear systems
    
    Summary of statistics by Ode43a
            8772 successful steps
-           71 failed attempts
-           284564 function evaluations
-           8843 partial derivatives
-           35372 LU decompositions
-           196112 solutions of linear systems
+           66 failed attempts
+           284424 function evaluations
+           8838 partial derivatives
+           35352 LU decompositions
+           196017 solutions of linear systems
    
 
 .. figure:: images/Pendulum-Problem-Ode43a.png
