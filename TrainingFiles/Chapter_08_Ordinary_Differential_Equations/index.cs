@@ -20,7 +20,7 @@
             /// 
             /// ---
             /// 
-            /// <header 3> Solver Suite Overview </header>
+            /// <header 4> Solver Suite Overview </header>
             /// 
             /// SepalSolver organizes its differential and delay equation integrators into five specialized families based on problem stiffness, algebraic constraints, and memory lag structures:
             /// 
@@ -35,7 +35,7 @@
             /// 
             /// ---
             /// 
-            /// <header 3> Output Signatures and Solution Representation </header>
+            /// <header 4> Output Signatures and Solution Representation </header>
             /// 
             /// The integrators in SepalSolver provide flexible output signatures depending on whether you require an encapsulated solution object, explicit state matrices, or derivative trajectories for implicit equations.
             /// 
@@ -69,7 +69,7 @@
             /// 
             /// ---
             /// 
-            /// <header 3> Continuous Dense Output and Evaluation via `Deval` </header>
+            /// <header 4> Continuous Dense Output and Evaluation via `Deval` </header>
             /// 
             /// Adaptive step-size solvers naturally select non-uniform step sizes :math:`h_k` to maintain local error tolerances, often skipping wide quiescent intervals or taking tightly packed steps through stiff transients. 
             /// 

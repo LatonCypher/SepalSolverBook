@@ -19,7 +19,7 @@ In this chapter, we explore the theoretical foundations, numerical implementatio
 ---
 
 Solver Suite Overview
-^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""
 
 SepalSolver organizes its differential and delay equation integrators into five specialized families based on problem stiffness, algebraic constraints, and memory lag structures:
 
@@ -49,7 +49,7 @@ SepalSolver organizes its differential and delay equation integrators into five 
 ---
 
 Output Signatures and Solution Representation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 
 The integrators in SepalSolver provide flexible output signatures depending on whether you require an encapsulated solution object, explicit state matrices, or derivative trajectories for implicit equations.
 
@@ -90,7 +90,7 @@ For fully implicit differential systems (:math:`F(t, y, y') = 0`), the derivativ
 ---
 
 Continuous Dense Output and Evaluation via `Deval`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Adaptive step-size solvers naturally select non-uniform step sizes :math:`h_k` to maintain local error tolerances, often skipping wide quiescent intervals or taking tightly packed steps through stiff transients. 
 
