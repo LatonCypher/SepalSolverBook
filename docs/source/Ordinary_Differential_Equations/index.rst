@@ -3,8 +3,6 @@ Ordinary Differential Equations
 ###############################
 
 
-Introduction to Differential Equations
---------------------------------------
 
 Ordinary Differential Equations (ODEs) are fundamental in modeling dynamic systems across various fields of engineering and science. They describe how a quantity changes with respect to another, typically time. In SepalSolver, we implement numerical methods to solve ODEs, enabling engineers to simulate and analyze complex systems.
 
@@ -18,8 +16,7 @@ In this chapter, we explore the theoretical foundations, numerical implementatio
 
 ---
 
-Solver Suite Overview
-"""""""""""""""""""""
+**Solver Suite Overview**
 
 SepalSolver organizes its differential and delay equation integrators into five specialized families based on problem stiffness, algebraic constraints, and memory lag structures:
 
@@ -48,8 +45,7 @@ SepalSolver organizes its differential and delay equation integrators into five 
 
 ---
 
-Output Signatures and Solution Representation
-"""""""""""""""""""""""""""""""""""""""""""""
+**Output Signatures and Solution Representation**
 
 The integrators in SepalSolver provide flexible output signatures depending on whether you require an encapsulated solution object, explicit state matrices, or derivative trajectories for implicit equations.
 
@@ -89,8 +85,7 @@ For fully implicit differential systems (:math:`F(t, y, y') = 0`), the derivativ
 
 ---
 
-Continuous Dense Output and Evaluation via `Deval`
-""""""""""""""""""""""""""""""""""""""""""""""""""
+**Continuous Dense Output and Evaluation via `Deval`**
 
 Adaptive step-size solvers naturally select non-uniform step sizes :math:`h_k` to maintain local error tolerances, often skipping wide quiescent intervals or taking tightly packed steps through stiff transients. 
 
@@ -124,8 +119,7 @@ For fully implicit differential systems (:math:`F(t, y, y') = 0`), `OdeResult` r
 
 ---
 
-Controlling the Output Mesh via `tspan`
-"""""""""""""""""""""""""""""""""""""""
+**Controlling the Output Mesh via `tspan`**
 
 The integration interval parameter `tspan` dictates the temporal span as well as whether internal adaptive steps or user-specified query points are reported.
 

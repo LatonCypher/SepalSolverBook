@@ -6,7 +6,6 @@
         {
             /// <BookContent>
             /// 
-            /// <header 2> Introduction to Differential Equations </header>
             /// 
             /// Ordinary Differential Equations (ODEs) are fundamental in modeling dynamic systems across various fields of engineering and science. They describe how a quantity changes with respect to another, typically time. In SepalSolver, we implement numerical methods to solve ODEs, enabling engineers to simulate and analyze complex systems.
             /// 
@@ -20,7 +19,7 @@
             /// 
             /// ---
             /// 
-            /// <header 4> Solver Suite Overview </header>
+            /// **Solver Suite Overview**
             /// 
             /// SepalSolver organizes its differential and delay equation integrators into five specialized families based on problem stiffness, algebraic constraints, and memory lag structures:
             /// 
@@ -35,7 +34,7 @@
             /// 
             /// ---
             /// 
-            /// <header 4> Output Signatures and Solution Representation </header>
+            /// **Output Signatures and Solution Representation**
             /// 
             /// The integrators in SepalSolver provide flexible output signatures depending on whether you require an encapsulated solution object, explicit state matrices, or derivative trajectories for implicit equations.
             /// 
@@ -69,7 +68,7 @@
             /// 
             /// ---
             /// 
-            /// <header 4> Continuous Dense Output and Evaluation via `Deval` </header>
+            /// **Continuous Dense Output and Evaluation via `Deval`**
             /// 
             /// Adaptive step-size solvers naturally select non-uniform step sizes :math:`h_k` to maintain local error tolerances, often skipping wide quiescent intervals or taking tightly packed steps through stiff transients. 
             /// 
@@ -99,7 +98,7 @@
             /// 
             /// ---
             /// 
-            /// <header 4> Controlling the Output Mesh via `tspan` </header>
+            /// **Controlling the Output Mesh via `tspan`**
             /// 
             /// The integration interval parameter `tspan` dictates the temporal span as well as whether internal adaptive steps or user-specified query points are reported.
             /// 
