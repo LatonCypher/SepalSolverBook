@@ -6,7 +6,7 @@
         {
             /// <BookContent>
             /// 
-            /// <header 1> Introduction to Differential Equations </header>
+            /// <header 2> Introduction to Differential Equations </header>
             /// 
             /// Ordinary Differential Equations (ODEs) are fundamental in modeling dynamic systems across various fields of engineering and science. They describe how a quantity changes with respect to another, typically time. In SepalSolver, we implement numerical methods to solve ODEs, enabling engineers to simulate and analyze complex systems.
             /// 
@@ -20,7 +20,7 @@
             /// 
             /// ---
             /// 
-            /// <header 2> Solver Suite Overview </header>
+            /// <header 3> Solver Suite Overview </header>
             /// 
             /// SepalSolver organizes its differential and delay equation integrators into five specialized families based on problem stiffness, algebraic constraints, and memory lag structures:
             /// 
@@ -35,7 +35,7 @@
             /// 
             /// ---
             /// 
-            /// <header 2> Output Signatures and Solution Representation </header>
+            /// <header 3> Output Signatures and Solution Representation </header>
             /// 
             /// The integrators in SepalSolver provide flexible output signatures depending on whether you require an encapsulated solution object, explicit state matrices, or derivative trajectories for implicit equations.
             /// 
@@ -45,6 +45,7 @@
             /// OdeResult res = Ode45(odefun, y0, tspan, opts);
             /// DdeResult ddeRes = Dde23(ddefun, history, tspan, delays, opts);
             /// </signature>
+            /// 
             /// 
             /// 2. **Explicit Tuple Deconstruction** (Explicit ODEs, Stiff Systems, and Mass-Matrix DAEs):
             /// For standard explicit ODEs, stiff ODEs, mass-matrix DAEs (:math:`M y' = f(t, y)`), and delay differential equations, the output can be deconstructed directly into the time vector :math:`T` and solution matrix :math:`Y`:
@@ -59,6 +60,7 @@
             /// </signature>
             /// In the solution matrix :math:`Y`, rows correspond to individual time points in :math:`T`, and columns correspond to the respective state variables :math:`y_i`.
             /// 
+            /// 
             /// 3. **Implicit Differential Equations** (`i` **Family**):
             /// For fully implicit differential systems (:math:`F(t, y, y') = 0`), the derivative trajectory :math:`y'(t)` is also a primary dependent variable. Solvers in the implicit family (`Ode32i`, `Ode43i`, `Ode85i`) deconstruct into a 3-tuple returning :math:`T`, :math:`Y`, and the derivative matrix :math:`Y_p`:
             /// <signature>
@@ -67,7 +69,7 @@
             /// 
             /// ---
             /// 
-            /// <header 2> Continuous Dense Output and Evaluation via `Deval` </header>
+            /// <header 3> Continuous Dense Output and Evaluation via `Deval` </header>
             /// 
             /// Adaptive step-size solvers naturally select non-uniform step sizes :math:`h_k` to maintain local error tolerances, often skipping wide quiescent intervals or taking tightly packed steps through stiff transients. 
             /// 
@@ -97,7 +99,7 @@
             /// 
             /// ---
             /// 
-            /// <header 2> Controlling the Output Mesh via `tspan` </header>
+            /// <header 4> Controlling the Output Mesh via `tspan` </header>
             /// 
             /// The integration interval parameter `tspan` dictates the temporal span as well as whether internal adaptive steps or user-specified query points are reported.
             /// 
