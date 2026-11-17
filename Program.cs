@@ -1,10 +1,10 @@
 ﻿using ConsoleApp1;
-using Google.Protobuf;
-using Microsoft.ML.Tokenizers;
-using Microsoft.ML.Trainers.FastTree;
 
 {
     currenctdirectory = "C:\\Users\\lateef.a.kareem\\Documents";
+    {
+        
+    }
     Writer.Run();
     {
         Matrix SWOF = new double[,]
@@ -769,8 +769,6 @@ using Microsoft.ML.Trainers.FastTree;
         SaveAs("Pipeline_Shrinkage_Pdepe_Stabilized.png");
         CloseFig();
     }
-  
-    Writer.Run();
     {
         //// Damping Systems
         //double stiffness = 2.5, damping = 0.2, mass = 1.0, k = stiffness / mass,
