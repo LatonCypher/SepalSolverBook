@@ -770,44 +770,44 @@
         CloseFig();
     }
     {
-        //// Damping Systems
-        //double stiffness = 2.5, damping = 0.2, mass = 1.0, k = stiffness / mass,
-        //    c = damping / mass, t = 0, dt = 1.0 / 15;
-        //ColVec Dynamic(ColVec y) => new double[] { y[1], -(k * y[0] + c * y[1]) / mass };
-        //ColVec Evolve(ColVec y, double t) => rk4((t, y) => Dynamic(y), t, y, dt);
-        //double[] y0 = [1.5, 0]; ColVec y = y0;
+        // Damping Systems
+        double stiffness = 2.5, damping = 0.2, mass = 1.0, k = stiffness / mass,
+            c = damping / mass, t = 0, dt = 1.0 / 15;
+        ColVec Dynamic(ColVec y) => new double[] { y[1], -(k * y[0] + c * y[1]) / mass };
+        ColVec Evolve(ColVec y, double t) => rk4((t, y) => Dynamic(y), t, y, dt);
+        double[] y0 = [1.5, 0]; ColVec y = y0;
 
-        //HoldOn();
-        //var rec = Rectangle([-4, -7, 3, 7], 0.5); rec.FillColor = [0.2, 0.2, 0.2];
-        //rec = Rectangle([-0.5, -3.5, 1, 8.5], 0.1); rec.FillColor = [0.7, 0.7, 0.7];
-        //rec = Rectangle([-1, -4, 2, 1], 1); rec.FillColor = [0.0, 0.0, 0.0];
-        //var body = Rectangle([-0.9, y[0] - 0.5, 1.8, 3], 0.2); body.FillColor = [0.0, 0.0, 0.0];
-        //var Marker = Fill([1.5, 1.5, 2], [2.2, 2.8, 2.5], "r");
-        //ColVec my = Marker.Ydata - y[0],
-        //    z = Linspace(-3, 1, 321),
-        //    w = ((z + 3) * 4 * pi) % (2 * pi), 
-        //    x = 0.7 * Sin(w);
-        //x[0.75 * pi < w & w < 1.25 * pi] = double.NaN;
-        //var Spring = Plot(x, z, "k", 5);
-        //Plot([1.5, 14], [1, 1], "k");
-        //Plot([2, 2], [-2, 4], "k");
-        //var plt = Plot([2], [2.5], "r", 3);
-        //Axis([-5, 15, -8, 6]);
-        //HoldOff(); AxisOff();
+        HoldOn();
+        var rec = Rectangle([-4, -7, 3, 7], 0.5); rec.FillColor = [0.2, 0.2, 0.2];
+        rec = Rectangle([-0.5, -3.5, 1, 8.5], 0.1); rec.FillColor = [0.7, 0.7, 0.7];
+        rec = Rectangle([-1, -4, 2, 1], 1); rec.FillColor = [0.0, 0.0, 0.0];
+        var body = Rectangle([-0.9, y[0] - 0.5, 1.8, 3], 0.2); body.FillColor = [0.0, 0.0, 0.0];
+        var Marker = Fill([1.5, 1.5, 2], [2.2, 2.8, 2.5], "r");
+        ColVec my = Marker.Ydata - y[0],
+            z = Linspace(-3, 1, 321),
+            w = ((z + 3) * 4 * pi) % (2 * pi),
+            x = 0.7 * Sin(w);
+        x[0.75 * pi < w & w < 1.25 * pi] = double.NaN;
+        var Spring = Plot(x, z, "k", 5);
+        Plot([1.5, 14], [1, 1], "k");
+        Plot([2, 2], [-2, 4], "k");
+        var plt = Plot([2], [2.5], "r", 3);
+        Axis([-5, 15, -8, 6]);
+        HoldOff(); AxisOff();
 
-        //byte[] AnimFunc(int i)
-        //{
-        //    y = Evolve(y, t); t += dt;
-        //    body.Y = y[0] - 0.5;
-        //    Spring.Ydata = Linspace(-3, y[0] - 0.5, 321);
-        //    Marker.Ydata = my + y[0];
-        //    plt.Xdata = Vcart(2, plt.Xdata + 0.02);
-        //    plt.Ydata = Vcart(y[0] + 1, plt.Ydata);
-        //    Axis([-5, 15, -8, 6]);
-        //    return GetFrame(800, 560);
-        //}
-        //AnimationMaker(AnimFunc, "Damper-Simulation.gif", 30, 200);
-        //CloseFig();
+        byte[] AnimFunc(int i)
+        {
+            y = Evolve(y, t); t += dt;
+            body.Y = y[0] - 0.5;
+            Spring.Ydata = Linspace(-3, y[0] - 0.5, 321);
+            Marker.Ydata = my + y[0];
+            plt.Xdata = Vcart(2, plt.Xdata + 0.02);
+            plt.Ydata = Vcart(y[0] + 1, plt.Ydata);
+            Axis([-5, 15, -8, 6]);
+            return GetFrame(800, 560);
+        }
+        AnimationMaker(AnimFunc, "Damper-Simulation.gif", 30, 200);
+        CloseFig();
     }
     {
         //Matrix AcademyData = new double[,] {
@@ -1115,49 +1115,49 @@
         //SaveAs("HigherOrder_Forced.png");
     }
     {
-        //double L1 = 1.0, L2 = 1.0, m1 = 1.0, m2 = 1.0, g = 9.81;
-        //ColVec dydt(double t, ColVec y)
-        //{
-        //    double t1 = y[0], w1 = y[1], t2 = y[2], w2 = y[3], d = t1 - t2;
-        //    double den = 2 * m1 + m2 - m2 * Cos(2 * d);
-        //    double a1 = (-g * (2 * m1 + m2) * Sin(t1) - m2 * g * Sin(t1 - 2 * t2)
-        //                 - 2 * Sin(d) * m2 * (w2 * w2 * L2 + w1 * w1 * L1 * Cos(d)))
-        //                / (L1 * den);
-        //    double a2 = (2 * Sin(d) * (w1 * w1 * L1 * (m1 + m2)
-        //                 + g * (m1 + m2) * Cos(t1) + w2 * w2 * L2 * m2 * Cos(d)))
-        //                / (L2 * den);
-        //    double[] dy = [w1, a1, w2, a2];
-        //    return dy;
-        //}
-        //// 120 degrees and -10 degrees, released from rest
-        //double[] y0 = [120 * pi / 180, 0, -10 * pi / 180, 0];
-        //ColVec yn = y0; double tn = 0, dt = 0.03;
-        //HoldOn();
-        //var Wall = Rectangle([-1, 3, 2, 0.2], 0.2);
-        //Wall.FillColor = [0.8, 0.8, 0.8];
-        //double x1 = L1 * Sin(yn[0]), y1 = 3 - L1 * Cos(yn[0]),
-        //       x2 = x1 + L2 * Sin(yn[2]), y2 = y1 - L2 * Cos(yn[2]);
-        //var Line = Plot([0, x1, x2], [3, y1, y2], "k", 3);
-        //var B1 = Scatter(x1, y1, "for", Markersize: 30);
-        //var B2 = Scatter(x2, y2, "fob", Markersize: 30);
-        //HoldOff();
-        //Axis([-2, 2, 0, 4]);
-        //AxisEqual();
-        //SaveAs("doubleP.png");
-        //byte[] AnimFun(int i)
-        //{
-        //    yn = rk4(dydt, tn, yn, dt);
-        //    tn += dt;
-        //    x1 = L1 * Sin(yn[0]); y1 = 3 - L1 * Cos(yn[0]);
-        //    x2 = x1 + L2 * Sin(yn[2]); y2 = y1 - L2 * Cos(yn[2]);
-        //    B1.Xdata = x1; B1.Ydata = y1;
-        //    B2.Xdata = x2; B2.Ydata = y2;
-        //    Line.Xdata = new double[] { 0, x1, x2 };
-        //    Line.Ydata = new double[] { 3, y1, y2 };
-        //    return GetFrame();
-        //}
-        //AnimationMaker(AnimFun, "doublePendulum.gif", 30, 400);
-        //CloseFig();
+        double L1 = 1.0, L2 = 1.0, m1 = 1.0, m2 = 1.0, g = 9.81;
+        ColVec dydt(double t, ColVec y)
+        {
+            double t1 = y[0], w1 = y[1], t2 = y[2], w2 = y[3], d = t1 - t2;
+            double den = 2 * m1 + m2 - m2 * Cos(2 * d);
+            double a1 = (-g * (2 * m1 + m2) * Sin(t1) - m2 * g * Sin(t1 - 2 * t2)
+                         - 2 * Sin(d) * m2 * (w2 * w2 * L2 + w1 * w1 * L1 * Cos(d)))
+                        / (L1 * den);
+            double a2 = (2 * Sin(d) * (w1 * w1 * L1 * (m1 + m2)
+                         + g * (m1 + m2) * Cos(t1) + w2 * w2 * L2 * m2 * Cos(d)))
+                        / (L2 * den);
+            double[] dy = [w1, a1, w2, a2];
+            return dy;
+        }
+        // 120 degrees and -10 degrees, released from rest
+        double[] y0 = [120 * pi / 180, 0, -10 * pi / 180, 0];
+        ColVec yn = y0; double tn = 0, dt = 0.03;
+        HoldOn();
+        var Wall = Rectangle([-1, 3, 2, 0.2], 0.2);
+        Wall.FillColor = [0.8, 0.8, 0.8];
+        double x1 = L1 * Sin(yn[0]), y1 = 3 - L1 * Cos(yn[0]),
+               x2 = x1 + L2 * Sin(yn[2]), y2 = y1 - L2 * Cos(yn[2]);
+        var Line = Plot([0, x1, x2], [3, y1, y2], "k", 3);
+        var B1 = Scatter(x1, y1, "for", Markersize: 30);
+        var B2 = Scatter(x2, y2, "fob", Markersize: 30);
+        HoldOff();
+        Axis([-2, 2, 0, 4]);
+        AxisEqual();
+        SaveAs("doubleP.png");
+        byte[] AnimFun(int i)
+        {
+            yn = rk4(dydt, tn, yn, dt);
+            tn += dt;
+            x1 = L1 * Sin(yn[0]); y1 = 3 - L1 * Cos(yn[0]);
+            x2 = x1 + L2 * Sin(yn[2]); y2 = y1 - L2 * Cos(yn[2]);
+            B1.Xdata = x1; B1.Ydata = y1;
+            B2.Xdata = x2; B2.Ydata = y2;
+            Line.Xdata = new double[] { 0, x1, x2 };
+            Line.Ydata = new double[] { 3, y1, y2 };
+            return GetFrame();
+        }
+        AnimationMaker(AnimFun, "doublePendulum.gif", 30, 400);
+        CloseFig();
     }
     {
         //ColVec m = new double[] { 1, 2, 3, 4, 5, 6, 7 }, x, y, T;
